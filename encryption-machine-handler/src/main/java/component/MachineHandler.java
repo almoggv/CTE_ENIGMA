@@ -11,12 +11,13 @@ public interface MachineHandler {
     public boolean setState();
 
     //bonus
-    public boolean setState(File file);
+    public boolean loadStateFromFile(String absolutePath);
 
-    public boolean setState(Object... args);
+    //TODO: arguments might change
+    public boolean loadStateManually(PlugBoard plugBoard, Reflector reflector, List<Rotor> rotors);
 
     //bonus
-    public boolean saveState(File file);
+    public boolean saveStateToFile(String fileName);
 
     public List<String> getMachineState();
 

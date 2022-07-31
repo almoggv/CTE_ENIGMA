@@ -1,9 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="6467e2d7-ff2a-4abb-a198-685a0fcd06aa" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Java_EE_6_Java_EE_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/service/PropertyService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/service/impl/PropertyServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/enigma-machine/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/enigma-machine/src/main/resources/schema.xsd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/command-line-interface-ui/command-line-interface-ui.iml" beforeDir="false" afterPath="$PROJECT_DIR$/command-line-interface-ui/command-line-interface-ui.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/MachineHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/MachineHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/impl/MachineHandleImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/impl/MachineHandleImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/enigma-machine.iml" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/enigma-machine.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/EncryptionMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/EncryptionMachine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/PlugBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/PlugBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/EnigmaMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/EnigmaMachine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/PlugBoardImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/PlugBoardImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,11 +38,25 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="JpbToolWindowState">
+    <option name="myId2FirstActivated">
+      <map>
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.haulmont.jpb.jpaStructure" value="false" />
+      </map>
+    </option>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2CZY7bwY1WMFzEGx7Nw2aEWVFKA" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -33,19 +64,23 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="TODO_SCOPE" value="All Places" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/enigma-machine" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.27701148" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="main.java.component" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Dev\GitProjects\CTE_JAVA_ENIGMA\enigma-machine\src\main\resources" />
+      <recent name="C:\Dev\GitProjects\CTE_JAVA_ENIGMA\enigma-machine\src\main\java\" />
+      <recent name="C:\Dev\GitProjects\CTE_JAVA_ENIGMA\enigma-machine\src\main\java\dto" />
       <recent name="C:\Dev\GitProjects\CTE_JAVA_ENIGMA\enigma-machine\src\main" />
       <recent name="C:\Dev\GitProjects\CTE_JAVA_ENIGMA\enigma-machine\src\main\java" />
     </key>
@@ -53,6 +88,8 @@
       <recent name="main.component" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="main.java.dto.generated" />
+      <recent name="main.java.dto" />
       <recent name="main.java.component" />
       <recent name="main" />
     </key>
@@ -82,11 +119,25 @@
       <updated>1659011425714</updated>
       <workItem from="1659011437215" duration="3979000" />
       <workItem from="1659025708489" duration="5723000" />
-      <workItem from="1659283433480" duration="274000" />
+      <workItem from="1659283433480" duration="756000" />
+      <workItem from="1659286157458" duration="4779000" />
+      <workItem from="1659296957058" duration="277000" />
+      <workItem from="1659297315868" duration="379000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

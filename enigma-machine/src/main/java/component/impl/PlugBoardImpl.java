@@ -1,6 +1,5 @@
 package main.java.component.impl;
 
-import javafx.util.Pair;
 import main.java.component.PlugBoard;
 
 import java.util.List;
@@ -11,7 +10,7 @@ public class PlugBoardImpl implements PlugBoard {
     private Map<Integer,Integer> boardMapping;
 
     @Override
-    public boolean connectMultiple(List<Pair<Integer, Integer>> connectionPairs) {
+    public boolean connectMultiple(Map<Integer, Integer> connectionPairs) {
         return false;
     }
 

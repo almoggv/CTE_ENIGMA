@@ -8,7 +8,7 @@ public interface EncryptionMachine {
 
     public String decrypt(String output);
 
-    public boolean setupMachine(Object... args);
+    public void setupMachine(PlugBoard plugBoard, Reflector reflector, List<Rotor> rotors) throws IllegalArgumentException;
 
     public List<String> getMachineState();
 }

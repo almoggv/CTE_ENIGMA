@@ -18,12 +18,12 @@ public class EnigmaMachine implements EncryptionMachine {
 
     @Override
     public String decrypt(String output) {
-        return null;
+        return encrypt(output);
     }
 
     @Override
-    public boolean setupMachine(Object... args) {
-        return false;
+    public void setupMachine(PlugBoard plugBoard, Reflector reflector, List<Rotor> rotors) throws IllegalArgumentException {
+
     }
 
     @Override

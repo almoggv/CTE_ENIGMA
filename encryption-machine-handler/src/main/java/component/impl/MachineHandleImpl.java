@@ -1,7 +1,6 @@
 package main.java.component.impl;
 
-import main.java.component.EncryptionMachine;
-import main.java.component.MachineHandler;
+import main.java.component.*;
 
 import java.io.File;
 import java.util.List;
@@ -9,7 +8,7 @@ import java.util.List;
 public class MachineHandleImpl implements MachineHandler {
 
     private EncryptionMachine machine = new EnigmaMachine();
-    //TODO: add machine state member
+    //TODO: add "machine state" member
 
     @Override
     public boolean loadMachineConfiguration(File file) {
@@ -21,18 +20,20 @@ public class MachineHandleImpl implements MachineHandler {
         return false;
     }
 
+
     @Override
-    public boolean setState(File file) {
+    public boolean loadStateFromFile(String absolutePath) {
         return false;
     }
 
     @Override
-    public boolean setState(Object... args) {
+    public boolean loadStateManually(PlugBoard plugBoard, Reflector reflector, List<Rotor> rotors) {
         return false;
     }
 
+
     @Override
-    public boolean saveState(File file) {
+    public boolean saveStateToFile(String fileName) {
         return false;
     }
 
