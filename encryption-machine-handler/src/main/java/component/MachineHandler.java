@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface MachineHandler {
 
-    public boolean loadMachineConfiguration(File file);
+    void loadMachineConfiguration(String absolutePath);
 
     //this overload loads the settings automatically
     public boolean setState();

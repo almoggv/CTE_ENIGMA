@@ -2,6 +2,8 @@ package main.java.component;
 
 public interface Rotor {
 
+//    public int getValue(String inValue);
+
     public int getValue(int inValue);
 
     public boolean doesNotchAllowRotation();
