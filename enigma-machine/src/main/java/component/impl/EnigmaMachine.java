@@ -1,6 +1,7 @@
 package main.java.component.impl;
 
 import main.java.component.*;
+import main.resources.generated.CTEMachine;
 
 import java.util.List;
 
@@ -24,9 +25,24 @@ public class EnigmaMachine implements EncryptionMachine {
     }
 
     @Override
-    public void setupMachine(PlugBoard plugBoard, Reflector reflector, List<Rotor> rotors) throws IllegalArgumentException {
+    public void buildMachine(PlugBoard plugBoard, Reflector reflector, List<Rotor> rotors) throws IllegalArgumentException {
 
     }
+
+    @Override
+    public void buildMachine(Reflector reflector, List<Rotor> rotors ) throws IllegalArgumentException {
+
+    }
+
+    public void connectPlugs(){
+
+    }
+
+    @Override
+    public void setRotorsStartingPosition(List<Integer> rotorsPosition) {
+
+    }
+
 
     @Override
     public List<String> getMachineState() {

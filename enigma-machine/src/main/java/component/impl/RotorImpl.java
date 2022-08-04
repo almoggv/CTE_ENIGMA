@@ -24,9 +24,13 @@ public class RotorImpl implements Rotor {
      */
     private List<MappingPair<Integer,Integer>> rotorMapping = new ArrayList<>();
 
-    private int headPosition;
+    private int headPosition = 0;
 
-    private int notchLocation;
+    private final int notchLocation;
+
+    public RotorImpl(int notchLocation) {
+        this.notchLocation = notchLocation % rotorMapping.size();
+    }
 
     static {
         String log4JPropertyFile = "./src/main/resources/log4j.properties";
@@ -76,7 +80,7 @@ public class RotorImpl implements Rotor {
 
     @Override
     public boolean setRotorPosition(int headPosition) {
-        this.headPosition = headPosition;
+        this.headPosition = headPosition % rotorMapping.size();
         return true;
     }
 

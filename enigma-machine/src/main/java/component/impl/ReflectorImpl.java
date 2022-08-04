@@ -6,6 +6,7 @@ import org.apache.log4j.PropertyConfigurator;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
@@ -13,7 +14,7 @@ public class ReflectorImpl implements Reflector {
 
     private static final Logger log = Logger.getLogger(ReflectorImpl.class);
 
-    private List<MappingPair<Integer,Integer>> reflectionMapping;
+    private final List<MappingPair<Integer,Integer>> reflectionMapping = new ArrayList<>();
 
     static {
         String log4JPropertyFile = "./src/main/resources/log4j.properties";
@@ -31,7 +32,7 @@ public class ReflectorImpl implements Reflector {
 
     @Override
     public int getReflectedValue(int inValue) {
-        return MappingPairListUtils.getLeftByRight(reflectionMapping,inValue);
+        return MappingPairListUtils.getRightByLeft(reflectionMapping,inValue);
     }
 
 

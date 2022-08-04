@@ -8,7 +8,18 @@ public interface EncryptionMachine {
 
     public String decrypt(String output);
 
-    public void setupMachine(PlugBoard plugBoard, Reflector reflector, List<Rotor> rotors) throws IllegalArgumentException;
+    public void buildMachine(PlugBoard plugBoard, Reflector reflector, List<Rotor> rotors) throws IllegalArgumentException;
+
+    public void buildMachine(Reflector reflector, List<Rotor> rotors) throws IllegalArgumentException;
+
+    /**
+     * connect the plugs on the left to the plugs on the right
+     * @param leftList
+     * @param rightList
+     */
+    public void connectPlugs(List<String> leftList, List<String> rightList);
+
+    public void setRotorsStartingPosition(List<Integer> rotorsPosition);
 
     public List<String> getMachineState();
 }

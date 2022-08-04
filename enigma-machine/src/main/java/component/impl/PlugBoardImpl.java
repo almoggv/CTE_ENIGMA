@@ -54,17 +54,6 @@ public class PlugBoardImpl implements PlugBoard {
         return isOperationSuccessful;
     }
 
-
-    //Endpoint is occupied if its connected to a different endpoint
-
-    // A , Z
-    // current board:
-    // Z -- Z = (A,A)
-    // A -- A   (Z,Z)
-
-    // (A,A) -> (A,Z)
-    // (Z,Z) -> (Z,A)
-
     @Override
     public boolean connect(String endPoint1, String endPoint2) {
         boolean isEndPoint1Free = false, isEndPoint2Free = false;
@@ -90,17 +79,29 @@ public class PlugBoardImpl implements PlugBoard {
 
     @Override
     public boolean disconnect(String endPoint) {
-        return false;
+        MappingPair<String,String> endPointPair = MappingPairListUtils.findPairByLeft(plugBoardMapping, endPoint);
+        MappingPair<String,String> endPointMappedTo = MappingPairListUtils.findPairByRight(plugBoardMapping, endPoint);
+        int indexEndPoint = plugBoardMapping.indexOf(endPointPair);
+        int indexEndPointMappedTo = plugBoardMapping.indexOf(endPointMappedTo);
+        endPointPair.setRight(endPointPair.getLeft());
+        endPointMappedTo.setRight(endPointMappedTo.getLeft());
+        plugBoardMapping.set(indexEndPoint,endPointPair);
+        plugBoardMapping.set(indexEndPointMappedTo,endPointMappedTo);
+        log.debug("Plugboard disconnected :" + endPoint + " and " + endPointMappedTo.getLeft());
+        return true;
     }
 
     @Override
     public boolean clearAllPlugs() {
-        return false;
+        for ( MappingPair<String,String> pair : plugBoardMapping ) {
+            pair.setRight(pair.getLeft());
+        }
+        return true;
     }
 
     @Override
     public String getMappedValue(String inValue) {
-        return null;
+        return MappingPairListUtils.getRightByLeft(plugBoardMapping, inValue);
     }
 
     protected boolean isEndPointConnected(String endPoint){
