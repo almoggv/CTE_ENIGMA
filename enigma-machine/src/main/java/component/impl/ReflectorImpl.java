@@ -38,8 +38,8 @@ public class ReflectorImpl implements Reflector {
         List<CTEReflect> reflects = cteReflector.getCTEReflect();
 
         for(CTEReflect cteReflect : reflects) {
-            int in = cteReflect.getInput();
-            int out = cteReflect.getOutput();
+            int in = cteReflect.getInput() -1;
+            int out = cteReflect.getOutput() -1;
             MappingPair<Integer,Integer> pairInOut = new MappingPair<Integer,Integer>(in, out);
             MappingPair<Integer,Integer> pairOutIn = new MappingPair<Integer,Integer>(out, in);
             reflectionMapping.add(pairInOut);
@@ -50,7 +50,7 @@ public class ReflectorImpl implements Reflector {
 
     @Override
     public int getReflectedValue(int inValue) {
-        return MappingPairListUtils.getRightByLeft(reflectionMapping,inValue);
+        return MappingPairListUtils.getRightByLeft(reflectionMapping, inValue);
     }
 
 

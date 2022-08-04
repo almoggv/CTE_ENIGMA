@@ -13,6 +13,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.*;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -23,7 +24,7 @@ public class MachineHandlerImpl implements MachineHandler {
     private IOWheel ioWheelInventory;
     private List<Reflector> reflectorsInventory;
 
-    private EncryptionMachine machine = new EnigmaMachine();
+    private EncryptionMachine encryptionMachine = new EnigmaMachine();
     //TODO: add "machine state" member
 
     static {
@@ -53,18 +54,30 @@ public class MachineHandlerImpl implements MachineHandler {
     }
 
     @Override
-    public boolean assembleMachine(ReflectorsId reflectorId, List<Integer> rotorIds, List<Integer> rotorsStartingPositions, List<MappingPair<String, String>> plugMapping) {
-        return false;
+    public void assembleMachine(ReflectorsId reflectorId, List<Integer> rotorIds, List<Integer> rotorsStartingPositions, List<MappingPair<String, String>> plugMapping) {
+        assembleMachineParts(reflectorId, rotorIds);
+        setStartingMachineState(rotorsStartingPositions, plugMapping);
     }
 
     @Override
     public void assembleMachineParts(ReflectorsId reflectorId, List<Integer> rotorIds) {
+        Predicate<Reflector> idReflectorPredicate = (reflector) -> reflector.getId() == reflectorId;
+        Reflector reflector = reflectorsInventory.stream().filter(idReflectorPredicate).findFirst().orElse(null);
 
+        List<Rotor> rotorListForMachine = new ArrayList<>();
+        for (int rotorId : rotorIds) {
+            Predicate<Rotor> idRotorPredicate = (rotor) -> rotor.getId() == rotorId;
+            Rotor rotorFromInventory = rotorsInventory.stream().filter(idRotorPredicate).findFirst().orElse(null);
+            rotorListForMachine.add(rotorFromInventory);
+        }
+
+        encryptionMachine.buildMachine(plugBoardInventory, reflector, rotorListForMachine, ioWheelInventory);
     }
 
     @Override
     public void setStartingMachineState(List<Integer> rotorsStartingPositions, List<MappingPair<String, String>> plugMapping) {
-
+        encryptionMachine.setRotorsStartingPosition(rotorsStartingPositions);
+        encryptionMachine.connectPlugs(plugMapping);
     }
 
     @Override
@@ -73,26 +86,31 @@ public class MachineHandlerImpl implements MachineHandler {
     }
 
     private void buildMachinePartsInventory(CTEEnigma cteEnigma) {
-        CTEMachine cteMachine = cteEnigma.getCTEMachine();
-        String ABC = cteMachine.getABC().trim();
-        List<CTERotor> cteRotors = cteMachine.getCTERotors().getCTERotor();
-        List<CTEReflector> cteReflectors = cteMachine.getCTEReflectors().getCTEReflector();
+        try {
+            CTEMachine cteMachine = cteEnigma.getCTEMachine();
+            String ABC = cteMachine.getABC().trim();
+            List<CTERotor> cteRotors = cteMachine.getCTERotors().getCTERotor();
+            List<CTEReflector> cteReflectors = cteMachine.getCTEReflectors().getCTEReflector();
 
-        ioWheelInventory = new IOWheelImpl(ABC);
-        plugBoardInventory = new PlugBoardImpl(ABC);
-        rotorsInventory = new ArrayList<>();
+            ioWheelInventory = new IOWheelImpl(ABC);
+            plugBoardInventory = new PlugBoardImpl(ABC);
+            rotorsInventory = new ArrayList<>();
+            reflectorsInventory = new ArrayList<>();
 
-        for (CTERotor cteRotor: cteRotors) {
-            Rotor rotor = new RotorImpl(cteRotor, ABC);
-            rotorsInventory.add(rotor);
+            for (CTERotor cteRotor : cteRotors) {
+                Rotor rotor = new RotorImpl(cteRotor, ABC);
+                rotorsInventory.add(rotor);
+            }
+
+            for (CTEReflector cteReflector : cteReflectors) {
+                Reflector reflector = new ReflectorImpl(cteReflector);
+                reflectorsInventory.add(reflector);
+            }
+            log.debug("Machine handler: created inventory successfully");
         }
-
-        for (CTEReflector cteReflector: cteReflectors ) {
-            Reflector reflector = new ReflectorImpl(cteReflector);
-            reflectorsInventory.add(reflector);
+        catch (Exception e){
+            log.error("Machine handler - failed to build inventory:" + e.getMessage());
         }
-
-        log.debug("Machine handler: created inventory successfully");
     }
 
     /*
@@ -119,8 +137,8 @@ public class MachineHandlerImpl implements MachineHandler {
     }
 
     @Override
-    public String sendInputToMachine(String input) {
-        return null;
+    public String encrypt(String input) {
+        return encryptionMachine.encrypt(input);
     }
 
     @Override

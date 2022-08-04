@@ -25,9 +25,8 @@ public interface MachineHandler {
     /**
      * assembles a machine from user instructions
      * sets reflector, plugBoardMapping, rotors and their starting position
-     * @return
      */
-    public boolean assembleMachine(ReflectorsId reflectorId, List<Integer> rotorIds,
+    public void assembleMachine(ReflectorsId reflectorId, List<Integer> rotorIds,
            List<Integer> rotorsStartingPositions,
            List<MappingPair<String,String>> plugMapping );
 
@@ -45,7 +44,7 @@ public interface MachineHandler {
      * @param input
      * @return encrypted message
      */
-    public String sendInputToMachine(String input);
+    public String encrypt(String input);
 
     public String getMachineHistory();
 

@@ -46,7 +46,7 @@ public class RotorImpl implements Rotor {
         }
 
         this.id = cteRotor.getId();
-        this.notchLocation = cteRotor.getNotch() % rotorMapping.size();
+        this.notchLocation = (cteRotor.getNotch() -1) % rotorMapping.size();
     }
 
     static {

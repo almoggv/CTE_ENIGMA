@@ -1,5 +1,7 @@
 package main.java.component;
 
+import main.java.component.impl.MappingPair;
+
 import java.util.List;
 
 public interface EncryptionMachine {
@@ -19,8 +21,11 @@ public interface EncryptionMachine {
      */
     public void connectPlugs(List<String> leftList, List<String> rightList);
 
+    public void connectPlugs(List<MappingPair<String,String>> plugMappingList);
+
     public void setRotorsStartingPosition(List<Integer> rotorsPosition);
 
+    // todo - haamasa - set positions by string - user input <ci> not 0,1
     public List<String> getMachineState();
 }
 

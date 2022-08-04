@@ -89,6 +89,11 @@ public class EnigmaMachine implements EncryptionMachine {
         plugBoard.connectMultiple(leftList,rightList);
     }
 
+    @Override
+    public void connectPlugs(List<MappingPair<String, String>> plugMappingList) {
+        plugBoard.clearAllPlugs();
+        plugBoard.connectMultiple(plugMappingList);
+    }
 
     @Override
     public void setRotorsStartingPosition(List<Integer> rotorsPosition) {

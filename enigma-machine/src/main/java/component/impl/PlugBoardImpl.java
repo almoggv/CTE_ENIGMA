@@ -56,7 +56,7 @@ public class PlugBoardImpl implements PlugBoard {
     public boolean connectMultiple(List<MappingPair<String, String>> connections) {
         boolean isOperationSuccessful = true;
         for (MappingPair<String, String> pair : connections) {
-            isOperationSuccessful = isOperationSuccessful || connect(pair.getLeft(), pair.getRight());
+            isOperationSuccessful = isOperationSuccessful && connect(pair.getLeft(), pair.getRight());
         }
         return isOperationSuccessful;
     }
