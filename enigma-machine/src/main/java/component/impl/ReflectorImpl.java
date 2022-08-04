@@ -1,9 +1,12 @@
 package main.java.component.impl;
 
 import main.java.component.Reflector;
+import main.resources.generated.CTEReflect;
+import main.resources.generated.CTEReflector;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -28,7 +31,19 @@ public class ReflectorImpl implements Reflector {
         }
     }
 
-    //TODO: add ctor from CTE-Reflector class
+    public ReflectorImpl(CTEReflector cteReflector) {
+        List<CTEReflect> reflects = cteReflector.getCTEReflect();
+
+        for(CTEReflect cteReflect : reflects) {
+            int in = cteReflect.getInput();
+            int out = cteReflect.getOutput();
+            MappingPair<Integer,Integer> pairInOut = new MappingPair<Integer,Integer>(in, out);
+            MappingPair<Integer,Integer> pairOutIn = new MappingPair<Integer,Integer>(out, in);
+            reflectionMapping.add(pairInOut);
+            reflectionMapping.add(pairOutIn);
+        }
+    }
+
 
     @Override
     public int getReflectedValue(int inValue) {

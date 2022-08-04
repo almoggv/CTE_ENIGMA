@@ -28,6 +28,12 @@ public class IOWheelImpl implements IOWheel {
         }
     }
 
+    public IOWheelImpl(String ABC) {
+        for (int i = 0; i < ABC.length(); i++) {
+            MappingPair<Integer,String> newPair = new MappingPair<Integer,String>(i, ABC.substring(i,i+1));
+            letterToNumberMap.add(newPair);
+        }
+    }
     @Override
     public int handleInput(String input) {
         try{

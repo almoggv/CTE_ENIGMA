@@ -15,19 +15,12 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class MachineHandleImpl implements MachineHandler {
-
-    private static final Logger log = Logger.getLogger(MachineHandleImpl.class);
-    private CTEEnigma cteEnigma;
-//    public static void main(String[] args) {
-//        MachineHandleImpl imp = new MachineHandleImpl();
-//
-//        imp.loadMachineConfiguration("C:\\Users\\Eliya\\Documents\\java\\CTE\\CTE_ENIGMA\\enigma-machine\\src\\main\\resources\\ex1-sanity-small.xml");
-////        imp.loadMachineConfiguration("C:\\Users\\Eliya\\Documents\\java\\CTE\\CTE_ENIGMA\\enigma-machine\\src\\main\\resources\\ex1-error-3.xml");
-////        imp.loadMachineConfiguration("C:\\Users\\Eliya\\Documents\\java\\CTE\\CTE_ENIGMA\\enigma-machine\\src\\main\\resources\\ex1-sanity-paper-enigma.xml");
-//
-//
-//    }
+public class MachineHandlerImpl implements MachineHandler {
+    private static final Logger log = Logger.getLogger(MachineHandlerImpl.class);
+    private PlugBoard plugBoardInventory;
+    private List<Rotor> rotorsInventory;
+    private IOWheel ioWheelInventory;
+    private List<Reflector> reflectorsInventory;
 
     private EncryptionMachine machine = new EnigmaMachine();
     //TODO: add "machine state" member
@@ -38,19 +31,41 @@ public class MachineHandleImpl implements MachineHandler {
         try {
             p.load(new FileInputStream(log4JPropertyFile));
             PropertyConfigurator.configure(p);      //Dont forget here
-            log.debug("Logger Instatiated for : " + MachineHandleImpl.class.getSimpleName());
+            log.debug("Logger Instatiated for : " + MachineHandlerImpl.class.getSimpleName());
         } catch (IOException e) {
             //TODO: ?
         }
     }
 
-
     @Override
     public void loadMachineConfiguration(String absolutePath) {
         if (isFileInExistenceAndXML(absolutePath)){
-            cteEnigma = FileConfigurationHandler.fromXmlFileToCTE(absolutePath);
-            checkMachineConfiguration();
+            CTEEnigma cteEnigma = FileConfigurationHandler.fromXmlFileToCTE(absolutePath);
+            checkMachineConfiguration(cteEnigma);
+            buildMachinePartsInventory(cteEnigma);
         }
+    }
+
+    private void buildMachinePartsInventory(CTEEnigma cteEnigma) {
+        CTEMachine cteMachine = cteEnigma.getCTEMachine();
+        String ABC = cteMachine.getABC().trim();
+        List<CTERotor> cteRotors = cteMachine.getCTERotors().getCTERotor();
+        List<CTEReflector> cteReflectors = cteMachine.getCTEReflectors().getCTEReflector();
+
+        ioWheelInventory = new IOWheelImpl(ABC);
+        plugBoardInventory = new PlugBoardImpl(ABC);
+        rotorsInventory = new ArrayList<>();
+        for (CTERotor cteRotor: cteRotors) {
+            Rotor rotor = new RotorImpl(cteRotor, ABC);
+            rotorsInventory.add(rotor);
+        }
+
+        for (CTEReflector cteReflector: cteReflectors ) {
+            Reflector reflector = new ReflectorImpl(cteReflector);
+            reflectorsInventory.add(reflector);
+        }
+
+        log.debug("Machine handler: created inventory successfully");
     }
 
     @Override
@@ -98,7 +113,7 @@ public class MachineHandleImpl implements MachineHandler {
         return null;
     }
 
-    private void checkMachineConfiguration() {
+    private void checkMachineConfiguration(CTEEnigma cteEnigma) {
         CTEMachine machine = cteEnigma.getCTEMachine();
         String ABC = machine.getABC();
         List<CTERotor> rotors = machine.getCTERotors().getCTERotor();

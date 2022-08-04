@@ -4,7 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6467e2d7-ff2a-4abb-a198-685a0fcd06aa" name="Changes" comment="" />
+    <list default="true" id="6467e2d7-ff2a-4abb-a198-685a0fcd06aa" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/impl/MachineHandleImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/impl/MachineHandlerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/enigma-machine.iml" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/enigma-machine.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/IOWheelImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/IOWheelImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/ReflectorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/ReflectorImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/RotorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/RotorImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/component/impl/MachineHandleImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/component/impl/MachineHandleImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/EncryptionMachine.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/EncryptionMachine.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/IOWheel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/IOWheel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/EnigmaMachine.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/EnigmaMachine.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/IOWheelImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/IOWheelImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/MappingPair.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/MappingPair.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/PlugBoardImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/PlugBoardImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/ReflectorImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/ReflectorImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/RotorImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/RotorImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/handler/FileConfigurationHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/handler/FileConfigurationHandler.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,6 +47,16 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$PROJECT_DIR$/../../../../../../Program Files/Java/jdk1.8.0_341/jre/lib/rt.jar!/com/sun/xml/internal/bind/v2/runtime/unmarshaller/UnmarshallerImpl.class" root0="SKIP_INSPECTION" />
+    <setting file="jar://$PROJECT_DIR$/../../../../../../Program Files/Java/jdk1.8.0_341/jre/lib/rt.jar!/jdk/xml/internal/JdkXmlUtils.class" root0="SKIP_INSPECTION" />
+    <setting file="jar://$PROJECT_DIR$/../../../../../../Program Files/Java/jdk1.8.0_341/jre/lib/rt.jar!/jdk/xml/internal/SecuritySupport.class" root0="SKIP_INSPECTION" />
+    <setting file="jar://$PROJECT_DIR$/../../../../../../Program Files/Java/jdk1.8.0_341/src.zip!/com/sun/org/apache/xerces/internal/jaxp/SAXParserImpl.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$PROJECT_DIR$/../../../../../../Program Files/Java/jdk1.8.0_341/src.zip!/com/sun/org/apache/xerces/internal/util/ErrorHandlerWrapper.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$PROJECT_DIR$/../../../../../../Program Files/Java/jdk1.8.0_341/src.zip!/org/xml/sax/InputSource.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$PROJECT_DIR$/../../../../../../Program Files/Java/jdk1.8.0_341/src.zip!/org/xml/sax/helpers/DefaultHandler.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$PROJECT_DIR$/../../../../../../Program Files/Java/jdk1.8.0_341/src.zip!/org/xml/sax/helpers/LocatorImpl.java" root0="SKIP_INSPECTION" />
   </component>
   <component name="JpbToolWindowState">
     <option name="myId2FirstActivated">
@@ -56,19 +84,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="Downloaded.Files.Path.Enabled" value="false" />
-    <property name="Repository.Attach.Annotations" value="false" />
-    <property name="Repository.Attach.JavaDocs" value="false" />
-    <property name="Repository.Attach.Sources" value="false" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/apache-log4j-1.2.17/log4j-1.2.17.jar" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.27701148" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "last_opened_file_path": "C:/Users/Eliya/Documents/java/CTE/CTE_ENIGMA/lombok/lombok/1.18.24/lombok-1.18.24-sources.jar",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="main.java.component" />
@@ -91,13 +119,26 @@
       <recent name="main.java.component" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MachineHandleImpl">
-    <configuration name="MachineHandleImpl" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="main.java.component.impl.MachineHandleImpl" />
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="MachineHandlerImpl" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="main.java.component.impl.MachineHandlerImpl" />
       <module name="encryption-machine-handler" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="main.java.component.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="main.java.Main" />
+      <module name="encryption-machine-handler" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="main.java.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -133,7 +174,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MachineHandleImpl" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.MachineHandlerImpl" />
         <item itemvalue="Application.SimpleJAXBMain" />
       </list>
     </recent_temporary>
@@ -173,8 +215,18 @@
     </option>
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/impl/MachineHandlerImpl.java</url>
+          <line>91</line>
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
+        <PinnedItemInfo parentTag="main.resources.generated.CTEReflectors" memberName="cteReflector" />
         <PinnedItemInfo parentTag="java.util.stream.SortedOps$OfRef" memberName="sourceCloseAction" />
       </pinned-members>
     </pin-to-top-manager>

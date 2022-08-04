@@ -1,6 +1,9 @@
 package main.java.component.impl;
 
 import main.java.component.Rotor;
+import main.resources.generated.CTEPositioning;
+import main.resources.generated.CTERotor;
+import main.resources.generated.CTERotors;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
@@ -22,14 +25,24 @@ public class RotorImpl implements Rotor {
      *      Left To Right : reflector to wheel
      *      Right To Left : wheel to reflector
      */
-    private List<MappingPair<Integer,Integer>> rotorMapping = new ArrayList<>();
+    private final List<MappingPair<Integer,Integer>> rotorMapping = new ArrayList<>();
 
     private int headPosition = 0;
 
     private final int notchLocation;
+    public RotorImpl(CTERotor cteRotor, String ABC) {
+        List<CTEPositioning> positioning = cteRotor.getCTEPositioning();
+        List<String> left = new ArrayList<>();
+        List<String> right = new ArrayList<>();
 
-    public RotorImpl(int notchLocation) {
-        this.notchLocation = notchLocation % rotorMapping.size();
+        for(CTEPositioning position: positioning){
+            String l = position.getLeft();
+            String r = position.getRight();
+            MappingPair<Integer,Integer> pair = new MappingPair<Integer,Integer>(ABC.indexOf(l),ABC.indexOf(r));
+            rotorMapping.add(pair);
+        }
+
+        this.notchLocation = cteRotor.getNotch() % rotorMapping.size();
     }
 
     static {
