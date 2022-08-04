@@ -11,6 +11,7 @@ public class Main {
 //        imp.loadMachineConfiguration("C:\\Users\\Eliya\\Documents\\java\\CTE\\CTE_ENIGMA\\enigma-machine\\src\\main\\resources\\ex1-error-3.xml");
 //        imp.loadMachineConfiguration("C:\\Users\\Eliya\\Documents\\java\\CTE\\CTE_ENIGMA\\enigma-machine\\src\\main\\resources\\ex1-sanity-paper-enigma.xml");
 
-
+//        machineHandler.buildMachine
+//                        set
     }
 }

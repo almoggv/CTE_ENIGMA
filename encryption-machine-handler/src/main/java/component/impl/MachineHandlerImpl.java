@@ -1,6 +1,7 @@
 package main.java.component.impl;
 
 
+import main.java.dto.MachineState;
 import main.java.handler.FileConfigurationHandler;
 import main.java.component.*;
 import main.java.enums.ReflectorsId;
@@ -38,12 +39,37 @@ public class MachineHandlerImpl implements MachineHandler {
     }
 
     @Override
-    public void loadMachineConfiguration(String absolutePath) {
+    public void buildMachinePartsInventory(String absolutePath) {
         if (isFileInExistenceAndXML(absolutePath)){
             CTEEnigma cteEnigma = FileConfigurationHandler.fromXmlFileToCTE(absolutePath);
             checkMachineConfiguration(cteEnigma);
             buildMachinePartsInventory(cteEnigma);
         }
+    }
+
+    @Override
+    public boolean assembleMachine() {
+        return false;
+    }
+
+    @Override
+    public boolean assembleMachine(ReflectorsId reflectorId, List<Integer> rotorIds, List<Integer> rotorsStartingPositions, List<MappingPair<String, String>> plugMapping) {
+        return false;
+    }
+
+    @Override
+    public void assembleMachineParts(ReflectorsId reflectorId, List<Integer> rotorIds) {
+
+    }
+
+    @Override
+    public void setStartingMachineState(List<Integer> rotorsStartingPositions, List<MappingPair<String, String>> plugMapping) {
+
+    }
+
+    @Override
+    public MachineState getMachineState() {
+        return null;
     }
 
     private void buildMachinePartsInventory(CTEEnigma cteEnigma) {
@@ -55,6 +81,7 @@ public class MachineHandlerImpl implements MachineHandler {
         ioWheelInventory = new IOWheelImpl(ABC);
         plugBoardInventory = new PlugBoardImpl(ABC);
         rotorsInventory = new ArrayList<>();
+
         for (CTERotor cteRotor: cteRotors) {
             Rotor rotor = new RotorImpl(cteRotor, ABC);
             rotorsInventory.add(rotor);
@@ -68,30 +95,23 @@ public class MachineHandlerImpl implements MachineHandler {
         log.debug("Machine handler: created inventory successfully");
     }
 
-    @Override
-    public boolean setState() {
-        return false;
-    }
+    /*
+   <45,27,94><AO!><III><A|Z,D|E>
+    */
+
 
     @Override
     public boolean loadStateFromFile(String absolutePath) {
         return false;
     }
 
-    @Override
-    public boolean loadStateManually(PlugBoard plugBoard, Reflector reflector, List<Rotor> rotors) {
-        return false;
-    }
 
     @Override
     public boolean saveStateToFile(String fileName) {
         return false;
     }
 
-    @Override
-    public List<String> getMachineState() {
-        return null;
-    }
+
 
     @Override
     public boolean resetToLastSetState() {
@@ -119,6 +139,7 @@ public class MachineHandlerImpl implements MachineHandler {
         List<CTERotor> rotors = machine.getCTERotors().getCTERotor();
         List<CTEReflector> reflectors = machine.getCTEReflectors().getCTEReflector();
 
+        //todo change to logs
         System.out.println("Even ABC: " + isABCCountEven(ABC));
 
         System.out.println("good rotors count: " + isRotorCountGood(machine.getRotorsCount(), rotors.size()));

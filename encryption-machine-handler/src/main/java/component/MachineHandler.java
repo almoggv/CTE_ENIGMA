@@ -1,31 +1,59 @@
 package main.java.component;
 
-import java.io.File;
+import main.java.component.impl.MappingPair;
+import main.java.dto.MachineState;
+import main.java.enums.ReflectorsId;
+
 import java.util.List;
 
 public interface MachineHandler {
 
-    void loadMachineConfiguration(String absolutePath);
+    /**
+     * given an XML file path describing an CTEEnigma machine schema.
+     * verifies file and schema information.
+     * creates inventory of usable components of enigma machine.
+     * @param path
+     */
+    void buildMachinePartsInventory (String path) throws Exception;
 
-    //this overload loads the settings automatically
-    public boolean setState();
+    /**
+     * assembles a machine randomly from existing inventory
+     * picks reflector, plugBoardMapping, rotors and their starting position 
+     * @return
+     */
+    public boolean assembleMachine();
+    /**
+     * assembles a machine from user instructions
+     * sets reflector, plugBoardMapping, rotors and their starting position
+     * @return
+     */
+    public boolean assembleMachine(ReflectorsId reflectorId, List<Integer> rotorIds,
+           List<Integer> rotorsStartingPositions,
+           List<MappingPair<String,String>> plugMapping );
 
-    //bonus
-    public boolean loadStateFromFile(String absolutePath);
+    public void assembleMachineParts(ReflectorsId reflectorId, List<Integer> rotorIds);
 
-    //TODO: arguments might change
-    public boolean loadStateManually(PlugBoard plugBoard, Reflector reflector, List<Rotor> rotors);
+    public void setStartingMachineState(List<Integer> rotorsStartingPositions,
+            List<MappingPair<String,String>> plugMapping);
 
-    //bonus
-    public boolean saveStateToFile(String fileName);
-
-    public List<String> getMachineState();
+    public MachineState getMachineState();
 
     public boolean resetToLastSetState();
 
+    /**
+     * encrypt message by machine
+     * @param input
+     * @return encrypted message
+     */
     public String sendInputToMachine(String input);
 
     public String getMachineHistory();
 
     public String getMachineStatistics();
+
+    //bonus
+    public boolean loadStateFromFile(String absolutePath);
+
+    //bonus
+    public boolean saveStateToFile(String fileName);
  }
