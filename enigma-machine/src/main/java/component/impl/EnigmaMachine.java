@@ -42,9 +42,12 @@ public class EnigmaMachine implements EncryptionMachine {
     }
 
     private Character encryptSingle(Character input){
+        System.out.println("char: " + input);
         String rawInput = String.valueOf(input);
         rawInput = plugBoard.getMappedValue(rawInput);
+        System.out.println("after plug: " + rawInput);
         int rawInputIndex = ioWheel.handleInput(rawInput);
+        System.out.println("after io: " + rawInputIndex);
         boolean rotateNext = true;
         for (Rotor rotor : rotors ) {
             if(rotateNext){
@@ -52,13 +55,19 @@ public class EnigmaMachine implements EncryptionMachine {
             }
             rotateNext = rotor.doesNotchAllowRotation();
             rawInputIndex = rotor.fromInputWheelToReflector(rawInputIndex);
+            System.out.println("after rotor: " + rawInputIndex);
         }
         rawInputIndex = reflector.getReflectedValue(rawInputIndex);
-        for (Rotor rotor : rotors ) {
-            rawInputIndex = rotor.fromReflectorToInputWheel(rawInputIndex);
+        System.out.println("after reflector: " + rawInputIndex);
+
+        for (int i = rotors.size() -1; i >=0; i--) {
+            rawInputIndex = rotors.get(i).fromReflectorToInputWheel(rawInputIndex);
+            System.out.println("after rotor: " + rawInputIndex);
         }
         rawInput = ioWheel.handleInput(rawInputIndex);
+        System.out.println("after io: " + rawInput);
         rawInput = plugBoard.getMappedValue(rawInput);
+        System.out.println("after plug: " + rawInput);
         return rawInput.charAt(0);
     }
 

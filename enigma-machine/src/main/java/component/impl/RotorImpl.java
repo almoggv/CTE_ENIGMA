@@ -70,7 +70,7 @@ public class RotorImpl implements Rotor {
     public int fromInputWheelToReflector(int inValue) {
         int realIndex = (inValue + headPosition) % rotorMapping.size();
         try{
-         return MappingPairListUtils.getLeftByRight(rotorMapping, realIndex);
+         return (rotorMapping.get(realIndex).getLeft() + headPosition) % rotorMapping.size();
         }
         catch (Exception e){
             log.warn("Failed to get mapping of :" + realIndex);
@@ -81,8 +81,12 @@ public class RotorImpl implements Rotor {
     @Override
     public int fromReflectorToInputWheel(int inValue) {
         int realIndex = (inValue + headPosition) % rotorMapping.size();
+//        Integer = rotorMapping.get(realIndex).getLeft();
         try{
-            return MappingPairListUtils.getRightByLeft(rotorMapping, realIndex);
+            int leftMapping = rotorMapping.get(realIndex).getLeft(); //c==1
+            MappingPair<Integer,Integer> pair = MappingPairListUtils.findPairByRight(rotorMapping,leftMapping);
+            return (rotorMapping.indexOf(pair)+ headPosition) % rotorMapping.size();
+//            return MappingPairListUtils.getLeftByRight(realIndex);
         }
         catch (Exception e){
             log.warn("Failed to get mapping of :" + realIndex);
@@ -97,7 +101,7 @@ public class RotorImpl implements Rotor {
 
     @Override
     public boolean setRotorPosition(int headPosition) {
-        this.headPosition = headPosition % rotorMapping.size();
+        this.headPosition = (headPosition - 1) % rotorMapping.size();
         return true;
     }
 

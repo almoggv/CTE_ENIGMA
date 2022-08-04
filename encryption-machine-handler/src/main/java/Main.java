@@ -26,13 +26,15 @@ public class Main {
 //        sets reflector, plugBoardMapping, rotors and their starting position
         ReflectorsId refid = ReflectorsId.I;
         List<MappingPair<String,String>> plugpair = new ArrayList<MappingPair<String,String>>();
-        plugpair.add(new MappingPair<String,String>("F","A"));
+//        plugpair.add(new MappingPair<String,String>("F","A"));
+        plugpair.add(new MappingPair<String,String>("B","C"));
         List<Integer> rotorsIds = Arrays.asList(1,2);
-        List<Integer> rotorsstartingPos = Arrays.asList(2,2);
+        List<Integer> rotorsstartingPos = Arrays.asList(3,3);
 
         machineHandler.assembleMachine(refid, rotorsIds,rotorsstartingPos,plugpair);
 
-        String input = "AABBCCDDEEFF";
+//        String input = "AABBCCDDEEFF";
+        String input = "C";
         String output = machineHandler.encrypt(input);
         System.out.println("the output is: " + output + " is correct?: "+ "CEEFBDFCDAAB".equals(output));
 
