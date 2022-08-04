@@ -53,4 +53,9 @@ public class IOWheelImpl implements IOWheel {
             return null;
         }
     }
+
+    @Override
+    public int getWheelSize() {
+        return letterToNumberMap.size();
+    }
 }

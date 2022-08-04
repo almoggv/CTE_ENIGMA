@@ -5,4 +5,6 @@ public interface IOWheel {
     public int handleInput(String input);
 
     public String handleInput(int input);
+
+    public int getWheelSize();
 }

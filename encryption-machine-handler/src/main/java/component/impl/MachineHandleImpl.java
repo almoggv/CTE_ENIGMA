@@ -5,27 +5,45 @@ import main.java.handler.FileConfigurationHandler;
 import main.java.component.*;
 import main.java.enums.ReflectorsId;
 import main.resources.generated.*;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class MachineHandleImpl implements MachineHandler {
 
+    private static final Logger log = Logger.getLogger(MachineHandleImpl.class);
     private CTEEnigma cteEnigma;
-    public static void main(String[] args) {
-        MachineHandleImpl imp = new MachineHandleImpl();
-
-        imp.loadMachineConfiguration("C:\\Users\\Eliya\\Documents\\java\\CTE\\CTE_ENIGMA\\enigma-machine\\src\\main\\resources\\ex1-sanity-small.xml");
-//        imp.loadMachineConfiguration("C:\\Users\\Eliya\\Documents\\java\\CTE\\CTE_ENIGMA\\enigma-machine\\src\\main\\resources\\ex1-error-3.xml");
-//        imp.loadMachineConfiguration("C:\\Users\\Eliya\\Documents\\java\\CTE\\CTE_ENIGMA\\enigma-machine\\src\\main\\resources\\ex1-sanity-paper-enigma.xml");
-
-
-    }
+//    public static void main(String[] args) {
+//        MachineHandleImpl imp = new MachineHandleImpl();
+//
+//        imp.loadMachineConfiguration("C:\\Users\\Eliya\\Documents\\java\\CTE\\CTE_ENIGMA\\enigma-machine\\src\\main\\resources\\ex1-sanity-small.xml");
+////        imp.loadMachineConfiguration("C:\\Users\\Eliya\\Documents\\java\\CTE\\CTE_ENIGMA\\enigma-machine\\src\\main\\resources\\ex1-error-3.xml");
+////        imp.loadMachineConfiguration("C:\\Users\\Eliya\\Documents\\java\\CTE\\CTE_ENIGMA\\enigma-machine\\src\\main\\resources\\ex1-sanity-paper-enigma.xml");
+//
+//
+//    }
 
     private EncryptionMachine machine = new EnigmaMachine();
     //TODO: add "machine state" member
+
+    static {
+        String log4JPropertyFile = "./src/main/resources/log4j.properties";
+        Properties p = new Properties();
+        try {
+            p.load(new FileInputStream(log4JPropertyFile));
+            PropertyConfigurator.configure(p);      //Dont forget here
+            log.debug("Logger Instatiated for : " + MachineHandleImpl.class.getSimpleName());
+        } catch (IOException e) {
+            //TODO: ?
+        }
+    }
+
 
     @Override
     public void loadMachineConfiguration(String absolutePath) {
@@ -40,7 +58,6 @@ public class MachineHandleImpl implements MachineHandler {
         return false;
     }
 
-
     @Override
     public boolean loadStateFromFile(String absolutePath) {
         return false;
@@ -50,7 +67,6 @@ public class MachineHandleImpl implements MachineHandler {
     public boolean loadStateManually(PlugBoard plugBoard, Reflector reflector, List<Rotor> rotors) {
         return false;
     }
-
 
     @Override
     public boolean saveStateToFile(String fileName) {

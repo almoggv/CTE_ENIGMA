@@ -8,9 +8,9 @@ public interface EncryptionMachine {
 
     public String decrypt(String output);
 
-    public void buildMachine(PlugBoard plugBoard, Reflector reflector, List<Rotor> rotors) throws IllegalArgumentException;
+    public void buildMachine(PlugBoard plugBoard, Reflector reflector, List<Rotor> rotors, IOWheel ioWheel) throws IllegalArgumentException;
 
-    public void buildMachine(Reflector reflector, List<Rotor> rotors) throws IllegalArgumentException;
+    public void buildMachine(Reflector reflector, List<Rotor> rotors , IOWheel ioWheel, String ABC) throws IllegalArgumentException;
 
     /**
      * connect the plugs on the left to the plugs on the right

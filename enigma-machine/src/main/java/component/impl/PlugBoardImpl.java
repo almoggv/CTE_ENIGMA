@@ -30,6 +30,13 @@ public class PlugBoardImpl implements PlugBoard {
         }
     }
 
+    public PlugBoardImpl(String ABC) {
+        for (int i = 0; i < ABC.length(); i++) {
+            MappingPair<String,String> newPair = new MappingPair<String,String>( ABC.substring(i,i+1), ABC.substring(i,i+1));
+            plugBoardMapping.add(newPair);
+        }
+    }
+
     @Override
     public boolean connectMultiple(List<String> leftList, List<String> rightList ) {
         if(leftList.size() != rightList.size()){

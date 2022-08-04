@@ -5,38 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6467e2d7-ff2a-4abb-a198-685a0fcd06aa" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/handler/JaxbObjectGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/impl/MachineHandleImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/impl/MachineHandleImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/EncryptionMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/EncryptionMachine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/IOWheel.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/IOWheel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/EnigmaMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/EnigmaMachine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/IOWheelImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/IOWheelImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/MappingPair.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/MappingPair.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/PlugBoardImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/PlugBoardImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/ReflectorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/ReflectorImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/RotorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/RotorImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/component/MachineHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/component/MachineHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/component/impl/MachineHandleImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/component/impl/MachineHandleImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/enums/ReflectorsId.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/enums/ReflectorsId.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/FileConfigurationHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/EncryptionMachine.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/EncryptionMachine.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/IOWheel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/IOWheel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/PlugBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/PlugBoard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/Reflector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/Reflector.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/Rotor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/Rotor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/EnigmaMachine.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/EnigmaMachine.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/IOWheelImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/IOWheelImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/MappingPair.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/MappingPair.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/MappingPairListUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/MappingPairListUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/PlugBoardImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/PlugBoardImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/ReflectorImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/ReflectorImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/RotorImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/RotorImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/resources/generated/CTEEnigma.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/resources/generated/CTEEnigma.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/resources/generated/CTEMachine.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/resources/generated/CTEMachine.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/resources/generated/CTEPositioning.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/resources/generated/CTEPositioning.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/resources/generated/CTEReflect.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/resources/generated/CTEReflect.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/resources/generated/CTEReflector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/resources/generated/CTEReflector.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/resources/generated/CTEReflectors.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/resources/generated/CTEReflectors.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/resources/generated/CTERotor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/resources/generated/CTERotor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/resources/generated/CTERotors.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/resources/generated/CTERotors.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/resources/generated/ObjectFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/resources/generated/ObjectFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/handler/FileConfigurationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/handler/FileConfigurationHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +33,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="JpbToolWindowState">
     <option name="myId2FirstActivated">
@@ -92,7 +79,7 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.27701148" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -179,7 +166,7 @@
       <workItem from="1659297315868" duration="379000" />
       <workItem from="1659341207530" duration="3726000" />
       <workItem from="1659360057006" duration="25736000" />
-      <workItem from="1659462909712" duration="31826000" />
+      <workItem from="1659462909712" duration="35992000" />
     </task>
     <servers />
   </component>
