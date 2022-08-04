@@ -1,5 +1,6 @@
 package main.java.component.impl;
 
+import lombok.Getter;
 import main.java.component.Rotor;
 import main.resources.generated.CTEPositioning;
 import main.resources.generated.CTERotor;
@@ -7,6 +8,7 @@ import main.resources.generated.CTERotors;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
+import javax.swing.*;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -27,6 +29,7 @@ public class RotorImpl implements Rotor {
      */
     private final List<MappingPair<Integer,Integer>> rotorMapping = new ArrayList<>();
 
+    @Getter private final int id;
     private int headPosition = 0;
 
     private final int notchLocation;
@@ -42,6 +45,7 @@ public class RotorImpl implements Rotor {
             rotorMapping.add(pair);
         }
 
+        this.id = cteRotor.getId();
         this.notchLocation = cteRotor.getNotch() % rotorMapping.size();
     }
 

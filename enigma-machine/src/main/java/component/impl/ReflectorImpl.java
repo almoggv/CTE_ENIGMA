@@ -1,6 +1,8 @@
 package main.java.component.impl;
 
+import lombok.Getter;
 import main.java.component.Reflector;
+import main.java.enums.ReflectorsId;
 import main.resources.generated.CTEReflect;
 import main.resources.generated.CTEReflector;
 import org.apache.log4j.Logger;
@@ -18,6 +20,7 @@ public class ReflectorImpl implements Reflector {
     private static final Logger log = Logger.getLogger(ReflectorImpl.class);
 
     private final List<MappingPair<Integer,Integer>> reflectionMapping = new ArrayList<>();
+    @Getter private final ReflectorsId id;
 
     static {
         String log4JPropertyFile = "./src/main/resources/log4j.properties";
@@ -42,8 +45,8 @@ public class ReflectorImpl implements Reflector {
             reflectionMapping.add(pairInOut);
             reflectionMapping.add(pairOutIn);
         }
+        this.id = ReflectorsId.valueOf(cteReflector.getId());
     }
-
 
     @Override
     public int getReflectedValue(int inValue) {

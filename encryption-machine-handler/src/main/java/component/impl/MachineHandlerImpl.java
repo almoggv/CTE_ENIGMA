@@ -244,7 +244,7 @@ public class MachineHandlerImpl implements MachineHandler {
         for(CTEReflect reflect : reflects) {
             int in = reflect.getInput();
             int out = reflect.getOutput();
-            if( in == out) {
+            if(in == out) {
                 return false;
             }
         }
