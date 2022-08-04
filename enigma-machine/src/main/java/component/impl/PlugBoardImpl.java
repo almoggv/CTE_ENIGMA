@@ -1,26 +1,95 @@
 package main.java.component.impl;
 
-import main.java.component.PlugBoard;
 
+import main.java.component.PlugBoard;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
+import java.util.Properties;
 
 public class PlugBoardImpl implements PlugBoard {
 
-    private Map<Integer,Integer> boardMapping;
+    private static final Logger log = Logger.getLogger(PlugBoardImpl.class);
 
-    @Override
-    public boolean connectMultiple(Map<Integer, Integer> connectionPairs) {
-        return false;
+    private List<MappingPair<String, String>> plugBoardMapping = new ArrayList<>();
+
+    static {
+        String log4JPropertyFile = "./src/main/resources/log4j.properties";
+        Properties p = new Properties();
+        try {
+            p.load(new FileInputStream(log4JPropertyFile));
+            PropertyConfigurator.configure(p);      //Dont forget here
+            log.debug("Logger Instatiated for : " + PlugBoardImpl.class.getSimpleName());
+        } catch (IOException e) {
+            //TODO: ?
+        }
     }
 
     @Override
-    public boolean connect(int endPoint1, int endPoint2) {
-        return false;
+    public boolean connectMultiple(List<String> leftList, List<String> rightList ) {
+        if(leftList.size() != rightList.size()){
+
+            return false;
+        }
+        boolean isOperationSuccessful = true;
+        Iterator<String> leftIter = leftList.iterator();
+        Iterator<String> rightIter = rightList.iterator();
+        while(leftIter.hasNext() && rightIter.hasNext()){
+            isOperationSuccessful = isOperationSuccessful || connect(leftIter.next(),rightIter.next());
+        }
+        return isOperationSuccessful;
     }
 
     @Override
-    public boolean disconnect(int endPoint1, int endPoint2) {
+    public boolean connectMultiple(List<MappingPair<String, String>> connections) {
+        boolean isOperationSuccessful = true;
+        for (MappingPair<String, String> pair : connections) {
+            isOperationSuccessful = isOperationSuccessful || connect(pair.getLeft(), pair.getRight());
+        }
+        return isOperationSuccessful;
+    }
+
+
+    //Endpoint is occupied if its connected to a different endpoint
+
+    // A , Z
+    // current board:
+    // Z -- Z = (A,A)
+    // A -- A   (Z,Z)
+
+    // (A,A) -> (A,Z)
+    // (Z,Z) -> (Z,A)
+
+    @Override
+    public boolean connect(String endPoint1, String endPoint2) {
+        boolean isEndPoint1Free = false, isEndPoint2Free = false;
+        if(isEndPointConnected(endPoint1)){
+           log.warn("Plugboard : Failed to connect endpoints -" + endPoint1 + "is already connected");
+            return false;
+        }
+        if(isEndPointConnected(endPoint2)){
+            log.warn("Plugboard : Failed to connect endpoints -" + endPoint2 + "is already connected");
+            return false;
+        }
+        MappingPair<String, String> endPoint1Pair = MappingPairListUtils.findPairByLeft(plugBoardMapping, endPoint1);
+        MappingPair<String, String> endPoint2Pair = MappingPairListUtils.findPairByLeft(plugBoardMapping, endPoint2);
+        int indexEndPoint1 = plugBoardMapping.indexOf(endPoint1Pair);
+        int indexEndPoint2 = plugBoardMapping.indexOf(endPoint2Pair);
+        endPoint1Pair.setRight(endPoint2);
+        endPoint2Pair.setRight(endPoint1);
+        plugBoardMapping.set(indexEndPoint1,endPoint1Pair);
+        plugBoardMapping.set(indexEndPoint2,endPoint2Pair);
+        log.debug("Plugboard made new connection: " +  endPoint1 + "<->" + endPoint2);
+        return true;
+    }
+
+    @Override
+    public boolean disconnect(String endPoint) {
         return false;
     }
 
@@ -30,7 +99,15 @@ public class PlugBoardImpl implements PlugBoard {
     }
 
     @Override
-    public int getMappedValue(int inValue) {
-        return 0;
+    public String getMappedValue(String inValue) {
+        return null;
+    }
+
+    protected boolean isEndPointConnected(String endPoint){
+        MappingPair<String,String> currentMappingOfEPoint = MappingPairListUtils.findPairByLeft(plugBoardMapping, endPoint);
+        if(currentMappingOfEPoint == null || currentMappingOfEPoint.getLeft().equals(currentMappingOfEPoint.getRight())){
+            return false;
+        }
+        return true;
     }
 }

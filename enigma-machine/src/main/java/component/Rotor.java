@@ -2,9 +2,11 @@ package main.java.component;
 
 public interface Rotor {
 
-//    public int getValue(String inValue);
+    public int getHeadLocation();
 
-    public int getValue(int inValue);
+    public int fromInputWheelToReflector(int inValue);
+
+    public int fromReflectorToInputWheel(int inValue);
 
     public boolean doesNotchAllowRotation();
 

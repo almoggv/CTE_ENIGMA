@@ -11,8 +11,10 @@ public class EnigmaMachine implements EncryptionMachine {
     private IOWheel ioWheel;
     private Reflector reflector;
 
+
     @Override
     public String encrypt(String input) {
+
         return null;
     }
 

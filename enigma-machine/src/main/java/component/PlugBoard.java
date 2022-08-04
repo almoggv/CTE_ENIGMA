@@ -1,18 +1,28 @@
 package main.java.component;
 
 
+import main.java.component.impl.MappingPair;
+
 import java.util.List;
 import java.util.Map;
 
 public interface PlugBoard {
 
-    public boolean connectMultiple(Map<Integer,Integer> connectionPairs);
+    /**
+     * maps the left list to the right list on the plug board by indexes : first <-> first , second <-> second..
+     * @param leftList
+     * @param rightList
+     * @return
+     */
+    public boolean connectMultiple(List<String> leftList, List<String> rightList);
 
-    public boolean connect(int endPoint1, int endPoint2);
+    public boolean connectMultiple(List<MappingPair<String, String>> connections);
 
-    public boolean disconnect(int endPoint1, int endPoint2);
+    public boolean connect(String endPoint1, String endPoint2);
+
+    public boolean disconnect(String endPoint);
 
     public boolean clearAllPlugs();
 
-    public int getMappedValue(int inValue);
+    public String getMappedValue(String inValue);
 }

@@ -1,9 +1,9 @@
 package main.java.component.impl;
 
 
-import javafx.util.Pair;
-import main.java.FileConfigurationHandler;
+import main.java.handler.FileConfigurationHandler;
 import main.java.component.*;
+import main.java.enums.ReflectorsId;
 import main.resources.generated.*;
 
 import java.io.File;
@@ -101,21 +101,15 @@ public class MachineHandleImpl implements MachineHandler {
         System.out.println("isReflectorIdsLegal: "+isReflectorsIdsLegal(reflectors));
 
         System.out.println("isReflectorsMappingLegal: "+ isReflectorsMappingLegal(reflectors));
-
-
-
     }
     private boolean isFileInExistenceAndXML(String absolutePath){
         String extension = "";
-
         int i = absolutePath.lastIndexOf('.');
         if (i > 0) {
             extension = absolutePath.substring(i+1);
         }
 
         File f = new File(absolutePath);
-
-
         return extension.toLowerCase(Locale.ROOT).equals("xml") && f.exists();
 
     }
