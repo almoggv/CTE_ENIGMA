@@ -17,7 +17,7 @@ public class FileConfigurationHandler {
     private static final Logger log = Logger.getLogger(FileConfigurationHandler.class);
 
     static {
-        String log4JPropertyFile = "./src/main/resources/log4j.properties";
+        String log4JPropertyFile = "./enigma-machine/src/main/resources/log4j.properties";
         Properties p = new Properties();
         try {
             p.load(new FileInputStream(log4JPropertyFile));

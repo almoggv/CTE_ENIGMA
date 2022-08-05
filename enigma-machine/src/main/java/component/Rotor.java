@@ -12,7 +12,7 @@ public interface Rotor {
 
     public boolean doesNotchAllowRotation();
 
-    public boolean setRotorPosition(int headPosition);
+    public boolean setRotorStartingPosition(int headPosition);
 
     public void rotate();
 }

@@ -1,0 +1,809 @@
+2022-08-05 11:18:58 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-05 11:20:11 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-05 12:28:24 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-05 12:29:03 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-05 12:38:44 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-05 12:38:54 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-05 12:39:31 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-05 12:46:43 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-05 12:49:36 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-05 12:50:05 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-05 12:58:53 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-05 13:01:53 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-05 13:13:17 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-05 13:17:23 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-05 13:19:14 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-05 13:30:36 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-05 13:37:12 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-05 13:38:26 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-05 13:45:51 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-05 14:04:17 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-05 14:10:56 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-05 14:18:55 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-05 14:19:49 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-05 14:21:38 DEBUG MachineHandlerImpl:36 - Logger Instatiated for : MachineHandlerImpl
+  2022-08-05 14:21:38 DEBUG EnigmaMachine:27 - Logger Instatiated for : EnigmaMachine
+  2022-08-05 14:21:38 DEBUG FileConfigurationHandler:25 - Logger Instatiated for : FileConfigurationHandler
+  2022-08-05 14:21:39 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:25 - Logger Instatiated for : IOWheelImpl
+  2022-08-05 14:21:39 DEBUG PlugBoardImpl:27 - Logger Instatiated for : PlugBoardImpl
+  2022-08-05 14:21:39 DEBUG RotorImpl:59 - Logger Instatiated for : RotorImpl
+  2022-08-05 14:21:39 DEBUG ReflectorImpl:31 - Logger Instatiated for : ReflectorImpl
+  2022-08-05 14:21:39 DEBUG MachineHandlerImpl:109 - Machine handler: created inventory successfully
+  2022-08-05 14:21:39 DEBUG PlugBoardImpl:83 - Plugboard made new connection: F<->A
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:45 - char: A
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:48 - after plug: F
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:41 - IOWHeel input:FOutput:5
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:50 - after io: 5
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 0
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 5
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:61 - after reflector: 2
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 3
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 2
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:54 - IOWHeel input:2Output:C
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:68 - after io: C
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:70 - after plug: C
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:45 - char: A
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:48 - after plug: F
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:41 - IOWHeel input:FOutput:5
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:50 - after io: 5
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 4
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 4
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:61 - after reflector: 1
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 5
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 4
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:54 - IOWHeel input:4Output:E
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:68 - after io: E
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:70 - after plug: E
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:45 - char: B
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:48 - after plug: B
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:41 - IOWHeel input:BOutput:1
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:50 - after io: 1
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 0
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 5
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:61 - after reflector: 2
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 3
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 4
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:54 - IOWHeel input:4Output:E
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:68 - after io: E
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:70 - after plug: E
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:45 - char: B
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:48 - after plug: B
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:41 - IOWHeel input:BOutput:1
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:50 - after io: 1
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 4
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 4
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:61 - after reflector: 1
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 5
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 0
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:54 - IOWHeel input:0Output:A
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:68 - after io: A
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:70 - after plug: F
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:45 - char: C
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:48 - after plug: C
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:41 - IOWHeel input:COutput:2
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:50 - after io: 2
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 1
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 3
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:61 - after reflector: 0
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 2
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 1
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:54 - IOWHeel input:1Output:B
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:68 - after io: B
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:70 - after plug: B
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:45 - char: C
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:48 - after plug: C
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:41 - IOWHeel input:COutput:2
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:50 - after io: 2
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 5
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 1
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:61 - after reflector: 4
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 4
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 3
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:54 - IOWHeel input:3Output:D
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:68 - after io: D
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:70 - after plug: D
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:45 - char: D
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:48 - after plug: D
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:41 - IOWHeel input:DOutput:3
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:50 - after io: 3
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 2
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 1
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:61 - after reflector: 4
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 5
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 0
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:54 - IOWHeel input:0Output:A
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:68 - after io: A
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:70 - after plug: F
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:45 - char: D
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:48 - after plug: D
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:41 - IOWHeel input:DOutput:3
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:50 - after io: 3
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 0
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 2
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:61 - after reflector: 5
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 1
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 2
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:54 - IOWHeel input:2Output:C
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:68 - after io: C
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:70 - after plug: C
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:45 - char: E
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:48 - after plug: E
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:41 - IOWHeel input:EOutput:4
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:50 - after io: 4
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 3
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 3
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:61 - after reflector: 0
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 4
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 3
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:54 - IOWHeel input:3Output:D
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:68 - after io: D
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:70 - after plug: D
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:45 - char: E
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:48 - after plug: E
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:41 - IOWHeel input:EOutput:4
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:50 - after io: 4
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 1
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 5
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:61 - after reflector: 2
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 0
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 5
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:54 - IOWHeel input:5Output:F
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:68 - after io: F
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:70 - after plug: A
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:45 - char: F
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:48 - after plug: A
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:41 - IOWHeel input:AOutput:0
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:50 - after io: 0
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 3
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 3
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:61 - after reflector: 0
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 4
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 5
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:54 - IOWHeel input:5Output:F
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:68 - after io: F
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:70 - after plug: A
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:45 - char: F
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:48 - after plug: A
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:41 - IOWHeel input:AOutput:0
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:50 - after io: 0
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 1
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 5
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:61 - after reflector: 2
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 0
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 1
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:54 - IOWHeel input:1Output:B
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:68 - after io: B
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:70 - after plug: B
+  2022-08-05 14:21:39 DEBUG PlugBoardImpl:83 - Plugboard made new connection: F<->A
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:45 - char: F
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:48 - after plug: A
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:41 - IOWHeel input:AOutput:0
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:50 - after io: 0
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 1
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 1
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:61 - after reflector: 4
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 2
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 5
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:54 - IOWHeel input:5Output:F
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:68 - after io: F
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:70 - after plug: A
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:45 - char: E
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:48 - after plug: E
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:41 - IOWHeel input:EOutput:4
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:50 - after io: 4
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 1
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 1
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:61 - after reflector: 4
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 2
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 3
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:54 - IOWHeel input:3Output:D
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:68 - after io: D
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:70 - after plug: D
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:45 - char: D
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:48 - after plug: D
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:41 - IOWHeel input:DOutput:3
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:50 - after io: 3
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 0
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 5
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:61 - after reflector: 2
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 3
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 0
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:54 - IOWHeel input:0Output:A
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:68 - after io: A
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:70 - after plug: F
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:45 - char: C
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:48 - after plug: C
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:41 - IOWHeel input:COutput:2
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:50 - after io: 2
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 5
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 3
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:61 - after reflector: 0
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 4
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 3
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:54 - IOWHeel input:3Output:D
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:68 - after io: D
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:70 - after plug: D
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:45 - char: B
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:48 - after plug: B
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:41 - IOWHeel input:BOutput:1
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:50 - after io: 1
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 4
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 2
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:61 - after reflector: 5
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 3
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 2
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:54 - IOWHeel input:2Output:C
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:68 - after io: C
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:70 - after plug: C
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:45 - char: A
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:48 - after plug: F
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:41 - IOWHeel input:FOutput:5
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:50 - after io: 5
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 4
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 2
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:61 - after reflector: 5
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 3
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 0
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:54 - IOWHeel input:0Output:A
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:68 - after io: A
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:70 - after plug: F
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:45 - char: D
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:48 - after plug: D
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:41 - IOWHeel input:DOutput:3
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:50 - after io: 3
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 4
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 2
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:61 - after reflector: 5
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 3
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 4
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:54 - IOWHeel input:4Output:E
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:68 - after io: E
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:70 - after plug: E
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:45 - char: D
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:48 - after plug: D
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:41 - IOWHeel input:DOutput:3
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:50 - after io: 3
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 2
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 1
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:61 - after reflector: 4
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 5
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 0
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:54 - IOWHeel input:0Output:A
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:68 - after io: A
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:70 - after plug: F
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:45 - char: E
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:48 - after plug: E
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:41 - IOWHeel input:EOutput:4
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:50 - after io: 4
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 5
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 4
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:61 - after reflector: 1
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 2
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 1
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:54 - IOWHeel input:1Output:B
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:68 - after io: B
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:70 - after plug: B
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:45 - char: F
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:48 - after plug: A
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:41 - IOWHeel input:AOutput:0
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:50 - after io: 0
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 1
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 3
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:61 - after reflector: 0
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 0
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 1
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:54 - IOWHeel input:1Output:B
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:68 - after io: B
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:70 - after plug: B
+  2022-08-05 14:21:39 DEBUG PlugBoardImpl:83 - Plugboard made new connection: F<->A
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:45 - char: F
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:48 - after plug: A
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:41 - IOWHeel input:AOutput:0
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:50 - after io: 0
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 1
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 3
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:61 - after reflector: 0
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 2
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 5
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:54 - IOWHeel input:5Output:F
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:68 - after io: F
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:70 - after plug: A
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:45 - char: E
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:48 - after plug: E
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:41 - IOWHeel input:EOutput:4
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:50 - after io: 4
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 1
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 3
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:61 - after reflector: 0
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 2
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 3
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:54 - IOWHeel input:3Output:D
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:68 - after io: D
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:70 - after plug: D
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:45 - char: D
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:48 - after plug: D
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:41 - IOWHeel input:DOutput:3
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:50 - after io: 3
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 0
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 5
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:61 - after reflector: 2
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 3
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 0
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:54 - IOWHeel input:0Output:A
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:68 - after io: A
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:70 - after plug: F
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:45 - char: C
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:48 - after plug: C
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:41 - IOWHeel input:COutput:2
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:50 - after io: 2
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 5
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 1
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:61 - after reflector: 4
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 4
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 3
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:54 - IOWHeel input:3Output:D
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:68 - after io: D
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:70 - after plug: D
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:45 - char: B
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:48 - after plug: B
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:41 - IOWHeel input:BOutput:1
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:50 - after io: 1
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 4
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 0
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:61 - after reflector: 3
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 3
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 2
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:54 - IOWHeel input:2Output:C
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:68 - after io: C
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:70 - after plug: C
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:45 - char: A
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:48 - after plug: F
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:41 - IOWHeel input:FOutput:5
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:50 - after io: 5
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 4
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 0
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:61 - after reflector: 3
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 3
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 0
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:54 - IOWHeel input:0Output:A
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:68 - after io: A
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:70 - after plug: F
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:45 - char: A
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:48 - after plug: F
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:41 - IOWHeel input:FOutput:5
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:50 - after io: 5
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 2
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 1
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:61 - after reflector: 4
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 5
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 2
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:54 - IOWHeel input:2Output:C
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:68 - after io: C
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:70 - after plug: C
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:45 - char: B
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:48 - after plug: B
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:41 - IOWHeel input:BOutput:1
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:50 - after io: 1
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 4
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 0
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:61 - after reflector: 3
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 3
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 2
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:54 - IOWHeel input:2Output:C
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:68 - after io: C
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:70 - after plug: C
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:45 - char: C
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:48 - after plug: C
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:41 - IOWHeel input:COutput:2
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:50 - after io: 2
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 1
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 5
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:61 - after reflector: 2
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 0
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 3
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:54 - IOWHeel input:3Output:D
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:68 - after io: D
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:70 - after plug: D
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:45 - char: D
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:48 - after plug: D
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:41 - IOWHeel input:DOutput:3
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:50 - after io: 3
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 4
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 0
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:61 - after reflector: 3
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 3
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 4
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:54 - IOWHeel input:4Output:E
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:68 - after io: E
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:70 - after plug: E
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:45 - char: E
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:48 - after plug: E
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:41 - IOWHeel input:EOutput:4
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:50 - after io: 4
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 1
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 0
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:61 - after reflector: 3
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 4
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 1
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:54 - IOWHeel input:1Output:B
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:68 - after io: B
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:70 - after plug: B
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:45 - char: F
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:48 - after plug: A
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:41 - IOWHeel input:AOutput:0
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:50 - after io: 0
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 3
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 5
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:61 - after reflector: 2
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 2
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 1
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:54 - IOWHeel input:1Output:B
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:68 - after io: B
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:70 - after plug: B
+  2022-08-05 14:21:39 DEBUG PlugBoardImpl:83 - Plugboard made new connection: F<->A
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:45 - char: A
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:48 - after plug: F
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:41 - IOWHeel input:FOutput:5
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:50 - after io: 5
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 4
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 2
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:61 - after reflector: 5
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 3
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 0
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:54 - IOWHeel input:0Output:A
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:68 - after io: A
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:70 - after plug: F
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:45 - char: F
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:48 - after plug: A
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:41 - IOWHeel input:AOutput:0
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:50 - after io: 0
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 1
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 3
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:61 - after reflector: 0
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 0
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 1
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:54 - IOWHeel input:1Output:B
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:68 - after io: B
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:70 - after plug: B
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:45 - char: B
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:48 - after plug: B
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:41 - IOWHeel input:BOutput:1
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:50 - after io: 1
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 4
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 3
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:61 - after reflector: 0
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 1
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 4
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:54 - IOWHeel input:4Output:E
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:68 - after io: E
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:70 - after plug: E
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:45 - char: F
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:48 - after plug: A
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:41 - IOWHeel input:AOutput:0
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:50 - after io: 0
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 3
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 1
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:61 - after reflector: 4
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 2
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 1
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:54 - IOWHeel input:1Output:B
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:68 - after io: B
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:70 - after plug: B
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:45 - char: C
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:48 - after plug: C
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:41 - IOWHeel input:COutput:2
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:50 - after io: 2
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 5
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 5
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:61 - after reflector: 2
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 0
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 1
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:54 - IOWHeel input:1Output:B
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:68 - after io: B
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:70 - after plug: B
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:45 - char: F
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:48 - after plug: A
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:41 - IOWHeel input:AOutput:0
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:50 - after io: 0
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 5
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 5
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:61 - after reflector: 2
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 0
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 5
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:54 - IOWHeel input:5Output:F
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:68 - after io: F
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:70 - after plug: A
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:45 - char: D
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:48 - after plug: D
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:41 - IOWHeel input:DOutput:3
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:50 - after io: 3
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 0
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 2
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:61 - after reflector: 5
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 5
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 4
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:54 - IOWHeel input:4Output:E
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:68 - after io: E
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:70 - after plug: E
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:45 - char: F
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:48 - after plug: A
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:41 - IOWHeel input:AOutput:0
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:50 - after io: 0
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 1
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 0
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:61 - after reflector: 3
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 4
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 3
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:54 - IOWHeel input:3Output:D
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:68 - after io: D
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:70 - after plug: D
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:45 - char: E
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:48 - after plug: E
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:41 - IOWHeel input:EOutput:4
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:50 - after io: 4
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 1
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 3
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:61 - after reflector: 0
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 2
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:65 - after rotor (back): 3
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:54 - IOWHeel input:3Output:D
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:68 - after io: D
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:70 - after plug: D
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:45 - char: F
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:48 - after plug: A
+  2022-08-05 14:21:39 DEBUG IOWheelImpl:41 - IOWHeel input:AOutput:0
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:50 - after io: 0
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 3
+  2022-08-05 14:21:39 DEBUG EnigmaMachine:58 - after rotor: 2
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:61 - after reflector: 5
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:65 - after rotor (back): 0
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:65 - after rotor (back): 3
+  2022-08-05 14:21:40 DEBUG IOWheelImpl:54 - IOWHeel input:3Output:D
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:68 - after io: D
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:70 - after plug: D
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:45 - char: F
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:48 - after plug: A
+  2022-08-05 14:21:40 DEBUG IOWheelImpl:41 - IOWHeel input:AOutput:0
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:50 - after io: 0
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:58 - after rotor: 1
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:58 - after rotor: 3
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:61 - after reflector: 0
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:65 - after rotor (back): 2
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:65 - after rotor (back): 5
+  2022-08-05 14:21:40 DEBUG IOWheelImpl:54 - IOWHeel input:5Output:F
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:68 - after io: F
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:70 - after plug: A
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:45 - char: F
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:48 - after plug: A
+  2022-08-05 14:21:40 DEBUG IOWheelImpl:41 - IOWHeel input:AOutput:0
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:50 - after io: 0
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:58 - after rotor: 5
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:58 - after rotor: 1
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:61 - after reflector: 4
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:65 - after rotor (back): 4
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:65 - after rotor (back): 1
+  2022-08-05 14:21:40 DEBUG IOWheelImpl:54 - IOWHeel input:1Output:B
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:68 - after io: B
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:70 - after plug: B
+  2022-08-05 14:21:40 DEBUG PlugBoardImpl:83 - Plugboard made new connection: F<->A
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:45 - char: A
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:48 - after plug: F
+  2022-08-05 14:21:40 DEBUG IOWheelImpl:41 - IOWHeel input:FOutput:5
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:50 - after io: 5
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:58 - after rotor: 0
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:58 - after rotor: 5
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:61 - after reflector: 2
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:65 - after rotor (back): 3
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:65 - after rotor (back): 2
+  2022-08-05 14:21:40 DEBUG IOWheelImpl:54 - IOWHeel input:2Output:C
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:68 - after io: C
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:70 - after plug: C
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:45 - char: A
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:48 - after plug: F
+  2022-08-05 14:21:40 DEBUG IOWheelImpl:41 - IOWHeel input:FOutput:5
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:50 - after io: 5
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:58 - after rotor: 4
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:58 - after rotor: 0
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:61 - after reflector: 3
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:65 - after rotor (back): 5
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:65 - after rotor (back): 4
+  2022-08-05 14:21:40 DEBUG IOWheelImpl:54 - IOWHeel input:4Output:E
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:68 - after io: E
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:70 - after plug: E
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:45 - char: A
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:48 - after plug: F
+  2022-08-05 14:21:40 DEBUG IOWheelImpl:41 - IOWHeel input:FOutput:5
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:50 - after io: 5
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:58 - after rotor: 2
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:58 - after rotor: 4
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:61 - after reflector: 1
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:65 - after rotor (back): 1
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:65 - after rotor (back): 0
+  2022-08-05 14:21:40 DEBUG IOWheelImpl:54 - IOWHeel input:0Output:A
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:68 - after io: A
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:70 - after plug: F
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:45 - char: E
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:48 - after plug: E
+  2022-08-05 14:21:40 DEBUG IOWheelImpl:41 - IOWHeel input:EOutput:4
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:50 - after io: 4
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:58 - after rotor: 1
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:58 - after rotor: 1
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:61 - after reflector: 4
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:65 - after rotor (back): 2
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:65 - after rotor (back): 3
+  2022-08-05 14:21:40 DEBUG IOWheelImpl:54 - IOWHeel input:3Output:D
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:68 - after io: D
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:70 - after plug: D
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:45 - char: E
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:48 - after plug: E
+  2022-08-05 14:21:40 DEBUG IOWheelImpl:41 - IOWHeel input:EOutput:4
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:50 - after io: 4
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:58 - after rotor: 5
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:58 - after rotor: 3
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:61 - after reflector: 0
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:65 - after rotor (back): 4
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:65 - after rotor (back): 5
+  2022-08-05 14:21:40 DEBUG IOWheelImpl:54 - IOWHeel input:5Output:F
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:68 - after io: F
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:70 - after plug: A
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:45 - char: E
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:48 - after plug: E
+  2022-08-05 14:21:40 DEBUG IOWheelImpl:41 - IOWHeel input:EOutput:4
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:50 - after io: 4
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:58 - after rotor: 3
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:58 - after rotor: 2
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:61 - after reflector: 5
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:65 - after rotor (back): 0
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:65 - after rotor (back): 1
+  2022-08-05 14:21:40 DEBUG IOWheelImpl:54 - IOWHeel input:1Output:B
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:68 - after io: B
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:70 - after plug: B
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:45 - char: B
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:48 - after plug: B
+  2022-08-05 14:21:40 DEBUG IOWheelImpl:41 - IOWHeel input:BOutput:1
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:50 - after io: 1
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:58 - after rotor: 4
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:58 - after rotor: 2
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:61 - after reflector: 5
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:65 - after rotor (back): 3
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:65 - after rotor (back): 2
+  2022-08-05 14:21:40 DEBUG IOWheelImpl:54 - IOWHeel input:2Output:C
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:68 - after io: C
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:70 - after plug: C
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:45 - char: B
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:48 - after plug: B
+  2022-08-05 14:21:40 DEBUG IOWheelImpl:41 - IOWHeel input:BOutput:1
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:50 - after io: 1
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:58 - after rotor: 2
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:58 - after rotor: 1
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:61 - after reflector: 4
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:65 - after rotor (back): 5
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:65 - after rotor (back): 4
+  2022-08-05 14:21:40 DEBUG IOWheelImpl:54 - IOWHeel input:4Output:E
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:68 - after io: E
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:70 - after plug: E
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:45 - char: B
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:48 - after plug: B
+  2022-08-05 14:21:40 DEBUG IOWheelImpl:41 - IOWHeel input:BOutput:1
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:50 - after io: 1
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:58 - after rotor: 0
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:58 - after rotor: 0
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:61 - after reflector: 3
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:65 - after rotor (back): 1
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:65 - after rotor (back): 0
+  2022-08-05 14:21:40 DEBUG IOWheelImpl:54 - IOWHeel input:0Output:A
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:68 - after io: A
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:70 - after plug: F
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:45 - char: D
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:48 - after plug: D
+  2022-08-05 14:21:40 DEBUG IOWheelImpl:41 - IOWHeel input:DOutput:3
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:50 - after io: 3
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:58 - after rotor: 2
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:58 - after rotor: 1
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:61 - after reflector: 4
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:65 - after rotor (back): 5
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:65 - after rotor (back): 0
+  2022-08-05 14:21:40 DEBUG IOWheelImpl:54 - IOWHeel input:0Output:A
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:68 - after io: A
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:70 - after plug: F
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:45 - char: D
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:48 - after plug: D
+  2022-08-05 14:21:40 DEBUG IOWheelImpl:41 - IOWHeel input:DOutput:3
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:50 - after io: 3
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:58 - after rotor: 0
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:58 - after rotor: 0
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:61 - after reflector: 3
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:65 - after rotor (back): 1
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:65 - after rotor (back): 2
+  2022-08-05 14:21:40 DEBUG IOWheelImpl:54 - IOWHeel input:2Output:C
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:68 - after io: C
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:70 - after plug: C
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:45 - char: D
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:48 - after plug: D
+  2022-08-05 14:21:40 DEBUG IOWheelImpl:41 - IOWHeel input:DOutput:3
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:50 - after io: 3
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:58 - after rotor: 4
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:58 - after rotor: 2
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:61 - after reflector: 5
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:65 - after rotor (back): 3
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:65 - after rotor (back): 4
+  2022-08-05 14:21:40 DEBUG IOWheelImpl:54 - IOWHeel input:4Output:E
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:68 - after io: E
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:70 - after plug: E
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:45 - char: C
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:48 - after plug: C
+  2022-08-05 14:21:40 DEBUG IOWheelImpl:41 - IOWHeel input:COutput:2
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:50 - after io: 2
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:58 - after rotor: 3
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:58 - after rotor: 1
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:61 - after reflector: 4
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:65 - after rotor (back): 2
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:65 - after rotor (back): 3
+  2022-08-05 14:21:40 DEBUG IOWheelImpl:54 - IOWHeel input:3Output:D
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:68 - after io: D
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:70 - after plug: D
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:45 - char: C
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:48 - after plug: C
+  2022-08-05 14:21:40 DEBUG IOWheelImpl:41 - IOWHeel input:COutput:2
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:50 - after io: 2
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:58 - after rotor: 1
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:58 - after rotor: 0
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:61 - after reflector: 3
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:65 - after rotor (back): 4
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:65 - after rotor (back): 5
+  2022-08-05 14:21:40 DEBUG IOWheelImpl:54 - IOWHeel input:5Output:F
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:68 - after io: F
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:70 - after plug: A
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:45 - char: C
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:48 - after plug: C
+  2022-08-05 14:21:40 DEBUG IOWheelImpl:41 - IOWHeel input:COutput:2
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:50 - after io: 2
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:58 - after rotor: 5
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:58 - after rotor: 5
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:61 - after reflector: 2
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:65 - after rotor (back): 0
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:65 - after rotor (back): 1
+  2022-08-05 14:21:40 DEBUG IOWheelImpl:54 - IOWHeel input:1Output:B
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:68 - after io: B
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:70 - after plug: B
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:45 - char: F
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:48 - after plug: A
+  2022-08-05 14:21:40 DEBUG IOWheelImpl:41 - IOWHeel input:AOutput:0
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:50 - after io: 0
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:58 - after rotor: 5
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:58 - after rotor: 5
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:61 - after reflector: 2
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:65 - after rotor (back): 0
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:65 - after rotor (back): 5
+  2022-08-05 14:21:40 DEBUG IOWheelImpl:54 - IOWHeel input:5Output:F
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:68 - after io: F
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:70 - after plug: A
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:45 - char: F
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:48 - after plug: A
+  2022-08-05 14:21:40 DEBUG IOWheelImpl:41 - IOWHeel input:AOutput:0
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:50 - after io: 0
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:58 - after rotor: 3
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:58 - after rotor: 1
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:61 - after reflector: 4
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:65 - after rotor (back): 2
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:65 - after rotor (back): 1
+  2022-08-05 14:21:40 DEBUG IOWheelImpl:54 - IOWHeel input:1Output:B
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:68 - after io: B
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:70 - after plug: B
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:45 - char: F
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:48 - after plug: A
+  2022-08-05 14:21:40 DEBUG IOWheelImpl:41 - IOWHeel input:AOutput:0
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:50 - after io: 0
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:58 - after rotor: 1
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:58 - after rotor: 0
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:61 - after reflector: 3
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:65 - after rotor (back): 4
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:65 - after rotor (back): 3
+  2022-08-05 14:21:40 DEBUG IOWheelImpl:54 - IOWHeel input:3Output:D
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:68 - after io: D
+  2022-08-05 14:21:40 DEBUG EnigmaMachine:70 - after plug: D
+  2022-08-05 14:22:00 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-05 14:29:44 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-05 14:32:05 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./enigma-machine/src/main/resources/ex1-sanity-small.xml
+  

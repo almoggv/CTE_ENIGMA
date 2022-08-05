@@ -6,11 +6,22 @@
   <component name="ChangeListManager">
     <list default="true" id="6467e2d7-ff2a-4abb-a198-685a0fcd06aa" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/encryption-machine-handler/encryption-machine-handler.iml" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/encryption-machine-handler.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/impl/MachineHandlerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/impl/MachineHandlerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/Rotor.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/Rotor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/EnigmaMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/EnigmaMachine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/IOWheelImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/IOWheelImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/PlugBoardImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/PlugBoardImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/ReflectorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/ReflectorImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/RotorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/RotorImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/handler/FileConfigurationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/handler/FileConfigurationHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/Rotor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/Rotor.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/EnigmaMachine.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/EnigmaMachine.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/IOWheelImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/IOWheelImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/PlugBoardImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/PlugBoardImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/ReflectorImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/ReflectorImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/RotorImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/RotorImpl.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,16 +49,6 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="jar://$PROJECT_DIR$/../../../../../../Program Files/Java/jdk1.8.0_341/jre/lib/rt.jar!/com/sun/xml/internal/bind/v2/runtime/unmarshaller/UnmarshallerImpl.class" root0="SKIP_INSPECTION" />
-    <setting file="jar://$PROJECT_DIR$/../../../../../../Program Files/Java/jdk1.8.0_341/jre/lib/rt.jar!/jdk/xml/internal/JdkXmlUtils.class" root0="SKIP_INSPECTION" />
-    <setting file="jar://$PROJECT_DIR$/../../../../../../Program Files/Java/jdk1.8.0_341/jre/lib/rt.jar!/jdk/xml/internal/SecuritySupport.class" root0="SKIP_INSPECTION" />
-    <setting file="jar://$PROJECT_DIR$/../../../../../../Program Files/Java/jdk1.8.0_341/src.zip!/com/sun/org/apache/xerces/internal/jaxp/SAXParserImpl.java" root0="SKIP_INSPECTION" />
-    <setting file="jar://$PROJECT_DIR$/../../../../../../Program Files/Java/jdk1.8.0_341/src.zip!/com/sun/org/apache/xerces/internal/util/ErrorHandlerWrapper.java" root0="SKIP_INSPECTION" />
-    <setting file="jar://$PROJECT_DIR$/../../../../../../Program Files/Java/jdk1.8.0_341/src.zip!/org/xml/sax/InputSource.java" root0="SKIP_INSPECTION" />
-    <setting file="jar://$PROJECT_DIR$/../../../../../../Program Files/Java/jdk1.8.0_341/src.zip!/org/xml/sax/helpers/DefaultHandler.java" root0="SKIP_INSPECTION" />
-    <setting file="jar://$PROJECT_DIR$/../../../../../../Program Files/Java/jdk1.8.0_341/src.zip!/org/xml/sax/helpers/LocatorImpl.java" root0="SKIP_INSPECTION" />
-  </component>
   <component name="JpbToolWindowState">
     <option name="myId2FirstActivated">
       <map>
@@ -74,19 +75,13 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "last_opened_file_path": "C:/Users/Eliya/Documents/java/CTE/CTE_ENIGMA/lombok/lombok/1.18.24/lombok-1.18.24-sources.jar",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "editing.templates"
-  }
-}]]></component>
+  <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+  </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="main.java.component" />
@@ -209,13 +204,18 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/EnigmaMachine.java</url>
-          <line>44</line>
-          <option name="timeStamp" value="48" />
+          <line>50</line>
+          <option name="timeStamp" value="60" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/EnigmaMachine.java</url>
-          <line>63</line>
-          <option name="timeStamp" value="52" />
+          <line>36</line>
+          <option name="timeStamp" value="69" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/EnigmaMachine.java</url>
+          <line>58</line>
+          <option name="timeStamp" value="70" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -231,6 +231,8 @@
       <configuration name="Application">
         <watch expression="((RotorImpl)rotor).rotorMapping" custom="main.java.component.impl.RotorImpl" />
         <watch expression="rotorMapping.get(realIndex).getRight()" />
+        <watch expression="((java.util.ArrayList)((RotorImpl)this).rotorMapping).get(2)" custom="main.java.component.impl.RotorImpl,java.util.ArrayList" />
+        <watch expression="((java.util.ArrayList)((RotorImpl)this).rotorMapping).get(1)" custom="main.java.component.impl.RotorImpl,java.util.ArrayList" />
       </configuration>
     </watches-manager>
   </component>

@@ -23,7 +23,7 @@ public class ReflectorImpl implements Reflector {
     @Getter private final ReflectorsId id;
 
     static {
-        String log4JPropertyFile = "./src/main/resources/log4j.properties";
+        String log4JPropertyFile = "./enigma-machine/src/main/resources/log4j.properties";
         Properties p = new Properties();
         try {
             p.load(new FileInputStream(log4JPropertyFile));

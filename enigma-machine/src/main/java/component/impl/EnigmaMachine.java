@@ -1,7 +1,6 @@
 package main.java.component.impl;
 
 import main.java.component.*;
-import main.resources.generated.CTEMachine;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
@@ -19,7 +18,7 @@ public class EnigmaMachine implements EncryptionMachine {
     private Reflector reflector;
 
     static {
-        String log4JPropertyFile = "./src/main/resources/log4j.properties";
+        String log4JPropertyFile = "./enigma-machine/src/main/resources/log4j.properties";
         Properties p = new Properties();
         try {
             p.load(new FileInputStream(log4JPropertyFile));
@@ -42,32 +41,32 @@ public class EnigmaMachine implements EncryptionMachine {
     }
 
     private Character encryptSingle(Character input){
-        System.out.println("char: " + input);
+        log.debug("char: " + input);
         String rawInput = String.valueOf(input);
         rawInput = plugBoard.getMappedValue(rawInput);
-        System.out.println("after plug: " + rawInput);
+        log.debug("after plug: " + rawInput);
         int rawInputIndex = ioWheel.handleInput(rawInput);
-        System.out.println("after io: " + rawInputIndex);
-        boolean rotateNext = true;
+        log.debug("after io: " + rawInputIndex);
+        boolean rotateCurrent = true;
         for (Rotor rotor : rotors ) {
-            if(rotateNext){
+            if(rotateCurrent){
                 rotor.rotate();
             }
-            rotateNext = rotor.doesNotchAllowRotation();
+            rotateCurrent = rotor.doesNotchAllowRotation();
             rawInputIndex = rotor.fromInputWheelToReflector(rawInputIndex);
-            System.out.println("after rotor: " + rawInputIndex);
+            log.debug("after rotor: " + rawInputIndex);
         }
         rawInputIndex = reflector.getReflectedValue(rawInputIndex);
-        System.out.println("after reflector: " + rawInputIndex);
+        log.debug("after reflector: " + rawInputIndex);
 
         for (int i = rotors.size() -1; i >=0; i--) {
             rawInputIndex = rotors.get(i).fromReflectorToInputWheel(rawInputIndex);
-            System.out.println("after rotor: " + rawInputIndex);
+            log.debug("after rotor (back): " + rawInputIndex);
         }
         rawInput = ioWheel.handleInput(rawInputIndex);
-        System.out.println("after io: " + rawInput);
+        log.debug("after io: " + rawInput);
         rawInput = plugBoard.getMappedValue(rawInput);
-        System.out.println("after plug: " + rawInput);
+        log.debug("after plug: " + rawInput);
         return rawInput.charAt(0);
     }
 
@@ -111,7 +110,7 @@ public class EnigmaMachine implements EncryptionMachine {
         }
         int posIndex = 0;
         for (Rotor rotor : this.rotors) {
-            rotor.setRotorPosition(rotorsPosition.get(posIndex));
+            rotor.setRotorStartingPosition(rotorsPosition.get(posIndex));
             posIndex++;
         }
     }

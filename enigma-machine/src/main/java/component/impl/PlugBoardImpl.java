@@ -19,7 +19,7 @@ public class PlugBoardImpl implements PlugBoard {
     private List<MappingPair<String, String>> plugBoardMapping = new ArrayList<>();
 
     static {
-        String log4JPropertyFile = "./src/main/resources/log4j.properties";
+        String log4JPropertyFile = "./enigma-machine/src/main/resources/log4j.properties";
         Properties p = new Properties();
         try {
             p.load(new FileInputStream(log4JPropertyFile));
