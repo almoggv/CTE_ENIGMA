@@ -19,7 +19,7 @@ public class Main {
         catch (Exception e){
             System.out.println(e.getMessage());
         }
-
+        
 //      <F|A><I><CC><2,1>
 //      sets reflector, plugBoardMapping, rotors and their starting position
         ReflectorsId refid = ReflectorsId.I;

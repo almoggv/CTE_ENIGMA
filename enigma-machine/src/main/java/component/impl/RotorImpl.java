@@ -16,21 +16,18 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
 
-
+/**
+ * Current Mapping:
+ *  is the same as the model in the video [Reflector] <-> [Rotors] <-> [IOWheel]
+ *  meaning:
+ *      Left To Right : reflector to wheel
+ *      Right To Left : wheel to reflector
+ */
 public class RotorImpl implements Rotor {
 
     private static final Logger log = Logger.getLogger(RotorImpl.class);
 
-    /**
-     * Curent Mapping:
-     *  is the same as the model in the video [Reflector] <-> [Rotors] <-> [IOWheel]
-     *  meaning:
-     *      Left To Right : reflector to wheel
-     *      Right To Left : wheel to reflector
-     */
-    //private final List<MappingPair<Integer,Integer>> rotorMapping = new ArrayList<>();
-    final LinkedList<MappingPair<Integer,Integer>> rotorMapping = new LinkedList<>(); //TODO: change impl
-
+    private final LinkedList<MappingPair<Integer,Integer>> rotorMapping = new LinkedList<>();
     @Getter private final int id;
     private int headPosition = 0;
 
@@ -39,7 +36,6 @@ public class RotorImpl implements Rotor {
         List<CTEPositioning> positioning = cteRotor.getCTEPositioning();
         List<String> left = new ArrayList<>();
         List<String> right = new ArrayList<>();
-
         for(CTEPositioning position: positioning){
             String l = position.getLeft();
             String r = position.getRight();
@@ -67,21 +63,6 @@ public class RotorImpl implements Rotor {
         return headPosition;
     }
 
-    // inValue represents the index counted from the head position
-    // if inValue = 5
-    // head = 3
-    //      means we start counting 5 from 3 => 3+5 = 8
-    //      this we module by size to simulate a circular structure
-    // realIndex = 8 % 6 = 2
-    // from here we take the left value of that index's mapping
-    // given the this rotor:
-    // (5,0) - i=0
-    // (4,1) - i=1
-    // (3,2) - i=2
-    // (2,3) - i=3
-    // (4,1) - i=4
-    // (5,0) - i=5
-    // given InValue = 5 => realIndex = 2 (i=2) => mappedValue = 3
     @Override
     public int fromInputWheelToReflector(int inValue) {
         int leftToFind = rotorMapping.get(inValue).getRight();

@@ -36,7 +36,6 @@ public class ReflectorImpl implements Reflector {
 
     public ReflectorImpl(CTEReflector cteReflector) {
         List<CTEReflect> reflects = cteReflector.getCTEReflect();
-
         for(CTEReflect cteReflect : reflects) {
             int in = cteReflect.getInput() -1;
             int out = cteReflect.getOutput() -1;

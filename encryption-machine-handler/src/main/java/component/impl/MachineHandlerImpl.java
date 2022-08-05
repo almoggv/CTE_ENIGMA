@@ -2,6 +2,7 @@ package main.java.component.impl;
 
 
 import main.java.dto.MachineState;
+import main.java.dto.MachineStatisticsHistory;
 import main.java.handler.FileConfigurationHandler;
 import main.java.component.*;
 import main.java.enums.ReflectorsId;
@@ -142,12 +143,7 @@ public class MachineHandlerImpl implements MachineHandler {
     }
 
     @Override
-    public String getMachineHistory() {
-        return null;
-    }
-
-    @Override
-    public String getMachineStatistics() {
+    public MachineStatisticsHistory getMachineStatisticsHistory() {
         return null;
     }
 

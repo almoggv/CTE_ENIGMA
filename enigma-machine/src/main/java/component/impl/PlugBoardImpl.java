@@ -40,7 +40,6 @@ public class PlugBoardImpl implements PlugBoard {
     @Override
     public boolean connectMultiple(List<String> leftList, List<String> rightList ) {
         if(leftList.size() != rightList.size()){
-
             return false;
         }
         boolean isOperationSuccessful = true;
