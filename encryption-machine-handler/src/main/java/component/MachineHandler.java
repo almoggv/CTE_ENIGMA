@@ -1,6 +1,6 @@
 package main.java.component;
 
-import main.java.component.impl.MappingPair;
+import main.java.generictype.MappingPair;
 import main.java.dto.MachineState;
 import main.java.dto.MachineStatisticsHistory;
 import main.java.enums.ReflectorsId;

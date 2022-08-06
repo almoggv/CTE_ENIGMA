@@ -1,4 +1,4 @@
-package main.java.component.impl;
+package main.java.generictype;
 
 import java.util.ArrayList;
 import java.util.Collection;

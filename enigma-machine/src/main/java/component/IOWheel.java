@@ -1,10 +1,14 @@
 package main.java.component;
 
-public interface IOWheel {
+import main.java.generictype.DeepCloneable;
+
+public interface IOWheel extends DeepCloneable {
 
     public int handleInput(String input);
 
     public String handleInput(int input);
 
     public int getWheelSize();
+
+    public IOWheel getDeepClone();
 }

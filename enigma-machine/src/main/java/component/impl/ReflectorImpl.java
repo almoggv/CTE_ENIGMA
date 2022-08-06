@@ -3,12 +3,13 @@ package main.java.component.impl;
 import lombok.Getter;
 import main.java.component.Reflector;
 import main.java.enums.ReflectorsId;
+import main.java.generictype.MappingPair;
+import main.java.generictype.MappingPairListUtils;
 import main.resources.generated.CTEReflect;
 import main.resources.generated.CTEReflector;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -47,9 +48,27 @@ public class ReflectorImpl implements Reflector {
         this.id = ReflectorsId.valueOf(cteReflector.getId());
     }
 
+    protected ReflectorImpl(ReflectorsId id, List<MappingPair<Integer,Integer>> reflectionMapping){
+        this.id = id;
+        for (MappingPair<Integer,Integer> pair : reflectionMapping ) {
+            this.reflectionMapping.add(pair);
+        }
+        //used for deepCloning
+    };
+
     @Override
     public int getReflectedValue(int inValue) {
         return MappingPairListUtils.getRightByLeft(reflectionMapping, inValue);
+    }
+
+    @Override
+    public Reflector getDeepClone() {
+        List<MappingPair<Integer,Integer>> clonedReflectionMapping = new ArrayList<>();
+        for (MappingPair<Integer,Integer> pair: reflectionMapping ) {
+            MappingPair<Integer,Integer> newClonedPair = new MappingPair<>(pair.getLeft(), pair.getRight());
+            clonedReflectionMapping.add(newClonedPair);
+        }
+        return new ReflectorImpl(this.getId(),clonedReflectionMapping);
     }
 
 

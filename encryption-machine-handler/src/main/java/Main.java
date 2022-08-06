@@ -2,7 +2,7 @@ package main.java;
 
 import main.java.component.MachineHandler;
 import main.java.component.impl.MachineHandlerImpl;
-import main.java.component.impl.MappingPair;
+import main.java.generictype.MappingPair;
 import main.java.enums.ReflectorsId;
 
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ public class Main {
         catch (Exception e){
             System.out.println(e.getMessage());
         }
-        
+
 //      <F|A><I><CC><2,1>
 //      sets reflector, plugBoardMapping, rotors and their starting position
         ReflectorsId refid = ReflectorsId.I;

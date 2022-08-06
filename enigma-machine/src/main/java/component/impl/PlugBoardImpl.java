@@ -2,6 +2,8 @@ package main.java.component.impl;
 
 
 import main.java.component.PlugBoard;
+import main.java.generictype.MappingPair;
+import main.java.generictype.MappingPairListUtils;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
@@ -108,6 +110,17 @@ public class PlugBoardImpl implements PlugBoard {
     @Override
     public String getMappedValue(String inValue) {
         return MappingPairListUtils.getRightByLeft(plugBoardMapping, inValue);
+    }
+
+    @Override
+    public PlugBoard getDeepClone() {
+        String recreatedABC = new String();
+        for (MappingPair<String,String> pair : this.plugBoardMapping) {
+            recreatedABC = recreatedABC.concat(pair.getLeft());
+        }
+        PlugBoardImpl clonedPlugBoard = new PlugBoardImpl(recreatedABC);
+        clonedPlugBoard.connectMultiple(plugBoardMapping);
+        return clonedPlugBoard;
     }
 
     protected boolean isEndPointConnected(String endPoint){

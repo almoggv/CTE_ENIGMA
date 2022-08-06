@@ -3,10 +3,9 @@ package main.java.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import main.java.component.impl.MappingPair;
+import main.java.generictype.MappingPair;
 import main.java.enums.ReflectorsId;
 
-import javax.annotation.sql.DataSourceDefinition;
 import java.util.List;
 
 @Data
@@ -17,4 +16,6 @@ public class MachineState {
     private List<Integer> rotorIds;
     private List<Integer> rotorsStartingPositions;
     private List<MappingPair<String,String>> plugMapping;
+
+
 }

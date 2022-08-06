@@ -1,12 +1,12 @@
 package main.java.component;
 
 
-import main.java.component.impl.MappingPair;
+import main.java.generictype.DeepCloneable;
+import main.java.generictype.MappingPair;
 
 import java.util.List;
-import java.util.Map;
 
-public interface PlugBoard {
+public interface PlugBoard extends DeepCloneable {
 
     /**
      * maps the left list to the right list on the plug board by indexes : first <-> first , second <-> second..
@@ -25,4 +25,6 @@ public interface PlugBoard {
     public boolean clearAllPlugs();
 
     public String getMappedValue(String inValue);
+
+    public PlugBoard getDeepClone();
 }

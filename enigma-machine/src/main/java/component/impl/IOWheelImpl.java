@@ -1,6 +1,8 @@
 package main.java.component.impl;
 
 import main.java.component.IOWheel;
+import main.java.generictype.MappingPair;
+import main.java.generictype.MappingPairListUtils;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
@@ -14,7 +16,7 @@ public class IOWheelImpl implements IOWheel {
 
     private static final Logger log = Logger.getLogger(IOWheelImpl.class);
 
-    private final List<MappingPair<Integer,String>> letterToNumberMap = new ArrayList<>();
+    private final List<MappingPair<Integer,String>> numToletterMap = new ArrayList<>();
 
     static {
         String log4JPropertyFile = "./enigma-machine/src/main/resources/log4j.properties";
@@ -31,13 +33,13 @@ public class IOWheelImpl implements IOWheel {
     public IOWheelImpl(String ABC) {
         for (int i = 0; i < ABC.length(); i++) {
             MappingPair<Integer,String> newPair = new MappingPair<Integer,String>(i, ABC.substring(i,i+1));
-            letterToNumberMap.add(newPair);
+            numToletterMap.add(newPair);
         }
     }
     @Override
     public int handleInput(String input) {
         try{
-            int result = MappingPairListUtils.<Integer,String>getLeftByRight(letterToNumberMap,input);
+            int result = MappingPairListUtils.<Integer,String>getLeftByRight(numToletterMap,input);
             log.debug("IOWHeel input:" + input + "Output:" + result );
             return result;
         }
@@ -50,7 +52,7 @@ public class IOWheelImpl implements IOWheel {
     @Override
     public String handleInput(int input) {
         try{
-            String result =  MappingPairListUtils.getRightByLeft(letterToNumberMap,input);
+            String result =  MappingPairListUtils.getRightByLeft(numToletterMap,input);
             log.debug("IOWHeel input:" + input + "Output:" + result );
             return result;
         }
@@ -62,6 +64,15 @@ public class IOWheelImpl implements IOWheel {
 
     @Override
     public int getWheelSize() {
-        return letterToNumberMap.size();
+        return numToletterMap.size();
+    }
+
+    @Override
+    public IOWheel getDeepClone() {
+        String recreatedABC = new String();
+        for (MappingPair<Integer,String> pair : this.numToletterMap) {
+            recreatedABC = recreatedABC.concat(pair.getRight());
+        }
+        return new IOWheelImpl(recreatedABC);
     }
 }

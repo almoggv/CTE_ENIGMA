@@ -2,13 +2,13 @@ package main.java.component.impl;
 
 import lombok.Getter;
 import main.java.component.Rotor;
+import main.java.generictype.MappingPair;
+import main.java.generictype.MappingPairListUtils;
 import main.resources.generated.CTEPositioning;
 import main.resources.generated.CTERotor;
-import main.resources.generated.CTERotors;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
-import javax.swing.*;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -30,8 +30,20 @@ public class RotorImpl implements Rotor {
     private final LinkedList<MappingPair<Integer,Integer>> rotorMapping = new LinkedList<>();
     @Getter private final int id;
     private int headPosition = 0;
-
     private final int notchLocation;
+
+    static {
+        String log4JPropertyFile = "./enigma-machine/src/main/resources/log4j.properties";
+        Properties p = new Properties();
+        try {
+            p.load(new FileInputStream(log4JPropertyFile));
+            PropertyConfigurator.configure(p);      //Dont forget here
+            log.debug("Logger Instatiated for : " + RotorImpl.class.getSimpleName());
+        } catch (IOException e) {
+            //TODO: ?
+        }
+    }
+
     public RotorImpl(CTERotor cteRotor, String ABC) {
         List<CTEPositioning> positioning = cteRotor.getCTEPositioning();
         List<String> left = new ArrayList<>();
@@ -46,15 +58,12 @@ public class RotorImpl implements Rotor {
         this.notchLocation = (cteRotor.getNotch() -1) % rotorMapping.size();
     }
 
-    static {
-        String log4JPropertyFile = "./enigma-machine/src/main/resources/log4j.properties";
-        Properties p = new Properties();
-        try {
-            p.load(new FileInputStream(log4JPropertyFile));
-            PropertyConfigurator.configure(p);      //Dont forget here
-            log.debug("Logger Instatiated for : " + RotorImpl.class.getSimpleName());
-        } catch (IOException e) {
-            //TODO: ?
+    protected RotorImpl(int id, int notchLocation, int headPosition,LinkedList<MappingPair<Integer,Integer>> rotorMapping ){
+        this.id = id;
+        this.notchLocation = notchLocation;
+        this.headPosition = headPosition;
+        for (MappingPair<Integer,Integer> pair : rotorMapping) {
+            this.rotorMapping.add(pair);
         }
     }
 
@@ -97,5 +106,15 @@ public class RotorImpl implements Rotor {
     public void rotate() {
         headPosition = (headPosition + 1) % rotorMapping.size();
         rotorMapping.addLast(rotorMapping.pop());
+    }
+
+    @Override
+    public Rotor getDeepClone() {
+        LinkedList<MappingPair<Integer,Integer>> clonedRotorMapping = new LinkedList<>();
+        for (MappingPair<Integer,Integer> pair: this.rotorMapping ) {
+            MappingPair<Integer,Integer> newClonedPair = new MappingPair<>(pair.getLeft(), pair.getRight());
+            clonedRotorMapping.add(newClonedPair);
+        }
+        return new RotorImpl(this.id,this.notchLocation,this.headPosition,clonedRotorMapping);
     }
 }

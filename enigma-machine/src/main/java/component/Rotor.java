@@ -1,6 +1,8 @@
 package main.java.component;
 
-public interface Rotor {
+import main.java.generictype.DeepCloneable;
+
+public interface Rotor extends DeepCloneable {
 
     public int getHeadLocation();
 
@@ -15,4 +17,6 @@ public interface Rotor {
     public boolean setRotorStartingPosition(int headPosition);
 
     public void rotate();
+
+    public Rotor getDeepClone();
 }

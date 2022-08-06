@@ -3,6 +3,7 @@ package main.java.component.impl;
 
 import main.java.dto.MachineState;
 import main.java.dto.MachineStatisticsHistory;
+import main.java.generictype.MappingPair;
 import main.java.handler.FileConfigurationHandler;
 import main.java.component.*;
 import main.java.enums.ReflectorsId;
@@ -26,7 +27,7 @@ public class MachineHandlerImpl implements MachineHandler {
     private List<Reflector> reflectorsInventory;
 
     private EncryptionMachine encryptionMachine = new EnigmaMachine();
-    private MachineState machineState = new MachineState();
+    private MachineState initialMachineState = new MachineState();
 
     static {
         String log4JPropertyFile = "./enigma-machine/src/main/resources/log4j.properties";
@@ -64,21 +65,23 @@ public class MachineHandlerImpl implements MachineHandler {
     public void assembleMachineParts(ReflectorsId reflectorId, List<Integer> rotorIds) {
         Predicate<Reflector> idReflectorPredicate = (reflector) -> reflector.getId() == reflectorId;
         Reflector reflector = reflectorsInventory.stream().filter(idReflectorPredicate).findFirst().orElse(null);
-
         List<Rotor> rotorListForMachine = new ArrayList<>();
         for (int rotorId : rotorIds) {
             Predicate<Rotor> idRotorPredicate = (rotor) -> rotor.getId() == rotorId;
             Rotor rotorFromInventory = rotorsInventory.stream().filter(idRotorPredicate).findFirst().orElse(null);
             rotorListForMachine.add(rotorFromInventory);
         }
-
-        encryptionMachine.buildMachine(plugBoardInventory, reflector, rotorListForMachine, ioWheelInventory);
+        this.encryptionMachine.buildMachine(plugBoardInventory, reflector, rotorListForMachine, ioWheelInventory);
+        this.initialMachineState.setReflectorId(reflector.getId());
+        this.initialMachineState.setRotorIds(rotorIds);
     }
 
     @Override
     public void setStartingMachineState(List<Integer> rotorsStartingPositions, List<MappingPair<String, String>> plugMapping) {
         encryptionMachine.setRotorsStartingPosition(rotorsStartingPositions);
         encryptionMachine.connectPlugs(plugMapping);
+        this.initialMachineState.setRotorsStartingPositions(rotorsStartingPositions);
+        this.initialMachineState.setPlugMapping(plugMapping);
     }
 
     @Override
@@ -97,27 +100,25 @@ public class MachineHandlerImpl implements MachineHandler {
             plugBoardInventory = new PlugBoardImpl(ABC);
             rotorsInventory = new ArrayList<>();
             reflectorsInventory = new ArrayList<>();
-
             for (CTERotor cteRotor : cteRotors) {
                 Rotor rotor = new RotorImpl(cteRotor, ABC);
                 rotorsInventory.add(rotor);
             }
-
             for (CTEReflector cteReflector : cteReflectors) {
                 Reflector reflector = new ReflectorImpl(cteReflector);
                 reflectorsInventory.add(reflector);
             }
-            log.debug("Machine handler: created inventory successfully");
+            if(ioWheelInventory == null || plugBoardInventory == null || rotorsInventory == null
+                    || rotorsInventory.size() <= 0 || reflectorsInventory == null || reflectorsInventory.size()<=0){
+                log.error("Machine Handler - failed to create an inventory item");
+                throw new IllegalArgumentException("failed to create inventory");
+            }
+            log.info("Machine handler: created inventory successfully");
         }
         catch (Exception e){
             log.error("Machine handler - failed to build inventory:" + e.getMessage());
         }
     }
-
-    /*
-   <45,27,94><AO!><III><A|Z,D|E>
-    */
-
 
     @Override
     public boolean loadStateFromFile(String absolutePath) {
@@ -129,7 +130,6 @@ public class MachineHandlerImpl implements MachineHandler {
     public boolean saveStateToFile(String fileName) {
         return false;
     }
-
 
 
     @Override

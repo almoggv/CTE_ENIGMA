@@ -1,6 +1,7 @@
 package main.java.component;
 
-import main.java.component.impl.MappingPair;
+import main.java.generictype.MappingPair;
+import main.java.dto.MachineState;
 
 import java.util.List;
 
@@ -10,6 +11,14 @@ public interface EncryptionMachine {
 
     public String decrypt(String output);
 
+    /**
+     * assembles a machine with the given parts
+     * @param plugBoard
+     * @param reflector
+     * @param rotors
+     * @param ioWheel
+     * @throws IllegalArgumentException
+     */
     public void buildMachine(PlugBoard plugBoard, Reflector reflector, List<Rotor> rotors, IOWheel ioWheel) throws IllegalArgumentException;
 
     public void buildMachine(Reflector reflector, List<Rotor> rotors , IOWheel ioWheel, String ABC) throws IllegalArgumentException;
@@ -26,7 +35,7 @@ public interface EncryptionMachine {
     public void setRotorsStartingPosition(List<Integer> rotorsPosition);
 
     // todo - haamasa - set positions by string - user input <ci> not 0,1
-    public List<String> getMachineState();
+    public MachineState getMachineState();
 }
 
 

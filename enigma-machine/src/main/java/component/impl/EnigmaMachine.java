@@ -1,6 +1,8 @@
 package main.java.component.impl;
 
 import main.java.component.*;
+import main.java.dto.MachineState;
+import main.java.generictype.MappingPair;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
@@ -115,9 +117,9 @@ public class EnigmaMachine implements EncryptionMachine {
         }
     }
 
-
     @Override
-    public List<String> getMachineState() {
-        return null;
+    public MachineState getMachineState() {
+        MachineState resultMachineState = new MachineState();
+        return resultMachineState;
     }
 }
