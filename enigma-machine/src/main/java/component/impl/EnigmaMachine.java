@@ -127,7 +127,7 @@ public class EnigmaMachine implements EncryptionMachine {
             rotorIds.add(rotor.getId());
             rotorsHeadPositions.add(rotor.getHeadLocation());
         }
-        return  new MachineState(reflector.getId(),rotorIds,rotorsHeadPositions,minimalPlugMapping);
+        return new MachineState(reflector.getId(),rotorIds,rotorsHeadPositions,minimalPlugMapping);
     }
 
     @Override

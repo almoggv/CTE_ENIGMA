@@ -18,14 +18,14 @@ public interface MachineHandler {
     void buildMachinePartsInventory (String path) throws Exception;
 
     /**
-     * !!!!call buildMachinePartsInventory before assembling!!!!
+     * call buildMachinePartsInventory before assembling!!!!
      * assembles a machine randomly from existing inventory
      * picks reflector, plugBoardMapping, rotors and their starting position 
      * @return
      */
     public void assembleMachine();
     /**
-     * !!!!call buildMachinePartsInventory before assembling!!!!
+     * call buildMachinePartsInventory before assembling!!!!
      * assembles a machine from user instructions
      * sets reflector, plugBoardMapping, rotors and their starting position
      */

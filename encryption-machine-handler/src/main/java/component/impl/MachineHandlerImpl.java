@@ -42,7 +42,7 @@ public class MachineHandlerImpl implements MachineHandler {
     }
 
     @Override
-    public void buildMachinePartsInventory(String absolutePath) {
+    public void buildMachinePartsInventory(String absolutePath) throws Exception {
         if (isFileInExistenceAndXML(absolutePath)){
             CTEEnigma cteEnigma = FileConfigurationHandler.fromXmlFileToCTE(absolutePath);
             if(isMachineConfigurationValid(cteEnigma)){
@@ -50,13 +50,18 @@ public class MachineHandlerImpl implements MachineHandler {
             }
             else{
                 log.error("Failed to build machine inventory - CteMachine configured in file is invalid");
+                throw new Exception("Failed to build machine inventory - CteMachine configured in file is invalid");
             }
         }
     }
 
     @Override
     public void assembleMachine() {
-        return;
+        //choose reflector
+        //choose rotors
+
+        //set rotors positions
+        //set plugboard connections
     }
 
     @Override
@@ -158,7 +163,8 @@ public class MachineHandlerImpl implements MachineHandler {
 
     @Override
     public boolean resetToLastSetState() {
-        return false;
+        this.encryptionMachine.setMachineState(initialMachineState);
+        return true;
     }
 
     @Override
@@ -196,7 +202,6 @@ public class MachineHandlerImpl implements MachineHandler {
                 && isRotorsIdsLegal(rotors) && isRotorsMappingLegal(rotors) && isRotorsNotchLegal(rotors, ABC)
                 && isReflectorsIdsLegal(reflectors) && isReflectorsMappingLegal(reflectors);
         return result;
-
     }
     private boolean isFileInExistenceAndXML(String absolutePath){
         String extension = "";
