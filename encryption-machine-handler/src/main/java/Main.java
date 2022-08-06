@@ -11,6 +11,21 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+//        mainToCheckSanitySmall();
+        MachineHandler machineHandler =new MachineHandlerImpl();
+        String relativePath = "./enigma-machine/src/main/resources/ex1-sanity-small.xml";
+        try {
+            machineHandler.buildMachinePartsInventory(relativePath);
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+        machineHandler.assembleMachine();
+
+    }
+
+    private static void mainToCheckSanitySmall() {
         MachineHandler machineHandler =new MachineHandlerImpl();
         String relativePath = "./enigma-machine/src/main/resources/ex1-sanity-small.xml";
         try {
@@ -41,6 +56,5 @@ public class Main {
             String output = machineHandler.encrypt(input);
             System.out.println("the output is: " + output + " is correct?: "+ wantedOutput.equals(output));
         }
-
     }
 }

@@ -806,4 +806,17 @@
   2022-08-05 14:22:00 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./enigma-machine/src/main/resources/ex1-sanity-small.xml
   2022-08-05 14:29:44 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./enigma-machine/src/main/resources/ex1-sanity-small.xml
   2022-08-05 14:32:05 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-06 17:48:10 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-06 17:48:10 INFO  MachineHandlerImpl:252 - MachineHandler check xml validity: did pass all tests: true
+  2022-08-06 17:48:10 INFO  MachineHandlerImpl:200 - Machine handler: created inventory successfully
+  2022-08-06 17:50:47 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-06 17:50:47 INFO  MachineHandlerImpl:251 - MachineHandler check xml validity: did pass all tests: true
+  2022-08-06 17:50:47 INFO  MachineHandlerImpl:199 - Machine handler: created inventory successfully
+  2022-08-06 17:51:39 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-06 17:51:39 INFO  MachineHandlerImpl:251 - MachineHandler check xml validity: did pass all tests: true
+  2022-08-06 17:51:39 INFO  MachineHandlerImpl:199 - Machine handler: created inventory successfully
+  2022-08-06 17:57:56 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-06 17:57:56 INFO  MachineHandlerImpl:255 - MachineHandler check xml validity: did pass all tests: true
+  2022-08-06 17:57:56 INFO  MachineHandlerImpl:203 - Machine handler: created inventory successfully
+  2022-08-06 18:03:14 ERROR MachineHandlerImpl:134 - Failed to assemble machine parts - could not find REFLECTOR in inventory with id: III
   

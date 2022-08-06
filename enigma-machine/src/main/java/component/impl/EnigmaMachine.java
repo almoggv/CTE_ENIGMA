@@ -156,4 +156,10 @@ public class EnigmaMachine implements EncryptionMachine {
         //TODO: validate rotors ids?
         //TODO: validate reflector's id?
     }
+
+    @Override
+    public String getABC() {
+        return this.ioWheel.getABC();
+    }
+
 }

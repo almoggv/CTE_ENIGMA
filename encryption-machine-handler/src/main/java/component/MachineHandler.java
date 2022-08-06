@@ -33,6 +33,7 @@ public interface MachineHandler {
            List<Integer> rotorsStartingPositions,
            List<MappingPair<String,String>> plugMapping );
 
+
     public void assembleMachineParts(ReflectorsId reflectorId, List<Integer> rotorIds);
 
     public void setStartingMachineState(List<Integer> rotorsStartingPositions,

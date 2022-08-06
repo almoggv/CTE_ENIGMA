@@ -15,8 +15,8 @@ import java.util.Properties;
 public class IOWheelImpl implements IOWheel {
 
     private static final Logger log = Logger.getLogger(IOWheelImpl.class);
-
     private final List<MappingPair<Integer,String>> numToletterMap = new ArrayList<>();
+    private final String ABC;
 
     static {
         String log4JPropertyFile = "./enigma-machine/src/main/resources/log4j.properties";
@@ -35,6 +35,7 @@ public class IOWheelImpl implements IOWheel {
             MappingPair<Integer,String> newPair = new MappingPair<Integer,String>(i, ABC.substring(i,i+1));
             numToletterMap.add(newPair);
         }
+        this.ABC = ABC;
     }
     @Override
     public int handleInput(String input) {
@@ -74,5 +75,10 @@ public class IOWheelImpl implements IOWheel {
             recreatedABC = recreatedABC.concat(pair.getRight());
         }
         return new IOWheelImpl(recreatedABC);
+    }
+
+    @Override
+    public String getABC() {
+        return this.ABC;
     }
 }

@@ -38,6 +38,8 @@ public interface EncryptionMachine {
     public MachineState getMachineState();
 
     public void setMachineState(MachineState machineState);
+
+    public String getABC();
 }
 
 

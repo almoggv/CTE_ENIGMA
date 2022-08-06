@@ -1,6 +1,7 @@
 package main.java.component.impl;
 
 
+import javafx.util.Pair;
 import main.java.dto.MachineState;
 import main.java.dto.MachineStatisticsHistory;
 import main.java.generictype.MappingPair;
@@ -14,6 +15,7 @@ import org.apache.log4j.PropertyConfigurator;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -25,7 +27,7 @@ public class MachineHandlerImpl implements MachineHandler {
     private List<Rotor> rotorsInventory;
     private IOWheel ioWheelInventory;
     private List<Reflector> reflectorsInventory;
-
+    private int expectedNumOfRotors;
     private EncryptionMachine encryptionMachine = new EnigmaMachine();
     private MachineState initialMachineState = new MachineState();
 
@@ -57,11 +59,65 @@ public class MachineHandlerImpl implements MachineHandler {
 
     @Override
     public void assembleMachine() {
-        //choose reflector
-        //choose rotors
+        String ABC = ioWheelInventory.getABC();
+        Random random = new Random();
+        ReflectorsId reflectorId = ReflectorsId.getByNum(random.nextInt(ReflectorsId.values().length) + 1);
+        List<Integer> rotorIdList = generateRandomRotorList();
+        List<Integer> rotorStartingPositions = generateRandomRotorPositions(ABC);
+        List<MappingPair<String,String>> plugPairsMapping = generateRandomPlugboardConnections(ABC);
+        assembleMachine(reflectorId,rotorIdList,rotorStartingPositions,plugPairsMapping);
+    }
 
-        //set rotors positions
-        //set plugboard connections
+    private List<MappingPair<String,String>> generateRandomPlugboardConnections(String ABC) {
+        Random random = new Random();
+        List<String> plugsLeft = new ArrayList<>();
+        List<String> plugsRight = new ArrayList<>();
+        int numOfPlugs = random.nextInt(ABC.length()/2);
+        int randStartingPoint1 = random.nextInt(ABC.length());
+        int randStartingPoint2 = random.nextInt(ABC.length());
+        String endPoint1 = ABC.substring(randStartingPoint1,randStartingPoint1 + 1);
+        String endPoint2 = ABC.substring(randStartingPoint2,randStartingPoint2 + 1);
+        for (int i = 0; i < numOfPlugs; i++) {
+            while (plugsLeft.contains(endPoint1)) {
+                randStartingPoint1 = random.nextInt(ABC.length());
+                endPoint1 = ABC.substring(randStartingPoint1,randStartingPoint1 + 1);
+            }
+            while (plugsRight.contains(endPoint2)) {
+                randStartingPoint2 = random.nextInt(ABC.length());
+                endPoint2 = ABC.substring(randStartingPoint2, randStartingPoint2 + 1);
+            }
+            plugsLeft.add(endPoint1);
+            plugsRight.add(endPoint2);
+        }
+        List<MappingPair<String,String>> plugPairs = new ArrayList<>();
+        for (int i = 0; i < plugsLeft.size() && i < plugsRight.size(); i++) {
+             plugPairs.add(new MappingPair<String,String>(plugsLeft.get(i), plugsRight.get(i)));
+        }
+        return plugPairs;
+    }
+
+    private List<Integer> generateRandomRotorPositions(String ABC) {
+        Random random = new Random();
+        List<Integer> rotorsStartingPositions = new ArrayList<>();
+        int startingPos;
+        for (int i = 0; i < expectedNumOfRotors; i++) {
+            startingPos = random.nextInt(ABC.length()) + 1;
+            rotorsStartingPositions.add(startingPos);
+        }
+        return rotorsStartingPositions;
+    }
+
+    private List<Integer> generateRandomRotorList() {
+        Random random = new Random();
+        List<Integer> rotorIdList = new ArrayList<>();
+        int rotorId = random.nextInt(rotorsInventory.size()) + 1;
+        for (int i = 0; i < expectedNumOfRotors; i++) {
+            while (rotorIdList.contains(rotorId)) {
+                rotorId = random.nextInt(rotorsInventory.size()) + 1;
+            }
+            rotorIdList.add(rotorId);
+        }
+        return rotorIdList;
     }
 
     @Override
@@ -125,6 +181,7 @@ public class MachineHandlerImpl implements MachineHandler {
             String ABC = cteMachine.getABC().trim();
             List<CTERotor> cteRotors = cteMachine.getCTERotors().getCTERotor();
             List<CTEReflector> cteReflectors = cteMachine.getCTEReflectors().getCTEReflector();
+            this.expectedNumOfRotors = cteMachine.getRotorsCount();
 
             ioWheelInventory = new IOWheelImpl(ABC);
             plugBoardInventory = new PlugBoardImpl(ABC);
@@ -183,35 +240,31 @@ public class MachineHandlerImpl implements MachineHandler {
         List<CTERotor> rotors = machine.getCTERotors().getCTERotor();
         List<CTEReflector> reflectors = machine.getCTEReflectors().getCTEReflector();
 
-        //TODO: change to logs
-        System.out.println("Even ABC: " + isABCCountEven(ABC));
-
-        System.out.println("good rotors count: " + isRotorCountGood(machine.getRotorsCount(), rotors.size()));
-
-        System.out.println("isRotorsIdsLegal: "+ isRotorsIdsLegal(rotors));
-
-        System.out.println("isRotorsMappLegal: "+ isRotorsMappingLegal(rotors));
-
-        System.out.println("isRotorsNotchLegal: "+ isRotorsNotchLegal(rotors, ABC));
-
-        System.out.println("isReflectorIdsLegal: "+ isReflectorsIdsLegal(reflectors));
-
-        System.out.println("isReflectorsMappingLegal: "+ isReflectorsMappingLegal(reflectors));
+        log.debug("MachineHandler check xml validity: Is even ABC: " + isABCCountEven(ABC));
+        log.debug("MachineHandler check xml validity: Is good rotors count: " + isRotorCountGood(machine.getRotorsCount(), rotors.size()));
+        log.debug("MachineHandler check xml validity: Is rotors ids legal: " + isRotorsIdsLegal(rotors));
+        log.debug("MachineHandler check xml validity: Is rotors map legal: " + isRotorsMappingLegal(rotors));
+        log.debug("MachineHandler check xml validity: Is rotors notches legal: " + isRotorsNotchLegal(rotors, ABC));
+        log.debug("MachineHandler check xml validity: Is reflector ids legal: " + isReflectorsIdsLegal(reflectors));
+        log.debug("MachineHandler check xml validity: Is reflectors mapping legal: " + isReflectorsMappingLegal(reflectors));
 
         boolean result = isABCCountEven(ABC) && isRotorCountGood(machine.getRotorsCount(), rotors.size())
                 && isRotorsIdsLegal(rotors) && isRotorsMappingLegal(rotors) && isRotorsNotchLegal(rotors, ABC)
                 && isReflectorsIdsLegal(reflectors) && isReflectorsMappingLegal(reflectors);
+
+        log.info("MachineHandler check xml validity: did pass all tests: " + result);
         return result;
     }
-    private boolean isFileInExistenceAndXML(String absolutePath){
+    private boolean isFileInExistenceAndXML(String path) throws IOException {
         String extension = "";
-        int i = absolutePath.lastIndexOf('.');
+        int i = path.lastIndexOf('.');
         if (i > 0) {
-            extension = absolutePath.substring(i+1);
+            extension = path.substring(i+1);
         }
 
-        File f = new File(absolutePath);
-        return extension.toLowerCase(Locale.ROOT).equals("xml") && f.exists();
+        File file = Paths.get(path).toRealPath().toFile();
+//        File f = new File(path);
+        return extension.toLowerCase(Locale.ROOT).equals("xml") && file.exists();
 
     }
 
