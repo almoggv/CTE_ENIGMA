@@ -16,6 +16,4 @@ public class MachineState {
     private List<Integer> rotorIds;
     private List<Integer> rotorsStartingPositions;
     private List<MappingPair<String,String>> plugMapping;
-
-
 }

@@ -26,5 +26,8 @@ public interface PlugBoard extends DeepCloneable {
 
     public String getMappedValue(String inValue);
 
+    public List<MappingPair<String,String>> getCurrentMapping();
+
+    @Override
     public PlugBoard getDeepClone();
 }

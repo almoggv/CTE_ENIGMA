@@ -9,6 +9,7 @@ import org.apache.log4j.PropertyConfigurator;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 
@@ -119,7 +120,40 @@ public class EnigmaMachine implements EncryptionMachine {
 
     @Override
     public MachineState getMachineState() {
-        MachineState resultMachineState = new MachineState();
-        return resultMachineState;
+        List<Integer> rotorIds = new ArrayList<>();
+        List<Integer> rotorsHeadPositions = new ArrayList<>();
+        List<MappingPair<String,String>> minimalPlugMapping = this.plugBoard.getCurrentMapping();
+        for (Rotor rotor : this.rotors) {
+            rotorIds.add(rotor.getId());
+            rotorsHeadPositions.add(rotor.getHeadLocation());
+        }
+        return  new MachineState(reflector.getId(),rotorIds,rotorsHeadPositions,minimalPlugMapping);
+    }
+
+    @Override
+    public void setMachineState(MachineState machineState) {
+        if(this.rotors == null || this.plugBoard == null || this.reflector == null || this.ioWheel == null){
+            log.error("Failed to set machine state - No machine parts present");
+            return;
+        }
+        if(machineState == null){
+            log.error("Failed to set machine state from given machineState DTO");
+            return;
+        }
+        if(machineState.getPlugMapping() == null){
+            log.warn("setting machine state - No plug board mapping to set");
+        }
+        else{
+            this.plugBoard.connectMultiple(machineState.getPlugMapping());
+        }
+
+        if(machineState.getRotorsStartingPositions() == null || this.rotors.size()!=machineState.getRotorsStartingPositions().size()){
+            log.warn("setting machine state - No rotors initial rotor positions");
+        }
+        else{
+            this.setRotorsStartingPosition(machineState.getRotorsStartingPositions());
+        }
+        //TODO: validate rotors ids?
+        //TODO: validate reflector's id?
     }
 }

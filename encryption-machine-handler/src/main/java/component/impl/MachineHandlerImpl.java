@@ -45,14 +45,18 @@ public class MachineHandlerImpl implements MachineHandler {
     public void buildMachinePartsInventory(String absolutePath) {
         if (isFileInExistenceAndXML(absolutePath)){
             CTEEnigma cteEnigma = FileConfigurationHandler.fromXmlFileToCTE(absolutePath);
-            checkMachineConfiguration(cteEnigma);
-            buildMachinePartsInventory(cteEnigma);
+            if(isMachineConfigurationValid(cteEnigma)){
+                buildMachinePartsInventory(cteEnigma);
+            }
+            else{
+                log.error("Failed to build machine inventory - CteMachine configured in file is invalid");
+            }
         }
     }
 
     @Override
-    public boolean assembleMachine() {
-        return false;
+    public void assembleMachine() {
+        return;
     }
 
     @Override
@@ -65,28 +69,49 @@ public class MachineHandlerImpl implements MachineHandler {
     public void assembleMachineParts(ReflectorsId reflectorId, List<Integer> rotorIds) {
         Predicate<Reflector> idReflectorPredicate = (reflector) -> reflector.getId() == reflectorId;
         Reflector reflector = reflectorsInventory.stream().filter(idReflectorPredicate).findFirst().orElse(null);
+        if(reflector == null){
+            log.error("Failed to assemble machine parts - could not find REFLECTOR in inventory with id: " + reflectorId);
+            return;
+        }
         List<Rotor> rotorListForMachine = new ArrayList<>();
         for (int rotorId : rotorIds) {
             Predicate<Rotor> idRotorPredicate = (rotor) -> rotor.getId() == rotorId;
             Rotor rotorFromInventory = rotorsInventory.stream().filter(idRotorPredicate).findFirst().orElse(null);
             rotorListForMachine.add(rotorFromInventory);
         }
+        if(rotorListForMachine.size() != rotorIds.size()){
+            log.error("Failed to assemble machine parts - not all ROTORS were found, missing" + (rotorIds.size()-rotorListForMachine.size()));
+            return;
+        }
+        if(encryptionMachine == null){
+            log.error("Failed to assemble machine parts - no machine found");
+            return;
+        }
         this.encryptionMachine.buildMachine(plugBoardInventory, reflector, rotorListForMachine, ioWheelInventory);
         this.initialMachineState.setReflectorId(reflector.getId());
         this.initialMachineState.setRotorIds(rotorIds);
+        log.info("Machine Handler - assembled machine parts finished");
     }
 
     @Override
     public void setStartingMachineState(List<Integer> rotorsStartingPositions, List<MappingPair<String, String>> plugMapping) {
+        if(encryptionMachine == null){
+            log.error("Failed to set Machine initial state - no machine found");
+            return;
+        }
         encryptionMachine.setRotorsStartingPosition(rotorsStartingPositions);
         encryptionMachine.connectPlugs(plugMapping);
         this.initialMachineState.setRotorsStartingPositions(rotorsStartingPositions);
         this.initialMachineState.setPlugMapping(plugMapping);
+        log.info("Machine Handler - initial state of machine state set");
     }
 
     @Override
     public MachineState getMachineState() {
-        return null;
+        if(this.encryptionMachine == null){
+            return null;
+        }
+        return encryptionMachine.getMachineState();
     }
 
     private void buildMachinePartsInventory(CTEEnigma cteEnigma) {
@@ -125,7 +150,6 @@ public class MachineHandlerImpl implements MachineHandler {
         return false;
     }
 
-
     @Override
     public boolean saveStateToFile(String fileName) {
         return false;
@@ -147,26 +171,32 @@ public class MachineHandlerImpl implements MachineHandler {
         return null;
     }
 
-    private void checkMachineConfiguration(CTEEnigma cteEnigma) {
+    private boolean isMachineConfigurationValid(CTEEnigma cteEnigma) {
         CTEMachine machine = cteEnigma.getCTEMachine();
         String ABC = machine.getABC();
         List<CTERotor> rotors = machine.getCTERotors().getCTERotor();
         List<CTEReflector> reflectors = machine.getCTEReflectors().getCTEReflector();
 
-        //todo change to logs
+        //TODO: change to logs
         System.out.println("Even ABC: " + isABCCountEven(ABC));
 
         System.out.println("good rotors count: " + isRotorCountGood(machine.getRotorsCount(), rotors.size()));
 
-        System.out.println("isRotorsIdsLegal: "+isRotorsIdsLegal(rotors));
+        System.out.println("isRotorsIdsLegal: "+ isRotorsIdsLegal(rotors));
 
-        System.out.println("isRotorsMappLegal: "+isRotorsMappingLegal(rotors));
+        System.out.println("isRotorsMappLegal: "+ isRotorsMappingLegal(rotors));
 
-        System.out.println("isRotorsNotchLegal: "+isRotorsNotchLegal(rotors, ABC));
+        System.out.println("isRotorsNotchLegal: "+ isRotorsNotchLegal(rotors, ABC));
 
-        System.out.println("isReflectorIdsLegal: "+isReflectorsIdsLegal(reflectors));
+        System.out.println("isReflectorIdsLegal: "+ isReflectorsIdsLegal(reflectors));
 
         System.out.println("isReflectorsMappingLegal: "+ isReflectorsMappingLegal(reflectors));
+
+        boolean result = isABCCountEven(ABC) && isRotorCountGood(machine.getRotorsCount(), rotors.size())
+                && isRotorsIdsLegal(rotors) && isRotorsMappingLegal(rotors) && isRotorsNotchLegal(rotors, ABC)
+                && isReflectorsIdsLegal(reflectors) && isReflectorsMappingLegal(reflectors);
+        return result;
+
     }
     private boolean isFileInExistenceAndXML(String absolutePath){
         String extension = "";
@@ -213,11 +243,9 @@ public class MachineHandlerImpl implements MachineHandler {
 
     private boolean isRotorsMappingLegal(List<CTERotor> rotors){
         boolean isMappingLegal = true;
-
         for(CTERotor rotor: rotors){
             isMappingLegal = isMappingLegal && isRotorMappingLegal(rotor);
         }
-
         return isMappingLegal;
     }
 
@@ -238,6 +266,7 @@ public class MachineHandlerImpl implements MachineHandler {
 
         return true;
     }
+
     private boolean isRotorsNotchLegal(List<CTERotor> rotors, String ABC){
         boolean isLegal = true;
         int ABCLen = ABC.trim().length();
@@ -273,6 +302,7 @@ public class MachineHandlerImpl implements MachineHandler {
 
         return isMappingLegal;
     }
+
     private boolean isReflectorMappingLegal(CTEReflector reflector){
         List<CTEReflect> reflects = reflector.getCTEReflect();
 

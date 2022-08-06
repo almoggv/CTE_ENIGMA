@@ -112,6 +112,26 @@ public class PlugBoardImpl implements PlugBoard {
         return MappingPairListUtils.getRightByLeft(plugBoardMapping, inValue);
     }
 
+    /**
+     * created an returns a minmalistic mapping
+     * @return
+     */
+    @Override
+    public List<MappingPair<String,String>> getCurrentMapping() {
+        List<MappingPair<String,String>> currentMapping = new ArrayList<>();
+        boolean isEndPointAlreadyFound = false;
+        for (MappingPair<String,String> pair : this.plugBoardMapping ) {
+            isEndPointAlreadyFound = false;
+            isEndPointAlreadyFound = currentMapping.contains(MappingPairListUtils.findPairByLeft(plugBoardMapping,pair.getLeft()))
+                    || currentMapping.contains(MappingPairListUtils.findPairByRight(plugBoardMapping,pair.getLeft()));
+            if(isEndPointConnected(pair.getLeft()) && !isEndPointAlreadyFound){
+                MappingPair<String,String> newPair = new MappingPair<String,String>(pair.getLeft(), pair.getRight());
+                currentMapping.add(newPair);
+            }
+        }
+        return currentMapping;
+    }
+
     @Override
     public PlugBoard getDeepClone() {
         String recreatedABC = new String();

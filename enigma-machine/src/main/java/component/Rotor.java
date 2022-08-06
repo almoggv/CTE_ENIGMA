@@ -18,5 +18,6 @@ public interface Rotor extends DeepCloneable {
 
     public void rotate();
 
+    @Override
     public Rotor getDeepClone();
 }

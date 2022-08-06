@@ -23,7 +23,7 @@ public interface MachineHandler {
      * picks reflector, plugBoardMapping, rotors and their starting position 
      * @return
      */
-    public boolean assembleMachine();
+    public void assembleMachine();
     /**
      * !!!!call buildMachinePartsInventory before assembling!!!!
      * assembles a machine from user instructions

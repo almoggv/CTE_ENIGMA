@@ -10,5 +10,6 @@ public interface IOWheel extends DeepCloneable {
 
     public int getWheelSize();
 
+    @Override
     public IOWheel getDeepClone();
 }
