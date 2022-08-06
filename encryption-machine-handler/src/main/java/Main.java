@@ -11,17 +11,17 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-//        mainToCheckSanitySmall();
-        MachineHandler machineHandler =new MachineHandlerImpl();
-        String relativePath = "./enigma-machine/src/main/resources/ex1-sanity-small.xml";
-        try {
-            machineHandler.buildMachinePartsInventory(relativePath);
-        }
-        catch (Exception e){
-            System.out.println(e.getMessage());
-        }
-
-        machineHandler.assembleMachine();
+        mainToCheckSanitySmall();
+//        MachineHandler machineHandler =new MachineHandlerImpl();
+//        String relativePath = "./enigma-machine/src/main/resources/ex1-sanity-small.xml";
+//        try {
+//            machineHandler.buildMachinePartsInventory(relativePath);
+//        }
+//        catch (Exception e){
+//            System.out.println(e.getMessage());
+//        }
+//
+//        machineHandler.assembleMachine();
 
     }
 
@@ -45,6 +45,8 @@ public class Main {
         List<Integer> rotorsstartingPos = Arrays.asList(2,2);
 
         machineHandler.assembleMachine(refid, rotorsIds,rotorsstartingPos,plugBoard);
+//        String input = "zzz";
+//        String output = machineHandler.encrypt(input);
 
         List<String> inputs = Arrays.asList(new String[]{"AABBCCDDEEFF" , "FEDCBADDEF", "FEDCBAABCDEF" , "AFBFCFDFEFFF" , "AAAEEEBBBDDDCCCFFF"});
         List<String> outputs = Arrays.asList(new String[]{"CEEFBDFCDAAB" , "BACACFFCDD" , "BACACFEEAFBB", "CDEBBAFADDAB" , "CEFDABCEFFCEDABABD"});

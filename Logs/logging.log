@@ -819,4 +819,44 @@
   2022-08-06 17:57:56 INFO  MachineHandlerImpl:255 - MachineHandler check xml validity: did pass all tests: true
   2022-08-06 17:57:56 INFO  MachineHandlerImpl:203 - Machine handler: created inventory successfully
   2022-08-06 18:03:14 ERROR MachineHandlerImpl:134 - Failed to assemble machine parts - could not find REFLECTOR in inventory with id: III
+  2022-08-06 18:58:51 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-06 18:58:51 INFO  MachineHandlerImpl:263 - MachineHandler check xml validity: did pass all tests: true
+  2022-08-06 18:58:51 INFO  MachineHandlerImpl:203 - Machine handler: created inventory successfully
+  2022-08-06 18:58:51 INFO  MachineHandlerImpl:154 - Machine Handler - assembled machine parts finished
+  2022-08-06 18:58:51 INFO  MachineHandlerImpl:167 - Machine Handler - initial state of machine state set
+  2022-08-06 18:59:04 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-06 18:59:04 INFO  MachineHandlerImpl:263 - MachineHandler check xml validity: did pass all tests: true
+  2022-08-06 18:59:04 INFO  MachineHandlerImpl:203 - Machine handler: created inventory successfully
+  2022-08-06 18:59:04 INFO  MachineHandlerImpl:154 - Machine Handler - assembled machine parts finished
+  2022-08-06 18:59:04 INFO  MachineHandlerImpl:167 - Machine Handler - initial state of machine state set
+  2022-08-06 19:00:25 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-06 19:00:25 INFO  MachineHandlerImpl:263 - MachineHandler check xml validity: did pass all tests: true
+  2022-08-06 19:00:25 INFO  MachineHandlerImpl:203 - Machine handler: created inventory successfully
+  2022-08-06 19:02:29 INFO  MachineHandlerImpl:154 - Machine Handler - assembled machine parts finished
+  2022-08-06 19:02:29 INFO  MachineHandlerImpl:167 - Machine Handler - initial state of machine state set
+  2022-08-06 19:02:29 INFO  MachineHandlerImpl:167 - Machine Handler - initial state of machine state set
+  2022-08-06 19:02:36 INFO  MachineHandlerImpl:167 - Machine Handler - initial state of machine state set
+  2022-08-06 19:02:36 INFO  MachineHandlerImpl:167 - Machine Handler - initial state of machine state set
+  2022-08-06 19:02:36 INFO  MachineHandlerImpl:167 - Machine Handler - initial state of machine state set
+  2022-08-06 19:02:36 INFO  MachineHandlerImpl:167 - Machine Handler - initial state of machine state set
+  2022-08-06 19:02:38 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-06 19:02:38 INFO  MachineHandlerImpl:263 - MachineHandler check xml validity: did pass all tests: true
+  2022-08-06 19:02:38 INFO  MachineHandlerImpl:203 - Machine handler: created inventory successfully
+  2022-08-06 19:02:45 INFO  MachineHandlerImpl:154 - Machine Handler - assembled machine parts finished
+  2022-08-06 19:02:46 INFO  MachineHandlerImpl:167 - Machine Handler - initial state of machine state set
+  2022-08-06 19:03:41 INFO  MachineHandlerImpl:167 - Machine Handler - initial state of machine state set
+  2022-08-06 19:05:50 INFO  MachineHandlerImpl:167 - Machine Handler - initial state of machine state set
+  2022-08-06 19:07:42 INFO  MachineHandlerImpl:167 - Machine Handler - initial state of machine state set
+  2022-08-06 19:07:44 INFO  MachineHandlerImpl:167 - Machine Handler - initial state of machine state set
+  2022-08-06 19:07:44 INFO  MachineHandlerImpl:167 - Machine Handler - initial state of machine state set
+  2022-08-06 20:02:49 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-06 20:02:49 INFO  MachineHandlerImpl:263 - MachineHandler check xml validity: did pass all tests: true
+  2022-08-06 20:02:49 INFO  MachineHandlerImpl:203 - Machine handler: created inventory successfully
+  2022-08-06 20:02:49 INFO  MachineHandlerImpl:154 - Machine Handler - assembled machine parts finished
+  2022-08-06 20:02:49 INFO  MachineHandlerImpl:167 - Machine Handler - initial state of machine state set
+  2022-08-06 20:02:49 INFO  MachineHandlerImpl:167 - Machine Handler - initial state of machine state set
+  2022-08-06 20:02:49 INFO  MachineHandlerImpl:167 - Machine Handler - initial state of machine state set
+  2022-08-06 20:02:49 INFO  MachineHandlerImpl:167 - Machine Handler - initial state of machine state set
+  2022-08-06 20:02:49 INFO  MachineHandlerImpl:167 - Machine Handler - initial state of machine state set
+  2022-08-06 20:02:49 INFO  MachineHandlerImpl:167 - Machine Handler - initial state of machine state set
   

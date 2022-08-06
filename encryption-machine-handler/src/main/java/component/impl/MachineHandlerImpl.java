@@ -226,6 +226,14 @@ public class MachineHandlerImpl implements MachineHandler {
 
     @Override
     public String encrypt(String input) {
+
+        String abc = ioWheelInventory.getABC();
+        for (int i = 0; i < input.length(); i++) {
+            if(!abc.contains(input.substring(i,i+1))){
+                throw new IllegalArgumentException("input contains letter not in ACB : letter index" + i);
+            }
+        }
+
         return encryptionMachine.encrypt(input);
     }
 
