@@ -54,7 +54,7 @@ public class Main {
         for (int i = 0; i < inputs.size(); i++) {
             String input = inputs.get(i);
             String wantedOutput = outputs.get(i);
-            machineHandler.setStartingMachineState(rotorsstartingPos,plugBoard);
+            machineHandler.resetToLastSetState();
             String output = machineHandler.encrypt(input);
             System.out.println("the output is: " + output + " is correct?: "+ wantedOutput.equals(output));
         }

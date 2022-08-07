@@ -916,4 +916,19 @@
   2022-08-07 17:42:29 INFO  MachineHandlerImpl:245 - time it took to encrypt:1000000
   2022-08-07 17:42:29 INFO  MachineHandlerImpl:169 - Machine Handler - initial state of machine state set
   2022-08-07 17:42:29 INFO  MachineHandlerImpl:245 - time it took to encrypt:1000000
+  2022-08-07 18:37:29 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-07 18:37:29 INFO  MachineHandlerImpl:293 - MachineHandler check xml validity: did pass all tests: true
+  2022-08-07 18:37:29 INFO  MachineHandlerImpl:221 - Machine handler: created inventory successfully
+  2022-08-07 18:37:29 INFO  MachineHandlerImpl:158 - Machine Handler - assembled machine parts finished
+  2022-08-07 18:37:29 INFO  MachineHandlerImpl:171 - Machine Handler - initial state of machine state set
+  2022-08-07 18:37:29 WARN  PlugBoardImpl:69 - Plugboard : Failed to connect endpoints -Fis already connected
+  2022-08-07 18:37:29 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT0.001S
+  2022-08-07 18:37:29 WARN  PlugBoardImpl:69 - Plugboard : Failed to connect endpoints -Fis already connected
+  2022-08-07 18:37:29 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT0S
+  2022-08-07 18:37:29 WARN  PlugBoardImpl:69 - Plugboard : Failed to connect endpoints -Fis already connected
+  2022-08-07 18:37:29 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT0S
+  2022-08-07 18:37:29 WARN  PlugBoardImpl:69 - Plugboard : Failed to connect endpoints -Fis already connected
+  2022-08-07 18:37:29 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT0.001S
+  2022-08-07 18:37:29 WARN  PlugBoardImpl:69 - Plugboard : Failed to connect endpoints -Fis already connected
+  2022-08-07 18:37:29 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT0S
   

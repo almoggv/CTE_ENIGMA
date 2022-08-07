@@ -1,8 +1,9 @@
 package main.java.component;
 
+import main.java.dto.InventoryInfo;
 import main.java.generictype.MappingPair;
 import main.java.dto.MachineState;
-import main.java.dto.MachineStatisticsHistory;
+import main.java.dto.EncryptionInfoHistory;
 import main.java.enums.ReflectorsId;
 
 import java.util.List;
@@ -41,7 +42,9 @@ public interface MachineHandler {
 
     public MachineState getMachineState();
 
-    public boolean resetToLastSetState();
+    public InventoryInfo getInventoryInfo();
+
+    public void resetToLastSetState();
 
     /**
      * encrypt message by machine
@@ -50,7 +53,7 @@ public interface MachineHandler {
      */
     public String encrypt(String input);
 
-    public MachineStatisticsHistory getMachineStatisticsHistory();
+    public List<EncryptionInfoHistory> getMachineStatisticsHistory();
 
     //bonus
     public boolean loadStateFromFile(String absolutePath);

@@ -1,9 +1,9 @@
 package main.java.component.impl;
 
 
-import javafx.util.Pair;
+import main.java.dto.InventoryInfo;
 import main.java.dto.MachineState;
-import main.java.dto.MachineStatisticsHistory;
+import main.java.dto.EncryptionInfoHistory;
 import main.java.generictype.MappingPair;
 import main.java.handler.FileConfigurationHandler;
 import main.java.component.*;
@@ -32,6 +32,8 @@ public class MachineHandlerImpl implements MachineHandler {
     private int expectedNumOfRotors;
     private EncryptionMachine encryptionMachine = new EnigmaMachine();
     private MachineState initialMachineState = new MachineState();
+
+    private final List<EncryptionInfoHistory> machineStatisticsHistory = new ArrayList<>();
 
     static {
         String log4JPropertyFile = "./enigma-machine/src/main/resources/log4j.properties";
@@ -177,6 +179,20 @@ public class MachineHandlerImpl implements MachineHandler {
         return encryptionMachine.getMachineState();
     }
 
+    @Override
+    public InventoryInfo getInventoryInfo() {
+        InventoryInfo inventoryInfo = new InventoryInfo();
+        inventoryInfo.setNumOfAvailableReflectors(reflectorsInventory.size());
+        inventoryInfo.setNumOfAvailableRotors(rotorsInventory.size());
+        inventoryInfo.setNumOfRotorsInUse(expectedNumOfRotors);
+        Map<Integer,Integer> rotorIdToNotch = new HashMap<>();
+        for (Rotor rotor: rotorsInventory ) {
+            rotorIdToNotch.putIfAbsent(rotor.getId(), rotor.getNotchLocation());
+        }
+        inventoryInfo.setRotorIdToNotchLocation(rotorIdToNotch);
+        return inventoryInfo;
+    }
+
     private void buildMachinePartsInventory(CTEEnigma cteEnigma) {
         try {
             CTEMachine cteMachine = cteEnigma.getCTEMachine();
@@ -221,34 +237,38 @@ public class MachineHandlerImpl implements MachineHandler {
 
 
     @Override
-    public boolean resetToLastSetState() {
+    public void resetToLastSetState() {
         this.encryptionMachine.setMachineState(initialMachineState);
-        return true;
     }
 
     @Override
     public String encrypt(String input) {
-        //todo is to upper case necessary
-        input = input.toUpperCase();
+        //todo is to upper case necessary - decide where
+        //input = input.toUpperCase();
 
         String abc = ioWheelInventory.getABC();
         for (int i = 0; i < input.length(); i++) {
             if(!abc.contains(input.substring(i,i+1))){
-                throw new IllegalArgumentException("input contains letter not in ACB : letter index" + i);
+                throw new IllegalArgumentException("input contains letter not in ACB : letter" + input.substring(i,i+1));
             }
         }
 
+        MachineState currentMachineState = encryptionMachine.getMachineState();
+
         Instant startEncryptionTime = Instant.now();
-        String encrypted = encryptionMachine.encrypt(input);
+        String encryptedOutput = encryptionMachine.encrypt(input);
         Instant endEncryptionTime = Instant.now();
-        Long encryptionTime = Duration.between(startEncryptionTime, endEncryptionTime).toNanos();
+        Duration encryptionTime = Duration.between(startEncryptionTime, endEncryptionTime);//.toNanos();
         log.info("time it took to encrypt:" + encryptionTime);
-        return encrypted;
+
+        machineStatisticsHistory.add(new EncryptionInfoHistory(input, encryptedOutput, encryptionTime, currentMachineState));
+
+        return encryptedOutput;
     }
 
     @Override
-    public MachineStatisticsHistory getMachineStatisticsHistory() {
-        return null;
+    public List<EncryptionInfoHistory> getMachineStatisticsHistory() {
+        return machineStatisticsHistory;
     }
 
     private boolean isMachineConfigurationValid(CTEEnigma cteEnigma) {

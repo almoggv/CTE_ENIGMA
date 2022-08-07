@@ -8,6 +8,7 @@ public interface Rotor extends DeepCloneable {
 
     public int getId();
 
+    public int getNotchLocation();
     public int fromInputWheelToReflector(int inValue);
 
     public int fromReflectorToInputWheel(int inValue);

@@ -30,7 +30,7 @@ public class RotorImpl implements Rotor {
     private final LinkedList<MappingPair<Integer,Integer>> rotorMapping = new LinkedList<>();
     @Getter private final int id;
     private int headPosition = 0;
-    private final int notchLocation;
+    @Getter private final int notchLocation;
 
     static {
         String log4JPropertyFile = "./enigma-machine/src/main/resources/log4j.properties";
