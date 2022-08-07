@@ -16,6 +16,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -226,6 +228,8 @@ public class MachineHandlerImpl implements MachineHandler {
 
     @Override
     public String encrypt(String input) {
+        //todo is to lower case necessary
+        input = input.toLowerCase();
 
         String abc = ioWheelInventory.getABC();
         for (int i = 0; i < input.length(); i++) {
@@ -234,7 +238,12 @@ public class MachineHandlerImpl implements MachineHandler {
             }
         }
 
-        return encryptionMachine.encrypt(input);
+        Instant startEncryptionTime = Instant.now();
+        String encrypted = encryptionMachine.encrypt(input);
+        Instant endEncryptionTime = Instant.now();
+        Long encryptionTime = Duration.between(startEncryptionTime, endEncryptionTime).toNanos();
+        log.info("time it took to encrypt:" + encryptionTime);
+        return encrypted;
     }
 
     @Override

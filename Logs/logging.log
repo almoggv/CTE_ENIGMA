@@ -859,4 +859,34 @@
   2022-08-06 20:02:49 INFO  MachineHandlerImpl:167 - Machine Handler - initial state of machine state set
   2022-08-06 20:02:49 INFO  MachineHandlerImpl:167 - Machine Handler - initial state of machine state set
   2022-08-06 20:02:49 INFO  MachineHandlerImpl:167 - Machine Handler - initial state of machine state set
+  2022-08-07 16:44:29 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-07 16:44:29 INFO  MachineHandlerImpl:270 - MachineHandler check xml validity: did pass all tests: true
+  2022-08-07 16:44:29 INFO  MachineHandlerImpl:205 - Machine handler: created inventory successfully
+  2022-08-07 16:44:29 INFO  MachineHandlerImpl:156 - Machine Handler - assembled machine parts finished
+  2022-08-07 16:44:29 INFO  MachineHandlerImpl:169 - Machine Handler - initial state of machine state set
+  2022-08-07 16:44:29 INFO  MachineHandlerImpl:169 - Machine Handler - initial state of machine state set
+  2022-08-07 16:44:29 INFO  MachineHandlerImpl:243 - time it took to encrypt:1000000
+  2022-08-07 16:44:29 INFO  MachineHandlerImpl:169 - Machine Handler - initial state of machine state set
+  2022-08-07 16:44:29 INFO  MachineHandlerImpl:243 - time it took to encrypt:0
+  2022-08-07 16:44:30 INFO  MachineHandlerImpl:169 - Machine Handler - initial state of machine state set
+  2022-08-07 16:44:30 INFO  MachineHandlerImpl:243 - time it took to encrypt:0
+  2022-08-07 16:44:30 INFO  MachineHandlerImpl:169 - Machine Handler - initial state of machine state set
+  2022-08-07 16:44:30 INFO  MachineHandlerImpl:243 - time it took to encrypt:1000000
+  2022-08-07 16:44:30 INFO  MachineHandlerImpl:169 - Machine Handler - initial state of machine state set
+  2022-08-07 16:44:30 INFO  MachineHandlerImpl:243 - time it took to encrypt:0
+  2022-08-07 16:46:00 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-07 16:46:00 INFO  MachineHandlerImpl:270 - MachineHandler check xml validity: did pass all tests: true
+  2022-08-07 16:46:00 INFO  MachineHandlerImpl:205 - Machine handler: created inventory successfully
+  2022-08-07 16:46:00 INFO  MachineHandlerImpl:156 - Machine Handler - assembled machine parts finished
+  2022-08-07 16:46:00 INFO  MachineHandlerImpl:169 - Machine Handler - initial state of machine state set
+  2022-08-07 16:46:00 INFO  MachineHandlerImpl:169 - Machine Handler - initial state of machine state set
+  2022-08-07 16:46:00 INFO  MachineHandlerImpl:243 - time it took to encrypt:1000000
+  2022-08-07 16:46:00 INFO  MachineHandlerImpl:169 - Machine Handler - initial state of machine state set
+  2022-08-07 16:46:00 INFO  MachineHandlerImpl:243 - time it took to encrypt:1000000
+  2022-08-07 16:46:00 INFO  MachineHandlerImpl:169 - Machine Handler - initial state of machine state set
+  2022-08-07 16:46:00 INFO  MachineHandlerImpl:243 - time it took to encrypt:1000000
+  2022-08-07 16:46:00 INFO  MachineHandlerImpl:169 - Machine Handler - initial state of machine state set
+  2022-08-07 16:46:00 INFO  MachineHandlerImpl:243 - time it took to encrypt:0
+  2022-08-07 16:46:00 INFO  MachineHandlerImpl:169 - Machine Handler - initial state of machine state set
+  2022-08-07 16:46:00 INFO  MachineHandlerImpl:243 - time it took to encrypt:0
   
