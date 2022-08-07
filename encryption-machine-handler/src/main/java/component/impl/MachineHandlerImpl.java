@@ -228,8 +228,8 @@ public class MachineHandlerImpl implements MachineHandler {
 
     @Override
     public String encrypt(String input) {
-        //todo is to lower case necessary
-        input = input.toLowerCase();
+        //todo is to upper case necessary
+        input = input.toUpperCase();
 
         String abc = ioWheelInventory.getABC();
         for (int i = 0; i < input.length(); i++) {
