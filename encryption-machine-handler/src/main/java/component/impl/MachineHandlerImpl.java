@@ -34,6 +34,7 @@ public class MachineHandlerImpl implements MachineHandler {
     private MachineState initialMachineState = new MachineState();
 
     private final List<EncryptionInfoHistory> machineStatisticsHistory = new ArrayList<>();
+//    private final Map<MachineState, List<EncryptionInfoHistory>> machineStatisticsHistory = new ArrayList<>();
 
     static {
         String log4JPropertyFile = "./enigma-machine/src/main/resources/log4j.properties";

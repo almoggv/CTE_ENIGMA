@@ -58,5 +58,9 @@ public class Main {
             String output = machineHandler.encrypt(input);
             System.out.println("the output is: " + output + " is correct?: "+ wantedOutput.equals(output));
         }
+
+        System.out.println(machineHandler.getInventoryInfo());
+        System.out.println(machineHandler.getMachineState());
+        System.out.println(machineHandler.getMachineStatisticsHistory());
     }
 }
