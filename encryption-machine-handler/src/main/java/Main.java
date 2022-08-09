@@ -11,15 +11,16 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        mainToCheckSanitySmall();
-//        MachineHandler machineHandler =new MachineHandlerImpl();
-//        String relativePath = "./enigma-machine/src/main/resources/ex1-sanity-small.xml";
-//        try {
-//            machineHandler.buildMachinePartsInventory(relativePath);
-//        }
-//        catch (Exception e){
-//            System.out.println(e.getMessage());
-//        }
+//        mainToCheckSanitySmall();
+//        mainToCheckSanityPaperEnigma();
+        MachineHandler machineHandler =new MachineHandlerImpl();
+        String relativePath = "./enigma-machine/src/main/resources/ex1-error-3.xml";
+        try {
+            machineHandler.buildMachinePartsInventory(relativePath);
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
 //
 //        machineHandler.assembleMachine();
 
@@ -62,5 +63,41 @@ public class Main {
         System.out.println(machineHandler.getInventoryInfo());
         System.out.println(machineHandler.getMachineState());
         System.out.println(machineHandler.getMachineStatisticsHistory());
+    }
+    private static void mainToCheckSanityPaperEnigma() {
+        MachineHandler machineHandler =new MachineHandlerImpl();
+        String relativePath = "enigma-machine/src/main/resources/ex1-sanity-paper-enigma.xml";
+        try {
+            machineHandler.buildMachinePartsInventory(relativePath);
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+
+        // <I><ODX><1,2,3>
+        String abc = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        ReflectorsId refId = ReflectorsId.I;
+        List<MappingPair<String,String>> plugBoard = new ArrayList<MappingPair<String,String>>();
+        List<Integer> rotorsIds = Arrays.asList(3,2,1);
+        List<Integer> rotorsStartingPos = Arrays.asList(abc.indexOf("X"),abc.indexOf("D"),abc.indexOf("O"));
+
+        machineHandler.assembleMachine(refId, rotorsIds,rotorsStartingPos,plugBoard);
+
+        List<String> inputs = Arrays.asList(new String[]{"THERAINISDROPPING"/* , "HELLOWORLD", "ENIGMAMACHINEROCKS" , "WOWCANTBELIEVEITACTUALLYWORKS" , "JAVARULES"*/});
+        List<String> outputs = Arrays.asList(new String[]{"APZTICDXRVMWQHBHU" /*, "DLTBBQVPQV" , "QMJIDORMMYQBJDVSBR", "CVRDIZWDAWQKUKBVHJILPKRNDXWIY" , "MRUHFRZZR"*/});
+        System.out.println(machineHandler.getMachineState());
+
+        for (int i = 0; i < inputs.size(); i++) {
+            String input = inputs.get(i);
+            String wantedOutput = outputs.get(i);
+            machineHandler.resetToLastSetState();
+            String output = machineHandler.encrypt(input);
+            System.out.println("the output is: " + output + " is correct?: "+ wantedOutput.equals(output));
+        }
+
+//        System.out.println(machineHandler.getInventoryInfo());
+        System.out.println(machineHandler.getMachineState());
+//        System.out.println(machineHandler.getMachineStatisticsHistory());
     }
 }

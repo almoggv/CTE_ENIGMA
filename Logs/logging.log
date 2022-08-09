@@ -946,4 +946,148 @@
   2022-08-07 18:46:59 INFO  MachineHandlerImpl:261 - time it took to encrypt:PT0.001S
   2022-08-07 18:46:59 WARN  PlugBoardImpl:69 - Plugboard : Failed to connect endpoints -Fis already connected
   2022-08-07 18:46:59 INFO  MachineHandlerImpl:261 - time it took to encrypt:PT0S
+  2022-08-09 15:33:30 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:enigma-machine/src/main/resources/ex1-sanity-paper-enigma.xml
+  2022-08-09 15:33:30 INFO  MachineHandlerImpl:293 - MachineHandler check xml validity: did pass all tests: true
+  2022-08-09 15:33:30 INFO  MachineHandlerImpl:222 - Machine handler: created inventory successfully
+  2022-08-09 15:33:30 INFO  MachineHandlerImpl:159 - Machine Handler - assembled machine parts finished
+  2022-08-09 15:33:30 INFO  MachineHandlerImpl:172 - Machine Handler - initial state of machine state set
+  2022-08-09 15:33:30 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT0.003S
+  2022-08-09 15:33:30 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT0S
+  2022-08-09 15:33:30 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT0.002S
+  2022-08-09 15:33:30 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT0.001S
+  2022-08-09 15:33:30 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT0.001S
+  2022-08-09 15:34:25 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:enigma-machine/src/main/resources/ex1-sanity-paper-enigma.xml
+  2022-08-09 15:34:25 INFO  MachineHandlerImpl:293 - MachineHandler check xml validity: did pass all tests: true
+  2022-08-09 15:34:25 INFO  MachineHandlerImpl:222 - Machine handler: created inventory successfully
+  2022-08-09 15:34:25 INFO  MachineHandlerImpl:159 - Machine Handler - assembled machine parts finished
+  2022-08-09 15:34:25 INFO  MachineHandlerImpl:172 - Machine Handler - initial state of machine state set
+  2022-08-09 15:34:25 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT0.001S
+  2022-08-09 15:34:25 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT0.001S
+  2022-08-09 15:34:25 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT0.001S
+  2022-08-09 15:34:25 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT0S
+  2022-08-09 15:34:25 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT0S
+  2022-08-09 15:36:59 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:enigma-machine/src/main/resources/ex1-sanity-paper-enigma.xml
+  2022-08-09 15:36:59 INFO  MachineHandlerImpl:293 - MachineHandler check xml validity: did pass all tests: true
+  2022-08-09 15:36:59 INFO  MachineHandlerImpl:222 - Machine handler: created inventory successfully
+  2022-08-09 15:36:59 INFO  MachineHandlerImpl:159 - Machine Handler - assembled machine parts finished
+  2022-08-09 15:36:59 INFO  MachineHandlerImpl:172 - Machine Handler - initial state of machine state set
+  2022-08-09 15:36:59 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT0.001S
+  2022-08-09 15:36:59 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT0.001S
+  2022-08-09 15:36:59 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT0.001S
+  2022-08-09 15:36:59 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT0.001S
+  2022-08-09 15:36:59 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT0S
+  2022-08-09 15:41:11 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:enigma-machine/src/main/resources/ex1-sanity-paper-enigma.xml
+  2022-08-09 15:41:11 INFO  MachineHandlerImpl:293 - MachineHandler check xml validity: did pass all tests: true
+  2022-08-09 15:41:11 INFO  MachineHandlerImpl:222 - Machine handler: created inventory successfully
+  2022-08-09 15:41:37 INFO  MachineHandlerImpl:159 - Machine Handler - assembled machine parts finished
+  2022-08-09 15:41:37 INFO  MachineHandlerImpl:172 - Machine Handler - initial state of machine state set
+  2022-08-09 15:45:07 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT35.018S
+  2022-08-09 15:45:08 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT0.902S
+  2022-08-09 15:45:08 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT0.407S
+  2022-08-09 15:45:09 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT0.415S
+  2022-08-09 15:45:09 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT0.395S
+  2022-08-09 15:47:31 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:enigma-machine/src/main/resources/ex1-sanity-paper-enigma.xml
+  2022-08-09 15:47:31 INFO  MachineHandlerImpl:293 - MachineHandler check xml validity: did pass all tests: true
+  2022-08-09 15:47:31 INFO  MachineHandlerImpl:222 - Machine handler: created inventory successfully
+  2022-08-09 15:47:31 INFO  MachineHandlerImpl:159 - Machine Handler - assembled machine parts finished
+  2022-08-09 15:47:31 INFO  MachineHandlerImpl:172 - Machine Handler - initial state of machine state set
+  2022-08-09 15:47:31 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT0.002S
+  2022-08-09 15:47:31 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT0S
+  2022-08-09 15:47:31 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT0.001S
+  2022-08-09 15:47:31 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT0.001S
+  2022-08-09 15:47:31 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT0S
+  2022-08-09 15:50:19 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:enigma-machine/src/main/resources/ex1-sanity-paper-enigma.xml
+  2022-08-09 15:50:19 INFO  MachineHandlerImpl:293 - MachineHandler check xml validity: did pass all tests: true
+  2022-08-09 15:50:19 INFO  MachineHandlerImpl:222 - Machine handler: created inventory successfully
+  2022-08-09 15:50:19 INFO  MachineHandlerImpl:159 - Machine Handler - assembled machine parts finished
+  2022-08-09 15:50:19 INFO  MachineHandlerImpl:172 - Machine Handler - initial state of machine state set
+  2022-08-09 15:50:19 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT0.002S
+  2022-08-09 15:50:19 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT0S
+  2022-08-09 15:50:19 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT0.002S
+  2022-08-09 15:50:19 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT0.001S
+  2022-08-09 15:50:19 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT0S
+  2022-08-09 15:52:53 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:enigma-machine/src/main/resources/ex1-sanity-paper-enigma.xml
+  2022-08-09 15:52:53 INFO  MachineHandlerImpl:293 - MachineHandler check xml validity: did pass all tests: true
+  2022-08-09 15:52:53 INFO  MachineHandlerImpl:222 - Machine handler: created inventory successfully
+  2022-08-09 15:52:53 INFO  MachineHandlerImpl:159 - Machine Handler - assembled machine parts finished
+  2022-08-09 15:52:53 INFO  MachineHandlerImpl:172 - Machine Handler - initial state of machine state set
+  2022-08-09 15:52:53 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT0.002S
+  2022-08-09 15:53:19 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:enigma-machine/src/main/resources/ex1-sanity-paper-enigma.xml
+  2022-08-09 15:53:19 INFO  MachineHandlerImpl:293 - MachineHandler check xml validity: did pass all tests: true
+  2022-08-09 15:53:19 INFO  MachineHandlerImpl:222 - Machine handler: created inventory successfully
+  2022-08-09 15:53:19 INFO  MachineHandlerImpl:159 - Machine Handler - assembled machine parts finished
+  2022-08-09 15:53:19 INFO  MachineHandlerImpl:172 - Machine Handler - initial state of machine state set
+  2022-08-09 15:53:19 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT0.002S
+  2022-08-09 15:56:21 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-09 15:56:21 INFO  MachineHandlerImpl:293 - MachineHandler check xml validity: did pass all tests: true
+  2022-08-09 15:56:21 INFO  MachineHandlerImpl:222 - Machine handler: created inventory successfully
+  2022-08-09 15:56:21 INFO  MachineHandlerImpl:159 - Machine Handler - assembled machine parts finished
+  2022-08-09 15:56:21 INFO  MachineHandlerImpl:172 - Machine Handler - initial state of machine state set
+  2022-08-09 15:56:21 WARN  PlugBoardImpl:69 - Plugboard : Failed to connect endpoints -Fis already connected
+  2022-08-09 15:56:21 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT0S
+  2022-08-09 15:56:21 WARN  PlugBoardImpl:69 - Plugboard : Failed to connect endpoints -Fis already connected
+  2022-08-09 15:56:21 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT0.001S
+  2022-08-09 15:56:21 WARN  PlugBoardImpl:69 - Plugboard : Failed to connect endpoints -Fis already connected
+  2022-08-09 15:56:21 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT0.001S
+  2022-08-09 15:56:21 WARN  PlugBoardImpl:69 - Plugboard : Failed to connect endpoints -Fis already connected
+  2022-08-09 15:56:21 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT0.001S
+  2022-08-09 15:56:21 WARN  PlugBoardImpl:69 - Plugboard : Failed to connect endpoints -Fis already connected
+  2022-08-09 15:56:21 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT0S
+  2022-08-09 15:57:16 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:enigma-machine/src/main/resources/ex1-sanity-paper-enigma.xml
+  2022-08-09 15:57:16 INFO  MachineHandlerImpl:293 - MachineHandler check xml validity: did pass all tests: true
+  2022-08-09 15:57:16 INFO  MachineHandlerImpl:222 - Machine handler: created inventory successfully
+  2022-08-09 15:57:16 INFO  MachineHandlerImpl:159 - Machine Handler - assembled machine parts finished
+  2022-08-09 15:57:16 INFO  MachineHandlerImpl:172 - Machine Handler - initial state of machine state set
+  2022-08-09 15:57:16 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT0.001S
+  2022-08-09 15:58:32 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:enigma-machine/src/main/resources/ex1-sanity-paper-enigma.xml
+  2022-08-09 15:58:32 INFO  MachineHandlerImpl:293 - MachineHandler check xml validity: did pass all tests: true
+  2022-08-09 15:58:32 INFO  MachineHandlerImpl:222 - Machine handler: created inventory successfully
+  2022-08-09 15:58:32 INFO  MachineHandlerImpl:159 - Machine Handler - assembled machine parts finished
+  2022-08-09 15:58:32 INFO  MachineHandlerImpl:172 - Machine Handler - initial state of machine state set
+  2022-08-09 16:00:41 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT5.168S
+  2022-08-09 16:00:43 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:enigma-machine/src/main/resources/ex1-sanity-paper-enigma.xml
+  2022-08-09 16:00:43 INFO  MachineHandlerImpl:293 - MachineHandler check xml validity: did pass all tests: true
+  2022-08-09 16:00:43 INFO  MachineHandlerImpl:222 - Machine handler: created inventory successfully
+  2022-08-09 16:00:43 INFO  MachineHandlerImpl:159 - Machine Handler - assembled machine parts finished
+  2022-08-09 16:00:43 INFO  MachineHandlerImpl:172 - Machine Handler - initial state of machine state set
+  2022-08-09 16:00:43 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT0.001S
+  2022-08-09 16:08:07 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:enigma-machine/src/main/resources/ex1-sanity-paper-enigma.xml
+  2022-08-09 16:08:07 INFO  MachineHandlerImpl:293 - MachineHandler check xml validity: did pass all tests: true
+  2022-08-09 16:08:07 INFO  MachineHandlerImpl:222 - Machine handler: created inventory successfully
+  2022-08-09 16:08:07 INFO  MachineHandlerImpl:159 - Machine Handler - assembled machine parts finished
+  2022-08-09 16:08:07 INFO  MachineHandlerImpl:172 - Machine Handler - initial state of machine state set
+  2022-08-09 16:08:45 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT6.044S
+  2022-08-09 16:10:51 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:enigma-machine/src/main/resources/ex1-sanity-paper-enigma.xml
+  2022-08-09 16:10:51 INFO  MachineHandlerImpl:293 - MachineHandler check xml validity: did pass all tests: true
+  2022-08-09 16:10:51 INFO  MachineHandlerImpl:222 - Machine handler: created inventory successfully
+  2022-08-09 16:10:51 INFO  MachineHandlerImpl:159 - Machine Handler - assembled machine parts finished
+  2022-08-09 16:10:51 INFO  MachineHandlerImpl:172 - Machine Handler - initial state of machine state set
+  2022-08-09 16:10:51 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT0.002S
+  2022-08-09 16:11:53 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-09 16:11:53 INFO  MachineHandlerImpl:293 - MachineHandler check xml validity: did pass all tests: true
+  2022-08-09 16:11:53 INFO  MachineHandlerImpl:222 - Machine handler: created inventory successfully
+  2022-08-09 16:11:53 INFO  MachineHandlerImpl:159 - Machine Handler - assembled machine parts finished
+  2022-08-09 16:11:53 INFO  MachineHandlerImpl:172 - Machine Handler - initial state of machine state set
+  2022-08-09 16:11:53 WARN  PlugBoardImpl:69 - Plugboard : Failed to connect endpoints -Fis already connected
+  2022-08-09 16:11:53 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT0.001S
+  2022-08-09 16:11:53 WARN  PlugBoardImpl:69 - Plugboard : Failed to connect endpoints -Fis already connected
+  2022-08-09 16:11:53 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT0S
+  2022-08-09 16:11:53 WARN  PlugBoardImpl:69 - Plugboard : Failed to connect endpoints -Fis already connected
+  2022-08-09 16:11:53 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT0S
+  2022-08-09 16:11:53 WARN  PlugBoardImpl:69 - Plugboard : Failed to connect endpoints -Fis already connected
+  2022-08-09 16:11:53 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT0S
+  2022-08-09 16:11:53 WARN  PlugBoardImpl:69 - Plugboard : Failed to connect endpoints -Fis already connected
+  2022-08-09 16:11:53 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT0S
+  2022-08-09 18:29:36 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./enigma-machine/src/main/resources/ex1-error-3.xml
+  2022-08-09 18:29:36 INFO  MachineHandlerImpl:293 - MachineHandler check xml validity: did pass all tests: false
+  2022-08-09 18:29:36 ERROR MachineHandlerImpl:59 - Failed to build machine inventory - CteMachine configured in file is invalid
+  2022-08-09 18:30:17 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./enigma-machine/src/main/resources/ex1-error-3.xml
+  2022-08-09 18:30:17 INFO  MachineHandlerImpl:293 - MachineHandler check xml validity: did pass all tests: false
+  2022-08-09 18:30:17 ERROR MachineHandlerImpl:59 - Failed to build machine inventory - CteMachine configured in file is invalid
+  2022-08-09 18:30:31 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./enigma-machine/src/main/resources/ex1-error-3.xml
+  2022-08-09 18:31:23 INFO  MachineHandlerImpl:293 - MachineHandler check xml validity: did pass all tests: false
+  2022-08-09 18:31:23 ERROR MachineHandlerImpl:59 - Failed to build machine inventory - CteMachine configured in file is invalid
+  2022-08-09 18:31:25 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./enigma-machine/src/main/resources/ex1-error-3.xml
+  2022-08-09 18:31:56 INFO  MachineHandlerImpl:293 - MachineHandler check xml validity: did pass all tests: false
+  2022-08-09 18:31:58 ERROR MachineHandlerImpl:59 - Failed to build machine inventory - CteMachine configured in file is invalid
   

@@ -119,6 +119,18 @@ public class EnigmaMachine implements EncryptionMachine {
     }
 
     @Override
+    public void setRotorsStartingPositionByString(List<String> rotorsPosition) {
+        if(rotorsPosition.size() != rotors.size()){
+            log.warn("Failed to set Rotors positions, different sizes : number of positions:" + rotorsPosition.size() + "number of rotors:" +  rotors.size());
+        }
+        int posIndex = 0;
+        for (Rotor rotor : this.rotors) {
+            rotor.setRotorStartingPosition(ioWheel.getABC().indexOf(rotorsPosition.get(posIndex)));
+            posIndex++;
+        }
+    }
+
+    @Override
     public MachineState getMachineState() {
         List<Integer> rotorIds = new ArrayList<>();
         List<Integer> rotorsHeadPositions = new ArrayList<>();

@@ -107,5 +107,5 @@
 				<CTE-Reflect input="22" output="23"/>
 			</CTE-Reflector>
 		</CTE-Reflectors>
-	</CTE-Machine>	
+	</CTE-Machine>
 </CTE-Enigma>
