@@ -5,17 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6467e2d7-ff2a-4abb-a198-685a0fcd06aa" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/command-line-interface-ui/src/main/java/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/command-line-interface-ui/src/main/java/Menu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/command-line-interface-ui/src/main/java/enums/MenuOptions.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Logs/logging.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/logging.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/EncryptionMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/EncryptionMachine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/EnigmaMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/EnigmaMachine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/resources/ex1-sanity-paper-enigma.xml" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/resources/ex1-sanity-paper-enigma.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/command-line-interface-ui/command-line-interface-ui.iml" beforeDir="false" afterPath="$PROJECT_DIR$/command-line-interface-ui/command-line-interface-ui.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/impl/MachineHandlerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/impl/MachineHandlerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/dto/InventoryInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/dto/InventoryInfo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/component/impl/MachineHandlerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/component/impl/MachineHandlerImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/EncryptionMachine.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/EncryptionMachine.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/EnigmaMachine.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/EnigmaMachine.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/resources/ex1-sanity-paper-enigma.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/resources/ex1-sanity-paper-enigma.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/resources/extra-errors/ex1-error-odd-abc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/resources/extra-errors/ex1-error-odd-abc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/resources/extra-errors/ex1-error-rotor-count - Copy (4).xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/resources/extra-errors/ex1-error-rotor-count - Copy (5).xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/resources/extra-errors/ex1-error-rotor-count.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/resources/extra-errors/ex1-error-rotor-id.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/resources/extra-errors/ex1-error-rotor-mapping1.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,9 +29,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -114,7 +118,7 @@
       <recent name="test.java.component" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.src.main.java.Main">
     <configuration name="MachineHandlerImpl" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="main.java.component.impl.MachineHandlerImpl" />
       <module name="encryption-machine-handler" />
@@ -154,6 +158,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="src.main.java.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="src.main.java.Main" />
+      <module name="command-line-interface-ui" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="src.main.java.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TestMachineHandlerImpl.firstSanitySmallTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="encryption-machine-handler" />
       <extension name="coverage">
@@ -185,6 +202,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.src.main.java.Main" />
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.TestMachineHandlerImpl.firstSanitySmallTests" />
         <item itemvalue="Application.MachineHandlerImpl" />
@@ -239,6 +257,16 @@
           <line>48</line>
           <option name="timeStamp" value="78" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/command-line-interface-ui/src/main/java/Main.java</url>
+          <line>126</line>
+          <option name="timeStamp" value="100" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/impl/MachineHandlerImpl.java</url>
+          <line>257</line>
+          <option name="timeStamp" value="101" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>
@@ -247,6 +275,7 @@
         <PinnedItemInfo parentTag="main.java.component.impl.ReflectorImpl" memberName="id" />
         <PinnedItemInfo parentTag="main.resources.generated.CTEReflectors" memberName="cteReflector" />
         <PinnedItemInfo parentTag="main.java.component.impl.MachineHandlerImpl" memberName="reflectorsInventory" />
+        <PinnedItemInfo parentTag="java.lang.String" memberName="value" />
         <PinnedItemInfo parentTag="java.util.stream.SortedOps$OfRef" memberName="sourceCloseAction" />
       </pinned-members>
     </pin-to-top-manager>
@@ -255,7 +284,7 @@
         <watch expression="((RotorImpl)rotor).rotorMapping" custom="main.java.component.impl.RotorImpl" />
         <watch expression="rotorMapping.get(realIndex).getRight()" />
       </configuration>
-      <inline-watch fileUrl="file://$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/impl/MachineHandlerImpl.java" line="304">
+      <inline-watch fileUrl="file://$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/impl/MachineHandlerImpl.java" line="305">
         <watch expression="f.exists()" />
       </inline-watch>
     </watches-manager>
@@ -265,6 +294,9 @@
     <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/CTE_ENIGMA$src_main_java_Main.ic" NAME="src.main.java.Main Coverage Results" MODIFIED="1660063306935" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>src.main.java.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/CTE_ENIGMA$Main.ic" NAME="Main Coverage Results" MODIFIED="1659801531382" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>main.java.*</FILTER>
     </SUITE>

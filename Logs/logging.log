@@ -1090,4 +1090,62 @@
   2022-08-09 18:31:25 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./enigma-machine/src/main/resources/ex1-error-3.xml
   2022-08-09 18:31:56 INFO  MachineHandlerImpl:293 - MachineHandler check xml validity: did pass all tests: false
   2022-08-09 18:31:58 ERROR MachineHandlerImpl:59 - Failed to build machine inventory - CteMachine configured in file is invalid
+  2022-08-09 19:36:29 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./enigma-machine/src/main/resources/ex1-error-3.xml
+  2022-08-09 19:36:29 INFO  MachineHandlerImpl:293 - MachineHandler check xml validity: did pass all tests: false
+  2022-08-09 19:36:29 ERROR MachineHandlerImpl:59 - Failed to build machine inventory - CteMachine configured in file is invalid
+  2022-08-09 19:37:21 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-09 19:37:21 INFO  MachineHandlerImpl:293 - MachineHandler check xml validity: did pass all tests: true
+  2022-08-09 19:37:21 INFO  MachineHandlerImpl:222 - Machine handler: created inventory successfully
+  2022-08-09 19:37:55 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-09 19:37:55 INFO  MachineHandlerImpl:293 - MachineHandler check xml validity: did pass all tests: true
+  2022-08-09 19:37:55 INFO  MachineHandlerImpl:222 - Machine handler: created inventory successfully
+  2022-08-09 19:38:19 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-09 19:38:19 INFO  MachineHandlerImpl:293 - MachineHandler check xml validity: did pass all tests: true
+  2022-08-09 19:38:19 INFO  MachineHandlerImpl:222 - Machine handler: created inventory successfully
+  2022-08-09 19:40:51 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-09 19:40:51 INFO  MachineHandlerImpl:293 - MachineHandler check xml validity: did pass all tests: true
+  2022-08-09 19:40:51 INFO  MachineHandlerImpl:222 - Machine handler: created inventory successfully
+  2022-08-09 19:40:53 ERROR MachineHandlerImpl:139 - Failed to assemble machine parts - could not find REFLECTOR in inventory with id: V
+  2022-08-09 19:41:48 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-09 19:41:48 INFO  MachineHandlerImpl:293 - MachineHandler check xml validity: did pass all tests: true
+  2022-08-09 19:41:48 INFO  MachineHandlerImpl:222 - Machine handler: created inventory successfully
+  2022-08-09 19:41:52 ERROR MachineHandlerImpl:139 - Failed to assemble machine parts - could not find REFLECTOR in inventory with id: III
+  2022-08-09 19:43:00 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-09 19:43:00 INFO  MachineHandlerImpl:293 - MachineHandler check xml validity: did pass all tests: true
+  2022-08-09 19:43:00 INFO  MachineHandlerImpl:222 - Machine handler: created inventory successfully
+  2022-08-09 19:44:11 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-09 19:44:11 INFO  MachineHandlerImpl:293 - MachineHandler check xml validity: did pass all tests: true
+  2022-08-09 19:44:11 INFO  MachineHandlerImpl:222 - Machine handler: created inventory successfully
+  2022-08-09 19:44:13 ERROR MachineHandlerImpl:139 - Failed to assemble machine parts - could not find REFLECTOR in inventory with id: III
+  2022-08-09 19:44:49 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-09 19:44:49 INFO  MachineHandlerImpl:293 - MachineHandler check xml validity: did pass all tests: true
+  2022-08-09 19:44:49 INFO  MachineHandlerImpl:222 - Machine handler: created inventory successfully
+  2022-08-09 19:44:51 ERROR MachineHandlerImpl:139 - Failed to assemble machine parts - could not find REFLECTOR in inventory with id: IV
+  2022-08-09 19:48:03 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-09 19:48:03 INFO  MachineHandlerImpl:293 - MachineHandler check xml validity: did pass all tests: true
+  2022-08-09 19:48:03 INFO  MachineHandlerImpl:222 - Machine handler: created inventory successfully
+  2022-08-09 19:48:44 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-09 19:48:44 INFO  MachineHandlerImpl:293 - MachineHandler check xml validity: did pass all tests: true
+  2022-08-09 19:48:44 INFO  MachineHandlerImpl:222 - Machine handler: created inventory successfully
+  2022-08-09 19:48:45 INFO  MachineHandlerImpl:159 - Machine Handler - assembled machine parts finished
+  2022-08-09 19:48:45 INFO  MachineHandlerImpl:172 - Machine Handler - initial state of machine state set
+  2022-08-09 19:50:00 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT8.583S
+  2022-08-09 19:51:16 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-09 19:51:16 INFO  MachineHandlerImpl:293 - MachineHandler check xml validity: did pass all tests: true
+  2022-08-09 19:51:16 INFO  MachineHandlerImpl:222 - Machine handler: created inventory successfully
+  2022-08-09 19:51:17 INFO  MachineHandlerImpl:159 - Machine Handler - assembled machine parts finished
+  2022-08-09 19:51:17 INFO  MachineHandlerImpl:172 - Machine Handler - initial state of machine state set
+  2022-08-09 19:51:26 INFO  MachineHandlerImpl:263 - time it took to encrypt:PT0.001S
+  2022-08-09 20:15:38 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-09 20:15:38 INFO  MachineHandlerImpl:294 - MachineHandler check xml validity: did pass all tests: true
+  2022-08-09 20:15:38 INFO  MachineHandlerImpl:223 - Machine handler: created inventory successfully
+  2022-08-09 20:16:31 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-09 20:16:31 INFO  MachineHandlerImpl:294 - MachineHandler check xml validity: did pass all tests: true
+  2022-08-09 20:16:31 INFO  MachineHandlerImpl:223 - Machine handler: created inventory successfully
+  2022-08-09 20:20:23 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-09 20:20:23 INFO  MachineHandlerImpl:294 - MachineHandler check xml validity: did pass all tests: true
+  2022-08-09 20:20:23 INFO  MachineHandlerImpl:223 - Machine handler: created inventory successfully
+  2022-08-09 20:21:42 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:enigma-machine/src/main/resources/ex1-sanity-small.xml
+  2022-08-09 20:21:42 INFO  MachineHandlerImpl:294 - MachineHandler check xml validity: did pass all tests: true
+  2022-08-09 20:21:42 INFO  MachineHandlerImpl:223 - Machine handler: created inventory successfully
   

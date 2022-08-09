@@ -14,4 +14,5 @@ public class InventoryInfo {
     private int numOfAvailableRotors;
     private Map<Integer, Integer> rotorIdToNotchLocation;
     private int numOfAvailableReflectors;
+    private String ABC;
 }

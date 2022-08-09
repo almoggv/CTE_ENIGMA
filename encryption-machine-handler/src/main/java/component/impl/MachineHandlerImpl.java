@@ -66,7 +66,7 @@ public class MachineHandlerImpl implements MachineHandler {
     public void assembleMachine() {
         String ABC = ioWheelInventory.getABC();
         Random random = new Random();
-        ReflectorsId reflectorId = ReflectorsId.getByNum(random.nextInt(ReflectorsId.values().length) + 1);
+        ReflectorsId reflectorId = ReflectorsId.getByNum(random.nextInt(ReflectorsId.values().length));
         List<Integer> rotorIdList = generateRandomRotorList();
         List<Integer> rotorStartingPositions = generateRandomRotorPositions(ABC);
         List<MappingPair<String,String>> plugPairsMapping = generateRandomPlugboardConnections(ABC);
@@ -191,6 +191,7 @@ public class MachineHandlerImpl implements MachineHandler {
             rotorIdToNotch.putIfAbsent(rotor.getId(), rotor.getNotchLocation());
         }
         inventoryInfo.setRotorIdToNotchLocation(rotorIdToNotch);
+        inventoryInfo.setABC(ioWheelInventory.getABC());
         return inventoryInfo;
     }
 
