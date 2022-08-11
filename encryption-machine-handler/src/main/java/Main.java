@@ -11,17 +11,17 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-//        mainToCheckSanitySmall();
-//        mainToCheckSanityPaperEnigma();
-        MachineHandler machineHandler =new MachineHandlerImpl();
-        String relativePath = "./enigma-machine/src/main/resources/ex1-error-3.xml";
-        try {
-            machineHandler.buildMachinePartsInventory(relativePath);
-        }
-        catch (Exception e){
-            System.out.println(e.getMessage());
-        }
-//
+//       mainToCheckSanitySmall();
+        mainToCheckSanityPaperEnigma();
+//        MachineHandler machineHandler =new MachineHandlerImpl();
+//        String relativePath = "./enigma-machine/src/main/resources/ex1-error-3.xml";
+//        try {
+//            machineHandler.buildMachinePartsInventory(relativePath);
+//        }
+//        catch (Exception e){
+//            System.out.println(e.getMessage());
+//        }
+////
 //        machineHandler.assembleMachine();
 
     }

@@ -60,13 +60,16 @@ public class MachineHandlerImpl implements MachineHandler {
                 throw new Exception("Failed to build machine inventory - CteMachine configured in file is invalid");
             }
         }
+        else{
+            //todo or throw
+        }
     }
 
     @Override
     public void assembleMachine() {
         String ABC = ioWheelInventory.getABC();
         Random random = new Random();
-        ReflectorsId reflectorId = ReflectorsId.getByNum(random.nextInt(ReflectorsId.values().length));
+        ReflectorsId reflectorId = ReflectorsId.getByNum(random.nextInt(reflectorsInventory.size()) + 1);
         List<Integer> rotorIdList = generateRandomRotorList();
         List<Integer> rotorStartingPositions = generateRandomRotorPositions(ABC);
         List<MappingPair<String,String>> plugPairsMapping = generateRandomPlugboardConnections(ABC);
@@ -188,7 +191,7 @@ public class MachineHandlerImpl implements MachineHandler {
         inventoryInfo.setNumOfRotorsInUse(expectedNumOfRotors);
         Map<Integer,Integer> rotorIdToNotch = new HashMap<>();
         for (Rotor rotor: rotorsInventory ) {
-            rotorIdToNotch.putIfAbsent(rotor.getId(), rotor.getNotchLocation());
+            rotorIdToNotch.putIfAbsent(rotor.getId(), rotor.howCloseNotchToHead());
         }
         inventoryInfo.setRotorIdToNotchLocation(rotorIdToNotch);
         inventoryInfo.setABC(ioWheelInventory.getABC());

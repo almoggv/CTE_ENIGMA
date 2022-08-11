@@ -73,6 +73,11 @@ public class RotorImpl implements Rotor {
     }
 
     @Override
+    public int howCloseNotchToHead() {
+        return Math.abs(notchLocation - headPosition);
+    }
+
+    @Override
     public int fromInputWheelToReflector(int inValue) {
         int leftToFind = rotorMapping.get(inValue).getRight();
         MappingPair<Integer,Integer> foundMappingOfLeft = MappingPairListUtils.findPairByLeft(rotorMapping,leftToFind);

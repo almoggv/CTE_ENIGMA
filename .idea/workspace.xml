@@ -5,21 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6467e2d7-ff2a-4abb-a198-685a0fcd06aa" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/command-line-interface-ui/src/main/java/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/command-line-interface-ui/src/main/java/Menu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/command-line-interface-ui/src/main/java/enums/MenuOptions.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/logging.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/logging.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/command-line-interface-ui/command-line-interface-ui.iml" beforeDir="false" afterPath="$PROJECT_DIR$/command-line-interface-ui/command-line-interface-ui.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/command-line-interface-ui/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/command-line-interface-ui/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/command-line-interface-ui/src/main/java/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/command-line-interface-ui/src/main/java/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/impl/MachineHandlerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/impl/MachineHandlerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/dto/InventoryInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/dto/InventoryInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/component/impl/MachineHandlerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/component/impl/MachineHandlerImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/resources/extra-errors/ex1-error-odd-abc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/resources/extra-errors/ex1-error-odd-abc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/resources/extra-errors/ex1-error-rotor-count - Copy (4).xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/resources/extra-errors/ex1-error-rotor-count - Copy (5).xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/resources/extra-errors/ex1-error-rotor-count.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/resources/extra-errors/ex1-error-rotor-id.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/resources/extra-errors/ex1-error-rotor-mapping1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/Rotor.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/Rotor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/RotorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/RotorImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/command-line-interface-ui/src/main/java/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/command-line-interface-ui/src/main/java/Main.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,6 +82,7 @@
     "Repository.Attach.Annotations": "false",
     "Repository.Attach.JavaDocs": "false",
     "Repository.Attach.Sources": "false",
+    "WebServerToolWindowFactoryState": "false",
     "jdk.selected.JAVA_MODULE": "1.8",
     "settings.editor.selected.configurable": "preferences.lookFeel"
   }
@@ -227,6 +221,7 @@
       <workItem from="1659341207530" duration="3726000" />
       <workItem from="1659360057006" duration="25736000" />
       <workItem from="1659462909712" duration="36637000" />
+      <workItem from="1660122819954" duration="4759000" />
     </task>
     <servers />
   </component>
@@ -257,16 +252,6 @@
           <line>48</line>
           <option name="timeStamp" value="78" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/command-line-interface-ui/src/main/java/Main.java</url>
-          <line>126</line>
-          <option name="timeStamp" value="100" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/impl/MachineHandlerImpl.java</url>
-          <line>257</line>
-          <option name="timeStamp" value="101" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>
@@ -284,7 +269,7 @@
         <watch expression="((RotorImpl)rotor).rotorMapping" custom="main.java.component.impl.RotorImpl" />
         <watch expression="rotorMapping.get(realIndex).getRight()" />
       </configuration>
-      <inline-watch fileUrl="file://$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/impl/MachineHandlerImpl.java" line="305">
+      <inline-watch fileUrl="file://$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/impl/MachineHandlerImpl.java" line="308">
         <watch expression="f.exists()" />
       </inline-watch>
     </watches-manager>
