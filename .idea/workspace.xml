@@ -7,8 +7,6 @@
     <list default="true" id="6467e2d7-ff2a-4abb-a198-685a0fcd06aa" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/impl/MachineHandlerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/impl/MachineHandlerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/verifier/XmlSchemaVerifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/verifier/XmlSchemaVerifier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/verifier/impl/XmlSchemaVerifierImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/verifier/impl/XmlSchemaVerifierImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -276,9 +274,6 @@
         <watch expression="((RotorImpl)rotor).rotorMapping" custom="main.java.component.impl.RotorImpl" />
         <watch expression="rotorMapping.get(realIndex).getRight()" />
       </configuration>
-      <inline-watch fileUrl="file://$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/impl/MachineHandlerImpl.java" line="329">
-        <watch expression="f.exists()" />
-      </inline-watch>
     </watches-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">

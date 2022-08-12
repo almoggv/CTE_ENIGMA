@@ -8061,4 +8061,29 @@
   2022-08-12 13:14:06 DEBUG EnigmaMachine:71 - after io: R
   2022-08-12 13:14:06 DEBUG EnigmaMachine:73 - after plug: R
   2022-08-12 13:14:06 INFO  MachineHandlerImpl:278 - time it took to encrypt:PT0.083S
+  2022-08-12 13:50:53 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./src/main/resources/machine-inventory-schema/ex1-sanity-small.xml
+  2022-08-12 13:50:54 INFO  XmlSchemaVerifierImpl:59 - MachineHandler check xml validity: did pass all tests: true
+  2022-08-12 13:50:54 INFO  MachineHandlerImpl:239 - Machine handler: created inventory successfully
+  2022-08-12 13:50:54 INFO  MachineHandlerImpl:166 - Machine Handler - assembled machine parts finished
+  2022-08-12 13:50:54 INFO  MachineHandlerImpl:188 - Machine Handler - initial state of machine state set
+  2022-08-12 13:50:54 WARN  PlugBoardImpl:69 - Plugboard : Failed to connect endpoints -Fis already connected
+  2022-08-12 13:50:54 INFO  MachineHandlerImpl:279 - time it took to encrypt:PT0.009S
+  2022-08-12 13:50:54 WARN  PlugBoardImpl:69 - Plugboard : Failed to connect endpoints -Fis already connected
+  2022-08-12 13:50:54 INFO  MachineHandlerImpl:279 - time it took to encrypt:PT0.002S
+  2022-08-12 13:50:54 WARN  PlugBoardImpl:69 - Plugboard : Failed to connect endpoints -Fis already connected
+  2022-08-12 13:50:54 INFO  MachineHandlerImpl:279 - time it took to encrypt:PT0.003S
+  2022-08-12 13:50:54 WARN  PlugBoardImpl:69 - Plugboard : Failed to connect endpoints -Fis already connected
+  2022-08-12 13:50:54 INFO  MachineHandlerImpl:279 - time it took to encrypt:PT0.001S
+  2022-08-12 13:50:54 WARN  PlugBoardImpl:69 - Plugboard : Failed to connect endpoints -Fis already connected
+  2022-08-12 13:50:54 INFO  MachineHandlerImpl:279 - time it took to encrypt:PT0.002S
+  2022-08-12 13:51:07 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./src/main/resources/machine-inventory-schema/ex1-sanity-paper-enigma.xml
+  2022-08-12 13:51:07 INFO  XmlSchemaVerifierImpl:59 - MachineHandler check xml validity: did pass all tests: true
+  2022-08-12 13:51:07 INFO  MachineHandlerImpl:239 - Machine handler: created inventory successfully
+  2022-08-12 13:51:07 INFO  MachineHandlerImpl:166 - Machine Handler - assembled machine parts finished
+  2022-08-12 13:51:07 INFO  MachineHandlerImpl:188 - Machine Handler - initial state of machine state set
+  2022-08-12 13:51:07 INFO  MachineHandlerImpl:279 - time it took to encrypt:PT0.003S
+  2022-08-12 13:51:07 INFO  MachineHandlerImpl:279 - time it took to encrypt:PT0.008S
+  2022-08-12 13:51:07 INFO  MachineHandlerImpl:279 - time it took to encrypt:PT0.026S
+  2022-08-12 13:51:07 INFO  MachineHandlerImpl:279 - time it took to encrypt:PT0.004S
+  2022-08-12 13:51:07 INFO  MachineHandlerImpl:279 - time it took to encrypt:PT0.001S
   
