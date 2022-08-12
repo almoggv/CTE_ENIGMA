@@ -61,7 +61,7 @@ public class TestSanityMachineHandlerImpl {
             for (int i = 0; i < inputs.size(); i++) {
                 String input = inputs.get(i);
                 String wantedOutput = outputs.get(i);
-                //machineHandler.resetToLastSetState(); //TODO: FIX SAVING TO STATE
+                machineHandler.resetToLastSetState();
                 System.out.println("Machine State Before Encryption number:" + i + ":\n" + machineHandler.getMachineState());
                 String output = machineHandler.encrypt(input);
                 System.out.println(i + ". the output is: " + output + "\nis correct?: " + wantedOutput.equals(output));

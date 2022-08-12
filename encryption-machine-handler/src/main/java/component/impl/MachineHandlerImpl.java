@@ -181,8 +181,8 @@ public class MachineHandlerImpl implements MachineHandler {
         encryptionMachine.setRotorsStartingPosition(valuesOfHeadToSetRotors);
         encryptionMachine.connectPlugs(plugMapping);
         //TODO: FIX here
-//        this.initialMachineState.setRotorsHeadsInitialValues(encryptionMachine.getMachineState().getRotorsHeadsInitialValues());
-//        this.initialMachineState.setPlugMapping(plugMapping);
+        this.initialMachineState.setRotorsHeadsInitialValues(encryptionMachine.getMachineState().getRotorsHeadsInitialValues());
+        this.initialMachineState.setPlugMapping(plugMapping);
         log.info("Machine Handler - initial state of machine state set");
     }
 

@@ -7,15 +7,13 @@
     <list default="true" id="6467e2d7-ff2a-4abb-a198-685a0fcd06aa" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/encryption-machine-handler/Logs/logging.log" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/Logs/logging.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/MachineHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/MachineHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/impl/MachineHandlerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/impl/MachineHandlerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/main/resources/log4j.properties" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/src/main/resources/log4j.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/test/java/component/TestMachineHandlerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/src/test/java/component/TestMachineHandlerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/EncryptionMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/EncryptionMachine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/Rotor.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/Rotor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/EnigmaMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/EnigmaMachine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/RotorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/RotorImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/dto/MachineState.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/dto/MachineState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/test/java/component/TestSanityMachineHandlerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/src/test/java/component/TestSanityMachineHandlerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/component/impl/MachineHandlerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/component/impl/MachineHandlerImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/encryption-machine-handler/test/java/component/TestMachineHandlerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/encryption-machine-handler/test/java/component/TestMachineHandlerImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/encryption-machine-handler/test/java/component/TestSanityMachineHandlerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/encryption-machine-handler/test/java/component/TestSanityMachineHandlerImpl.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -194,9 +192,9 @@
       <list>
         <item itemvalue="JUnit.TestSanityMachineHandlerImpl.testSanityBig" />
         <item itemvalue="JUnit.TestSanityMachineHandlerImpl.testSanitySmall" />
+        <item itemvalue="JUnit.TestMachineHandlerImpl.firstSanitySmallTests" />
         <item itemvalue="Application.src.main.java.Main" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.TestMachineHandlerImpl.firstSanitySmallTests" />
       </list>
     </recent_temporary>
   </component>
@@ -250,28 +248,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/encryption-machine-handler/src/test/java/component/TestSanityMachineHandlerImpl.java</url>
-          <line>20</line>
-          <option name="timeStamp" value="104" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/encryption-machine-handler/src/test/java/component/TestSanityMachineHandlerImpl.java</url>
-          <line>19</line>
-          <option name="timeStamp" value="105" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/encryption-machine-handler/src/test/java/component/TestSanityMachineHandlerImpl.java</url>
           <line>66</line>
           <option name="timeStamp" value="113" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/EnigmaMachine.java</url>
-          <line>37</line>
-          <option name="timeStamp" value="120" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/encryption-machine-handler/src/test/java/component/TestSanityMachineHandlerImpl.java</url>
           <line>62</line>
           <option name="timeStamp" value="126" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/encryption-machine-handler/src/test/java/component/TestSanityMachineHandlerImpl.java</url>
+          <line>32</line>
+          <option name="timeStamp" value="127" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -286,6 +274,9 @@
       </pinned-members>
     </pin-to-top-manager>
     <watches-manager>
+      <configuration name="JUnit">
+        <watch expression="((EnigmaMachine)((MachineHandlerImpl)((TestSanityMachineHandlerImpl)this).machineHandler).encryptionMachine).rotors" custom="main.java.component.impl.MachineHandlerImpl,main.java.component.impl.EnigmaMachine,test.java.component.TestSanityMachineHandlerImpl" />
+      </configuration>
       <configuration name="Application">
         <watch expression="((RotorImpl)rotor).rotorMapping" custom="main.java.component.impl.RotorImpl" />
         <watch expression="rotorMapping.get(realIndex).getRight()" />
