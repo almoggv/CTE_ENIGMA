@@ -13,5 +13,5 @@ public class EncryptionInfoHistory {
     private String input;
     private String output;
     private Duration timeToEncrypt;
-    private MachineState machineStartingState;
+    //private MachineState machineStartingState;
 }

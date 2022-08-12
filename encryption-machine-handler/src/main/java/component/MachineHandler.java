@@ -7,6 +7,7 @@ import main.java.dto.EncryptionInfoHistory;
 import main.java.enums.ReflectorsId;
 
 import java.util.List;
+import java.util.Map;
 
 public interface MachineHandler {
 
@@ -48,7 +49,7 @@ public interface MachineHandler {
      */
     public String encrypt(String input);
 
-    public List<EncryptionInfoHistory> getMachineStatisticsHistory();
+    public Map<MachineState, List<EncryptionInfoHistory>> getMachineStatisticsHistory();
 
     //todo - decide if better and worth the headache
 //    public Map<MachineState,List<EncryptionInfoHistory>> getMachineStatisticsHistoryMap();

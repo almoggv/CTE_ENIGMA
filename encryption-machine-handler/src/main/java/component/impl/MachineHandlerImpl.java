@@ -32,9 +32,8 @@ public class MachineHandlerImpl implements MachineHandler {
     private int expectedNumOfRotors;
     private EncryptionMachine encryptionMachine = new EnigmaMachine();
     private MachineState initialMachineState = new MachineState();
-
-    private final List<EncryptionInfoHistory> machineStatisticsHistory = new ArrayList<>();
-//    private final Map<MachineState, List<EncryptionInfoHistory>> machineStatisticsHistory = new ArrayList<>();
+//    private final List<EncryptionInfoHistory> machineStatisticsHistory = new ArrayList<>();
+    private final Map<MachineState, List<EncryptionInfoHistory>> machineStatisticsHistory = new HashMap<>();
 
     static {
         String log4JPropertyFile = "./src/main/resources/log4j.properties";
@@ -269,7 +268,7 @@ public class MachineHandlerImpl implements MachineHandler {
             }
         }
         //For History documentation
-        MachineState currentMachineState = encryptionMachine.getMachineState();
+        MachineState machineStateBeforeEncrypt = encryptionMachine.getMachineState();
 
         Instant startEncryptionTime = Instant.now();
         String encryptedOutput = encryptionMachine.encrypt(input);
@@ -277,13 +276,21 @@ public class MachineHandlerImpl implements MachineHandler {
         Duration encryptionTime = Duration.between(startEncryptionTime, endEncryptionTime);//.toNanos();
         log.info("time it took to encrypt:" + encryptionTime);
 
-        machineStatisticsHistory.add(new EncryptionInfoHistory(input, encryptedOutput, encryptionTime, currentMachineState));
+        addToHistory(machineStateBeforeEncrypt,input,encryptedOutput,encryptionTime);
 
         return encryptedOutput;
     }
 
+    private void addToHistory(MachineState machineStateBeforeEncrypt, String input, String output, Duration duration){
+        EncryptionInfoHistory infoHistory = new EncryptionInfoHistory(input,output,duration);
+        if(!machineStatisticsHistory.containsKey(machineStateBeforeEncrypt)){
+            machineStatisticsHistory.put(machineStateBeforeEncrypt,new ArrayList<EncryptionInfoHistory>());
+        }
+        machineStatisticsHistory.get(machineStateBeforeEncrypt).add(infoHistory);
+    }
+
     @Override
-    public List<EncryptionInfoHistory> getMachineStatisticsHistory() {
+    public Map<MachineState, List<EncryptionInfoHistory>>  getMachineStatisticsHistory() {
         return machineStatisticsHistory;
     }
 

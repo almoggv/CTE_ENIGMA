@@ -34,7 +34,6 @@ public interface EncryptionMachine {
 
     public void setRotorsStartingPosition(List<Integer> valuesToSetTheHead);
 
-    // todo - set positions by string - user input <ci -- <AO!> not 0,1
     public MachineState getMachineState();
 
     public void setMachineState(MachineState machineState);
