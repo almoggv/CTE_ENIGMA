@@ -4,6 +4,7 @@ package main.java.component.impl;
 import main.java.dto.InventoryInfo;
 import main.java.dto.MachineState;
 import main.java.dto.EncryptionInfoHistory;
+import main.java.enums.XmlVerifierState;
 import main.java.generictype.MappingPair;
 import main.java.handler.FileConfigurationHandler;
 import main.java.component.*;
@@ -16,6 +17,7 @@ import org.apache.log4j.PropertyConfigurator;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.time.Duration;
@@ -35,7 +37,6 @@ public class MachineHandlerImpl implements MachineHandler {
     private EncryptionMachine encryptionMachine = new EnigmaMachine();
     private MachineState initialMachineState = new MachineState();
     private final Map<MachineState, List<EncryptionInfoHistory>> machineStatisticsHistory = new HashMap<>();
-
     private final XmlSchemaVerifier xmlSchemaVerifier = new XmlSchemaVerifierImpl();
 
     static {
@@ -52,18 +53,21 @@ public class MachineHandlerImpl implements MachineHandler {
 
     @Override
     public void buildMachinePartsInventory(String absolutePath) throws Exception {
-        if (xmlSchemaVerifier.isFileInExistenceAndXML(absolutePath)){
-            CTEEnigma cteEnigma = FileConfigurationHandler.fromXmlFileToCTE(absolutePath);
-            if(xmlSchemaVerifier.isMachineConfigurationValid(cteEnigma)){
-                buildMachinePartsInventory(cteEnigma);
-            }
-            else{
-                log.error("Failed to build machine inventory - CteMachine configured in file is invalid");
-                throw new Exception("Failed to build machine inventory - CteMachine configured in file is invalid");
-            }
+
+        try{
+            xmlSchemaVerifier.isFileInExistenceAndXML(absolutePath);
+        }
+        catch(IOException e){
+            throw new Exception("The File: \"" + absolutePath + "\" - Does not exist Or is not a valid .xml file.");
+        }
+        CTEEnigma cteEnigma = FileConfigurationHandler.fromXmlFileToCTE(absolutePath);
+        XmlVerifierState isConfigSchemaValid = xmlSchemaVerifier.isMachineConfigurationValid(cteEnigma);
+        if(isConfigSchemaValid == XmlVerifierState.VALID){
+            buildMachinePartsInventory(cteEnigma);
         }
         else{
-            //todo or throw
+            log.error("Failed to build machine inventory - CteMachine configured in file is invalid" + isConfigSchemaValid);
+            throw new Exception("Failed to build machine inventory - CteMachine configured in file is invalid: " + isConfigSchemaValid);
         }
     }
 
@@ -198,6 +202,9 @@ public class MachineHandlerImpl implements MachineHandler {
 
     @Override
     public InventoryInfo getInventoryInfo() {
+        if(this.ioWheelInventory == null || this.plugBoardInventory == null || this.rotorsInventory == null || this.reflectorsInventory == null){
+            return null;
+        }
         InventoryInfo inventoryInfo = new InventoryInfo();
         inventoryInfo.setNumOfAvailableReflectors(reflectorsInventory.size());
         inventoryInfo.setNumOfAvailableRotors(rotorsInventory.size());
@@ -296,5 +303,26 @@ public class MachineHandlerImpl implements MachineHandler {
         return machineStatisticsHistory;
     }
 
+    public Optional<String> verifyInputInAbcAndFix(String input) {
+        if(ioWheelInventory == null){
+            log.error("Failed to verify and fix input, no IOWheel present yet in inventory");
+            return Optional.empty();
+        }
+        String ABC = ioWheelInventory.getABC();
+        String upperAbcRegex = "[A-Z]+";
+        String lowerAbcRegex = "[a-z]+";
+        if(ABC.matches(upperAbcRegex) && !ABC.matches(lowerAbcRegex)){
+            input = input.toUpperCase();
+        }
+        else if(!ABC.matches(upperAbcRegex) && ABC.matches(lowerAbcRegex)){
+            input = input.toLowerCase();
+        }
 
+        for (int i = 0; i < input.length(); i++) {
+            if(!ABC.contains(input.substring(i,i+1))){
+                return Optional.empty();
+            }
+        }
+        return Optional.of(input);
+    }
 }

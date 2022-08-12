@@ -1205,4 +1205,22 @@
   2022-08-11 17:08:54 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\ex1-sanity-small.xml
   2022-08-11 17:08:54 INFO  MachineHandlerImpl:297 - MachineHandler check xml validity: did pass all tests: true
   2022-08-11 17:08:54 INFO  MachineHandlerImpl:226 - Machine handler: created inventory successfully
+  2022-08-12 13:54:15 DEBUG EnigmaMachine:29 - Logger Instatiated for : EnigmaMachine
+  2022-08-12 16:15:32 DEBUG EnigmaMachine:29 - Logger Instatiated for : EnigmaMachine
+  2022-08-12 16:26:22 DEBUG EnigmaMachine:29 - Logger Instatiated for : EnigmaMachine
+  2022-08-12 16:27:25 DEBUG EnigmaMachine:29 - Logger Instatiated for : EnigmaMachine
+  2022-08-12 16:30:49 DEBUG EnigmaMachine:29 - Logger Instatiated for : EnigmaMachine
+  2022-08-12 16:32:30 DEBUG EnigmaMachine:29 - Logger Instatiated for : EnigmaMachine
+  2022-08-12 16:34:18 DEBUG EnigmaMachine:29 - Logger Instatiated for : EnigmaMachine
+  2022-08-12 16:37:40 DEBUG EnigmaMachine:29 - Logger Instatiated for : EnigmaMachine
+  2022-08-12 16:38:02 DEBUG FileConfigurationHandler:25 - Logger Instatiated for : FileConfigurationHandler
+  2022-08-12 16:38:02 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Dev\GitProjects\CTE_JAVA_ENIGMA\encryption-machine-handler\src\main\resources\machine-inventory-schema\extra-errors\ex1-error - bad-rotor-count.xml
+  2022-08-12 16:38:14 DEBUG XmlSchemaVerifierImpl:51 - MachineHandler check xml validity: Is even ABC: true
+  2022-08-12 16:38:14 DEBUG XmlSchemaVerifierImpl:52 - MachineHandler check xml validity: Is good rotors count: false
+  2022-08-12 16:38:14 DEBUG XmlSchemaVerifierImpl:53 - MachineHandler check xml validity: Is rotors ids legal: true
+  2022-08-12 16:38:14 DEBUG XmlSchemaVerifierImpl:54 - MachineHandler check xml validity: Is rotors map legal: true
+  2022-08-12 16:38:14 DEBUG XmlSchemaVerifierImpl:55 - MachineHandler check xml validity: Is rotors notches legal: true
+  2022-08-12 16:38:14 DEBUG XmlSchemaVerifierImpl:56 - MachineHandler check xml validity: Is reflector ids legal: true
+  2022-08-12 16:38:14 DEBUG XmlSchemaVerifierImpl:57 - MachineHandler check xml validity: Is reflectors mapping legal: true
+  2022-08-12 16:38:32 ERROR MachineHandlerImpl:69 - Failed to build machine inventory - CteMachine configured in file is invalidThe requested number of Rotors is smaller than the declared number
   

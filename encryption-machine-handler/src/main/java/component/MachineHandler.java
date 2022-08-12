@@ -8,6 +8,7 @@ import main.java.enums.ReflectorsId;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public interface MachineHandler {
 
@@ -59,4 +60,6 @@ public interface MachineHandler {
 
     //bonus
     public boolean saveStateToFile(String fileName);
+
+    public Optional<String> verifyInputInAbcAndFix(String input);
  }

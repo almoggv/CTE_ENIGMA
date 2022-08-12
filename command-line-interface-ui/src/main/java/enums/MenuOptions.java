@@ -5,10 +5,10 @@ public enum MenuOptions {
     ShowMachineDetails("Show machine details", 2),
     AssembleMachineFromInput("Assemble machine from input",3),
     AssembleMachineRandomly("Assemble machine randomly",4),
-    EncryptOrDecrypt("Encrypt/Decrypt",5),
+    Encrypt("Encrypt/Decrypt",5),
     SeeMachineHistoryAndStatistics("See machine history and statistics",6),
     Exit("Exit",7),
-    SaveOrLoadFromFile("SaveOrLoadFromFile",8);
+    SaveOrLoadFromFile("Save Or Load From File",8);
 
     private String name;
     private int id;

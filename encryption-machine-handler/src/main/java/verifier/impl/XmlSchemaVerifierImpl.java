@@ -3,6 +3,7 @@ package main.java.verifier.impl;
 import lombok.NoArgsConstructor;
 import main.java.component.impl.MachineHandlerImpl;
 import main.java.enums.ReflectorsId;
+import main.java.enums.XmlVerifierState;
 import main.java.verifier.XmlSchemaVerifier;
 import main.resources.generated.*;
 import org.apache.log4j.Logger;
@@ -33,36 +34,56 @@ public class XmlSchemaVerifierImpl implements XmlSchemaVerifier {
         }
     }
 
-    @Override
-    public String verifyInputInAbcAndFix(String ABC, String input) {
-        return null;
-    }
-
-    public boolean isMachineConfigurationValid(CTEEnigma cteEnigma) {
+    public XmlVerifierState isMachineConfigurationValid(CTEEnigma cteEnigma) {
         CTEMachine machine = cteEnigma.getCTEMachine();
         String ABC = machine.getABC();
         List<CTERotor> rotors = machine.getCTERotors().getCTERotor();
         List<CTEReflector> reflectors = machine.getCTEReflectors().getCTEReflector();
 
-        log.debug("MachineHandler check xml validity: Is even ABC: " + isABCCountEven(ABC));
-        log.debug("MachineHandler check xml validity: Is good rotors count: " + isRotorCountGood(machine.getRotorsCount(), rotors.size()));
-        log.debug("MachineHandler check xml validity: Is rotors ids legal: " + isRotorsIdsLegal(rotors));
-        log.debug("MachineHandler check xml validity: Is rotors map legal: " + isRotorsMappingLegal(rotors));
-        log.debug("MachineHandler check xml validity: Is rotors notches legal: " + isRotorsNotchLegal(rotors, ABC));
-        log.debug("MachineHandler check xml validity: Is reflector ids legal: " + isReflectorsIdsLegal(reflectors));
-        log.debug("MachineHandler check xml validity: Is reflectors mapping legal: " + isReflectorsMappingLegal(reflectors));
+        boolean abcCountEvenResult =  isABCCountEven(ABC);
+        boolean rotorCountLegalResult = isRotorCountGood(machine.getRotorsCount(), rotors.size());
+        boolean rotorIdLegalResult = isRotorsIdsLegal(rotors);
+        boolean rotorMappingLegalResult = isRotorsMappingLegal(rotors);
+        boolean rotorNotchLegalResult = isRotorsNotchLegal(rotors, ABC);
+        boolean reflectorIdLegalResult = isReflectorsIdsLegal(reflectors);
+        boolean reflectorMappingLegalResult = isReflectorsMappingLegal(reflectors);
 
-        boolean result = isABCCountEven(ABC) && isRotorCountGood(machine.getRotorsCount(), rotors.size())
-                && isRotorsIdsLegal(rotors) && isRotorsMappingLegal(rotors) && isRotorsNotchLegal(rotors, ABC)
-                && isReflectorsIdsLegal(reflectors) && isReflectorsMappingLegal(reflectors);
+        log.debug("MachineHandler check xml validity: Is even ABC: " +abcCountEvenResult);
+        log.debug("MachineHandler check xml validity: Is good rotors count: " + rotorCountLegalResult);
+        log.debug("MachineHandler check xml validity: Is rotors ids legal: " + rotorIdLegalResult);
+        log.debug("MachineHandler check xml validity: Is rotors map legal: " + rotorMappingLegalResult);
+        log.debug("MachineHandler check xml validity: Is rotors notches legal: " + rotorNotchLegalResult);
+        log.debug("MachineHandler check xml validity: Is reflector ids legal: " + reflectorIdLegalResult);
+        log.debug("MachineHandler check xml validity: Is reflectors mapping legal: " + reflectorMappingLegalResult);
 
-        log.info("MachineHandler check xml validity: did pass all tests: " + result);
-        return result;
+        if(abcCountEvenResult == false){
+            return XmlVerifierState.ERROR_ABC_COUNT_ODD;
+        }
+        if(rotorCountLegalResult == false){
+            return XmlVerifierState.ERROR_BAD_ROTOR_COUNT;
+        }
+        if(rotorIdLegalResult == false){
+            return XmlVerifierState.ERROR_ILLEGAL_ROTOR_ID;
+        }
+        if(rotorMappingLegalResult == false){
+            return XmlVerifierState.ERROR_ILLEGAL_ROTOR_MAPPING;
+        }
+        if(rotorNotchLegalResult == false){
+            return XmlVerifierState.ERROR_ILLEGAL_NOTCH_LOCATION;
+        }
+        if(reflectorIdLegalResult == false){
+            return XmlVerifierState.ERROR_ILLEGAL_REFLECTOR_ID;
+        }
+        if(reflectorMappingLegalResult == false){
+            return XmlVerifierState.ERROR_ILLEGAL_REFLECTOR_MAPPING;
+        }
+        log.info("Machine Configuration schema passed all tests.");
+        return XmlVerifierState.VALID;
     }
 
     public boolean isFileInExistenceAndXML(String path) throws IOException {
         String extension = "";
-        int i = path.lastIndexOf('.');
+        int i = path.lastIndexOf(".");
         if (i > 0) {
             extension = path.substring(i+1);
         }
@@ -153,7 +174,7 @@ public class XmlSchemaVerifierImpl implements XmlSchemaVerifier {
                 .boxed()
                 .collect(Collectors.toList());
 
-        return list.equals(reflectorsIds);
+        return list.equals(reflectorsIds) && (list.size() <= 5 && list.size() > 0);
     }
 
     public boolean isReflectorsMappingLegal(List<CTEReflector> reflectors){

@@ -1,11 +1,9 @@
-package src.main.java;
+package src.main.java.ui;
 import main.java.component.MachineHandler;
 import main.java.component.impl.MachineHandlerImpl;
 import main.java.enums.ReflectorsId;
 import src.main.java.enums.MenuOptions;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 import static java.lang.System.exit;
 import static java.lang.System.lineSeparator;
@@ -13,7 +11,8 @@ import static java.lang.System.lineSeparator;
 public class Menu {
 
     private static MachineHandler machineHandler = new MachineHandlerImpl();
-    public static String buildMenu(){
+
+    public static String buildMainMenu(){
         String menuOptions = "What would you like to do?" + lineSeparator();
         int i = 1;
         for (MenuOptions option : MenuOptions.values()) {
@@ -27,15 +26,13 @@ public class Menu {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to C.T.E!");
         int choice = -1;
-        String menuOptions = Menu.buildMenu();
+        String menuOptions = Menu.buildMainMenu();
         while (choice != MenuOptions.Exit.getId()){
             System.out.println(menuOptions);
             try{
                 choice = scanner.nextInt();
                 switch (choice){
                     case 1:
-                        //todo - need to get schema file - full path
-
                         readSystemInfoFromFile();
                         break;
                     case 2:
@@ -70,11 +67,10 @@ public class Menu {
 
     private static void readSystemInfoFromFile(){
 //        boolean success = false;
-        machineHandler = new MachineHandlerImpl();
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Please enter path of xml schema to load:");
-        String input = scanner.next();
+        System.out.println("Please enter the absolute path of xml schema to load:");
+        String input = scanner.nextLine();
 
         //todo - should this return optional
 

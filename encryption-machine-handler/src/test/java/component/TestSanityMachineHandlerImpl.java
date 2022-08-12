@@ -76,4 +76,18 @@ public class TestSanityMachineHandlerImpl {
     }
 
 
+    @Test
+    public void testBadReflectorsIdSchema(){
+        try{
+            String badReflectorIdXml = "./src/main/resources/machine-inventory-schema/extra-errors/ex1-error - reflector-id.xml";
+            machineHandler.buildMachinePartsInventory(badReflectorIdXml);
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+
+        }
+
+        Assert.assertNull(machineHandler.getInventoryInfo());
+    }
+
 }
