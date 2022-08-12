@@ -14,6 +14,6 @@ import java.util.List;
 public class MachineState {
     private ReflectorsId reflectorId;
     private List<Integer> rotorIds;
-    private List<Integer> rotorsStartingPositions;
+    private List<String> rotorsHeadsInitialValues;
     private List<MappingPair<String,String>> plugMapping;
 }

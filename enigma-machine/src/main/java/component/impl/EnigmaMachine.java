@@ -108,42 +108,35 @@ public class EnigmaMachine implements EncryptionMachine {
     }
 
     @Override
-    public void setRotorsStartingPosition(List<Integer> rotorsPosition) {
-        if(rotorsPosition.size() != rotors.size()){
-            log.warn("Failed to set Rotors positions, different sizes : number of positions:" + rotorsPosition.size() + "number of rotors:" +  rotors.size());
+    public void setRotorsStartingPosition(List<Integer> valuesToSetTheHead) {
+        if(valuesToSetTheHead.size() != rotors.size()){
+            log.warn("Failed to set Rotors positions, different sizes : number of positions:" + valuesToSetTheHead.size() + "number of rotors:" +  rotors.size());
         }
         int posIndex = 0;
         for (Rotor rotor : this.rotors) {
-            rotor.setRotorStartingPosition(rotorsPosition.get(posIndex));
-            posIndex++;
-        }
-    }
-
-    @Override
-    public void setRotorsStartingPositionByString(List<String> rotorsPositions) {
-        if(rotorsPositions.size() != rotors.size()){
-            log.warn("Failed to set Rotors positions, different sizes : number of positions:" + rotorsPositions.size() + "number of rotors:" +  rotors.size());
-        }
-        int posIndex = 0 , letterAsNumber;
-        String currentLetter;
-        for (Rotor rotor : this.rotors) {
-            currentLetter = rotorsPositions.get(posIndex);
-            letterAsNumber = ioWheel.getABC().indexOf(currentLetter);
-            rotor.setRotorStartingPosition(letterAsNumber);
+            rotor.setRotorStartingPosition(valuesToSetTheHead.get(posIndex));
             posIndex++;
         }
     }
 
     @Override
     public MachineState getMachineState() {
+        if(ioWheel == null || rotors == null || rotors.size() <= 0 || plugBoard == null){
+            log.error("Failed To get machine state, machine not assembled yet");
+            return null;
+        }
         List<Integer> rotorIds = new ArrayList<>();
-        List<Integer> rotorsHeadPositions = new ArrayList<>();
+        List<String> rotorsHeadsInitialValues = new ArrayList<>();
         List<MappingPair<String,String>> minimalPlugMapping = this.plugBoard.getCurrentMapping();
+        String numberAsLetter;
+        int valueInHead;
         for (Rotor rotor : this.rotors) {
             rotorIds.add(rotor.getId());
-            rotorsHeadPositions.add(rotor.getHeadLocation());
+            valueInHead = rotor.getValueInHead();
+            numberAsLetter = ioWheel.getABC().substring(valueInHead,valueInHead+1);
+            rotorsHeadsInitialValues.add(numberAsLetter);
         }
-        return new MachineState(reflector.getId(),rotorIds,rotorsHeadPositions,minimalPlugMapping);
+        return new MachineState(reflector.getId(),rotorIds,rotorsHeadsInitialValues,minimalPlugMapping);
     }
 
     @Override
@@ -156,18 +149,25 @@ public class EnigmaMachine implements EncryptionMachine {
             log.error("Failed to set machine state from given machineState DTO");
             return;
         }
+        //setting - plugboard
         if(machineState.getPlugMapping() == null){
             log.warn("setting machine state - No plug board mapping to set");
         }
         else{
             this.plugBoard.connectMultiple(machineState.getPlugMapping());
         }
-
-        if(machineState.getRotorsStartingPositions() == null || this.rotors.size()!=machineState.getRotorsStartingPositions().size()){
-            log.warn("setting machine state - No rotors initial rotor positions");
+        //Setting - rotors starting positions
+        if(machineState.getRotorsHeadsInitialValues() == null || this.rotors.size()!=machineState.getRotorsHeadsInitialValues().size()){
+            log.warn("setting machine state - No rotors initial rotor positions or different size");
         }
         else{
-            this.setRotorsStartingPosition(machineState.getRotorsStartingPositions());
+            List<Integer> rotorsHeadsInitialValues = new ArrayList<>(machineState.getRotorsHeadsInitialValues().size());
+            int letterAsNumber;
+            for (String startingValue : machineState.getRotorsHeadsInitialValues()) {
+                letterAsNumber = ioWheel.getABC().indexOf(startingValue);
+                rotorsHeadsInitialValues.add(letterAsNumber);
+            }
+            this.setRotorsStartingPosition(rotorsHeadsInitialValues);
         }
         //TODO: validate rotors ids?
         //TODO: validate reflector's id?

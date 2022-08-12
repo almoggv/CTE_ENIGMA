@@ -4,6 +4,8 @@ import main.java.generictype.DeepCloneable;
 
 public interface Rotor extends DeepCloneable {
 
+    public int getValueInHead();
+
     public int getHeadLocation();
 
     public int getId();
@@ -18,7 +20,7 @@ public interface Rotor extends DeepCloneable {
 
     public boolean doesNotchAllowRotation();
 
-    public boolean setRotorStartingPosition(int headPosition);
+    public boolean setRotorStartingPosition(int valueOfHeadInRight);
 
     public void rotate();
 

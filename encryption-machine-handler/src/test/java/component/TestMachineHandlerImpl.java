@@ -44,7 +44,7 @@ public class TestMachineHandlerImpl {
         plugBoard.add(new MappingPair<String, String>("F", "A"));
         //plugpair.add(new MappingPair<String,String>("B","C"));
         List<Integer> rotorsIds = Arrays.asList(1, 2);
-        List<Integer> rotorsstartingPos = Arrays.asList(2, 2);
+        String rotorsstartingPos = "CC";
 
         machineHandler.assembleMachine(refid, rotorsIds, rotorsstartingPos, plugBoard);
 

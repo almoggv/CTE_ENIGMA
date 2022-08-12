@@ -5,27 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6467e2d7-ff2a-4abb-a198-685a0fcd06aa" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/verifier/XmlSchemaVerifier.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/verifier/impl/XmlSchemaVerifierImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/encryption-machine-handler/src/test/java/component/TestSanityMachineHandlerImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/encryption-machine-handler/Logs/logging.log" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/Logs/logging.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/Main.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/MachineHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/MachineHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/impl/MachineHandlerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/impl/MachineHandlerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/main/resources/log4j.properties" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/src/main/resources/log4j.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/main/resources/machine-inventory-schema/ex1-sanity-paper-enigma.xml" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/src/main/resources/machine-inventory-schema/ex1-sanity-paper-enigma.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/test/java/component/TestMachineHandlerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/src/test/java/component/TestMachineHandlerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/EncryptionMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/EncryptionMachine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/Rotor.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/Rotor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/EnigmaMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/EnigmaMachine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/ReflectorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/ReflectorImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/RotorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/RotorImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/generictype/MappingPairListUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/generictype/MappingPairListUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/resources/log4j.properties" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/resources/log4j.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/resources/machine-inventory-schema/ex1-sanity-paper-enigma.xml" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/resources/machine-inventory-schema/ex1-sanity-paper-enigma.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enigma-machine/src/test/java/component/TestEnigmaMachineImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/resources/component/TestEnigmaMachineImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/component/MachineHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/component/MachineHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/component/impl/MachineHandlerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/component/impl/MachineHandlerImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/resources/ex1-error-3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/resources/ex1-sanity-paper-enigma.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/resources/ex1-sanity-small.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/test/java/component/TestEnigmaMachineImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/dto/MachineState.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/dto/MachineState.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -300,7 +290,7 @@
         <watch expression="((RotorImpl)rotor).rotorMapping" custom="main.java.component.impl.RotorImpl" />
         <watch expression="rotorMapping.get(realIndex).getRight()" />
       </configuration>
-      <inline-watch fileUrl="file://$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/impl/MachineHandlerImpl.java" line="332">
+      <inline-watch fileUrl="file://$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/impl/MachineHandlerImpl.java" line="320">
         <watch expression="f.exists()" />
       </inline-watch>
     </watches-manager>

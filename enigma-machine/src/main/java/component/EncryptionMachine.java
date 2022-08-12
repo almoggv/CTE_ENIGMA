@@ -32,8 +32,7 @@ public interface EncryptionMachine {
 
     public void connectPlugs(List<MappingPair<String,String>> plugMappingList);
 
-    public void setRotorsStartingPosition(List<Integer> rotorsPosition);
-    public void setRotorsStartingPositionByString(List<String> rotorsPosition);
+    public void setRotorsStartingPosition(List<Integer> valuesToSetTheHead);
 
     // todo - set positions by string - user input <ci -- <AO!> not 0,1
     public MachineState getMachineState();

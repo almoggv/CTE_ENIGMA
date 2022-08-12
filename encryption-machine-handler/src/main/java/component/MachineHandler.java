@@ -25,23 +25,12 @@ public interface MachineHandler {
      * @return
      */
     public void assembleMachine();
-    /**
-     * call buildMachinePartsInventory before assembling!!!!
-     * assembles a machine from user instructions
-     * sets reflector, plugBoardMapping, rotors and their starting position
-     */
-    public void assembleMachine(ReflectorsId reflectorId, List<Integer> rotorIds,
-           List<Integer> rotorsStartingPositions,
-           List<MappingPair<String,String>> plugMapping );
 
     public void assembleMachine(ReflectorsId reflectorId, List<Integer> rotorIds,
                                 String rotorsStartingPositions,
                                 List<MappingPair<String,String>> plugMapping );
 
     public void assembleMachineParts(ReflectorsId reflectorId, List<Integer> rotorIds);
-
-    public void setStartingMachineState(List<Integer> rotorsStartingPositions,
-            List<MappingPair<String,String>> plugMapping);
 
     public void setStartingMachineState(String rotorsStartingPositions,
                                         List<MappingPair<String,String>> plugMapping);

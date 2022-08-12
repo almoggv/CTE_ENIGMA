@@ -68,6 +68,11 @@ public class RotorImpl implements Rotor {
     }
 
     @Override
+    public int getValueInHead() {
+        return rotorMapping.getFirst().getRight();
+    }
+
+    @Override
     public int getHeadLocation() {
         return headPosition;
     }
@@ -98,9 +103,6 @@ public class RotorImpl implements Rotor {
 
     @Override
     public boolean setRotorStartingPosition(int valueOfHeadInRight) {
-        while(this.headPosition != 0){
-            rotate();
-        }
         while(rotorMapping.getFirst().getRight() != valueOfHeadInRight){
             rotate();
         }

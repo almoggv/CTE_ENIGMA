@@ -71,7 +71,7 @@ public class MachineHandlerImpl implements MachineHandler {
         Random random = new Random();
         ReflectorsId reflectorId = ReflectorsId.getByNum(random.nextInt(reflectorsInventory.size()) + 1);
         List<Integer> rotorIdList = generateRandomRotorList();
-        List<Integer> rotorStartingPositions = generateRandomRotorPositions(ABC);
+        String rotorStartingPositions = generateRandomRotorPositions(ABC);
         List<MappingPair<String,String>> plugPairsMapping = generateRandomPlugboardConnections(ABC);
         assembleMachine(reflectorId,rotorIdList,rotorStartingPositions,plugPairsMapping);
     }
@@ -104,15 +104,17 @@ public class MachineHandlerImpl implements MachineHandler {
         return plugPairs;
     }
 
-    private List<Integer> generateRandomRotorPositions(String ABC) {
+    private String generateRandomRotorPositions(String ABC) {
         Random random = new Random();
-        List<Integer> rotorsStartingPositions = new ArrayList<>();
         int startingPos;
+        String currentGeneratedLetter;
+        String result = "";
         for (int i = 0; i < expectedNumOfRotors; i++) {
             startingPos = random.nextInt(ABC.length()) + 1;
-            rotorsStartingPositions.add(startingPos);
+            currentGeneratedLetter = ABC.substring(startingPos,startingPos+1);
+            result = result.concat(currentGeneratedLetter);
         }
-        return rotorsStartingPositions;
+        return result;
     }
 
     private List<Integer> generateRandomRotorList() {
@@ -126,12 +128,6 @@ public class MachineHandlerImpl implements MachineHandler {
             rotorIdList.add(rotorId);
         }
         return rotorIdList;
-    }
-
-    @Override
-    public void assembleMachine(ReflectorsId reflectorId, List<Integer> rotorIds, List<Integer> rotorsStartingPositions, List<MappingPair<String, String>> plugMapping) {
-        assembleMachineParts(reflectorId, rotorIds);
-        setStartingMachineState(rotorsStartingPositions, plugMapping);
     }
 
     @Override
@@ -169,32 +165,24 @@ public class MachineHandlerImpl implements MachineHandler {
     }
 
     @Override
-    public void setStartingMachineState(List<Integer> rotorsStartingPositions, List<MappingPair<String, String>> plugMapping) {
-        if(encryptionMachine == null){
-            log.error("Failed to set Machine initial state - no machine found");
-            return;
-        }
-        encryptionMachine.setRotorsStartingPosition(rotorsStartingPositions);
-        encryptionMachine.connectPlugs(plugMapping);
-        this.initialMachineState.setRotorsStartingPositions(rotorsStartingPositions);
-        this.initialMachineState.setPlugMapping(plugMapping);
-        log.info("Machine Handler - initial state of machine state set");
-    }
-
-    @Override
     public void setStartingMachineState(String rotorsStartingPositions, List<MappingPair<String, String>> plugMapping) {
         if(encryptionMachine == null){
             log.error("Failed to set Machine initial state - no machine found");
             return;
         }
-        List<String> rotorStartingPositionsList = new ArrayList<>(rotorsStartingPositions.length());
+        String currentLetter;
+        int letterAsNumber;
+        List<Integer> valuesOfHeadToSetRotors = new ArrayList<>(rotorsStartingPositions.length());
         for (int i = 0; i < rotorsStartingPositions.length(); i++) {
-            rotorStartingPositionsList.add(rotorsStartingPositions.substring(i,i+1));
+            currentLetter = rotorsStartingPositions.substring(i,i+1);
+            letterAsNumber = ioWheelInventory.getABC().indexOf(currentLetter);
+            valuesOfHeadToSetRotors.add(letterAsNumber);
         }
-        encryptionMachine.setRotorsStartingPositionByString(rotorStartingPositionsList);
+        encryptionMachine.setRotorsStartingPosition(valuesOfHeadToSetRotors);
         encryptionMachine.connectPlugs(plugMapping);
-        this.initialMachineState.setRotorsStartingPositions(encryptionMachine.getMachineState().getRotorsStartingPositions());
-        this.initialMachineState.setPlugMapping(plugMapping);
+        //TODO: FIX here
+//        this.initialMachineState.setRotorsHeadsInitialValues(encryptionMachine.getMachineState().getRotorsHeadsInitialValues());
+//        this.initialMachineState.setPlugMapping(plugMapping);
         log.info("Machine Handler - initial state of machine state set");
     }
 
