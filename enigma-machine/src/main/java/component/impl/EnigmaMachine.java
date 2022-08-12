@@ -44,12 +44,13 @@ public class EnigmaMachine implements EncryptionMachine {
     }
 
     private Character encryptSingle(Character input){
+        String ABC = ioWheel.getABC();
         log.debug("char: " + input);
         String rawInput = String.valueOf(input);
         rawInput = plugBoard.getMappedValue(rawInput);
         log.debug("after plug: " + rawInput);
         int rawInputIndex = ioWheel.handleInput(rawInput);
-        log.debug("after io: " + rawInputIndex);
+        log.debug("after io: " + rawInputIndex + ":" + ABC.charAt(rawInputIndex));
         boolean rotateCurrent = true;
         for (Rotor rotor : rotors ) {
             if(rotateCurrent){
@@ -57,14 +58,14 @@ public class EnigmaMachine implements EncryptionMachine {
             }
             rotateCurrent = rotor.doesNotchAllowRotation();
             rawInputIndex = rotor.fromInputWheelToReflector(rawInputIndex);
-            log.debug("after rotor: " + rawInputIndex);
+            log.debug("after rotor: " + rawInputIndex + ":" + ABC.charAt(rawInputIndex));
         }
         rawInputIndex = reflector.getReflectedValue(rawInputIndex);
-        log.debug("after reflector: " + rawInputIndex);
+        log.debug("after reflector: " + rawInputIndex + ":" + ABC.charAt(rawInputIndex));
 
         for (int i = rotors.size() -1; i >=0; i--) {
             rawInputIndex = rotors.get(i).fromReflectorToInputWheel(rawInputIndex);
-            log.debug("after rotor (back): " + rawInputIndex);
+            log.debug("after rotor (back): " + rawInputIndex + ":" + ABC.charAt(rawInputIndex));
         }
         rawInput = ioWheel.handleInput(rawInputIndex);
         log.debug("after io: " + rawInput);
@@ -119,13 +120,16 @@ public class EnigmaMachine implements EncryptionMachine {
     }
 
     @Override
-    public void setRotorsStartingPositionByString(List<String> rotorsPosition) {
-        if(rotorsPosition.size() != rotors.size()){
-            log.warn("Failed to set Rotors positions, different sizes : number of positions:" + rotorsPosition.size() + "number of rotors:" +  rotors.size());
+    public void setRotorsStartingPositionByString(List<String> rotorsPositions) {
+        if(rotorsPositions.size() != rotors.size()){
+            log.warn("Failed to set Rotors positions, different sizes : number of positions:" + rotorsPositions.size() + "number of rotors:" +  rotors.size());
         }
-        int posIndex = 0;
+        int posIndex = 0 , letterAsNumber;
+        String currentLetter;
         for (Rotor rotor : this.rotors) {
-            rotor.setRotorStartingPosition(ioWheel.getABC().indexOf(rotorsPosition.get(posIndex)));
+            currentLetter = rotorsPositions.get(posIndex);
+            letterAsNumber = ioWheel.getABC().indexOf(currentLetter);
+            rotor.setRotorStartingPosition(letterAsNumber);
             posIndex++;
         }
     }

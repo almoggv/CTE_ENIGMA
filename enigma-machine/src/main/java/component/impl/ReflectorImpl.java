@@ -37,13 +37,18 @@ public class ReflectorImpl implements Reflector {
 
     public ReflectorImpl(CTEReflector cteReflector) {
         List<CTEReflect> reflects = cteReflector.getCTEReflect();
+        List<MappingPair<Integer,Integer>> rawReflectionMapping = new ArrayList<>();
         for(CTEReflect cteReflect : reflects) {
             int in = cteReflect.getInput() -1;
             int out = cteReflect.getOutput() -1;
             MappingPair<Integer,Integer> pairInOut = new MappingPair<Integer,Integer>(in, out);
             MappingPair<Integer,Integer> pairOutIn = new MappingPair<Integer,Integer>(out, in);
-            reflectionMapping.add(pairInOut);
-            reflectionMapping.add(pairOutIn);
+            rawReflectionMapping.add(pairInOut);
+            rawReflectionMapping.add(pairOutIn);
+        }
+        rawReflectionMapping = MappingPairListUtils.sortByLeft(rawReflectionMapping);
+        for (MappingPair<Integer,Integer> pair: rawReflectionMapping) {
+            this.reflectionMapping.add(pair);
         }
         this.id = ReflectorsId.valueOf(cteReflector.getId());
     }
@@ -58,7 +63,12 @@ public class ReflectorImpl implements Reflector {
 
     @Override
     public int getReflectedValue(int inValue) {
-        return MappingPairListUtils.getRightByLeft(reflectionMapping, inValue);
+        //return MappingPairListUtils.getRightByLeft(reflectionMapping, inValue);
+        //return reflectionMapping.get(inValue).getRight();
+        MappingPair<Integer,Integer> pairOfInValue = MappingPairListUtils.findPairByLeft(reflectionMapping,inValue);
+        int rightOfPairOfInValue = pairOfInValue.getRight();
+        MappingPair<Integer,Integer>  thePairThatTheRightIsItsLeft = MappingPairListUtils.findPairByLeft(reflectionMapping,rightOfPairOfInValue);
+        return reflectionMapping.indexOf(thePairThatTheRightIsItsLeft);
     }
 
     @Override

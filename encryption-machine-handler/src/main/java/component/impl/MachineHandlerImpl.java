@@ -37,7 +37,7 @@ public class MachineHandlerImpl implements MachineHandler {
 //    private final Map<MachineState, List<EncryptionInfoHistory>> machineStatisticsHistory = new ArrayList<>();
 
     static {
-        String log4JPropertyFile = "./enigma-machine/src/main/resources/log4j.properties";
+        String log4JPropertyFile = "./src/main/resources/log4j.properties";
         Properties p = new Properties();
         try {
             p.load(new FileInputStream(log4JPropertyFile));
@@ -135,6 +135,12 @@ public class MachineHandlerImpl implements MachineHandler {
     }
 
     @Override
+    public void assembleMachine(ReflectorsId reflectorId, List<Integer> rotorIds, String rotorsStartingPositions, List<MappingPair<String, String>> plugMapping) {
+        assembleMachineParts(reflectorId, rotorIds);
+        setStartingMachineState(rotorsStartingPositions, plugMapping);
+    }
+
+    @Override
     public void assembleMachineParts(ReflectorsId reflectorId, List<Integer> rotorIds) {
         Predicate<Reflector> idReflectorPredicate = (reflector) -> reflector.getId() == reflectorId;
         Reflector reflector = reflectorsInventory.stream().filter(idReflectorPredicate).findFirst().orElse(null);
@@ -171,6 +177,23 @@ public class MachineHandlerImpl implements MachineHandler {
         encryptionMachine.setRotorsStartingPosition(rotorsStartingPositions);
         encryptionMachine.connectPlugs(plugMapping);
         this.initialMachineState.setRotorsStartingPositions(rotorsStartingPositions);
+        this.initialMachineState.setPlugMapping(plugMapping);
+        log.info("Machine Handler - initial state of machine state set");
+    }
+
+    @Override
+    public void setStartingMachineState(String rotorsStartingPositions, List<MappingPair<String, String>> plugMapping) {
+        if(encryptionMachine == null){
+            log.error("Failed to set Machine initial state - no machine found");
+            return;
+        }
+        List<String> rotorStartingPositionsList = new ArrayList<>(rotorsStartingPositions.length());
+        for (int i = 0; i < rotorsStartingPositions.length(); i++) {
+            rotorStartingPositionsList.add(rotorsStartingPositions.substring(i,i+1));
+        }
+        encryptionMachine.setRotorsStartingPositionByString(rotorStartingPositionsList);
+        encryptionMachine.connectPlugs(plugMapping);
+        this.initialMachineState.setRotorsStartingPositions(encryptionMachine.getMachineState().getRotorsStartingPositions());
         this.initialMachineState.setPlugMapping(plugMapping);
         log.info("Machine Handler - initial state of machine state set");
     }
@@ -257,7 +280,7 @@ public class MachineHandlerImpl implements MachineHandler {
                 throw new IllegalArgumentException("input contains letter not in ACB : letter" + input.substring(i,i+1));
             }
         }
-
+        //For History documentation
         MachineState currentMachineState = encryptionMachine.getMachineState();
 
         Instant startEncryptionTime = Instant.now();
@@ -297,6 +320,7 @@ public class MachineHandlerImpl implements MachineHandler {
         log.info("MachineHandler check xml validity: did pass all tests: " + result);
         return result;
     }
+
     private boolean isFileInExistenceAndXML(String path) throws IOException {
         String extension = "";
         int i = path.lastIndexOf('.');

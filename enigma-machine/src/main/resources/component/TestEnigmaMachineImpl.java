@@ -1,4 +1,4 @@
-package test.java.component;
+package main.resources.component;
 
 import org.junit.Assert;
 import org.junit.Test;

@@ -3,6 +3,7 @@ package main.java.generictype;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class MappingPairListUtils <T1,T2>{
 
@@ -53,4 +54,8 @@ public class MappingPairListUtils <T1,T2>{
         return;
     }
 
+    public static <T1 extends Comparable,T2 extends  Comparable> List<MappingPair<T1,T2>> sortByLeft(List<MappingPair<T1,T2>> sourceList){
+        return sourceList.stream().sorted(((o1, o2) -> o1.getLeft().compareTo(o2.getLeft()))).
+                collect(Collectors.toList());
+    }
 }

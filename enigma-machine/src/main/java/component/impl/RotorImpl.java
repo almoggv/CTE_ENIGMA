@@ -97,11 +97,11 @@ public class RotorImpl implements Rotor {
     }
 
     @Override
-    public boolean setRotorStartingPosition(int numberOfRotations) {
+    public boolean setRotorStartingPosition(int valueOfHeadInRight) {
         while(this.headPosition != 0){
             rotate();
         }
-        for (int i = 0; i < numberOfRotations; i++) {
+        while(rotorMapping.getFirst().getRight() != valueOfHeadInRight){
             rotate();
         }
         return true;

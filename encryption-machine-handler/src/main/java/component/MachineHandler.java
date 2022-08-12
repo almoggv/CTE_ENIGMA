@@ -34,11 +34,17 @@ public interface MachineHandler {
            List<Integer> rotorsStartingPositions,
            List<MappingPair<String,String>> plugMapping );
 
+    public void assembleMachine(ReflectorsId reflectorId, List<Integer> rotorIds,
+                                String rotorsStartingPositions,
+                                List<MappingPair<String,String>> plugMapping );
 
     public void assembleMachineParts(ReflectorsId reflectorId, List<Integer> rotorIds);
 
     public void setStartingMachineState(List<Integer> rotorsStartingPositions,
             List<MappingPair<String,String>> plugMapping);
+
+    public void setStartingMachineState(String rotorsStartingPositions,
+                                        List<MappingPair<String,String>> plugMapping);
 
     public MachineState getMachineState();
 
