@@ -89,11 +89,14 @@ public class Menu {
     }
 
     private static void showMachineDetails(){
-        System.out.println(machineHandler.getInventoryInfo());
-        //todo = fix state problem
-//        System.out.println(machineHandler.getMachineState());
+        try{
+            System.out.println(machineHandler.getInventoryInfo());
+            System.out.println(machineHandler.getMachineState());
+        }
+        catch(Exception e){
+            System.out.println("Please load a machine from file first" + e.getMessage());
+        }
     }
-
 
     private static void assembleMachineFromInput(){
         Scanner scanner = new Scanner(System.in);
@@ -101,12 +104,12 @@ public class Menu {
         int rotorRange = machineHandler.getInventoryInfo().getNumOfAvailableRotors();
         System.out.println("Please choose " + rotorNumToAsk + " rotors from 1 to " + rotorRange + " seperated by commas") ;
         System.out.println("e.g: 45,27,94") ;
-        String input = scanner.next();
+        String input = scanner.nextLine();
 
         String abc = machineHandler.getInventoryInfo().getABC();
         System.out.println("Please choose rotors starting positions (from machine ABC: " + abc +")");
         System.out.println("e.g: AO! ");
-        input = scanner.next();
+        input = scanner.nextLine();
 
         System.out.println("Please choose a reflector from the following: ");
         String reflectorOptions = "Available reflectors:" + lineSeparator();
@@ -118,7 +121,7 @@ public class Menu {
             i++;
         }
         System.out.println(reflectorOptions);
-        input = scanner.next();
+        input = scanner.nextLine();
 
     }
 
@@ -129,7 +132,7 @@ public class Menu {
     private static void encryptOrDecrypt() {
         System.out.println("please enter string to encrypt/decrypt:");
         Scanner scanner = new Scanner(System.in);
-        String input = scanner.next();
+        String input = scanner.nextLine();
 
         String output = machineHandler.encrypt(input);
         System.out.println("Encrypted to: " + output);

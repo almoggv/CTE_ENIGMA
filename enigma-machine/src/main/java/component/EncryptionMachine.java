@@ -4,6 +4,7 @@ import main.java.generictype.MappingPair;
 import main.java.dto.MachineState;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface EncryptionMachine {
 
@@ -34,7 +35,7 @@ public interface EncryptionMachine {
 
     public void setRotorsStartingPosition(List<Integer> valuesToSetTheHead);
 
-    public MachineState getMachineState();
+    public Optional<MachineState> getMachineState();
 
     public void setMachineState(MachineState machineState);
 

@@ -1,18 +1,10 @@
 package main.java.verifier;
 
-import main.java.enums.ReflectorsId;
-import main.java.enums.XmlVerifierState;
+import main.java.dto.enums.XmlVerifierState;
 import main.resources.generated.*;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
-import java.util.Locale;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public interface XmlSchemaVerifier {
 

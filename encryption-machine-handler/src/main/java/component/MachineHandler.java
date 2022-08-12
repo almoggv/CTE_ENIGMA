@@ -37,9 +37,9 @@ public interface MachineHandler {
     public void setStartingMachineState(String rotorsStartingPositions,
                                         List<MappingPair<String,String>> plugMapping);
 
-    public MachineState getMachineState();
+    public Optional<MachineState> getMachineState();
 
-    public InventoryInfo getInventoryInfo();
+    public Optional<InventoryInfo> getInventoryInfo();
 
     public void resetToLastSetState();
 

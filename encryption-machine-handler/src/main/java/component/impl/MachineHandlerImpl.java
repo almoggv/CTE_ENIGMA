@@ -4,7 +4,7 @@ package main.java.component.impl;
 import main.java.dto.InventoryInfo;
 import main.java.dto.MachineState;
 import main.java.dto.EncryptionInfoHistory;
-import main.java.enums.XmlVerifierState;
+import main.java.dto.enums.XmlVerifierState;
 import main.java.generictype.MappingPair;
 import main.java.handler.FileConfigurationHandler;
 import main.java.component.*;
@@ -15,17 +15,12 @@ import main.resources.generated.*;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
-import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.nio.file.Paths;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.*;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class MachineHandlerImpl implements MachineHandler {
     private static final Logger log = Logger.getLogger(MachineHandlerImpl.class);
@@ -193,17 +188,17 @@ public class MachineHandlerImpl implements MachineHandler {
     }
 
     @Override
-    public MachineState getMachineState() {
+    public Optional<MachineState> getMachineState() {
         if(this.encryptionMachine == null){
-            return null;
+            return Optional.empty();
         }
         return encryptionMachine.getMachineState();
     }
 
     @Override
-    public InventoryInfo getInventoryInfo() {
+    public Optional<InventoryInfo> getInventoryInfo() {
         if(this.ioWheelInventory == null || this.plugBoardInventory == null || this.rotorsInventory == null || this.reflectorsInventory == null){
-            return null;
+            return Optional.empty();
         }
         InventoryInfo inventoryInfo = new InventoryInfo();
         inventoryInfo.setNumOfAvailableReflectors(reflectorsInventory.size());
@@ -215,7 +210,7 @@ public class MachineHandlerImpl implements MachineHandler {
         }
         inventoryInfo.setRotorIdToNotchLocation(rotorIdToNotch);
         inventoryInfo.setABC(ioWheelInventory.getABC());
-        return inventoryInfo;
+        return Optional.of(inventoryInfo);
     }
 
     private void buildMachinePartsInventory(CTEEnigma cteEnigma) {
@@ -266,7 +261,7 @@ public class MachineHandlerImpl implements MachineHandler {
     }
 
     @Override
-    public String encrypt(String input) {
+    public String encrypt(String input) throws RuntimeException{
         //todo is to upper case necessary - decide where
         //input = input.toUpperCase();
 
@@ -277,7 +272,13 @@ public class MachineHandlerImpl implements MachineHandler {
             }
         }
         //For History documentation
-        MachineState machineStateBeforeEncrypt = encryptionMachine.getMachineState();
+        MachineState machineStateBeforeEncrypt;
+        if(encryptionMachine.getMachineState().isPresent()) {
+            machineStateBeforeEncrypt = encryptionMachine.getMachineState().get();
+        }
+        else{
+            throw new RuntimeException("Machine is null");
+        }
 
         Instant startEncryptionTime = Instant.now();
         String encryptedOutput = encryptionMachine.encrypt(input);

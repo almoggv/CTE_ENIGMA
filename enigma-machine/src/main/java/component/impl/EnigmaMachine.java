@@ -8,10 +8,7 @@ import org.apache.log4j.PropertyConfigurator;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Properties;
+import java.util.*;
 
 public class EnigmaMachine implements EncryptionMachine {
     private static final Logger log = Logger.getLogger(EnigmaMachine.class);
@@ -120,10 +117,10 @@ public class EnigmaMachine implements EncryptionMachine {
     }
 
     @Override
-    public MachineState getMachineState() {
+    public Optional<MachineState> getMachineState() {
         if(ioWheel == null || rotors == null || rotors.size() <= 0 || plugBoard == null){
             log.error("Failed To get machine state, machine not assembled yet");
-            return null;
+            return Optional.empty();
         }
         List<Integer> rotorIds = new ArrayList<>();
         List<String> rotorsHeadsInitialValues = new ArrayList<>();
@@ -136,7 +133,7 @@ public class EnigmaMachine implements EncryptionMachine {
             numberAsLetter = ioWheel.getABC().substring(valueInHead,valueInHead+1);
             rotorsHeadsInitialValues.add(numberAsLetter);
         }
-        return new MachineState(reflector.getId(),rotorIds,rotorsHeadsInitialValues,minimalPlugMapping);
+        return  Optional.of(new MachineState(reflector.getId(),rotorIds,rotorsHeadsInitialValues,minimalPlugMapping));
     }
 
     @Override
