@@ -8,6 +8,8 @@ import main.java.generictype.MappingPair;
 import main.java.handler.FileConfigurationHandler;
 import main.java.component.*;
 import main.java.enums.ReflectorsId;
+import main.java.verifier.XmlSchemaVerifier;
+import main.java.verifier.impl.XmlSchemaVerifierImpl;
 import main.resources.generated.*;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
@@ -32,8 +34,9 @@ public class MachineHandlerImpl implements MachineHandler {
     private int expectedNumOfRotors;
     private EncryptionMachine encryptionMachine = new EnigmaMachine();
     private MachineState initialMachineState = new MachineState();
-//    private final List<EncryptionInfoHistory> machineStatisticsHistory = new ArrayList<>();
     private final Map<MachineState, List<EncryptionInfoHistory>> machineStatisticsHistory = new HashMap<>();
+
+    private final XmlSchemaVerifier xmlSchemaVerifier = new XmlSchemaVerifierImpl();
 
     static {
         String log4JPropertyFile = "./src/main/resources/log4j.properties";
@@ -250,7 +253,6 @@ public class MachineHandlerImpl implements MachineHandler {
         return false;
     }
 
-
     @Override
     public void resetToLastSetState() {
         this.encryptionMachine.setMachineState(initialMachineState);
@@ -290,7 +292,7 @@ public class MachineHandlerImpl implements MachineHandler {
     }
 
     @Override
-    public Map<MachineState, List<EncryptionInfoHistory>>  getMachineStatisticsHistory() {
+    public Map<MachineState,List<EncryptionInfoHistory>>  getMachineStatisticsHistory() {
         return machineStatisticsHistory;
     }
 
