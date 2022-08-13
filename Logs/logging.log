@@ -2532,4 +2532,217 @@
   2022-08-13 19:13:35 DEBUG EnigmaMachine:68 - after io: B
   2022-08-13 19:13:35 DEBUG EnigmaMachine:70 - after plug: B
   2022-08-13 19:13:35 INFO  MachineHandlerImpl:301 - time it took to encrypt:PT0.019S
+  2022-08-13 19:16:12 DEBUG EnigmaMachine:26 - Logger Instatiated for : EnigmaMachine
+  2022-08-13 19:16:16 ERROR EnigmaMachine:122 - Failed To get machine state, machine not assembled yet
+  2022-08-13 19:24:56 DEBUG EnigmaMachine:26 - Logger Instatiated for : EnigmaMachine
+  2022-08-13 19:24:58 ERROR EnigmaMachine:122 - Failed To get machine state, machine not assembled yet
+  2022-08-13 19:25:42 DEBUG EnigmaMachine:26 - Logger Instatiated for : EnigmaMachine
+  2022-08-13 19:25:44 ERROR EnigmaMachine:122 - Failed To get machine state, machine not assembled yet
+  2022-08-13 19:25:56 ERROR EnigmaMachine:122 - Failed To get machine state, machine not assembled yet
+  2022-08-13 19:26:10 ERROR EnigmaMachine:122 - Failed To get machine state, machine not assembled yet
+  2022-08-13 19:26:13 ERROR EnigmaMachine:122 - Failed To get machine state, machine not assembled yet
+  2022-08-13 19:26:23 DEBUG FileConfigurationHandler:25 - Logger Instatiated for : FileConfigurationHandler
+  2022-08-13 19:26:23 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-08-13 19:26:23 DEBUG XmlSchemaVerifierImpl:49 - MachineHandler check xml validity: Is even ABC: true
+  2022-08-13 19:26:23 DEBUG XmlSchemaVerifierImpl:50 - MachineHandler check xml validity: Is good rotors count: true
+  2022-08-13 19:26:23 DEBUG XmlSchemaVerifierImpl:51 - MachineHandler check xml validity: Is rotors ids legal: true
+  2022-08-13 19:26:23 DEBUG XmlSchemaVerifierImpl:52 - MachineHandler check xml validity: Is rotors map legal: true
+  2022-08-13 19:26:23 DEBUG XmlSchemaVerifierImpl:53 - MachineHandler check xml validity: Is rotors notches legal: true
+  2022-08-13 19:26:23 DEBUG XmlSchemaVerifierImpl:54 - MachineHandler check xml validity: Is reflector ids legal: true
+  2022-08-13 19:26:23 DEBUG XmlSchemaVerifierImpl:55 - MachineHandler check xml validity: Is reflectors mapping legal: true
+  2022-08-13 19:26:23 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-13 19:26:23 DEBUG IOWheelImpl:27 - Logger Instatiated for : IOWheelImpl
+  2022-08-13 19:26:23 DEBUG PlugBoardImpl:29 - Logger Instatiated for : PlugBoardImpl
+  2022-08-13 19:26:23 DEBUG RotorImpl:41 - Logger Instatiated for : RotorImpl
+  2022-08-13 19:26:23 DEBUG ReflectorImpl:32 - Logger Instatiated for : ReflectorImpl
+  2022-08-13 19:26:23 INFO  MachineHandlerImpl:262 - Machine handler: created inventory successfully
+  2022-08-13 19:26:26 DEBUG MachineHandlerImpl:90 - assemble machine randomly
+  2022-08-13 19:26:26 DEBUG MachineHandlerImpl:91 - reflector id: I
+  2022-08-13 19:26:26 DEBUG MachineHandlerImpl:92 - rotor id list: [3, 1]
+  2022-08-13 19:26:26 DEBUG MachineHandlerImpl:93 - rotor starting positions: EA
+  2022-08-13 19:26:26 DEBUG MachineHandlerImpl:94 - plugboard mapping: [MappingPair(left=D, right=C), MappingPair(left=B, right=B)]
+  2022-08-13 19:26:26 INFO  MachineHandlerImpl:185 - Machine Handler - assembled machine parts finished
+  2022-08-13 19:26:26 DEBUG PlugBoardImpl:84 - Plugboard made new connection: D<->C
+  2022-08-13 19:26:26 DEBUG PlugBoardImpl:84 - Plugboard made new connection: B<->B
+  2022-08-13 19:26:26 INFO  MachineHandlerImpl:207 - Machine Handler - initial state of machine state set
+  2022-08-13 19:26:41 DEBUG MachineHandlerImpl:287 - encrypt: input after verification: Optional[ABCBA]
+  2022-08-13 19:26:41 DEBUG EnigmaMachine:45 - char: A
+  2022-08-13 19:26:41 DEBUG EnigmaMachine:48 - after plug: A
+  2022-08-13 19:26:41 DEBUG IOWheelImpl:44 - IOWHeel input:AOutput:0
+  2022-08-13 19:26:41 DEBUG EnigmaMachine:50 - after io: 0:A
+  2022-08-13 19:26:41 DEBUG EnigmaMachine:58 - after rotor: 5:F
+  2022-08-13 19:26:41 DEBUG EnigmaMachine:58 - after rotor: 4:E
+  2022-08-13 19:26:41 DEBUG EnigmaMachine:61 - after reflector: 1:B
+  2022-08-13 19:26:41 DEBUG EnigmaMachine:65 - after rotor (back): 2:C
+  2022-08-13 19:26:41 DEBUG EnigmaMachine:65 - after rotor (back): 1:B
+  2022-08-13 19:26:41 DEBUG IOWheelImpl:57 - IOWHeel input:1Output:B
+  2022-08-13 19:26:41 DEBUG EnigmaMachine:68 - after io: B
+  2022-08-13 19:26:41 DEBUG EnigmaMachine:70 - after plug: B
+  2022-08-13 19:26:41 DEBUG EnigmaMachine:45 - char: B
+  2022-08-13 19:26:41 DEBUG EnigmaMachine:48 - after plug: B
+  2022-08-13 19:26:41 DEBUG IOWheelImpl:44 - IOWHeel input:BOutput:1
+  2022-08-13 19:26:41 DEBUG EnigmaMachine:50 - after io: 1:B
+  2022-08-13 19:26:41 DEBUG EnigmaMachine:58 - after rotor: 0:A
+  2022-08-13 19:26:41 DEBUG EnigmaMachine:58 - after rotor: 3:D
+  2022-08-13 19:26:41 DEBUG EnigmaMachine:61 - after reflector: 0:A
+  2022-08-13 19:26:41 DEBUG EnigmaMachine:65 - after rotor (back): 3:D
+  2022-08-13 19:26:41 DEBUG EnigmaMachine:65 - after rotor (back): 2:C
+  2022-08-13 19:26:41 DEBUG IOWheelImpl:57 - IOWHeel input:2Output:C
+  2022-08-13 19:26:41 DEBUG EnigmaMachine:68 - after io: C
+  2022-08-13 19:26:41 DEBUG EnigmaMachine:70 - after plug: D
+  2022-08-13 19:26:41 DEBUG EnigmaMachine:45 - char: C
+  2022-08-13 19:26:41 DEBUG EnigmaMachine:48 - after plug: D
+  2022-08-13 19:26:41 DEBUG IOWheelImpl:44 - IOWHeel input:DOutput:3
+  2022-08-13 19:26:41 DEBUG EnigmaMachine:50 - after io: 3:D
+  2022-08-13 19:26:41 DEBUG EnigmaMachine:58 - after rotor: 4:E
+  2022-08-13 19:26:41 DEBUG EnigmaMachine:58 - after rotor: 5:F
+  2022-08-13 19:26:41 DEBUG EnigmaMachine:61 - after reflector: 2:C
+  2022-08-13 19:26:41 DEBUG EnigmaMachine:65 - after rotor (back): 1:B
+  2022-08-13 19:26:41 DEBUG EnigmaMachine:65 - after rotor (back): 2:C
+  2022-08-13 19:26:41 DEBUG IOWheelImpl:57 - IOWHeel input:2Output:C
+  2022-08-13 19:26:41 DEBUG EnigmaMachine:68 - after io: C
+  2022-08-13 19:26:41 DEBUG EnigmaMachine:70 - after plug: D
+  2022-08-13 19:26:41 DEBUG EnigmaMachine:45 - char: B
+  2022-08-13 19:26:41 DEBUG EnigmaMachine:48 - after plug: B
+  2022-08-13 19:26:41 DEBUG IOWheelImpl:44 - IOWHeel input:BOutput:1
+  2022-08-13 19:26:41 DEBUG EnigmaMachine:50 - after io: 1:B
+  2022-08-13 19:26:41 DEBUG EnigmaMachine:58 - after rotor: 0:A
+  2022-08-13 19:26:41 DEBUG EnigmaMachine:58 - after rotor: 3:D
+  2022-08-13 19:26:41 DEBUG EnigmaMachine:61 - after reflector: 0:A
+  2022-08-13 19:26:41 DEBUG EnigmaMachine:65 - after rotor (back): 3:D
+  2022-08-13 19:26:41 DEBUG EnigmaMachine:65 - after rotor (back): 2:C
+  2022-08-13 19:26:41 DEBUG IOWheelImpl:57 - IOWHeel input:2Output:C
+  2022-08-13 19:26:41 DEBUG EnigmaMachine:68 - after io: C
+  2022-08-13 19:26:41 DEBUG EnigmaMachine:70 - after plug: D
+  2022-08-13 19:26:41 DEBUG EnigmaMachine:45 - char: A
+  2022-08-13 19:26:41 DEBUG EnigmaMachine:48 - after plug: A
+  2022-08-13 19:26:41 DEBUG IOWheelImpl:44 - IOWHeel input:AOutput:0
+  2022-08-13 19:26:41 DEBUG EnigmaMachine:50 - after io: 0:A
+  2022-08-13 19:26:41 DEBUG EnigmaMachine:58 - after rotor: 5:F
+  2022-08-13 19:26:41 DEBUG EnigmaMachine:58 - after rotor: 4:E
+  2022-08-13 19:26:41 DEBUG EnigmaMachine:61 - after reflector: 1:B
+  2022-08-13 19:26:41 DEBUG EnigmaMachine:65 - after rotor (back): 2:C
+  2022-08-13 19:26:41 DEBUG EnigmaMachine:65 - after rotor (back): 1:B
+  2022-08-13 19:26:41 DEBUG IOWheelImpl:57 - IOWHeel input:1Output:B
+  2022-08-13 19:26:41 DEBUG EnigmaMachine:68 - after io: B
+  2022-08-13 19:26:41 DEBUG EnigmaMachine:70 - after plug: B
+  2022-08-13 19:26:41 INFO  MachineHandlerImpl:301 - time it took to encrypt:PT0.009S
+  2022-08-13 19:26:45 DEBUG MachineHandlerImpl:287 - encrypt: input after verification: Optional[AAA]
+  2022-08-13 19:26:45 DEBUG EnigmaMachine:45 - char: A
+  2022-08-13 19:26:45 DEBUG EnigmaMachine:48 - after plug: A
+  2022-08-13 19:26:45 DEBUG IOWheelImpl:44 - IOWHeel input:AOutput:0
+  2022-08-13 19:26:45 DEBUG EnigmaMachine:50 - after io: 0:A
+  2022-08-13 19:26:45 DEBUG EnigmaMachine:58 - after rotor: 1:B
+  2022-08-13 19:26:45 DEBUG EnigmaMachine:58 - after rotor: 2:C
+  2022-08-13 19:26:45 DEBUG EnigmaMachine:61 - after reflector: 5:F
+  2022-08-13 19:26:45 DEBUG EnigmaMachine:65 - after rotor (back): 4:E
+  2022-08-13 19:26:45 DEBUG EnigmaMachine:65 - after rotor (back): 5:F
+  2022-08-13 19:26:45 DEBUG IOWheelImpl:57 - IOWHeel input:5Output:F
+  2022-08-13 19:26:45 DEBUG EnigmaMachine:68 - after io: F
+  2022-08-13 19:26:45 DEBUG EnigmaMachine:70 - after plug: F
+  2022-08-13 19:26:45 DEBUG EnigmaMachine:45 - char: A
+  2022-08-13 19:26:45 DEBUG EnigmaMachine:48 - after plug: A
+  2022-08-13 19:26:45 DEBUG IOWheelImpl:44 - IOWHeel input:AOutput:0
+  2022-08-13 19:26:45 DEBUG EnigmaMachine:50 - after io: 0:A
+  2022-08-13 19:26:45 DEBUG EnigmaMachine:58 - after rotor: 5:F
+  2022-08-13 19:26:45 DEBUG EnigmaMachine:58 - after rotor: 2:C
+  2022-08-13 19:26:45 DEBUG EnigmaMachine:61 - after reflector: 5:F
+  2022-08-13 19:26:45 DEBUG EnigmaMachine:65 - after rotor (back): 2:C
+  2022-08-13 19:26:45 DEBUG EnigmaMachine:65 - after rotor (back): 1:B
+  2022-08-13 19:26:45 DEBUG IOWheelImpl:57 - IOWHeel input:1Output:B
+  2022-08-13 19:26:45 DEBUG EnigmaMachine:68 - after io: B
+  2022-08-13 19:26:45 DEBUG EnigmaMachine:70 - after plug: B
+  2022-08-13 19:26:45 DEBUG EnigmaMachine:45 - char: A
+  2022-08-13 19:26:45 DEBUG EnigmaMachine:48 - after plug: A
+  2022-08-13 19:26:45 DEBUG IOWheelImpl:44 - IOWHeel input:AOutput:0
+  2022-08-13 19:26:45 DEBUG EnigmaMachine:50 - after io: 0:A
+  2022-08-13 19:26:45 DEBUG EnigmaMachine:58 - after rotor: 1:B
+  2022-08-13 19:26:45 DEBUG EnigmaMachine:58 - after rotor: 0:A
+  2022-08-13 19:26:45 DEBUG EnigmaMachine:61 - after reflector: 3:D
+  2022-08-13 19:26:45 DEBUG EnigmaMachine:65 - after rotor (back): 4:E
+  2022-08-13 19:26:45 DEBUG EnigmaMachine:65 - after rotor (back): 5:F
+  2022-08-13 19:26:45 DEBUG IOWheelImpl:57 - IOWHeel input:5Output:F
+  2022-08-13 19:26:45 DEBUG EnigmaMachine:68 - after io: F
+  2022-08-13 19:26:45 DEBUG EnigmaMachine:70 - after plug: F
+  2022-08-13 19:26:45 INFO  MachineHandlerImpl:301 - time it took to encrypt:PT0.005S
+  2022-08-13 19:26:50 DEBUG MachineHandlerImpl:90 - assemble machine randomly
+  2022-08-13 19:26:50 DEBUG MachineHandlerImpl:91 - reflector id: II
+  2022-08-13 19:26:50 DEBUG MachineHandlerImpl:92 - rotor id list: [2, 3]
+  2022-08-13 19:26:50 DEBUG MachineHandlerImpl:93 - rotor starting positions: FF
+  2022-08-13 19:26:50 DEBUG MachineHandlerImpl:94 - plugboard mapping: [MappingPair(left=E, right=B), MappingPair(left=F, right=C)]
+  2022-08-13 19:26:50 INFO  MachineHandlerImpl:185 - Machine Handler - assembled machine parts finished
+  2022-08-13 19:26:50 DEBUG PlugBoardImpl:84 - Plugboard made new connection: E<->B
+  2022-08-13 19:26:50 DEBUG PlugBoardImpl:84 - Plugboard made new connection: F<->C
+  2022-08-13 19:26:50 INFO  MachineHandlerImpl:207 - Machine Handler - initial state of machine state set
+  2022-08-13 19:26:54 DEBUG MachineHandlerImpl:287 - encrypt: input after verification: Optional[BBAC]
+  2022-08-13 19:26:54 DEBUG EnigmaMachine:45 - char: B
+  2022-08-13 19:26:54 DEBUG EnigmaMachine:48 - after plug: E
+  2022-08-13 19:26:54 DEBUG IOWheelImpl:44 - IOWHeel input:EOutput:4
+  2022-08-13 19:26:54 DEBUG EnigmaMachine:50 - after io: 4:E
+  2022-08-13 19:26:54 DEBUG EnigmaMachine:58 - after rotor: 0:A
+  2022-08-13 19:26:54 DEBUG EnigmaMachine:58 - after rotor: 1:B
+  2022-08-13 19:26:54 DEBUG EnigmaMachine:61 - after reflector: 0:A
+  2022-08-13 19:26:54 DEBUG EnigmaMachine:65 - after rotor (back): 1:B
+  2022-08-13 19:26:54 DEBUG EnigmaMachine:65 - after rotor (back): 1:B
+  2022-08-13 19:26:54 DEBUG IOWheelImpl:57 - IOWHeel input:1Output:B
+  2022-08-13 19:26:54 DEBUG EnigmaMachine:68 - after io: B
+  2022-08-13 19:26:54 DEBUG EnigmaMachine:70 - after plug: E
+  2022-08-13 19:26:54 DEBUG EnigmaMachine:45 - char: B
+  2022-08-13 19:26:54 DEBUG EnigmaMachine:48 - after plug: E
+  2022-08-13 19:26:54 DEBUG IOWheelImpl:44 - IOWHeel input:EOutput:4
+  2022-08-13 19:26:54 DEBUG EnigmaMachine:50 - after io: 4:E
+  2022-08-13 19:26:54 DEBUG EnigmaMachine:58 - after rotor: 2:C
+  2022-08-13 19:26:54 DEBUG EnigmaMachine:58 - after rotor: 3:D
+  2022-08-13 19:26:54 DEBUG EnigmaMachine:61 - after reflector: 2:C
+  2022-08-13 19:26:54 DEBUG EnigmaMachine:65 - after rotor (back): 3:D
+  2022-08-13 19:26:54 DEBUG EnigmaMachine:65 - after rotor (back): 1:B
+  2022-08-13 19:26:54 DEBUG IOWheelImpl:57 - IOWHeel input:1Output:B
+  2022-08-13 19:26:54 DEBUG EnigmaMachine:68 - after io: B
+  2022-08-13 19:26:54 DEBUG EnigmaMachine:70 - after plug: E
+  2022-08-13 19:26:54 DEBUG EnigmaMachine:45 - char: A
+  2022-08-13 19:26:54 DEBUG EnigmaMachine:48 - after plug: A
+  2022-08-13 19:26:54 DEBUG IOWheelImpl:44 - IOWHeel input:AOutput:0
+  2022-08-13 19:26:54 DEBUG EnigmaMachine:50 - after io: 0:A
+  2022-08-13 19:26:54 DEBUG EnigmaMachine:58 - after rotor: 2:C
+  2022-08-13 19:26:54 DEBUG EnigmaMachine:58 - after rotor: 3:D
+  2022-08-13 19:26:54 DEBUG EnigmaMachine:61 - after reflector: 2:C
+  2022-08-13 19:26:54 DEBUG EnigmaMachine:65 - after rotor (back): 3:D
+  2022-08-13 19:26:54 DEBUG EnigmaMachine:65 - after rotor (back): 4:E
+  2022-08-13 19:26:54 DEBUG IOWheelImpl:57 - IOWHeel input:4Output:E
+  2022-08-13 19:26:54 DEBUG EnigmaMachine:68 - after io: E
+  2022-08-13 19:26:54 DEBUG EnigmaMachine:70 - after plug: B
+  2022-08-13 19:26:54 DEBUG EnigmaMachine:45 - char: C
+  2022-08-13 19:26:54 DEBUG EnigmaMachine:48 - after plug: F
+  2022-08-13 19:26:54 DEBUG IOWheelImpl:44 - IOWHeel input:FOutput:5
+  2022-08-13 19:26:54 DEBUG EnigmaMachine:50 - after io: 5:F
+  2022-08-13 19:26:54 DEBUG EnigmaMachine:58 - after rotor: 1:B
+  2022-08-13 19:26:54 DEBUG EnigmaMachine:58 - after rotor: 0:A
+  2022-08-13 19:26:54 DEBUG EnigmaMachine:61 - after reflector: 1:B
+  2022-08-13 19:26:54 DEBUG EnigmaMachine:65 - after rotor (back): 0:A
+  2022-08-13 19:26:54 DEBUG EnigmaMachine:65 - after rotor (back): 2:C
+  2022-08-13 19:26:54 DEBUG IOWheelImpl:57 - IOWHeel input:2Output:C
+  2022-08-13 19:26:54 DEBUG EnigmaMachine:68 - after io: C
+  2022-08-13 19:26:54 DEBUG EnigmaMachine:70 - after plug: F
+  2022-08-13 19:26:54 INFO  MachineHandlerImpl:301 - time it took to encrypt:PT0.006S
+  2022-08-13 19:27:48 DEBUG EnigmaMachine:26 - Logger Instatiated for : EnigmaMachine
+  2022-08-13 19:29:42 ERROR EnigmaMachine:122 - Failed To get machine state, machine not assembled yet
+  2022-08-13 19:30:11 DEBUG EnigmaMachine:26 - Logger Instatiated for : EnigmaMachine
+  2022-08-13 19:30:15 ERROR EnigmaMachine:122 - Failed To get machine state, machine not assembled yet
+  2022-08-13 19:32:06 DEBUG EnigmaMachine:26 - Logger Instatiated for : EnigmaMachine
+  2022-08-13 19:33:04 DEBUG EnigmaMachine:26 - Logger Instatiated for : EnigmaMachine
+  2022-08-13 19:33:10 DEBUG FileConfigurationHandler:25 - Logger Instatiated for : FileConfigurationHandler
+  2022-08-13 19:33:10 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-08-13 19:33:10 DEBUG XmlSchemaVerifierImpl:49 - MachineHandler check xml validity: Is even ABC: true
+  2022-08-13 19:33:10 DEBUG XmlSchemaVerifierImpl:50 - MachineHandler check xml validity: Is good rotors count: true
+  2022-08-13 19:33:10 DEBUG XmlSchemaVerifierImpl:51 - MachineHandler check xml validity: Is rotors ids legal: true
+  2022-08-13 19:33:10 DEBUG XmlSchemaVerifierImpl:52 - MachineHandler check xml validity: Is rotors map legal: true
+  2022-08-13 19:33:10 DEBUG XmlSchemaVerifierImpl:53 - MachineHandler check xml validity: Is rotors notches legal: true
+  2022-08-13 19:33:10 DEBUG XmlSchemaVerifierImpl:54 - MachineHandler check xml validity: Is reflector ids legal: true
+  2022-08-13 19:33:10 DEBUG XmlSchemaVerifierImpl:55 - MachineHandler check xml validity: Is reflectors mapping legal: true
+  2022-08-13 19:33:10 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-13 19:33:10 DEBUG IOWheelImpl:27 - Logger Instatiated for : IOWheelImpl
+  2022-08-13 19:33:10 DEBUG PlugBoardImpl:29 - Logger Instatiated for : PlugBoardImpl
+  2022-08-13 19:33:10 DEBUG RotorImpl:41 - Logger Instatiated for : RotorImpl
+  2022-08-13 19:33:10 DEBUG ReflectorImpl:32 - Logger Instatiated for : ReflectorImpl
+  2022-08-13 19:33:10 INFO  MachineHandlerImpl:262 - Machine handler: created inventory successfully
   

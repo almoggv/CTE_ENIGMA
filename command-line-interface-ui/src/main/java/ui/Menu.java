@@ -32,9 +32,12 @@ public class Menu {
         int choice = -1;
         String menuOptions = Menu.buildMainMenu();
         while (choice != MenuOptions.Exit.getId()){
-            System.out.println(menuOptions);
+            System.out.println(lineSeparator() + menuOptions);
             try{
-                choice = scanner.nextInt();
+                //todo - make sure input legal better -not:
+                // t
+                //For input string: "t"
+                choice = Integer.parseInt(scanner.nextLine());
                 switch (choice){
                     case 1:
                         readSystemInfoFromFile();
@@ -61,6 +64,8 @@ public class Menu {
                     case 8:
                         saveOrLoadFromFile();
                         break;
+                    default:
+                        out.println("Not an option. please choose from menu");
                 }
             }
             catch (Exception exception){
@@ -70,12 +75,9 @@ public class Menu {
     }
 
     private static void readSystemInfoFromFile(){
-//        boolean success = false;
         Scanner scanner = new Scanner(System.in);
-
         System.out.println("Please enter the absolute path of xml schema to load:");
         String input = scanner.nextLine();
-
         try {
             machineHandler.buildMachinePartsInventory(input);
             System.out.println("File Loaded Successfully");
@@ -83,7 +85,6 @@ public class Menu {
         catch (Exception e){
             System.out.println(e.getMessage());
         }
-
     }
 
     private static void showMachineDetails(){
@@ -209,8 +210,14 @@ public class Menu {
 
     private static void  assembleMachineRandomly(){
         try {
-            machineHandler.assembleMachine();
-            System.out.println("Machine assembled successfully.");
+            Optional<InventoryInfo> inventoryInfo = machineHandler.getInventoryInfo();
+            if(!inventoryInfo.isPresent()){
+                System.out.println("No machine loaded, please read system info from file first (option 1)");
+            }
+            else {
+                machineHandler.assembleMachine();
+                System.out.println("Machine assembled successfully.");
+            }
         }
         catch (Exception e){
             System.out.println("Problem assembling the machine: " + e.getMessage());
@@ -219,12 +226,22 @@ public class Menu {
 
     private static void encryptOrDecrypt() {
         try {
-            System.out.println("please enter string to encrypt/decrypt:");
-            Scanner scanner = new Scanner(System.in);
-            String input = scanner.nextLine();
+            Optional<InventoryInfo> inventoryInfo = machineHandler.getInventoryInfo();
+            Optional<MachineState> machineState = machineHandler.getMachineState();
+            if(!inventoryInfo.isPresent()){
+                System.out.println("No machine loaded, please read system info from file first (option 1)");
+            }
+            if(!machineState.isPresent()){
+                System.out.println("No machine state, please assemble the machine first (options 3/4)");
+            }
+            else {
+                System.out.println("please enter string to encrypt/decrypt:");
+                Scanner scanner = new Scanner(System.in);
+                String input = scanner.nextLine();
 
-            String output = machineHandler.encrypt(input);
-            System.out.println("Encrypted to: " + output);
+                String output = machineHandler.encrypt(input);
+                System.out.println("Encrypted to: " + output);
+            }
         }
         catch (Exception e){
             System.out.println(e.getMessage());
@@ -232,24 +249,39 @@ public class Menu {
     }
 
     private static void seeMachineHistoryAndStatistics(){
-        Map<MachineState, List<EncryptionInfoHistory>> history = machineHandler.getMachineStatisticsHistory();
-        Optional<MachineState> machineState = machineHandler.getMachineState();
-        String machineStateMsg = "";
-        for (MachineState machineStateHistory : history.keySet()) {
-            out.println("Machine state:");
-            String rotorsInMachineMsg = Menu.buildRotorsInMachineMsg(machineStateHistory);
-            String rotorsHeadLocationInMachineMsg = Menu.buildRotorHeadLocationInMachineMsg(machineStateHistory);
-            String reflectorIdMsg = "<" + machineStateHistory.getReflectorId().getName() + ">";
-            String plugsMappedMsg = Menu.buildPlugMappingInMachineMsg(machineStateHistory);
-
-            machineStateMsg = rotorsInMachineMsg+rotorsHeadLocationInMachineMsg+reflectorIdMsg+plugsMappedMsg;
-            out.println(machineStateMsg);
-            int i = 1;
-            List<EncryptionInfoHistory> encryptionInfoHistoryList = history.get(machineStateHistory);
-            for (EncryptionInfoHistory encryptionHistory : encryptionInfoHistoryList ) {
-                out.println(i+ ". <" + encryptionHistory.getInput()+"> --> <" + encryptionHistory.getOutput()+"> ( "+encryptionHistory.getTimeToEncrypt().toNanos()+" nano-seconds)");
-                i=i+1;
+        try {
+            Optional<InventoryInfo> inventoryInfo = machineHandler.getInventoryInfo();
+            Optional<MachineState> machineState = machineHandler.getMachineState();
+            if(!inventoryInfo.isPresent()){
+                System.out.println("No machine loaded, please read system info from file first (option 1)");
             }
+            if(!machineState.isPresent()){
+                System.out.println("No machine state, please assemble the machine first (options 3/4)");
+            }
+            else {
+                out.println("Machine history:");
+                Map<MachineState, List<EncryptionInfoHistory>> history = machineHandler.getMachineStatisticsHistory();
+                String machineStateMsg = "";
+                for (MachineState machineStateHistory : history.keySet()) {
+                    out.println("Machine state:");
+                    String rotorsInMachineMsg = Menu.buildRotorsInMachineMsg(machineStateHistory);
+                    String rotorsHeadLocationInMachineMsg = Menu.buildRotorHeadLocationInMachineMsg(machineStateHistory);
+                    String reflectorIdMsg = "<" + machineStateHistory.getReflectorId().getName() + ">";
+                    String plugsMappedMsg = Menu.buildPlugMappingInMachineMsg(machineStateHistory);
+
+                    machineStateMsg = rotorsInMachineMsg + rotorsHeadLocationInMachineMsg + reflectorIdMsg + plugsMappedMsg;
+                    out.println(machineStateMsg);
+                    int i = 1;
+                    List<EncryptionInfoHistory> encryptionInfoHistoryList = history.get(machineStateHistory);
+                    for (EncryptionInfoHistory encryptionHistory : encryptionInfoHistoryList) {
+                        out.println(i + ". <" + encryptionHistory.getInput() + "> --> <" + encryptionHistory.getOutput() + "> ( " + encryptionHistory.getTimeToEncrypt().toNanos() + " nano-seconds)");
+                        i = i + 1;
+                    }
+                }
+            }
+        }
+        catch (Exception e){
+            out.println("Problem showing history: "+ e.getMessage());
         }
     }
     private static void exitSystem(){
