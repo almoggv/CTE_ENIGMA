@@ -1,7 +1,7 @@
 package main.java.verifier.impl;
 
 import main.java.enums.ReflectorsId;
-import main.java.dto.enums.XmlVerifierState;
+import main.java.enums.XmlVerifierState;
 import main.java.verifier.XmlSchemaVerifier;
 import main.resources.generated.*;
 import org.apache.log4j.Logger;

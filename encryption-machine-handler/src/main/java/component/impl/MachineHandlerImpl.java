@@ -1,10 +1,11 @@
 package main.java.component.impl;
 
 
+import lombok.Getter;
 import main.java.dto.InventoryInfo;
 import main.java.dto.MachineState;
 import main.java.dto.EncryptionInfoHistory;
-import main.java.dto.enums.XmlVerifierState;
+import main.java.enums.XmlVerifierState;
 import main.java.generictype.MappingPair;
 import main.java.handler.FileConfigurationHandler;
 import main.java.component.*;
@@ -31,7 +32,7 @@ public class MachineHandlerImpl implements MachineHandler {
     private int expectedNumOfRotors;
     private EncryptionMachine encryptionMachine = new EnigmaMachine();
     private MachineState initialMachineState = new MachineState();
-    private final Map<MachineState, List<EncryptionInfoHistory>> machineStatisticsHistory = new HashMap<>();
+    @Getter private final Map<MachineState, List<EncryptionInfoHistory>> machineStatisticsHistory = new HashMap<>();
     private final XmlSchemaVerifier xmlSchemaVerifier = new XmlSchemaVerifierImpl();
 
     static {
@@ -48,22 +49,34 @@ public class MachineHandlerImpl implements MachineHandler {
 
     @Override
     public void buildMachinePartsInventory(String absolutePath) throws Exception {
-
+        String usingLastloadedInvntoryMsg = "\n--Last successful load is used.--";
         try{
             xmlSchemaVerifier.isFileInExistenceAndXML(absolutePath);
         }
         catch(IOException e){
-            throw new Exception("The File: \"" + absolutePath + "\" - Does not exist Or is not a valid .xml file.");
+            String msg = "The File: \"" + absolutePath + "\" - Does not exist Or is not a valid .xml file.";
+            msg = getInventoryInfo().isPresent() ? msg + usingLastloadedInvntoryMsg : msg;
+            throw new Exception(msg);
         }
         CTEEnigma cteEnigma = FileConfigurationHandler.fromXmlFileToCTE(absolutePath);
-        XmlVerifierState isConfigSchemaValid = xmlSchemaVerifier.isMachineConfigurationValid(cteEnigma);
-        if(isConfigSchemaValid == XmlVerifierState.VALID){
+        XmlVerifierState xmlVerifierResponse = xmlSchemaVerifier.isMachineConfigurationValid(cteEnigma);
+        if(xmlVerifierResponse == XmlVerifierState.VALID){
+            clearInventory();
             buildMachinePartsInventory(cteEnigma);
         }
         else{
-            log.error("Failed to build machine inventory - CteMachine configured in file is invalid" + isConfigSchemaValid);
-            throw new Exception("Failed to build machine inventory - CteMachine configured in file is invalid: " + isConfigSchemaValid);
+            String msg = "Failed to build machine inventory - CteMachine configured in file is invalid: " + xmlVerifierResponse;
+            log.error(msg);
+            msg = getInventoryInfo().isPresent() ? msg + usingLastloadedInvntoryMsg : msg;
+            throw new Exception(msg);
         }
+    }
+
+    private void clearInventory() {
+        this.ioWheelInventory = null;
+        this.reflectorsInventory = null;
+        this.plugBoardInventory = null;
+        this.rotorsInventory = null;
     }
 
     @Override
@@ -182,7 +195,7 @@ public class MachineHandlerImpl implements MachineHandler {
         encryptionMachine.setRotorsStartingPosition(valuesOfHeadToSetRotors);
         encryptionMachine.connectPlugs(plugMapping);
         //TODO: FIX here
-        this.initialMachineState.setRotorsHeadsInitialValues(encryptionMachine.getMachineState().getRotorsHeadsInitialValues());
+        this.initialMachineState.setRotorsHeadsInitialValues(encryptionMachine.getMachineState().get().getRotorsHeadsInitialValues());
         this.initialMachineState.setPlugMapping(plugMapping);
         log.info("Machine Handler - initial state of machine state set");
     }
@@ -299,10 +312,10 @@ public class MachineHandlerImpl implements MachineHandler {
         machineStatisticsHistory.get(machineStateBeforeEncrypt).add(infoHistory);
     }
 
-    @Override
-    public Map<MachineState,List<EncryptionInfoHistory>>  getMachineStatisticsHistory() {
-        return machineStatisticsHistory;
-    }
+//    @Override
+//    public Map<MachineState,List<EncryptionInfoHistory>>  getMachineStatisticsHistory() {
+//        return machineStatisticsHistory;
+//    }
 
     public Optional<String> verifyInputInAbcAndFix(String input) {
         if(ioWheelInventory == null){

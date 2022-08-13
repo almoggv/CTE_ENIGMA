@@ -1,4 +1,4 @@
-package main.java.dto.enums;
+package main.java.enums;
 
 public enum XmlVerifierState {
     VALID("Valid"),

@@ -6,14 +6,21 @@
   <component name="ChangeListManager">
     <list default="true" id="6467e2d7-ff2a-4abb-a198-685a0fcd06aa" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Logs/logging.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/logging.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/command-line-interface-ui/src/main/java/ui/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/command-line-interface-ui/src/main/java/ui/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/MachineHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/MachineHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/impl/MachineHandlerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/impl/MachineHandlerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/enums/XmlVerifierState.java" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/dto/enums/XmlVerifierState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/dto/enums/XmlVerifierState.java" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/enums/XmlVerifierState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/verifier/XmlSchemaVerifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/verifier/XmlSchemaVerifier.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/verifier/impl/XmlSchemaVerifierImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/verifier/impl/XmlSchemaVerifierImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/EncryptionMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/EncryptionMachine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/EnigmaMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/EnigmaMachine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/command-line-interface-ui/src/main/java/ui/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/command-line-interface-ui/src/main/java/ui/Menu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/component/MachineHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/component/MachineHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/component/impl/MachineHandlerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/component/impl/MachineHandlerImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/enums/XmlVerifierState.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/verifier/XmlSchemaVerifier.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/verifier/XmlSchemaVerifier.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/verifier/impl/XmlSchemaVerifierImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/verifier/impl/XmlSchemaVerifierImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/encryption-machine-handler/test/java/component/TestSanityMachineHandlerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/encryption-machine-handler/test/java/component/TestSanityMachineHandlerImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/EncryptionMachine.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/EncryptionMachine.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/EnigmaMachine.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/EnigmaMachine.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,11 +100,11 @@
       <recent name="main.component" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="main.java.enums" />
       <recent name="src.main.java.ui" />
       <recent name="main.java.generictype" />
       <recent name="main.java.dto" />
       <recent name="main.java.handler" />
-      <recent name="main.java.enums" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="test.java.component" />
@@ -264,7 +271,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/impl/MachineHandlerImpl.java</url>
-          <line>57</line>
+          <line>60</line>
           <option name="timeStamp" value="133" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -276,11 +283,6 @@
           <url>file://$PROJECT_DIR$/command-line-interface-ui/src/main/java/Main.java</url>
           <line>7</line>
           <option name="timeStamp" value="135" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/command-line-interface-ui/src/main/java/ui/Menu.java</url>
-          <line>80</line>
-          <option name="timeStamp" value="136" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

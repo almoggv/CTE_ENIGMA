@@ -1,6 +1,6 @@
 package main.java.verifier;
 
-import main.java.dto.enums.XmlVerifierState;
+import main.java.enums.XmlVerifierState;
 import main.resources.generated.*;
 
 import java.io.IOException;
