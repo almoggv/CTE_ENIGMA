@@ -205,6 +205,7 @@ public class MachineHandlerImpl implements MachineHandler {
         this.initialMachineState.setRotorsHeadsInitialValues(encryptionMachine.getMachineState().get().getRotorsHeadsInitialValues());
         this.initialMachineState.setPlugMapping(plugMapping);
         log.info("Machine Handler - initial state of machine state set");
+        addToHistory((MachineState) initialMachineState.getDeepClone());
     }
 
     @Override
@@ -299,7 +300,8 @@ public class MachineHandlerImpl implements MachineHandler {
         Duration encryptionTime = Duration.between(startEncryptionTime, endEncryptionTime);//.toNanos();
         log.info("time it took to encrypt:" + encryptionTime);
 
-        addToHistory(machineStateBeforeEncrypt,input,encryptedOutput,encryptionTime);
+        //todo - make sure - initial state
+        addToHistory(initialMachineState,verifiedInput.get(),encryptedOutput,encryptionTime);
 
         return encryptedOutput;
     }
@@ -312,11 +314,11 @@ public class MachineHandlerImpl implements MachineHandler {
         machineStatisticsHistory.get(machineStateBeforeEncrypt).add(infoHistory);
     }
 
-//    @Override
-//    public Map<MachineState,List<EncryptionInfoHistory>>  getMachineStatisticsHistory() {
-//        return machineStatisticsHistory;
-//    }
-
+    private void addToHistory(MachineState machineStateBeforeEncrypt){
+        if(!machineStatisticsHistory.containsKey(machineStateBeforeEncrypt)){
+            machineStatisticsHistory.put(machineStateBeforeEncrypt,new ArrayList<EncryptionInfoHistory>());
+        }
+    }
     public Optional<String> verifyInputInAbcAndFix(String input) {
         if(ioWheelInventory == null){
             log.error("Failed to verify and fix input, no IOWheel present yet in inventory");

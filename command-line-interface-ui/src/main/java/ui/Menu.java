@@ -8,10 +8,7 @@ import main.java.enums.ReflectorsId;
 import main.java.generictype.MappingPair;
 import src.main.java.enums.MenuOptions;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Scanner;
+import java.util.*;
 
 import static java.lang.System.*;
 
@@ -235,7 +232,25 @@ public class Menu {
     }
 
     private static void seeMachineHistoryAndStatistics(){
-        System.out.println(machineHandler.getMachineStatisticsHistory());
+        Map<MachineState, List<EncryptionInfoHistory>> history = machineHandler.getMachineStatisticsHistory();
+        Optional<MachineState> machineState = machineHandler.getMachineState();
+        String machineStateMsg = "";
+        for (MachineState machineStateHistory : history.keySet()) {
+            out.println("Machine state:");
+            String rotorsInMachineMsg = Menu.buildRotorsInMachineMsg(machineStateHistory);
+            String rotorsHeadLocationInMachineMsg = Menu.buildRotorHeadLocationInMachineMsg(machineStateHistory);
+            String reflectorIdMsg = "<" + machineStateHistory.getReflectorId().getName() + ">";
+            String plugsMappedMsg = Menu.buildPlugMappingInMachineMsg(machineStateHistory);
+
+            machineStateMsg = rotorsInMachineMsg+rotorsHeadLocationInMachineMsg+reflectorIdMsg+plugsMappedMsg;
+            out.println(machineStateMsg);
+            int i = 1;
+            List<EncryptionInfoHistory> encryptionInfoHistoryList = history.get(machineStateHistory);
+            for (EncryptionInfoHistory encryptionHistory : encryptionInfoHistoryList ) {
+                out.println(i+ ". <" + encryptionHistory.getInput()+"> --> <" + encryptionHistory.getOutput()+"> ( "+encryptionHistory.getTimeToEncrypt().toNanos()+" nano-seconds)");
+                i=i+1;
+            }
+        }
     }
     private static void exitSystem(){
         exit(0);
