@@ -87,6 +87,12 @@ public class MachineHandlerImpl implements MachineHandler {
         List<Integer> rotorIdList = generateRandomRotorList();
         String rotorStartingPositions = generateRandomRotorPositions(ABC);
         List<MappingPair<String,String>> plugPairsMapping = generateRandomPlugboardConnections(ABC);
+        log.debug("assemble machine randomly");
+        log.debug("reflector id: "+reflectorId);
+        log.debug("rotor id list: "+ rotorIdList);
+        log.debug("rotor starting positions: "+ rotorStartingPositions);
+        log.debug("plugboard mapping: " + plugPairsMapping);
+
         assembleMachine(reflectorId,rotorIdList,rotorStartingPositions,plugPairsMapping);
     }
 
@@ -124,7 +130,8 @@ public class MachineHandlerImpl implements MachineHandler {
         String currentGeneratedLetter;
         String result = "";
         for (int i = 0; i < expectedNumOfRotors; i++) {
-            startingPos = random.nextInt(ABC.length()) + 1;
+            startingPos = random.nextInt(ABC.length()) /*+ 1*/;
+            System.out.println("starting pos:" + startingPos);
             currentGeneratedLetter = ABC.substring(startingPos,startingPos+1);
             result = result.concat(currentGeneratedLetter);
         }
@@ -275,18 +282,11 @@ public class MachineHandlerImpl implements MachineHandler {
 
     @Override
     public String encrypt(String input) throws RuntimeException{
-        //todo is to upper case necessary - decide where
-        //input = input.toUpperCase();
-
-        String abc = ioWheelInventory.getABC();
-        for (int i = 0; i < input.length(); i++) {
-            if(!abc.contains(input.substring(i,i+1))){
-                throw new IllegalArgumentException("input contains letter not in ACB : letter" + input.substring(i,i+1));
-            }
-        }
+        Optional<String> verifiedInput = verifyInputInAbcAndFix(input);
+        log.debug("encrypt: input after verification: "+ verifiedInput);
         //For History documentation
         MachineState machineStateBeforeEncrypt;
-        if(encryptionMachine.getMachineState().isPresent()) {
+        if(encryptionMachine.getMachineState().isPresent() && verifiedInput.isPresent()) {
             machineStateBeforeEncrypt = encryptionMachine.getMachineState().get();
         }
         else{
@@ -294,7 +294,7 @@ public class MachineHandlerImpl implements MachineHandler {
         }
 
         Instant startEncryptionTime = Instant.now();
-        String encryptedOutput = encryptionMachine.encrypt(input);
+        String encryptedOutput = encryptionMachine.encrypt(verifiedInput.get());
         Instant endEncryptionTime = Instant.now();
         Duration encryptionTime = Duration.between(startEncryptionTime, endEncryptionTime);//.toNanos();
         log.info("time it took to encrypt:" + encryptionTime);

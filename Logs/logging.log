@@ -1264,4 +1264,509 @@
   2022-08-13 12:11:39 DEBUG RotorImpl:41 - Logger Instatiated for : RotorImpl
   2022-08-13 12:11:39 DEBUG ReflectorImpl:32 - Logger Instatiated for : ReflectorImpl
   2022-08-13 12:11:39 INFO  MachineHandlerImpl:256 - Machine handler: created inventory successfully
+  2022-08-13 16:58:48 DEBUG EnigmaMachine:26 - Logger Instatiated for : EnigmaMachine
+  2022-08-13 16:59:30 DEBUG FileConfigurationHandler:25 - Logger Instatiated for : FileConfigurationHandler
+  2022-08-13 16:59:30 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-08-13 16:59:30 DEBUG XmlSchemaVerifierImpl:49 - MachineHandler check xml validity: Is even ABC: true
+  2022-08-13 16:59:30 DEBUG XmlSchemaVerifierImpl:50 - MachineHandler check xml validity: Is good rotors count: true
+  2022-08-13 16:59:30 DEBUG XmlSchemaVerifierImpl:51 - MachineHandler check xml validity: Is rotors ids legal: true
+  2022-08-13 16:59:30 DEBUG XmlSchemaVerifierImpl:52 - MachineHandler check xml validity: Is rotors map legal: true
+  2022-08-13 16:59:30 DEBUG XmlSchemaVerifierImpl:53 - MachineHandler check xml validity: Is rotors notches legal: true
+  2022-08-13 16:59:30 DEBUG XmlSchemaVerifierImpl:54 - MachineHandler check xml validity: Is reflector ids legal: true
+  2022-08-13 16:59:30 DEBUG XmlSchemaVerifierImpl:55 - MachineHandler check xml validity: Is reflectors mapping legal: true
+  2022-08-13 16:59:30 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-13 16:59:30 DEBUG IOWheelImpl:27 - Logger Instatiated for : IOWheelImpl
+  2022-08-13 16:59:30 DEBUG PlugBoardImpl:29 - Logger Instatiated for : PlugBoardImpl
+  2022-08-13 16:59:30 DEBUG RotorImpl:41 - Logger Instatiated for : RotorImpl
+  2022-08-13 16:59:30 DEBUG ReflectorImpl:32 - Logger Instatiated for : ReflectorImpl
+  2022-08-13 16:59:30 INFO  MachineHandlerImpl:254 - Machine handler: created inventory successfully
+  2022-08-13 16:59:38 ERROR EnigmaMachine:122 - Failed To get machine state, machine not assembled yet
+  2022-08-13 17:00:51 DEBUG EnigmaMachine:26 - Logger Instatiated for : EnigmaMachine
+  2022-08-13 17:02:21 DEBUG FileConfigurationHandler:25 - Logger Instatiated for : FileConfigurationHandler
+  2022-08-13 17:02:21 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-08-13 17:02:25 DEBUG XmlSchemaVerifierImpl:49 - MachineHandler check xml validity: Is even ABC: true
+  2022-08-13 17:02:25 DEBUG XmlSchemaVerifierImpl:50 - MachineHandler check xml validity: Is good rotors count: true
+  2022-08-13 17:02:25 DEBUG XmlSchemaVerifierImpl:51 - MachineHandler check xml validity: Is rotors ids legal: true
+  2022-08-13 17:02:25 DEBUG XmlSchemaVerifierImpl:52 - MachineHandler check xml validity: Is rotors map legal: true
+  2022-08-13 17:02:25 DEBUG XmlSchemaVerifierImpl:53 - MachineHandler check xml validity: Is rotors notches legal: true
+  2022-08-13 17:02:25 DEBUG XmlSchemaVerifierImpl:54 - MachineHandler check xml validity: Is reflector ids legal: true
+  2022-08-13 17:02:25 DEBUG XmlSchemaVerifierImpl:55 - MachineHandler check xml validity: Is reflectors mapping legal: true
+  2022-08-13 17:02:25 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-13 17:02:31 DEBUG IOWheelImpl:27 - Logger Instatiated for : IOWheelImpl
+  2022-08-13 17:02:31 DEBUG PlugBoardImpl:29 - Logger Instatiated for : PlugBoardImpl
+  2022-08-13 17:02:31 DEBUG RotorImpl:41 - Logger Instatiated for : RotorImpl
+  2022-08-13 17:02:31 DEBUG ReflectorImpl:32 - Logger Instatiated for : ReflectorImpl
+  2022-08-13 17:02:31 INFO  MachineHandlerImpl:254 - Machine handler: created inventory successfully
+  2022-08-13 17:03:00 ERROR EnigmaMachine:122 - Failed To get machine state, machine not assembled yet
+  2022-08-13 17:03:31 ERROR EnigmaMachine:122 - Failed To get machine state, machine not assembled yet
+  2022-08-13 17:06:35 INFO  MachineHandlerImpl:178 - Machine Handler - assembled machine parts finished
+  2022-08-13 17:06:35 INFO  MachineHandlerImpl:200 - Machine Handler - initial state of machine state set
+  2022-08-13 17:08:36 INFO  MachineHandlerImpl:178 - Machine Handler - assembled machine parts finished
+  2022-08-13 17:08:36 DEBUG PlugBoardImpl:84 - Plugboard made new connection: E<->D
+  2022-08-13 17:08:36 DEBUG PlugBoardImpl:84 - Plugboard made new connection: B<->C
+  2022-08-13 17:08:36 INFO  MachineHandlerImpl:200 - Machine Handler - initial state of machine state set
+  2022-08-13 17:11:23 DEBUG EnigmaMachine:45 - char: A
+  2022-08-13 17:11:23 DEBUG EnigmaMachine:48 - after plug: A
+  2022-08-13 17:11:23 DEBUG IOWheelImpl:44 - IOWHeel input:AOutput:0
+  2022-08-13 17:11:23 DEBUG EnigmaMachine:50 - after io: 0:A
+  2022-08-13 17:11:23 DEBUG EnigmaMachine:58 - after rotor: 5:F
+  2022-08-13 17:11:23 DEBUG EnigmaMachine:58 - after rotor: 5:F
+  2022-08-13 17:11:23 DEBUG EnigmaMachine:61 - after reflector: 4:E
+  2022-08-13 17:11:23 DEBUG EnigmaMachine:65 - after rotor (back): 2:C
+  2022-08-13 17:11:23 DEBUG EnigmaMachine:65 - after rotor (back): 1:B
+  2022-08-13 17:11:23 DEBUG IOWheelImpl:57 - IOWHeel input:1Output:B
+  2022-08-13 17:11:23 DEBUG EnigmaMachine:68 - after io: B
+  2022-08-13 17:11:23 DEBUG EnigmaMachine:70 - after plug: C
+  2022-08-13 17:11:23 INFO  MachineHandlerImpl:300 - time it took to encrypt:PT0.004S
+  2022-08-13 17:12:27 DEBUG EnigmaMachine:26 - Logger Instatiated for : EnigmaMachine
+  2022-08-13 17:13:05 DEBUG FileConfigurationHandler:25 - Logger Instatiated for : FileConfigurationHandler
+  2022-08-13 17:13:05 ERROR FileConfigurationHandler:41 - Failed to generate JAXB CTE Enigma objects by schema : null
+  2022-08-13 17:13:25 ERROR EnigmaMachine:122 - Failed To get machine state, machine not assembled yet
+  2022-08-13 17:13:58 ERROR FileConfigurationHandler:41 - Failed to generate JAXB CTE Enigma objects by schema : null
+  2022-08-13 17:14:09 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-08-13 17:14:09 DEBUG XmlSchemaVerifierImpl:49 - MachineHandler check xml validity: Is even ABC: true
+  2022-08-13 17:14:09 DEBUG XmlSchemaVerifierImpl:50 - MachineHandler check xml validity: Is good rotors count: true
+  2022-08-13 17:14:09 DEBUG XmlSchemaVerifierImpl:51 - MachineHandler check xml validity: Is rotors ids legal: true
+  2022-08-13 17:14:09 DEBUG XmlSchemaVerifierImpl:52 - MachineHandler check xml validity: Is rotors map legal: true
+  2022-08-13 17:14:09 DEBUG XmlSchemaVerifierImpl:53 - MachineHandler check xml validity: Is rotors notches legal: true
+  2022-08-13 17:14:09 DEBUG XmlSchemaVerifierImpl:54 - MachineHandler check xml validity: Is reflector ids legal: true
+  2022-08-13 17:14:09 DEBUG XmlSchemaVerifierImpl:55 - MachineHandler check xml validity: Is reflectors mapping legal: true
+  2022-08-13 17:14:09 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-13 17:14:09 DEBUG IOWheelImpl:27 - Logger Instatiated for : IOWheelImpl
+  2022-08-13 17:14:09 DEBUG PlugBoardImpl:29 - Logger Instatiated for : PlugBoardImpl
+  2022-08-13 17:14:09 DEBUG RotorImpl:41 - Logger Instatiated for : RotorImpl
+  2022-08-13 17:14:09 DEBUG ReflectorImpl:32 - Logger Instatiated for : ReflectorImpl
+  2022-08-13 17:14:09 INFO  MachineHandlerImpl:254 - Machine handler: created inventory successfully
+  2022-08-13 17:14:43 INFO  MachineHandlerImpl:178 - Machine Handler - assembled machine parts finished
+  2022-08-13 17:14:43 DEBUG PlugBoardImpl:84 - Plugboard made new connection: A<->F
+  2022-08-13 17:14:43 WARN  PlugBoardImpl:73 - Plugboard : Failed to connect endpoints -Ais already connected
+  2022-08-13 17:14:43 INFO  MachineHandlerImpl:200 - Machine Handler - initial state of machine state set
+  2022-08-13 17:15:15 INFO  MachineHandlerImpl:178 - Machine Handler - assembled machine parts finished
+  2022-08-13 17:15:15 DEBUG PlugBoardImpl:84 - Plugboard made new connection: B<->B
+  2022-08-13 17:15:15 DEBUG PlugBoardImpl:84 - Plugboard made new connection: D<->A
+  2022-08-13 17:15:15 INFO  MachineHandlerImpl:200 - Machine Handler - initial state of machine state set
+  2022-08-13 17:16:52 INFO  MachineHandlerImpl:178 - Machine Handler - assembled machine parts finished
+  2022-08-13 17:16:52 DEBUG PlugBoardImpl:84 - Plugboard made new connection: E<->C
+  2022-08-13 17:16:52 INFO  MachineHandlerImpl:200 - Machine Handler - initial state of machine state set
+  2022-08-13 17:17:07 INFO  MachineHandlerImpl:178 - Machine Handler - assembled machine parts finished
+  2022-08-13 17:17:07 DEBUG PlugBoardImpl:84 - Plugboard made new connection: A<->C
+  2022-08-13 17:17:07 INFO  MachineHandlerImpl:200 - Machine Handler - initial state of machine state set
+  2022-08-13 17:20:58 INFO  MachineHandlerImpl:178 - Machine Handler - assembled machine parts finished
+  2022-08-13 17:20:58 DEBUG PlugBoardImpl:84 - Plugboard made new connection: D<->B
+  2022-08-13 17:20:58 INFO  MachineHandlerImpl:200 - Machine Handler - initial state of machine state set
+  2022-08-13 17:21:27 INFO  MachineHandlerImpl:178 - Machine Handler - assembled machine parts finished
+  2022-08-13 17:21:27 INFO  MachineHandlerImpl:200 - Machine Handler - initial state of machine state set
+  2022-08-13 17:24:44 INFO  MachineHandlerImpl:178 - Machine Handler - assembled machine parts finished
+  2022-08-13 17:24:44 INFO  MachineHandlerImpl:200 - Machine Handler - initial state of machine state set
+  2022-08-13 17:24:55 INFO  MachineHandlerImpl:178 - Machine Handler - assembled machine parts finished
+  2022-08-13 17:24:55 DEBUG PlugBoardImpl:84 - Plugboard made new connection: D<->F
+  2022-08-13 17:24:55 INFO  MachineHandlerImpl:200 - Machine Handler - initial state of machine state set
+  2022-08-13 17:25:07 INFO  MachineHandlerImpl:178 - Machine Handler - assembled machine parts finished
+  2022-08-13 17:25:07 DEBUG PlugBoardImpl:84 - Plugboard made new connection: E<->D
+  2022-08-13 17:25:07 INFO  MachineHandlerImpl:200 - Machine Handler - initial state of machine state set
+  2022-08-13 17:25:11 INFO  MachineHandlerImpl:178 - Machine Handler - assembled machine parts finished
+  2022-08-13 17:25:11 INFO  MachineHandlerImpl:200 - Machine Handler - initial state of machine state set
+  2022-08-13 17:26:23 INFO  MachineHandlerImpl:178 - Machine Handler - assembled machine parts finished
+  2022-08-13 17:26:23 INFO  MachineHandlerImpl:200 - Machine Handler - initial state of machine state set
+  2022-08-13 17:26:38 INFO  MachineHandlerImpl:178 - Machine Handler - assembled machine parts finished
+  2022-08-13 17:26:38 INFO  MachineHandlerImpl:200 - Machine Handler - initial state of machine state set
+  2022-08-13 17:28:48 INFO  MachineHandlerImpl:178 - Machine Handler - assembled machine parts finished
+  2022-08-13 17:28:48 INFO  MachineHandlerImpl:200 - Machine Handler - initial state of machine state set
+  2022-08-13 17:28:53 INFO  MachineHandlerImpl:178 - Machine Handler - assembled machine parts finished
+  2022-08-13 17:28:53 DEBUG PlugBoardImpl:84 - Plugboard made new connection: B<->D
+  2022-08-13 17:28:53 INFO  MachineHandlerImpl:200 - Machine Handler - initial state of machine state set
+  2022-08-13 17:28:57 INFO  MachineHandlerImpl:178 - Machine Handler - assembled machine parts finished
+  2022-08-13 17:28:57 INFO  MachineHandlerImpl:200 - Machine Handler - initial state of machine state set
+  2022-08-13 17:32:57 DEBUG EnigmaMachine:26 - Logger Instatiated for : EnigmaMachine
+  2022-08-13 17:33:20 DEBUG FileConfigurationHandler:25 - Logger Instatiated for : FileConfigurationHandler
+  2022-08-13 17:33:20 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-08-13 17:33:20 DEBUG XmlSchemaVerifierImpl:49 - MachineHandler check xml validity: Is even ABC: true
+  2022-08-13 17:33:20 DEBUG XmlSchemaVerifierImpl:50 - MachineHandler check xml validity: Is good rotors count: true
+  2022-08-13 17:33:20 DEBUG XmlSchemaVerifierImpl:51 - MachineHandler check xml validity: Is rotors ids legal: true
+  2022-08-13 17:33:20 DEBUG XmlSchemaVerifierImpl:52 - MachineHandler check xml validity: Is rotors map legal: true
+  2022-08-13 17:33:20 DEBUG XmlSchemaVerifierImpl:53 - MachineHandler check xml validity: Is rotors notches legal: true
+  2022-08-13 17:33:20 DEBUG XmlSchemaVerifierImpl:54 - MachineHandler check xml validity: Is reflector ids legal: true
+  2022-08-13 17:33:20 DEBUG XmlSchemaVerifierImpl:55 - MachineHandler check xml validity: Is reflectors mapping legal: true
+  2022-08-13 17:33:20 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-13 17:33:20 DEBUG IOWheelImpl:27 - Logger Instatiated for : IOWheelImpl
+  2022-08-13 17:33:20 DEBUG PlugBoardImpl:29 - Logger Instatiated for : PlugBoardImpl
+  2022-08-13 17:33:20 DEBUG RotorImpl:41 - Logger Instatiated for : RotorImpl
+  2022-08-13 17:33:20 DEBUG ReflectorImpl:32 - Logger Instatiated for : ReflectorImpl
+  2022-08-13 17:33:20 INFO  MachineHandlerImpl:261 - Machine handler: created inventory successfully
+  2022-08-13 17:33:28 DEBUG MachineHandlerImpl:90 - assemble machine randomly
+  2022-08-13 17:33:28 DEBUG MachineHandlerImpl:91 - reflector id: I
+  2022-08-13 17:33:28 DEBUG MachineHandlerImpl:92 - rotor id list: [2, 1]
+  2022-08-13 17:33:28 DEBUG MachineHandlerImpl:93 - rotor starting positions: AB
+  2022-08-13 17:33:28 DEBUG MachineHandlerImpl:94 - plugboard mapping: []
+  2022-08-13 17:33:28 INFO  MachineHandlerImpl:185 - Machine Handler - assembled machine parts finished
+  2022-08-13 17:33:28 INFO  MachineHandlerImpl:207 - Machine Handler - initial state of machine state set
+  2022-08-13 17:33:36 DEBUG MachineHandlerImpl:90 - assemble machine randomly
+  2022-08-13 17:33:36 DEBUG MachineHandlerImpl:91 - reflector id: I
+  2022-08-13 17:33:36 DEBUG MachineHandlerImpl:92 - rotor id list: [1, 2]
+  2022-08-13 17:33:36 DEBUG MachineHandlerImpl:93 - rotor starting positions: AB
+  2022-08-13 17:33:36 DEBUG MachineHandlerImpl:94 - plugboard mapping: [MappingPair(left=D, right=B)]
+  2022-08-13 17:33:36 INFO  MachineHandlerImpl:185 - Machine Handler - assembled machine parts finished
+  2022-08-13 17:33:36 DEBUG PlugBoardImpl:84 - Plugboard made new connection: D<->B
+  2022-08-13 17:33:36 INFO  MachineHandlerImpl:207 - Machine Handler - initial state of machine state set
+  2022-08-13 17:33:45 DEBUG MachineHandlerImpl:90 - assemble machine randomly
+  2022-08-13 17:33:45 DEBUG MachineHandlerImpl:91 - reflector id: I
+  2022-08-13 17:33:45 DEBUG MachineHandlerImpl:92 - rotor id list: [3, 2]
+  2022-08-13 17:33:45 DEBUG MachineHandlerImpl:93 - rotor starting positions: DF
+  2022-08-13 17:33:45 DEBUG MachineHandlerImpl:94 - plugboard mapping: [MappingPair(left=C, right=E), MappingPair(left=A, right=D)]
+  2022-08-13 17:33:45 INFO  MachineHandlerImpl:185 - Machine Handler - assembled machine parts finished
+  2022-08-13 17:33:45 DEBUG PlugBoardImpl:84 - Plugboard made new connection: C<->E
+  2022-08-13 17:33:45 DEBUG PlugBoardImpl:84 - Plugboard made new connection: A<->D
+  2022-08-13 17:33:45 INFO  MachineHandlerImpl:207 - Machine Handler - initial state of machine state set
+  2022-08-13 17:33:48 DEBUG MachineHandlerImpl:90 - assemble machine randomly
+  2022-08-13 17:33:48 DEBUG MachineHandlerImpl:91 - reflector id: I
+  2022-08-13 17:33:48 DEBUG MachineHandlerImpl:92 - rotor id list: [2, 1]
+  2022-08-13 17:33:48 DEBUG MachineHandlerImpl:93 - rotor starting positions: FC
+  2022-08-13 17:33:48 DEBUG MachineHandlerImpl:94 - plugboard mapping: []
+  2022-08-13 17:33:48 INFO  MachineHandlerImpl:185 - Machine Handler - assembled machine parts finished
+  2022-08-13 17:33:48 INFO  MachineHandlerImpl:207 - Machine Handler - initial state of machine state set
+  2022-08-13 17:33:55 DEBUG MachineHandlerImpl:90 - assemble machine randomly
+  2022-08-13 17:33:55 DEBUG MachineHandlerImpl:91 - reflector id: I
+  2022-08-13 17:33:55 DEBUG MachineHandlerImpl:92 - rotor id list: [3, 1]
+  2022-08-13 17:33:55 DEBUG MachineHandlerImpl:93 - rotor starting positions: AD
+  2022-08-13 17:33:55 DEBUG MachineHandlerImpl:94 - plugboard mapping: [MappingPair(left=C, right=C), MappingPair(left=E, right=A)]
+  2022-08-13 17:33:55 INFO  MachineHandlerImpl:185 - Machine Handler - assembled machine parts finished
+  2022-08-13 17:33:55 DEBUG PlugBoardImpl:84 - Plugboard made new connection: C<->C
+  2022-08-13 17:33:55 DEBUG PlugBoardImpl:84 - Plugboard made new connection: E<->A
+  2022-08-13 17:33:55 INFO  MachineHandlerImpl:207 - Machine Handler - initial state of machine state set
+  2022-08-13 17:34:02 DEBUG MachineHandlerImpl:90 - assemble machine randomly
+  2022-08-13 17:34:02 DEBUG MachineHandlerImpl:91 - reflector id: II
+  2022-08-13 17:34:02 DEBUG MachineHandlerImpl:92 - rotor id list: [2, 3]
+  2022-08-13 17:34:02 DEBUG MachineHandlerImpl:93 - rotor starting positions: AD
+  2022-08-13 17:34:02 DEBUG MachineHandlerImpl:94 - plugboard mapping: [MappingPair(left=A, right=D)]
+  2022-08-13 17:34:02 INFO  MachineHandlerImpl:185 - Machine Handler - assembled machine parts finished
+  2022-08-13 17:34:02 DEBUG PlugBoardImpl:84 - Plugboard made new connection: A<->D
+  2022-08-13 17:34:02 INFO  MachineHandlerImpl:207 - Machine Handler - initial state of machine state set
+  2022-08-13 17:34:06 DEBUG MachineHandlerImpl:90 - assemble machine randomly
+  2022-08-13 17:34:06 DEBUG MachineHandlerImpl:91 - reflector id: II
+  2022-08-13 17:34:06 DEBUG MachineHandlerImpl:92 - rotor id list: [1, 2]
+  2022-08-13 17:34:06 DEBUG MachineHandlerImpl:93 - rotor starting positions: FA
+  2022-08-13 17:34:06 DEBUG MachineHandlerImpl:94 - plugboard mapping: [MappingPair(left=A, right=B)]
+  2022-08-13 17:34:06 INFO  MachineHandlerImpl:185 - Machine Handler - assembled machine parts finished
+  2022-08-13 17:34:06 DEBUG PlugBoardImpl:84 - Plugboard made new connection: A<->B
+  2022-08-13 17:34:06 INFO  MachineHandlerImpl:207 - Machine Handler - initial state of machine state set
+  2022-08-13 17:34:21 DEBUG MachineHandlerImpl:90 - assemble machine randomly
+  2022-08-13 17:34:21 DEBUG MachineHandlerImpl:91 - reflector id: II
+  2022-08-13 17:34:21 DEBUG MachineHandlerImpl:92 - rotor id list: [1, 2]
+  2022-08-13 17:34:21 DEBUG MachineHandlerImpl:93 - rotor starting positions: EB
+  2022-08-13 17:34:21 DEBUG MachineHandlerImpl:94 - plugboard mapping: [MappingPair(left=B, right=C)]
+  2022-08-13 17:34:21 INFO  MachineHandlerImpl:185 - Machine Handler - assembled machine parts finished
+  2022-08-13 17:34:21 DEBUG PlugBoardImpl:84 - Plugboard made new connection: B<->C
+  2022-08-13 17:34:21 INFO  MachineHandlerImpl:207 - Machine Handler - initial state of machine state set
+  2022-08-13 17:34:23 DEBUG MachineHandlerImpl:90 - assemble machine randomly
+  2022-08-13 17:34:23 DEBUG MachineHandlerImpl:91 - reflector id: II
+  2022-08-13 17:34:23 DEBUG MachineHandlerImpl:92 - rotor id list: [1, 2]
+  2022-08-13 17:34:23 DEBUG MachineHandlerImpl:93 - rotor starting positions: BD
+  2022-08-13 17:34:23 DEBUG MachineHandlerImpl:94 - plugboard mapping: [MappingPair(left=B, right=B)]
+  2022-08-13 17:34:23 INFO  MachineHandlerImpl:185 - Machine Handler - assembled machine parts finished
+  2022-08-13 17:34:23 DEBUG PlugBoardImpl:84 - Plugboard made new connection: B<->B
+  2022-08-13 17:34:23 INFO  MachineHandlerImpl:207 - Machine Handler - initial state of machine state set
+  2022-08-13 17:34:25 DEBUG MachineHandlerImpl:90 - assemble machine randomly
+  2022-08-13 17:34:25 DEBUG MachineHandlerImpl:91 - reflector id: II
+  2022-08-13 17:34:25 DEBUG MachineHandlerImpl:92 - rotor id list: [1, 2]
+  2022-08-13 17:34:25 DEBUG MachineHandlerImpl:93 - rotor starting positions: CC
+  2022-08-13 17:34:25 DEBUG MachineHandlerImpl:94 - plugboard mapping: []
+  2022-08-13 17:34:25 INFO  MachineHandlerImpl:185 - Machine Handler - assembled machine parts finished
+  2022-08-13 17:34:25 INFO  MachineHandlerImpl:207 - Machine Handler - initial state of machine state set
+  2022-08-13 17:34:26 DEBUG MachineHandlerImpl:90 - assemble machine randomly
+  2022-08-13 17:34:26 DEBUG MachineHandlerImpl:91 - reflector id: I
+  2022-08-13 17:34:26 DEBUG MachineHandlerImpl:92 - rotor id list: [1, 2]
+  2022-08-13 17:34:26 DEBUG MachineHandlerImpl:93 - rotor starting positions: AF
+  2022-08-13 17:34:26 DEBUG MachineHandlerImpl:94 - plugboard mapping: []
+  2022-08-13 17:34:26 INFO  MachineHandlerImpl:185 - Machine Handler - assembled machine parts finished
+  2022-08-13 17:34:26 INFO  MachineHandlerImpl:207 - Machine Handler - initial state of machine state set
+  2022-08-13 17:34:28 DEBUG MachineHandlerImpl:90 - assemble machine randomly
+  2022-08-13 17:34:28 DEBUG MachineHandlerImpl:91 - reflector id: II
+  2022-08-13 17:34:28 DEBUG MachineHandlerImpl:92 - rotor id list: [3, 1]
+  2022-08-13 17:34:28 DEBUG MachineHandlerImpl:93 - rotor starting positions: DB
+  2022-08-13 17:34:28 DEBUG MachineHandlerImpl:94 - plugboard mapping: [MappingPair(left=A, right=A), MappingPair(left=C, right=B)]
+  2022-08-13 17:34:28 INFO  MachineHandlerImpl:185 - Machine Handler - assembled machine parts finished
+  2022-08-13 17:34:28 DEBUG PlugBoardImpl:84 - Plugboard made new connection: A<->A
+  2022-08-13 17:34:28 DEBUG PlugBoardImpl:84 - Plugboard made new connection: C<->B
+  2022-08-13 17:34:28 INFO  MachineHandlerImpl:207 - Machine Handler - initial state of machine state set
+  2022-08-13 17:34:31 DEBUG MachineHandlerImpl:90 - assemble machine randomly
+  2022-08-13 17:34:31 DEBUG MachineHandlerImpl:91 - reflector id: II
+  2022-08-13 17:34:31 DEBUG MachineHandlerImpl:92 - rotor id list: [1, 2]
+  2022-08-13 17:34:31 DEBUG MachineHandlerImpl:93 - rotor starting positions: CE
+  2022-08-13 17:34:31 DEBUG MachineHandlerImpl:94 - plugboard mapping: [MappingPair(left=D, right=F), MappingPair(left=E, right=E)]
+  2022-08-13 17:34:31 INFO  MachineHandlerImpl:185 - Machine Handler - assembled machine parts finished
+  2022-08-13 17:34:31 DEBUG PlugBoardImpl:84 - Plugboard made new connection: D<->F
+  2022-08-13 17:34:31 DEBUG PlugBoardImpl:84 - Plugboard made new connection: E<->E
+  2022-08-13 17:34:31 INFO  MachineHandlerImpl:207 - Machine Handler - initial state of machine state set
+  2022-08-13 17:34:33 DEBUG MachineHandlerImpl:90 - assemble machine randomly
+  2022-08-13 17:34:33 DEBUG MachineHandlerImpl:91 - reflector id: I
+  2022-08-13 17:34:33 DEBUG MachineHandlerImpl:92 - rotor id list: [3, 2]
+  2022-08-13 17:34:33 DEBUG MachineHandlerImpl:93 - rotor starting positions: CA
+  2022-08-13 17:34:33 DEBUG MachineHandlerImpl:94 - plugboard mapping: [MappingPair(left=F, right=A), MappingPair(left=B, right=B)]
+  2022-08-13 17:34:33 INFO  MachineHandlerImpl:185 - Machine Handler - assembled machine parts finished
+  2022-08-13 17:34:33 DEBUG PlugBoardImpl:84 - Plugboard made new connection: F<->A
+  2022-08-13 17:34:33 DEBUG PlugBoardImpl:84 - Plugboard made new connection: B<->B
+  2022-08-13 17:34:33 INFO  MachineHandlerImpl:207 - Machine Handler - initial state of machine state set
+  2022-08-13 17:34:34 DEBUG MachineHandlerImpl:90 - assemble machine randomly
+  2022-08-13 17:34:34 DEBUG MachineHandlerImpl:91 - reflector id: I
+  2022-08-13 17:34:34 DEBUG MachineHandlerImpl:92 - rotor id list: [3, 2]
+  2022-08-13 17:34:34 DEBUG MachineHandlerImpl:93 - rotor starting positions: AE
+  2022-08-13 17:34:34 DEBUG MachineHandlerImpl:94 - plugboard mapping: []
+  2022-08-13 17:34:34 INFO  MachineHandlerImpl:185 - Machine Handler - assembled machine parts finished
+  2022-08-13 17:34:34 INFO  MachineHandlerImpl:207 - Machine Handler - initial state of machine state set
+  2022-08-13 17:34:36 DEBUG MachineHandlerImpl:90 - assemble machine randomly
+  2022-08-13 17:34:36 DEBUG MachineHandlerImpl:91 - reflector id: II
+  2022-08-13 17:34:36 DEBUG MachineHandlerImpl:92 - rotor id list: [1, 2]
+  2022-08-13 17:34:36 DEBUG MachineHandlerImpl:93 - rotor starting positions: EF
+  2022-08-13 17:34:36 DEBUG MachineHandlerImpl:94 - plugboard mapping: [MappingPair(left=D, right=A), MappingPair(left=B, right=F)]
+  2022-08-13 17:34:36 INFO  MachineHandlerImpl:185 - Machine Handler - assembled machine parts finished
+  2022-08-13 17:34:36 DEBUG PlugBoardImpl:84 - Plugboard made new connection: D<->A
+  2022-08-13 17:34:36 DEBUG PlugBoardImpl:84 - Plugboard made new connection: B<->F
+  2022-08-13 17:34:36 INFO  MachineHandlerImpl:207 - Machine Handler - initial state of machine state set
+  2022-08-13 17:34:37 DEBUG MachineHandlerImpl:90 - assemble machine randomly
+  2022-08-13 17:34:37 DEBUG MachineHandlerImpl:91 - reflector id: II
+  2022-08-13 17:34:37 DEBUG MachineHandlerImpl:92 - rotor id list: [3, 2]
+  2022-08-13 17:34:37 DEBUG MachineHandlerImpl:93 - rotor starting positions: FB
+  2022-08-13 17:34:37 DEBUG MachineHandlerImpl:94 - plugboard mapping: [MappingPair(left=F, right=E)]
+  2022-08-13 17:34:37 INFO  MachineHandlerImpl:185 - Machine Handler - assembled machine parts finished
+  2022-08-13 17:34:37 DEBUG PlugBoardImpl:84 - Plugboard made new connection: F<->E
+  2022-08-13 17:34:37 INFO  MachineHandlerImpl:207 - Machine Handler - initial state of machine state set
+  2022-08-13 17:34:38 DEBUG MachineHandlerImpl:90 - assemble machine randomly
+  2022-08-13 17:34:38 DEBUG MachineHandlerImpl:91 - reflector id: I
+  2022-08-13 17:34:38 DEBUG MachineHandlerImpl:92 - rotor id list: [2, 3]
+  2022-08-13 17:34:38 DEBUG MachineHandlerImpl:93 - rotor starting positions: AD
+  2022-08-13 17:34:38 DEBUG MachineHandlerImpl:94 - plugboard mapping: []
+  2022-08-13 17:34:38 INFO  MachineHandlerImpl:185 - Machine Handler - assembled machine parts finished
+  2022-08-13 17:34:38 INFO  MachineHandlerImpl:207 - Machine Handler - initial state of machine state set
+  2022-08-13 17:34:39 DEBUG MachineHandlerImpl:90 - assemble machine randomly
+  2022-08-13 17:34:39 DEBUG MachineHandlerImpl:91 - reflector id: I
+  2022-08-13 17:34:39 DEBUG MachineHandlerImpl:92 - rotor id list: [1, 3]
+  2022-08-13 17:34:39 DEBUG MachineHandlerImpl:93 - rotor starting positions: DF
+  2022-08-13 17:34:39 DEBUG MachineHandlerImpl:94 - plugboard mapping: [MappingPair(left=F, right=E)]
+  2022-08-13 17:34:39 INFO  MachineHandlerImpl:185 - Machine Handler - assembled machine parts finished
+  2022-08-13 17:34:39 DEBUG PlugBoardImpl:84 - Plugboard made new connection: F<->E
+  2022-08-13 17:34:39 INFO  MachineHandlerImpl:207 - Machine Handler - initial state of machine state set
+  2022-08-13 17:34:40 DEBUG MachineHandlerImpl:90 - assemble machine randomly
+  2022-08-13 17:34:40 DEBUG MachineHandlerImpl:91 - reflector id: I
+  2022-08-13 17:34:40 DEBUG MachineHandlerImpl:92 - rotor id list: [1, 3]
+  2022-08-13 17:34:40 DEBUG MachineHandlerImpl:93 - rotor starting positions: FF
+  2022-08-13 17:34:40 DEBUG MachineHandlerImpl:94 - plugboard mapping: [MappingPair(left=B, right=B), MappingPair(left=F, right=C)]
+  2022-08-13 17:34:40 INFO  MachineHandlerImpl:185 - Machine Handler - assembled machine parts finished
+  2022-08-13 17:34:40 DEBUG PlugBoardImpl:84 - Plugboard made new connection: B<->B
+  2022-08-13 17:34:40 DEBUG PlugBoardImpl:84 - Plugboard made new connection: F<->C
+  2022-08-13 17:34:40 INFO  MachineHandlerImpl:207 - Machine Handler - initial state of machine state set
+  2022-08-13 17:37:48 DEBUG EnigmaMachine:26 - Logger Instatiated for : EnigmaMachine
+  2022-08-13 17:38:01 DEBUG FileConfigurationHandler:25 - Logger Instatiated for : FileConfigurationHandler
+  2022-08-13 17:38:01 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-08-13 17:38:01 DEBUG XmlSchemaVerifierImpl:49 - MachineHandler check xml validity: Is even ABC: true
+  2022-08-13 17:38:01 DEBUG XmlSchemaVerifierImpl:50 - MachineHandler check xml validity: Is good rotors count: true
+  2022-08-13 17:38:01 DEBUG XmlSchemaVerifierImpl:51 - MachineHandler check xml validity: Is rotors ids legal: true
+  2022-08-13 17:38:01 DEBUG XmlSchemaVerifierImpl:52 - MachineHandler check xml validity: Is rotors map legal: true
+  2022-08-13 17:38:01 DEBUG XmlSchemaVerifierImpl:53 - MachineHandler check xml validity: Is rotors notches legal: true
+  2022-08-13 17:38:01 DEBUG XmlSchemaVerifierImpl:54 - MachineHandler check xml validity: Is reflector ids legal: true
+  2022-08-13 17:38:01 DEBUG XmlSchemaVerifierImpl:55 - MachineHandler check xml validity: Is reflectors mapping legal: true
+  2022-08-13 17:38:01 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-13 17:38:01 DEBUG IOWheelImpl:27 - Logger Instatiated for : IOWheelImpl
+  2022-08-13 17:38:01 DEBUG PlugBoardImpl:29 - Logger Instatiated for : PlugBoardImpl
+  2022-08-13 17:38:01 DEBUG RotorImpl:41 - Logger Instatiated for : RotorImpl
+  2022-08-13 17:38:01 DEBUG ReflectorImpl:32 - Logger Instatiated for : ReflectorImpl
+  2022-08-13 17:38:01 INFO  MachineHandlerImpl:261 - Machine handler: created inventory successfully
+  2022-08-13 17:38:08 ERROR EnigmaMachine:122 - Failed To get machine state, machine not assembled yet
+  2022-08-13 17:38:15 DEBUG MachineHandlerImpl:90 - assemble machine randomly
+  2022-08-13 17:38:15 DEBUG MachineHandlerImpl:91 - reflector id: I
+  2022-08-13 17:38:15 DEBUG MachineHandlerImpl:92 - rotor id list: [3, 2]
+  2022-08-13 17:38:15 DEBUG MachineHandlerImpl:93 - rotor starting positions: ED
+  2022-08-13 17:38:15 DEBUG MachineHandlerImpl:94 - plugboard mapping: []
+  2022-08-13 17:38:15 INFO  MachineHandlerImpl:185 - Machine Handler - assembled machine parts finished
+  2022-08-13 17:38:15 INFO  MachineHandlerImpl:207 - Machine Handler - initial state of machine state set
+  2022-08-13 17:38:21 DEBUG MachineHandlerImpl:90 - assemble machine randomly
+  2022-08-13 17:38:21 DEBUG MachineHandlerImpl:91 - reflector id: I
+  2022-08-13 17:38:21 DEBUG MachineHandlerImpl:92 - rotor id list: [3, 1]
+  2022-08-13 17:38:21 DEBUG MachineHandlerImpl:93 - rotor starting positions: EC
+  2022-08-13 17:38:21 DEBUG MachineHandlerImpl:94 - plugboard mapping: [MappingPair(left=F, right=A), MappingPair(left=C, right=B)]
+  2022-08-13 17:38:21 INFO  MachineHandlerImpl:185 - Machine Handler - assembled machine parts finished
+  2022-08-13 17:38:21 DEBUG PlugBoardImpl:84 - Plugboard made new connection: F<->A
+  2022-08-13 17:38:21 DEBUG PlugBoardImpl:84 - Plugboard made new connection: C<->B
+  2022-08-13 17:38:21 INFO  MachineHandlerImpl:207 - Machine Handler - initial state of machine state set
+  2022-08-13 17:38:23 DEBUG MachineHandlerImpl:90 - assemble machine randomly
+  2022-08-13 17:38:23 DEBUG MachineHandlerImpl:91 - reflector id: I
+  2022-08-13 17:38:23 DEBUG MachineHandlerImpl:92 - rotor id list: [2, 3]
+  2022-08-13 17:38:23 DEBUG MachineHandlerImpl:93 - rotor starting positions: AF
+  2022-08-13 17:38:23 DEBUG MachineHandlerImpl:94 - plugboard mapping: [MappingPair(left=B, right=E), MappingPair(left=E, right=A)]
+  2022-08-13 17:38:23 INFO  MachineHandlerImpl:185 - Machine Handler - assembled machine parts finished
+  2022-08-13 17:38:23 DEBUG PlugBoardImpl:84 - Plugboard made new connection: B<->E
+  2022-08-13 17:38:23 WARN  PlugBoardImpl:69 - Plugboard : Failed to connect endpoints -Eis already connected
+  2022-08-13 17:38:23 INFO  MachineHandlerImpl:207 - Machine Handler - initial state of machine state set
+  2022-08-13 17:38:25 DEBUG MachineHandlerImpl:90 - assemble machine randomly
+  2022-08-13 17:38:25 DEBUG MachineHandlerImpl:91 - reflector id: II
+  2022-08-13 17:38:25 DEBUG MachineHandlerImpl:92 - rotor id list: [2, 1]
+  2022-08-13 17:38:25 DEBUG MachineHandlerImpl:93 - rotor starting positions: FC
+  2022-08-13 17:38:25 DEBUG MachineHandlerImpl:94 - plugboard mapping: [MappingPair(left=F, right=D), MappingPair(left=D, right=B)]
+  2022-08-13 17:38:25 INFO  MachineHandlerImpl:185 - Machine Handler - assembled machine parts finished
+  2022-08-13 17:38:25 DEBUG PlugBoardImpl:84 - Plugboard made new connection: F<->D
+  2022-08-13 17:38:25 WARN  PlugBoardImpl:69 - Plugboard : Failed to connect endpoints -Dis already connected
+  2022-08-13 17:38:25 INFO  MachineHandlerImpl:207 - Machine Handler - initial state of machine state set
+  2022-08-13 17:38:27 DEBUG MachineHandlerImpl:90 - assemble machine randomly
+  2022-08-13 17:38:27 DEBUG MachineHandlerImpl:91 - reflector id: I
+  2022-08-13 17:38:27 DEBUG MachineHandlerImpl:92 - rotor id list: [1, 3]
+  2022-08-13 17:38:27 DEBUG MachineHandlerImpl:93 - rotor starting positions: DA
+  2022-08-13 17:38:27 DEBUG MachineHandlerImpl:94 - plugboard mapping: [MappingPair(left=C, right=A), MappingPair(left=E, right=D)]
+  2022-08-13 17:38:27 INFO  MachineHandlerImpl:185 - Machine Handler - assembled machine parts finished
+  2022-08-13 17:38:27 DEBUG PlugBoardImpl:84 - Plugboard made new connection: C<->A
+  2022-08-13 17:38:27 DEBUG PlugBoardImpl:84 - Plugboard made new connection: E<->D
+  2022-08-13 17:38:27 INFO  MachineHandlerImpl:207 - Machine Handler - initial state of machine state set
+  2022-08-13 17:38:28 DEBUG MachineHandlerImpl:90 - assemble machine randomly
+  2022-08-13 17:38:28 DEBUG MachineHandlerImpl:91 - reflector id: II
+  2022-08-13 17:38:28 DEBUG MachineHandlerImpl:92 - rotor id list: [2, 3]
+  2022-08-13 17:38:28 DEBUG MachineHandlerImpl:93 - rotor starting positions: BA
+  2022-08-13 17:38:28 DEBUG MachineHandlerImpl:94 - plugboard mapping: []
+  2022-08-13 17:38:28 INFO  MachineHandlerImpl:185 - Machine Handler - assembled machine parts finished
+  2022-08-13 17:38:28 INFO  MachineHandlerImpl:207 - Machine Handler - initial state of machine state set
+  2022-08-13 17:38:35 DEBUG EnigmaMachine:45 - char: a
+  2022-08-13 17:38:35 DEBUG EnigmaMachine:48 - after plug: null
+  2022-08-13 17:38:35 WARN  IOWheelImpl:48 - IOWHeel failed to find mapping of input: null
+  2022-08-13 17:41:38 DEBUG EnigmaMachine:45 - char: a
+  2022-08-13 17:41:38 DEBUG EnigmaMachine:48 - after plug: null
+  2022-08-13 17:41:38 WARN  IOWheelImpl:48 - IOWHeel failed to find mapping of input: null
+  2022-08-13 17:42:50 DEBUG EnigmaMachine:45 - char: a
+  2022-08-13 17:42:50 DEBUG EnigmaMachine:48 - after plug: null
+  2022-08-13 17:42:50 WARN  IOWheelImpl:48 - IOWHeel failed to find mapping of input: null
+  2022-08-13 17:42:55 DEBUG EnigmaMachine:26 - Logger Instatiated for : EnigmaMachine
+  2022-08-13 17:43:08 DEBUG FileConfigurationHandler:25 - Logger Instatiated for : FileConfigurationHandler
+  2022-08-13 17:43:09 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-08-13 17:43:09 DEBUG XmlSchemaVerifierImpl:49 - MachineHandler check xml validity: Is even ABC: true
+  2022-08-13 17:43:09 DEBUG XmlSchemaVerifierImpl:50 - MachineHandler check xml validity: Is good rotors count: true
+  2022-08-13 17:43:09 DEBUG XmlSchemaVerifierImpl:51 - MachineHandler check xml validity: Is rotors ids legal: true
+  2022-08-13 17:43:09 DEBUG XmlSchemaVerifierImpl:52 - MachineHandler check xml validity: Is rotors map legal: true
+  2022-08-13 17:43:09 DEBUG XmlSchemaVerifierImpl:53 - MachineHandler check xml validity: Is rotors notches legal: true
+  2022-08-13 17:43:09 DEBUG XmlSchemaVerifierImpl:54 - MachineHandler check xml validity: Is reflector ids legal: true
+  2022-08-13 17:43:09 DEBUG XmlSchemaVerifierImpl:55 - MachineHandler check xml validity: Is reflectors mapping legal: true
+  2022-08-13 17:43:09 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-13 17:43:09 DEBUG IOWheelImpl:27 - Logger Instatiated for : IOWheelImpl
+  2022-08-13 17:43:09 DEBUG PlugBoardImpl:29 - Logger Instatiated for : PlugBoardImpl
+  2022-08-13 17:43:09 DEBUG RotorImpl:41 - Logger Instatiated for : RotorImpl
+  2022-08-13 17:43:09 DEBUG ReflectorImpl:32 - Logger Instatiated for : ReflectorImpl
+  2022-08-13 17:43:09 INFO  MachineHandlerImpl:261 - Machine handler: created inventory successfully
+  2022-08-13 17:43:11 DEBUG MachineHandlerImpl:90 - assemble machine randomly
+  2022-08-13 17:43:11 DEBUG MachineHandlerImpl:91 - reflector id: I
+  2022-08-13 17:43:11 DEBUG MachineHandlerImpl:92 - rotor id list: [3, 2]
+  2022-08-13 17:43:11 DEBUG MachineHandlerImpl:93 - rotor starting positions: CD
+  2022-08-13 17:43:11 DEBUG MachineHandlerImpl:94 - plugboard mapping: [MappingPair(left=E, right=A), MappingPair(left=F, right=E)]
+  2022-08-13 17:43:11 INFO  MachineHandlerImpl:185 - Machine Handler - assembled machine parts finished
+  2022-08-13 17:43:11 DEBUG PlugBoardImpl:84 - Plugboard made new connection: E<->A
+  2022-08-13 17:43:11 WARN  PlugBoardImpl:73 - Plugboard : Failed to connect endpoints -Eis already connected
+  2022-08-13 17:43:11 INFO  MachineHandlerImpl:207 - Machine Handler - initial state of machine state set
+  2022-08-13 17:43:24 DEBUG MachineHandlerImpl:296 - encrypt: input after verification: Optional[A]
+  2022-08-13 17:43:29 DEBUG EnigmaMachine:45 - char: a
+  2022-08-13 17:43:29 DEBUG EnigmaMachine:48 - after plug: null
+  2022-08-13 17:43:29 WARN  IOWheelImpl:48 - IOWHeel failed to find mapping of input: null
+  2022-08-13 17:49:39 DEBUG MachineHandlerImpl:296 - encrypt: input after verification: Optional[A]
+  2022-08-13 17:53:39 DEBUG EnigmaMachine:45 - char: a
+  2022-08-13 17:53:39 DEBUG EnigmaMachine:48 - after plug: null
+  2022-08-13 17:53:39 WARN  IOWheelImpl:48 - IOWHeel failed to find mapping of input: null
+  2022-08-13 17:53:50 DEBUG MachineHandlerImpl:296 - encrypt: input after verification: Optional[A]
+  2022-08-13 17:53:53 DEBUG EnigmaMachine:45 - char: a
+  2022-08-13 17:53:53 DEBUG EnigmaMachine:48 - after plug: null
+  2022-08-13 17:53:53 WARN  IOWheelImpl:48 - IOWHeel failed to find mapping of input: null
+  2022-08-13 17:55:14 DEBUG EnigmaMachine:26 - Logger Instatiated for : EnigmaMachine
+  2022-08-13 17:55:22 DEBUG FileConfigurationHandler:25 - Logger Instatiated for : FileConfigurationHandler
+  2022-08-13 17:55:22 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-08-13 17:55:22 DEBUG XmlSchemaVerifierImpl:49 - MachineHandler check xml validity: Is even ABC: true
+  2022-08-13 17:55:22 DEBUG XmlSchemaVerifierImpl:50 - MachineHandler check xml validity: Is good rotors count: true
+  2022-08-13 17:55:22 DEBUG XmlSchemaVerifierImpl:51 - MachineHandler check xml validity: Is rotors ids legal: true
+  2022-08-13 17:55:22 DEBUG XmlSchemaVerifierImpl:52 - MachineHandler check xml validity: Is rotors map legal: true
+  2022-08-13 17:55:22 DEBUG XmlSchemaVerifierImpl:53 - MachineHandler check xml validity: Is rotors notches legal: true
+  2022-08-13 17:55:22 DEBUG XmlSchemaVerifierImpl:54 - MachineHandler check xml validity: Is reflector ids legal: true
+  2022-08-13 17:55:22 DEBUG XmlSchemaVerifierImpl:55 - MachineHandler check xml validity: Is reflectors mapping legal: true
+  2022-08-13 17:55:22 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-13 17:55:22 DEBUG IOWheelImpl:27 - Logger Instatiated for : IOWheelImpl
+  2022-08-13 17:55:22 DEBUG PlugBoardImpl:29 - Logger Instatiated for : PlugBoardImpl
+  2022-08-13 17:55:22 DEBUG RotorImpl:41 - Logger Instatiated for : RotorImpl
+  2022-08-13 17:55:22 DEBUG ReflectorImpl:32 - Logger Instatiated for : ReflectorImpl
+  2022-08-13 17:55:22 INFO  MachineHandlerImpl:261 - Machine handler: created inventory successfully
+  2022-08-13 17:55:25 DEBUG MachineHandlerImpl:90 - assemble machine randomly
+  2022-08-13 17:55:25 DEBUG MachineHandlerImpl:91 - reflector id: II
+  2022-08-13 17:55:25 DEBUG MachineHandlerImpl:92 - rotor id list: [2, 3]
+  2022-08-13 17:55:25 DEBUG MachineHandlerImpl:93 - rotor starting positions: EE
+  2022-08-13 17:55:25 DEBUG MachineHandlerImpl:94 - plugboard mapping: []
+  2022-08-13 17:55:25 INFO  MachineHandlerImpl:185 - Machine Handler - assembled machine parts finished
+  2022-08-13 17:55:25 INFO  MachineHandlerImpl:207 - Machine Handler - initial state of machine state set
+  2022-08-13 17:55:58 DEBUG MachineHandlerImpl:296 - encrypt: input after verification: Optional[A]
+  2022-08-13 17:56:01 DEBUG EnigmaMachine:45 - char: A
+  2022-08-13 17:56:01 DEBUG EnigmaMachine:48 - after plug: A
+  2022-08-13 17:56:01 DEBUG IOWheelImpl:44 - IOWHeel input:AOutput:0
+  2022-08-13 17:56:01 DEBUG EnigmaMachine:50 - after io: 0:A
+  2022-08-13 17:56:01 DEBUG EnigmaMachine:58 - after rotor: 4:E
+  2022-08-13 17:56:01 DEBUG EnigmaMachine:58 - after rotor: 5:F
+  2022-08-13 17:56:01 DEBUG EnigmaMachine:61 - after reflector: 4:E
+  2022-08-13 17:56:01 DEBUG EnigmaMachine:65 - after rotor (back): 5:F
+  2022-08-13 17:56:01 DEBUG EnigmaMachine:65 - after rotor (back): 3:D
+  2022-08-13 17:56:01 DEBUG IOWheelImpl:57 - IOWHeel input:3Output:D
+  2022-08-13 17:56:01 DEBUG EnigmaMachine:68 - after io: D
+  2022-08-13 17:56:01 DEBUG EnigmaMachine:70 - after plug: D
+  2022-08-13 17:56:10 INFO  MachineHandlerImpl:310 - time it took to encrypt:PT9.308S
+  2022-08-13 17:56:48 DEBUG MachineHandlerImpl:296 - encrypt: input after verification: Optional[B]
+  2022-08-13 17:56:48 DEBUG EnigmaMachine:45 - char: B
+  2022-08-13 17:56:48 DEBUG EnigmaMachine:48 - after plug: B
+  2022-08-13 17:56:48 DEBUG IOWheelImpl:44 - IOWHeel input:BOutput:1
+  2022-08-13 17:56:48 DEBUG EnigmaMachine:50 - after io: 1:B
+  2022-08-13 17:56:48 DEBUG EnigmaMachine:58 - after rotor: 1:B
+  2022-08-13 17:56:48 DEBUG EnigmaMachine:58 - after rotor: 2:C
+  2022-08-13 17:56:48 DEBUG EnigmaMachine:61 - after reflector: 3:D
+  2022-08-13 17:56:48 DEBUG EnigmaMachine:65 - after rotor (back): 4:E
+  2022-08-13 17:56:48 DEBUG EnigmaMachine:65 - after rotor (back): 2:C
+  2022-08-13 17:56:48 DEBUG IOWheelImpl:57 - IOWHeel input:2Output:C
+  2022-08-13 17:56:48 DEBUG EnigmaMachine:68 - after io: C
+  2022-08-13 17:56:48 DEBUG EnigmaMachine:70 - after plug: C
+  2022-08-13 17:56:48 INFO  MachineHandlerImpl:310 - time it took to encrypt:PT0.004S
+  2022-08-13 17:56:55 DEBUG MachineHandlerImpl:296 - encrypt: input after verification: Optional[B]
+  2022-08-13 17:56:55 DEBUG EnigmaMachine:45 - char: B
+  2022-08-13 17:56:55 DEBUG EnigmaMachine:48 - after plug: B
+  2022-08-13 17:56:55 DEBUG IOWheelImpl:44 - IOWHeel input:BOutput:1
+  2022-08-13 17:56:55 DEBUG EnigmaMachine:50 - after io: 1:B
+  2022-08-13 17:56:55 DEBUG EnigmaMachine:58 - after rotor: 3:D
+  2022-08-13 17:56:55 DEBUG EnigmaMachine:58 - after rotor: 4:E
+  2022-08-13 17:56:55 DEBUG EnigmaMachine:61 - after reflector: 5:F
+  2022-08-13 17:56:55 DEBUG EnigmaMachine:65 - after rotor (back): 0:A
+  2022-08-13 17:56:55 DEBUG EnigmaMachine:65 - after rotor (back): 0:A
+  2022-08-13 17:56:55 DEBUG IOWheelImpl:57 - IOWHeel input:0Output:A
+  2022-08-13 17:56:55 DEBUG EnigmaMachine:68 - after io: A
+  2022-08-13 17:56:55 DEBUG EnigmaMachine:70 - after plug: A
+  2022-08-13 17:56:55 INFO  MachineHandlerImpl:310 - time it took to encrypt:PT0.006S
+  2022-08-13 17:57:02 DEBUG MachineHandlerImpl:296 - encrypt: input after verification: Optional[F]
+  2022-08-13 17:57:02 DEBUG EnigmaMachine:45 - char: F
+  2022-08-13 17:57:02 DEBUG EnigmaMachine:48 - after plug: F
+  2022-08-13 17:57:02 DEBUG IOWheelImpl:44 - IOWHeel input:FOutput:5
+  2022-08-13 17:57:02 DEBUG EnigmaMachine:50 - after io: 5:F
+  2022-08-13 17:57:02 DEBUG EnigmaMachine:58 - after rotor: 5:F
+  2022-08-13 17:57:02 DEBUG EnigmaMachine:58 - after rotor: 0:A
+  2022-08-13 17:57:02 DEBUG EnigmaMachine:61 - after reflector: 1:B
+  2022-08-13 17:57:02 DEBUG EnigmaMachine:65 - after rotor (back): 2:C
+  2022-08-13 17:57:02 DEBUG EnigmaMachine:65 - after rotor (back): 0:A
+  2022-08-13 17:57:02 DEBUG IOWheelImpl:57 - IOWHeel input:0Output:A
+  2022-08-13 17:57:02 DEBUG EnigmaMachine:68 - after io: A
+  2022-08-13 17:57:02 DEBUG EnigmaMachine:70 - after plug: A
+  2022-08-13 17:57:02 INFO  MachineHandlerImpl:310 - time it took to encrypt:PT0.004S
+  2022-08-13 17:57:09 DEBUG MachineHandlerImpl:90 - assemble machine randomly
+  2022-08-13 17:57:09 DEBUG MachineHandlerImpl:91 - reflector id: II
+  2022-08-13 17:57:09 DEBUG MachineHandlerImpl:92 - rotor id list: [3, 1]
+  2022-08-13 17:57:09 DEBUG MachineHandlerImpl:93 - rotor starting positions: CF
+  2022-08-13 17:57:09 DEBUG MachineHandlerImpl:94 - plugboard mapping: [MappingPair(left=F, right=D), MappingPair(left=B, right=C)]
+  2022-08-13 17:57:09 INFO  MachineHandlerImpl:185 - Machine Handler - assembled machine parts finished
+  2022-08-13 17:57:09 DEBUG PlugBoardImpl:84 - Plugboard made new connection: F<->D
+  2022-08-13 17:57:09 DEBUG PlugBoardImpl:84 - Plugboard made new connection: B<->C
+  2022-08-13 17:57:09 INFO  MachineHandlerImpl:207 - Machine Handler - initial state of machine state set
+  2022-08-13 17:57:22 DEBUG MachineHandlerImpl:296 - encrypt: input after verification: Optional[D]
+  2022-08-13 17:57:22 DEBUG EnigmaMachine:45 - char: D
+  2022-08-13 17:57:22 DEBUG EnigmaMachine:48 - after plug: F
+  2022-08-13 17:57:22 DEBUG IOWheelImpl:44 - IOWHeel input:FOutput:5
+  2022-08-13 17:57:22 DEBUG EnigmaMachine:50 - after io: 5:F
+  2022-08-13 17:57:22 DEBUG EnigmaMachine:58 - after rotor: 0:A
+  2022-08-13 17:57:22 DEBUG EnigmaMachine:58 - after rotor: 1:B
+  2022-08-13 17:57:22 DEBUG EnigmaMachine:61 - after reflector: 0:A
+  2022-08-13 17:57:22 DEBUG EnigmaMachine:65 - after rotor (back): 1:B
+  2022-08-13 17:57:22 DEBUG EnigmaMachine:65 - after rotor (back): 2:C
+  2022-08-13 17:57:22 DEBUG IOWheelImpl:57 - IOWHeel input:2Output:C
+  2022-08-13 17:57:22 DEBUG EnigmaMachine:68 - after io: C
+  2022-08-13 17:57:22 DEBUG EnigmaMachine:70 - after plug: B
+  2022-08-13 17:57:22 INFO  MachineHandlerImpl:310 - time it took to encrypt:PT0.003S
   

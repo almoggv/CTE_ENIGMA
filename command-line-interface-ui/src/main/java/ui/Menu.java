@@ -125,7 +125,7 @@ public class Menu {
             out.println(printedMessage);
         }
         catch(Exception e){
-            System.out.println("Please load a machine from file first" + e.getMessage());
+            System.out.println("Please load a machine from file first. " + e.getMessage());
         }
     }
 
@@ -211,16 +211,27 @@ public class Menu {
     }
 
     private static void  assembleMachineRandomly(){
-        machineHandler.assembleMachine();
+        try {
+            machineHandler.assembleMachine();
+            System.out.println("Machine assembled successfully.");
+        }
+        catch (Exception e){
+            System.out.println("Problem assembling the machine: " + e.getMessage());
+        }
     }
 
     private static void encryptOrDecrypt() {
-        System.out.println("please enter string to encrypt/decrypt:");
-        Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine();
+        try {
+            System.out.println("please enter string to encrypt/decrypt:");
+            Scanner scanner = new Scanner(System.in);
+            String input = scanner.nextLine();
 
-        String output = machineHandler.encrypt(input);
-        System.out.println("Encrypted to: " + output);
+            String output = machineHandler.encrypt(input);
+            System.out.println("Encrypted to: " + output);
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 
     private static void seeMachineHistoryAndStatistics(){
