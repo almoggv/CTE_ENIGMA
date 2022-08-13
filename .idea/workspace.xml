@@ -281,6 +281,11 @@
           <line>207</line>
           <option name="timeStamp" value="152" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/command-line-interface-ui/src/main/java/ui/Menu.java</url>
+          <line>251</line>
+          <option name="timeStamp" value="156" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/impl/MachineHandlerImpl.java</url>
           <line>308</line>
@@ -289,15 +294,6 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="148" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/command-line-interface-ui/src/main/java/ui/Menu.java</url>
-          <line>129</line>
-          <properties class="src.main.java.ui.Menu" method="buildPlugMappingInMachineMsg">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="153" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

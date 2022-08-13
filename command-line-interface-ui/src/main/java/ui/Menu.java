@@ -8,6 +8,7 @@ import main.java.enums.ReflectorsId;
 import main.java.generictype.MappingPair;
 import src.main.java.enums.MenuOptions;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.*;
 
 import static java.lang.System.*;
@@ -182,30 +183,73 @@ public class Menu {
     }
 
     private static void assembleMachineFromInput(){
-        Scanner scanner = new Scanner(System.in);
-//        int rotorNumToAsk = machineHandler.getInventoryInfo().getNumOfRotorsInUse();
-//        int rotorRange = machineHandler.getInventoryInfo().getNumOfAvailableRotors();
-//        System.out.println("Please choose " + rotorNumToAsk + " rotors from 1 to " + rotorRange + " seperated by commas") ;
-//        System.out.println("e.g: 45,27,94") ;
-//        String input = scanner.nextLine();
-//
-//        String abc = machineHandler.getInventoryInfo().getABC();
-//        System.out.println("Please choose rotors starting positions (from machine ABC: " + abc +")");
-//        System.out.println("e.g: AO! ");
-//        input = scanner.nextLine();
-//
-//        System.out.println("Please choose a reflector from the following: ");
-//        String reflectorOptions = "Available reflectors:" + lineSeparator();
-//
-//        int reflectorsRange = machineHandler.getInventoryInfo().getNumOfAvailableRotors();
-//        int i = 1;
-//        for (int j = 0; j < reflectorsRange; j++) {
-//            reflectorOptions = reflectorOptions.concat(i + ") " + ReflectorsId.getByNum(i).getName() + lineSeparator());
-//            i++;
-//        }
-//        System.out.println(reflectorOptions);
-//        input = scanner.nextLine();
+        try {
+            Optional<InventoryInfo> inventoryInfo = machineHandler.getInventoryInfo();
+            if(!inventoryInfo.isPresent()){
+                System.out.println("No machine loaded, please read system info from file first (option 1)");
+            }
+            else {
+                //todo - check that input is legal - maybe in while
+               //rotor choice
+                List<Integer> rotorIdsList = getRotorChoice(inventoryInfo.get());
+                out.println(rotorIdsList);
+//                Scanner scanner = new Scanner(System.in);
+//                String input = scanner.nextLine();
+//                //rotor start pos
+//                String abc =inventoryInfo.get().getABC();
+//                System.out.println("Please choose rotors starting positions (from machine ABC: " + abc +")");
+//                System.out.println("e.g: AO! ");
+//                input = scanner.nextLine();
+//                //reflector
+//                System.out.println("Please choose a reflector from the following: ");
+//                String reflectorOptions = "Available reflectors:" + lineSeparator();
+//                int reflectorsRange =inventoryInfo.get().getNumOfAvailableRotors();
+//                int i = 1;
+//                for (int j = 0; j < reflectorsRange; j++) {
+//                    reflectorOptions = reflectorOptions.concat(i + ") " + ReflectorsId.getByNum(i).getName() + lineSeparator());
+//                    i++;
+//                }
+//                System.out.println(reflectorOptions);
+//                input = scanner.nextLine();
+                //plugs
+            }
+        }
+        catch (Exception e) {
+            System.out.println("Problem assembling the machine: " + e.getMessage());
+        }
 
+    }
+
+    private static List<Integer> getRotorChoice(InventoryInfo inventoryInfo) {
+        boolean isRotorChoiceValid = false;
+        List<Integer> rotorIdList = new ArrayList<>();
+        while (!isRotorChoiceValid) {
+            Scanner scanner = new Scanner(System.in);
+            int rotorNumToAsk = inventoryInfo.getNumOfRotorsInUse();
+            int rotorRange = inventoryInfo.getNumOfAvailableRotors();
+            System.out.println("Please choose " + rotorNumToAsk + " rotors from 1 to " + rotorRange + " seperated by commas");
+            System.out.println("e.g: 45,27,94");
+            String input = scanner.nextLine();
+            //todo - check other symbols?
+            if (input.matches("[a-z]+") || input.matches("[A-Z]+"))// || input.matches())
+            {
+                out.println("Please enter rotors in requested format");
+            }
+            else {
+                String[] rotors = input.split(",");
+
+                for (String rotor : rotors) {
+                    int rotorId = Integer.parseInt(rotor);
+                    if (inventoryInfo.getNumOfAvailableRotors() < rotorId) {
+                        break;
+                    }
+                    rotorIdList.add(rotorId);
+                }
+                isRotorChoiceValid = rotorIdList.size() == rotors.length;
+            }
+
+        }
+        return rotorIdList;
     }
 
     private static void  assembleMachineRandomly(){
@@ -287,5 +331,7 @@ public class Menu {
     private static void exitSystem(){
         exit(0);
     }
-    private static void saveOrLoadFromFile(){}
+    private static void saveOrLoadFromFile(){
+
+    }
 }
