@@ -35,9 +35,6 @@ public class Menu {
         while (choice != MenuOptions.Exit.getId()){
             System.out.println(lineSeparator() + menuOptions);
             try{
-                //todo - make sure input legal better -not:
-                // t
-                //For input string: "t"
                 choice = Integer.parseInt(scanner.nextLine());
                 switch (choice){
                     case 1:
@@ -68,6 +65,9 @@ public class Menu {
                     default:
                         out.println("Not an option. please choose from menu");
                 }
+            }
+            catch (NumberFormatException e){
+                out.println("Please only choose option from the menu.");
             }
             catch (Exception exception){
                 System.out.println(exception.getMessage());
@@ -189,17 +189,15 @@ public class Menu {
                 System.out.println("No machine loaded, please read system info from file first (option 1)");
             }
             else {
-                //todo - check that input is legal - maybe in while
                //rotor choice
                 List<Integer> rotorIdsList = getRotorChoice(inventoryInfo.get());
                 out.println(rotorIdsList);
+
 //                Scanner scanner = new Scanner(System.in);
 //                String input = scanner.nextLine();
-//                //rotor start pos
-//                String abc =inventoryInfo.get().getABC();
-//                System.out.println("Please choose rotors starting positions (from machine ABC: " + abc +")");
-//                System.out.println("e.g: AO! ");
-//                input = scanner.nextLine();
+//              //rotor start pos
+                String rotorStartingPos = getRotorStartingPositions(inventoryInfo.get());
+                out.println(rotorStartingPos);
 //                //reflector
 //                System.out.println("Please choose a reflector from the following: ");
 //                String reflectorOptions = "Available reflectors:" + lineSeparator();
@@ -220,13 +218,55 @@ public class Menu {
 
     }
 
+    private static String getRotorStartingPositions(InventoryInfo inventoryInfo) {
+        boolean isRotorStartingPosValid = false;
+//        boolean isRotorChoiceCorrectLen = true;
+//        boolean isRotorChoiceInAbc = true;
+        String rotorStartingPos = "";
+        String abc =inventoryInfo.getABC();
+        Scanner scanner = new Scanner(System.in);
+        int rotorNumToAsk = inventoryInfo.getNumOfRotorsInUse();
+        String input ="";
+        Optional<String> verified = null;
+        while (! isRotorStartingPosValid) {
+            System.out.println("Please choose " + rotorNumToAsk + " rotors starting positions (from machine ABC: " + abc +")");
+            System.out.println("e.g: AO! ");
+            input = scanner.nextLine();
+            if(input.length() != rotorNumToAsk){
+//                isRotorChoiceCorrectLen = false;
+                out.println("Number of entered positions is not "+ rotorNumToAsk);
+            }
+//            for (int i = 0; i < input.length() ; i++) {
+//                if(!abc.contains(input.substring(i,i+1))){
+//                    isRotorChoiceInAbc = false;
+//                    out.println("Position: \""+ input.substring(i,i+1) + "\" is not in machine abc: " + abc);
+//                    break;
+//                }
+//            }
+            verified = machineHandler.verifyInputInAbcAndFix(input);
+            if(!verified.isPresent()){
+                out.println("Entered position not in abc ("+ abc +")");
+            }
+            isRotorStartingPosValid = input.length() == rotorNumToAsk && verified.isPresent();
+        }
+
+//        for (int j = 0; j < input.length() - 1; j++) {
+//            rotorStartingPos = input.substring(j,j+1) + rotorStartingPos;
+//        }
+        for (int j = 0; j < verified.get().length(); j++) {
+            rotorStartingPos =  verified.get().substring(j,j+1) + rotorStartingPos;
+        }
+
+        return rotorStartingPos;
+    }
+
     private static List<Integer> getRotorChoice(InventoryInfo inventoryInfo) {
         boolean isRotorChoiceValid = false;
         List<Integer> rotorIdList = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
+        int rotorNumToAsk = inventoryInfo.getNumOfRotorsInUse();
+        int rotorRange = inventoryInfo.getNumOfAvailableRotors();
         while (!isRotorChoiceValid) {
-            Scanner scanner = new Scanner(System.in);
-            int rotorNumToAsk = inventoryInfo.getNumOfRotorsInUse();
-            int rotorRange = inventoryInfo.getNumOfAvailableRotors();
             System.out.println("Please choose " + rotorNumToAsk + " rotors from 1 to " + rotorRange + " seperated by commas");
             System.out.println("e.g: 45,27,94");
             String input = scanner.nextLine();
@@ -251,6 +291,9 @@ public class Menu {
                 }
             }
             isRotorChoiceValid = rotorIdList.size() == rotorNumToAsk;
+        }
+        for (int i = 0, j = rotorIdList.size() - 1; i < j; i++) {
+            rotorIdList.add(i, rotorIdList.remove(j));
         }
         return rotorIdList;
     }

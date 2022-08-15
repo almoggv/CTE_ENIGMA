@@ -3016,4 +3016,178 @@
   2022-08-15 11:54:52 DEBUG PlugBoardImpl:84 - Plugboard made new connection: E<->E
   2022-08-15 11:54:52 DEBUG PlugBoardImpl:84 - Plugboard made new connection: B<->B
   2022-08-15 11:54:52 INFO  MachineHandlerImpl:209 - Machine Handler - initial state of machine state set
+  2022-08-15 12:01:01 DEBUG EnigmaMachine:26 - Logger Instatiated for : EnigmaMachine
+  2022-08-15 12:04:05 DEBUG EnigmaMachine:26 - Logger Instatiated for : EnigmaMachine
+  2022-08-15 12:04:11 DEBUG FileConfigurationHandler:25 - Logger Instatiated for : FileConfigurationHandler
+  2022-08-15 12:04:11 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-08-15 12:04:11 DEBUG XmlSchemaVerifierImpl:49 - MachineHandler check xml validity: Is even ABC: true
+  2022-08-15 12:04:11 DEBUG XmlSchemaVerifierImpl:50 - MachineHandler check xml validity: Is good rotors count: true
+  2022-08-15 12:04:11 DEBUG XmlSchemaVerifierImpl:51 - MachineHandler check xml validity: Is rotors ids legal: true
+  2022-08-15 12:04:11 DEBUG XmlSchemaVerifierImpl:52 - MachineHandler check xml validity: Is rotors map legal: true
+  2022-08-15 12:04:11 DEBUG XmlSchemaVerifierImpl:53 - MachineHandler check xml validity: Is rotors notches legal: true
+  2022-08-15 12:04:11 DEBUG XmlSchemaVerifierImpl:54 - MachineHandler check xml validity: Is reflector ids legal: true
+  2022-08-15 12:04:11 DEBUG XmlSchemaVerifierImpl:55 - MachineHandler check xml validity: Is reflectors mapping legal: true
+  2022-08-15 12:04:11 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-15 12:04:11 DEBUG IOWheelImpl:27 - Logger Instatiated for : IOWheelImpl
+  2022-08-15 12:04:11 DEBUG PlugBoardImpl:29 - Logger Instatiated for : PlugBoardImpl
+  2022-08-15 12:04:11 DEBUG RotorImpl:41 - Logger Instatiated for : RotorImpl
+  2022-08-15 12:04:11 DEBUG ReflectorImpl:32 - Logger Instatiated for : ReflectorImpl
+  2022-08-15 12:04:11 INFO  MachineHandlerImpl:264 - Machine handler: created inventory successfully
+  2022-08-15 12:24:47 DEBUG EnigmaMachine:26 - Logger Instatiated for : EnigmaMachine
+  2022-08-15 12:24:50 DEBUG EnigmaMachine:26 - Logger Instatiated for : EnigmaMachine
+  2022-08-15 12:25:08 DEBUG FileConfigurationHandler:25 - Logger Instatiated for : FileConfigurationHandler
+  2022-08-15 12:25:09 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-08-15 12:25:09 DEBUG XmlSchemaVerifierImpl:49 - MachineHandler check xml validity: Is even ABC: true
+  2022-08-15 12:25:09 DEBUG XmlSchemaVerifierImpl:50 - MachineHandler check xml validity: Is good rotors count: true
+  2022-08-15 12:25:09 DEBUG XmlSchemaVerifierImpl:51 - MachineHandler check xml validity: Is rotors ids legal: true
+  2022-08-15 12:25:09 DEBUG XmlSchemaVerifierImpl:52 - MachineHandler check xml validity: Is rotors map legal: true
+  2022-08-15 12:25:09 DEBUG XmlSchemaVerifierImpl:53 - MachineHandler check xml validity: Is rotors notches legal: true
+  2022-08-15 12:25:09 DEBUG XmlSchemaVerifierImpl:54 - MachineHandler check xml validity: Is reflector ids legal: true
+  2022-08-15 12:25:09 DEBUG XmlSchemaVerifierImpl:55 - MachineHandler check xml validity: Is reflectors mapping legal: true
+  2022-08-15 12:25:09 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-15 12:25:09 DEBUG IOWheelImpl:27 - Logger Instatiated for : IOWheelImpl
+  2022-08-15 12:25:09 DEBUG PlugBoardImpl:29 - Logger Instatiated for : PlugBoardImpl
+  2022-08-15 12:25:09 DEBUG RotorImpl:41 - Logger Instatiated for : RotorImpl
+  2022-08-15 12:25:09 DEBUG ReflectorImpl:32 - Logger Instatiated for : ReflectorImpl
+  2022-08-15 12:25:09 INFO  MachineHandlerImpl:264 - Machine handler: created inventory successfully
+  2022-08-15 12:25:11 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-08-15 12:25:11 DEBUG XmlSchemaVerifierImpl:49 - MachineHandler check xml validity: Is even ABC: true
+  2022-08-15 12:25:11 DEBUG XmlSchemaVerifierImpl:50 - MachineHandler check xml validity: Is good rotors count: true
+  2022-08-15 12:25:11 DEBUG XmlSchemaVerifierImpl:51 - MachineHandler check xml validity: Is rotors ids legal: true
+  2022-08-15 12:25:11 DEBUG XmlSchemaVerifierImpl:52 - MachineHandler check xml validity: Is rotors map legal: true
+  2022-08-15 12:25:11 DEBUG XmlSchemaVerifierImpl:53 - MachineHandler check xml validity: Is rotors notches legal: true
+  2022-08-15 12:25:11 DEBUG XmlSchemaVerifierImpl:54 - MachineHandler check xml validity: Is reflector ids legal: true
+  2022-08-15 12:25:11 DEBUG XmlSchemaVerifierImpl:55 - MachineHandler check xml validity: Is reflectors mapping legal: true
+  2022-08-15 12:25:11 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-15 12:25:11 INFO  MachineHandlerImpl:264 - Machine handler: created inventory successfully
+  2022-08-15 12:27:28 DEBUG EnigmaMachine:26 - Logger Instatiated for : EnigmaMachine
+  2022-08-15 12:27:32 DEBUG EnigmaMachine:26 - Logger Instatiated for : EnigmaMachine
+  2022-08-15 12:27:35 DEBUG FileConfigurationHandler:25 - Logger Instatiated for : FileConfigurationHandler
+  2022-08-15 12:27:35 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-08-15 12:27:35 DEBUG XmlSchemaVerifierImpl:49 - MachineHandler check xml validity: Is even ABC: true
+  2022-08-15 12:27:35 DEBUG XmlSchemaVerifierImpl:50 - MachineHandler check xml validity: Is good rotors count: true
+  2022-08-15 12:27:35 DEBUG XmlSchemaVerifierImpl:51 - MachineHandler check xml validity: Is rotors ids legal: true
+  2022-08-15 12:27:35 DEBUG XmlSchemaVerifierImpl:52 - MachineHandler check xml validity: Is rotors map legal: true
+  2022-08-15 12:27:35 DEBUG XmlSchemaVerifierImpl:53 - MachineHandler check xml validity: Is rotors notches legal: true
+  2022-08-15 12:27:35 DEBUG XmlSchemaVerifierImpl:54 - MachineHandler check xml validity: Is reflector ids legal: true
+  2022-08-15 12:27:35 DEBUG XmlSchemaVerifierImpl:55 - MachineHandler check xml validity: Is reflectors mapping legal: true
+  2022-08-15 12:27:35 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-15 12:27:35 DEBUG IOWheelImpl:27 - Logger Instatiated for : IOWheelImpl
+  2022-08-15 12:27:35 DEBUG PlugBoardImpl:29 - Logger Instatiated for : PlugBoardImpl
+  2022-08-15 12:27:35 DEBUG RotorImpl:41 - Logger Instatiated for : RotorImpl
+  2022-08-15 12:27:35 DEBUG ReflectorImpl:32 - Logger Instatiated for : ReflectorImpl
+  2022-08-15 12:27:35 INFO  MachineHandlerImpl:264 - Machine handler: created inventory successfully
+  2022-08-15 12:28:56 DEBUG EnigmaMachine:26 - Logger Instatiated for : EnigmaMachine
+  2022-08-15 12:29:01 DEBUG FileConfigurationHandler:25 - Logger Instatiated for : FileConfigurationHandler
+  2022-08-15 12:29:01 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-08-15 12:29:01 DEBUG XmlSchemaVerifierImpl:49 - MachineHandler check xml validity: Is even ABC: true
+  2022-08-15 12:29:01 DEBUG XmlSchemaVerifierImpl:50 - MachineHandler check xml validity: Is good rotors count: true
+  2022-08-15 12:29:01 DEBUG XmlSchemaVerifierImpl:51 - MachineHandler check xml validity: Is rotors ids legal: true
+  2022-08-15 12:29:01 DEBUG XmlSchemaVerifierImpl:52 - MachineHandler check xml validity: Is rotors map legal: true
+  2022-08-15 12:29:01 DEBUG XmlSchemaVerifierImpl:53 - MachineHandler check xml validity: Is rotors notches legal: true
+  2022-08-15 12:29:01 DEBUG XmlSchemaVerifierImpl:54 - MachineHandler check xml validity: Is reflector ids legal: true
+  2022-08-15 12:29:01 DEBUG XmlSchemaVerifierImpl:55 - MachineHandler check xml validity: Is reflectors mapping legal: true
+  2022-08-15 12:29:01 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-15 12:29:01 DEBUG IOWheelImpl:27 - Logger Instatiated for : IOWheelImpl
+  2022-08-15 12:29:01 DEBUG PlugBoardImpl:29 - Logger Instatiated for : PlugBoardImpl
+  2022-08-15 12:29:01 DEBUG RotorImpl:41 - Logger Instatiated for : RotorImpl
+  2022-08-15 12:29:01 DEBUG ReflectorImpl:32 - Logger Instatiated for : ReflectorImpl
+  2022-08-15 12:29:01 INFO  MachineHandlerImpl:264 - Machine handler: created inventory successfully
+  2022-08-15 12:31:35 DEBUG EnigmaMachine:26 - Logger Instatiated for : EnigmaMachine
+  2022-08-15 12:31:38 DEBUG FileConfigurationHandler:25 - Logger Instatiated for : FileConfigurationHandler
+  2022-08-15 12:31:38 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-08-15 12:31:38 DEBUG XmlSchemaVerifierImpl:49 - MachineHandler check xml validity: Is even ABC: true
+  2022-08-15 12:31:38 DEBUG XmlSchemaVerifierImpl:50 - MachineHandler check xml validity: Is good rotors count: true
+  2022-08-15 12:31:38 DEBUG XmlSchemaVerifierImpl:51 - MachineHandler check xml validity: Is rotors ids legal: true
+  2022-08-15 12:31:38 DEBUG XmlSchemaVerifierImpl:52 - MachineHandler check xml validity: Is rotors map legal: true
+  2022-08-15 12:31:38 DEBUG XmlSchemaVerifierImpl:53 - MachineHandler check xml validity: Is rotors notches legal: true
+  2022-08-15 12:31:38 DEBUG XmlSchemaVerifierImpl:54 - MachineHandler check xml validity: Is reflector ids legal: true
+  2022-08-15 12:31:38 DEBUG XmlSchemaVerifierImpl:55 - MachineHandler check xml validity: Is reflectors mapping legal: true
+  2022-08-15 12:31:38 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-15 12:31:38 DEBUG IOWheelImpl:27 - Logger Instatiated for : IOWheelImpl
+  2022-08-15 12:31:38 DEBUG PlugBoardImpl:29 - Logger Instatiated for : PlugBoardImpl
+  2022-08-15 12:31:38 DEBUG RotorImpl:41 - Logger Instatiated for : RotorImpl
+  2022-08-15 12:31:38 DEBUG ReflectorImpl:32 - Logger Instatiated for : ReflectorImpl
+  2022-08-15 12:31:38 INFO  MachineHandlerImpl:264 - Machine handler: created inventory successfully
+  2022-08-15 12:33:06 DEBUG EnigmaMachine:26 - Logger Instatiated for : EnigmaMachine
+  2022-08-15 12:33:13 DEBUG FileConfigurationHandler:25 - Logger Instatiated for : FileConfigurationHandler
+  2022-08-15 12:33:13 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-08-15 12:33:13 DEBUG XmlSchemaVerifierImpl:49 - MachineHandler check xml validity: Is even ABC: true
+  2022-08-15 12:33:13 DEBUG XmlSchemaVerifierImpl:50 - MachineHandler check xml validity: Is good rotors count: true
+  2022-08-15 12:33:13 DEBUG XmlSchemaVerifierImpl:51 - MachineHandler check xml validity: Is rotors ids legal: true
+  2022-08-15 12:33:13 DEBUG XmlSchemaVerifierImpl:52 - MachineHandler check xml validity: Is rotors map legal: true
+  2022-08-15 12:33:13 DEBUG XmlSchemaVerifierImpl:53 - MachineHandler check xml validity: Is rotors notches legal: true
+  2022-08-15 12:33:13 DEBUG XmlSchemaVerifierImpl:54 - MachineHandler check xml validity: Is reflector ids legal: true
+  2022-08-15 12:33:13 DEBUG XmlSchemaVerifierImpl:55 - MachineHandler check xml validity: Is reflectors mapping legal: true
+  2022-08-15 12:33:13 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-15 12:33:13 DEBUG IOWheelImpl:27 - Logger Instatiated for : IOWheelImpl
+  2022-08-15 12:33:13 DEBUG PlugBoardImpl:29 - Logger Instatiated for : PlugBoardImpl
+  2022-08-15 12:33:13 DEBUG RotorImpl:41 - Logger Instatiated for : RotorImpl
+  2022-08-15 12:33:13 DEBUG ReflectorImpl:32 - Logger Instatiated for : ReflectorImpl
+  2022-08-15 12:33:13 INFO  MachineHandlerImpl:264 - Machine handler: created inventory successfully
+  2022-08-15 12:37:25 DEBUG EnigmaMachine:26 - Logger Instatiated for : EnigmaMachine
+  2022-08-15 12:37:36 DEBUG FileConfigurationHandler:25 - Logger Instatiated for : FileConfigurationHandler
+  2022-08-15 12:37:36 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-08-15 12:37:36 DEBUG XmlSchemaVerifierImpl:49 - MachineHandler check xml validity: Is even ABC: true
+  2022-08-15 12:37:36 DEBUG XmlSchemaVerifierImpl:50 - MachineHandler check xml validity: Is good rotors count: true
+  2022-08-15 12:37:36 DEBUG XmlSchemaVerifierImpl:51 - MachineHandler check xml validity: Is rotors ids legal: true
+  2022-08-15 12:37:36 DEBUG XmlSchemaVerifierImpl:52 - MachineHandler check xml validity: Is rotors map legal: true
+  2022-08-15 12:37:36 DEBUG XmlSchemaVerifierImpl:53 - MachineHandler check xml validity: Is rotors notches legal: true
+  2022-08-15 12:37:36 DEBUG XmlSchemaVerifierImpl:54 - MachineHandler check xml validity: Is reflector ids legal: true
+  2022-08-15 12:37:36 DEBUG XmlSchemaVerifierImpl:55 - MachineHandler check xml validity: Is reflectors mapping legal: true
+  2022-08-15 12:37:36 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-15 12:37:36 DEBUG IOWheelImpl:27 - Logger Instatiated for : IOWheelImpl
+  2022-08-15 12:37:36 DEBUG PlugBoardImpl:29 - Logger Instatiated for : PlugBoardImpl
+  2022-08-15 12:37:36 DEBUG RotorImpl:41 - Logger Instatiated for : RotorImpl
+  2022-08-15 12:37:36 DEBUG ReflectorImpl:32 - Logger Instatiated for : ReflectorImpl
+  2022-08-15 12:37:36 INFO  MachineHandlerImpl:264 - Machine handler: created inventory successfully
+  2022-08-15 12:40:18 DEBUG EnigmaMachine:26 - Logger Instatiated for : EnigmaMachine
+  2022-08-15 12:40:27 DEBUG FileConfigurationHandler:25 - Logger Instatiated for : FileConfigurationHandler
+  2022-08-15 12:40:27 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-08-15 12:40:28 DEBUG XmlSchemaVerifierImpl:49 - MachineHandler check xml validity: Is even ABC: true
+  2022-08-15 12:40:28 DEBUG XmlSchemaVerifierImpl:50 - MachineHandler check xml validity: Is good rotors count: true
+  2022-08-15 12:40:28 DEBUG XmlSchemaVerifierImpl:51 - MachineHandler check xml validity: Is rotors ids legal: true
+  2022-08-15 12:40:28 DEBUG XmlSchemaVerifierImpl:52 - MachineHandler check xml validity: Is rotors map legal: true
+  2022-08-15 12:40:28 DEBUG XmlSchemaVerifierImpl:53 - MachineHandler check xml validity: Is rotors notches legal: true
+  2022-08-15 12:40:28 DEBUG XmlSchemaVerifierImpl:54 - MachineHandler check xml validity: Is reflector ids legal: true
+  2022-08-15 12:40:28 DEBUG XmlSchemaVerifierImpl:55 - MachineHandler check xml validity: Is reflectors mapping legal: true
+  2022-08-15 12:40:28 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-15 12:40:28 DEBUG IOWheelImpl:27 - Logger Instatiated for : IOWheelImpl
+  2022-08-15 12:40:28 DEBUG PlugBoardImpl:29 - Logger Instatiated for : PlugBoardImpl
+  2022-08-15 12:40:28 DEBUG RotorImpl:41 - Logger Instatiated for : RotorImpl
+  2022-08-15 12:40:28 DEBUG ReflectorImpl:32 - Logger Instatiated for : ReflectorImpl
+  2022-08-15 12:40:28 INFO  MachineHandlerImpl:264 - Machine handler: created inventory successfully
+  2022-08-15 12:42:15 DEBUG EnigmaMachine:26 - Logger Instatiated for : EnigmaMachine
+  2022-08-15 12:42:20 DEBUG FileConfigurationHandler:25 - Logger Instatiated for : FileConfigurationHandler
+  2022-08-15 12:42:20 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-08-15 12:42:20 DEBUG XmlSchemaVerifierImpl:49 - MachineHandler check xml validity: Is even ABC: true
+  2022-08-15 12:42:20 DEBUG XmlSchemaVerifierImpl:50 - MachineHandler check xml validity: Is good rotors count: true
+  2022-08-15 12:42:20 DEBUG XmlSchemaVerifierImpl:51 - MachineHandler check xml validity: Is rotors ids legal: true
+  2022-08-15 12:42:20 DEBUG XmlSchemaVerifierImpl:52 - MachineHandler check xml validity: Is rotors map legal: true
+  2022-08-15 12:42:20 DEBUG XmlSchemaVerifierImpl:53 - MachineHandler check xml validity: Is rotors notches legal: true
+  2022-08-15 12:42:20 DEBUG XmlSchemaVerifierImpl:54 - MachineHandler check xml validity: Is reflector ids legal: true
+  2022-08-15 12:42:20 DEBUG XmlSchemaVerifierImpl:55 - MachineHandler check xml validity: Is reflectors mapping legal: true
+  2022-08-15 12:42:20 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-15 12:42:20 DEBUG IOWheelImpl:27 - Logger Instatiated for : IOWheelImpl
+  2022-08-15 12:42:20 DEBUG PlugBoardImpl:29 - Logger Instatiated for : PlugBoardImpl
+  2022-08-15 12:42:20 DEBUG RotorImpl:41 - Logger Instatiated for : RotorImpl
+  2022-08-15 12:42:20 DEBUG ReflectorImpl:32 - Logger Instatiated for : ReflectorImpl
+  2022-08-15 12:42:20 INFO  MachineHandlerImpl:264 - Machine handler: created inventory successfully
+  2022-08-15 12:43:12 DEBUG EnigmaMachine:26 - Logger Instatiated for : EnigmaMachine
+  2022-08-15 12:43:16 DEBUG FileConfigurationHandler:25 - Logger Instatiated for : FileConfigurationHandler
+  2022-08-15 12:43:16 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-08-15 12:43:16 DEBUG XmlSchemaVerifierImpl:49 - MachineHandler check xml validity: Is even ABC: true
+  2022-08-15 12:43:16 DEBUG XmlSchemaVerifierImpl:50 - MachineHandler check xml validity: Is good rotors count: true
+  2022-08-15 12:43:16 DEBUG XmlSchemaVerifierImpl:51 - MachineHandler check xml validity: Is rotors ids legal: true
+  2022-08-15 12:43:16 DEBUG XmlSchemaVerifierImpl:52 - MachineHandler check xml validity: Is rotors map legal: true
+  2022-08-15 12:43:16 DEBUG XmlSchemaVerifierImpl:53 - MachineHandler check xml validity: Is rotors notches legal: true
+  2022-08-15 12:43:16 DEBUG XmlSchemaVerifierImpl:54 - MachineHandler check xml validity: Is reflector ids legal: true
+  2022-08-15 12:43:16 DEBUG XmlSchemaVerifierImpl:55 - MachineHandler check xml validity: Is reflectors mapping legal: true
+  2022-08-15 12:43:16 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-15 12:43:16 DEBUG IOWheelImpl:27 - Logger Instatiated for : IOWheelImpl
+  2022-08-15 12:43:16 DEBUG PlugBoardImpl:29 - Logger Instatiated for : PlugBoardImpl
+  2022-08-15 12:43:16 DEBUG RotorImpl:41 - Logger Instatiated for : RotorImpl
+  2022-08-15 12:43:16 DEBUG ReflectorImpl:32 - Logger Instatiated for : ReflectorImpl
+  2022-08-15 12:43:16 INFO  MachineHandlerImpl:264 - Machine handler: created inventory successfully
+  2022-08-15 12:43:17 ERROR EnigmaMachine:122 - Failed To get machine state, machine not assembled yet
   
