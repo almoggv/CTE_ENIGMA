@@ -195,10 +195,11 @@ public class MachineHandlerImpl implements MachineHandler {
         }
         String currentLetter;
         int letterAsNumber;
+        String abc = ioWheelInventory.getABC();
         List<Integer> valuesOfHeadToSetRotors = new ArrayList<>(rotorsStartingPositions.length());
         for (int i = 0; i < rotorsStartingPositions.length(); i++) {
             currentLetter = rotorsStartingPositions.substring(i,i+1);
-            letterAsNumber = ioWheelInventory.getABC().indexOf(currentLetter);
+            letterAsNumber = abc.indexOf(currentLetter);
             valuesOfHeadToSetRotors.add(letterAsNumber);
         }
         encryptionMachine.setRotorsStartingPosition(valuesOfHeadToSetRotors);
@@ -301,7 +302,7 @@ public class MachineHandlerImpl implements MachineHandler {
         Instant endEncryptionTime = Instant.now();
         Duration encryptionTime = Duration.between(startEncryptionTime, endEncryptionTime);//.toNanos();
         log.info("time it took to encrypt:" + encryptionTime);
-
+        System.out.println(encryptionTime.toNanos());
         //todo - make sure - initial state
         addToHistory(initialMachineState,verifiedInput.get(),encryptedOutput,encryptionTime);
 
@@ -327,8 +328,8 @@ public class MachineHandlerImpl implements MachineHandler {
             return Optional.empty();
         }
         String ABC = ioWheelInventory.getABC();
-        String upperAbcRegex = "[A-Z]+";
-        String lowerAbcRegex = "[a-z]+";
+        String upperAbcRegex = "[A-Z]+";//[0-9]+";
+        String lowerAbcRegex = "[a-z]+";//[0-9]+";
         if(ABC.matches(upperAbcRegex) && !ABC.matches(lowerAbcRegex)){
             input = input.toUpperCase();
         }

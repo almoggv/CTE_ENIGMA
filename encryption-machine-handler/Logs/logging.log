@@ -8098,4 +8098,112 @@
   2022-08-12 13:53:52 INFO  MachineHandlerImpl:279 - time it took to encrypt:PT0.001S
   2022-08-12 16:22:56 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./src/main/resources/machine-inventory-schema/extra-errors/ex1-error - reflector-id.xml
   2022-08-12 16:23:39 ERROR MachineHandlerImpl:63 - Failed to build machine inventory - CteMachine configured in file is invalidThe Reflector ids are not sequential or too many
+  2022-08-15 13:26:37 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-extra-test.xml
+  2022-08-15 13:26:37 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-15 13:26:37 INFO  MachineHandlerImpl:264 - Machine handler: created inventory successfully
+  2022-08-15 13:26:37 INFO  MachineHandlerImpl:187 - Machine Handler - assembled machine parts finished
+  2022-08-15 13:27:11 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-extra-test.xml
+  2022-08-15 13:27:11 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-15 13:27:11 INFO  MachineHandlerImpl:264 - Machine handler: created inventory successfully
+  2022-08-15 13:27:11 INFO  MachineHandlerImpl:187 - Machine Handler - assembled machine parts finished
+  2022-08-15 13:27:48 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-extra-test.xml
+  2022-08-15 13:27:48 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-15 13:27:48 INFO  MachineHandlerImpl:264 - Machine handler: created inventory successfully
+  2022-08-15 13:27:48 INFO  MachineHandlerImpl:187 - Machine Handler - assembled machine parts finished
+  2022-08-15 13:27:54 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-extra-test.xml
+  2022-08-15 13:27:54 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-15 13:27:54 INFO  MachineHandlerImpl:264 - Machine handler: created inventory successfully
+  2022-08-15 13:27:54 INFO  MachineHandlerImpl:187 - Machine Handler - assembled machine parts finished
+  2022-08-15 13:27:57 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-extra-test.xml
+  2022-08-15 13:27:57 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-15 13:27:57 INFO  MachineHandlerImpl:264 - Machine handler: created inventory successfully
+  2022-08-15 13:27:57 INFO  MachineHandlerImpl:187 - Machine Handler - assembled machine parts finished
+  2022-08-15 13:28:18 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-extra-test.xml
+  2022-08-15 13:28:22 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-15 13:28:26 INFO  MachineHandlerImpl:264 - Machine handler: created inventory successfully
+  2022-08-15 13:28:34 INFO  MachineHandlerImpl:187 - Machine Handler - assembled machine parts finished
+  2022-08-15 13:29:07 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-extra-test.xml
+  2022-08-15 13:29:07 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-15 13:29:07 INFO  MachineHandlerImpl:264 - Machine handler: created inventory successfully
+  2022-08-15 13:29:31 INFO  MachineHandlerImpl:187 - Machine Handler - assembled machine parts finished
+  2022-08-15 13:30:08 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-extra-test.xml
+  2022-08-15 13:30:08 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-15 13:30:08 INFO  MachineHandlerImpl:264 - Machine handler: created inventory successfully
+  2022-08-15 13:30:12 INFO  MachineHandlerImpl:187 - Machine Handler - assembled machine parts finished
+  2022-08-15 13:30:37 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-extra-test.xml
+  2022-08-15 13:30:37 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-15 13:30:37 INFO  MachineHandlerImpl:264 - Machine handler: created inventory successfully
+  2022-08-15 13:30:37 INFO  MachineHandlerImpl:187 - Machine Handler - assembled machine parts finished
+  2022-08-15 13:32:25 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-extra-test.xml
+  2022-08-15 13:32:26 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-15 13:32:26 INFO  MachineHandlerImpl:264 - Machine handler: created inventory successfully
+  2022-08-15 13:32:26 INFO  MachineHandlerImpl:187 - Machine Handler - assembled machine parts finished
+  2022-08-15 13:34:19 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-extra-test.xml
+  2022-08-15 13:34:19 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-15 13:34:19 INFO  MachineHandlerImpl:264 - Machine handler: created inventory successfully
+  2022-08-15 13:34:19 INFO  MachineHandlerImpl:187 - Machine Handler - assembled machine parts finished
+  2022-08-15 13:35:22 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-extra-test.xml
+  2022-08-15 13:35:22 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-15 13:35:23 INFO  MachineHandlerImpl:264 - Machine handler: created inventory successfully
+  2022-08-15 13:35:23 INFO  MachineHandlerImpl:187 - Machine Handler - assembled machine parts finished
+  2022-08-15 13:37:55 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-extra-test.xml
+  2022-08-15 13:37:55 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-15 13:37:55 INFO  MachineHandlerImpl:265 - Machine handler: created inventory successfully
+  2022-08-15 13:37:55 INFO  MachineHandlerImpl:187 - Machine Handler - assembled machine parts finished
+  2022-08-15 13:39:16 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-extra-test.xml
+  2022-08-15 13:39:17 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-15 13:39:17 INFO  MachineHandlerImpl:265 - Machine handler: created inventory successfully
+  2022-08-15 13:39:17 INFO  MachineHandlerImpl:187 - Machine Handler - assembled machine parts finished
+  2022-08-15 13:39:26 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-08-15 13:39:27 WARN  PlugBoardImpl:69 - Plugboard : Failed to connect endpoints -Fis already connected
+  2022-08-15 13:40:20 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-extra-test.xml
+  2022-08-15 13:40:20 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-15 13:40:20 INFO  MachineHandlerImpl:265 - Machine handler: created inventory successfully
+  2022-08-15 13:40:20 INFO  MachineHandlerImpl:187 - Machine Handler - assembled machine parts finished
+  2022-08-15 13:40:23 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-08-15 13:40:39 WARN  PlugBoardImpl:69 - Plugboard : Failed to connect endpoints -Fis already connected
+  2022-08-15 13:41:33 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-extra-test.xml
+  2022-08-15 13:41:33 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-15 13:41:33 INFO  MachineHandlerImpl:265 - Machine handler: created inventory successfully
+  2022-08-15 13:41:33 INFO  MachineHandlerImpl:187 - Machine Handler - assembled machine parts finished
+  2022-08-15 13:41:33 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-08-15 13:41:53 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-extra-test.xml
+  2022-08-15 13:41:53 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-15 13:41:53 INFO  MachineHandlerImpl:265 - Machine handler: created inventory successfully
+  2022-08-15 13:41:57 INFO  MachineHandlerImpl:187 - Machine Handler - assembled machine parts finished
+  2022-08-15 13:41:57 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-08-15 13:47:25 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-extra-test.xml
+  2022-08-15 13:47:25 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-15 13:47:25 INFO  MachineHandlerImpl:265 - Machine handler: created inventory successfully
+  2022-08-15 13:47:28 INFO  MachineHandlerImpl:187 - Machine Handler - assembled machine parts finished
+  2022-08-15 13:47:28 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-08-15 13:47:29 INFO  MachineHandlerImpl:304 - time it took to encrypt:PT0.015S
+  2022-08-15 13:55:03 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-extra-test.xml
+  2022-08-15 13:55:03 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-15 13:55:03 INFO  MachineHandlerImpl:265 - Machine handler: created inventory successfully
+  2022-08-15 13:55:03 INFO  MachineHandlerImpl:187 - Machine Handler - assembled machine parts finished
+  2022-08-15 13:55:03 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-08-15 13:55:03 INFO  MachineHandlerImpl:304 - time it took to encrypt:PT0.015S
+  2022-08-15 14:02:30 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./src/main/resources/machine-inventory-schema/extra-errors/ex1-error - rotor id.xml
+  2022-08-15 14:02:30 ERROR MachineHandlerImpl:71 - Failed to build machine inventory - CteMachine configured in file is invalid: The Rotor ids are not sequential
+  2022-08-15 14:04:12 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./src/main/resources/machine-inventory-schema/extra-errors/ex1-error - rotor id.xml
+  2022-08-15 14:04:12 ERROR MachineHandlerImpl:71 - Failed to build machine inventory - CteMachine configured in file is invalid: The Rotor ids are not sequential
+  2022-08-15 14:05:25 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./src/main/resources/machine-inventory-schema/extra-errors/ex1-error - rotor id.xml
+  2022-08-15 14:05:25 ERROR MachineHandlerImpl:71 - Failed to build machine inventory - CteMachine configured in file is invalid: The Rotor ids are not sequential
+  2022-08-15 14:05:44 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./src/main/resources/machine-inventory-schema/extra-errors/ex1-error - rotor id.xml
+  2022-08-15 14:05:44 ERROR MachineHandlerImpl:71 - Failed to build machine inventory - CteMachine configured in file is invalid: The Rotor ids are not sequential
+  2022-08-15 14:07:29 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./src/main/resources/machine-inventory-schema/extra-errors/ex1-error - reflector-id.xml
+  2022-08-15 14:07:29 ERROR MachineHandlerImpl:71 - Failed to build machine inventory - CteMachine configured in file is invalid: The Reflector ids are not sequential or too many
+  2022-08-15 14:07:35 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./src/main/resources/machine-inventory-schema/extra-errors/ex1-error - bad-rotor-count.xml
+  2022-08-15 14:07:35 ERROR MachineHandlerImpl:71 - Failed to build machine inventory - CteMachine configured in file is invalid: The Rotor Count is Illegal
+  2022-08-15 14:07:40 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./src/main/resources/machine-inventory-schema/extra-errors/ex1-error - reflector-mapping.xml
+  2022-08-15 14:07:40 ERROR MachineHandlerImpl:71 - Failed to build machine inventory - CteMachine configured in file is invalid: The mapping of one of the Reflectors in the schema is illegal
+  2022-08-15 14:07:45 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./src/main/resources/machine-inventory-schema/extra-errors/ex1-error - rotor-mapping.xml
+  2022-08-15 14:07:45 ERROR MachineHandlerImpl:71 - Failed to build machine inventory - CteMachine configured in file is invalid: The mapping of one of the Rotors in the schema is illegal
+  2022-08-15 14:07:51 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./src/main/resources/machine-inventory-schema/extra-errors/ex1-error - rotor id.xml
+  2022-08-15 14:07:51 ERROR MachineHandlerImpl:71 - Failed to build machine inventory - CteMachine configured in file is invalid: The Rotor ids are not sequential
+  2022-08-15 14:07:56 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./src/main/resources/machine-inventory-schema/extra-errors/ex1-error -notch.xml
+  2022-08-15 14:07:56 ERROR MachineHandlerImpl:71 - Failed to build machine inventory - CteMachine configured in file is invalid: One of the Rotor notches is out of the ABC's bounds
+  2022-08-15 14:08:01 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./src/main/resources/machine-inventory-schema/extra-errors/ex1-error-odd-abc.xml
+  2022-08-15 14:08:01 ERROR MachineHandlerImpl:71 - Failed to build machine inventory - CteMachine configured in file is invalid: The number of letters in the ABC is odd
   
