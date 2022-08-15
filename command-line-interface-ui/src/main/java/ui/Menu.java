@@ -133,8 +133,7 @@ public class Menu {
             String printedMessage = "Machine details:";
             //2.1
             //1.	כמות גלגלים אפשרית, כמות גלגלים בשימוש (למשל 3/5)
-            //מה זה אומר??
-            String rotorsPossibleInUseMsg = "Number of rotors in use: " + inventoryInfo.get().getNumOfRotorsInUse() +", out of: "+ inventoryInfo.get().getNumOfAvailableRotors() + " available.";
+            String rotorsPossibleInUseMsg = "Number of rotors in use: [" + inventoryInfo.get().getNumOfRotorsInUse() +"/"+ inventoryInfo.get().getNumOfAvailableRotors() + "].";
             //2.2
             String NotchLocationsMsg = "Notches locations by rotor id:" + inventoryInfo.get().getRotorIdToNotchLocation();
             //2.3
@@ -144,7 +143,7 @@ public class Menu {
             //2.5
             String machineStateMsg = "current Machine State: ";
                 //2.5.a
-            String rotorsInMachineMsg = Menu.buildRotorsInMachineMsg(machineState.get());
+            String rotorsInMachineMsg = Menu.buildRotorsInMachineMsg(machineState.get(),inventoryInfo.get());
                 //2.5.b
             String rotorsHeadLocationInMachineMsg = Menu.buildRotorHeadLocationInMachineMsg(machineState.get());
                 //2.5.c
@@ -174,9 +173,9 @@ public class Menu {
             else{
                 tempMsg = "," + tempMsg;
             }
-            outMsg = tempMsg.concat(tempMsg);
+            outMsg = outMsg.concat(tempMsg);
         }
-        outMsg = tempMsg.concat(">");
+        outMsg = outMsg.concat(">");
         return outMsg;
     }
 
@@ -200,17 +199,19 @@ public class Menu {
         return resultCount;
     }
 
-    private static String buildRotorsInMachineMsg(MachineState machineState){
+    private static String buildRotorsInMachineMsg(MachineState machineState,InventoryInfo inventoryInfo){
         String outmsg = "<";
+        String currRotorMsg = "";
         boolean isfirst = true;
-        for (Integer currId : machineState.getRotorIds()) {
+        for (Integer id : machineState.getRotorIds() ) {
+            currRotorMsg = id.toString() + "(" + inventoryInfo.getRotorIdToNotchLocation().get(id) + ")";
             if(isfirst){
-                outmsg = outmsg.concat(currId.toString());
                 isfirst = false;
             }
             else{
-                outmsg = outmsg.concat("," + currId.toString());
+                currRotorMsg = "," + currRotorMsg;
             }
+            outmsg = outmsg.concat(currRotorMsg);
         }
         outmsg = outmsg.concat(">");
         return outmsg;
@@ -345,19 +346,14 @@ public class Menu {
     }
 
     private static void  assembleMachineRandomly(){
-        //todo where this prints
-        //4
-        //starting pos:5
-        //starting pos:3
         try {
             Optional<InventoryInfo> inventoryInfo = machineHandler.getInventoryInfo();
             if(!inventoryInfo.isPresent()){
                 System.out.println("No machine loaded, please read system info from file first (option 1)");
+                return;
             }
-            else {
-                machineHandler.assembleMachine();
-                System.out.println("Machine assembled successfully.");
-            }
+            machineHandler.assembleMachine();
+            System.out.println("Machine assembled successfully.");
         }
         catch (Exception e){
             System.out.println("Problem assembling the machine: " + e.getMessage());
@@ -406,10 +402,11 @@ public class Menu {
             else {
                 out.println("Machine history:");
                 Map<MachineState, List<EncryptionInfoHistory>> history = machineHandler.getMachineStatisticsHistory();
+
                 String machineStateMsg = "";
                 for (MachineState machineStateHistory : history.keySet()) {
                     out.println(lineSeparator() + "Machine state:");
-                    String rotorsInMachineMsg = Menu.buildRotorsInMachineMsg(machineStateHistory);
+                    String rotorsInMachineMsg = Menu.buildRotorsInMachineMsg(machineStateHistory,inventoryInfo.get());
                     String rotorsHeadLocationInMachineMsg = Menu.buildRotorHeadLocationInMachineMsg(machineStateHistory);
                     String reflectorIdMsg = "<" + machineStateHistory.getReflectorId().getName() + ">";
                     String plugsMappedMsg = Menu.buildPlugMappingInMachineMsg(machineStateHistory);

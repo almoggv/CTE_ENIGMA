@@ -123,12 +123,14 @@ public class EnigmaMachine implements EncryptionMachine {
             return Optional.empty();
         }
         List<Integer> rotorIds = new ArrayList<>();
+        List<Integer> rotorNotchLocations = new ArrayList<>();
         List<String> rotorsHeadsInitialValues = new ArrayList<>();
         List<MappingPair<String,String>> minimalPlugMapping = this.plugBoard.getCurrentMapping();
         String numberAsLetter;
         int valueInHead;
         for (Rotor rotor : this.rotors) {
             rotorIds.add(rotor.getId());
+            rotorNotchLocations.add(rotor.getNotchLocation());
             valueInHead = rotor.getValueInHead();
             numberAsLetter = ioWheel.getABC().substring(valueInHead,valueInHead+1);
             rotorsHeadsInitialValues.add(numberAsLetter);
@@ -166,12 +168,11 @@ public class EnigmaMachine implements EncryptionMachine {
             }
             this.setRotorsStartingPosition(rotorsHeadsInitialValues);
         }
-        //TODO: validate rotors ids?
-        //TODO: validate reflector's id?
     }
 
     @Override
     public String getABC() {
+        if(ioWheel == null) return "";
         return this.ioWheel.getABC();
     }
 
