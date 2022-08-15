@@ -49,6 +49,7 @@ public class MachineHandlerImpl implements MachineHandler {
 
     @Override
     public void buildMachinePartsInventory(String absolutePath) throws Exception {
+        //todo - reset history - check if anything else
         String usingLastloadedInvntoryMsg = "\n--Last successful load is used.--";
         try{
             xmlSchemaVerifier.isFileInExistenceAndXML(absolutePath);
@@ -63,6 +64,7 @@ public class MachineHandlerImpl implements MachineHandler {
         if(xmlVerifierResponse == XmlVerifierState.VALID){
             clearInventory();
             buildMachinePartsInventory(cteEnigma);
+            machineStatisticsHistory.clear();
         }
         else{
             String msg = "Failed to build machine inventory - CteMachine configured in file is invalid: " + xmlVerifierResponse;

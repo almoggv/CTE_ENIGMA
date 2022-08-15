@@ -2938,4 +2938,82 @@
   2022-08-15 11:46:52 DEBUG RotorImpl:41 - Logger Instatiated for : RotorImpl
   2022-08-15 11:46:52 DEBUG ReflectorImpl:32 - Logger Instatiated for : ReflectorImpl
   2022-08-15 11:46:52 INFO  MachineHandlerImpl:262 - Machine handler: created inventory successfully
+  2022-08-15 11:53:56 DEBUG EnigmaMachine:26 - Logger Instatiated for : EnigmaMachine
+  2022-08-15 11:54:04 DEBUG FileConfigurationHandler:25 - Logger Instatiated for : FileConfigurationHandler
+  2022-08-15 11:54:04 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-08-15 11:54:04 DEBUG XmlSchemaVerifierImpl:49 - MachineHandler check xml validity: Is even ABC: true
+  2022-08-15 11:54:04 DEBUG XmlSchemaVerifierImpl:50 - MachineHandler check xml validity: Is good rotors count: true
+  2022-08-15 11:54:04 DEBUG XmlSchemaVerifierImpl:51 - MachineHandler check xml validity: Is rotors ids legal: true
+  2022-08-15 11:54:04 DEBUG XmlSchemaVerifierImpl:52 - MachineHandler check xml validity: Is rotors map legal: true
+  2022-08-15 11:54:04 DEBUG XmlSchemaVerifierImpl:53 - MachineHandler check xml validity: Is rotors notches legal: true
+  2022-08-15 11:54:04 DEBUG XmlSchemaVerifierImpl:54 - MachineHandler check xml validity: Is reflector ids legal: true
+  2022-08-15 11:54:04 DEBUG XmlSchemaVerifierImpl:55 - MachineHandler check xml validity: Is reflectors mapping legal: true
+  2022-08-15 11:54:04 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-15 11:54:04 DEBUG IOWheelImpl:27 - Logger Instatiated for : IOWheelImpl
+  2022-08-15 11:54:04 DEBUG PlugBoardImpl:29 - Logger Instatiated for : PlugBoardImpl
+  2022-08-15 11:54:04 DEBUG RotorImpl:41 - Logger Instatiated for : RotorImpl
+  2022-08-15 11:54:04 DEBUG ReflectorImpl:32 - Logger Instatiated for : ReflectorImpl
+  2022-08-15 11:54:04 INFO  MachineHandlerImpl:264 - Machine handler: created inventory successfully
+  2022-08-15 11:54:09 ERROR EnigmaMachine:122 - Failed To get machine state, machine not assembled yet
+  2022-08-15 11:54:12 DEBUG MachineHandlerImpl:92 - assemble machine randomly
+  2022-08-15 11:54:12 DEBUG MachineHandlerImpl:93 - reflector id: I
+  2022-08-15 11:54:12 DEBUG MachineHandlerImpl:94 - rotor id list: [2, 1]
+  2022-08-15 11:54:12 DEBUG MachineHandlerImpl:95 - rotor starting positions: CA
+  2022-08-15 11:54:12 DEBUG MachineHandlerImpl:96 - plugboard mapping: [MappingPair(left=D, right=D)]
+  2022-08-15 11:54:12 INFO  MachineHandlerImpl:187 - Machine Handler - assembled machine parts finished
+  2022-08-15 11:54:12 DEBUG PlugBoardImpl:84 - Plugboard made new connection: D<->D
+  2022-08-15 11:54:12 INFO  MachineHandlerImpl:209 - Machine Handler - initial state of machine state set
+  2022-08-15 11:54:19 DEBUG MachineHandlerImpl:289 - encrypt: input after verification: Optional[AC]
+  2022-08-15 11:54:19 DEBUG EnigmaMachine:45 - char: A
+  2022-08-15 11:54:19 DEBUG EnigmaMachine:48 - after plug: A
+  2022-08-15 11:54:19 DEBUG IOWheelImpl:44 - IOWHeel input:AOutput:0
+  2022-08-15 11:54:19 DEBUG EnigmaMachine:50 - after io: 0:A
+  2022-08-15 11:54:19 DEBUG EnigmaMachine:58 - after rotor: 5:F
+  2022-08-15 11:54:19 DEBUG EnigmaMachine:58 - after rotor: 0:A
+  2022-08-15 11:54:19 DEBUG EnigmaMachine:61 - after reflector: 3:D
+  2022-08-15 11:54:19 DEBUG EnigmaMachine:65 - after rotor (back): 2:C
+  2022-08-15 11:54:19 DEBUG EnigmaMachine:65 - after rotor (back): 3:D
+  2022-08-15 11:54:19 DEBUG IOWheelImpl:57 - IOWHeel input:3Output:D
+  2022-08-15 11:54:19 DEBUG EnigmaMachine:68 - after io: D
+  2022-08-15 11:54:19 DEBUG EnigmaMachine:70 - after plug: D
+  2022-08-15 11:54:19 DEBUG EnigmaMachine:45 - char: C
+  2022-08-15 11:54:19 DEBUG EnigmaMachine:48 - after plug: C
+  2022-08-15 11:54:19 DEBUG IOWheelImpl:44 - IOWHeel input:COutput:2
+  2022-08-15 11:54:19 DEBUG EnigmaMachine:50 - after io: 2:C
+  2022-08-15 11:54:19 DEBUG EnigmaMachine:58 - after rotor: 1:B
+  2022-08-15 11:54:19 DEBUG EnigmaMachine:58 - after rotor: 4:E
+  2022-08-15 11:54:19 DEBUG EnigmaMachine:61 - after reflector: 1:B
+  2022-08-15 11:54:19 DEBUG EnigmaMachine:65 - after rotor (back): 4:E
+  2022-08-15 11:54:19 DEBUG EnigmaMachine:65 - after rotor (back): 5:F
+  2022-08-15 11:54:19 DEBUG IOWheelImpl:57 - IOWHeel input:5Output:F
+  2022-08-15 11:54:19 DEBUG EnigmaMachine:68 - after io: F
+  2022-08-15 11:54:19 DEBUG EnigmaMachine:70 - after plug: F
+  2022-08-15 11:54:19 INFO  MachineHandlerImpl:303 - time it took to encrypt:PT0.005S
+  2022-08-15 11:54:24 DEBUG MachineHandlerImpl:92 - assemble machine randomly
+  2022-08-15 11:54:24 DEBUG MachineHandlerImpl:93 - reflector id: II
+  2022-08-15 11:54:24 DEBUG MachineHandlerImpl:94 - rotor id list: [2, 1]
+  2022-08-15 11:54:24 DEBUG MachineHandlerImpl:95 - rotor starting positions: CE
+  2022-08-15 11:54:24 DEBUG MachineHandlerImpl:96 - plugboard mapping: [MappingPair(left=A, right=D)]
+  2022-08-15 11:54:24 INFO  MachineHandlerImpl:187 - Machine Handler - assembled machine parts finished
+  2022-08-15 11:54:24 DEBUG PlugBoardImpl:84 - Plugboard made new connection: A<->D
+  2022-08-15 11:54:24 INFO  MachineHandlerImpl:209 - Machine Handler - initial state of machine state set
+  2022-08-15 11:54:47 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-08-15 11:54:47 DEBUG XmlSchemaVerifierImpl:49 - MachineHandler check xml validity: Is even ABC: true
+  2022-08-15 11:54:47 DEBUG XmlSchemaVerifierImpl:50 - MachineHandler check xml validity: Is good rotors count: true
+  2022-08-15 11:54:47 DEBUG XmlSchemaVerifierImpl:51 - MachineHandler check xml validity: Is rotors ids legal: true
+  2022-08-15 11:54:47 DEBUG XmlSchemaVerifierImpl:52 - MachineHandler check xml validity: Is rotors map legal: true
+  2022-08-15 11:54:47 DEBUG XmlSchemaVerifierImpl:53 - MachineHandler check xml validity: Is rotors notches legal: true
+  2022-08-15 11:54:47 DEBUG XmlSchemaVerifierImpl:54 - MachineHandler check xml validity: Is reflector ids legal: true
+  2022-08-15 11:54:47 DEBUG XmlSchemaVerifierImpl:55 - MachineHandler check xml validity: Is reflectors mapping legal: true
+  2022-08-15 11:54:47 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-15 11:54:47 INFO  MachineHandlerImpl:264 - Machine handler: created inventory successfully
+  2022-08-15 11:54:52 DEBUG MachineHandlerImpl:92 - assemble machine randomly
+  2022-08-15 11:54:52 DEBUG MachineHandlerImpl:93 - reflector id: II
+  2022-08-15 11:54:52 DEBUG MachineHandlerImpl:94 - rotor id list: [1, 3]
+  2022-08-15 11:54:52 DEBUG MachineHandlerImpl:95 - rotor starting positions: BF
+  2022-08-15 11:54:52 DEBUG MachineHandlerImpl:96 - plugboard mapping: [MappingPair(left=E, right=E), MappingPair(left=B, right=B)]
+  2022-08-15 11:54:52 INFO  MachineHandlerImpl:187 - Machine Handler - assembled machine parts finished
+  2022-08-15 11:54:52 DEBUG PlugBoardImpl:84 - Plugboard made new connection: E<->E
+  2022-08-15 11:54:52 DEBUG PlugBoardImpl:84 - Plugboard made new connection: B<->B
+  2022-08-15 11:54:52 INFO  MachineHandlerImpl:209 - Machine Handler - initial state of machine state set
   

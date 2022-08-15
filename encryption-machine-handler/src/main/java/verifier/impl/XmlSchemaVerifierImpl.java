@@ -97,8 +97,8 @@ public class XmlSchemaVerifierImpl implements XmlSchemaVerifier {
         return noWhiteSpaces.length() % 2 == 0;
     }
 
-    public boolean isRotorCountGood(int declaredRotorsCount, int numOfRotors){
-        return (declaredRotorsCount <= numOfRotors) && (declaredRotorsCount >=2);
+    public boolean isRotorCountGood(int requiredRotorsCount, int numOfRotors){
+        return (requiredRotorsCount <= numOfRotors) && (requiredRotorsCount >= 2) && (requiredRotorsCount <= 99);
     }
 
     public boolean isRotorsDefinitionGood(CTERotors rotors, String ABC) {
