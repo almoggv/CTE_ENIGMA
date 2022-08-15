@@ -6,7 +6,7 @@ public enum MenuOptions {
     AssembleMachineFromInput("Assemble machine from input",3),
     AssembleMachineRandomly("Assemble machine randomly",4),
     Encrypt("Encrypt/Decrypt",5),
-    ResetToLastSetting("Reset to last defined Settings",6),
+    ResetToLastSetting("Reset to last defined settings",6),
     SeeMachineHistoryAndStatistics("See machine history and statistics",7),
     SaveToFile("Save to file",8),
     LoadFromFile("Load from file",9),

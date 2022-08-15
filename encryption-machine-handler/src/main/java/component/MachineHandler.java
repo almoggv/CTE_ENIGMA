@@ -53,9 +53,6 @@ public interface MachineHandler {
 
     public Map<MachineState, List<EncryptionInfoHistory>> getMachineStatisticsHistory();
 
-    //todo - decide if better and worth the headache
-//    public Map<MachineState,List<EncryptionInfoHistory>> getMachineStatisticsHistoryMap();
-
     //bonus
     public boolean loadStateFromFile(String absolutePath);
 

@@ -3872,4 +3872,47 @@
   2022-08-15 19:32:48 INFO  MachineHandlerImpl:187 - Machine Handler - assembled machine parts finished
   2022-08-15 19:32:48 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
   2022-08-15 19:32:52 INFO  MachineHandlerImpl:307 - time it took to encrypt:PT0S
+  2022-08-15 19:39:26 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-08-15 19:39:26 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-15 19:39:26 INFO  MachineHandlerImpl:265 - Machine handler: created inventory successfully
+  2022-08-15 19:39:31 INFO  MachineHandlerImpl:187 - Machine Handler - assembled machine parts finished
+  2022-08-15 19:39:31 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-08-15 19:49:09 ERROR EnigmaMachine:122 - Failed To get machine state, machine not assembled yet
+  2022-08-15 19:49:23 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-08-15 19:49:23 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-15 19:49:23 INFO  MachineHandlerImpl:265 - Machine handler: created inventory successfully
+  2022-08-15 19:49:24 INFO  MachineHandlerImpl:187 - Machine Handler - assembled machine parts finished
+  2022-08-15 19:49:24 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-08-15 19:55:47 ERROR FileConfigurationHandler:41 - Failed to generate JAXB CTE Enigma objects by schema : null
+  2022-08-15 19:55:50 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-08-15 19:55:50 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-15 19:55:50 INFO  MachineHandlerImpl:265 - Machine handler: created inventory successfully
+  2022-08-15 19:55:52 INFO  MachineHandlerImpl:187 - Machine Handler - assembled machine parts finished
+  2022-08-15 19:55:52 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-08-15 20:46:56 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-08-15 20:46:56 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-15 20:46:56 INFO  MachineHandlerImpl:265 - Machine handler: created inventory successfully
+  2022-08-15 20:47:45 ERROR EnigmaMachine:122 - Failed To get machine state, machine not assembled yet
+  2022-08-15 20:49:08 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-08-15 20:49:08 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-15 20:49:08 INFO  MachineHandlerImpl:265 - Machine handler: created inventory successfully
+  2022-08-15 20:49:51 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-08-15 20:49:51 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-15 20:49:51 INFO  MachineHandlerImpl:265 - Machine handler: created inventory successfully
+  2022-08-15 20:49:55 ERROR EnigmaMachine:122 - Failed To get machine state, machine not assembled yet
+  2022-08-15 20:51:52 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-08-15 20:51:52 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-15 20:51:52 INFO  MachineHandlerImpl:265 - Machine handler: created inventory successfully
+  2022-08-15 20:51:53 ERROR EnigmaMachine:122 - Failed To get machine state, machine not assembled yet
+  2022-08-15 20:52:44 ERROR EnigmaMachine:122 - Failed To get machine state, machine not assembled yet
+  2022-08-15 20:53:00 ERROR EnigmaMachine:142 - Failed to set machine state - No machine parts present
+  2022-08-15 20:53:07 ERROR EnigmaMachine:122 - Failed To get machine state, machine not assembled yet
+  2022-08-15 20:53:18 INFO  MachineHandlerImpl:187 - Machine Handler - assembled machine parts finished
+  2022-08-15 20:53:18 WARN  PlugBoardImpl:69 - Plugboard : Failed to connect endpoints -Cis already connected
+  2022-08-15 20:53:18 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-08-15 21:11:38 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-08-15 21:11:38 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-15 21:11:38 INFO  MachineHandlerImpl:264 - Machine handler: created inventory successfully
+  2022-08-15 21:12:19 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\extra-errors\ex1-error - reflector-id.xml
+  2022-08-15 21:12:19 ERROR MachineHandlerImpl:71 - Failed to build machine inventory - CteMachine configured in file is invalid: The Reflector ids are not sequential or too many
   

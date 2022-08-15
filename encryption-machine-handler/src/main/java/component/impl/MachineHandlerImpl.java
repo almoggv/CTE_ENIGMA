@@ -49,7 +49,7 @@ public class MachineHandlerImpl implements MachineHandler {
 
     @Override
     public void buildMachinePartsInventory(String absolutePath) throws Exception {
-        //todo - reset history - check if anything else
+        //todo -already added reset history - check if anything else
         String usingLastloadedInvntoryMsg = "\n--Last successful load is used.--";
         try{
             xmlSchemaVerifier.isFileInExistenceAndXML(absolutePath);
@@ -132,8 +132,7 @@ public class MachineHandlerImpl implements MachineHandler {
         String currentGeneratedLetter;
         String result = "";
         for (int i = 0; i < expectedNumOfRotors; i++) {
-            startingPos = random.nextInt(ABC.length()) /*+ 1*/;
-            System.out.println("starting pos:" + startingPos);
+            startingPos = random.nextInt(ABC.length());
             currentGeneratedLetter = ABC.substring(startingPos,startingPos+1);
             result = result.concat(currentGeneratedLetter);
         }
@@ -330,6 +329,7 @@ public class MachineHandlerImpl implements MachineHandler {
             log.error("Failed to verify and fix input, no IOWheel present yet in inventory");
             return Optional.empty();
         }
+        //todo - check why problem with test from tali
         String ABC = ioWheelInventory.getABC();
         String upperAbcRegex = "[A-Z]+";//[0-9]+";
         String lowerAbcRegex = "[a-z]+";//[0-9]+";

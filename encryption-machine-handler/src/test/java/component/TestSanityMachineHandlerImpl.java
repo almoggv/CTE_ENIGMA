@@ -83,6 +83,8 @@ public class TestSanityMachineHandlerImpl {
             List<MappingPair<String,String>> plugBoard = new ArrayList<MappingPair<String,String>>();
             List<Integer> rotorsIds = Arrays.asList(1,5,4,3,2);
             String rotorsstartingPos = "DB* F";
+
+            //todo - check - the lower letter is prob
 //            String rotorsstartingPos = "f *bd";
 
             plugBoard.add(new MappingPair<String,String>("F","A"));

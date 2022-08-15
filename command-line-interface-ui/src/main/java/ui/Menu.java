@@ -35,8 +35,6 @@ public class Menu {
         int choice = -1;
         String menuOptions = Menu.buildMainMenu();
         while (choice != MenuOptions.Exit.getId()){
-
-            //todo - finish change
             System.out.println(lineSeparator() + menuOptions);
             try{
                 choice = Integer.parseInt(scanner.nextLine());
@@ -87,7 +85,22 @@ public class Menu {
     }
 
     private static void resetToLastSetting() {
-        machineHandler.resetToLastSetState();
+        try{
+            Optional<InventoryInfo> inventoryInfo = machineHandler.getInventoryInfo();
+            Optional<MachineState> machineState = machineHandler.getMachineState();
+            if(!inventoryInfo.isPresent()){
+                System.out.println("No Parts in inventory to display, please " + MenuOptions.ReadSystemInfoFromFile.toString() + " first.");
+                return;
+            }
+            if(!machineState.isPresent()){
+                System.out.println("No machine state to display, please assemble the machine first");
+                return;
+            }
+            machineHandler.resetToLastSetState();
+        }
+        catch (Exception e){
+            out.println(e.getMessage());
+        }
     }
 
     private static void readSystemInfoFromFile(){
@@ -105,22 +118,27 @@ public class Menu {
 
     private static void showMachineDetails(){
         try{
-            //todo fix
+            //todo fix - prints <> with issues occasionally, : <2,3><FB><II>B|D> or ><II>>
+            // aviad changed how he wants to print : <45(2),27(5),94(20)><AO!><III><A|Z,D|E>
             Optional<InventoryInfo> inventoryInfo = machineHandler.getInventoryInfo();
             Optional<MachineState> machineState = machineHandler.getMachineState();
             if(!inventoryInfo.isPresent()){
                 System.out.println("No Parts in inventory to display, please " + MenuOptions.ReadSystemInfoFromFile.toString() + " first.");
+                return;
             }
             if(!machineState.isPresent()){
                 System.out.println("No machine state to display, please assemble the machine first");
+                return;
             }
-            String printedMessage = "";
+            String printedMessage = "Machine details:";
             //2.1
-            String rotorsPossibleInUseMsg = "Rotors: [" + inventoryInfo.get().getNumOfRotorsInUse()+inventoryInfo.get().getNumOfAvailableRotors()+"]";
+            //1.	כמות גלגלים אפשרית, כמות גלגלים בשימוש (למשל 3/5)
+            //מה זה אומר??
+            String rotorsPossibleInUseMsg = "Number of rotors in use: " + inventoryInfo.get().getNumOfRotorsInUse() +", out of: "+ inventoryInfo.get().getNumOfAvailableRotors() + " available.";
             //2.2
             String NotchLocationsMsg = "Notches locations by rotor id:" + inventoryInfo.get().getRotorIdToNotchLocation();
             //2.3
-            String reflectorsAmountMsg = "Number of reflectors: " + inventoryInfo.get().getNumOfAvailableReflectors();
+            String reflectorsAmountMsg = "Number of available reflectors: " + inventoryInfo.get().getNumOfAvailableReflectors();
             //2.4
             String numberOfEncryptedMessagesMsg = "Number of messages encrypted: " + Menu.countNumberOfMessagesInHistory();
             //2.5
@@ -214,15 +232,24 @@ public class Menu {
 //                out.println(rotorStartingPos);
 
 //              //reflector
-                ReflectorsId reflectorId = getReflectorChoice(inventoryInfo.get());
-                out.println(reflectorId.getName());
+//                ReflectorsId reflectorId = getReflectorChoice(inventoryInfo.get());
+//                out.println(reflectorId.getName());
                 //plugs
+                List<MappingPair<String,String>> plugMapping = getPlugMapping(inventoryInfo.get());
+
+//                machineHandler.assembleMachine(reflectorId, rotorIdsList, rotorStartingPos,plugMapping) ;
             }
         }
         catch (Exception e) {
             System.out.println("Problem assembling the machine: " + e.getMessage());
         }
 
+    }
+
+    private static List<MappingPair<String,String>> getPlugMapping(InventoryInfo inventoryInfo) {
+        List<MappingPair<String,String>> plugMapping = new ArrayList<>();
+        //todo
+        return plugMapping;
     }
 
     private static ReflectorsId getReflectorChoice(InventoryInfo inventoryInfo) {
@@ -318,6 +345,10 @@ public class Menu {
     }
 
     private static void  assembleMachineRandomly(){
+        //todo where this prints
+        //4
+        //starting pos:5
+        //starting pos:3
         try {
             Optional<InventoryInfo> inventoryInfo = machineHandler.getInventoryInfo();
             if(!inventoryInfo.isPresent()){
