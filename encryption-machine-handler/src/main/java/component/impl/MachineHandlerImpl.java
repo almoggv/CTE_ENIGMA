@@ -285,7 +285,7 @@ public class MachineHandlerImpl implements MachineHandler {
     }
 
     @Override
-    public String encrypt(String input) throws RuntimeException{
+    public String encrypt(String input) throws RuntimeException, IOException {
         Optional<String> verifiedInput = verifyInputInAbcAndFix(input);
         log.debug("encrypt: input after verification: "+ verifiedInput);
         //For History documentation
@@ -293,8 +293,11 @@ public class MachineHandlerImpl implements MachineHandler {
         if(encryptionMachine.getMachineState().isPresent() && verifiedInput.isPresent()) {
             machineStateBeforeEncrypt = encryptionMachine.getMachineState().get();
         }
-        else{
-            throw new RuntimeException("Machine is null");
+        else if (!encryptionMachine.getMachineState().isPresent()){
+            throw new RuntimeException("Need to assemble machine");
+        }
+        else if(!verifiedInput.isPresent()){
+            throw new IOException("Input not in ABC");
         }
 
         Instant startEncryptionTime = Instant.now();

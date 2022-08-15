@@ -6,6 +6,7 @@ import main.java.dto.MachineState;
 import main.java.dto.EncryptionInfoHistory;
 import main.java.enums.ReflectorsId;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -48,7 +49,7 @@ public interface MachineHandler {
      * @param input
      * @return encrypted message
      */
-    public String encrypt(String input);
+    public String encrypt(String input) throws IOException;
 
     public Map<MachineState, List<EncryptionInfoHistory>> getMachineStatisticsHistory();
 

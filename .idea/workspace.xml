@@ -5,12 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6467e2d7-ff2a-4abb-a198-685a0fcd06aa" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/enigma-machine/src/main/resources/machine-inventory-schema/ex1-extra-test.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Logs/logging.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/logging.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/command-line-interface-ui/src/main/java/enums/MenuOptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/command-line-interface-ui/src/main/java/enums/MenuOptions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/command-line-interface-ui/src/main/java/ui/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/command-line-interface-ui/src/main/java/ui/Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/encryption-machine-handler/Logs/logging.log" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/Logs/logging.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/MachineHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/MachineHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/impl/MachineHandlerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/impl/MachineHandlerImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/test/java/component/TestSanityMachineHandlerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/src/test/java/component/TestSanityMachineHandlerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/component/impl/MachineHandlerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/component/impl/MachineHandlerImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/resources/log4j.properties" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/resources/log4j.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/command-line-interface-ui/src/main/java/ui/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/command-line-interface-ui/src/main/java/ui/Menu.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/encryption-machine-handler/test/java/component/TestSanityMachineHandlerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/encryption-machine-handler/test/java/component/TestSanityMachineHandlerImpl.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -110,35 +114,16 @@
       <recent name="test.java.component" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TestSanityMachineHandlerImpl.testBadRotorCountsId2Schema">
-    <configuration name="TestSanityMachineHandlerImpl.testABCSchema" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="encryption-machine-handler" />
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="src.main.java.Main" />
+      <module name="command-line-interface-ui" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="test.java.component.*" />
+          <option name="PATTERN" value="src.main.java.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="test.java.component" />
-      <option name="MAIN_CLASS_NAME" value="test.java.component.TestSanityMachineHandlerImpl" />
-      <option name="METHOD_NAME" value="testABCSchema" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestSanityMachineHandlerImpl.testBadNotchSchema" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="encryption-machine-handler" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test.java.component.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="test.java.component" />
-      <option name="MAIN_CLASS_NAME" value="test.java.component.TestSanityMachineHandlerImpl" />
-      <option name="METHOD_NAME" value="testBadNotchSchema" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -159,7 +144,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestSanityMachineHandlerImpl.testBadRotorIdSchema" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestSanityMachineHandlerImpl.testFromTali" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="encryption-machine-handler" />
       <extension name="coverage">
         <pattern>
@@ -169,13 +154,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="test.java.component" />
       <option name="MAIN_CLASS_NAME" value="test.java.component.TestSanityMachineHandlerImpl" />
-      <option name="METHOD_NAME" value="testBadRotorIdSchema" />
+      <option name="METHOD_NAME" value="testFromTali" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestSanityMachineHandlerImpl.testBadRotorMappingSchema" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestSanityMachineHandlerImpl.testSanityBig" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="encryption-machine-handler" />
       <extension name="coverage">
         <pattern>
@@ -185,7 +170,23 @@
       </extension>
       <option name="PACKAGE_NAME" value="test.java.component" />
       <option name="MAIN_CLASS_NAME" value="test.java.component.TestSanityMachineHandlerImpl" />
-      <option name="METHOD_NAME" value="testBadRotorMappingSchema" />
+      <option name="METHOD_NAME" value="testSanityBig" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestSanityMachineHandlerImpl.testSanitySmall" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="encryption-machine-handler" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.java.component.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test.java.component" />
+      <option name="MAIN_CLASS_NAME" value="test.java.component.TestSanityMachineHandlerImpl" />
+      <option name="METHOD_NAME" value="testSanitySmall" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -206,11 +207,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.TestSanityMachineHandlerImpl.testFromTali" />
+        <item itemvalue="JUnit.TestSanityMachineHandlerImpl.testSanitySmall" />
+        <item itemvalue="JUnit.TestSanityMachineHandlerImpl.testSanityBig" />
         <item itemvalue="JUnit.TestSanityMachineHandlerImpl.testBadRotorCountsId2Schema" />
-        <item itemvalue="JUnit.TestSanityMachineHandlerImpl.testABCSchema" />
-        <item itemvalue="JUnit.TestSanityMachineHandlerImpl.testBadNotchSchema" />
-        <item itemvalue="JUnit.TestSanityMachineHandlerImpl.testBadRotorIdSchema" />
-        <item itemvalue="JUnit.TestSanityMachineHandlerImpl.testBadRotorMappingSchema" />
       </list>
     </recent_temporary>
   </component>
@@ -269,18 +270,27 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/command-line-interface-ui/src/main/java/ui/Menu.java</url>
-          <line>262</line>
+          <line>278</line>
           <option name="timeStamp" value="157" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/command-line-interface-ui/src/main/java/ui/Menu.java</url>
-          <line>258</line>
+          <line>274</line>
           <option name="timeStamp" value="162" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/command-line-interface-ui/src/main/java/ui/Menu.java</url>
+          <line>75</line>
+          <option name="timeStamp" value="177" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/encryption-machine-handler/src/test/java/component/TestSanityMachineHandlerImpl.java</url>
-          <line>96</line>
-          <option name="timeStamp" value="172" />
+          <line>75</line>
+          <properties class="test.java.component.TestSanityMachineHandlerImpl" method="testFromTali">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="175" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

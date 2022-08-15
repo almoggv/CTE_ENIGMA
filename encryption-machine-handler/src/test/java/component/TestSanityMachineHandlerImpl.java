@@ -91,13 +91,13 @@ public class TestSanityMachineHandlerImpl {
 
             machineHandler.assembleMachine(refid, rotorsIds,rotorsstartingPos,plugBoard);
             System.out.println("Initial Machine State:" + machineHandler.getMachineState());
-            List<String> inputs = Arrays.asList(new String[]{"aaaaabbaaaababababbababababbabab***********************************bababababbaaaaaaaadddddddddddddddddddd            ****************************FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbccccccccccccccccccccccccccccccccccccccccccDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDaaaaaaaaaaaaaaaaaaaaaabbababab"/*, "HELLOWORLD", "ENIGMAMACHINEROCKS" , "WOWCANTBELIEVEITACTUALLYWORKS" , "JAVARULES"*/});
+            List<String> inputs = Arrays.asList(new String[]{"aaaaabbaaaababababbababababbabab***********************************bababababbaaaaaaaadddddddddddddddddddd            ****************************FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbccccccccccccccccccccccccccccccccccccccccccDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDaaaaaaaaaaaaaaaaaaaaaabbababab", "defeca"/*, "ENIGMAMACHINEROCKS" , "WOWCANTBELIEVEITACTUALLYWORKS" , "JAVARULES"*/});
 //            List<String> outputs = Arrays.asList(new String[]{"APZTICDXRVMWQHBHU" , "DLTBBQVPQV" , "QMJIDORMMYQBJDVSBR", "CVRDIZWDAWQKUKBVHJILPKRNDXWIY" , "MRUHFRZZR"});
 
             for (int i = 0; i < inputs.size(); i++) {
                 String input = inputs.get(i);
 //                String wantedOutput = outputs.get(i);
-//                machineHandler.resetToLastSetState();
+                machineHandler.resetToLastSetState();
 //                System.out.println("Machine State Before Encryption number:" + i + ":\n" + machineHandler.getMachineState());
                 String output = machineHandler.encrypt(input.toUpperCase());
                 System.out.println(i + ". the output is: " + output  /* + wantedOutput.equals(output)*/);
@@ -120,7 +120,6 @@ public class TestSanityMachineHandlerImpl {
             System.out.println(e.getMessage());
 
         }
-
         Assert.assertFalse(machineHandler.getInventoryInfo().isPresent());
     }
    @Test
@@ -159,7 +158,7 @@ public class TestSanityMachineHandlerImpl {
         }
        Assert.assertFalse(machineHandler.getInventoryInfo().isPresent());
     }
-       @Test
+   @Test
     public void testBadRotorMappingSchema(){
         try{
             String badReflectorIdXml = "./src/main/resources/machine-inventory-schema/extra-errors/ex1-error - rotor-mapping.xml";

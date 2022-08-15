@@ -1,4 +1,5 @@
 package src.main.java.ui;
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import main.java.component.MachineHandler;
 import main.java.component.impl.MachineHandlerImpl;
 import main.java.dto.EncryptionInfoHistory;
@@ -9,6 +10,7 @@ import main.java.generictype.MappingPair;
 import src.main.java.enums.MenuOptions;
 
 import javax.persistence.criteria.CriteriaBuilder;
+import java.io.IOException;
 import java.util.*;
 
 import static java.lang.System.*;
@@ -33,46 +35,59 @@ public class Menu {
         int choice = -1;
         String menuOptions = Menu.buildMainMenu();
         while (choice != MenuOptions.Exit.getId()){
+
+            //todo - finish change
             System.out.println(lineSeparator() + menuOptions);
             try{
                 choice = Integer.parseInt(scanner.nextLine());
-                switch (choice){
-                    case 1:
+                MenuOptions option = MenuOptions.getByNum(choice);
+                switch (option){
+                    case ReadSystemInfoFromFile:
                         readSystemInfoFromFile();
                         break;
-                    case 2:
+                    case ShowMachineDetails:
                         showMachineDetails();
                         break;
-                    case 3:
+                    case AssembleMachineFromInput:
                         //todo - step by step ask for parts
                         assembleMachineFromInput();
                         break;
-                    case 4:
+                    case AssembleMachineRandomly:
                         assembleMachineRandomly();
                         break;
-                    case 5:
+                    case Encrypt:
                         encryptOrDecrypt();
                         break;
-                    case 6:
+                    case SeeMachineHistoryAndStatistics:
                         seeMachineHistoryAndStatistics();
                         break;
-                    case 7:
-                        exitSystem();
+                    case ResetToLastSetting:
+                        resetToLastSetting();
                         break;
-                    case 8:
-                        saveOrLoadFromFile();
+                    case SaveToFile:
+                        saveToFile();
+                        break;
+                    case LoadFromFile:
+                        loadFromFile();
+                        break;
+                    case Exit:
+                        exitSystem();
                         break;
                     default:
                         out.println("Not an option. please choose from menu");
                 }
             }
-            catch (NumberFormatException e){
+            catch (IllegalArgumentException e){
                 out.println("Please only choose option from the menu.");
             }
             catch (Exception exception){
                 System.out.println(exception.getMessage());
             }
         }
+    }
+
+    private static void resetToLastSetting() {
+        machineHandler.resetToLastSetState();
     }
 
     private static void readSystemInfoFromFile(){
@@ -90,6 +105,7 @@ public class Menu {
 
     private static void showMachineDetails(){
         try{
+            //todo fix
             Optional<InventoryInfo> inventoryInfo = machineHandler.getInventoryInfo();
             Optional<MachineState> machineState = machineHandler.getMachineState();
             if(!inventoryInfo.isPresent()){
@@ -198,8 +214,8 @@ public class Menu {
 //                out.println(rotorStartingPos);
 
 //              //reflector
-//                ReflectorsId reflectorId = getReflectorChoice(inventoryInfo.get());
-//                out.println(reflectorId.getName());
+                ReflectorsId reflectorId = getReflectorChoice(inventoryInfo.get());
+                out.println(reflectorId.getName());
                 //plugs
             }
         }
@@ -328,12 +344,17 @@ public class Menu {
                 System.out.println("No machine state, please assemble the machine first (options 3/4)");
             }
             else {
-                System.out.println("please enter string to encrypt/decrypt:");
+                try{
+                System.out.println("Please enter string to encrypt/decrypt:");
                 Scanner scanner = new Scanner(System.in);
                 String input = scanner.nextLine();
 
                 String output = machineHandler.encrypt(input);
-                System.out.println("Encrypted to: " + output);
+                System.out.println("The input: " + input + " was encrypted to: " + output);
+                }
+                catch (Exception e){
+                    out.println(e.getMessage());
+                }
             }
         }
         catch (Exception e){
@@ -356,7 +377,7 @@ public class Menu {
                 Map<MachineState, List<EncryptionInfoHistory>> history = machineHandler.getMachineStatisticsHistory();
                 String machineStateMsg = "";
                 for (MachineState machineStateHistory : history.keySet()) {
-                    out.println("Machine state:");
+                    out.println(lineSeparator() + "Machine state:");
                     String rotorsInMachineMsg = Menu.buildRotorsInMachineMsg(machineStateHistory);
                     String rotorsHeadLocationInMachineMsg = Menu.buildRotorHeadLocationInMachineMsg(machineStateHistory);
                     String reflectorIdMsg = "<" + machineStateHistory.getReflectorId().getName() + ">";
@@ -366,9 +387,9 @@ public class Menu {
                     out.println(machineStateMsg);
                     int i = 1;
                     List<EncryptionInfoHistory> encryptionInfoHistoryList = history.get(machineStateHistory);
+                    out.println("Machine encryption history:");
                     for (EncryptionInfoHistory encryptionHistory : encryptionInfoHistoryList) {
-                        out.println(i + ". <" + encryptionHistory.getInput() + "> --> <" + encryptionHistory.getOutput() + "> ( " + encryptionHistory.getTimeToEncrypt().toNanos() + " nano-seconds)");
-                        i = i + 1;
+                        out.println(i++ + ". <" + encryptionHistory.getInput() + "> --> <" + encryptionHistory.getOutput() + "> ( " + encryptionHistory.getTimeToEncrypt().toNanos() + " nano-seconds)");
                     }
                 }
             }
@@ -378,9 +399,13 @@ public class Menu {
         }
     }
     private static void exitSystem(){
+        out.println("BYE-BYE :)");
         exit(0);
     }
-    private static void saveOrLoadFromFile(){
+    private static void saveToFile(){
+
+    }
+    private static void loadFromFile(){
 
     }
 }
