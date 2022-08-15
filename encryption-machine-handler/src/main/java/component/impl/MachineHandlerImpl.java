@@ -82,7 +82,7 @@ public class MachineHandlerImpl implements MachineHandler {
     }
 
     @Override
-    public void assembleMachine() {
+    public void assembleMachine()  throws  Exception{
         String ABC = ioWheelInventory.getABC();
         Random random = new Random();
         ReflectorsId reflectorId = ReflectorsId.getByNum(random.nextInt(reflectorsInventory.size()) + 1);
@@ -96,6 +96,7 @@ public class MachineHandlerImpl implements MachineHandler {
         log.debug("plugboard mapping: " + plugPairsMapping);
 
         assembleMachine(reflectorId,rotorIdList,rotorStartingPositions,plugPairsMapping);
+
     }
 
     private List<MappingPair<String,String>> generateRandomPlugboardConnections(String ABC) {
@@ -153,18 +154,18 @@ public class MachineHandlerImpl implements MachineHandler {
     }
 
     @Override
-    public void assembleMachine(ReflectorsId reflectorId, List<Integer> rotorIds, String rotorsStartingPositions, List<MappingPair<String, String>> plugMapping) {
+    public void assembleMachine(ReflectorsId reflectorId, List<Integer> rotorIds, String rotorsStartingPositions, List<MappingPair<String, String>> plugMapping) throws Exception {
         assembleMachineParts(reflectorId, rotorIds);
         setStartingMachineState(rotorsStartingPositions, plugMapping);
     }
 
     @Override
-    public void assembleMachineParts(ReflectorsId reflectorId, List<Integer> rotorIds) {
+    public void assembleMachineParts(ReflectorsId reflectorId, List<Integer> rotorIds) throws Exception {
         Predicate<Reflector> idReflectorPredicate = (reflector) -> reflector.getId() == reflectorId;
         Reflector reflector = reflectorsInventory.stream().filter(idReflectorPredicate).findFirst().orElse(null);
         if(reflector == null){
             log.error("Failed to assemble machine parts - could not find REFLECTOR in inventory with id: " + reflectorId);
-            return;
+            throw new Exception("no reflector in inventory with id : " + reflectorId);
         }
         List<Rotor> rotorListForMachine = new ArrayList<>();
         for (int rotorId : rotorIds) {
@@ -174,7 +175,7 @@ public class MachineHandlerImpl implements MachineHandler {
         }
         if(rotorListForMachine.size() != rotorIds.size()){
             log.error("Failed to assemble machine parts - not all ROTORS were found, missing" + (rotorIds.size()-rotorListForMachine.size()));
-            return;
+            throw new Exception("Not all rotors were found");
         }
         if(encryptionMachine == null){
             log.error("Failed to assemble machine parts - no machine found");
@@ -203,7 +204,6 @@ public class MachineHandlerImpl implements MachineHandler {
         }
         encryptionMachine.setRotorsStartingPosition(valuesOfHeadToSetRotors);
         encryptionMachine.connectPlugs(plugMapping);
-        //TODO: FIX here
         this.initialMachineState.setRotorsHeadsInitialValues(encryptionMachine.getMachineState().get().getRotorsHeadsInitialValues());
         this.initialMachineState.setPlugMapping(plugMapping);
         log.info("Machine Handler - initial state of machine state set");
@@ -330,15 +330,12 @@ public class MachineHandlerImpl implements MachineHandler {
         }
         //todo - check why problem with test from tali
         String ABC = ioWheelInventory.getABC();
-        String upperAbcRegex = "[A-Z]+";//[0-9]+";
-        String lowerAbcRegex = "[a-z]+";//[0-9]+";
-        if(ABC.matches(upperAbcRegex) && !ABC.matches(lowerAbcRegex)){
+        if(ABC.chars().anyMatch(Character::isUpperCase) && ABC.chars().noneMatch(Character::isLowerCase)){
             input = input.toUpperCase();
         }
-        else if(!ABC.matches(upperAbcRegex) && ABC.matches(lowerAbcRegex)){
+        else if(ABC.chars().anyMatch(Character::isLowerCase) && ABC.chars().noneMatch(Character::isUpperCase)){
             input = input.toLowerCase();
         }
-
         for (int i = 0; i < input.length(); i++) {
             if(!ABC.contains(input.substring(i,i+1))){
                 return Optional.empty();

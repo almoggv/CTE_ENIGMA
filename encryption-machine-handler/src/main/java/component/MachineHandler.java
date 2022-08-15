@@ -27,13 +27,13 @@ public interface MachineHandler {
      * picks reflector, plugBoardMapping, rotors and their starting position 
      * @return
      */
-    public void assembleMachine();
+    public void assembleMachine() throws Exception;
 
     public void assembleMachine(ReflectorsId reflectorId, List<Integer> rotorIds,
                                 String rotorsStartingPositions,
-                                List<MappingPair<String,String>> plugMapping );
+                                List<MappingPair<String,String>> plugMapping ) throws Exception;
 
-    public void assembleMachineParts(ReflectorsId reflectorId, List<Integer> rotorIds);
+    public void assembleMachineParts(ReflectorsId reflectorId, List<Integer> rotorIds) throws Exception;
 
     public void setStartingMachineState(String rotorsStartingPositions,
                                         List<MappingPair<String,String>> plugMapping);

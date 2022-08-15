@@ -1,5 +1,4 @@
 package src.main.java.ui;
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import main.java.component.MachineHandler;
 import main.java.component.impl.MachineHandlerImpl;
 import main.java.dto.EncryptionInfoHistory;
@@ -9,8 +8,6 @@ import main.java.enums.ReflectorsId;
 import main.java.generictype.MappingPair;
 import src.main.java.enums.MenuOptions;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import java.io.IOException;
 import java.util.*;
 
 import static java.lang.System.*;
@@ -18,6 +15,9 @@ import static java.lang.System.*;
 public class Menu {
 
     private static MachineHandler machineHandler = new MachineHandlerImpl();
+
+    private  static List<String> QUIT_OPTION_VALUES = Arrays.asList("q", "back" , "quit" );
+    private  static String QUIT_OPTION_MESSAGE = "Enter " + QUIT_OPTION_VALUES + " to quit current stage";
 
     public static String buildMainMenu(){
         String menuOptions = "What would you like to do?" + lineSeparator();
@@ -106,7 +106,10 @@ public class Menu {
     private static void readSystemInfoFromFile(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please enter the absolute path of xml schema to load:");
-        String input = scanner.nextLine();
+        String input = scanner.nextLine();;
+        while(input.trim().isEmpty()){
+            input = scanner.nextLine();;
+        }
         try {
             machineHandler.buildMachinePartsInventory(input);
             System.out.println("File Loaded Successfully");
@@ -224,33 +227,94 @@ public class Menu {
                 System.out.println("No machine loaded, please read system info from file first (option 1)");
             }
             else {
-               //rotor choice
-//                List<Integer> rotorIdsList = getRotorChoice(inventoryInfo.get());
-//                out.println(rotorIdsList);
+            //rotor choice
+                List<Integer> rotorIdsList = getRotorChoice(inventoryInfo.get());
+                if(rotorIdsList == null) return;
+                out.println("Successfully Chose: "+rotorIdsList + "\n");
 
-//              //rotor start pos
-//                String rotorStartingPos = getRotorStartingPositions(inventoryInfo.get());
-//                out.println(rotorStartingPos);
+            //rotor start pos
+                String rotorStartingPos = getRotorStartingPositions(inventoryInfo.get());
+                if(rotorStartingPos == null) return;
+                out.println("Successfully Chose: "+ rotorStartingPos);
 
-//              //reflector
-//                ReflectorsId reflectorId = getReflectorChoice(inventoryInfo.get());
-//                out.println(reflectorId.getName());
-                //plugs
+            //reflector
+                ReflectorsId reflectorId = getReflectorChoice(inventoryInfo.get());
+                if(reflectorId == null) return;
+                out.println("Successfully Chose: "+ reflectorId.getName());
+
+            //plugs
                 List<MappingPair<String,String>> plugMapping = getPlugMapping(inventoryInfo.get());
-
-//                machineHandler.assembleMachine(reflectorId, rotorIdsList, rotorStartingPos,plugMapping) ;
+                if(plugMapping == null) return;
+                out.println("Successfully Chose: "+ plugMapping);
+                try {
+                    machineHandler.assembleMachine(reflectorId, rotorIdsList, rotorStartingPos, plugMapping);
+                    System.out.println("Assembled the machine successfully");
+                }
+                catch (Exception e){
+                    System.out.println("Failed to assemble the machine - " + e.getMessage());
+                }
             }
         }
         catch (Exception e) {
             System.out.println("Problem assembling the machine: " + e.getMessage());
         }
-
     }
 
     private static List<MappingPair<String,String>> getPlugMapping(InventoryInfo inventoryInfo) {
+        Scanner scanner = new Scanner(System.in);
         List<MappingPair<String,String>> plugMapping = new ArrayList<>();
-        //todo
+        boolean isChoiceValid = false;
+        String input = "";
+        Optional<String> verifiedInput;
+        String abc = inventoryInfo.getABC();
+        int maxNumberOfPlugs = (int) Math.floor(abc.length()/2);
+        while(!isChoiceValid){
+            System.out.println("Please choose the plug connections, at most " + maxNumberOfPlugs + " pairs from :\"" + abc + "\"");
+            System.out.println("e.g: \"adf!\" - meaning <A|D> and <F|!>");
+            System.out.println(QUIT_OPTION_MESSAGE);
+            input = scanner.nextLine();
+            if(isUserRequestingToQuit(input)) return null;
+            if(input.trim().length() == 0) return plugMapping;
+            if(input.length()%2 != 0){
+                out.println("An Odd number of connections was given");
+                continue;
+            }
+            if( maxNumberOfPlugs < (int) Math.floor(input.length()/2)){
+                out.println("Too many connections were given");
+                continue;
+            }
+            verifiedInput = machineHandler.verifyInputInAbcAndFix(input);
+            if(!verifiedInput.isPresent()){
+                out.println("Not all given connections are in the ABC");
+                continue;
+            }
+            input = verifiedInput.get();
+            if(isALetterRepeatingItsSelf(input) != -1){
+                int letterIndex = isALetterRepeatingItsSelf(input);
+                out.println("The letter \"" + input.substring(letterIndex,letterIndex+1) + "\" is appearing more than once");
+                continue;
+            }
+            for (int i = 0; i < input.length(); i = i + 2) {
+                String leftLetter = input.substring(i,i+1),
+                        rightLetter = input.substring(i+1,i+2);
+                plugMapping.add(new MappingPair<>(leftLetter,rightLetter));
+            }
+            isChoiceValid = plugMapping.size() <= maxNumberOfPlugs && plugMapping.size() > 0;
+        }
         return plugMapping;
+    }
+
+    private static int isALetterRepeatingItsSelf(String source){
+        String currLetter;
+        int foundIndex;
+        for (int i = 0; i < source.length() ; i++) {
+            currLetter = source.substring(i,i+1);
+            foundIndex = source.indexOf(currLetter,source.indexOf(currLetter)+1);
+            if(foundIndex > -1){
+                return foundIndex;
+            }
+        }
+        return -1;
     }
 
     private static ReflectorsId getReflectorChoice(InventoryInfo inventoryInfo) {
@@ -263,9 +327,13 @@ public class Menu {
         for (int j = 1; j <= reflectorsRange; j++) {
             toPrint = toPrint.concat(i++ + ") " + ReflectorsId.getByNum(j).getName() + lineSeparator());
         }
+        toPrint = toPrint.concat(QUIT_OPTION_MESSAGE);
         while (!isChoiceValid) {
             System.out.println(toPrint);
             input = scanner.nextLine();
+            if(isUserRequestingToQuit(input)){
+                return null;
+            }
             try {
                 reflectorId = Integer.parseInt(input);
                 if (reflectorsRange < reflectorId || reflectorId <= 0) {
@@ -287,24 +355,35 @@ public class Menu {
         Optional<String> verified = null;
         while (! isRotorStartingPosValid) {
             System.out.println("Please choose " + rotorNumToAsk + " rotors starting positions (from machine ABC: " + abc +")");
-            System.out.println("e.g: AO! ");
+            System.out.println("e.g: AO! - meaning \"A\" is the starting position of the first rotor from the right");
+            System.out.println(QUIT_OPTION_MESSAGE);
             input = scanner.nextLine();
+            if(isUserRequestingToQuit(input)) return null;
             if(input.length() != rotorNumToAsk){
-                out.println("Number of entered positions is not "+ rotorNumToAsk);
+                out.println("You entered - "+ input.length() + " positions, Required - "+ rotorNumToAsk);
+                continue;
             }
-
             verified = machineHandler.verifyInputInAbcAndFix(input);
             if(!verified.isPresent()){
-                out.println("Entered position not in abc ("+ abc +")");
+                out.println("Not all given positions are in the ABC");
+                continue;
             }
             isRotorStartingPosValid = input.length() == rotorNumToAsk && verified.isPresent();
         }
-
+        //reverse string
         for (int j = 0; j < verified.get().length(); j++) {
             rotorStartingPos =  verified.get().substring(j,j+1) + rotorStartingPos;
         }
 
         return rotorStartingPos;
+    }
+
+    private static boolean isUserRequestingToQuit(String userInput){
+        String input = userInput.trim().toLowerCase();
+        for (String option : QUIT_OPTION_VALUES ) {
+            if(option.equals(input)) return true;
+        }
+        return false;
     }
 
     private static List<Integer> getRotorChoice(InventoryInfo inventoryInfo) {
@@ -315,14 +394,25 @@ public class Menu {
         int rotorRange = inventoryInfo.getNumOfAvailableRotors();
         while (!isRotorChoiceValid) {
             System.out.println("Please choose " + rotorNumToAsk + " rotors from 1 to " + rotorRange + " seperated by commas");
-            System.out.println("e.g: 45,27,94");
+            System.out.println("e.g: 45,27,94 - meaning \"45\" is the first rotor from the right");
+            out.println(QUIT_OPTION_MESSAGE);
             String input = scanner.nextLine();
+            if(isUserRequestingToQuit(input)){
+                return null;
+            }
+            if(input.matches("[^0-9,]+")){
+                System.out.println("Your input contains something other than numbers and commas");
+                continue;
+            }
             String[] rotors = input.split(",");
-            //at the moment - if problem - dont accept any - can change but needs more logic if so
+            if(rotors.length != rotorNumToAsk){
+                System.out.println("You entered - " + rotors.length + " rotor IDs, Required - " + rotorNumToAsk);
+                continue;
+            }
             rotorIdList.clear();
-            for (String rotor : rotors) {
+            for (String scannedRotorId : rotors) {
                 try {
-                    int rotorId = Integer.parseInt(rotor);
+                    int rotorId = Integer.parseInt(scannedRotorId);
                     if (rotorRange < rotorId || rotorId <= 0){
                         out.println("The rotor: " + rotorId + " is not in expected range (1-" +rotorRange +")"  );
                         break;
@@ -339,6 +429,7 @@ public class Menu {
             }
             isRotorChoiceValid = rotorIdList.size() == rotorNumToAsk;
         }
+        //reverse list
         for (int i = 0, j = rotorIdList.size() - 1; i < j; i++) {
             rotorIdList.add(i, rotorIdList.remove(j));
         }
@@ -426,6 +517,7 @@ public class Menu {
             out.println("Problem showing history: "+ e.getMessage());
         }
     }
+
     private static void exitSystem(){
         out.println("BYE-BYE :)");
         exit(0);
