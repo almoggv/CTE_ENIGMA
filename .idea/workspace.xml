@@ -283,7 +283,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/command-line-interface-ui/src/main/java/ui/Menu.java</url>
-          <line>251</line>
+          <line>262</line>
           <option name="timeStamp" value="156" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">

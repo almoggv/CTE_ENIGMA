@@ -230,24 +230,27 @@ public class Menu {
             System.out.println("Please choose " + rotorNumToAsk + " rotors from 1 to " + rotorRange + " seperated by commas");
             System.out.println("e.g: 45,27,94");
             String input = scanner.nextLine();
-            //todo - check other symbols?
-            if (input.matches("[a-z]+") || input.matches("[A-Z]+"))// || input.matches())
-            {
-                out.println("Please enter rotors in requested format");
-            }
-            else {
-                String[] rotors = input.split(",");
-
-                for (String rotor : rotors) {
+            String[] rotors = input.split(",");
+            //at the moment - if problem - dont accept any - can change but needs more logic if so
+            rotorIdList.clear();
+            for (String rotor : rotors) {
+                try {
                     int rotorId = Integer.parseInt(rotor);
-                    if (inventoryInfo.getNumOfAvailableRotors() < rotorId) {
+                    if (rotorRange < rotorId || rotorId <= 0){
+                        out.println("The rotor: " + rotorId + " is not in expected range (1-" +rotorRange +")"  );
+                        break;
+                    }
+                    if (rotorIdList.contains(rotorId)) {
+                        out.println("The rotor: " + rotorId + " was already chosen.");
                         break;
                     }
                     rotorIdList.add(rotorId);
                 }
-                isRotorChoiceValid = rotorIdList.size() == rotors.length;
+                catch (NumberFormatException e) {
+                    out.println("Please enter rotors in requested format");
+                }
             }
-
+            isRotorChoiceValid = rotorIdList.size() == rotorNumToAsk;
         }
         return rotorIdList;
     }
