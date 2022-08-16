@@ -47,7 +47,6 @@ public class Menu {
                         showMachineDetails();
                         break;
                     case AssembleMachineFromInput:
-                        //todo - step by step ask for parts
                         assembleMachineFromInput();
                         break;
                     case AssembleMachineRandomly:
@@ -135,16 +134,24 @@ public class Menu {
             }
             String printedMessage = "Machine details:";
             //2.1
-            //1.	כמות גלגלים אפשרית, כמות גלגלים בשימוש (למשל 3/5)
-            String rotorsPossibleInUseMsg = "Number of rotors in use: [" + inventoryInfo.get().getNumOfRotorsInUse() +"/"+ inventoryInfo.get().getNumOfAvailableRotors() + "].";
+//            String rotorsPossibleInUseMsg = "Number of rotors in use: [" + inventoryInfo.get().getNumOfRotorsInUse() +"/"+ inventoryInfo.get().getNumOfAvailableRotors() + "].";
+            String rotorsPossibleInUseMsg = "Number of rotors in use: " + inventoryInfo.get().getNumOfRotorsInUse() +", out of: "+ inventoryInfo.get().getNumOfAvailableRotors() + " available.";
             //2.2
-            String NotchLocationsMsg = "Notches locations by rotor id:" + inventoryInfo.get().getRotorIdToNotchLocation();
-            //2.3
             String reflectorsAmountMsg = "Number of available reflectors: " + inventoryInfo.get().getNumOfAvailableReflectors();
-            //2.4
+            //2.3
             String numberOfEncryptedMessagesMsg = "Number of messages encrypted: " + Menu.countNumberOfMessagesInHistory();
+
+            //2.4
+            Optional<MachineState> originalMachineState = Optional.of(machineHandler.getInitialMachineState().get());
+            String originalMachineStateMsgHeader = "Original Machine State: ";
+            String originalRotorsInMachineMsg = Menu.buildRotorsInMachineMsg(originalMachineState.get(),inventoryInfo.get());
+            String originalRotorsHeadLocationInMachineMsg = Menu.buildRotorHeadLocationInMachineMsg(originalMachineState.get());
+            String originalReflectorIdMsg = "<" + originalMachineState.get().getReflectorId().getName() + ">";
+            String originalPlugsMappedMsg = Menu.buildPlugMappingInMachineMsg(originalMachineState.get());
+            String originalMachineStateMsg = originalMachineStateMsgHeader + lineSeparator() + originalRotorsInMachineMsg + originalRotorsHeadLocationInMachineMsg + originalReflectorIdMsg+ originalPlugsMappedMsg;
+
             //2.5
-            String machineStateMsg = "current Machine State: ";
+            String machineStateMsgHeader = "Current Machine State: ";
                 //2.5.a
             String rotorsInMachineMsg = Menu.buildRotorsInMachineMsg(machineState.get(),inventoryInfo.get());
                 //2.5.b
@@ -153,10 +160,11 @@ public class Menu {
             String reflectorIdMsg = "<" + machineState.get().getReflectorId().getName() + ">";
                 //2.5.d
             String plugsMappedMsg = Menu.buildPlugMappingInMachineMsg(machineState.get());
+            String machineStateMsg = machineStateMsgHeader + lineSeparator() +rotorsInMachineMsg+rotorsHeadLocationInMachineMsg+reflectorIdMsg+plugsMappedMsg;
 
-            printedMessage = rotorsPossibleInUseMsg + "\n" + NotchLocationsMsg + "\n"
-                    + reflectorsAmountMsg + "\n" + numberOfEncryptedMessagesMsg + "\n"
-                    + machineStateMsg + "\n" + rotorsInMachineMsg+rotorsHeadLocationInMachineMsg+reflectorIdMsg+plugsMappedMsg;
+            printedMessage = rotorsPossibleInUseMsg + lineSeparator()
+                    + reflectorsAmountMsg + lineSeparator() + numberOfEncryptedMessagesMsg + lineSeparator()
+                    + originalMachineStateMsg + lineSeparator() + machineStateMsg ;
             out.println(printedMessage);
         }
         catch(Exception e){

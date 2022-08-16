@@ -216,6 +216,12 @@ public class MachineHandlerImpl implements MachineHandler {
         }
         return encryptionMachine.getMachineState();
     }
+   public Optional<MachineState> getInitialMachineState() {
+        if(this.initialMachineState == null){
+            return Optional.empty();
+        }
+        return Optional.of(initialMachineState);
+    }
 
     @Override
     public Optional<InventoryInfo> getInventoryInfo() {
@@ -295,7 +301,7 @@ public class MachineHandlerImpl implements MachineHandler {
             throw new RuntimeException("Need to assemble machine");
         }
         else if(!verifiedInput.isPresent()){
-            throw new IOException("Input not in ABC");
+            throw new IOException("Input not in ABC: " + ioWheelInventory.getABC());
         }
 
         Instant startEncryptionTime = Instant.now();

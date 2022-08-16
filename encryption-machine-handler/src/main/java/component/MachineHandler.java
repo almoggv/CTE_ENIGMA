@@ -39,6 +39,7 @@ public interface MachineHandler {
                                         List<MappingPair<String,String>> plugMapping);
 
     public Optional<MachineState> getMachineState();
+    public Optional<MachineState> getInitialMachineState();
 
     public Optional<InventoryInfo> getInventoryInfo();
 
