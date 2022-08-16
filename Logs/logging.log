@@ -4080,4 +4080,15 @@
   2022-08-16 16:57:32 INFO  MachineHandlerImpl:187 - Machine Handler - assembled machine parts finished
   2022-08-16 16:57:32 INFO  MachineHandlerImpl:209 - Machine Handler - initial state of machine state set
   2022-08-16 16:57:58 INFO  MachineHandlerImpl:311 - time it took to encrypt:PT0.001S
+  2022-08-16 17:15:58 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-extra-test.xml
+  2022-08-16 17:15:58 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-16 17:15:58 INFO  MachineHandlerImpl:269 - Machine handler: created inventory successfully
+  2022-08-16 17:16:57 INFO  MachineHandlerImpl:187 - Machine Handler - assembled machine parts finished
+  2022-08-16 17:16:57 INFO  MachineHandlerImpl:209 - Machine Handler - initial state of machine state set
+  2022-08-16 17:17:13 INFO  MachineHandlerImpl:311 - time it took to encrypt:PT0.002S
+  2022-08-16 17:17:23 WARN  PlugBoardImpl:69 - Plugboard : Failed to connect endpoints -Fis already connected
+  2022-08-16 17:17:24 INFO  MachineHandlerImpl:311 - time it took to encrypt:PT0S
+  2022-08-16 17:17:33 INFO  MachineHandlerImpl:311 - time it took to encrypt:PT0.001S
+  2022-08-16 17:18:29 WARN  PlugBoardImpl:69 - Plugboard : Failed to connect endpoints -Fis already connected
+  2022-08-16 17:18:32 INFO  MachineHandlerImpl:311 - time it took to encrypt:PT0.001S
   

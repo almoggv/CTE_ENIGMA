@@ -85,7 +85,7 @@ public class TestSanityMachineHandlerImpl {
 //            String rotorsstartingPos = "DB* F";
 
             //todo - check - the lower letter is prob
-            String rotorsstartingPos = "f *bd";
+            String rotorsstartingPos = String.valueOf(machineHandler.verifyInputInAbcAndFix("f *bd").get());
 
             plugBoard.add(new MappingPair<String,String>("F","A"));
             plugBoard.add(new MappingPair<String,String>("B","*"));
@@ -101,7 +101,7 @@ public class TestSanityMachineHandlerImpl {
 //                String wantedOutput = outputs.get(i);
                 machineHandler.resetToLastSetState();
 //                System.out.println("Machine State Before Encryption number:" + i + ":\n" + machineHandler.getMachineState());
-                String output = machineHandler.encrypt(input.toUpperCase());
+                String output = machineHandler.encrypt(input);
                 System.out.println(i + ". the output is: " + output  /* + wantedOutput.equals(output)*/);
 //                Assert.assertEquals(wantedOutput, output);
             }

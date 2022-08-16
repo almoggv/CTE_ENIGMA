@@ -3,10 +3,11 @@ package main.java.component;
 import main.java.generictype.MappingPair;
 import main.java.dto.MachineState;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
 
-public interface EncryptionMachine {
+public interface EncryptionMachine extends Serializable {
 
     public String encrypt(String input);
 
