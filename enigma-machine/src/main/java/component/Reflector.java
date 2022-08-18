@@ -4,7 +4,9 @@ import lombok.Getter;
 import main.java.enums.ReflectorsId;
 import main.java.generictype.DeepCloneable;
 
-public interface Reflector extends DeepCloneable {
+import java.io.Serializable;
+
+public interface Reflector extends DeepCloneable, Serializable {
 
     public int getReflectedValue(int inValue);
 

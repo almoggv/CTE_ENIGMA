@@ -4,9 +4,10 @@ import main.java.enums.XmlVerifierState;
 import main.resources.generated.*;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.List;
 
-public interface XmlSchemaVerifier {
+public interface XmlSchemaVerifier extends Serializable {
 
     public XmlVerifierState isMachineConfigurationValid(CTEEnigma cteEnigma);
 

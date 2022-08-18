@@ -140,7 +140,6 @@ public class Menu {
             String reflectorsAmountMsg = "Number of available reflectors: " + inventoryInfo.get().getNumOfAvailableReflectors();
             //2.3
             String numberOfEncryptedMessagesMsg = "Number of messages encrypted: " + Menu.countNumberOfMessagesInHistory();
-
             //2.4
             Optional<MachineState> originalMachineState = Optional.of(machineHandler.getInitialMachineState().get());
             String originalMachineStateMsgHeader = "Original Machine State: ";
@@ -149,7 +148,6 @@ public class Menu {
             String originalReflectorIdMsg = "<" + originalMachineState.get().getReflectorId().getName() + ">";
             String originalPlugsMappedMsg = Menu.buildPlugMappingInMachineMsg(originalMachineState.get());
             String originalMachineStateMsg = originalMachineStateMsgHeader + lineSeparator() + originalRotorsInMachineMsg + originalRotorsHeadLocationInMachineMsg + originalReflectorIdMsg+ originalPlugsMappedMsg;
-
             //2.5
             String machineStateMsgHeader = "Current Machine State: ";
                 //2.5.a
@@ -215,7 +213,7 @@ public class Menu {
         String currRotorMsg = "";
         boolean isfirst = true;
         for (Integer id : machineState.getRotorIds() ) {
-            currRotorMsg = id.toString() + "(" + inventoryInfo.getRotorIdToNotchLocation().get(id) + ")";
+            currRotorMsg = id.toString() + "(" + machineState.getNotchDistancesFromHead().get(id) + ")";
             if(isfirst){
                 isfirst = false;
             }

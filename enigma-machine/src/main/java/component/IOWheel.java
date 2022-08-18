@@ -2,7 +2,9 @@ package main.java.component;
 
 import main.java.generictype.DeepCloneable;
 
-public interface IOWheel extends DeepCloneable {
+import java.io.Serializable;
+
+public interface IOWheel extends DeepCloneable , Serializable {
 
     public int handleInput(String input);
 

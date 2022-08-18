@@ -5,13 +5,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6467e2d7-ff2a-4abb-a198-685a0fcd06aa" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/SerializationHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/impl/SerializationHandlerImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/encryption-machine-handler/src/test/java/component/TestSerializationHandlerImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/command-line-interface-ui/src/main/java/ui/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/command-line-interface-ui/src/main/java/ui/Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/encryption-machine-handler/Logs/logging.log" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/Logs/logging.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/test/java/component/TestSanityMachineHandlerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/src/test/java/component/TestSanityMachineHandlerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/EncryptionMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/EncryptionMachine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/MachineHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/MachineHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/impl/MachineHandlerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/impl/MachineHandlerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/dto/EncryptionInfoHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/dto/EncryptionInfoHistory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/dto/InventoryInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/dto/InventoryInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/verifier/XmlSchemaVerifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/verifier/XmlSchemaVerifier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/IOWheel.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/IOWheel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/PlugBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/PlugBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/Reflector.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/Reflector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/Rotor.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/Rotor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/EnigmaMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/EnigmaMachine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/dto/MachineState.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/dto/MachineState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/generictype/MappingPair.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/generictype/MappingPair.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/command-line-interface-ui/src/main/java/ui/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/command-line-interface-ui/src/main/java/ui/Menu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/encryption-machine-handler/test/java/component/TestSanityMachineHandlerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/encryption-machine-handler/test/java/component/TestSanityMachineHandlerImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/EncryptionMachine.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/EncryptionMachine.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/component/MachineHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/component/MachineHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/component/impl/MachineHandlerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/component/impl/MachineHandlerImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/dto/EncryptionInfoHistory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/dto/EncryptionInfoHistory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/dto/InventoryInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/dto/InventoryInfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/verifier/XmlSchemaVerifier.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/verifier/XmlSchemaVerifier.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/IOWheel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/IOWheel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/PlugBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/PlugBoard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/Reflector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/Reflector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/Rotor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/Rotor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/EnigmaMachine.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/EnigmaMachine.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/dto/MachineState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/dto/MachineState.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,9 +44,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Interface" />
         <option value="Class" />
-        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -37,17 +60,6 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
-  </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="jar://$PROJECT_DIR$/../../../../../../Program Files/Java/jdk1.8.0_341/jre/lib/rt.jar!/com/sun/xml/internal/bind/v2/runtime/unmarshaller/UnmarshallerImpl.class" root0="SKIP_INSPECTION" />
-    <setting file="jar://$PROJECT_DIR$/../../../../../../Program Files/Java/jdk1.8.0_341/jre/lib/rt.jar!/jdk/xml/internal/JdkXmlUtils.class" root0="SKIP_INSPECTION" />
-    <setting file="jar://$PROJECT_DIR$/../../../../../../Program Files/Java/jdk1.8.0_341/jre/lib/rt.jar!/jdk/xml/internal/SecuritySupport.class" root0="SKIP_INSPECTION" />
-    <setting file="jar://$PROJECT_DIR$/../../../../../../Program Files/Java/jdk1.8.0_341/src.zip!/com/sun/org/apache/xerces/internal/jaxp/SAXParserImpl.java" root0="SKIP_INSPECTION" />
-    <setting file="jar://$PROJECT_DIR$/../../../../../../Program Files/Java/jdk1.8.0_341/src.zip!/com/sun/org/apache/xerces/internal/util/ErrorHandlerWrapper.java" root0="SKIP_INSPECTION" />
-    <setting file="jar://$PROJECT_DIR$/../../../../../../Program Files/Java/jdk1.8.0_341/src.zip!/java/lang/String.java" root0="SKIP_INSPECTION" />
-    <setting file="jar://$PROJECT_DIR$/../../../../../../Program Files/Java/jdk1.8.0_341/src.zip!/org/xml/sax/InputSource.java" root0="SKIP_INSPECTION" />
-    <setting file="jar://$PROJECT_DIR$/../../../../../../Program Files/Java/jdk1.8.0_341/src.zip!/org/xml/sax/helpers/DefaultHandler.java" root0="SKIP_INSPECTION" />
-    <setting file="jar://$PROJECT_DIR$/../../../../../../Program Files/Java/jdk1.8.0_341/src.zip!/org/xml/sax/helpers/LocatorImpl.java" root0="SKIP_INSPECTION" />
   </component>
   <component name="JpbToolWindowState">
     <option name="myId2FirstActivated">
@@ -105,36 +117,7 @@
       <recent name="test.java.component" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TestSanityMachineHandlerImpl.testSanityBig">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="src.main.java.Main" />
-      <module name="command-line-interface-ui" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="src.main.java.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestSanityMachineHandlerImpl.testBadRotorCountsId2Schema" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="encryption-machine-handler" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test.java.component.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="test.java.component" />
-      <option name="MAIN_CLASS_NAME" value="test.java.component.TestSanityMachineHandlerImpl" />
-      <option name="METHOD_NAME" value="testBadRotorCountsId2Schema" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.TestSerializationHandlerImpl.testDeserialization">
     <configuration name="TestSanityMachineHandlerImpl.testFromTali" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="encryption-machine-handler" />
       <extension name="coverage">
@@ -183,6 +166,38 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TestSerializationHandlerImpl.testDeserialization" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="encryption-machine-handler" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.java.component.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test.java.component" />
+      <option name="MAIN_CLASS_NAME" value="test.java.component.TestSerializationHandlerImpl" />
+      <option name="METHOD_NAME" value="testDeserialization" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestSerializationHandlerImpl.testSerialization" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="encryption-machine-handler" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.java.component.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test.java.component" />
+      <option name="MAIN_CLASS_NAME" value="test.java.component.TestSerializationHandlerImpl" />
+      <option name="METHOD_NAME" value="testSerialization" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="enigma-machine" />
       <method v="2">
@@ -198,11 +213,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TestSanityMachineHandlerImpl.testSanityBig" />
+        <item itemvalue="JUnit.TestSerializationHandlerImpl.testDeserialization" />
+        <item itemvalue="JUnit.TestSerializationHandlerImpl.testSerialization" />
         <item itemvalue="JUnit.TestSanityMachineHandlerImpl.testSanitySmall" />
+        <item itemvalue="JUnit.TestSanityMachineHandlerImpl.testSanityBig" />
         <item itemvalue="JUnit.TestSanityMachineHandlerImpl.testFromTali" />
-        <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.TestSanityMachineHandlerImpl.testBadRotorCountsId2Schema" />
       </list>
     </recent_temporary>
   </component>
@@ -261,22 +276,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/command-line-interface-ui/src/main/java/ui/Menu.java</url>
-          <line>385</line>
+          <line>383</line>
           <option name="timeStamp" value="157" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/command-line-interface-ui/src/main/java/ui/Menu.java</url>
-          <line>317</line>
+          <line>315</line>
           <option name="timeStamp" value="195" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/impl/MachineHandlerImpl.java</url>
-          <line>190</line>
-          <properties class="main.java.component.impl.MachineHandlerImpl" method="setStartingMachineState">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="201" />
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/encryption-machine-handler/src/test/java/component/TestSerializationHandlerImpl.java</url>
+          <line>42</line>
+          <option name="timeStamp" value="210" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -306,11 +317,11 @@
     <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/CTE_ENIGMA$src_main_java_Main.ic" NAME="src.main.java.Main Coverage Results" MODIFIED="1660063306935" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>src.main.java.*</FILTER>
-    </SUITE>
     <SUITE FILE_PATH="coverage/CTE_ENIGMA$Main.ic" NAME="Main Coverage Results" MODIFIED="1660555486778" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>src.main.java.ui.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/CTE_ENIGMA$src_main_java_Main.ic" NAME="src.main.java.Main Coverage Results" MODIFIED="1660063306935" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>src.main.java.*</FILTER>
     </SUITE>
   </component>
 </project>

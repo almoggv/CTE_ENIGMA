@@ -4,9 +4,10 @@ package main.java.component;
 import main.java.generictype.DeepCloneable;
 import main.java.generictype.MappingPair;
 
+import java.io.Serializable;
 import java.util.List;
 
-public interface PlugBoard extends DeepCloneable {
+public interface PlugBoard extends DeepCloneable , Serializable {
 
     /**
      * maps the left list to the right list on the plug board by indexes : first <-> first , second <-> second..

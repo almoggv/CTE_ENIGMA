@@ -2,7 +2,9 @@ package main.java.component;
 
 import main.java.generictype.DeepCloneable;
 
-public interface Rotor extends DeepCloneable {
+import java.io.Serializable;
+
+public interface Rotor extends DeepCloneable , Serializable {
 
     public int getValueInHead();
 

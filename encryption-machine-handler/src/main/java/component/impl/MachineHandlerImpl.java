@@ -16,8 +16,8 @@ import main.resources.generated.*;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Paths;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.*;
@@ -33,6 +33,7 @@ public class MachineHandlerImpl implements MachineHandler {
     private EncryptionMachine encryptionMachine = new EnigmaMachine();
     private MachineState initialMachineState = new MachineState();
     @Getter private final Map<MachineState, List<EncryptionInfoHistory>> machineStatisticsHistory = new HashMap<>();
+
     private final XmlSchemaVerifier xmlSchemaVerifier = new XmlSchemaVerifierImpl();
 
     static {
@@ -49,7 +50,6 @@ public class MachineHandlerImpl implements MachineHandler {
 
     @Override
     public void buildMachinePartsInventory(String absolutePath) throws Exception {
-        //todo -already added reset history - check if anything else
         String usingLastloadedInvntoryMsg = "\n--Last successful load is used.--";
         try{
             xmlSchemaVerifier.isFileInExistenceAndXML(absolutePath);
@@ -273,15 +273,53 @@ public class MachineHandlerImpl implements MachineHandler {
         }
     }
 
-    @Override
-    public boolean loadStateFromFile(String absolutePath) {
-        return false;
-    }
+//    @Override
+//    public void loadStateFromFile(String absolutePath) throws Exception, FileNotFoundException {
+//        try{
+//            Paths.get(absolutePath);
+//        }
+//        catch(Exception e){
+//            log.error("Failed to save to file, file doesnt exist :" + absolutePath);
+//            throw new FileNotFoundException("file name doesnt exist");
+//        }
+//        try{
+//            FileInputStream fileInputStream = new FileInputStream(absolutePath);
+//            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+//            objectInputStream.readObject();
+//        }
+//        catch (Exception e){
+//            log.error("Failed to load state from \"" + absolutePath +"\" , something went wrong" + e.getMessage());
+//            throw new Exception("failed to load state from: \"" + absolutePath + "\" ," + e.getMessage());
+//        }
+//
+//    }
 
-    @Override
-    public boolean saveStateToFile(String fileName) {
-        return false;
-    }
+//    @Override
+//    public void saveStateToFile(String fileName) throws Exception, NullPointerException{
+//        if(!this.getInventoryInfo().isPresent()){
+//            log.error("Failed to save state to file , no schema lodaded yet");
+//            throw new Exception("Cannot save to file, no schema loaded yet");
+//        }
+//        if(!this.getMachineState().isPresent()){
+//            log.error("Failed to save state to file , no machine setup yet");
+//            throw new Exception("Cannot save to file, machine not assembled yet");
+//        }
+//        if(fileName == null){
+//            log.error("Failed to save state to file , given file name is null");
+//            throw new NullPointerException("Failed to save to file, given file name is null");
+//        }
+//        try{
+//            FileOutputStream fileOutputStream = new FileOutputStream(fileName);
+//            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+//            objectOutputStream.writeObject(this);
+//            objectOutputStream.close();
+//        }
+//        catch(Exception e){
+//            log.error("Failed to save state to file, something went wrong :" + e.getMessage());
+//            throw e;
+//        }
+//    }
+
 
     @Override
     public void resetToLastSetState() {

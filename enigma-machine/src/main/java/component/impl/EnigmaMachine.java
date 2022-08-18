@@ -126,16 +126,18 @@ public class EnigmaMachine implements EncryptionMachine {
         List<Integer> rotorNotchLocations = new ArrayList<>();
         List<String> rotorsHeadsInitialValues = new ArrayList<>();
         List<MappingPair<String,String>> minimalPlugMapping = this.plugBoard.getCurrentMapping();
+        List<Integer> notchDistances = new ArrayList<>();
         String numberAsLetter;
         int valueInHead;
         for (Rotor rotor : this.rotors) {
             rotorIds.add(rotor.getId());
             rotorNotchLocations.add(rotor.getNotchLocation());
+            notchDistances.add(rotor.howCloseNotchToHead());
             valueInHead = rotor.getValueInHead();
             numberAsLetter = ioWheel.getABC().substring(valueInHead,valueInHead+1);
             rotorsHeadsInitialValues.add(numberAsLetter);
         }
-        return  Optional.of(new MachineState(reflector.getId(),rotorIds,rotorsHeadsInitialValues,minimalPlugMapping));
+        return  Optional.of(new MachineState(reflector.getId(),rotorIds,rotorsHeadsInitialValues,minimalPlugMapping,notchDistances));
     }
 
     @Override
