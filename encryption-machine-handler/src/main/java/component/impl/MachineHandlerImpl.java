@@ -64,7 +64,7 @@ public class MachineHandlerImpl implements MachineHandler {
         if(xmlVerifierResponse == XmlVerifierState.VALID){
             clearInventory();
             buildMachinePartsInventory(cteEnigma);
-            machineStatisticsHistory.clear();
+//            machineStatisticsHistory.clear();
         }
         else{
             String msg = "Failed to build machine inventory - CteMachine configured in file is invalid: " + xmlVerifierResponse;
@@ -182,8 +182,7 @@ public class MachineHandlerImpl implements MachineHandler {
             return;
         }
         this.encryptionMachine.buildMachine(plugBoardInventory, reflector, rotorListForMachine, ioWheelInventory);
-        this.initialMachineState.setReflectorId(reflector.getId());
-        this.initialMachineState.setRotorIds(rotorIds);
+        this.initialMachineState = getMachineState().get();
         log.info("Machine Handler - assembled machine parts finished");
     }
 
@@ -204,8 +203,7 @@ public class MachineHandlerImpl implements MachineHandler {
         }
         encryptionMachine.setRotorsStartingPosition(valuesOfHeadToSetRotors);
         encryptionMachine.connectPlugs(plugMapping);
-        this.initialMachineState.setRotorsHeadsInitialValues(encryptionMachine.getMachineState().get().getRotorsHeadsInitialValues());
-        this.initialMachineState.setPlugMapping(plugMapping);
+        initialMachineState = getMachineState().get();
         log.info("Machine Handler - initial state of machine state set");
     }
 

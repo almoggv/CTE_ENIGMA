@@ -4091,4 +4091,51 @@
   2022-08-16 17:17:33 INFO  MachineHandlerImpl:311 - time it took to encrypt:PT0.001S
   2022-08-16 17:18:29 WARN  PlugBoardImpl:69 - Plugboard : Failed to connect endpoints -Fis already connected
   2022-08-16 17:18:32 INFO  MachineHandlerImpl:311 - time it took to encrypt:PT0.001S
+  2022-08-18 18:37:21 ERROR SerializationHandlerImpl:65 - Failed to save state to file , no schema lodaded yet
+  2022-08-18 18:38:17 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Dev\GitProjects\CTE_JAVA_ENIGMA\encryption-machine-handler\src\main\resources\machine-inventory-schema\ex1-sanity-paper-enigma.xml
+  2022-08-18 18:38:17 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-18 18:38:17 INFO  MachineHandlerImpl:269 - Machine handler: created inventory successfully
+  2022-08-18 18:38:27 ERROR EnigmaMachine:122 - Failed To get machine state, machine not assembled yet
+  2022-08-18 18:38:33 INFO  MachineHandlerImpl:187 - Machine Handler - assembled machine parts finished
+  2022-08-18 18:38:33 INFO  MachineHandlerImpl:209 - Machine Handler - initial state of machine state set
+  2022-08-18 18:40:38 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Dev\GitProjects\CTE_JAVA_ENIGMA\encryption-machine-handler\src\main\resources\machine-inventory-schema\ex1-sanity-paper-enigma.xml
+  2022-08-18 18:40:38 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-18 18:40:38 INFO  MachineHandlerImpl:269 - Machine handler: created inventory successfully
+  2022-08-18 18:40:44 ERROR EnigmaMachine:122 - Failed To get machine state, machine not assembled yet
+  2022-08-18 18:40:49 INFO  MachineHandlerImpl:187 - Machine Handler - assembled machine parts finished
+  2022-08-18 18:40:49 WARN  PlugBoardImpl:69 - Plugboard : Failed to connect endpoints -Ois already connected
+  2022-08-18 18:40:49 INFO  MachineHandlerImpl:209 - Machine Handler - initial state of machine state set
+  2022-08-18 18:46:34 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Dev\GitProjects\CTE_JAVA_ENIGMA\encryption-machine-handler\src\main\resources\machine-inventory-schema\ex1-sanity-paper-enigma.xml
+  2022-08-18 18:46:34 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-18 18:46:34 INFO  MachineHandlerImpl:267 - Machine handler: created inventory successfully
+  2022-08-18 18:46:38 INFO  MachineHandlerImpl:186 - Machine Handler - assembled machine parts finished
+  2022-08-18 18:46:38 WARN  PlugBoardImpl:73 - Plugboard : Failed to connect endpoints -Bis already connected
+  2022-08-18 18:46:38 INFO  MachineHandlerImpl:207 - Machine Handler - initial state of machine state set
+  2022-08-18 18:47:06 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Dev\GitProjects\CTE_JAVA_ENIGMA\encryption-machine-handler\src\main\resources\machine-inventory-schema\ex1-sanity-paper-enigma.xml
+  2022-08-18 18:47:06 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-18 18:47:06 INFO  MachineHandlerImpl:267 - Machine handler: created inventory successfully
+  2022-08-18 18:47:07 INFO  MachineHandlerImpl:186 - Machine Handler - assembled machine parts finished
+  2022-08-18 18:47:07 INFO  MachineHandlerImpl:207 - Machine Handler - initial state of machine state set
+  2022-08-18 18:48:09 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Dev\GitProjects\CTE_JAVA_ENIGMA\encryption-machine-handler\src\main\resources\machine-inventory-schema\ex1-sanity-paper-enigma.xml
+  2022-08-18 18:48:09 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-18 18:48:09 INFO  MachineHandlerImpl:267 - Machine handler: created inventory successfully
+  2022-08-18 18:48:12 INFO  MachineHandlerImpl:186 - Machine Handler - assembled machine parts finished
+  2022-08-18 18:48:12 INFO  MachineHandlerImpl:207 - Machine Handler - initial state of machine state set
+  2022-08-18 18:53:21 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Dev\GitProjects\CTE_JAVA_ENIGMA\encryption-machine-handler\src\main\resources\machine-inventory-schema\ex1-sanity-paper-enigma.xml
+  2022-08-18 18:53:21 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-18 18:53:21 INFO  MachineHandlerImpl:267 - Machine handler: created inventory successfully
+  2022-08-18 18:53:25 ERROR EnigmaMachine:122 - Failed To get machine state, machine not assembled yet
+  2022-08-18 18:53:29 INFO  MachineHandlerImpl:186 - Machine Handler - assembled machine parts finished
+  2022-08-18 18:53:29 WARN  PlugBoardImpl:73 - Plugboard : Failed to connect endpoints -Mis already connected
+  2022-08-18 18:53:29 INFO  MachineHandlerImpl:207 - Machine Handler - initial state of machine state set
+  2022-08-18 18:53:54 INFO  MachineHandlerImpl:347 - time it took to encrypt:PT0.001S
+  2022-08-18 18:55:47 WARN  PlugBoardImpl:69 - Plugboard : Failed to connect endpoints -Fis already connected
+  2022-08-18 18:55:55 INFO  MachineHandlerImpl:347 - time it took to encrypt:PT0S
+  2022-08-18 18:56:43 ERROR EnigmaMachine:122 - Failed To get machine state, machine not assembled yet
+  2022-08-18 18:57:15 ERROR SerializationHandlerImpl:65 - Failed to save state to file , no schema lodaded yet
+  2022-08-18 18:57:33 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Dev\GitProjects\CTE_JAVA_ENIGMA\encryption-machine-handler\src\main\resources\machine-inventory-schema\ex1-sanity-paper-enigma.xml
+  2022-08-18 18:57:33 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-18 18:57:33 INFO  MachineHandlerImpl:267 - Machine handler: created inventory successfully
+  2022-08-18 18:57:51 ERROR EnigmaMachine:122 - Failed To get machine state, machine not assembled yet
+  2022-08-18 18:57:51 ERROR SerializationHandlerImpl:69 - Failed to save state to file , no machine setup yet
   

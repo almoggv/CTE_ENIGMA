@@ -1,6 +1,8 @@
 package src.main.java.ui;
 import main.java.component.MachineHandler;
+import main.java.component.SerializationHandler;
 import main.java.component.impl.MachineHandlerImpl;
+import main.java.component.impl.SerializationHandlerImpl;
 import main.java.dto.EncryptionInfoHistory;
 import main.java.dto.InventoryInfo;
 import main.java.dto.MachineState;
@@ -8,6 +10,7 @@ import main.java.enums.ReflectorsId;
 import main.java.generictype.MappingPair;
 import src.main.java.enums.MenuOptions;
 
+import java.io.File;
 import java.util.*;
 
 import static java.lang.System.*;
@@ -15,6 +18,7 @@ import static java.lang.System.*;
 public class Menu {
 
     private static MachineHandler machineHandler = new MachineHandlerImpl();
+    private static SerializationHandler serializationHandler = new SerializationHandlerImpl();
 
     private  static List<String> QUIT_OPTION_VALUES = Arrays.asList("q", "back" , "quit" );
     private  static String QUIT_OPTION_MESSAGE = "Enter " + QUIT_OPTION_VALUES + " to quit current stage";
@@ -166,7 +170,7 @@ public class Menu {
             out.println(printedMessage);
         }
         catch(Exception e){
-            System.out.println("Please load a machine from file first. " + e.getMessage());
+            System.out.println("Something went wrong, Error:" + e.getMessage());
         }
     }
 
@@ -213,7 +217,8 @@ public class Menu {
         String currRotorMsg = "";
         boolean isfirst = true;
         for (Integer id : machineState.getRotorIds() ) {
-            currRotorMsg = id.toString() + "(" + machineState.getNotchDistancesFromHead().get(id) + ")";
+            int rotorIndexById = machineState.getRotorIds().indexOf(id);
+            currRotorMsg = id.toString() + "(" + machineState.getNotchDistancesFromHead().get(rotorIndexById) + ")";
             if(isfirst){
                 isfirst = false;
             }
@@ -529,9 +534,44 @@ public class Menu {
         exit(0);
     }
     private static void saveToFile(){
-
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please enter absolute path to save to:");
+        String input = scanner.nextLine();;
+        while(input.trim().isEmpty()){
+            input = scanner.nextLine();;
+        }
+        File file = new File(input);
+        while(!file.isFile() || !file.isAbsolute()){
+            System.out.println("Path is not valid, please enter an ABSOLUTE path:");
+            input = scanner.nextLine();;
+        }
+        try{
+            serializationHandler.saveMachineHandlerToFile(input,machineHandler);
+            System.out.println("Successfully saved complete state.");
+        }
+        catch (Exception e){
+            System.out.println("Failed to save complete state to file, " + e.getMessage());
+        }
     }
     private static void loadFromFile(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please enter absolute path to save to:");
+        String input = scanner.nextLine();;
+        while(input.trim().isEmpty()){
+            input = scanner.nextLine();;
+        }
+        File file = new File(input);
+        while(!file.isFile() || !file.isAbsolute()){
+            System.out.println("Path is not valid, please enter an ABSOLUTE path:");
+            input = scanner.nextLine();;
+        }
+        try{
+            machineHandler = serializationHandler.loadMachineHandlerFromFile(input);
+            System.out.println("Successfully loaded complete state.");
+        }
+        catch (Exception e){
+            System.out.println("Failed to load complete state from file, " + e.getMessage());
+        }
 
     }
 }
