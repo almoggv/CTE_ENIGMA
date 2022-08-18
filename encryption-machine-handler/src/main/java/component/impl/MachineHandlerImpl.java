@@ -345,7 +345,6 @@ public class MachineHandlerImpl implements MachineHandler {
         Instant endEncryptionTime = Instant.now();
         Duration encryptionTime = Duration.between(startEncryptionTime, endEncryptionTime);//.toNanos();
         log.info("time it took to encrypt:" + encryptionTime);
-        //todo - make sure - initial state
         addToHistory(initialMachineState,verifiedInput.get(),encryptedOutput,encryptionTime);
 
         return encryptedOutput;

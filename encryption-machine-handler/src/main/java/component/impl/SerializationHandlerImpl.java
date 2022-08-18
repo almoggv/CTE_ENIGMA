@@ -4,6 +4,7 @@ import main.java.component.MachineHandler;
 import main.java.component.SerializationHandler;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
+import sun.misc.ClassLoaderUtil;
 
 import java.io.*;
 import java.nio.file.Paths;
@@ -15,7 +16,7 @@ public class SerializationHandlerImpl implements SerializationHandler {
 
     static {
         try {
-          //String log4JPropertyFile = SerializationHandlerImpl.class.getResource("../log4j.properties").getPath();
+//        String log4JPropertyFile = ("../log4j.properties");
           String log4JPropertyFile = "./src/main/resources/log4j.properties";
           Properties p = new Properties();
           p.load(new FileInputStream(log4JPropertyFile));

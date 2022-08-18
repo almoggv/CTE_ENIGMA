@@ -100,9 +100,10 @@ public class Menu {
                 return;
             }
             machineHandler.resetToLastSetState();
+            out.println("Successfully set back to original state");
         }
         catch (Exception e){
-            out.println(e.getMessage());
+            out.println("Something went wrong, : " + e.getMessage());
         }
     }
 
@@ -533,16 +534,12 @@ public class Menu {
         out.println("BYE-BYE :)");
         exit(0);
     }
+
     private static void saveToFile(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please enter absolute path to save to:");
         String input = scanner.nextLine();;
         while(input.trim().isEmpty()){
-            input = scanner.nextLine();;
-        }
-        File file = new File(input);
-        while(!file.isFile() || !file.isAbsolute()){
-            System.out.println("Path is not valid, please enter an ABSOLUTE path:");
             input = scanner.nextLine();;
         }
         try{
@@ -553,16 +550,12 @@ public class Menu {
             System.out.println("Failed to save complete state to file, " + e.getMessage());
         }
     }
+
     private static void loadFromFile(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please enter absolute path to save to:");
         String input = scanner.nextLine();;
         while(input.trim().isEmpty()){
-            input = scanner.nextLine();;
-        }
-        File file = new File(input);
-        while(!file.isFile() || !file.isAbsolute()){
-            System.out.println("Path is not valid, please enter an ABSOLUTE path:");
             input = scanner.nextLine();;
         }
         try{
