@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="jar" name="enigma-machine:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/enigma_machine_jar</output-path>
+    <output-path>$PROJECT_DIR$/jars</output-path>
     <root id="archive" name="enigma-machine.jar">
       <element id="module-output" name="enigma-machine" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/junit/junit/4.13.1/junit-4.13.1.jar" path-in-jar="/" />

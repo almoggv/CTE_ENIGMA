@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="jar" name="command-line-interface-ui:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/command_line_interface_ui_jar</output-path>
+    <output-path>$PROJECT_DIR$/jars</output-path>
     <root id="archive" name="command-line-interface-ui.jar">
       <element id="module-output" name="command-line-interface-ui" />
       <element id="module-output" name="encryption-machine-handler" />

@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Main-Class: src.main.java.Main
+Class-Path: jars\encryption-machine-handler.jar
+
