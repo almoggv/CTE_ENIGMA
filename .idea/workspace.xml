@@ -11,9 +11,9 @@
   <component name="ChangeListManager">
     <list default="true" id="6467e2d7-ff2a-4abb-a198-685a0fcd06aa" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/main/resources/savedstates/testTarget.dat" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/src/main/resources/savedstates/testTarget.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/EnigmaMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/EnigmaMachine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/RotorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/RotorImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/command-line-interface-ui/src/main/java/ui/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/command-line-interface-ui/src/main/java/ui/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/impl/MachineHandlerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/impl/MachineHandlerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/command-line-interface-ui/src/main/java/ui/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/command-line-interface-ui/src/main/java/ui/Menu.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,7 +222,7 @@
       <workItem from="1659360057006" duration="25736000" />
       <workItem from="1659462909712" duration="36637000" />
       <workItem from="1660122819954" duration="4759000" />
-      <workItem from="1660900726256" duration="8422000" />
+      <workItem from="1660900726256" duration="10650000" />
     </task>
     <servers />
   </component>

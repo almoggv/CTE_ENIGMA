@@ -100,7 +100,7 @@ public class Menu {
                 return;
             }
             machineHandler.resetToLastSetState();
-            out.println("Successfully set back to original state");
+            out.println("Successfully set back to original state"+ lineSeparator() + buildMachineStateMsg(machineState.get(),inventoryInfo.get()));
         }
         catch (Exception e){
             out.println("Something went wrong, : " + e.getMessage());
@@ -148,22 +148,10 @@ public class Menu {
             //2.4
             Optional<MachineState> originalMachineState = Optional.of(machineHandler.getInitialMachineState().get());
             String originalMachineStateMsgHeader = "Original Machine State: ";
-            String originalRotorsInMachineMsg = Menu.buildRotorsInMachineMsg(originalMachineState.get(),inventoryInfo.get());
-            String originalRotorsHeadLocationInMachineMsg = Menu.buildRotorHeadLocationInMachineMsg(originalMachineState.get());
-            String originalReflectorIdMsg = "<" + originalMachineState.get().getReflectorId().getName() + ">";
-            String originalPlugsMappedMsg = Menu.buildPlugMappingInMachineMsg(originalMachineState.get());
-            String originalMachineStateMsg = originalMachineStateMsgHeader + lineSeparator() + originalRotorsInMachineMsg + originalRotorsHeadLocationInMachineMsg + originalReflectorIdMsg+ originalPlugsMappedMsg;
+            String originalMachineStateMsg = originalMachineStateMsgHeader + lineSeparator() + buildMachineStateMsg(originalMachineState.get(),inventoryInfo.get());
             //2.5
             String machineStateMsgHeader = "Current Machine State: ";
-                //2.5.a
-            String rotorsInMachineMsg = Menu.buildRotorsInMachineMsg(machineState.get(),inventoryInfo.get());
-                //2.5.b
-            String rotorsHeadLocationInMachineMsg = Menu.buildRotorHeadLocationInMachineMsg(machineState.get());
-                //2.5.c
-            String reflectorIdMsg = "<" + machineState.get().getReflectorId().getName() + ">";
-                //2.5.d
-            String plugsMappedMsg = Menu.buildPlugMappingInMachineMsg(machineState.get());
-            String machineStateMsg = machineStateMsgHeader + lineSeparator() +rotorsInMachineMsg+rotorsHeadLocationInMachineMsg+reflectorIdMsg+plugsMappedMsg;
+            String machineStateMsg = machineStateMsgHeader + lineSeparator() + buildMachineStateMsg(machineState.get(),inventoryInfo.get());
 
             printedMessage = rotorsPossibleInUseMsg + lineSeparator()
                     + reflectorsAmountMsg + lineSeparator() + numberOfEncryptedMessagesMsg + lineSeparator()
@@ -173,6 +161,20 @@ public class Menu {
         catch(Exception e){
             System.out.println("Something went wrong, Error:" + e.getMessage());
         }
+    }
+
+    private static String buildMachineStateMsg(MachineState machineState,InventoryInfo inventoryInfo){
+        String resultMsg;
+        String rotorsInMachineMsg = Menu.buildRotorsInMachineMsg(machineState,inventoryInfo);
+        //2.5.b
+        String rotorsHeadLocationInMachineMsg = Menu.buildRotorHeadLocationInMachineMsg(machineState);
+        //2.5.c
+        String reflectorIdMsg = "<" + machineState.getReflectorId().getName() + ">";
+        //2.5.d
+        String plugsMappedMsg = Menu.buildPlugMappingInMachineMsg(machineState);
+
+        resultMsg = rotorsInMachineMsg+rotorsHeadLocationInMachineMsg+reflectorIdMsg+plugsMappedMsg;
+        return resultMsg;
     }
 
     private static String buildPlugMappingInMachineMsg(MachineState machineState) {
@@ -263,7 +265,8 @@ public class Menu {
                 out.println("Successfully Chose: "+ plugMapping);
                 try {
                     machineHandler.assembleMachine(reflectorId, rotorIdsList, rotorStartingPos, plugMapping);
-                    System.out.println("Assembled the machine successfully");
+                    MachineState machineState = machineHandler.getMachineState().get();
+                    System.out.println("Assembled the machine successfully" + lineSeparator() + buildMachineStateMsg(machineState,inventoryInfo.get()));
                 }
                 catch (Exception e){
                     System.out.println("Failed to assemble the machine - " + e.getMessage());
@@ -360,6 +363,7 @@ public class Menu {
         }
         return ReflectorsId.getByNum(reflectorId);
     }
+
     private static String getRotorStartingPositions(InventoryInfo inventoryInfo) {
         boolean isRotorStartingPosValid = false;
         String rotorStartingPos = "";
@@ -385,7 +389,7 @@ public class Menu {
             }
             isRotorStartingPosValid = input.length() == rotorNumToAsk && verified.isPresent();
         }
-        out.println("Successfully Chose: "+ rotorStartingPos);
+        out.println("Successfully Chose: "+ verified.get());
         //reverse string
         for (int j = 0; j < verified.get().length(); j++) {
             rotorStartingPos =  verified.get().substring(j,j+1) + rotorStartingPos;
@@ -461,7 +465,8 @@ public class Menu {
                 return;
             }
             machineHandler.assembleMachine();
-            System.out.println("Machine assembled successfully.");
+            MachineState machineState = machineHandler.getMachineState().get();
+            System.out.println("Assembled the machine successfully" + lineSeparator() + buildMachineStateMsg(machineState,inventoryInfo.get()));
         }
         catch (Exception e){
             System.out.println("Problem assembling the machine: " + e.getMessage());
@@ -480,7 +485,7 @@ public class Menu {
             }
             else {
                 try{
-                System.out.println("Please enter string to encrypt/decrypt:");
+                System.out.println("Please enter string to encrypt/decrypt:   ABC\"" + inventoryInfo.get().getABC() +"\"");
                 Scanner scanner = new Scanner(System.in);
                 String input = scanner.nextLine();
 

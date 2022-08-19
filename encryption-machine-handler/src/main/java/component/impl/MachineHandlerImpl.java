@@ -204,6 +204,7 @@ public class MachineHandlerImpl implements MachineHandler {
         encryptionMachine.setRotorsStartingPosition(valuesOfHeadToSetRotors);
         encryptionMachine.connectPlugs(plugMapping);
         initialMachineState = getMachineState().get();
+        addToHistory(initialMachineState);
         log.info("Machine Handler - initial state of machine state set");
     }
 
@@ -214,7 +215,8 @@ public class MachineHandlerImpl implements MachineHandler {
         }
         return encryptionMachine.getMachineState();
     }
-   public Optional<MachineState> getInitialMachineState() {
+
+    public Optional<MachineState> getInitialMachineState() {
         if(this.initialMachineState == null){
             return Optional.empty();
         }
@@ -309,11 +311,12 @@ public class MachineHandlerImpl implements MachineHandler {
         machineStatisticsHistory.get(machineStateBeforeEncrypt).add(infoHistory);
     }
 
-//    private void addToHistory(MachineState machineStateBeforeEncrypt){
-//        if(!machineStatisticsHistory.containsKey(machineStateBeforeEncrypt)){
-//            machineStatisticsHistory.put(machineStateBeforeEncrypt,new ArrayList<EncryptionInfoHistory>());
-//        }
-//    }
+    private void addToHistory(MachineState machineStateBeforeEncrypt){
+        if(!machineStatisticsHistory.containsKey(machineStateBeforeEncrypt)){
+            machineStatisticsHistory.put(machineStateBeforeEncrypt,new ArrayList<EncryptionInfoHistory>());
+        }
+    }
+
     public Optional<String> verifyInputInAbcAndFix(String input) {
         if(ioWheelInventory == null){
             log.error("Failed to verify and fix input, no IOWheel present yet in inventory");
