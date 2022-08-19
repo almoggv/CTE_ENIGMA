@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="command-line-interface-ui:jar" />
-      <artifact name="encryption-machine-handler:jar" />
-      <artifact name="enigma-machine:jar" />
+      <artifact name="command-line-interface-ui:jar2" />
     </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
@@ -13,8 +11,9 @@
   <component name="ChangeListManager">
     <list default="true" id="6467e2d7-ff2a-4abb-a198-685a0fcd06aa" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/impl/MachineHandlerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/impl/MachineHandlerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/dto/EncryptionInfoHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/dto/EncryptionInfoHistory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/main/resources/savedstates/testTarget.dat" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/src/main/resources/savedstates/testTarget.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/EnigmaMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/EnigmaMachine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/RotorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/RotorImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -223,7 +222,7 @@
       <workItem from="1659360057006" duration="25736000" />
       <workItem from="1659462909712" duration="36637000" />
       <workItem from="1660122819954" duration="4759000" />
-      <workItem from="1660900726256" duration="2953000" />
+      <workItem from="1660900726256" duration="8422000" />
     </task>
     <servers />
   </component>
@@ -260,16 +259,6 @@
           <option name="timeStamp" value="126" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/command-line-interface-ui/src/main/java/ui/Menu.java</url>
-          <line>393</line>
-          <option name="timeStamp" value="157" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/command-line-interface-ui/src/main/java/ui/Menu.java</url>
-          <line>324</line>
-          <option name="timeStamp" value="195" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/encryption-machine-handler/src/test/java/component/TestSerializationHandlerImpl.java</url>
           <line>42</line>
           <option name="timeStamp" value="210" />
@@ -283,6 +272,11 @@
           <url>file://$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/EnigmaMachine.java</url>
           <line>19</line>
           <option name="timeStamp" value="212" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/RotorImpl.java</url>
+          <line>120</line>
+          <option name="timeStamp" value="225" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

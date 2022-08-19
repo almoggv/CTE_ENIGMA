@@ -4174,4 +4174,72 @@
   2022-08-19 12:57:14 INFO  MachineHandlerImpl:306 - time it took to encrypt:PT0S
   2022-08-19 13:03:04 INFO  MachineHandlerImpl:310 - time it took to encrypt:PT0.003S
   2022-08-19 13:04:02 INFO  MachineHandlerImpl:310 - time it took to encrypt:PT0.002S
+  2022-08-19 13:30:33 ERROR SerializationHandlerImpl:37 - Failed to load state from file , path is not absolute
+  2022-08-19 13:30:37 ERROR EnigmaMachine:122 - Failed To get machine state, machine not assembled yet
+  2022-08-19 13:30:54 ERROR SerializationHandlerImpl:55 - Failed to load state from "C:\Dev\GitProjects\CTE_JAVA_ENIGMA\encryption-machine-handler\src\main\resources\savedstates\testTarget.dat" , something went wrongmain.java.dto.EncryptionInfoHistory; local class incompatible: stream classdesc serialVersionUID = -116955145389423240, local class serialVersionUID = -6197919587646462335
+  2022-08-19 13:31:33 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Dev\GitProjects\CTE_JAVA_ENIGMA\encryption-machine-handler\src\main\resources\machine-inventory-schema\ex1-sanity-paper-enigma.xml
+  2022-08-19 13:31:33 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-19 13:31:33 INFO  MachineHandlerImpl:267 - Machine handler: created inventory successfully
+  2022-08-19 13:31:40 INFO  MachineHandlerImpl:186 - Machine Handler - assembled machine parts finished
+  2022-08-19 13:31:40 WARN  PlugBoardImpl:73 - Plugboard : Failed to connect endpoints -Fis already connected
+  2022-08-19 13:31:40 INFO  MachineHandlerImpl:207 - Machine Handler - initial state of machine state set
+  2022-08-19 13:31:45 INFO  MachineHandlerImpl:298 - time it took to encrypt:2224200
+  2022-08-19 13:33:24 INFO  MachineHandlerImpl:186 - Machine Handler - assembled machine parts finished
+  2022-08-19 13:33:24 INFO  MachineHandlerImpl:207 - Machine Handler - initial state of machine state set
+  2022-08-19 13:35:43 INFO  MachineHandlerImpl:186 - Machine Handler - assembled machine parts finished
+  2022-08-19 13:35:43 INFO  MachineHandlerImpl:207 - Machine Handler - initial state of machine state set
+  2022-08-19 13:36:02 INFO  MachineHandlerImpl:298 - time it took to encrypt:203800
+  2022-08-19 13:38:26 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Dev\GitProjects\CTE_JAVA_ENIGMA\encryption-machine-handler\src\main\resources\machine-inventory-schema\ex1-sanity-paper-enigma.xml
+  2022-08-19 13:38:26 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-19 13:38:26 INFO  MachineHandlerImpl:267 - Machine handler: created inventory successfully
+  2022-08-19 13:39:27 INFO  MachineHandlerImpl:186 - Machine Handler - assembled machine parts finished
+  2022-08-19 13:39:27 INFO  MachineHandlerImpl:207 - Machine Handler - initial state of machine state set
+  2022-08-19 13:40:30 INFO  MachineHandlerImpl:186 - Machine Handler - assembled machine parts finished
+  2022-08-19 13:40:30 INFO  MachineHandlerImpl:207 - Machine Handler - initial state of machine state set
+  2022-08-19 13:41:16 INFO  MachineHandlerImpl:298 - time it took to encrypt:916900
+  2022-08-19 13:41:38 INFO  MachineHandlerImpl:298 - time it took to encrypt:3309100
+  2022-08-19 13:41:53 INFO  MachineHandlerImpl:298 - time it took to encrypt:972600
+  2022-08-19 14:15:43 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Dev\GitProjects\CTE_JAVA_ENIGMA\encryption-machine-handler\src\main\resources\machine-inventory-schema\ex1-sanity-paper-enigma.xml
+  2022-08-19 14:15:43 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-19 14:15:43 INFO  MachineHandlerImpl:267 - Machine handler: created inventory successfully
+  2022-08-19 14:16:11 INFO  MachineHandlerImpl:186 - Machine Handler - assembled machine parts finished
+  2022-08-19 14:16:11 INFO  MachineHandlerImpl:207 - Machine Handler - initial state of machine state set
+  2022-08-19 14:18:26 INFO  MachineHandlerImpl:298 - time it took to encrypt:77124381400
+  2022-08-19 14:22:00 INFO  MachineHandlerImpl:298 - time it took to encrypt:199928055200
+  2022-08-19 14:25:42 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Dev\GitProjects\CTE_JAVA_ENIGMA\encryption-machine-handler\src\main\resources\machine-inventory-schema\ex1-sanity-paper-enigma.xml
+  2022-08-19 14:25:42 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-19 14:25:42 INFO  MachineHandlerImpl:267 - Machine handler: created inventory successfully
+  2022-08-19 14:26:11 INFO  MachineHandlerImpl:186 - Machine Handler - assembled machine parts finished
+  2022-08-19 14:26:11 INFO  MachineHandlerImpl:207 - Machine Handler - initial state of machine state set
+  2022-08-19 14:27:28 INFO  MachineHandlerImpl:298 - time it took to encrypt:1100700
+  2022-08-19 14:28:34 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Dev\GitProjects\CTE_JAVA_ENIGMA\encryption-machine-handler\src\main\resources\machine-inventory-schema\ex1-sanity-paper-enigma.xml
+  2022-08-19 14:28:35 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-19 14:28:35 INFO  MachineHandlerImpl:267 - Machine handler: created inventory successfully
+  2022-08-19 14:28:44 INFO  MachineHandlerImpl:186 - Machine Handler - assembled machine parts finished
+  2022-08-19 14:28:57 INFO  MachineHandlerImpl:207 - Machine Handler - initial state of machine state set
+  2022-08-19 14:29:34 INFO  MachineHandlerImpl:298 - time it took to encrypt:20984467800
+  2022-08-19 14:30:26 INFO  MachineHandlerImpl:186 - Machine Handler - assembled machine parts finished
+  2022-08-19 14:30:30 INFO  MachineHandlerImpl:207 - Machine Handler - initial state of machine state set
+  2022-08-19 14:32:46 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Dev\GitProjects\CTE_JAVA_ENIGMA\encryption-machine-handler\src\main\resources\machine-inventory-schema\ex1-sanity-paper-enigma.xml
+  2022-08-19 14:32:47 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-19 14:32:47 INFO  MachineHandlerImpl:267 - Machine handler: created inventory successfully
+  2022-08-19 14:34:41 INFO  MachineHandlerImpl:186 - Machine Handler - assembled machine parts finished
+  2022-08-19 14:34:41 INFO  MachineHandlerImpl:207 - Machine Handler - initial state of machine state set
+  2022-08-19 14:40:44 INFO  MachineHandlerImpl:298 - time it took to encrypt:146944052900
+  2022-08-19 14:41:13 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Dev\GitProjects\CTE_JAVA_ENIGMA\encryption-machine-handler\src\main\resources\machine-inventory-schema\ex1-sanity-paper-enigma.xml
+  2022-08-19 14:41:13 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-19 14:41:13 INFO  MachineHandlerImpl:267 - Machine handler: created inventory successfully
+  2022-08-19 14:41:36 INFO  MachineHandlerImpl:186 - Machine Handler - assembled machine parts finished
+  2022-08-19 14:41:36 INFO  MachineHandlerImpl:207 - Machine Handler - initial state of machine state set
+  2022-08-19 14:43:25 INFO  MachineHandlerImpl:298 - time it took to encrypt:1252400
+  2022-08-19 14:52:20 INFO  MachineHandlerImpl:298 - time it took to encrypt:492035911800
+  2022-08-19 14:52:49 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:C:\Dev\GitProjects\CTE_JAVA_ENIGMA\encryption-machine-handler\src\main\resources\machine-inventory-schema\ex1-sanity-paper-enigma.xml
+  2022-08-19 14:52:49 INFO  XmlSchemaVerifierImpl:78 - Machine Configuration schema passed all tests.
+  2022-08-19 14:52:49 INFO  MachineHandlerImpl:267 - Machine handler: created inventory successfully
+  2022-08-19 14:53:05 INFO  MachineHandlerImpl:186 - Machine Handler - assembled machine parts finished
+  2022-08-19 14:53:05 INFO  MachineHandlerImpl:207 - Machine Handler - initial state of machine state set
+  2022-08-19 14:53:19 INFO  MachineHandlerImpl:298 - time it took to encrypt:999900
+  2022-08-19 14:54:58 INFO  MachineHandlerImpl:186 - Machine Handler - assembled machine parts finished
+  2022-08-19 14:54:58 INFO  MachineHandlerImpl:207 - Machine Handler - initial state of machine state set
+  2022-08-19 14:55:11 INFO  MachineHandlerImpl:298 - time it took to encrypt:251300
   

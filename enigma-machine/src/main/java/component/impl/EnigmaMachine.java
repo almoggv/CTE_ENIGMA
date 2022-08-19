@@ -131,7 +131,7 @@ public class EnigmaMachine implements EncryptionMachine {
         int valueInHead;
         for (Rotor rotor : this.rotors) {
             rotorIds.add(rotor.getId());
-            rotorNotchLocations.add(rotor.getNotchLocation());
+//            rotorNotchLocations.add(rotor.getNotchLocation());
             notchDistances.add(rotor.howCloseNotchToHead());
             valueInHead = rotor.getValueInHead();
             numberAsLetter = ioWheel.getABC().substring(valueInHead,valueInHead+1);

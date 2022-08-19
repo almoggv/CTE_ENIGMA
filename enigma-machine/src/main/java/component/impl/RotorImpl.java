@@ -79,7 +79,14 @@ public class RotorImpl implements Rotor {
 
     @Override
     public int howCloseNotchToHead() {
-        return Math.abs(notchLocation - headPosition);
+//        return (rotorMapping.size() - Math.abs(notchLocation - headPosition)) % rotorMapping.size();
+        int result = 0;
+        if(headPosition <= notchLocation) {
+            return Math.abs(notchLocation - headPosition);
+        }
+        else{
+            return (rotorMapping.size() - Math.abs(notchLocation - headPosition)) % rotorMapping.size();
+        }
     }
 
     @Override
@@ -112,6 +119,8 @@ public class RotorImpl implements Rotor {
     @Override
     public void rotate() {
         headPosition = (headPosition + 1) % rotorMapping.size();
+//        headPosition = headPosition - 1;
+//        if(headPosition < 0) headPosition += rotorMapping.size();
         rotorMapping.addLast(rotorMapping.pop());
     }
 
