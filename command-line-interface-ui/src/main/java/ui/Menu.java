@@ -525,7 +525,7 @@ public class Menu {
                     List<EncryptionInfoHistory> encryptionInfoHistoryList = history.get(machineStateHistory);
                     out.println("Machine encryption history:");
                     for (EncryptionInfoHistory encryptionHistory : encryptionInfoHistoryList) {
-                        out.println(i++ + ". <" + encryptionHistory.getInput() + "> --> <" + encryptionHistory.getOutput() + "> ( " + encryptionHistory.getTimeToEncrypt().toNanos() + " nano-seconds)");
+                        out.println(i++ + ". <" + encryptionHistory.getInput() + "> --> <" + encryptionHistory.getOutput() + "> ( " + encryptionHistory.getTimeToEncrypt() + " nano-seconds)");
                     }
                 }
             }

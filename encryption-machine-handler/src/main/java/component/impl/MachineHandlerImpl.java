@@ -271,54 +271,6 @@ public class MachineHandlerImpl implements MachineHandler {
         }
     }
 
-//    @Override
-//    public void loadStateFromFile(String absolutePath) throws Exception, FileNotFoundException {
-//        try{
-//            Paths.get(absolutePath);
-//        }
-//        catch(Exception e){
-//            log.error("Failed to save to file, file doesnt exist :" + absolutePath);
-//            throw new FileNotFoundException("file name doesnt exist");
-//        }
-//        try{
-//            FileInputStream fileInputStream = new FileInputStream(absolutePath);
-//            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-//            objectInputStream.readObject();
-//        }
-//        catch (Exception e){
-//            log.error("Failed to load state from \"" + absolutePath +"\" , something went wrong" + e.getMessage());
-//            throw new Exception("failed to load state from: \"" + absolutePath + "\" ," + e.getMessage());
-//        }
-//
-//    }
-
-//    @Override
-//    public void saveStateToFile(String fileName) throws Exception, NullPointerException{
-//        if(!this.getInventoryInfo().isPresent()){
-//            log.error("Failed to save state to file , no schema lodaded yet");
-//            throw new Exception("Cannot save to file, no schema loaded yet");
-//        }
-//        if(!this.getMachineState().isPresent()){
-//            log.error("Failed to save state to file , no machine setup yet");
-//            throw new Exception("Cannot save to file, machine not assembled yet");
-//        }
-//        if(fileName == null){
-//            log.error("Failed to save state to file , given file name is null");
-//            throw new NullPointerException("Failed to save to file, given file name is null");
-//        }
-//        try{
-//            FileOutputStream fileOutputStream = new FileOutputStream(fileName);
-//            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-//            objectOutputStream.writeObject(this);
-//            objectOutputStream.close();
-//        }
-//        catch(Exception e){
-//            log.error("Failed to save state to file, something went wrong :" + e.getMessage());
-//            throw e;
-//        }
-//    }
-
-
     @Override
     public void resetToLastSetState() {
         this.encryptionMachine.setMachineState(initialMachineState);
@@ -339,18 +291,17 @@ public class MachineHandlerImpl implements MachineHandler {
         else if(!verifiedInput.isPresent()){
             throw new IOException("Input not in ABC: " + ioWheelInventory.getABC());
         }
-
-        Instant startEncryptionTime = Instant.now();
+        long startEncryptionTime = System.nanoTime();
         String encryptedOutput = encryptionMachine.encrypt(verifiedInput.get());
-        Instant endEncryptionTime = Instant.now();
-        Duration encryptionTime = Duration.between(startEncryptionTime, endEncryptionTime);//.toNanos();
+        long endEncryptionTime = System.nanoTime();
+        long encryptionTime = endEncryptionTime - startEncryptionTime;
         log.info("time it took to encrypt:" + encryptionTime);
         addToHistory(initialMachineState,verifiedInput.get(),encryptedOutput,encryptionTime);
 
         return encryptedOutput;
     }
 
-    private void addToHistory(MachineState machineStateBeforeEncrypt, String input, String output, Duration duration){
+    private void addToHistory(MachineState machineStateBeforeEncrypt, String input, String output, long duration){
         EncryptionInfoHistory infoHistory = new EncryptionInfoHistory(input,output,duration);
         if(!machineStatisticsHistory.containsKey(machineStateBeforeEncrypt)){
             machineStatisticsHistory.put(machineStateBeforeEncrypt,new ArrayList<EncryptionInfoHistory>());

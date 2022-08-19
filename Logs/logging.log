@@ -4171,4 +4171,7 @@
   2022-08-19 12:25:34 INFO  MachineHandlerImpl:207 - Machine Handler - initial state of machine state set
   2022-08-19 12:41:05 INFO  MachineHandlerImpl:186 - Machine Handler - assembled machine parts finished
   2022-08-19 12:41:05 INFO  MachineHandlerImpl:207 - Machine Handler - initial state of machine state set
+  2022-08-19 12:57:14 INFO  MachineHandlerImpl:306 - time it took to encrypt:PT0S
+  2022-08-19 13:03:04 INFO  MachineHandlerImpl:310 - time it took to encrypt:PT0.003S
+  2022-08-19 13:04:02 INFO  MachineHandlerImpl:310 - time it took to encrypt:PT0.002S
   

@@ -13,6 +13,5 @@ import java.time.Duration;
 public class EncryptionInfoHistory implements Serializable {
     private String input;
     private String output;
-    private Duration timeToEncrypt;
-    //private MachineState machineStartingState;
+    private long timeToEncrypt;
 }
