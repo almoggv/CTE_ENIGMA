@@ -195,7 +195,8 @@ public class Menu {
 
     private static String buildRotorHeadLocationInMachineMsg(MachineState machineState) {
         String outMsg = "<";
-        for (String headlocation: machineState.getRotorsHeadsInitialValues()) {
+        for (int i = machineState.getRotorsHeadsInitialValues().size()-1 ; i >= 0; i--) {
+            String headlocation = machineState.getRotorsHeadsInitialValues().get(i);
             outMsg = outMsg.concat(headlocation);
         }
         outMsg = outMsg.concat(">");
@@ -217,9 +218,11 @@ public class Menu {
         String outmsg = "<";
         String currRotorMsg = "";
         boolean isfirst = true;
-        for (Integer id : machineState.getRotorIds() ) {
-            int rotorIndexById = machineState.getRotorIds().indexOf(id);
-            currRotorMsg = id.toString() + "(" + machineState.getNotchDistancesFromHead().get(rotorIndexById) + ")";
+        int id, notchDistance;
+        for (int i = machineState.getRotorIds().size() - 1 ; i >= 0; i--) {
+            id = machineState.getRotorIds().get(i);
+            notchDistance = machineState.getNotchDistancesFromHead().get(i);
+            currRotorMsg = id + "(" + notchDistance + ")";
             if(isfirst){
                 isfirst = false;
             }
@@ -242,12 +245,12 @@ public class Menu {
             //rotor choice
                 List<Integer> rotorIdsList = getRotorChoice(inventoryInfo.get());
                 if(rotorIdsList == null) return;
-                out.println("Successfully Chose: "+rotorIdsList + "\n");
+            // success message - moved inside getRotorChoice function
 
             //rotor start pos
                 String rotorStartingPos = getRotorStartingPositions(inventoryInfo.get());
                 if(rotorStartingPos == null) return;
-                out.println("Successfully Chose: "+ rotorStartingPos);
+            // success message -  moved inside getRotorStartingPositions function
 
             //reflector
                 ReflectorsId reflectorId = getReflectorChoice(inventoryInfo.get());
@@ -382,6 +385,7 @@ public class Menu {
             }
             isRotorStartingPosValid = input.length() == rotorNumToAsk && verified.isPresent();
         }
+        out.println("Successfully Chose: "+ rotorStartingPos);
         //reverse string
         for (int j = 0; j < verified.get().length(); j++) {
             rotorStartingPos =  verified.get().substring(j,j+1) + rotorStartingPos;
@@ -441,6 +445,7 @@ public class Menu {
             }
             isRotorChoiceValid = rotorIdList.size() == rotorNumToAsk;
         }
+        out.println("Successfully Chose: "+ rotorIdList + "\n");
         //reverse list
         for (int i = 0, j = rotorIdList.size() - 1; i < j; i++) {
             rotorIdList.add(i, rotorIdList.remove(j));
