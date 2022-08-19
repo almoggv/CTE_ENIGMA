@@ -17,9 +17,7 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
 import java.io.*;
-import java.nio.file.Paths;
-import java.time.Duration;
-import java.time.Instant;
+import java.net.URL;
 import java.util.*;
 import java.util.function.Predicate;
 
@@ -37,12 +35,14 @@ public class MachineHandlerImpl implements MachineHandler {
     private final XmlSchemaVerifier xmlSchemaVerifier = new XmlSchemaVerifierImpl();
 
     static {
-        String log4JPropertyFile = "./src/main/resources/log4j.properties";
-        Properties p = new Properties();
+
         try {
+            URL log4JPropertyUrl = MachineHandlerImpl.class.getResource("/main/resources/log4j.properties");
+            String log4JPropertyFile = log4JPropertyUrl.getFile();
+            Properties p = new Properties();
             p.load(new FileInputStream(log4JPropertyFile));
             PropertyConfigurator.configure(p);      //Dont forget here
-            log.debug("Logger Instatiated for : " + MachineHandlerImpl.class.getSimpleName());
+            log.debug("Logger Instantiated for : " + MachineHandlerImpl.class.getSimpleName());
         } catch (IOException e) {
             //TODO: ?
         }

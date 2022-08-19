@@ -1,6 +1,5 @@
 package main.java.handler;
 
-import main.java.component.impl.EnigmaMachine;
 import main.resources.generated.CTEEnigma;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
@@ -11,18 +10,20 @@ import javax.xml.bind.Unmarshaller;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Properties;
 
 public class FileConfigurationHandler {
     private static final Logger log = Logger.getLogger(FileConfigurationHandler.class);
 
     static {
-        String log4JPropertyFile = "./enigma-machine/src/main/resources/log4j.properties";
+        URL log4JPropertyUrl = FileConfigurationHandler.class.getResource("/main/resources/log4j.properties");
+        String log4JPropertyFile = log4JPropertyUrl.getFile();
         Properties p = new Properties();
         try {
             p.load(new FileInputStream(log4JPropertyFile));
             PropertyConfigurator.configure(p);      //Dont forget here
-            log.debug("Logger Instatiated for : " + FileConfigurationHandler.class.getSimpleName());
+            log.debug("Logger Instantiated for : " + FileConfigurationHandler.class.getSimpleName());
         } catch (IOException e) {
             //TODO: ?
         }

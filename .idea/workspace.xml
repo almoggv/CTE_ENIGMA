@@ -11,9 +11,24 @@
   <component name="ChangeListManager">
     <list default="true" id="6467e2d7-ff2a-4abb-a198-685a0fcd06aa" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/command-line-interface-ui/src/main/java/ui/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/command-line-interface-ui/src/main/java/ui/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/encryption-machine-handler/Logs/logging.log" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/Logs/logging.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/impl/MachineHandlerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/impl/MachineHandlerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/command-line-interface-ui/src/main/java/ui/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/command-line-interface-ui/src/main/java/ui/Menu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/impl/SerializationHandlerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/impl/SerializationHandlerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/verifier/impl/XmlSchemaVerifierImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/verifier/impl/XmlSchemaVerifierImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/EnigmaMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/EnigmaMachine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/IOWheelImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/IOWheelImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/PlugBoardImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/PlugBoardImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/ReflectorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/ReflectorImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/RotorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/RotorImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/handler/FileConfigurationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/handler/FileConfigurationHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/component/impl/MachineHandlerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/component/impl/MachineHandlerImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/component/impl/SerializationHandlerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/component/impl/SerializationHandlerImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/verifier/impl/XmlSchemaVerifierImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/verifier/impl/XmlSchemaVerifierImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/EnigmaMachine.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/EnigmaMachine.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/IOWheelImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/IOWheelImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/PlugBoardImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/PlugBoardImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/ReflectorImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/ReflectorImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/RotorImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/RotorImpl.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,6 +83,8 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File" value="Properties" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/enigma-machine/src/main/resources" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.12974203" />
     <property name="project.structure.side.proportion" value="0.21902269" />
@@ -78,6 +95,7 @@
       <recent name="main.java.component" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Dev\GitProjects\CTE_JAVA_ENIGMA\enigma-machine\src\main\resources" />
       <recent name="C:\Dev\GitProjects\CTE_JAVA_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema" />
       <recent name="C:\Dev\GitProjects\CTE_JAVA_ENIGMA\encryption-machine-handler\src\main\resources\machine-inventory-schema" />
       <recent name="C:\Dev\GitProjects\CTE_JAVA_ENIGMA\encryption-machine-handler\src\main\resources" />
@@ -245,7 +263,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/PlugBoardImpl.java</url>
-          <line>43</line>
+          <line>45</line>
           <option name="timeStamp" value="71" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -270,12 +288,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/EnigmaMachine.java</url>
-          <line>19</line>
+          <line>20</line>
           <option name="timeStamp" value="212" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/RotorImpl.java</url>
-          <line>120</line>
+          <line>122</line>
           <option name="timeStamp" value="225" />
         </line-breakpoint>
       </breakpoints>

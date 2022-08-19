@@ -1,5 +1,6 @@
 package main.java.verifier.impl;
 
+import main.java.component.impl.MachineHandlerImpl;
 import main.java.enums.ReflectorsId;
 import main.java.enums.XmlVerifierState;
 import main.java.verifier.XmlSchemaVerifier;
@@ -10,6 +11,7 @@ import org.apache.log4j.PropertyConfigurator;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.URL;
 import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -21,12 +23,13 @@ public class XmlSchemaVerifierImpl implements XmlSchemaVerifier {
     private static final Logger log = Logger.getLogger(XmlSchemaVerifierImpl.class);
 
     static {
-        String log4JPropertyFile = "./src/main/resources/log4j.properties";
-        Properties p = new Properties();
         try {
+            URL log4JPropertyUrl = XmlSchemaVerifierImpl.class.getResource("/main/resources/log4j.properties");
+            String log4JPropertyFile = log4JPropertyUrl.getFile();
+            Properties p = new Properties();
             p.load(new FileInputStream(log4JPropertyFile));
             PropertyConfigurator.configure(p);      //Dont forget here
-            log.debug("Logger Instatiated for : " + XmlSchemaVerifierImpl.class.getSimpleName());
+            log.debug("Logger Instantiated for : " + XmlSchemaVerifierImpl.class.getSimpleName());
         } catch (IOException e) {
             //TODO: ?
         }

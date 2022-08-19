@@ -9,6 +9,7 @@ import org.apache.log4j.PropertyConfigurator;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -21,12 +22,13 @@ public class PlugBoardImpl implements PlugBoard {
     private List<MappingPair<String, String>> plugBoardMapping = new ArrayList<>();
 
     static {
-        String log4JPropertyFile = "./enigma-machine/src/main/resources/log4j.properties";
-        Properties p = new Properties();
         try {
+            URL log4JPropertyUrl = PlugBoardImpl.class.getResource("/main/resources/log4j.properties");
+            String log4JPropertyFile = log4JPropertyUrl.getFile();
+            Properties p = new Properties();
             p.load(new FileInputStream(log4JPropertyFile));
             PropertyConfigurator.configure(p);      //Dont forget here
-            log.debug("Logger Instatiated for : " + PlugBoardImpl.class.getSimpleName());
+            log.debug("Logger Instantiated for : " + PlugBoardImpl.class.getSimpleName());
         } catch (IOException e) {
             //TODO: ?
         }

@@ -12,6 +12,7 @@ import org.apache.log4j.PropertyConfigurator;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -24,12 +25,13 @@ public class ReflectorImpl implements Reflector {
     @Getter private final ReflectorsId id;
 
     static {
-        String log4JPropertyFile = "./enigma-machine/src/main/resources/log4j.properties";
-        Properties p = new Properties();
         try {
+            URL log4JPropertyUrl = ReflectorImpl.class.getResource("/main/resources/log4j.properties");
+            String log4JPropertyFile = log4JPropertyUrl.getFile();
+            Properties p = new Properties();
             p.load(new FileInputStream(log4JPropertyFile));
             PropertyConfigurator.configure(p);      //Dont forget here
-            log.debug("Logger Instatiated for : " + ReflectorImpl.class.getSimpleName());
+            log.debug("Logger Instantiated for : " + ReflectorImpl.class.getSimpleName());
         } catch (IOException e) {
             //TODO: ?
         }

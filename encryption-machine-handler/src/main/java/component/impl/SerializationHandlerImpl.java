@@ -7,6 +7,7 @@ import org.apache.log4j.PropertyConfigurator;
 import sun.misc.ClassLoaderUtil;
 
 import java.io.*;
+import java.net.URL;
 import java.nio.file.Paths;
 import java.util.Properties;
 
@@ -16,12 +17,12 @@ public class SerializationHandlerImpl implements SerializationHandler {
 
     static {
         try {
-//        String log4JPropertyFile = ("../log4j.properties");
-          String log4JPropertyFile = "./src/main/resources/log4j.properties";
+          URL log4JPropertyUrl = SerializationHandlerImpl.class.getResource("/main/resources/log4j.properties");
+          String log4JPropertyFile = log4JPropertyUrl.getFile();
           Properties p = new Properties();
           p.load(new FileInputStream(log4JPropertyFile));
           PropertyConfigurator.configure(p);      //Dont forget here
-          log.debug("Logger Instatiated for : " + SerializationHandlerImpl.class.getSimpleName());
+          log.debug("Logger Instantiated for : " + SerializationHandlerImpl.class.getSimpleName());
         } catch (IOException e) {
             //TODO: ?
         }

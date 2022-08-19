@@ -10,7 +10,7 @@
   2022-08-11 18:14:51 INFO  MachineHandlerImpl:168 - Machine Handler - assembled machine parts finished
   2022-08-11 18:14:51 INFO  MachineHandlerImpl:198 - Machine Handler - initial state of machine state set
   2022-08-11 18:15:18 INFO  MachineHandlerImpl:290 - time it took to encrypt:PT0.007S
-  2022-08-11 18:15:27 DEBUG MachineHandlerImpl:45 - Logger Instatiated for : MachineHandlerImpl
+  2022-08-11 18:15:27 DEBUG MachineHandlerImpl:45 - Logger Instantiated for : MachineHandlerImpl
   2022-08-11 18:15:32 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./src/main/resources/machine-inventory-schema/ex1-sanity-paper-enigma.xml
   2022-08-11 18:15:32 DEBUG MachineHandlerImpl:308 - MachineHandler check xml validity: Is even ABC: true
   2022-08-11 18:15:32 DEBUG MachineHandlerImpl:309 - MachineHandler check xml validity: Is good rotors count: true
@@ -262,7 +262,7 @@
   2022-08-11 18:47:36 DEBUG EnigmaMachine:70 - after io: N
   2022-08-11 18:47:36 DEBUG EnigmaMachine:72 - after plug: N
   2022-08-11 18:47:36 INFO  MachineHandlerImpl:290 - time it took to encrypt:PT31M48.098S
-  2022-08-11 18:52:41 DEBUG MachineHandlerImpl:45 - Logger Instatiated for : MachineHandlerImpl
+  2022-08-11 18:52:41 DEBUG MachineHandlerImpl:45 - Logger Instantiated for : MachineHandlerImpl
   2022-08-11 18:52:47 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./src/main/resources/machine-inventory-schema/ex1-sanity-paper-enigma.xml
   2022-08-11 18:52:47 DEBUG MachineHandlerImpl:308 - MachineHandler check xml validity: Is even ABC: true
   2022-08-11 18:52:47 DEBUG MachineHandlerImpl:309 - MachineHandler check xml validity: Is good rotors count: true
@@ -514,7 +514,7 @@
   2022-08-11 18:53:04 DEBUG EnigmaMachine:70 - after io: N
   2022-08-11 18:53:04 DEBUG EnigmaMachine:72 - after plug: N
   2022-08-11 18:53:04 INFO  MachineHandlerImpl:290 - time it took to encrypt:PT10.042S
-  2022-08-11 18:54:57 DEBUG MachineHandlerImpl:45 - Logger Instatiated for : MachineHandlerImpl
+  2022-08-11 18:54:57 DEBUG MachineHandlerImpl:45 - Logger Instantiated for : MachineHandlerImpl
   2022-08-11 18:55:03 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./src/main/resources/machine-inventory-schema/ex1-sanity-paper-enigma.xml
   2022-08-11 18:55:03 DEBUG MachineHandlerImpl:308 - MachineHandler check xml validity: Is even ABC: true
   2022-08-11 18:55:03 DEBUG MachineHandlerImpl:309 - MachineHandler check xml validity: Is good rotors count: true
@@ -766,7 +766,7 @@
   2022-08-11 18:55:04 DEBUG EnigmaMachine:70 - after io: N
   2022-08-11 18:55:04 DEBUG EnigmaMachine:72 - after plug: N
   2022-08-11 18:55:04 INFO  MachineHandlerImpl:290 - time it took to encrypt:PT0.506S
-  2022-08-11 18:55:56 DEBUG MachineHandlerImpl:45 - Logger Instatiated for : MachineHandlerImpl
+  2022-08-11 18:55:56 DEBUG MachineHandlerImpl:45 - Logger Instantiated for : MachineHandlerImpl
   2022-08-11 18:56:06 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./src/main/resources/machine-inventory-schema/ex1-sanity-paper-enigma.xml
   2022-08-11 18:56:06 DEBUG MachineHandlerImpl:308 - MachineHandler check xml validity: Is even ABC: true
   2022-08-11 18:56:06 DEBUG MachineHandlerImpl:309 - MachineHandler check xml validity: Is good rotors count: true
@@ -993,7 +993,7 @@
   2022-08-11 18:58:51 DEBUG EnigmaMachine:50 - after plug: N
   2022-08-11 18:58:51 DEBUG IOWheelImpl:44 - IOWHeel input:NOutput:13
   2022-08-11 18:58:51 DEBUG EnigmaMachine:52 - after io: 13
-  2022-08-11 18:59:59 DEBUG MachineHandlerImpl:45 - Logger Instatiated for : MachineHandlerImpl
+  2022-08-11 18:59:59 DEBUG MachineHandlerImpl:45 - Logger Instantiated for : MachineHandlerImpl
   2022-08-11 19:00:27 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./src/main/resources/machine-inventory-schema/ex1-sanity-paper-enigma.xml
   2022-08-11 19:00:27 DEBUG MachineHandlerImpl:308 - MachineHandler check xml validity: Is even ABC: true
   2022-08-11 19:00:27 DEBUG MachineHandlerImpl:309 - MachineHandler check xml validity: Is good rotors count: true
@@ -1245,7 +1245,7 @@
   2022-08-11 19:01:28 DEBUG EnigmaMachine:70 - after io: N
   2022-08-11 19:01:28 DEBUG EnigmaMachine:72 - after plug: N
   2022-08-11 19:01:28 INFO  MachineHandlerImpl:290 - time it took to encrypt:PT22.062S
-  2022-08-11 19:02:02 DEBUG MachineHandlerImpl:45 - Logger Instatiated for : MachineHandlerImpl
+  2022-08-11 19:02:02 DEBUG MachineHandlerImpl:45 - Logger Instantiated for : MachineHandlerImpl
   2022-08-11 19:02:02 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./src/main/resources/machine-inventory-schema/ex1-sanity-small.xml
   2022-08-11 19:02:02 DEBUG MachineHandlerImpl:308 - MachineHandler check xml validity: Is even ABC: true
   2022-08-11 19:02:02 DEBUG MachineHandlerImpl:309 - MachineHandler check xml validity: Is good rotors count: true
@@ -2037,7 +2037,7 @@
   2022-08-11 19:02:04 DEBUG EnigmaMachine:70 - after io: D
   2022-08-11 19:02:04 DEBUG EnigmaMachine:72 - after plug: D
   2022-08-11 19:02:04 INFO  MachineHandlerImpl:290 - time it took to encrypt:PT0.466S
-  2022-08-11 19:03:53 DEBUG MachineHandlerImpl:45 - Logger Instatiated for : MachineHandlerImpl
+  2022-08-11 19:03:53 DEBUG MachineHandlerImpl:45 - Logger Instantiated for : MachineHandlerImpl
   2022-08-11 19:03:54 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./src/main/resources/machine-inventory-schema/ex1-sanity-paper-enigma.xml
   2022-08-11 19:03:54 DEBUG MachineHandlerImpl:308 - MachineHandler check xml validity: Is even ABC: true
   2022-08-11 19:03:54 DEBUG MachineHandlerImpl:309 - MachineHandler check xml validity: Is good rotors count: true
@@ -2289,7 +2289,7 @@
   2022-08-11 19:03:55 DEBUG EnigmaMachine:70 - after io: N
   2022-08-11 19:03:55 DEBUG EnigmaMachine:72 - after plug: N
   2022-08-11 19:03:55 INFO  MachineHandlerImpl:290 - time it took to encrypt:PT0.544S
-  2022-08-11 19:17:45 DEBUG MachineHandlerImpl:45 - Logger Instatiated for : MachineHandlerImpl
+  2022-08-11 19:17:45 DEBUG MachineHandlerImpl:45 - Logger Instantiated for : MachineHandlerImpl
   2022-08-11 19:17:47 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./src/main/resources/machine-inventory-schema/ex1-sanity-paper-enigma.xml
   2022-08-11 19:17:47 DEBUG MachineHandlerImpl:308 - MachineHandler check xml validity: Is even ABC: true
   2022-08-11 19:17:47 DEBUG MachineHandlerImpl:309 - MachineHandler check xml validity: Is good rotors count: true
@@ -2541,8 +2541,8 @@
   2022-08-11 19:21:08 DEBUG EnigmaMachine:70 - after io: N
   2022-08-11 19:21:08 DEBUG EnigmaMachine:72 - after plug: N
   2022-08-11 19:21:08 INFO  MachineHandlerImpl:290 - time it took to encrypt:PT3M4.16S
-  2022-08-11 19:21:22 DEBUG MachineHandlerImpl:45 - Logger Instatiated for : MachineHandlerImpl
-  2022-08-11 19:46:25 DEBUG MachineHandlerImpl:45 - Logger Instatiated for : MachineHandlerImpl
+  2022-08-11 19:21:22 DEBUG MachineHandlerImpl:45 - Logger Instantiated for : MachineHandlerImpl
+  2022-08-11 19:46:25 DEBUG MachineHandlerImpl:45 - Logger Instantiated for : MachineHandlerImpl
   2022-08-11 19:46:25 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./src/main/resources/machine-inventory-schema/ex1-sanity-paper-enigma.xml
   2022-08-11 19:46:25 DEBUG MachineHandlerImpl:308 - MachineHandler check xml validity: Is even ABC: true
   2022-08-11 19:46:25 DEBUG MachineHandlerImpl:309 - MachineHandler check xml validity: Is good rotors count: true
@@ -2761,7 +2761,7 @@
   2022-08-11 19:54:04 DEBUG EnigmaMachine:64 - after reflector: 14:O
   2022-08-11 19:54:04 DEBUG EnigmaMachine:68 - after rotor (back): 10:K
   2022-08-11 19:54:04 DEBUG EnigmaMachine:68 - after rotor (back): 16:Q
-  2022-08-11 19:54:24 DEBUG MachineHandlerImpl:45 - Logger Instatiated for : MachineHandlerImpl
+  2022-08-11 19:54:24 DEBUG MachineHandlerImpl:45 - Logger Instantiated for : MachineHandlerImpl
   2022-08-11 19:54:26 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./src/main/resources/machine-inventory-schema/ex1-sanity-paper-enigma.xml
   2022-08-11 19:54:26 DEBUG MachineHandlerImpl:308 - MachineHandler check xml validity: Is even ABC: true
   2022-08-11 19:54:26 DEBUG MachineHandlerImpl:309 - MachineHandler check xml validity: Is good rotors count: true
@@ -3013,7 +3013,7 @@
   2022-08-11 19:54:55 DEBUG EnigmaMachine:71 - after io: N
   2022-08-11 19:54:55 DEBUG EnigmaMachine:73 - after plug: N
   2022-08-11 19:54:55 INFO  MachineHandlerImpl:290 - time it took to encrypt:PT12.167S
-  2022-08-11 19:55:19 DEBUG MachineHandlerImpl:45 - Logger Instatiated for : MachineHandlerImpl
+  2022-08-11 19:55:19 DEBUG MachineHandlerImpl:45 - Logger Instantiated for : MachineHandlerImpl
   2022-08-11 19:55:20 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./src/main/resources/machine-inventory-schema/ex1-sanity-paper-enigma.xml
   2022-08-11 19:55:20 DEBUG MachineHandlerImpl:308 - MachineHandler check xml validity: Is even ABC: true
   2022-08-11 19:55:20 DEBUG MachineHandlerImpl:309 - MachineHandler check xml validity: Is good rotors count: true
@@ -3265,7 +3265,7 @@
   2022-08-11 19:55:27 DEBUG EnigmaMachine:71 - after io: V
   2022-08-11 19:55:27 DEBUG EnigmaMachine:73 - after plug: V
   2022-08-11 19:55:27 INFO  MachineHandlerImpl:290 - time it took to encrypt:PT0.792S
-  2022-08-11 22:50:31 DEBUG MachineHandlerImpl:45 - Logger Instatiated for : MachineHandlerImpl
+  2022-08-11 22:50:31 DEBUG MachineHandlerImpl:45 - Logger Instantiated for : MachineHandlerImpl
   2022-08-11 22:50:31 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./src/main/resources/machine-inventory-schema/ex1-sanity-paper-enigma.xml
   2022-08-11 22:50:31 DEBUG MachineHandlerImpl:308 - MachineHandler check xml validity: Is even ABC: true
   2022-08-11 22:50:31 DEBUG MachineHandlerImpl:309 - MachineHandler check xml validity: Is good rotors count: true
@@ -3514,7 +3514,7 @@
   2022-08-11 22:57:20 DEBUG EnigmaMachine:73 - after plug: Y
   2022-08-11 22:57:20 DEBUG EnigmaMachine:48 - char: G
   2022-08-11 22:57:20 DEBUG EnigmaMachine:51 - after plug: G
-  2022-08-11 22:58:20 DEBUG MachineHandlerImpl:45 - Logger Instatiated for : MachineHandlerImpl
+  2022-08-11 22:58:20 DEBUG MachineHandlerImpl:45 - Logger Instantiated for : MachineHandlerImpl
   2022-08-11 22:58:21 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./src/main/resources/machine-inventory-schema/ex1-sanity-paper-enigma.xml
   2022-08-11 22:58:21 DEBUG MachineHandlerImpl:308 - MachineHandler check xml validity: Is even ABC: true
   2022-08-11 22:58:21 DEBUG MachineHandlerImpl:309 - MachineHandler check xml validity: Is good rotors count: true
@@ -3749,7 +3749,7 @@
   2022-08-11 23:02:27 DEBUG EnigmaMachine:68 - after rotor (back): 18:S
   2022-08-11 23:02:27 DEBUG EnigmaMachine:68 - after rotor (back): 15:P
   2022-08-11 23:02:27 DEBUG IOWheelImpl:57 - IOWHeel input:15Output:P
-  2022-08-11 23:14:27 DEBUG MachineHandlerImpl:45 - Logger Instatiated for : MachineHandlerImpl
+  2022-08-11 23:14:27 DEBUG MachineHandlerImpl:45 - Logger Instantiated for : MachineHandlerImpl
   2022-08-11 23:14:27 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./src/main/resources/machine-inventory-schema/ex1-sanity-paper-enigma.xml
   2022-08-11 23:14:27 DEBUG MachineHandlerImpl:308 - MachineHandler check xml validity: Is even ABC: true
   2022-08-11 23:14:27 DEBUG MachineHandlerImpl:309 - MachineHandler check xml validity: Is good rotors count: true
@@ -4001,7 +4001,7 @@
   2022-08-11 23:16:44 DEBUG EnigmaMachine:71 - after io: N
   2022-08-11 23:16:44 DEBUG EnigmaMachine:73 - after plug: N
   2022-08-11 23:16:44 INFO  MachineHandlerImpl:290 - time it took to encrypt:PT2M9.972S
-  2022-08-11 23:16:57 DEBUG MachineHandlerImpl:45 - Logger Instatiated for : MachineHandlerImpl
+  2022-08-11 23:16:57 DEBUG MachineHandlerImpl:45 - Logger Instantiated for : MachineHandlerImpl
   2022-08-11 23:16:58 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./src/main/resources/machine-inventory-schema/ex1-sanity-paper-enigma.xml
   2022-08-11 23:16:58 DEBUG MachineHandlerImpl:308 - MachineHandler check xml validity: Is even ABC: true
   2022-08-11 23:16:58 DEBUG MachineHandlerImpl:309 - MachineHandler check xml validity: Is good rotors count: true
@@ -4253,7 +4253,7 @@
   2022-08-11 23:29:22 DEBUG EnigmaMachine:71 - after io: N
   2022-08-11 23:29:22 DEBUG EnigmaMachine:73 - after plug: N
   2022-08-11 23:29:22 INFO  MachineHandlerImpl:290 - time it took to encrypt:PT3M7.317S
-  2022-08-11 23:29:33 DEBUG MachineHandlerImpl:45 - Logger Instatiated for : MachineHandlerImpl
+  2022-08-11 23:29:33 DEBUG MachineHandlerImpl:45 - Logger Instantiated for : MachineHandlerImpl
   2022-08-11 23:29:34 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./src/main/resources/machine-inventory-schema/ex1-sanity-paper-enigma.xml
   2022-08-11 23:29:34 DEBUG MachineHandlerImpl:308 - MachineHandler check xml validity: Is even ABC: true
   2022-08-11 23:29:34 DEBUG MachineHandlerImpl:309 - MachineHandler check xml validity: Is good rotors count: true
@@ -4485,7 +4485,7 @@
   2022-08-11 23:33:10 DEBUG EnigmaMachine:61 - after rotor: 2:C
   2022-08-11 23:33:10 DEBUG EnigmaMachine:64 - after reflector: 20:U
   2022-08-11 23:33:10 DEBUG EnigmaMachine:68 - after rotor (back): 11:L
-  2022-08-11 23:35:39 DEBUG MachineHandlerImpl:45 - Logger Instatiated for : MachineHandlerImpl
+  2022-08-11 23:35:39 DEBUG MachineHandlerImpl:45 - Logger Instantiated for : MachineHandlerImpl
   2022-08-11 23:35:39 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./src/main/resources/machine-inventory-schema/ex1-sanity-paper-enigma.xml
   2022-08-11 23:35:40 DEBUG MachineHandlerImpl:308 - MachineHandler check xml validity: Is even ABC: true
   2022-08-11 23:35:40 DEBUG MachineHandlerImpl:309 - MachineHandler check xml validity: Is good rotors count: true
@@ -4737,7 +4737,7 @@
   2022-08-11 23:41:40 DEBUG EnigmaMachine:71 - after io: N
   2022-08-11 23:41:40 DEBUG EnigmaMachine:73 - after plug: N
   2022-08-11 23:41:40 INFO  MachineHandlerImpl:290 - time it took to encrypt:PT0.225S
-  2022-08-11 23:41:55 DEBUG MachineHandlerImpl:45 - Logger Instatiated for : MachineHandlerImpl
+  2022-08-11 23:41:55 DEBUG MachineHandlerImpl:45 - Logger Instantiated for : MachineHandlerImpl
   2022-08-11 23:41:55 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./src/main/resources/machine-inventory-schema/ex1-sanity-paper-enigma.xml
   2022-08-11 23:41:55 DEBUG MachineHandlerImpl:308 - MachineHandler check xml validity: Is even ABC: true
   2022-08-11 23:41:55 DEBUG MachineHandlerImpl:309 - MachineHandler check xml validity: Is good rotors count: true
@@ -5130,7 +5130,7 @@
   2022-08-12 11:45:10 DEBUG EnigmaMachine:71 - after io: I
   2022-08-12 11:45:10 DEBUG EnigmaMachine:73 - after plug: I
   2022-08-12 11:45:10 INFO  MachineHandlerImpl:290 - time it took to encrypt:PT0.11S
-  2022-08-12 13:03:40 DEBUG MachineHandlerImpl:45 - Logger Instatiated for : MachineHandlerImpl
+  2022-08-12 13:03:40 DEBUG MachineHandlerImpl:45 - Logger Instantiated for : MachineHandlerImpl
   2022-08-12 13:03:41 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./src/main/resources/machine-inventory-schema/ex1-sanity-small.xml
   2022-08-12 13:03:41 DEBUG MachineHandlerImpl:296 - MachineHandler check xml validity: Is even ABC: true
   2022-08-12 13:03:41 DEBUG MachineHandlerImpl:297 - MachineHandler check xml validity: Is good rotors count: true
@@ -5414,7 +5414,7 @@
   2022-08-12 13:03:41 DEBUG EnigmaMachine:71 - after io: B
   2022-08-12 13:03:41 DEBUG EnigmaMachine:73 - after plug: B
   2022-08-12 13:03:41 INFO  MachineHandlerImpl:278 - time it took to encrypt:PT0.071S
-  2022-08-12 13:04:25 DEBUG MachineHandlerImpl:45 - Logger Instatiated for : MachineHandlerImpl
+  2022-08-12 13:04:25 DEBUG MachineHandlerImpl:45 - Logger Instantiated for : MachineHandlerImpl
   2022-08-12 13:04:26 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./src/main/resources/machine-inventory-schema/ex1-sanity-small.xml
   2022-08-12 13:04:26 DEBUG MachineHandlerImpl:296 - MachineHandler check xml validity: Is even ABC: true
   2022-08-12 13:04:26 DEBUG MachineHandlerImpl:297 - MachineHandler check xml validity: Is good rotors count: true
@@ -5695,8 +5695,8 @@
   2022-08-12 13:07:51 DEBUG EnigmaMachine:68 - after rotor (back): 4:E
   2022-08-12 13:07:51 DEBUG EnigmaMachine:68 - after rotor (back): 1:B
   2022-08-12 13:07:51 DEBUG IOWheelImpl:57 - IOWHeel input:1Output:B
-  2022-08-12 13:10:06 DEBUG MachineHandlerImpl:45 - Logger Instatiated for : MachineHandlerImpl
-  2022-08-12 13:10:49 DEBUG MachineHandlerImpl:45 - Logger Instatiated for : MachineHandlerImpl
+  2022-08-12 13:10:06 DEBUG MachineHandlerImpl:45 - Logger Instantiated for : MachineHandlerImpl
+  2022-08-12 13:10:49 DEBUG MachineHandlerImpl:45 - Logger Instantiated for : MachineHandlerImpl
   2022-08-12 13:10:50 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./src/main/resources/machine-inventory-schema/ex1-sanity-small.xml
   2022-08-12 13:10:50 DEBUG MachineHandlerImpl:296 - MachineHandler check xml validity: Is even ABC: true
   2022-08-12 13:10:50 DEBUG MachineHandlerImpl:297 - MachineHandler check xml validity: Is good rotors count: true
@@ -6488,7 +6488,7 @@
   2022-08-12 13:13:14 DEBUG EnigmaMachine:71 - after io: D
   2022-08-12 13:13:14 DEBUG EnigmaMachine:73 - after plug: D
   2022-08-12 13:13:14 INFO  MachineHandlerImpl:278 - time it took to encrypt:PT0.148S
-  2022-08-12 13:13:37 DEBUG MachineHandlerImpl:45 - Logger Instatiated for : MachineHandlerImpl
+  2022-08-12 13:13:37 DEBUG MachineHandlerImpl:45 - Logger Instantiated for : MachineHandlerImpl
   2022-08-12 13:13:37 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./src/main/resources/machine-inventory-schema/ex1-sanity-paper-enigma.xml
   2022-08-12 13:13:37 DEBUG MachineHandlerImpl:296 - MachineHandler check xml validity: Is even ABC: true
   2022-08-12 13:13:37 DEBUG MachineHandlerImpl:297 - MachineHandler check xml validity: Is good rotors count: true
@@ -6881,7 +6881,7 @@
   2022-08-12 13:13:38 DEBUG EnigmaMachine:71 - after io: I
   2022-08-12 13:13:38 DEBUG EnigmaMachine:73 - after plug: I
   2022-08-12 13:13:38 INFO  MachineHandlerImpl:278 - time it took to encrypt:PT0.128S
-  2022-08-12 13:14:05 DEBUG MachineHandlerImpl:45 - Logger Instatiated for : MachineHandlerImpl
+  2022-08-12 13:14:05 DEBUG MachineHandlerImpl:45 - Logger Instantiated for : MachineHandlerImpl
   2022-08-12 13:14:05 INFO  FileConfigurationHandler:37 - Generated a CTE Enigma Object from schema successfully from:./src/main/resources/machine-inventory-schema/ex1-sanity-paper-enigma.xml
   2022-08-12 13:14:05 DEBUG MachineHandlerImpl:296 - MachineHandler check xml validity: Is even ABC: true
   2022-08-12 13:14:05 DEBUG MachineHandlerImpl:297 - MachineHandler check xml validity: Is good rotors count: true
