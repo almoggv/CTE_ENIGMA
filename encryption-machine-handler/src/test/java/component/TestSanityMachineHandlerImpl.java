@@ -73,18 +73,14 @@ public class TestSanityMachineHandlerImpl {
 
     }
     @Test
-    public void testFromTali(){
+    public void testWierdABC(){
         try{
-//            String sanityBigXmlPath = "./src/main/resources/machine-inventory-schema/ex1-extra-test.xml";
             machineHandler.buildMachinePartsInventory("C:\\Users\\Eliya\\Documents\\java\\CTE\\CTE_ENIGMA\\enigma-machine\\src\\main\\resources\\machine-inventory-schema\\ex1-extra-test.xml");
-            //2,3,4,5,1
-            //1,5,4,3,2
+
             ReflectorsId refid = ReflectorsId.I;
             List<MappingPair<String,String>> plugBoard = new ArrayList<MappingPair<String,String>>();
             List<Integer> rotorsIds = Arrays.asList(1,5,4,3,2);
-//            String rotorsstartingPos = "DB* F";
 
-            //todo - check - the lower letter is prob
             String rotorsstartingPos = String.valueOf(machineHandler.verifyInputInAbcAndFix("f *bd").get());
 
             plugBoard.add(new MappingPair<String,String>("F","A"));
@@ -94,23 +90,18 @@ public class TestSanityMachineHandlerImpl {
             machineHandler.assembleMachine(refid, rotorsIds,rotorsstartingPos,plugBoard);
             System.out.println("Initial Machine State:" + machineHandler.getMachineState());
             List<String> inputs = Arrays.asList(new String[]{"aaaaabbaaaababababbababababbabab***********************************bababababbaaaaaaaadddddddddddddddddddd            ****************************FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbccccccccccccccccccccccccccccccccccccccccccDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDaaaaaaaaaaaaaaaaaaaaaabbababab", "defeca"/*, "ENIGMAMACHINEROCKS" , "WOWCANTBELIEVEITACTUALLYWORKS" , "JAVARULES"*/});
-//            List<String> outputs = Arrays.asList(new String[]{"APZTICDXRVMWQHBHU" , "DLTBBQVPQV" , "QMJIDORMMYQBJDVSBR", "CVRDIZWDAWQKUKBVHJILPKRNDXWIY" , "MRUHFRZZR"});
 
             for (int i = 0; i < inputs.size(); i++) {
                 String input = inputs.get(i);
-//                String wantedOutput = outputs.get(i);
                 machineHandler.resetToLastSetState();
-//                System.out.println("Machine State Before Encryption number:" + i + ":\n" + machineHandler.getMachineState());
                 String output = machineHandler.encrypt(input);
                 System.out.println(i + ". the output is: " + output  /* + wantedOutput.equals(output)*/);
-//                Assert.assertEquals(wantedOutput, output);
             }
         }
         catch(Exception e){
                 System.out.println(e.getMessage());
         }
     }
-
 
     @Test
     public void testBadReflectorsIdSchema(){

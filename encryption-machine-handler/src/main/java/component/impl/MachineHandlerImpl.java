@@ -10,6 +10,7 @@ import main.java.generictype.MappingPair;
 import main.java.handler.FileConfigurationHandler;
 import main.java.component.*;
 import main.java.enums.ReflectorsId;
+import main.java.handler.PropertiesService;
 import main.java.verifier.XmlSchemaVerifier;
 import main.java.verifier.impl.XmlSchemaVerifierImpl;
 import main.resources.generated.*;
@@ -37,14 +38,12 @@ public class MachineHandlerImpl implements MachineHandler {
     static {
 
         try {
-            URL log4JPropertyUrl = MachineHandlerImpl.class.getResource("/main/resources/log4j.properties");
-            String log4JPropertyFile = log4JPropertyUrl.getFile();
             Properties p = new Properties();
-            p.load(new FileInputStream(log4JPropertyFile));
+            p.load(FileConfigurationHandler.class.getResourceAsStream(PropertiesService.getLog4jPropertiesResourcePath()));
             PropertyConfigurator.configure(p);      //Dont forget here
             log.debug("Logger Instantiated for : " + MachineHandlerImpl.class.getSimpleName());
         } catch (IOException e) {
-            //TODO: ?
+            System.out.println("Failed to configure logger of -" + MachineHandlerImpl.class.getSimpleName() ) ;
         }
     }
 
@@ -276,6 +275,7 @@ public class MachineHandlerImpl implements MachineHandler {
     @Override
     public void resetToLastSetState() {
         this.encryptionMachine.setMachineState(initialMachineState);
+        log.info("resetToLastSetState: state reset to: " + initialMachineState);
     }
 
     @Override
@@ -297,6 +297,7 @@ public class MachineHandlerImpl implements MachineHandler {
         String encryptedOutput = encryptionMachine.encrypt(verifiedInput.get());
         long endEncryptionTime = System.nanoTime();
         long encryptionTime = endEncryptionTime - startEncryptionTime;
+        log.info("encrypted: " + verifiedInput.get() + " to: "+ encryptedOutput);
         log.info("time it took to encrypt:" + encryptionTime);
         addToHistory(initialMachineState,verifiedInput.get(),encryptedOutput,encryptionTime);
 
@@ -322,7 +323,7 @@ public class MachineHandlerImpl implements MachineHandler {
             log.error("Failed to verify and fix input, no IOWheel present yet in inventory");
             return Optional.empty();
         }
-        //todo - check why problem with test from tali
+
         String ABC = ioWheelInventory.getABC();
         if(ABC.chars().anyMatch(Character::isUpperCase) && ABC.chars().noneMatch(Character::isLowerCase)){
             input = input.toUpperCase();

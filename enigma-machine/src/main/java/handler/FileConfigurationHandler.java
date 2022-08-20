@@ -8,24 +8,19 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.net.URL;
 import java.util.Properties;
 
 public class FileConfigurationHandler {
     private static final Logger log = Logger.getLogger(FileConfigurationHandler.class);
 
     static {
-        URL log4JPropertyUrl = FileConfigurationHandler.class.getResource("/main/resources/log4j.properties");
-        String log4JPropertyFile = log4JPropertyUrl.getFile();
-        Properties p = new Properties();
         try {
-            p.load(new FileInputStream(log4JPropertyFile));
+            Properties p = new Properties();
+            p.load(FileConfigurationHandler.class.getResourceAsStream(PropertiesService.getLog4jPropertiesResourcePath()));
             PropertyConfigurator.configure(p);      //Dont forget here
             log.debug("Logger Instantiated for : " + FileConfigurationHandler.class.getSimpleName());
-        } catch (IOException e) {
-            //TODO: ?
+        } catch (Exception e) {
+            System.out.println("Failed to configure logger of -" + FileConfigurationHandler.class.getSimpleName() ) ;
         }
     }
 

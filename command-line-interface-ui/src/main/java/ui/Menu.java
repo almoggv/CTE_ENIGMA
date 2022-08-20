@@ -100,6 +100,7 @@ public class Menu {
                 return;
             }
             machineHandler.resetToLastSetState();
+            //todo
             out.println("Successfully set back to original state"+ lineSeparator() + buildMachineStateMsg(machineState.get(),inventoryInfo.get()));
         }
         catch (Exception e){
@@ -125,8 +126,6 @@ public class Menu {
 
     private static void showMachineDetails(){
         try{
-            //todo fix - prints <> with issues occasionally, : <2,3><FB><II>B|D> or ><II>>
-            // aviad changed how he wants to print : <45(2),27(5),94(20)><AO!><III><A|Z,D|E>
             Optional<InventoryInfo> inventoryInfo = machineHandler.getInventoryInfo();
             Optional<MachineState> machineState = machineHandler.getMachineState();
             if(!inventoryInfo.isPresent()){
@@ -485,7 +484,7 @@ public class Menu {
             }
             else {
                 try{
-                System.out.println("Please enter string to encrypt/decrypt:   ABC\"" + inventoryInfo.get().getABC() +"\"");
+                System.out.println("Please enter string to encrypt/decrypt "+ lineSeparator() +"From ABC: \"" + inventoryInfo.get().getABC() +"\"");
                 Scanner scanner = new Scanner(System.in);
                 String input = scanner.nextLine();
 

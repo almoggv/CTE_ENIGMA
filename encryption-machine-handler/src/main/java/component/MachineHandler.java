@@ -56,11 +56,5 @@ public interface MachineHandler extends Serializable {
 
     public Map<MachineState, List<EncryptionInfoHistory>> getMachineStatisticsHistory();
 
-//    //bonus
-//    public void loadStateFromFile(String absolutePath) throws FileNotFoundException, Exception;
-//
-//    //bonus
-//    public void saveStateToFile(String fileName) throws Exception;
-
     public Optional<String> verifyInputInAbcAndFix(String input);
  }

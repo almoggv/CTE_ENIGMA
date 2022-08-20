@@ -5,6 +5,8 @@ import main.java.component.Reflector;
 import main.java.enums.ReflectorsId;
 import main.java.generictype.MappingPair;
 import main.java.generictype.MappingPairListUtils;
+import main.java.handler.FileConfigurationHandler;
+import main.java.handler.PropertiesService;
 import main.resources.generated.CTEReflect;
 import main.resources.generated.CTEReflector;
 import org.apache.log4j.Logger;
@@ -26,14 +28,12 @@ public class ReflectorImpl implements Reflector {
 
     static {
         try {
-            URL log4JPropertyUrl = ReflectorImpl.class.getResource("/main/resources/log4j.properties");
-            String log4JPropertyFile = log4JPropertyUrl.getFile();
             Properties p = new Properties();
-            p.load(new FileInputStream(log4JPropertyFile));
+            p.load(FileConfigurationHandler.class.getResourceAsStream(PropertiesService.getLog4jPropertiesResourcePath()));
             PropertyConfigurator.configure(p);      //Dont forget here
             log.debug("Logger Instantiated for : " + ReflectorImpl.class.getSimpleName());
         } catch (IOException e) {
-            //TODO: ?
+            System.out.println("Failed to configure logger of -" + ReflectorImpl.class.getSimpleName() ) ;
         }
     }
 

@@ -1,0 +1,29 @@
+2022-08-20 15:13:48 INFO  FileConfigurationHandler:42 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\encryption-machine-handler\src\main\resources\machine-inventory-schema\ex1-sanity-paper-enigma.xml
+  2022-08-20 15:13:48 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-08-20 15:13:48 INFO  MachineHandlerImpl:269 - Machine handler: created inventory successfully
+  2022-08-20 15:14:13 ERROR EnigmaMachine:124 - Failed To get machine state, machine not assembled yet
+  2022-08-20 15:14:16 INFO  MachineHandlerImpl:186 - Machine Handler - assembled machine parts finished
+  2022-08-20 15:14:16 WARN  PlugBoardImpl:71 - Plugboard : Failed to connect endpoints -Ais already connected
+  2022-08-20 15:14:16 INFO  MachineHandlerImpl:208 - Machine Handler - initial state of machine state set
+  2022-08-20 15:37:43 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\encryption-machine-handler\src\main\resources\machine-inventory-schema\ex1-sanity-paper-enigma.xml
+  2022-08-20 15:37:43 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-08-20 15:37:43 INFO  MachineHandlerImpl:268 - Machine handler: created inventory successfully
+  2022-08-20 15:37:45 INFO  MachineHandlerImpl:185 - Machine Handler - assembled machine parts finished
+  2022-08-20 15:37:45 WARN  PlugBoardImpl:75 - Plugboard : Failed to connect endpoints -Wis already connected
+  2022-08-20 15:37:45 INFO  MachineHandlerImpl:207 - Machine Handler - initial state of machine state set
+  2022-08-20 15:37:58 INFO  MachineHandlerImpl:299 - time it took to encrypt:1769300
+  2022-08-20 15:38:06 INFO  MachineHandlerImpl:299 - time it took to encrypt:705800
+  2022-08-20 15:49:01 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\encryption-machine-handler\src\main\resources\machine-inventory-schema\ex1-sanity-paper-enigma.xml
+  2022-08-20 15:49:01 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-08-20 15:49:01 INFO  MachineHandlerImpl:268 - Machine handler: created inventory successfully
+  2022-08-20 15:49:03 INFO  MachineHandlerImpl:185 - Machine Handler - assembled machine parts finished
+  2022-08-20 15:49:03 INFO  MachineHandlerImpl:207 - Machine Handler - initial state of machine state set
+  2022-08-20 15:49:08 INFO  MachineHandlerImpl:300 - encrypted: HELLO to: VBPIV
+  2022-08-20 15:49:08 INFO  MachineHandlerImpl:301 - time it took to encrypt:1095300
+  2022-08-20 15:49:09 WARN  PlugBoardImpl:71 - Plugboard : Failed to connect endpoints -His already connected
+  2022-08-20 15:49:09 INFO  MachineHandlerImpl:278 - resetToLastSetState: state reset to: MachineState(reflectorId=I, rotorIds=[3, 1, 2], rotorsHeadsInitialValues=[A, B, N], plugMapping=[MappingPair(left=H, right=O), MappingPair(left=M, right=U)], notchDistancesFromHead=[2, 20, 11])
+  2022-08-20 15:49:11 INFO  MachineHandlerImpl:300 - encrypted: ASDDASD to: JLFNEUX
+  2022-08-20 15:49:11 INFO  MachineHandlerImpl:301 - time it took to encrypt:382700
+  2022-08-20 15:49:17 INFO  SerializationHandlerImpl:84 - saveMachineHandlerToFile: saved successfully to: ./hi
+  2022-08-20 15:49:21 ERROR SerializationHandlerImpl:38 - Failed to load state from file , path is not absolute
+  

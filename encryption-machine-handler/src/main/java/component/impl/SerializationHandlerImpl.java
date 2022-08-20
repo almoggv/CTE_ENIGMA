@@ -2,6 +2,8 @@ package main.java.component.impl;
 
 import main.java.component.MachineHandler;
 import main.java.component.SerializationHandler;
+import main.java.handler.FileConfigurationHandler;
+import main.java.handler.PropertiesService;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import sun.misc.ClassLoaderUtil;
@@ -17,14 +19,12 @@ public class SerializationHandlerImpl implements SerializationHandler {
 
     static {
         try {
-          URL log4JPropertyUrl = SerializationHandlerImpl.class.getResource("/main/resources/log4j.properties");
-          String log4JPropertyFile = log4JPropertyUrl.getFile();
-          Properties p = new Properties();
-          p.load(new FileInputStream(log4JPropertyFile));
-          PropertyConfigurator.configure(p);      //Dont forget here
-          log.debug("Logger Instantiated for : " + SerializationHandlerImpl.class.getSimpleName());
+            Properties p = new Properties();
+            p.load(FileConfigurationHandler.class.getResourceAsStream(PropertiesService.getLog4jPropertiesResourcePath()));
+            PropertyConfigurator.configure(p);      //Dont forget here
+            log.debug("Logger Instantiated for : " + SerializationHandlerImpl.class.getSimpleName());
         } catch (IOException e) {
-            //TODO: ?
+            System.out.println("Failed to configure logger of -" + SerializationHandlerImpl.class.getSimpleName() ) ;
         }
     }
 
@@ -50,6 +50,7 @@ public class SerializationHandlerImpl implements SerializationHandler {
             objectInputStream = new ObjectInputStream(fileInputStream);
             resultHandler = (MachineHandler)objectInputStream.readObject();
             objectInputStream.close();
+            log.info("loadMachineHandlerFromFile: loaded successfully from: " + absolutePath);
             return resultHandler;
         }
         catch (Exception e){
@@ -64,7 +65,7 @@ public class SerializationHandlerImpl implements SerializationHandler {
             fileName = "./"+fileName;
         }
         if(!machineHandlerToSave.getInventoryInfo().isPresent()){
-            log.error("Failed to save state to file , no schema lodaded yet");
+            log.error("Failed to save state to file , no schema loaded yet");
             throw new Exception("Cannot save to file, no schema loaded yet");
         }
         if(!machineHandlerToSave.getMachineState().isPresent()){
@@ -80,6 +81,7 @@ public class SerializationHandlerImpl implements SerializationHandler {
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
             objectOutputStream.writeObject(machineHandlerToSave);
             objectOutputStream.close();
+            log.info("saveMachineHandlerToFile: saved successfully to: " + fileName);
         }
         catch(Exception e){
             log.error("Failed to save state to file, something went wrong :" + e.getMessage());

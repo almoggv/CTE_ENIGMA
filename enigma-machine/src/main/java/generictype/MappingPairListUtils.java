@@ -21,7 +21,6 @@ public class MappingPairListUtils <T1,T2>{
         initLeftAndRightCollections(sourceCollection,leftList,rightList);
         int index = rightList.indexOf(right);
         if(index < 0){
-            //TODO: log here
             return null;
         }
         return sourceCollection.get(index);

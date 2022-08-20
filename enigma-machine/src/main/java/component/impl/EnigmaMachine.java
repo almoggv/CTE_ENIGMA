@@ -3,6 +3,8 @@ package main.java.component.impl;
 import main.java.component.*;
 import main.java.dto.MachineState;
 import main.java.generictype.MappingPair;
+import main.java.handler.FileConfigurationHandler;
+import main.java.handler.PropertiesService;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
@@ -20,14 +22,12 @@ public class EnigmaMachine implements EncryptionMachine {
 
     static {
         try {
-            URL log4JPropertyUrl = EnigmaMachine.class.getResource("/main/resources/log4j.properties");
-            String log4JPropertyFile = log4JPropertyUrl.getFile();
             Properties p = new Properties();
-            p.load(new FileInputStream(log4JPropertyFile));
+            p.load(FileConfigurationHandler.class.getResourceAsStream(PropertiesService.getLog4jPropertiesResourcePath()));
             PropertyConfigurator.configure(p);      //Dont forget here
             log.debug("Logger Instantiated for : " + EnigmaMachine.class.getSimpleName());
         } catch (IOException e) {
-            //TODO: ?
+            System.out.println("Failed to configure logger of -" + EnigmaMachine.class.getSimpleName() ) ;
         }
     }
 
