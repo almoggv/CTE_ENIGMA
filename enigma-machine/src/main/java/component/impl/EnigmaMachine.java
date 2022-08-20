@@ -8,9 +8,7 @@ import main.java.handler.PropertiesService;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.net.URL;
 import java.util.*;
 
 public class EnigmaMachine implements EncryptionMachine {
@@ -33,8 +31,7 @@ public class EnigmaMachine implements EncryptionMachine {
 
     @Override
     public String encrypt(String input) {
-        String result = new String();
-        List<Character> rawResult = new ArrayList<>();
+        String result = "";
         for (int i = 0; i < input.length(); i++) {
             char encryptedInput = encryptSingle(input.charAt(i));
             result = result.concat(String.valueOf(encryptedInput));
@@ -125,7 +122,6 @@ public class EnigmaMachine implements EncryptionMachine {
             return Optional.empty();
         }
         List<Integer> rotorIds = new ArrayList<>();
-        List<Integer> rotorNotchLocations = new ArrayList<>();
         List<String> rotorsHeadsInitialValues = new ArrayList<>();
         List<MappingPair<String,String>> minimalPlugMapping = this.plugBoard.getCurrentMapping();
         List<Integer> notchDistances = new ArrayList<>();
@@ -133,7 +129,6 @@ public class EnigmaMachine implements EncryptionMachine {
         int valueInHead;
         for (Rotor rotor : this.rotors) {
             rotorIds.add(rotor.getId());
-//            rotorNotchLocations.add(rotor.getNotchLocation());
             notchDistances.add(rotor.howCloseNotchToHead());
             valueInHead = rotor.getValueInHead();
             numberAsLetter = ioWheel.getABC().substring(valueInHead,valueInHead+1);
@@ -157,6 +152,7 @@ public class EnigmaMachine implements EncryptionMachine {
             log.warn("setting machine state - No plug board mapping to set");
         }
         else{
+            this.plugBoard.clearAllPlugs();
             this.plugBoard.connectMultiple(machineState.getPlugMapping());
         }
         //Setting - rotors starting positions
