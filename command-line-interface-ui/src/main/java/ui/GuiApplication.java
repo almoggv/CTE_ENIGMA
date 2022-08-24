@@ -11,14 +11,27 @@ import java.net.URL;
 import java.util.Properties;
 
 public class GuiApplication extends Application {
+    private Scene bruteForceScene;
+    private Scene machineScene;
+    private Scene encryptScene;
     @Override
     public void start(Stage primaryStage) throws Exception {
-        URL resource = GuiApplication.class.getResource(PropertiesService.getPrimarySceneFxmlPath());
-        primaryStage.setTitle("CTE");
-        System.out.println("here IN START METHOD:"+ resource);
-        Parent load = FXMLLoader.load(resource);
-        Scene scene = new Scene(load, 600, 400);
-        primaryStage.setScene(scene);
+        URL machineResource = GuiApplication.class.getResource(PropertiesService.getPrimarySceneFxmlPath());
+        URL bruteForceResource = GuiApplication.class.getResource(PropertiesService.getPrimarySceneFxmlPath());
+        URL encryptResource = GuiApplication.class.getResource(PropertiesService.getPrimarySceneFxmlPath());
+
+        primaryStage.setTitle("CTE Machine");
+        System.out.println("here IN START METHOD:"+ machineResource);
+
+        Parent machineSceneParent = FXMLLoader.load(machineResource);
+        Parent bruteForceSceneParent = FXMLLoader.load(bruteForceResource);
+        Parent encryptSceneParent = FXMLLoader.load(encryptResource);
+
+        machineScene = new Scene(machineSceneParent);
+        bruteForceScene = new Scene(bruteForceSceneParent);
+        encryptScene = new Scene(encryptSceneParent);
+
+        primaryStage.setScene(machineScene);
         primaryStage.show();
     }
 
