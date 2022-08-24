@@ -10,12 +10,11 @@ import main.java.enums.ReflectorsId;
 import main.java.generictype.MappingPair;
 import src.main.java.enums.MenuOptions;
 
-import java.io.File;
 import java.util.*;
 
 import static java.lang.System.*;
 
-public class Menu {
+public class CLIMenu {
 
     private static MachineHandler machineHandler = new MachineHandlerImpl();
     private static SerializationHandler serializationHandler = new SerializationHandlerImpl();
@@ -37,7 +36,7 @@ public class Menu {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to C.T.E!");
         int choice = -1;
-        String menuOptions = Menu.buildMainMenu();
+        String menuOptions = CLIMenu.buildMainMenu();
         while (choice != MenuOptions.Exit.getId()){
             System.out.println(lineSeparator() + menuOptions);
             try{
@@ -143,7 +142,7 @@ public class Menu {
             //2.2
             String reflectorsAmountMsg = "Number of available reflectors: " + inventoryInfo.get().getNumOfAvailableReflectors();
             //2.3
-            String numberOfEncryptedMessagesMsg = "Number of messages encrypted: " + Menu.countNumberOfMessagesInHistory();
+            String numberOfEncryptedMessagesMsg = "Number of messages encrypted: " + CLIMenu.countNumberOfMessagesInHistory();
             //2.4
             Optional<MachineState> originalMachineState = Optional.of(machineHandler.getInitialMachineState().get());
             String originalMachineStateMsgHeader = "Original Machine State: ";
@@ -164,13 +163,13 @@ public class Menu {
 
     private static String buildMachineStateMsg(MachineState machineState,InventoryInfo inventoryInfo){
         String resultMsg;
-        String rotorsInMachineMsg = Menu.buildRotorsInMachineMsg(machineState,inventoryInfo);
+        String rotorsInMachineMsg = CLIMenu.buildRotorsInMachineMsg(machineState,inventoryInfo);
         //2.5.b
-        String rotorsHeadLocationInMachineMsg = Menu.buildRotorHeadLocationInMachineMsg(machineState);
+        String rotorsHeadLocationInMachineMsg = CLIMenu.buildRotorHeadLocationInMachineMsg(machineState);
         //2.5.c
         String reflectorIdMsg = "<" + machineState.getReflectorId().getName() + ">";
         //2.5.d
-        String plugsMappedMsg = Menu.buildPlugMappingInMachineMsg(machineState);
+        String plugsMappedMsg = CLIMenu.buildPlugMappingInMachineMsg(machineState);
 
         resultMsg = rotorsInMachineMsg+rotorsHeadLocationInMachineMsg+reflectorIdMsg+plugsMappedMsg;
         return resultMsg;
@@ -518,10 +517,10 @@ public class Menu {
                 String machineStateMsg = "";
                 for (MachineState machineStateHistory : history.keySet()) {
                     out.println(lineSeparator() + "Machine state:");
-                    String rotorsInMachineMsg = Menu.buildRotorsInMachineMsg(machineStateHistory,inventoryInfo.get());
-                    String rotorsHeadLocationInMachineMsg = Menu.buildRotorHeadLocationInMachineMsg(machineStateHistory);
+                    String rotorsInMachineMsg = CLIMenu.buildRotorsInMachineMsg(machineStateHistory,inventoryInfo.get());
+                    String rotorsHeadLocationInMachineMsg = CLIMenu.buildRotorHeadLocationInMachineMsg(machineStateHistory);
                     String reflectorIdMsg = "<" + machineStateHistory.getReflectorId().getName() + ">";
-                    String plugsMappedMsg = Menu.buildPlugMappingInMachineMsg(machineStateHistory);
+                    String plugsMappedMsg = CLIMenu.buildPlugMappingInMachineMsg(machineStateHistory);
 
                     machineStateMsg = rotorsInMachineMsg + rotorsHeadLocationInMachineMsg + reflectorIdMsg + plugsMappedMsg;
                     out.println(machineStateMsg);

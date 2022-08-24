@@ -6,4 +6,6 @@ import lombok.Getter;
 @EqualsAndHashCode
 public class PropertiesService {
     @Getter private static final String log4jPropertiesResourcePath = "/main/resources/log4j.properties";
+    @Getter private static final String primarySceneFxmlPath = "/src/main/resources/scenebuilder/cte-primary-stage.fxml";
 }
+
