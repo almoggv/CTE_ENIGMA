@@ -11,20 +11,20 @@
 <?import javafx.scene.layout.RowConstraints?>
 
 
-<ScrollPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.main.java.controller.HeaderController">
+<ScrollPane fitToHeight="true" fitToWidth="true" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.main.java.controller.HeaderController">
    <content>
-      <GridPane alignment="BOTTOM_LEFT" gridLinesVisible="true" prefWidth="595.0">
+      <GridPane alignment="BOTTOM_LEFT" gridLinesVisible="true" minHeight="100.0" minWidth="600.0">
          <columnConstraints>
-            <ColumnConstraints fillWidth="false" hgrow="ALWAYS" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="575.3333129882812" minWidth="10.0" prefWidth="574.6666564941406" />
-            <ColumnConstraints fillWidth="false" hgrow="ALWAYS" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="575.3333129882812" minWidth="50.0" prefWidth="574.6666564941406" />
+            <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="10.0" />
          </columnConstraints>
          <rowConstraints>
             <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" vgrow="NEVER" />
             <RowConstraints minHeight="10.0" vgrow="NEVER" />
             <RowConstraints minHeight="10.0" vgrow="NEVER" />
             <RowConstraints maxHeight="42.333343505859375" minHeight="10.0" prefHeight="41.66668701171875" vgrow="NEVER" />
-            <RowConstraints maxHeight="21.333343505859375" minHeight="4.666656494140625" prefHeight="6.33331298828125" vgrow="ALWAYS" />
+            <RowConstraints minHeight="5.0" prefHeight="5.0" vgrow="ALWAYS" />
          </rowConstraints>
          <children>
             <Label text="Enigma Machine" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
