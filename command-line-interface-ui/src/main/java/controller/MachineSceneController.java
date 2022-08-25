@@ -34,12 +34,12 @@ public class MachineSceneController {
     private Button bruteForceSceneButton;
 
     public void onBruteForceSceneButtonClickedListener(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(PropertiesService.getBruteForceSceneFxmlPath()));
-        stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
-        System.out.println(stage.getScene().getProperties().keySet());
-        System.out.println(stage.getScene().getProperties().values());
-        bruteForceScene = new Scene(root);
-        stage.setScene(bruteForceScene);
-        stage.show();
+//        Parent root = FXMLLoader.load(getClass().getResource(PropertiesService.getBruteForceSceneFxmlPath()));
+//        stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
+//        System.out.println(stage.getScene().getProperties().keySet());
+//        System.out.println(stage.getScene().getProperties().values());
+//        bruteForceScene = new Scene(root);
+//        stage.setScene(bruteForceScene);
+//        stage.show();
     }
 }

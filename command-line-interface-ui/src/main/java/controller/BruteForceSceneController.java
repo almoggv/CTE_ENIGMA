@@ -16,10 +16,10 @@ public class BruteForceSceneController {
         private Scene scene;
         private Parent root;
     public void onMachineSceneButtonClickedListener(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
-        root = FXMLLoader.load(getClass().getResource(PropertiesService.getMachineSceneFxmlPath()));
+/*        root = FXMLLoader.load(getClass().getResource(PropertiesService.getMachineSceneFxmlPath()));
         stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
-        stage.show();
+        stage.show();*/
     }
 }

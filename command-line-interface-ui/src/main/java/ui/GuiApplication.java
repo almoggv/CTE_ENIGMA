@@ -16,20 +16,13 @@ public class GuiApplication extends Application {
     private Scene encryptScene;
     @Override
     public void start(Stage primaryStage) throws Exception {
-        URL machineResource = GuiApplication.class.getResource(PropertiesService.getPrimarySceneFxmlPath());
-        URL bruteForceResource = GuiApplication.class.getResource(PropertiesService.getPrimarySceneFxmlPath());
-        URL encryptResource = GuiApplication.class.getResource(PropertiesService.getPrimarySceneFxmlPath());
+        URL appResource = GuiApplication.class.getResource(PropertiesService.getPrimarySceneFxmlPath());
 
         primaryStage.setTitle("CTE Machine");
-        System.out.println("here IN START METHOD:"+ machineResource);
+        System.out.println("here IN START METHOD:"+ appResource);
 
-        Parent machineSceneParent = FXMLLoader.load(machineResource);
-        Parent bruteForceSceneParent = FXMLLoader.load(bruteForceResource);
-        Parent encryptSceneParent = FXMLLoader.load(encryptResource);
-
+        Parent machineSceneParent = FXMLLoader.load(appResource);
         machineScene = new Scene(machineSceneParent);
-        bruteForceScene = new Scene(bruteForceSceneParent);
-        encryptScene = new Scene(encryptSceneParent);
 
         primaryStage.setScene(machineScene);
         primaryStage.show();
