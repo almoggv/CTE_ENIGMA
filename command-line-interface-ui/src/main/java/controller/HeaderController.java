@@ -1,8 +1,8 @@
 package src.main.java.controller;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 
 public class HeaderController {
 
@@ -10,24 +10,15 @@ public class HeaderController {
     private Button browseFilesButton;
 
     @FXML
-    private TextField browseFileTextField;
+    private TextField browseFilesText;
 
     @FXML
-    private Button machineSceneButton;
+    private Button MachineSceneNavButton;
 
     @FXML
-    private Button encryptSceneButton;
+    private Button encryptSceneNavButton;
 
     @FXML
-    private Button bruteForceSceneButton;
-
-    @FXML
-    void onBruteForceSceneButtonClickedListener(MouseEvent event) {
-
-    }
-    @FXML
-    void onBrowseButtonClickedListener(MouseEvent event) {
-
-    }
+    private Button bruteForceSceneNavButton;
 
 }
