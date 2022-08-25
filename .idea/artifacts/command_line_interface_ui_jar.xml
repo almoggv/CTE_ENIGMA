@@ -2,7 +2,7 @@
   <artifact type="jar" name="command-line-interface-ui:jar">
     <output-path>$PROJECT_DIR$/jars</output-path>
     <root id="archive" name="command-line-interface-ui.jar">
-      <element id="module-output" name="command-line-interface-ui" />
+      <element id="module-output" name="user-interface" />
       <element id="module-output" name="encryption-machine-handler" />
       <element id="module-output" name="enigma-machine" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/junit/junit/4.13.1/junit-4.13.1.jar" path-in-jar="/" />

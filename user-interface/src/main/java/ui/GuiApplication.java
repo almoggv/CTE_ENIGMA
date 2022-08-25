@@ -3,6 +3,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import main.java.handler.FileConfigurationHandler;
 import src.main.java.handler.PropertiesService;
@@ -30,5 +31,10 @@ public class GuiApplication extends Application {
     public static void main(String[] args) {
         launch(GuiApplication.class);
     }
+
+    private static Pane createMachineScenePane(){
+        return null;
+    }
+
 
 }
