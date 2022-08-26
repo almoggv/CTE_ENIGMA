@@ -8,6 +8,7 @@ public class PropertiesService {
     @Getter private static final String log4jPropertiesResourcePath = "/main/resources/log4j.properties";
     @Getter private static final String headerFxmlPath = "/src/main/resources/subcomponents/headerGrid.fxml";
     @Getter private static final String appFxmlPath = "/src/main/resources/app.fxml";
-    @Getter private static final String primarySceneFxmlPath = headerFxmlPath;
+    @Getter private static final String appAndMachineConfFxmlPath = "/src/main/resources/appWithMachineConf.fxml";
+    @Getter private static final String primarySceneFxmlPath = appAndMachineConfFxmlPath;
 }
 
