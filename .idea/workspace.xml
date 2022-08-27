@@ -12,25 +12,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6467e2d7-ff2a-4abb-a198-685a0fcd06aa" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/MachineConfigurationController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/SetMachineConfigurationController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/setMachineConfigurationSketch.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/appWithMachineConfController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/command-line-interface-ui/src/main/java/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/command-line-interface-ui/src/main/java/controller/AppController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/command-line-interface-ui/src/main/java/controller/BruteForceSceneController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/command-line-interface-ui/src/main/java/controller/HeaderController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/command-line-interface-ui/src/main/java/controller/MachineSceneController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/command-line-interface-ui/src/main/java/enums/MenuOptions.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/command-line-interface-ui/src/main/java/handler/PropertiesService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/command-line-interface-ui/src/main/java/ui/CLIMenu$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/command-line-interface-ui/src/main/java/ui/CLIMenu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/command-line-interface-ui/src/main/java/ui/GuiApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/HeaderController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/HeaderController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/handler/PropertiesService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/handler/PropertiesService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/ui/GuiApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/ui/GuiApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/appWithMachineConf.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/appWithMachineConf.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/subcomponents/headerGrid.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/subcomponents/headerGrid.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/AppController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/HeaderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/HeaderController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/handler/PropertiesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/handler/PropertiesService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/ui/GuiApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/ui/GuiApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/resources/appWithMachineConf.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/resources/appWithMachineConf.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/headerGrid.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/headerGrid.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/machineConfiguration.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/machineConfiguration.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -295,24 +289,34 @@
           <option name="timeStamp" value="225" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/user-interface/src/main/java/ui/GuiApplication.java</url>
-          <line>16</line>
-          <option name="timeStamp" value="237" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/user-interface/src/main/java/ui/GuiApplication.java</url>
-          <line>24</line>
-          <option name="timeStamp" value="238" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/user-interface/src/main/java/controller/SetMachineConfigurationController.java</url>
           <line>52</line>
           <option name="timeStamp" value="239" />
         </line-breakpoint>
-        <breakpoint enabled="true" type="java-exception">
-          <properties class="java.lang.NullPointerException" package="java.lang" />
-          <option name="timeStamp" value="229" />
-        </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/user-interface/src/main/java/ui/GuiApplication.java</url>
+          <line>23</line>
+          <option name="timeStamp" value="241" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/user-interface/src/main/java/ui/GuiApplication.java</url>
+          <line>22</line>
+          <option name="timeStamp" value="242" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/user-interface/src/main/java/controller/appWithMachineConfController.java</url>
+          <line>31</line>
+          <option name="timeStamp" value="243" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/user-interface/src/main/java/controller/MachineConfigurationController.java</url>
+          <line>24</line>
+          <properties class="src.main.java.controller.MachineConfigurationController" method="initialize">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="240" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>

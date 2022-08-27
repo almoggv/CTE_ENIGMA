@@ -12,6 +12,7 @@ import java.net.URL;
 import java.util.Properties;
 
 public class GuiApplication extends Application {
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         URL appResource = GuiApplication.class.getResource(PropertiesService.getPrimarySceneFxmlPath());

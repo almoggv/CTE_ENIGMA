@@ -33,4 +33,10 @@ public class HeaderController {
 //            mainStage.display(selectedFile);
 //        }
     }
+
+
+    @FXML
+    void onMachineSceneNavButtonClicked(MouseEvent event) {
+
+    }
 }
