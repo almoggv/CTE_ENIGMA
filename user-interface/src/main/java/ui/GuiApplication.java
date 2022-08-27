@@ -37,6 +37,7 @@ public class GuiApplication extends Application {
         GridPane headerComponent = fxmlLoader.load(headerResource.openStream());
         HeaderController headerController = fxmlLoader.getController();
 
+
         //Connect header to top in primary
         AnchorPane topPaneInPrimary = (AnchorPane) primaryScenePane.getTop();
         ScrollPane topPaneInnerScrollPane = (ScrollPane) topPaneInPrimary.getChildren().get(0);

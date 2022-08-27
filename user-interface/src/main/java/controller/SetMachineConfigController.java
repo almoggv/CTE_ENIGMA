@@ -15,7 +15,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 
-public class SetMachineStateController {
+public class SetMachineConfigController {
 
     @Getter @Setter
     @FXML MachinePageController parentController;

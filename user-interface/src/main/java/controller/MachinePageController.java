@@ -17,7 +17,7 @@ public class MachinePageController implements Initializable {
     @Setter @Getter
     @FXML private AppController parentController;
     @Setter @Getter
-    @FXML private SetMachineStateController setMachineStateController;
+    @FXML private SetMachineConfigController setMachineConfigController;
     @Setter @Getter
     @FXML private CurrMachineConfigController currMachineConfigController;
 
@@ -30,8 +30,8 @@ public class MachinePageController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        if(setMachineStateController != null){
-            setMachineStateController.setParentController(this);
+        if(setMachineConfigController != null){
+            setMachineConfigController.setParentController(this);
         }
         if(currMachineConfigController != null){
             currMachineConfigController.setParentController(this);
