@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane alignment="BOTTOM_LEFT" minHeight="100.0" minWidth="600.0" prefHeight="120.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.main.java.controller.HeaderController">
+<GridPane fx:id="headerRootPane" alignment="BOTTOM_LEFT" minHeight="100.0" minWidth="600.0" prefHeight="120.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.main.java.controller.HeaderController">
    <columnConstraints>
       <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="10.0" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="575.3333129882812" minWidth="50.0" prefWidth="574.6666564941406" />
@@ -23,8 +23,8 @@
       <RowConstraints maxHeight="17.66668701171875" minHeight="5.0" prefHeight="17.66668701171875" vgrow="ALWAYS" />
    </rowConstraints>
    <children>
-      <Label text="Enigma Machine" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-      <HBox alignment="CENTER" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <Label fx:id="titleLabel" text="Enigma Machine" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+      <HBox fx:id="browseFilesHBox" alignment="CENTER" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <children>
             <Button fx:id="browseFilesButton" mnemonicParsing="false" onMouseClicked="#onBrowseFilesButtonClicked" text="Browse Files" />
             <TextField fx:id="browseFilesText" alignment="CENTER" HBox.hgrow="ALWAYS" />
@@ -33,9 +33,9 @@
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>
       </HBox>
-      <HBox alignment="CENTER" spacing="40.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+      <HBox fx:id="componentNavButtonsHBox" alignment="CENTER" spacing="40.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
          <children>
-            <Button fx:id="MachineSceneNavButton" mnemonicParsing="false" text="Machine" />
+            <Button fx:id="machineSceneNavButton" mnemonicParsing="false" text="Machine" />
             <Button fx:id="encryptSceneNavButton" mnemonicParsing="false" text="Encrypt/Decrypt" />
             <Button fx:id="bruteForceSceneNavButton" mnemonicParsing="false" text="Brute Force" />
          </children>
