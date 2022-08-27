@@ -1,5 +1,6 @@
 package src.main.java.controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -30,15 +31,15 @@ public class HeaderController implements Initializable {
     @FXML private Button encryptSceneNavButton;
     @FXML private Button bruteForceSceneNavButton;
 
-//    public void setParentController(AppController parentController){
-//        this.parentController = parentController;
-//    }
-
     @FXML
-    void onBrowseFilesButtonClicked(MouseEvent event) {
-        System.out.println("Hello");
+    void onBrowseFilesButtonClicked(ActionEvent event) {
+
     }
 
+    @FXML
+    void onChangeSceneToMachineButtonClick(ActionEvent event) {
+        parentController.changeSceneToMachine();
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

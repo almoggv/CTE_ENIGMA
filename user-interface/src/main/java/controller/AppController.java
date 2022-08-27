@@ -2,6 +2,7 @@ package src.main.java.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import lombok.Getter;
@@ -34,5 +35,10 @@ public class AppController implements Initializable {
         if(machinePageController!=null){
             machinePageController.setParentController(this);
         }
+    }
+
+    public void changeSceneToMachine(){
+        Parent rootComponent = machinePageController.getRootComponent();
+        bodyWrapScrollPane.setContent(rootComponent);
     }
 }
