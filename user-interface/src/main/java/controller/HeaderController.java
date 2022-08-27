@@ -41,6 +41,11 @@ public class HeaderController implements Initializable {
         parentController.changeSceneToMachine();
     }
 
+    @FXML
+    void onChangeSceneToEncryptButtonClick(ActionEvent event) {
+        parentController.changeSceneToEncrypt();
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 

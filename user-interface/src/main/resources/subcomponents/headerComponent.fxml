@@ -35,8 +35,8 @@
       </HBox>
       <HBox fx:id="componentNavButtonsHBox" alignment="CENTER" spacing="40.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
          <children>
-            <Button fx:id="machineSceneNavButton" mnemonicParsing="false" text="Machine" />
-            <Button fx:id="encryptSceneNavButton" mnemonicParsing="false" text="Encrypt/Decrypt" />
+            <Button fx:id="machineSceneNavButton" mnemonicParsing="false" onAction="#onChangeSceneToMachineButtonClick" text="Machine" />
+            <Button fx:id="encryptSceneNavButton" mnemonicParsing="false" onAction="#onChangeSceneToEncryptButtonClick" text="Encrypt/Decrypt" />
             <Button fx:id="bruteForceSceneNavButton" mnemonicParsing="false" text="Brute Force" />
          </children>
          <padding>

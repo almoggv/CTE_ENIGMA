@@ -25,6 +25,8 @@ public class GuiApplication extends Application {
     private HeaderController headerController;
     private GridPane machinePageComponent;
     private MachinePageController machinePageController;
+    private GridPane encryptPageComponent;
+    private EncryptPageController encryptPageController;
 
     public static void main(String[] args) {
         launch(GuiApplication.class);
@@ -49,22 +51,30 @@ public class GuiApplication extends Application {
         headerController = fxmlLoader.getController();
         //Load MachinePage
         URL machinePageResource = GuiApplication.class.getResource(PropertiesService.getMachinePageTemplateFxmlPath());
-        System.out.println("found Url of header component:"+ machinePageResource);
+        System.out.println("found Url of machine component:"+ machinePageResource);
         fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(machinePageResource);
         machinePageComponent = fxmlLoader.load(machinePageResource.openStream());
         machinePageController = fxmlLoader.getController();
         initializeMachinePage();
-        /////////////////////
+        //Load Encrypt Page
+        URL encryptPageResource = GuiApplication.class.getResource(PropertiesService.getEncryptPageTemplateFxmlPath());
+        System.out.println("found Url of encrypt component:"+ encryptPageResource);
+        fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(encryptPageResource);
+        encryptPageComponent = fxmlLoader.load(encryptPageResource.openStream());
+        encryptPageController = fxmlLoader.getController();
+        //Connect header to top in primary
+        connectHeaderComponentToRootComponent();
+        ///////////////////// - connecting machine page
         AnchorPane topPaneInPrimary = (AnchorPane) primaryScenePane.getCenter();
         ScrollPane topPaneInnerScrollPane = (ScrollPane) topPaneInPrimary.getChildren().get(0);
         topPaneInnerScrollPane.setContent(machinePageComponent);
         /////////////////////
-        //Connect header to top in primary
-        connectHeaderComponentToRootComponent();
         //Connect Controllers
         appController.setHeaderController(headerController);
         appController.setMachinePageController(machinePageController);
+        appController.setEncryptPageController(encryptPageController);
 
         Scene primaryScene = new Scene(primaryScenePane);
         primaryStage.setTitle("CTE Machine");

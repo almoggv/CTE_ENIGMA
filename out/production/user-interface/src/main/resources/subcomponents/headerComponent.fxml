@@ -26,8 +26,8 @@
       <Label fx:id="titleLabel" text="Enigma Machine" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
       <HBox fx:id="browseFilesHBox" alignment="CENTER" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <children>
-            <Button fx:id="browseFilesButton" mnemonicParsing="false" onMouseClicked="#onBrowseFilesButtonClicked" text="Browse Files" />
-            <TextField fx:id="browseFilesText" alignment="CENTER" HBox.hgrow="ALWAYS" />
+            <Button fx:id="browseFilesButton" mnemonicParsing="false" onAction="#onBrowseFilesButtonClicked" text="Browse Files" />
+            <TextField fx:id="browseFilesText" alignment="CENTER" editable="false" HBox.hgrow="ALWAYS" />
          </children>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -35,8 +35,8 @@
       </HBox>
       <HBox fx:id="componentNavButtonsHBox" alignment="CENTER" spacing="40.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
          <children>
-            <Button fx:id="machineSceneNavButton" mnemonicParsing="false" text="Machine" />
-            <Button fx:id="encryptSceneNavButton" mnemonicParsing="false" text="Encrypt/Decrypt" />
+            <Button fx:id="machineSceneNavButton" mnemonicParsing="false" onAction="#onChangeSceneToMachineButtonClick" text="Machine" />
+            <Button fx:id="encryptSceneNavButton" mnemonicParsing="false" onAction="#onChangeSceneToEncryptButtonClick" text="Encrypt/Decrypt" />
             <Button fx:id="bruteForceSceneNavButton" mnemonicParsing="false" text="Brute Force" />
          </children>
          <padding>
