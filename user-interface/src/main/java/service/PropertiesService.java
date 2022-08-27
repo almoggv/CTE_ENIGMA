@@ -1,4 +1,4 @@
-package src.main.java.handler;
+package src.main.java.service;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -8,6 +8,5 @@ public class PropertiesService {
     @Getter private static final String log4jPropertiesResourcePath = "/main/resources/log4j.properties";
     @Getter private static final String headerFxmlPath = "/src/main/resources/subcomponents/headerComponent.fxml";
     @Getter private static final String appFxmlPath = "/src/main/resources/app.fxml";
-    @Getter private static final String primarySceneFxmlPath = headerFxmlPath;
 }
 

@@ -10,7 +10,8 @@ import java.util.ResourceBundle;
 
 public class AppController implements Initializable {
 
-    HeaderController headerController;
+
+    @FXML HeaderController headerController;
 
     @FXML private AnchorPane headerWrapAnchorPane;
     @FXML private ScrollPane headerWrapScrollPane;
@@ -21,6 +22,8 @@ public class AppController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        if(headerController!=null){
+            headerController.setParentController(this);
+        }
     }
 }

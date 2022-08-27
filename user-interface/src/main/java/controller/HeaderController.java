@@ -17,7 +17,7 @@ public class HeaderController implements Initializable {
 
     private AppController parentController;
 
-    @FXML private GridPane headerRootPane;
+    @FXML private GridPane rootPane;
     @FXML private Label titleLabel;
     @FXML private HBox browseFilesHBox;
     @FXML private Button browseFilesButton;
