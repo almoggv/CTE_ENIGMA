@@ -8,6 +8,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,6 +17,7 @@ import java.util.ResourceBundle;
 
 public class HeaderController implements Initializable {
 
+    @Setter @Getter
     private AppController parentController;
 
     @FXML private GridPane rootPane;
@@ -27,9 +30,9 @@ public class HeaderController implements Initializable {
     @FXML private Button encryptSceneNavButton;
     @FXML private Button bruteForceSceneNavButton;
 
-    public void setParentController(AppController parentController){
-        this.parentController = parentController;
-    }
+//    public void setParentController(AppController parentController){
+//        this.parentController = parentController;
+//    }
 
     @FXML
     void onBrowseFilesButtonClicked(MouseEvent event) {
