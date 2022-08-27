@@ -19,6 +19,8 @@ public class AppController implements Initializable {
 
     @FXML private AnchorPane headerWrapAnchorPane;
     @FXML private ScrollPane headerWrapScrollPane;
+    @FXML private AnchorPane bodyWrapAnchorPane;
+    @FXML private ScrollPane bodyWrapScrollPane;
 
 //    public void setHeaderController(HeaderController headerController){
 //        this.headerController = headerController;

@@ -1,49 +1,70 @@
 package src.main.java.ui;
-import com.sun.xml.internal.ws.api.message.Header;
 import javafx.application.Application;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import src.main.java.controller.AppController;
-import src.main.java.controller.HeaderController;
+import src.main.java.controller.*;
 import src.main.java.service.PropertiesService;
-import sun.plugin.javascript.navig.Anchor;
 
 import java.net.URL;
+import java.util.Observable;
+import java.util.Optional;
 
 public class GuiApplication extends Application {
 
+    private BorderPane primaryScenePane;
+    private AppController appController;
+    private GridPane headerComponent;
+    private HeaderController headerController;
+    private GridPane machinePageComponent;
+    private MachinePageController machinePageController;
 
-    
+    public static void main(String[] args) {
+        launch(GuiApplication.class);
+    }
+
     @Override
     public void start(Stage primaryStage) throws Exception {
+        FXMLLoader fxmlLoader;
         //Load Primary App
         URL appResource = GuiApplication.class.getResource(PropertiesService.getAppFxmlPath());
         System.out.println("found Url of primary scene:"+ appResource);
-        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(appResource);
-        BorderPane primaryScenePane = fxmlLoader.load(appResource.openStream());
-        AppController appController = fxmlLoader.getController();
+        primaryScenePane = fxmlLoader.load(appResource.openStream());
+        appController = fxmlLoader.getController();
         //Load Header Component
         URL headerResource = GuiApplication.class.getResource(PropertiesService.getHeaderFxmlPath());
         System.out.println("found Url of header component:"+ headerResource);
         fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(headerResource);
-        GridPane headerComponent = fxmlLoader.load(headerResource.openStream());
-        HeaderController headerController = fxmlLoader.getController();
-
-
-        //Connect header to top in primary
-        AnchorPane topPaneInPrimary = (AnchorPane) primaryScenePane.getTop();
+        headerComponent = fxmlLoader.load(headerResource.openStream());
+        headerController = fxmlLoader.getController();
+        //Load MachinePage
+        URL machinePageResource = GuiApplication.class.getResource(PropertiesService.getMachinePageTemplateFxmlPath());
+        System.out.println("found Url of header component:"+ machinePageResource);
+        fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(machinePageResource);
+        machinePageComponent = fxmlLoader.load(machinePageResource.openStream());
+        machinePageController = fxmlLoader.getController();
+        initializeMachinePage();
+        /////////////////////
+        AnchorPane topPaneInPrimary = (AnchorPane) primaryScenePane.getCenter();
         ScrollPane topPaneInnerScrollPane = (ScrollPane) topPaneInPrimary.getChildren().get(0);
-        topPaneInnerScrollPane.setContent(headerComponent);
-
+        topPaneInnerScrollPane.setContent(machinePageComponent);
+        /////////////////////
+        //Connect header to top in primary
+        connectHeaderComponentToRootComponent();
+        //Connect Controllers
         appController.setHeaderController(headerController);
+        appController.setMachinePageController(machinePageController);
 
         Scene primaryScene = new Scene(primaryScenePane);
         primaryStage.setTitle("CTE Machine");
@@ -51,8 +72,85 @@ public class GuiApplication extends Application {
         primaryStage.show();
     }
 
-    public static void main(String[] args) {
-        launch(GuiApplication.class);
+    private void connectHeaderComponentToRootComponent() {
+        AnchorPane topPaneInPrimary = (AnchorPane) primaryScenePane.getTop();
+        ScrollPane topPaneInnerScrollPane = (ScrollPane) topPaneInPrimary.getChildren().get(0);
+        topPaneInnerScrollPane.setContent(headerComponent);
     }
 
+    private void initializeMachinePage() throws Exception{
+        FXMLLoader fxmlLoader;
+        //Load Current Machine Config
+        URL currConfigResource = GuiApplication.class.getResource(PropertiesService.getCurrMachineConfigTemplateFxmlPath());
+        System.out.println("found Url of header component:"+ currConfigResource);
+        fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(currConfigResource);
+        GridPane currConfigComponent = fxmlLoader.load(currConfigResource.openStream());
+        CurrMachineConfigController currMachineConfigController = fxmlLoader.getController();
+        //Load Set Machine Config
+        URL setConfigResource = GuiApplication.class.getResource(PropertiesService.getSetMachineConfigTemplateFxmlPath());
+        System.out.println("found Url of header component:"+ setConfigResource);
+        fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(setConfigResource);
+        GridPane setCofigComponent = fxmlLoader.load(setConfigResource.openStream());
+        SetMachineConfigController setMachineConfigController = fxmlLoader.getController();
+        //Connecting them to their parent component
+        connectCurrConfigComponentToMachinePage(currConfigComponent);
+        connectSetConfigComponentToMachinePage(setCofigComponent);
+        //Connecting their Controllers
+        machinePageController.setCurrMachineConfigController(currMachineConfigController);
+        machinePageController.setSetMachineConfigController(setMachineConfigController);
+
+    }
+
+    private void connectSetConfigComponentToMachinePage(GridPane setMachineConfigComponent) {
+        SplitPane bottomSplitPane = (SplitPane) getNodeFromGridPane(machinePageComponent,0,1);
+        if(bottomSplitPane == null ){
+            throw new NullPointerException("Failed to connect SetMachineConfig Template, could not find col-0 row-1 in grid");
+        }
+        ObservableList<Node> panesOfBottomSplit = bottomSplitPane.getItems();
+        for (Node node : panesOfBottomSplit) {
+            if(node.idProperty().get().equals(PropertiesService.getMachinePageTemplateBottomLeftAnchorFxId())){
+                AnchorPane concretePane = (AnchorPane) node;
+                ScrollPane innerScrollPane = (ScrollPane) concretePane.getChildren().get(0);
+                innerScrollPane.setContent(setMachineConfigComponent);
+            }
+        }
+    }
+
+    private void connectCurrConfigComponentToMachinePage(GridPane currMachineConfigComponent) {
+        SplitPane bottomSplitPane = (SplitPane) getNodeFromGridPane(machinePageComponent,0,1);
+        if(bottomSplitPane == null ){
+            throw new NullPointerException("Failed to connect SetMachineConfig Template, could not find col-0 row-1 in grid");
+        }
+        ObservableList<Node> panesOfBottomSplit = bottomSplitPane.getItems();
+        for (Node node : panesOfBottomSplit) {
+            if(node.idProperty().get().equals(PropertiesService.getMachinePageTemplateBottomRightAnchorFxId())){
+                AnchorPane concretePane = (AnchorPane) node;
+                ScrollPane innerScrollPane = (ScrollPane) concretePane.getChildren().get(0);
+                innerScrollPane.setContent(currMachineConfigComponent);
+            }
+        }
+    }
+
+
+    //Generic Utility Method
+    private Node getNodeFromGridPane(GridPane gridPane, int col, int row) {
+        if(gridPane == null || gridPane.getChildren() == null){
+            return null;
+        }
+        ObservableList<Node> children = gridPane.getChildren();
+        for (Node node : children) {
+            Integer columnIndex = GridPane.getColumnIndex(node);
+            Integer rowIndex = GridPane.getRowIndex(node);
+            if (columnIndex == null)
+                columnIndex = 0;
+            if (rowIndex == null)
+                rowIndex = 0;
+            if (columnIndex == col && rowIndex == row) {
+                return node;
+            }
+        }
+        return null;
+    }
 }

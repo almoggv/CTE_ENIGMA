@@ -36,7 +36,7 @@ public class HeaderController implements Initializable {
 
     @FXML
     void onBrowseFilesButtonClicked(MouseEvent event) {
-
+        System.out.println("Hello");
     }
 
 
