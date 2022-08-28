@@ -39,7 +39,6 @@ public class AppController implements Initializable {
     }
 
     public void changeSceneToMachine(){
-        //TODO?:save current body?
         Parent rootComponent = machinePageController.getRootComponent();
         bodyWrapScrollPane.setContent(rootComponent);
     }
