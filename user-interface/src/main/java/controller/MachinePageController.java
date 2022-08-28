@@ -17,9 +17,9 @@ public class MachinePageController implements Initializable {
 
     @Setter @Getter
     @FXML private AppController parentController;
-    @Setter @Getter
+    @Getter
     @FXML private SetMachineConfigController setMachineConfigController;
-    @Setter @Getter
+    @Getter
     @FXML private CurrMachineConfigController currMachineConfigController;
 
     @FXML private GridPane rootGridPane;
@@ -41,5 +41,15 @@ public class MachinePageController implements Initializable {
 
     public Parent getRootComponent() {
         return rootGridPane;
+    }
+
+    public void setCurrMachineConfigController(CurrMachineConfigController currMachineConfigController) {
+        this.currMachineConfigController = currMachineConfigController;
+        currMachineConfigController.setParentController(this);
+    }
+
+    public void setSetMachineConfigController(SetMachineConfigController setMachineConfigController) {
+        this.setMachineConfigController = setMachineConfigController;
+        setMachineConfigController.setParentController(this);
     }
 }
