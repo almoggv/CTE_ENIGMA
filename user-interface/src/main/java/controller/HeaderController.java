@@ -1,5 +1,6 @@
 package src.main.java.controller;
 
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -9,9 +10,16 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -26,14 +34,34 @@ public class HeaderController implements Initializable {
     @FXML private HBox browseFilesHBox;
     @FXML private Button browseFilesButton;
     @FXML private TextField browseFilesText;
+    @FXML Label selectedFileName;
     @FXML private HBox componentNavButtonsHBox;
     @FXML private Button machineSceneNavButton;
     @FXML private Button encryptSceneNavButton;
     @FXML private Button bruteForceSceneNavButton;
+    @Setter private Stage primaryStage;
 
+    @Getter private SimpleStringProperty selectedFileProperty;
+    private SimpleBooleanProperty isFileSelected;
+
+    public HeaderController (){
+        selectedFileProperty = new SimpleStringProperty();
+        isFileSelected = new SimpleBooleanProperty(false);
+    }
     @FXML
     void onBrowseFilesButtonClicked(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select Xml file");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("xml files", "*.xml"));
+        File selectedFile = fileChooser.showOpenDialog(primaryStage);
+        if (selectedFile == null) {
+            return;
+        }
 
+        String absolutePath = selectedFile.getAbsolutePath();
+        selectedFileProperty.set(absolutePath);
+        isFileSelected.set(true);
+        parentController.makeBodyVisible();
     }
 
     @FXML
@@ -48,7 +76,10 @@ public class HeaderController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        selectedFileName.textProperty().bind(selectedFileProperty);
+        machineSceneNavButton.disableProperty().bind(isFileSelected.not());
+        encryptSceneNavButton.disableProperty().bind(isFileSelected.not());
+        bruteForceSceneNavButton.disableProperty().bind(isFileSelected.not());
     }
 }
 

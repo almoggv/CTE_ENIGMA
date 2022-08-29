@@ -49,6 +49,7 @@ public class GuiApplication extends Application {
         fxmlLoader.setLocation(headerResource);
         headerComponent = fxmlLoader.load(headerResource.openStream());
         headerController = fxmlLoader.getController();
+        headerController.setPrimaryStage(primaryStage);
         //Load MachinePage
         URL machinePageResource = GuiApplication.class.getResource(PropertiesService.getMachinePageTemplateFxmlPath());
         System.out.println("found Url of machine component:"+ machinePageResource);
@@ -70,6 +71,8 @@ public class GuiApplication extends Application {
         AnchorPane topPaneInPrimary = (AnchorPane) primaryScenePane.getCenter();
         ScrollPane topPaneInnerScrollPane = (ScrollPane) topPaneInPrimary.getChildren().get(0);
         topPaneInnerScrollPane.setContent(machinePageComponent);
+        //todo - make visible when file chosen
+        topPaneInnerScrollPane.setVisible(false);
         /////////////////////
         //Connect Controllers
         appController.setHeaderController(headerController);
@@ -86,6 +89,7 @@ public class GuiApplication extends Application {
         AnchorPane topPaneInPrimary = (AnchorPane) primaryScenePane.getTop();
         ScrollPane topPaneInnerScrollPane = (ScrollPane) topPaneInPrimary.getChildren().get(0);
         topPaneInnerScrollPane.setContent(headerComponent);
+
     }
 
     private void initializeMachinePage() throws Exception{

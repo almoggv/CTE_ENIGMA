@@ -62,4 +62,8 @@ public class AppController implements Initializable {
         this.encryptPageController = encryptPageController;
         encryptPageController.setParentController(this);
     }
+
+    public void makeBodyVisible() {
+        bodyWrapScrollPane.setVisible(true);
+    }
 }

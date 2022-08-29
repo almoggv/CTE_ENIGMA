@@ -18,9 +18,10 @@
    <rowConstraints>
       <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" vgrow="NEVER" />
       <RowConstraints minHeight="10.0" vgrow="NEVER" />
-      <RowConstraints minHeight="10.0" vgrow="NEVER" />
-      <RowConstraints maxHeight="49.0" minHeight="10.0" prefHeight="40.33331298828125" vgrow="NEVER" />
-      <RowConstraints maxHeight="17.66668701171875" minHeight="5.0" prefHeight="17.66668701171875" vgrow="ALWAYS" />
+      <RowConstraints maxHeight="36.0" minHeight="10.0" prefHeight="36.0" vgrow="NEVER" />
+      <RowConstraints maxHeight="49.0" minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+      <RowConstraints maxHeight="49.0" minHeight="10.0" prefHeight="24.0" vgrow="NEVER" />
+      <RowConstraints maxHeight="17.66668701171875" minHeight="5.0" prefHeight="9.0" vgrow="ALWAYS" />
    </rowConstraints>
    <children>
       <Label fx:id="titleLabel" text="Enigma Machine" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
@@ -33,7 +34,7 @@
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>
       </HBox>
-      <HBox fx:id="componentNavButtonsHBox" alignment="CENTER" spacing="40.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+      <HBox fx:id="componentNavButtonsHBox" alignment="CENTER" spacing="40.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
          <children>
             <Button fx:id="machineSceneNavButton" mnemonicParsing="false" onAction="#onChangeSceneToMachineButtonClick" text="Machine" />
             <Button fx:id="encryptSceneNavButton" mnemonicParsing="false" onAction="#onChangeSceneToEncryptButtonClick" text="Encrypt/Decrypt" />
@@ -42,6 +43,15 @@
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="564.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+         <children>
+            <Label text="Chosen file: " />
+            <Label fx:id="selectedFileName" />
+         </children>
+         <GridPane.margin>
+            <Insets left="10.0" />
+         </GridPane.margin>
       </HBox>
    </children>
 </GridPane>
