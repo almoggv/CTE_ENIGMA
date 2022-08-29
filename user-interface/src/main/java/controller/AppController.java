@@ -72,14 +72,23 @@ public class AppController implements Initializable {
         bodyWrapScrollPane.setVisible(true);
     }
 
-    public void loadFile(String absolutePath) {
+    public boolean loadFile(String absolutePath) {
         try {
             machineHandler.buildMachinePartsInventory(absolutePath);
             System.out.println("File Loaded Successfully");
+            headerController.setMessageLabel("Message: File Loaded Successfully");
+            return true;
         }
         catch (Exception e){
             System.out.println(e.getMessage());
+            headerController.setMessageLabel("Message: "+ e.getMessage());
+            return false;
         }
     }
 
+    public void handleFileChosen(String absolutePath) {
+        if(loadFile(absolutePath)){
+            makeBodyVisible();
+        };
+    }
 }

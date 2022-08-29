@@ -4,4 +4,24 @@
   2022-08-29 14:39:38 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
   2022-08-29 14:39:40 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
   2022-08-29 14:39:41 INFO  MachineHandlerImpl:268 - Machine handler: created inventory successfully
+  2022-08-29 17:59:39 ERROR FileConfigurationHandler:37 - Failed to generate JAXB CTE Enigma objects by schema : unexpected element (uri:"", local:"ETT-Descriptor"). Expected elements are <{}CTE-Enigma>,<{}CTE-Machine>,<{}CTE-Positioning>,<{}CTE-Reflect>,<{}CTE-Reflector>,<{}CTE-Reflectors>,<{}CTE-Rotor>,<{}CTE-Rotors>
+  2022-08-29 18:01:51 ERROR FileConfigurationHandler:37 - Failed to generate JAXB CTE Enigma objects by schema : unexpected element (uri:"", local:"ETT-Descriptor"). Expected elements are <{}CTE-Enigma>,<{}CTE-Machine>,<{}CTE-Positioning>,<{}CTE-Reflect>,<{}CTE-Reflector>,<{}CTE-Reflectors>,<{}CTE-Rotor>,<{}CTE-Rotors>
+  2022-08-29 18:10:15 ERROR FileConfigurationHandler:37 - Failed to generate JAXB CTE Enigma objects by schema : unexpected element (uri:"", local:"ETT-Descriptor"). Expected elements are <{}CTE-Enigma>,<{}CTE-Machine>,<{}CTE-Positioning>,<{}CTE-Reflect>,<{}CTE-Reflector>,<{}CTE-Reflectors>,<{}CTE-Rotor>,<{}CTE-Rotors>
+  2022-08-29 18:19:03 ERROR FileConfigurationHandler:37 - Failed to generate JAXB CTE Enigma objects by schema : unexpected element (uri:"", local:"ETT-Descriptor"). Expected elements are <{}CTE-Enigma>,<{}CTE-Machine>,<{}CTE-Positioning>,<{}CTE-Reflect>,<{}CTE-Reflector>,<{}CTE-Reflectors>,<{}CTE-Rotor>,<{}CTE-Rotors>
+  2022-08-29 18:19:21 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-extra-test.xml
+  2022-08-29 18:19:21 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-08-29 18:19:21 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-08-29 18:19:31 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-extra-test.xml
+  2022-08-29 18:19:31 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-08-29 18:19:31 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-08-29 18:19:40 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\extra-errors\ex1-error - reflector-id.xml
+  2022-08-29 18:19:40 ERROR MachineHandlerImpl:73 - Failed to build machine inventory - CteMachine configured in file is invalid: The Reflector ids are not sequential or too many
+  2022-08-29 18:21:40 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-error-3.xml
+  2022-08-29 18:21:40 ERROR MachineHandlerImpl:73 - Failed to build machine inventory - CteMachine configured in file is invalid: The Rotor Count is Illegal
+  2022-08-29 18:22:45 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-error-3.xml
+  2022-08-29 18:22:45 ERROR MachineHandlerImpl:73 - Failed to build machine inventory - CteMachine configured in file is invalid: The Rotor Count is Illegal
+  2022-08-29 18:23:22 ERROR FileConfigurationHandler:37 - Failed to generate JAXB CTE Enigma objects by schema : unexpected element (uri:"", local:"ETT-Descriptor"). Expected elements are <{}CTE-Enigma>,<{}CTE-Machine>,<{}CTE-Positioning>,<{}CTE-Reflect>,<{}CTE-Reflector>,<{}CTE-Reflectors>,<{}CTE-Rotor>,<{}CTE-Rotors>
+  2022-08-29 18:23:33 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-08-29 18:23:33 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-08-29 18:23:33 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
   

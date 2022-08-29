@@ -59,6 +59,9 @@ public class MachineHandlerImpl implements MachineHandler {
             throw new Exception(msg);
         }
         CTEEnigma cteEnigma = FileConfigurationHandler.fromXmlFileToCTE(absolutePath);
+        if(cteEnigma == null){
+            throw new Exception("Failed to generate JAXB CTE Enigma objects by schema");
+        }
         XmlVerifierState xmlVerifierResponse = xmlSchemaVerifier.isMachineConfigurationValid(cteEnigma);
         if(xmlVerifierResponse == XmlVerifierState.VALID){
             clearInventory();

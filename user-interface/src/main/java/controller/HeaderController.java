@@ -7,13 +7,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 import lombok.Getter;
@@ -39,7 +37,11 @@ public class HeaderController implements Initializable {
     @FXML private Button machineSceneNavButton;
     @FXML private Button encryptSceneNavButton;
     @FXML private Button bruteForceSceneNavButton;
+
+    @FXML
+    private Label messageLabel;
     @Setter private Stage primaryStage;
+
 
     @Getter private SimpleStringProperty selectedFileProperty;
     private SimpleBooleanProperty isFileSelected;
@@ -61,8 +63,7 @@ public class HeaderController implements Initializable {
         String absolutePath = selectedFile.getAbsolutePath();
         selectedFileProperty.set(absolutePath);
         isFileSelected.set(true);
-        parentController.makeBodyVisible();
-        parentController.loadFile(absolutePath);
+        parentController.handleFileChosen(absolutePath);
     }
 
     @FXML
@@ -81,6 +82,10 @@ public class HeaderController implements Initializable {
         machineSceneNavButton.disableProperty().bind(isFileSelected.not());
         encryptSceneNavButton.disableProperty().bind(isFileSelected.not());
         bruteForceSceneNavButton.disableProperty().bind(isFileSelected.not());
+    }
+
+    public void setMessageLabel(String message) {
+        messageLabel.setText(message);
     }
 }
 
