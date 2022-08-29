@@ -6,13 +6,14 @@ import javafx.scene.Parent;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import lombok.Getter;
-import lombok.Setter;
+import main.java.component.MachineHandler;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class AppController implements Initializable {
 
+    private MachineHandler machineHandler;
     @Getter
     @FXML HeaderController headerController;
     @Getter
@@ -24,6 +25,10 @@ public class AppController implements Initializable {
     @FXML private ScrollPane headerWrapScrollPane;
     @FXML private AnchorPane bodyWrapAnchorPane;
     @FXML private ScrollPane bodyWrapScrollPane;
+
+    public void setMachineHandler(MachineHandler machineHandler) {
+        this.machineHandler = machineHandler;
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -66,4 +71,15 @@ public class AppController implements Initializable {
     public void makeBodyVisible() {
         bodyWrapScrollPane.setVisible(true);
     }
+
+    public void loadFile(String absolutePath) {
+        try {
+            machineHandler.buildMachinePartsInventory(absolutePath);
+            System.out.println("File Loaded Successfully");
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+
 }

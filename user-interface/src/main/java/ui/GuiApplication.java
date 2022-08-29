@@ -10,12 +10,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import main.java.component.MachineHandler;
+import main.java.component.impl.MachineHandlerImpl;
 import src.main.java.controller.*;
 import src.main.java.service.PropertiesService;
 
 import java.net.URL;
-import java.util.Observable;
-import java.util.Optional;
 
 public class GuiApplication extends Application {
 
@@ -71,13 +71,14 @@ public class GuiApplication extends Application {
         AnchorPane topPaneInPrimary = (AnchorPane) primaryScenePane.getCenter();
         ScrollPane topPaneInnerScrollPane = (ScrollPane) topPaneInPrimary.getChildren().get(0);
         topPaneInnerScrollPane.setContent(machinePageComponent);
-        //todo - make visible when file chosen
         topPaneInnerScrollPane.setVisible(false);
         /////////////////////
         //Connect Controllers
         appController.setHeaderController(headerController);
         appController.setMachinePageController(machinePageController);
         appController.setEncryptPageController(encryptPageController);
+        MachineHandler machineHandler = new MachineHandlerImpl();
+        appController.setMachineHandler(machineHandler);
 
         Scene primaryScene = new Scene(primaryScenePane);
         primaryStage.setTitle("CTE Machine");

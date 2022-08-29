@@ -1,0 +1,7 @@
+2022-08-29 14:35:52 ERROR FileConfigurationHandler:37 - Failed to generate JAXB CTE Enigma objects by schema : unexpected element (uri:"", local:"ETT-Descriptor"). Expected elements are <{}CTE-Enigma>,<{}CTE-Machine>,<{}CTE-Positioning>,<{}CTE-Reflect>,<{}CTE-Reflector>,<{}CTE-Reflectors>,<{}CTE-Rotor>,<{}CTE-Rotors>
+  2022-08-29 14:36:53 ERROR FileConfigurationHandler:37 - Failed to generate JAXB CTE Enigma objects by schema : unexpected element (uri:"", local:"ETT-Descriptor"). Expected elements are <{}CTE-Enigma>,<{}CTE-Machine>,<{}CTE-Positioning>,<{}CTE-Reflect>,<{}CTE-Reflector>,<{}CTE-Reflectors>,<{}CTE-Rotor>,<{}CTE-Rotors>
+  2022-08-29 14:38:38 ERROR FileConfigurationHandler:37 - Failed to generate JAXB CTE Enigma objects by schema : unexpected element (uri:"", local:"ETT-Descriptor"). Expected elements are <{}CTE-Enigma>,<{}CTE-Machine>,<{}CTE-Positioning>,<{}CTE-Reflect>,<{}CTE-Reflector>,<{}CTE-Reflectors>,<{}CTE-Rotor>,<{}CTE-Rotors>
+  2022-08-29 14:39:38 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-08-29 14:39:40 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-08-29 14:39:41 INFO  MachineHandlerImpl:268 - Machine handler: created inventory successfully
+  

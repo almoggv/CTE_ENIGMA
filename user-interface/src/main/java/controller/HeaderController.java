@@ -62,6 +62,7 @@ public class HeaderController implements Initializable {
         selectedFileProperty.set(absolutePath);
         isFileSelected.set(true);
         parentController.makeBodyVisible();
+        parentController.loadFile(absolutePath);
     }
 
     @FXML
