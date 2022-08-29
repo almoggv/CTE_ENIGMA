@@ -53,7 +53,9 @@ public class SetMachineConfigController implements Initializable {
     @FXML private ChoiceBox<String> plugBoardAddNewEP2Choice;
     @FXML private Button plugBoardAddNewButton;
 
+    @FXML private Button setUserChoiceButton;
 
+    @FXML private Button setRandomChoiceButton;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 //        setRotorsHbox();
