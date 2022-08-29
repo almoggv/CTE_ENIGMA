@@ -7,8 +7,10 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import lombok.Getter;
 import main.java.component.MachineHandler;
+import main.java.dto.InventoryInfo;
 
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class AppController implements Initializable {
@@ -89,6 +91,9 @@ public class AppController implements Initializable {
     public void handleFileChosen(String absolutePath) {
         if(loadFile(absolutePath)){
             makeBodyVisible();
-        };
+            Optional<InventoryInfo> inventoryInfo = machineHandler.getInventoryInfo();
+            if(inventoryInfo.isPresent()) {
+                machinePageController.getSetMachineConfigController().loadData(inventoryInfo.get());
+            }};
     }
 }

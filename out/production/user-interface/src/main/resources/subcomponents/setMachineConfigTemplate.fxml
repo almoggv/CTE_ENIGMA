@@ -84,7 +84,7 @@
                               <ChoiceBox fx:id="plugBoardAddNewEP2Choice" layoutX="108.0" layoutY="33.0" prefHeight="25.0" prefWidth="50.0" />
                               <Label layoutX="13.0" layoutY="14.0" text="End point 1" />
                               <Label layoutX="102.0" layoutY="14.0" text="End point 2" />
-                              <Button fx:id="plugBoardAddNewButton" layoutX="18.0" layoutY="77.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="140.0" text="Add" />
+                              <Button fx:id="plugBoardAddNewButton" layoutX="18.0" layoutY="77.0" mnemonicParsing="false" onAction="#onPlugBoardAddNewButtonAction" prefHeight="25.0" prefWidth="140.0" text="Add" />
                               <Label layoutX="71.0" layoutY="37.0" text="&lt;----&gt;" />
                            </children>
                         </Pane>
