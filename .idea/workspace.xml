@@ -12,8 +12,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6467e2d7-ff2a-4abb-a198-685a0fcd06aa" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/Controller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/MachineDetailsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user-interface/src/main/java/service/DateService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Logs/logging.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/logging.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/AppController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/AppController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/HeaderController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/HeaderController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/MachinePageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/MachinePageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/SetMachineConfigController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/SetMachineConfigController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/service/PropertiesService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/service/PropertiesService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/ui/GuiApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/ui/GuiApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/subcomponents/setMachineConfigTemplate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/subcomponents/setMachineConfigTemplate.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/AppController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/CurrMachineConfigController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/CurrMachineConfigController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/HeaderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/HeaderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/MachinePageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/MachinePageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/SetMachineConfigController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/SetMachineConfigController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/setMachineConfigTemplate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/setMachineConfigTemplate.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/service/PropertiesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/service/PropertiesService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/ui/GuiApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/ui/GuiApplication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,8 +41,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Interface" />
         <option value="Kotlin Class" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -75,6 +92,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="src.main.java.controller" />
       <recent name="main.java.component" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
@@ -279,9 +297,23 @@
           <option name="timeStamp" value="225" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/impl/MachineHandlerImpl.java</url>
-          <line>55</line>
-          <option name="timeStamp" value="263" />
+          <url>file://$PROJECT_DIR$/user-interface/src/main/java/controller/MachineDetailsController.java</url>
+          <line>54</line>
+          <option name="timeStamp" value="294" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/user-interface/src/main/java/controller/MachineDetailsController.java</url>
+          <line>60</line>
+          <option name="timeStamp" value="295" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/user-interface/src/main/java/ui/GuiApplication.java</url>
+          <line>172</line>
+          <properties class="src.main.java.ui.GuiApplication">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="271" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

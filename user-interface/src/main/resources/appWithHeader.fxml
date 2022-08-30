@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.main.java.controller.AppController">
+   <top>
+      <AnchorPane fx:id="headerWrapAnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
+         <children>
+            <ScrollPane fx:id="headerWrapScrollPane" fitToHeight="true" fitToWidth="true" prefHeight="127.0" prefWidth="700.0" AnchorPane.bottomAnchor="-7.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <fx:include fx:id="HeaderComponent" source="subcomponents/headerComponent.fxml" />
+         </children>
+      </AnchorPane>
+   </top>
+   <center>
+      <AnchorPane fx:id="bodyWrapAnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+         <children>
+            <ScrollPane fx:id="bodyWrapScrollPane" fitToHeight="true" fitToWidth="true" layoutY="14.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="-14.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="14.0" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

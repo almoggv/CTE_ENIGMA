@@ -16,6 +16,7 @@ import javafx.beans.property.SimpleStringProperty;
 
 import lombok.Getter;
 import lombok.Setter;
+import src.main.java.service.PropertiesService;
 
 import java.io.File;
 import java.net.URL;
@@ -23,10 +24,8 @@ import java.util.ResourceBundle;
 
 
 public class HeaderController implements Initializable {
-
     @Setter @Getter
     private AppController parentController;
-
     @FXML private GridPane rootPane;
     @FXML private Label titleLabel;
     @FXML private HBox browseFilesHBox;
@@ -41,8 +40,6 @@ public class HeaderController implements Initializable {
     @FXML
     private Label messageLabel;
     @Setter private Stage primaryStage;
-
-
     @Getter private SimpleStringProperty selectedFileProperty;
     private SimpleBooleanProperty isFileSelected;
 
@@ -62,18 +59,21 @@ public class HeaderController implements Initializable {
 
         String absolutePath = selectedFile.getAbsolutePath();
         selectedFileProperty.set(absolutePath);
-        isFileSelected.set(true);
-        parentController.handleFileChosen(absolutePath);
+        boolean isFileValid = parentController.handleFileChosen(absolutePath);
+        isFileSelected.set(isFileValid);
     }
 
     @FXML
     void onChangeSceneToMachineButtonClick(ActionEvent event) {
-        parentController.changeSceneToMachine();
+//        parentController.changeCenterComponent(PropertiesService.getCurrMachineConfigTemplateFxmlPath());;
+        parentController.changeCenterComponent(PropertiesService.getMachinePageWithIncludesFxmlPath());;
     }
 
     @FXML
     void onChangeSceneToEncryptButtonClick(ActionEvent event) {
-        parentController.changeSceneToEncrypt();
+        parentController.changeCenterComponent(PropertiesService.getEncryptPageTemplateFxmlPath());;
+
+//        parentController.changeSceneToEncrypt();
     }
 
     @Override

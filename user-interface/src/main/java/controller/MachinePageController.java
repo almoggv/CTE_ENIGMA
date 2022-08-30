@@ -29,6 +29,9 @@ public class MachinePageController implements Initializable {
     @FXML private AnchorPane rightAnchorOfBottom;
     @FXML private ScrollPane scrollOfRightBottomAnchor;
 
+    @FXML private GridPane machineDetailsComponent;
+
+    @FXML private MachineDetailsController machineDetailsComponentController;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         if(setMachineConfigController != null){
@@ -36,6 +39,9 @@ public class MachinePageController implements Initializable {
         }
         if(currMachineConfigController != null){
             currMachineConfigController.setParentController(this);
+        }
+        if(machineDetailsComponentController != null){
+            machineDetailsComponentController.setParentController(this);
         }
     }
 

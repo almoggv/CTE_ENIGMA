@@ -20,6 +20,7 @@ import lombok.Getter;
 import lombok.Setter;
 import main.java.dto.InventoryInfo;
 import main.java.enums.ReflectorsId;
+import src.main.java.service.DateService;
 
 import java.net.URL;
 import java.util.List;
@@ -58,20 +59,22 @@ public class SetMachineConfigController implements Initializable {
     @FXML private Button setRandomChoiceButton;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-//        setRotorsHbox();
+        setReflectorChoiceBoxHbox();
+        setRotorsHbox();
+        addPlugboardTab();
     }
 
-    private void setReflectorChoiceBoxHbox(InventoryInfo inventoryInfo) {
-        int reflectorNum = inventoryInfo.getNumOfAvailableRotors();
+    private void setReflectorChoiceBoxHbox() {
+        int reflectorNum = DateService.getInventoryInfo().getNumOfAvailableRotors();
         rotorsHbox.getChildren().clear();
         for (int i = 1; i <= reflectorNum; i++) {
             reflectorChoiceBox.getItems().add(ReflectorsId.getByNum(i).getName());
         }
     }
 
-    private void setRotorsHbox(InventoryInfo inventoryInfo){
-        int numOfAvailableRotors = inventoryInfo.getNumOfAvailableRotors();
-        int numOfNeededRotors = inventoryInfo.getNumOfRotorsInUse();
+    private void setRotorsHbox(){
+        int numOfAvailableRotors = DateService.getInventoryInfo().getNumOfAvailableRotors();
+        int numOfNeededRotors = DateService.getInventoryInfo().getNumOfRotorsInUse();
         rotorsHbox.getChildren().clear();
         for (int i = 1; i <= numOfNeededRotors; i++) {
             ChoiceBox<Integer> rotorChoiceBox= makeRotorChoiceBox(numOfAvailableRotors);
@@ -87,14 +90,14 @@ public class SetMachineConfigController implements Initializable {
         return rotorChoiceBox;
     }
 
-    public void loadData(InventoryInfo inventoryInfo) {
-        setReflectorChoiceBoxHbox(inventoryInfo);
-        setRotorsHbox(inventoryInfo);
-        addPlugboardTab(inventoryInfo);
-    }
+//    public void loadData(InventoryInfo inventoryInfo) {
+////        setReflectorChoiceBoxHbox(inventoryInfo);
+//        setRotorsHbox(inventoryInfo);
+//        addPlugboardTab(inventoryInfo);
+//    }
 
-    private void addPlugboardTab(InventoryInfo inventoryInfo) {
-        String ABC = inventoryInfo.getABC();
+    private void addPlugboardTab() {
+        String ABC = DateService.getInventoryInfo().getABC();
         for (int i = 0; i < ABC.length(); i++) {
             plugBoardAddNewEP1Choice.getItems().add(ABC.substring(i,i+1));
             plugBoardAddNewEP2Choice.getItems().add(ABC.substring(i,i+1));
