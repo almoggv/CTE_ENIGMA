@@ -1,11 +1,9 @@
 package src.main.java.controller;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -18,13 +16,12 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import lombok.Getter;
 import lombok.Setter;
-import main.java.dto.InventoryInfo;
 import main.java.enums.ReflectorsId;
 import src.main.java.service.DateService;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
 
@@ -57,13 +54,23 @@ public class SetMachineConfigController implements Initializable {
     @FXML private Button setUserChoiceButton;
 
     @FXML private Button setRandomChoiceButton;
+
+    private SimpleBooleanProperty areValuesSetUp;
+
+    private final List<SimpleBooleanProperty> areRotorsChosenList = new ArrayList<>();
+    private SimpleBooleanProperty areRotorsChosen;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+//        setUserChoiceButton.disableProperty().bind(areValuesSetUp.not());
         setReflectorChoiceBoxHbox();
         setRotorsHbox();
         addPlugboardTab();
     }
 
+    public SetMachineConfigController(){
+        areValuesSetUp = new SimpleBooleanProperty(false);
+        areRotorsChosen = new SimpleBooleanProperty(false);
+    }
     private void setReflectorChoiceBoxHbox() {
         int reflectorNum = DateService.getInventoryInfo().getNumOfAvailableRotors();
         rotorsHbox.getChildren().clear();
@@ -78,6 +85,10 @@ public class SetMachineConfigController implements Initializable {
         rotorsHbox.getChildren().clear();
         for (int i = 1; i <= numOfNeededRotors; i++) {
             ChoiceBox<Integer> rotorChoiceBox= makeRotorChoiceBox(numOfAvailableRotors);
+            SimpleBooleanProperty rotorProperty = new SimpleBooleanProperty(false);
+            rotorProperty.bind(rotorChoiceBox.valueProperty().isNotNull());
+//        setUserChoiceButton.disableProperty().bind(areRotorsChosen.not());
+            areRotorsChosenList.add(rotorProperty);
             rotorsHbox.getChildren().add(rotorChoiceBox);
         }
     }
@@ -108,5 +119,13 @@ public class SetMachineConfigController implements Initializable {
     void onPlugBoardAddNewButtonAction(ActionEvent event) {
         plugBoardConnectionsLeft.getItems().add(plugBoardAddNewEP1Choice.getValue());
         plugBoardConnectionsRight.getItems().add(plugBoardAddNewEP2Choice.getValue());
+    }
+
+    @FXML
+    void onSetUserChoiceButtonAction(ActionEvent event) {
+        if (reflectorChoiceBox.getValue()== null){
+//      todo - get message to header
+//            parentController.
+        }
     }
 }

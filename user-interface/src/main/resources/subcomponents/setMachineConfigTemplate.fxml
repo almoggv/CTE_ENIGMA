@@ -95,7 +95,7 @@
               </tabs>
             </TabPane>
             <HBox fx:id="rotorsHbox1" alignment="CENTER" layoutX="65.0" layoutY="44.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="5.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <Button fx:id="setUserChoiceButton" mnemonicParsing="false" text="Set choice" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Button fx:id="setUserChoiceButton" mnemonicParsing="false" onAction="#onSetUserChoiceButtonAction" text="Set choice" GridPane.columnIndex="2" GridPane.rowIndex="3" />
             <Button fx:id="setRandomChoiceButton" mnemonicParsing="false" text="Set randomly" GridPane.rowIndex="3" />
          </children>
       </GridPane>

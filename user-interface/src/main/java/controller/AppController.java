@@ -77,7 +77,9 @@ public class AppController/* implements Initializable */{
             try{
                 changeCenterComponentAndController(absolutePath);
             }
-            catch (Exception e){}
+            catch (Exception e){
+                System.out.println("problem changing center");
+            }
         });
     }
 

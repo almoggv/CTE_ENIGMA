@@ -12,25 +12,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6467e2d7-ff2a-4abb-a198-685a0fcd06aa" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/Controller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/MachineDetailsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-interface/src/main/java/service/DateService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Logs/logging.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/logging.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/AppController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/AppController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/HeaderController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/HeaderController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/MachinePageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/MachinePageController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/SetMachineConfigController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/SetMachineConfigController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/service/PropertiesService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/service/PropertiesService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/ui/GuiApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/ui/GuiApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/subcomponents/setMachineConfigTemplate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/subcomponents/setMachineConfigTemplate.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/service/DateService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/service/DateService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/AppController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/CurrMachineConfigController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/CurrMachineConfigController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/HeaderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/HeaderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/MachinePageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/MachinePageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/SetMachineConfigController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/SetMachineConfigController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/service/PropertiesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/service/PropertiesService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/ui/GuiApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/ui/GuiApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/service/DateService.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/service/DateService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/setMachineConfigTemplate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/setMachineConfigTemplate.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -297,14 +289,9 @@
           <option name="timeStamp" value="225" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/user-interface/src/main/java/controller/MachineDetailsController.java</url>
-          <line>54</line>
-          <option name="timeStamp" value="294" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/user-interface/src/main/java/controller/MachineDetailsController.java</url>
-          <line>60</line>
-          <option name="timeStamp" value="295" />
+          <url>file://$PROJECT_DIR$/user-interface/src/main/java/controller/HeaderController.java</url>
+          <line>76</line>
+          <option name="timeStamp" value="304" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/user-interface/src/main/java/ui/GuiApplication.java</url>

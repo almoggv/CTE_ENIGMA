@@ -80,6 +80,7 @@ public class HeaderController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         selectedFileName.textProperty().bind(selectedFileProperty);
         machineSceneNavButton.disableProperty().bind(isFileSelected.not());
+        //todo add other connections
         encryptSceneNavButton.disableProperty().bind(isFileSelected.not());
         bruteForceSceneNavButton.disableProperty().bind(isFileSelected.not());
     }
