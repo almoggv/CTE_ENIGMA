@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -35,19 +34,10 @@
             <Label alignment="CENTER" text="Reflector" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
             <Label alignment="CENTER" contentDisplay="CENTER" text="Rotors" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
             <Label contentDisplay="CENTER" text="Plugboard" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-            <HBox fx:id="rotorsHbox" alignment="TOP_CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-               <children>
-                  <Button fx:id="rotorButton2" alignment="TOP_LEFT" cancelButton="true" minWidth="-Infinity" mnemonicParsing="false" text="2(0)" HBox.hgrow="ALWAYS" />
-                  <Button fx:id="rotorButton1" cancelButton="true" minWidth="-Infinity" mnemonicParsing="false" text="2(0)" />
-               </children>
-            </HBox>
-            <HBox fx:id="plugBoardHbox" alignment="TOP_CENTER" GridPane.columnIndex="2" GridPane.rowIndex="1">
-               <children>
-                  <Button fx:id="plugBoardConnection2" cancelButton="true" minWidth="-Infinity" mnemonicParsing="false" text="a|z" HBox.hgrow="ALWAYS" />
-                  <Button fx:id="plugBoardConnection1" cancelButton="true" minWidth="-Infinity" mnemonicParsing="false" text="b|c" />
-               </children>
-            </HBox>
-            <Button fx:id="reflectorButton" alignment="TOP_LEFT" cancelButton="true" minWidth="-Infinity" mnemonicParsing="false" text="II" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <HBox fx:id="rotorsHbox" alignment="TOP_CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <HBox fx:id="plugBoardHbox" alignment="TOP_CENTER" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <HBox fx:id="reflectorHbox" alignment="TOP_CENTER" GridPane.rowIndex="1" />
+            <Label fx:id="machineNotConfiguredLabel" text="Not configured yet" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
    </children>

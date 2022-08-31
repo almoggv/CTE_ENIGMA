@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
@@ -29,10 +31,10 @@
          </columnConstraints>
          <rowConstraints>
             <RowConstraints maxHeight="60.33331298828125" minHeight="10.0" prefHeight="22.0" vgrow="SOMETIMES" />
-            <RowConstraints fillHeight="false" maxHeight="1.7976931348623157E308" minHeight="35.0" prefHeight="35.0" vgrow="SOMETIMES" />
-            <RowConstraints fillHeight="false" maxHeight="1.7976931348623157E308" minHeight="35.0" prefHeight="35.0" vgrow="SOMETIMES" />
-            <RowConstraints fillHeight="false" maxHeight="1.7976931348623157E308" minHeight="32.33331298828125" prefHeight="59.66668701171875" vgrow="ALWAYS" />
-            <RowConstraints fillHeight="false" maxHeight="1.7976931348623157E308" minHeight="32.33331298828125" prefHeight="59.66668701171875" vgrow="ALWAYS" />
+            <RowConstraints fillHeight="false" maxHeight="1.7976931348623157E308" minHeight="22.333343505859375" prefHeight="22.333343505859375" vgrow="SOMETIMES" />
+            <RowConstraints fillHeight="false" maxHeight="1.7976931348623157E308" minHeight="19.0" prefHeight="31.666656494140625" vgrow="SOMETIMES" />
+            <RowConstraints fillHeight="false" maxHeight="1.7976931348623157E308" minHeight="12.333343505859375" prefHeight="14.333343505859375" vgrow="ALWAYS" />
+            <RowConstraints fillHeight="false" maxHeight="1.7976931348623157E308" minHeight="32.33331298828125" prefHeight="51.666656494140625" vgrow="ALWAYS" />
             <RowConstraints fillHeight="false" maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="94.66668701171875" vgrow="ALWAYS" />
          </rowConstraints>
          <children>
@@ -56,7 +58,17 @@
                </children>
             </HBox>
             <Label text="Original Machine Configorationl" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <Label text="Not Configured" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Label fx:id="machineNotConfiguredLabel" text="Not Configured" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
+               <children>
+                  <ScrollPane layoutX="-58.0" layoutY="-86.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <content>
+                      <AnchorPane />
+                    </content>
+                  </ScrollPane>
+                  <fx:include fx:id="originalMachineConfigurationComponent" source="currMachineConfigTemplate.fxml" />
+               </children>
+            </AnchorPane>
          </children>
       </GridPane>
    </children>

@@ -1,6 +1,7 @@
 package src.main.java.controller;
 
 import javafx.application.Platform;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,6 +15,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import lombok.Getter;
+import lombok.Setter;
 import main.java.component.MachineHandler;
 import main.java.component.impl.MachineHandlerImpl;
 import main.java.dto.InventoryInfo;
@@ -50,14 +52,21 @@ public class AppController/* implements Initializable */{
     @FXML
     private ScrollPane BodyComponent;
     @FXML
-    private Controller BodyComponentController;
+    private Controller bodyComponentController;
     @FXML private GridPane machinePageComponent;
 
     @FXML private MachinePageController machinePageComponentController;
+
+    @Setter
+    @Getter private SimpleBooleanProperty isMachineConfigured;
+
     public void setMachineHandler(MachineHandler machineHandler) {
         this.machineHandler = machineHandler;
     }
 
+    public AppController(){
+        isMachineConfigured = new SimpleBooleanProperty(false);
+    }
     @FXML
     public void initialize(/*URL location, ResourceBundle resources*/) {
         if(HeaderComponentController!=null){
@@ -89,6 +98,9 @@ public class AppController/* implements Initializable */{
         System.out.println("changing center component to: "+ absolutePath);
         fxmlLoader.setLocation(appResource);
         Parent rootComponent = (Parent) fxmlLoader.load(appResource.openStream());
+        bodyComponentController = fxmlLoader.getController();
+        bodyComponentController.setParentController(this);
+        bodyComponentController.setMachineHandler(machineHandler);
         bodyWrapScrollPane.setContent(rootComponent);
     }
 

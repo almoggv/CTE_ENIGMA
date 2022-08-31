@@ -1,18 +1,24 @@
 package src.main.java.controller;
 
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import lombok.Getter;
 import lombok.Setter;
+import main.java.generictype.MappingPair;
+import src.main.java.service.DateService;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 
 public class CurrMachineConfigController implements Initializable {
+
 
     @Getter @Setter
     @FXML MachinePageController parentController;
@@ -26,31 +32,52 @@ public class CurrMachineConfigController implements Initializable {
     @FXML private Button plugBoardConnection1;
     @FXML private Button reflectorButton;
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-//        setRotorsHbox();
-//        setPlugBoardHbox();
-//        setReflectorLable();
+    @FXML
+    private HBox reflectorHbox;
+
+    @FXML
+    public Label machineNotConfiguredLabel;
+    public CurrMachineConfigController(){
     }
 
-//    private void setRotorsHbox() {
-//        rotorsHbox.getChildren().clear();
-//
-//        for (int i = 0; i < 10; i++) {
-//            Button rotor = new Button(new String(String.valueOf(i)));
-//            rotorsHbox.getChildren().add(rotor);
-//        }
-//    }
-//
-//    private void setPlugBoardHbox() {
-//        plugBoardHbox.getChildren().clear();
-//        Button plug1 = new Button(new String("a|z"));
-//        Button plug2 = new Button(new String("B|C"));
-//        Button plug3 = new Button(new String("w|r"));
-//        plugBoardHbox.getChildren().addAll(plug1,plug2,plug3);
-//    }
-//
-//    private void setReflectorLable(){
-//        reflectorButton.setText("IV");
-//    }
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        if(DateService.getIsCurrentMachineStateConfigured()){
+            showCurrConfiguration();
+        }
+    }
+
+    public void showCurrConfiguration() {
+        machineNotConfiguredLabel.setVisible(false);
+        setRotorsHbox();
+        setPlugBoardHbox();
+        setReflectorLabel();
+    }
+
+    private void setRotorsHbox() {
+        rotorsHbox.getChildren().clear();
+        int numOfRotors = DateService.getCurrentMachineState().getRotorIds().size();
+        List<Integer> rotorIds = DateService.getCurrentMachineState().getRotorIds();
+        for (int i = 0; i < numOfRotors; i++) {
+            Button rotor = new Button(new String(String.valueOf(rotorIds.get(i))));
+            rotorsHbox.getChildren().add(rotor);
+        }
+    }
+
+    private void setPlugBoardHbox() {
+        plugBoardHbox.getChildren().clear();
+        int numOfPlugs = DateService.getCurrentMachineState().getPlugMapping().size();
+        List<MappingPair<String, String>> plugMapping = DateService.getCurrentMachineState().getPlugMapping();
+        for (MappingPair<String,String> mappingPair : plugMapping) {
+            String plugString = mappingPair.getLeft() + "|" + mappingPair.getRight();
+            Button plugButton = new Button(plugString);
+            plugBoardHbox.getChildren().add(plugButton);
+        }
+    }
+
+    private void setReflectorLabel(){
+        reflectorHbox.getChildren().clear();
+        Button refButton = new Button(DateService.getCurrentMachineState().getReflectorId().getName());
+        reflectorHbox.getChildren().add(refButton);
+    }
 }

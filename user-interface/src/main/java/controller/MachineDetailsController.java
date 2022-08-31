@@ -3,6 +3,7 @@ package src.main.java.controller;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import lombok.Getter;
@@ -46,23 +47,31 @@ public class MachineDetailsController implements Initializable {
 
     @FXML
     private Label toUseRotorNumLabel;
-
     @FXML
     private Label availableReflectorNumLabel;
+    @FXML
+    private GridPane originalMachineConfigurationComponent;
 
+    @FXML
+    private Label machineNotConfiguredLabel;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         setDetails();
+        if(DateService.getIsOriginalMachineStateConfigured()){
+            originalMachineConfigurationComponent.setVisible(true);
+            machineNotConfiguredLabel.setVisible(false);
+        }
+        else{
+            originalMachineConfigurationComponent.setVisible(false);
+            machineNotConfiguredLabel.setVisible(true);
+        }
     }
 
 
     private void setDetails() {
-
         availableRotorNumLabel.setText((String.valueOf(DateService.getInventoryInfo().getNumOfAvailableRotors())));
 //        encryptedMsgLabel.setText(DateService.getInventoryInfo());
         toUseRotorNumLabel.setText((String.valueOf(DateService.getInventoryInfo().getNumOfRotorsInUse())));
         availableReflectorNumLabel.setText((String.valueOf(DateService.getInventoryInfo().getNumOfAvailableReflectors())));
     }
-
-
 }

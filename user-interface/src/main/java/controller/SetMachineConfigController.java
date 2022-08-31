@@ -1,6 +1,9 @@
 package src.main.java.controller;
 
+import javafx.beans.binding.BooleanExpression;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -20,9 +23,7 @@ import main.java.enums.ReflectorsId;
 import src.main.java.service.DateService;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 
 public class SetMachineConfigController implements Initializable {
@@ -50,26 +51,34 @@ public class SetMachineConfigController implements Initializable {
     @FXML private ChoiceBox<String> plugBoardAddNewEP1Choice;
     @FXML private ChoiceBox<String> plugBoardAddNewEP2Choice;
     @FXML private Button plugBoardAddNewButton;
-
     @FXML private Button setUserChoiceButton;
-
-    @FXML private Button setRandomChoiceButton;
-
+    @FXML @Getter private Button setRandomChoiceButton;
     private SimpleBooleanProperty areValuesSetUp;
 
+    @Getter private SimpleBooleanProperty isSetRandomPressed;
+
     private final List<SimpleBooleanProperty> areRotorsChosenList = new ArrayList<>();
+//    private final List<SimpleBooleanProperty> areRotorsChosenList =  FXCollections.observableArrayList(c -> new Observable[]{c.singleProperty()});
+
     private SimpleBooleanProperty areRotorsChosen;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 //        setUserChoiceButton.disableProperty().bind(areValuesSetUp.not());
+//        isSetRandomPressed.bind(setRandomChoiceButton.pressedProperty());
         setReflectorChoiceBoxHbox();
         setRotorsHbox();
         addPlugboardTab();
+        setRandomChoiceButton.pressedProperty().addListener((observable, oldValue, newValue) ->
+                System.out.println("setRandom Pressed!"));
     }
 
     public SetMachineConfigController(){
         areValuesSetUp = new SimpleBooleanProperty(false);
         areRotorsChosen = new SimpleBooleanProperty(false);
+        isSetRandomPressed = new SimpleBooleanProperty(false);
+//        areRotorsChosen = areRotorsChosenList.stream().noneMatch(ChoiceBox);
+//        children.stream().anyMatch(Child::isSingle), children);
+
     }
     private void setReflectorChoiceBoxHbox() {
         int reflectorNum = DateService.getInventoryInfo().getNumOfAvailableRotors();
@@ -87,10 +96,10 @@ public class SetMachineConfigController implements Initializable {
             ChoiceBox<Integer> rotorChoiceBox= makeRotorChoiceBox(numOfAvailableRotors);
             SimpleBooleanProperty rotorProperty = new SimpleBooleanProperty(false);
             rotorProperty.bind(rotorChoiceBox.valueProperty().isNotNull());
-//        setUserChoiceButton.disableProperty().bind(areRotorsChosen.not());
             areRotorsChosenList.add(rotorProperty);
             rotorsHbox.getChildren().add(rotorChoiceBox);
         }
+        setUserChoiceButton.disableProperty().bind(areRotorsChosen.not());
     }
 
     private ChoiceBox<Integer> makeRotorChoiceBox(int rotorsNum) {
@@ -127,5 +136,15 @@ public class SetMachineConfigController implements Initializable {
 //      todo - get message to header
 //            parentController.
         }
+    }
+
+    @FXML
+    void onSetRandomChoiceButtonAction(ActionEvent event) {
+//        parentController.handleSetRandomPressed();
+    }
+
+
+    public void addOnSetButtonListener(ChangeListener<Boolean> booleanChangeListener) {
+        setRandomChoiceButton.pressedProperty().addListener(booleanChangeListener);
     }
 }

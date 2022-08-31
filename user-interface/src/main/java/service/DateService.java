@@ -19,4 +19,10 @@ public class DateService {
     @Setter @Getter
     private static MachineState currentMachineState;
 
+    @Setter @Getter
+    private static Boolean isCurrentMachineStateConfigured = new Boolean(false);
+
+    @Setter @Getter
+    private static Boolean isOriginalMachineStateConfigured = new Boolean(false);
+
 }

@@ -41,7 +41,7 @@ public class HeaderController implements Initializable {
     private Label messageLabel;
     @Setter private Stage primaryStage;
     @Getter private SimpleStringProperty selectedFileProperty;
-    private SimpleBooleanProperty isFileSelected;
+    @Getter private SimpleBooleanProperty isFileSelected;
 
     public HeaderController (){
         selectedFileProperty = new SimpleStringProperty();

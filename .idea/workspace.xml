@@ -15,13 +15,26 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Logs/logging.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/logging.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/AppController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/AppController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/CurrMachineConfigController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/CurrMachineConfigController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/HeaderController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/HeaderController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/MachineDetailsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/MachineDetailsController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/MachinePageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/MachinePageController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/SetMachineConfigController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/SetMachineConfigController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/service/DateService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/service/DateService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/subcomponents/MachineDetails.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/subcomponents/MachineDetails.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/subcomponents/currMachineConfigTemplate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/subcomponents/currMachineConfigTemplate.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/subcomponents/setMachineConfigTemplate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/subcomponents/setMachineConfigTemplate.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/AppController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/CurrMachineConfigController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/CurrMachineConfigController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/HeaderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/HeaderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/MachineDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/MachineDetailsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/MachinePageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/MachinePageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/SetMachineConfigController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/SetMachineConfigController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/service/DateService.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/service/DateService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/MachineDetails.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/MachineDetails.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/currMachineConfigTemplate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/currMachineConfigTemplate.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/setMachineConfigTemplate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/setMachineConfigTemplate.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -288,11 +301,6 @@
           <line>124</line>
           <option name="timeStamp" value="225" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/user-interface/src/main/java/controller/HeaderController.java</url>
-          <line>76</line>
-          <option name="timeStamp" value="304" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/user-interface/src/main/java/ui/GuiApplication.java</url>
           <line>172</line>
@@ -308,10 +316,12 @@
       <pinned-members>
         <PinnedItemInfo parentTag="main.java.component.impl.PlugBoardImpl" memberName="plugBoardMapping" />
         <PinnedItemInfo parentTag="main.java.component.impl.ReflectorImpl" memberName="id" />
+        <PinnedItemInfo parentTag="javafx.beans.property.SimpleBooleanProperty" memberName="listener" />
         <PinnedItemInfo parentTag="main.resources.generated.CTEReflectors" memberName="cteReflector" />
         <PinnedItemInfo parentTag="main.java.component.impl.MachineHandlerImpl" memberName="reflectorsInventory" />
         <PinnedItemInfo parentTag="java.lang.String" memberName="value" />
         <PinnedItemInfo parentTag="main.java.component.impl.EnigmaMachine" memberName="rotors" />
+        <PinnedItemInfo parentTag="java.lang.NullPointerException" memberName="stackTrace" />
         <PinnedItemInfo parentTag="java.util.stream.SortedOps$OfRef" memberName="sourceCloseAction" />
       </pinned-members>
     </pin-to-top-manager>
