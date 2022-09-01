@@ -1,6 +1,5 @@
 package src.main.java.controller;
 
-import javafx.application.Platform;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -8,7 +7,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -79,7 +77,7 @@ public class AppController/* implements Initializable */{
 //        }
         machineHandler = new MachineHandlerImpl();
         //Load MachinePage
-        URL machinePageResource = GuiApplication.class.getResource(PropertiesService.getMachinePageWithIncludesFxmlPath());
+        URL machinePageResource = GuiApplication.class.getResource(PropertiesService.getMachinePageTemplateFxmlPath());
         System.out.println("found Url of machine component:"+ machinePageResource);
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(machinePageResource);
