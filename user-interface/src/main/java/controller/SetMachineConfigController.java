@@ -1,9 +1,7 @@
 package src.main.java.controller;
 
-import javafx.beans.binding.BooleanExpression;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ChangeListener;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -20,7 +18,7 @@ import javafx.scene.layout.Pane;
 import lombok.Getter;
 import lombok.Setter;
 import main.java.enums.ReflectorsId;
-import src.main.java.service.DateService;
+import src.main.java.service.DataService;
 
 import java.net.URL;
 import java.util.*;
@@ -30,6 +28,13 @@ public class SetMachineConfigController implements Initializable {
 
     @Getter @Setter
     @FXML MachinePageController parentController;
+
+    private SimpleBooleanProperty areRotorsChosen;
+    private SimpleBooleanProperty areValuesSetUp;
+    @Getter private SimpleBooleanProperty isSetRandomPressed;
+    private final List<SimpleBooleanProperty> areRotorsChosenList = new ArrayList<>();
+
+    //    private final List<SimpleBooleanProperty> areRotorsChosenList =  FXCollections.observableArrayList(c -> new Observable[]{c.singleProperty()});
 
     @FXML private Label titleLabel;
     @FXML private GridPane innerGridPane;
@@ -53,19 +58,15 @@ public class SetMachineConfigController implements Initializable {
     @FXML private Button plugBoardAddNewButton;
     @FXML private Button setUserChoiceButton;
     @FXML @Getter private Button setRandomChoiceButton;
-    private SimpleBooleanProperty areValuesSetUp;
 
-    @Getter private SimpleBooleanProperty isSetRandomPressed;
 
-    private final List<SimpleBooleanProperty> areRotorsChosenList = new ArrayList<>();
-//    private final List<SimpleBooleanProperty> areRotorsChosenList =  FXCollections.observableArrayList(c -> new Observable[]{c.singleProperty()});
 
-    private SimpleBooleanProperty areRotorsChosen;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 //        setUserChoiceButton.disableProperty().bind(areValuesSetUp.not());
 //        isSetRandomPressed.bind(setRandomChoiceButton.pressedProperty());
-        if(DateService.getIsMachineInventoryConfigured()){
+
+        if(DataService.getIsMachineInventoryConfigured()){
             setMachineDetails();
         }
 
@@ -85,10 +86,9 @@ public class SetMachineConfigController implements Initializable {
         isSetRandomPressed = new SimpleBooleanProperty(false);
 //        areRotorsChosen = areRotorsChosenList.stream().noneMatch(ChoiceBox);
 //        children.stream().anyMatch(Child::isSingle), children);
-
     }
     private void setReflectorChoiceBoxHbox() {
-        int reflectorNum = DateService.getInventoryInfo().getNumOfAvailableRotors();
+        int reflectorNum = DataService.getInventoryInfo().getNumOfAvailableRotors();
         rotorsHbox.getChildren().clear();
         for (int i = 1; i <= reflectorNum; i++) {
             reflectorChoiceBox.getItems().add(ReflectorsId.getByNum(i).getName());
@@ -96,8 +96,8 @@ public class SetMachineConfigController implements Initializable {
     }
 
     private void setRotorsHbox(){
-        int numOfAvailableRotors = DateService.getInventoryInfo().getNumOfAvailableRotors();
-        int numOfNeededRotors = DateService.getInventoryInfo().getNumOfRotorsInUse();
+        int numOfAvailableRotors = DataService.getInventoryInfo().getNumOfAvailableRotors();
+        int numOfNeededRotors = DataService.getInventoryInfo().getNumOfRotorsInUse();
         rotorsHbox.getChildren().clear();
         for (int i = 1; i <= numOfNeededRotors; i++) {
             ChoiceBox<Integer> rotorChoiceBox= makeRotorChoiceBox(numOfAvailableRotors);
@@ -124,7 +124,7 @@ public class SetMachineConfigController implements Initializable {
 //    }
 
     private void addPlugboardTab() {
-        String ABC = DateService.getInventoryInfo().getABC();
+        String ABC = DataService.getInventoryInfo().getABC();
         for (int i = 0; i < ABC.length(); i++) {
             plugBoardAddNewEP1Choice.getItems().add(ABC.substring(i,i+1));
             plugBoardAddNewEP2Choice.getItems().add(ABC.substring(i,i+1));
@@ -154,4 +154,5 @@ public class SetMachineConfigController implements Initializable {
     public void addOnSetButtonListener(ChangeListener<Boolean> booleanChangeListener) {
         setRandomChoiceButton.pressedProperty().addListener(booleanChangeListener);
     }
+
 }

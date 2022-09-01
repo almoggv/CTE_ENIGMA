@@ -15,11 +15,11 @@
     <RowConstraints maxHeight="1.7976931348623157E308" minHeight="100.0" prefHeight="220.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
+      <SplitPane dividerPositions="0.5" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" orientation="VERTICAL">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+          <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="250.0" minWidth="700.0">
                <children>
-                  <ScrollPane fx:id="scrollOfRightBottomAnchor1" fitToHeight="true" fitToWidth="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <ScrollPane fx:id="scrollOfRightBottomAnchor1" fitToHeight="true" fitToWidth="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <content>
                         <fx:include fx:id="machineDetailsComponent" source="MachineDetails.fxml" />
                      </content>
@@ -30,7 +30,7 @@
               <items>
                   <AnchorPane fx:id="leftAnchorOfBottom" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                      <children>
-                        <ScrollPane fx:id="scrollOfLeftBottomAnchor" fitToHeight="true" fitToWidth="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <ScrollPane fx:id="scrollOfLeftBottomAnchor" fitToHeight="true" fitToWidth="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <content>
                               <fx:include fx:id="setMachineConfigurationComponent" source="setMachineConfigTemplate.fxml" />
                            </content>
@@ -39,8 +39,11 @@
                   </AnchorPane>
                   <AnchorPane fx:id="rightAnchorOfBottom" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                      <children>
-                        <ScrollPane fx:id="scrollOfRightBottomAnchor" fitToHeight="true" fitToWidth="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                        <fx:include fx:id="currentMachineConfigurationComponent" source="currMachineConfigTemplate.fxml" />
+                        <ScrollPane fx:id="scrollOfRightBottomAnchor" fitToHeight="true" fitToWidth="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <content>
+                              <fx:include fx:id="currMachineConfigComponent" source="currMachineConfigTemplate.fxml" />
+                           </content>
+                        </ScrollPane>
                      </children>
                   </AnchorPane>
               </items>

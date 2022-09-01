@@ -36,7 +36,7 @@
          </columnConstraints>
          <rowConstraints>
             <RowConstraints maxHeight="60.33331298828125" minHeight="10.0" prefHeight="16.0" vgrow="SOMETIMES" />
-            <RowConstraints fillHeight="false" maxHeight="1.7976931348623157E308" minHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints fillHeight="false" maxHeight="1.7976931348623157E308" minHeight="50.0" vgrow="NEVER" />
             <RowConstraints fillHeight="false" maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
             <RowConstraints fillHeight="false" maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
          </rowConstraints>
@@ -51,7 +51,7 @@
                   <ChoiceBox fx:id="rotorChoice1" prefHeight="25.0" prefWidth="50.0" />
                </children>
             </HBox>
-            <TabPane fx:id="plugBoardTabPane" prefHeight="150.0" prefWidth="175.0" side="BOTTOM" tabClosingPolicy="UNAVAILABLE" GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.rowSpan="2">
+            <TabPane fx:id="plugBoardTabPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="175.0" side="BOTTOM" tabClosingPolicy="UNAVAILABLE" GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.rowSpan="2">
               <tabs>
                 <Tab fx:id="plugBoardAddNewTab" text="Add new">
                      <content>
@@ -95,7 +95,7 @@
               </tabs>
             </TabPane>
             <HBox fx:id="rotorsHbox1" alignment="CENTER" layoutX="65.0" layoutY="44.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="5.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <Button fx:id="setUserChoiceButton" mnemonicParsing="false" onAction="#onSetUserChoiceButtonAction" text="Set choice" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Button fx:id="setUserChoiceButton" mnemonicParsing="false" onAction="#onSetUserChoiceButtonAction" text="Set choice" GridPane.columnIndex="3" GridPane.rowIndex="3" />
             <Button fx:id="setRandomChoiceButton" mnemonicParsing="false" onAction="#onSetRandomChoiceButtonAction" text="Set randomly" GridPane.rowIndex="3" />
          </children>
       </GridPane>

@@ -1,6 +1,5 @@
 package src.main.java.controller;
 
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -10,7 +9,7 @@ import javafx.scene.layout.HBox;
 import lombok.Getter;
 import lombok.Setter;
 import main.java.generictype.MappingPair;
-import src.main.java.service.DateService;
+import src.main.java.service.DataService;
 
 import java.net.URL;
 import java.util.List;
@@ -20,10 +19,10 @@ import java.util.ResourceBundle;
 public class CurrMachineConfigController implements Initializable {
 
 
-    @Getter @Setter
-    @FXML MachinePageController parentController;
+    @Getter @FXML MachinePageController machinePageController;
+    @Getter @FXML EncryptPageController encryptPageController;
 
-    @FXML private GridPane rootGridPane;
+    @Getter @FXML private GridPane rootGridPane;
     @FXML private HBox rotorsHbox;
     @FXML private Button rotorButton2;
     @FXML private Button rotorButton1;
@@ -31,18 +30,23 @@ public class CurrMachineConfigController implements Initializable {
     @FXML private Button plugBoardConnection2;
     @FXML private Button plugBoardConnection1;
     @FXML private Button reflectorButton;
+    @FXML private HBox reflectorHbox;
+    @FXML public Label machineNotConfiguredLabel;
 
-    @FXML
-    private HBox reflectorHbox;
-
-    @FXML
-    public Label machineNotConfiguredLabel;
     public CurrMachineConfigController(){
+    }
+
+    public void setParentController(MachinePageController parentController){
+        this.machinePageController = parentController;
+    }
+
+    public void setParentController(EncryptPageController parentController){
+        this.encryptPageController = parentController;
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        if(DateService.getIsCurrentMachineStateConfigured()){
+        if(DataService.getIsCurrentMachineStateConfigured()){
             showCurrConfiguration();
         }
     }
@@ -56,8 +60,8 @@ public class CurrMachineConfigController implements Initializable {
 
     private void setRotorsHbox() {
         rotorsHbox.getChildren().clear();
-        int numOfRotors = DateService.getCurrentMachineState().getRotorIds().size();
-        List<Integer> rotorIds = DateService.getCurrentMachineState().getRotorIds();
+        int numOfRotors = DataService.getCurrentMachineState().getRotorIds().size();
+        List<Integer> rotorIds = DataService.getCurrentMachineState().getRotorIds();
         for (int i = 0; i < numOfRotors; i++) {
             Button rotor = new Button(new String(String.valueOf(rotorIds.get(i))));
             rotorsHbox.getChildren().add(rotor);
@@ -66,8 +70,8 @@ public class CurrMachineConfigController implements Initializable {
 
     private void setPlugBoardHbox() {
         plugBoardHbox.getChildren().clear();
-        int numOfPlugs = DateService.getCurrentMachineState().getPlugMapping().size();
-        List<MappingPair<String, String>> plugMapping = DateService.getCurrentMachineState().getPlugMapping();
+        int numOfPlugs = DataService.getCurrentMachineState().getPlugMapping().size();
+        List<MappingPair<String, String>> plugMapping = DataService.getCurrentMachineState().getPlugMapping();
         for (MappingPair<String,String> mappingPair : plugMapping) {
             String plugString = mappingPair.getLeft() + "|" + mappingPair.getRight();
             Button plugButton = new Button(plugString);
@@ -77,7 +81,7 @@ public class CurrMachineConfigController implements Initializable {
 
     private void setReflectorLabel(){
         reflectorHbox.getChildren().clear();
-        Button refButton = new Button(DateService.getCurrentMachineState().getReflectorId().getName());
+        Button refButton = new Button(DataService.getCurrentMachineState().getReflectorId().getName());
         reflectorHbox.getChildren().add(refButton);
     }
 }

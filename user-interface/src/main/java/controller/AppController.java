@@ -15,7 +15,7 @@ import lombok.Setter;
 import main.java.component.MachineHandler;
 import main.java.component.impl.MachineHandlerImpl;
 import main.java.dto.InventoryInfo;
-import src.main.java.service.DateService;
+import src.main.java.service.DataService;
 import src.main.java.service.PropertiesService;
 import src.main.java.ui.GuiApplication;
 
@@ -29,8 +29,9 @@ public class AppController/* implements Initializable */{
     private InventoryInfo inventoryInfo;
     @Getter private Stage primaryStage;
 
-    @Setter
-    @Getter private SimpleBooleanProperty isMachineConfigured;
+    @Setter @Getter
+    private SimpleBooleanProperty isMachineConfigured;
+
 
     @FXML
     GridPane headerComponentRootPane;
@@ -83,6 +84,8 @@ public class AppController/* implements Initializable */{
         encryptPageController = fxmlLoader.getController();
         encryptPageController.setParentController(this);
         encryptPageController.setMachineHandler(machineHandler);
+        encryptPageController.bindController(machinePageController.getCurrMachineConfigComponentController());
+
         // Load Brute Force Page :TODO
     }
 
@@ -110,6 +113,7 @@ public class AppController/* implements Initializable */{
         Parent rootComponent = machinePageController.getRootComponent();
         bodyWrapScrollPane.setContent(rootComponent);
     }
+
     public void changeSceneToEncrypt() {
         Parent rootComponent = encryptPageController.getRootComponent();
         bodyWrapScrollPane.setContent(rootComponent);
@@ -137,12 +141,13 @@ public class AppController/* implements Initializable */{
         machineHandler.buildMachinePartsInventory(absolutePath);
         makeBodyVisible();
         Optional<InventoryInfo> optionalInventoryInfo = machineHandler.getInventoryInfo();
-        optionalInventoryInfo.ifPresent(DateService::setInventoryInfo);
+        optionalInventoryInfo.ifPresent(DataService::setInventoryInfo);
         if(optionalInventoryInfo.isPresent()){
-            DateService.setIsMachineInventoryConfigured(true);
+            DataService.setIsMachineInventoryConfigured(true);
             //TODO: try binding the property - to auto-update
             machinePageController.getSetMachineConfigurationComponentController().setMachineDetails();
         }
+
         /////////////////////////////////////////////
 //        if(loadFile(absolutePath)) {
 //            makeBodyVisible();

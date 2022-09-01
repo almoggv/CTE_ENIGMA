@@ -47,6 +47,7 @@ public class HeaderController implements Initializable {
         selectedFileProperty = new SimpleStringProperty();
         isFileSelected = new SimpleBooleanProperty(false);
     }
+
     @FXML
     void onBrowseFilesButtonClicked(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();

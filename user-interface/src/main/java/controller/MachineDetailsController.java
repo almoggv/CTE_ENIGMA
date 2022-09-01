@@ -3,13 +3,12 @@ package src.main.java.controller;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import lombok.Getter;
 import lombok.Setter;
-import src.main.java.service.DateService;
+import src.main.java.service.DataService;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -57,10 +56,10 @@ public class MachineDetailsController implements Initializable {
     private Label machineNotConfiguredLabel;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        if(DateService.getIsMachineInventoryConfigured()){
+        if(DataService.getIsMachineInventoryConfigured()){
            setDetails();
         }
-        if(DateService.getIsOriginalMachineStateConfigured()){
+        if(DataService.getIsOriginalMachineStateConfigured()){
             originalMachineConfigurationAnchor.setVisible(true);
             machineNotConfiguredLabel.setVisible(false);
         }
@@ -70,9 +69,9 @@ public class MachineDetailsController implements Initializable {
         }
     }
     private void setDetails() {
-        availableRotorNumLabel.setText((String.valueOf(DateService.getInventoryInfo().getNumOfAvailableRotors())));
+        availableRotorNumLabel.setText((String.valueOf(DataService.getInventoryInfo().getNumOfAvailableRotors())));
 //        encryptedMsgLabel.setText(DateService.getInventoryInfo());
-        toUseRotorNumLabel.setText((String.valueOf(DateService.getInventoryInfo().getNumOfRotorsInUse())));
-        availableReflectorNumLabel.setText((String.valueOf(DateService.getInventoryInfo().getNumOfAvailableReflectors())));
+        toUseRotorNumLabel.setText((String.valueOf(DataService.getInventoryInfo().getNumOfRotorsInUse())));
+        availableReflectorNumLabel.setText((String.valueOf(DataService.getInventoryInfo().getNumOfAvailableReflectors())));
     }
 }

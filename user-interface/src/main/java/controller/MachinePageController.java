@@ -13,7 +13,7 @@ import javafx.scene.layout.GridPane;
 import lombok.Getter;
 import lombok.Setter;
 import main.java.component.MachineHandler;
-import src.main.java.service.DateService;
+import src.main.java.service.DataService;
 
 import java.awt.event.ActionListener;
 import java.net.URL;
@@ -21,15 +21,12 @@ import java.util.ResourceBundle;
 
 public class MachinePageController implements Initializable {
 
-    @Setter @Getter
-    @FXML private AppController parentController;
-    public GridPane setMachineConfigurationComponent;
-    @Getter
-    @FXML private SetMachineConfigController setMachineConfigurationComponentController;
-    public GridPane currentMachineConfigurationComponent;
-    @Getter
-    @FXML private CurrMachineConfigController currentMachineConfigurationComponentController;
-
+    @Setter @Getter @FXML private AppController parentController;
+    @Getter @FXML private SetMachineConfigController setMachineConfigurationComponentController;
+    @Getter @FXML private CurrMachineConfigController currMachineConfigComponentController;
+    
+    @FXML public GridPane setMachineConfigurationComponent;
+    @FXML public GridPane currMachineConfigComponent;
     @FXML private GridPane rootGridPane;
     @FXML private SplitPane bottomSplitPane;
     @FXML private AnchorPane leftAnchorOfBottom;
@@ -55,14 +52,14 @@ public class MachinePageController implements Initializable {
                     System.out.println("in MachinePageController, onSetRandPress!");
                     try {
                         machineHandler.assembleMachine();
-                        if(isFirstTimeConfigure){
-                            DateService.setOriginalMachineState(machineHandler.getMachineState().get());
-                            DateService.setIsOriginalMachineStateConfigured(true);
+                        if (isFirstTimeConfigure) {
+                            DataService.setOriginalMachineState(machineHandler.getMachineState().get());
+                            DataService.setIsOriginalMachineStateConfigured(true);
                             isFirstTimeConfigure = false;
                         }
-                        DateService.setCurrentMachineState(machineHandler.getMachineState().get());
-                        DateService.setIsCurrentMachineStateConfigured(true);
-                        currentMachineConfigurationComponentController.showCurrConfiguration();
+                        DataService.setCurrentMachineState(machineHandler.getMachineState().get());
+                        DataService.setIsCurrentMachineStateConfigured(true);
+                        currMachineConfigComponentController.showCurrConfiguration();
                     } catch (Exception ex) {
                         throw new RuntimeException(ex);
                     }
@@ -70,8 +67,8 @@ public class MachinePageController implements Initializable {
             });
 
         }
-        if(currentMachineConfigurationComponentController != null){
-            currentMachineConfigurationComponentController.setParentController(this);
+        if(currMachineConfigComponentController != null){
+            currMachineConfigComponentController.setParentController(this);
         }
         if(machineDetailsComponentController != null){
             machineDetailsComponentController.setParentController(this);
@@ -84,15 +81,5 @@ public class MachinePageController implements Initializable {
 
     public Parent getRootComponent() {
         return rootGridPane;
-    }
-
-    public void setCurrentMachineConfigurationComponentController(CurrMachineConfigController currentMachineConfigurationComponentController) {
-        this.currentMachineConfigurationComponentController = currentMachineConfigurationComponentController;
-        currentMachineConfigurationComponentController.setParentController(this);
-    }
-
-    public void setSetMachineConfigurationComponentController(SetMachineConfigController setMachineConfigurationComponentController) {
-        this.setMachineConfigurationComponentController = setMachineConfigurationComponentController;
-        setMachineConfigurationComponentController.setParentController(this);
     }
 }
