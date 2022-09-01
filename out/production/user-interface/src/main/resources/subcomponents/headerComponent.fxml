@@ -8,10 +8,10 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane fx:id="rootPane" alignment="BOTTOM_LEFT" minHeight="100.0" minWidth="600.0" prefHeight="120.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.main.java.controller.HeaderController">
+<GridPane fx:id="headerComponentRootPane" alignment="BOTTOM_LEFT" minHeight="100.0" minWidth="600.0" prefHeight="120.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.main.java.controller.HeaderController">
    <columnConstraints>
       <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="10.0" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="575.3333129882812" minWidth="50.0" prefWidth="574.6666564941406" />
+      <ColumnConstraints hgrow="NEVER" maxWidth="1.7976931348623157E308" minWidth="50.0" prefWidth="600.0" />
       <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="10.0" />
    </columnConstraints>
    <rowConstraints>
@@ -24,11 +24,11 @@
    </rowConstraints>
    <children>
       <Label fx:id="titleLabel" text="Enigma Machine" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-      <HBox fx:id="browseFilesHBox" alignment="CENTER_LEFT" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <HBox fx:id="browseFilesHBox" alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="10.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
          <children>
+<!--            <TextField fx:id="selectedFileName" editable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />-->
             <Button fx:id="browseFilesButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onBrowseFilesButtonClicked" text="Browse Files" HBox.hgrow="NEVER" />
-            <Label maxWidth="-Infinity" minWidth="-Infinity" text="Chosen file: " HBox.hgrow="NEVER" />
-            <Label fx:id="selectedFileName" HBox.hgrow="SOMETIMES" />
+            <Label fx:id="selectedFileName" maxWidth="-Infinity" minWidth="-Infinity" text="Chosen file: " HBox.hgrow="NEVER" />
          </children>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

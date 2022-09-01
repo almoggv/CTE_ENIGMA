@@ -25,4 +25,6 @@ public class DateService {
     @Setter @Getter
     private static Boolean isOriginalMachineStateConfigured = new Boolean(false);
 
+    @Setter @Getter
+    private static Boolean isMachineInventoryConfigured = new Boolean(false);
 }

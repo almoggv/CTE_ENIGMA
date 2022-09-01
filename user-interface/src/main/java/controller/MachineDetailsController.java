@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import lombok.Getter;
@@ -15,6 +16,7 @@ import java.util.ResourceBundle;
 
 public class MachineDetailsController implements Initializable {
 
+    public AnchorPane originalMachineConfigurationAnchor;
     @Getter
     @Setter
     @FXML MachinePageController parentController;
@@ -51,23 +53,22 @@ public class MachineDetailsController implements Initializable {
     private Label availableReflectorNumLabel;
     @FXML
     private GridPane originalMachineConfigurationComponent;
-
     @FXML
     private Label machineNotConfiguredLabel;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        setDetails();
+        if(DateService.getIsMachineInventoryConfigured()){
+           setDetails();
+        }
         if(DateService.getIsOriginalMachineStateConfigured()){
-            originalMachineConfigurationComponent.setVisible(true);
+            originalMachineConfigurationAnchor.setVisible(true);
             machineNotConfiguredLabel.setVisible(false);
         }
         else{
-            originalMachineConfigurationComponent.setVisible(false);
+            originalMachineConfigurationAnchor.setVisible(false);
             machineNotConfiguredLabel.setVisible(true);
         }
     }
-
-
     private void setDetails() {
         availableRotorNumLabel.setText((String.valueOf(DateService.getInventoryInfo().getNumOfAvailableRotors())));
 //        encryptedMsgLabel.setText(DateService.getInventoryInfo());

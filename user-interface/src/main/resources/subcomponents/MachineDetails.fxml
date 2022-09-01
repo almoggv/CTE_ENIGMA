@@ -59,7 +59,7 @@
             </HBox>
             <Label text="Original Machine Configorationl" GridPane.columnIndex="2" GridPane.rowIndex="3" />
             <Label fx:id="machineNotConfiguredLabel" text="Not Configured" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
+            <AnchorPane fx:id="originalMachineConfigurationAnchor" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
                <children>
                   <ScrollPane layoutX="-58.0" layoutY="-86.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <content>

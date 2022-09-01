@@ -7,11 +7,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import lombok.Getter;
@@ -33,11 +31,9 @@ public class AppController/* implements Initializable */{
 
     private InventoryInfo inventoryInfo;
     @FXML
-    GridPane HeaderComponent;
+    GridPane headerComponentRootPane;
     @Getter
-    @FXML private HeaderController HeaderComponentController;
-
-
+    @FXML private HeaderController headerComponentRootPaneController;
     @Getter
     @FXML MachinePageController machinePageController;
     @Getter
@@ -51,12 +47,15 @@ public class AppController/* implements Initializable */{
     //todo - change bodyWrapScrollPane to body component
     @FXML
     private ScrollPane BodyComponent;
-    @FXML
-    private Controller bodyComponentController;
+//    @FXML
+//    private Controller bodyComponentController;
     @FXML private GridPane machinePageComponent;
 
     @FXML private MachinePageController machinePageComponentController;
 
+    @FXML private GridPane encryptPageComponent;
+
+    @FXML private MachinePageController encryptPageComponentController;
     @Setter
     @Getter private SimpleBooleanProperty isMachineConfigured;
 
@@ -68,65 +67,58 @@ public class AppController/* implements Initializable */{
         isMachineConfigured = new SimpleBooleanProperty(false);
     }
     @FXML
-    public void initialize(/*URL location, ResourceBundle resources*/) {
-        if(HeaderComponentController!=null){
-            HeaderComponentController.setParentController(this);
+    public void initialize(/*URL location, ResourceBundle resources*/) throws IOException {
+        if(headerComponentRootPaneController !=null){
+            headerComponentRootPaneController.setParentController(this);
         }
-        if(machinePageController!=null){
-            machinePageController.setParentController(this);
-        }
-        if(encryptPageController!=null){
-            encryptPageController.setParentController(this);
-        }
+//        if(machinePageController!=null){
+//            machinePageController.setParentController(this);
+//        }
+//        if(encryptPageController!=null){
+//            encryptPageController.setParentController(this);
+//        }
         machineHandler = new MachineHandlerImpl();
-    }
-
-    public void changeCenterComponent(String absolutePath) {
-        Platform.runLater(()->{
-            try{
-                changeCenterComponentAndController(absolutePath);
-            }
-            catch (Exception e){
-                System.out.println("problem changing center");
-            }
-        });
-    }
-
-    private void changeCenterComponentAndController(String absolutePath) throws Exception {
+        //Load MachinePage
+        URL machinePageResource = GuiApplication.class.getResource(PropertiesService.getMachinePageWithIncludesFxmlPath());
+        System.out.println("found Url of machine component:"+ machinePageResource);
         FXMLLoader fxmlLoader = new FXMLLoader();
-        URL appResource = GuiApplication.class.getResource(absolutePath);
-        System.out.println("changing center component to: "+ absolutePath);
-        fxmlLoader.setLocation(appResource);
-        Parent rootComponent = (Parent) fxmlLoader.load(appResource.openStream());
-        bodyComponentController = fxmlLoader.getController();
-        bodyComponentController.setParentController(this);
-        bodyComponentController.setMachineHandler(machineHandler);
-        bodyWrapScrollPane.setContent(rootComponent);
+        fxmlLoader.setLocation(machinePageResource);
+        machinePageComponent = fxmlLoader.load(machinePageResource.openStream());
+        machinePageController = fxmlLoader.getController();
+        machinePageController.setMachineHandler(machineHandler);
+        //Load Encrypt Page
+        URL encryptPageResource = GuiApplication.class.getResource(PropertiesService.getEncryptPageTemplateFxmlPath());
+        System.out.println("found Url of encrypt component:"+ encryptPageResource);
+        fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(encryptPageResource);
+        encryptPageComponent = fxmlLoader.load(encryptPageResource.openStream());
+        encryptPageController = fxmlLoader.getController();
+        encryptPageController.setMachineHandler(machineHandler);
     }
 
-//    private void initializeMachinePage() throws Exception{
-//        FXMLLoader fxmlLoader;
-//        //Load Current Machine Config
-//        URL currConfigResource = GuiApplication.class.getResource(PropertiesService.getCurrMachineConfigTemplateFxmlPath());
-//        System.out.println("found Url of header component:"+ currConfigResource);
-//        fxmlLoader = new FXMLLoader();
-//        fxmlLoader.setLocation(currConfigResource);
-//        GridPane currConfigComponent = fxmlLoader.load(currConfigResource.openStream());
-//        CurrMachineConfigController currMachineConfigController = fxmlLoader.getController();
-//        //Load Set Machine Config
-//        URL setConfigResource = GuiApplication.class.getResource(PropertiesService.getSetMachineConfigTemplateFxmlPath());
-//        System.out.println("found Url of header component:"+ setConfigResource);
-//        fxmlLoader = new FXMLLoader();
-//        fxmlLoader.setLocation(setConfigResource);
-//        GridPane setCofigComponent = fxmlLoader.load(setConfigResource.openStream());
-//        SetMachineConfigController setMachineConfigController = fxmlLoader.getController();
-//        //Connecting them to their parent component
-//        connectCurrConfigComponentToMachinePage(currConfigComponent);
-////        connectSetConfigComponentToMachinePage(setCofigComponent);
-//        //Connecting their Controllers
-//        machinePageController.setCurrMachineConfigController(currMachineConfigController);
-//        machinePageController.setSetMachineConfigController(setMachineConfigController);
+//    public void changeCenterComponent(String absolutePath) {
+//        Platform.runLater(()->{
+//            try{
+//                changeCenterComponentAndController(absolutePath);
+//            }
+//            catch (Exception e){
+//                System.out.println("problem changing center");
+//            }
+//        });
 //    }
+//
+//    private void changeCenterComponentAndController(String absolutePath) throws Exception {
+//        FXMLLoader fxmlLoader = new FXMLLoader();
+//        URL appResource = GuiApplication.class.getResource(absolutePath);
+//        System.out.println("changing center component to: "+ absolutePath);
+//        fxmlLoader.setLocation(appResource);
+//        Parent rootComponent = (Parent) fxmlLoader.load(appResource.openStream());
+//        bodyComponentController = fxmlLoader.getController();
+//        bodyComponentController.setParentController(this);
+//        bodyComponentController.setMachineHandler(machineHandler);
+//        bodyWrapScrollPane.setContent(rootComponent);
+//    }
+
 //    private void connectCurrConfigComponentToMachinePage(GridPane currMachineConfigComponent) {
 //        SplitPane bottomSplitPane = (SplitPane) getNodeFromGridPane(machinePageComponent,0,1);
 //        if(bottomSplitPane == null ){
@@ -141,25 +133,26 @@ public class AppController/* implements Initializable */{
 //            }
 //        }
 //    }
-//        //Generic Utility Method
-//    private Node getNodeFromGridPane(GridPane gridPane, int col, int row) {
-//        if(gridPane == null || gridPane.getChildren() == null){
-//            return null;
-//        }
-//        ObservableList<Node> children = gridPane.getChildren();
-//        for (Node node : children) {
-//            Integer columnIndex = GridPane.getColumnIndex(node);
-//            Integer rowIndex = GridPane.getRowIndex(node);
-//            if (columnIndex == null)
-//                columnIndex = 0;
-//            if (rowIndex == null)
-//                rowIndex = 0;
-//            if (columnIndex == col && rowIndex == row) {
-//                return node;
-//            }
-//        }
-//        return null;
-//    }
+
+    //Generic Utility Method
+    private Node getNodeFromGridPane(GridPane gridPane, int col, int row) {
+        if(gridPane == null || gridPane.getChildren() == null){
+            return null;
+        }
+        ObservableList<Node> children = gridPane.getChildren();
+        for (Node node : children) {
+            Integer columnIndex = GridPane.getColumnIndex(node);
+            Integer rowIndex = GridPane.getRowIndex(node);
+            if (columnIndex == null)
+                columnIndex = 0;
+            if (rowIndex == null)
+                rowIndex = 0;
+            if (columnIndex == col && rowIndex == row) {
+                return node;
+            }
+        }
+        return null;
+    }
     public void changeSceneToMachine(){
         Parent rootComponent = machinePageController.getRootComponent();
         bodyWrapScrollPane.setContent(rootComponent);
@@ -168,9 +161,9 @@ public class AppController/* implements Initializable */{
         Parent rootComponent = encryptPageController.getRootComponent();
         bodyWrapScrollPane.setContent(rootComponent);
     }
-    public void setHeaderComponentController(HeaderController headerComponentController) {
-        this.HeaderComponentController = headerComponentController;
-        headerComponentController.setParentController(this);
+    public void setHeaderComponentRootPaneController(HeaderController headerComponentRootPaneController) {
+        this.headerComponentRootPaneController = headerComponentRootPaneController;
+        headerComponentRootPaneController.setParentController(this);
     }
 
     public void setMachinePageController(MachinePageController machinePageController) {
@@ -191,12 +184,12 @@ public class AppController/* implements Initializable */{
         try {
             machineHandler.buildMachinePartsInventory(absolutePath);
             System.out.println("File Loaded Successfully");
-            HeaderComponentController.setMessageLabel("Message: File Loaded Successfully");
+            headerComponentRootPaneController.setMessageLabel("Message: File Loaded Successfully");
             return true;
         }
         catch (Exception e){
             System.out.println(e.getMessage());
-            HeaderComponentController.setMessageLabel("Message: "+ e.getMessage());
+            headerComponentRootPaneController.setMessageLabel("Message: "+ e.getMessage());
             return false;
         }
     }
@@ -205,17 +198,19 @@ public class AppController/* implements Initializable */{
         if(loadFile(absolutePath)) {
             makeBodyVisible();
             Optional<InventoryInfo> optionalInventoryInfo = machineHandler.getInventoryInfo();
-            //                machinePageController.getSetMachineConfigController().loadData(inventoryInfo.get());
             optionalInventoryInfo.ifPresent(DateService::setInventoryInfo);
-//            optionalInventoryInfo.ifPresent(info -> inventoryInfo = info);
+            if(optionalInventoryInfo.isPresent()){
+                DateService.setIsMachineInventoryConfigured(true);
+                //todo - see if we can connect components to the data service to show automatically
+                machinePageController.getSetMachineConfigurationComponentController().setMachineDetails();
+            }
             return true;
-//            }};
         }
         return false;
     }
 
     public void setPrimaryStage(Stage primaryStage) {
         this.primaryStage = primaryStage;
-        HeaderComponentController.setPrimaryStage(primaryStage);
+        headerComponentRootPaneController.setPrimaryStage(primaryStage);
     }
 }

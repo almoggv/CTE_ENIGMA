@@ -24,19 +24,18 @@ import java.util.ResourceBundle;
 
 
 public class HeaderController implements Initializable {
+//    public GridPane headerComponentRootPane;
     @Setter @Getter
     private AppController parentController;
-    @FXML private GridPane rootPane;
+    @FXML private GridPane headerComponentRootPane;
     @FXML private Label titleLabel;
     @FXML private HBox browseFilesHBox;
     @FXML private Button browseFilesButton;
-    @FXML private TextField browseFilesText;
     @FXML Label selectedFileName;
     @FXML private HBox componentNavButtonsHBox;
     @FXML private Button machineSceneNavButton;
     @FXML private Button encryptSceneNavButton;
     @FXML private Button bruteForceSceneNavButton;
-
     @FXML
     private Label messageLabel;
     @Setter private Stage primaryStage;
@@ -65,15 +64,12 @@ public class HeaderController implements Initializable {
 
     @FXML
     void onChangeSceneToMachineButtonClick(ActionEvent event) {
-//        parentController.changeCenterComponent(PropertiesService.getCurrMachineConfigTemplateFxmlPath());;
-        parentController.changeCenterComponent(PropertiesService.getMachinePageWithIncludesFxmlPath());;
+        parentController.changeSceneToMachine();
     }
 
     @FXML
     void onChangeSceneToEncryptButtonClick(ActionEvent event) {
-        parentController.changeCenterComponent(PropertiesService.getEncryptPageTemplateFxmlPath());;
-
-//        parentController.changeSceneToEncrypt();
+        parentController.changeSceneToEncrypt();
     }
 
     @Override

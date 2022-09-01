@@ -19,7 +19,7 @@ import java.awt.event.ActionListener;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class MachinePageController implements Initializable, Controller  {
+public class MachinePageController implements Initializable {
 
     @Setter @Getter
     @FXML private AppController parentController;
@@ -27,7 +27,6 @@ public class MachinePageController implements Initializable, Controller  {
     @Getter
     @FXML private SetMachineConfigController setMachineConfigurationComponentController;
     public GridPane currentMachineConfigurationComponent;
-
     @Getter
     @FXML private CurrMachineConfigController currentMachineConfigurationComponentController;
 
@@ -81,19 +80,6 @@ public class MachinePageController implements Initializable, Controller  {
 
     public MachinePageController(){
         isMachineConfigured = new SimpleBooleanProperty(false);
-//        onSetMachineConfigurationPressed = new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                try {
-//                    machineHandler.assembleMachine();
-//                    DateService.setCurrentMachineState(machineHandler.getMachineState().get());
-//                    currMachineConfigController.showCurrConfiguration();
-//                } catch (Exception ex) {
-//                    throw new RuntimeException(ex);
-//                }
-//
-//            }
-//        };
     }
 
     public Parent getRootComponent() {

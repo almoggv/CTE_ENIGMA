@@ -65,11 +65,18 @@ public class SetMachineConfigController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 //        setUserChoiceButton.disableProperty().bind(areValuesSetUp.not());
 //        isSetRandomPressed.bind(setRandomChoiceButton.pressedProperty());
+        if(DateService.getIsMachineInventoryConfigured()){
+            setMachineDetails();
+        }
+
+        setRandomChoiceButton.pressedProperty().addListener((observable, oldValue, newValue) ->
+                System.out.println("setRandom Pressed!"));
+    }
+
+    public void setMachineDetails() {
         setReflectorChoiceBoxHbox();
         setRotorsHbox();
         addPlugboardTab();
-        setRandomChoiceButton.pressedProperty().addListener((observable, oldValue, newValue) ->
-                System.out.println("setRandom Pressed!"));
     }
 
     public SetMachineConfigController(){
