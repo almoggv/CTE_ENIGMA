@@ -733,4 +733,40 @@
   2022-09-01 17:25:28 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
   2022-09-01 17:25:28 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
   2022-09-01 17:25:28 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-01 17:45:48 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Dev\GitProjects\CTE_JAVA_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-paper-enigma.xml
+  2022-09-01 17:45:48 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-01 17:45:48 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-01 17:47:02 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Dev\GitProjects\CTE_JAVA_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-paper-enigma.xml
+  2022-09-01 17:47:02 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-01 17:47:02 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-01 17:48:16 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Dev\GitProjects\CTE_JAVA_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-paper-enigma.xml
+  2022-09-01 17:48:16 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-01 17:48:16 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-01 17:49:16 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-01 17:49:16 WARN  PlugBoardImpl:75 - Plugboard : Failed to connect endpoints -Wis already connected
+  2022-09-01 17:49:16 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-01 17:49:16 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-01 17:49:16 WARN  PlugBoardImpl:75 - Plugboard : Failed to connect endpoints -Lis already connected
+  2022-09-01 17:49:16 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-01 18:25:28 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Dev\GitProjects\CTE_JAVA_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-paper-enigma.xml
+  2022-09-01 18:25:28 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-01 18:25:28 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-01 18:27:07 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Dev\GitProjects\CTE_JAVA_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-paper-enigma.xml
+  2022-09-01 18:27:07 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-01 18:27:07 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-01 18:27:43 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Dev\GitProjects\CTE_JAVA_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-paper-enigma.xml
+  2022-09-01 18:27:43 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-01 18:27:43 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-01 18:28:29 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Dev\GitProjects\CTE_JAVA_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-paper-enigma.xml
+  2022-09-01 18:28:29 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-01 18:28:29 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-01 18:33:50 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Dev\GitProjects\CTE_JAVA_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-paper-enigma.xml
+  2022-09-01 18:33:50 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-01 18:33:50 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-01 18:34:52 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Dev\GitProjects\CTE_JAVA_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-paper-enigma.xml
+  2022-09-01 18:34:53 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-01 18:34:53 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-01 18:36:20 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Dev\GitProjects\CTE_JAVA_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-paper-enigma.xml
+  2022-09-01 18:36:20 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-01 18:36:20 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
   

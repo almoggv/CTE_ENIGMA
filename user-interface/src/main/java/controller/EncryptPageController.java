@@ -5,7 +5,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import lombok.Getter;
@@ -39,7 +38,10 @@ public class EncryptPageController implements Initializable {
         }
     }
 
-    public void bindController(CurrMachineConfigController currMachineConfigComponentController) {
+    /**
+     * binds the root component of the controller to the designated pane.
+     */
+    public void bindComponent(CurrMachineConfigController currMachineConfigComponentController) {
         this.currMachineConfigComponentController = currMachineConfigComponentController;
         currMachineConfigComponent = currMachineConfigComponentController.getRootGridPane();
         currMachineConfigWrapperPane.setContent(currMachineConfigComponent);

@@ -2,6 +2,7 @@ package src.main.java.controller;
 
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,6 +18,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import lombok.Getter;
 import lombok.Setter;
+import main.java.dto.InventoryInfo;
 import main.java.enums.ReflectorsId;
 import src.main.java.service.DataService;
 
@@ -66,47 +68,49 @@ public class SetMachineConfigController implements Initializable {
 //        setUserChoiceButton.disableProperty().bind(areValuesSetUp.not());
 //        isSetRandomPressed.bind(setRandomChoiceButton.pressedProperty());
 
-        if(DataService.getIsMachineInventoryConfigured()){
-            setMachineDetails();
-        }
+        DataService.getInventoryInfoProperty().addListener(new ChangeListener<InventoryInfo>() {
+            @Override
+            public void changed(ObservableValue<? extends InventoryInfo> observable, InventoryInfo oldValue, InventoryInfo newValue) {
+                setMachineDetails(newValue);
+            }
+        });
 
-        setRandomChoiceButton.pressedProperty().addListener((observable, oldValue, newValue) ->
-                System.out.println("setRandom Pressed!"));
+
+
+//        if(DataService.getIsMachineInventoryConfigured()){
+//            setMachineDetails();
+//        }
+//
+//        setRandomChoiceButton.pressedProperty().addListener((observable, oldValue, newValue) ->
+//                System.out.println("setRandom Pressed!"));
     }
 
-    public void setMachineDetails() {
-        setReflectorChoiceBoxHbox();
-        setRotorsHbox();
-        addPlugboardTab();
+    public void setMachineDetails(InventoryInfo inventoryInfo) {
+        setReflectorChoiceBoxHbox(inventoryInfo);
+        setRotorsHbox(inventoryInfo);
+        addPlugboardTab(inventoryInfo);
     }
 
-    public SetMachineConfigController(){
-        areValuesSetUp = new SimpleBooleanProperty(false);
-        areRotorsChosen = new SimpleBooleanProperty(false);
-        isSetRandomPressed = new SimpleBooleanProperty(false);
-//        areRotorsChosen = areRotorsChosenList.stream().noneMatch(ChoiceBox);
-//        children.stream().anyMatch(Child::isSingle), children);
-    }
-    private void setReflectorChoiceBoxHbox() {
-        int reflectorNum = DataService.getInventoryInfo().getNumOfAvailableRotors();
+    private void setReflectorChoiceBoxHbox(InventoryInfo inventoryInfo) {
+        int reflectorNum = inventoryInfo.getNumOfAvailableRotors();
         rotorsHbox.getChildren().clear();
         for (int i = 1; i <= reflectorNum; i++) {
             reflectorChoiceBox.getItems().add(ReflectorsId.getByNum(i).getName());
         }
     }
 
-    private void setRotorsHbox(){
-        int numOfAvailableRotors = DataService.getInventoryInfo().getNumOfAvailableRotors();
-        int numOfNeededRotors = DataService.getInventoryInfo().getNumOfRotorsInUse();
+    private void setRotorsHbox(InventoryInfo inventoryInfo){
+        int numOfAvailableRotors = inventoryInfo.getNumOfAvailableRotors();
+        int numOfNeededRotors = inventoryInfo.getNumOfRotorsInUse();
         rotorsHbox.getChildren().clear();
         for (int i = 1; i <= numOfNeededRotors; i++) {
             ChoiceBox<Integer> rotorChoiceBox= makeRotorChoiceBox(numOfAvailableRotors);
-            SimpleBooleanProperty rotorProperty = new SimpleBooleanProperty(false);
-            rotorProperty.bind(rotorChoiceBox.valueProperty().isNotNull());
-            areRotorsChosenList.add(rotorProperty);
+//            SimpleBooleanProperty rotorProperty = new SimpleBooleanProperty(false);
+//            rotorProperty.bind(rotorChoiceBox.valueProperty().isNotNull());
+//            areRotorsChosenList.add(rotorProperty);
             rotorsHbox.getChildren().add(rotorChoiceBox);
         }
-        setUserChoiceButton.disableProperty().bind(areRotorsChosen.not());
+//        setUserChoiceButton.disableProperty().bind(areRotorsChosen.not());
     }
 
     private ChoiceBox<Integer> makeRotorChoiceBox(int rotorsNum) {
@@ -123,8 +127,10 @@ public class SetMachineConfigController implements Initializable {
 //        addPlugboardTab(inventoryInfo);
 //    }
 
-    private void addPlugboardTab() {
-        String ABC = DataService.getInventoryInfo().getABC();
+    private void addPlugboardTab(InventoryInfo inventoryInfo) {
+        String ABC = inventoryInfo.getABC();
+        plugBoardAddNewEP1Choice.getItems().clear();
+        plugBoardAddNewEP2Choice.getItems().clear();
         for (int i = 0; i < ABC.length(); i++) {
             plugBoardAddNewEP1Choice.getItems().add(ABC.substring(i,i+1));
             plugBoardAddNewEP2Choice.getItems().add(ABC.substring(i,i+1));

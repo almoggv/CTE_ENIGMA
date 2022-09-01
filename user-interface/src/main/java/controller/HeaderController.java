@@ -40,12 +40,16 @@ public class HeaderController implements Initializable {
     @FXML private Button bruteForceSceneNavButton;
     @FXML private Label messageLabel;
 
-    @Getter private SimpleStringProperty selectedFileProperty;
-    @Getter private SimpleBooleanProperty isFileSelected;
+    @Getter private SimpleStringProperty selectedFileProperty = new SimpleStringProperty();;
+    @Getter private SimpleBooleanProperty isFileSelected = new SimpleBooleanProperty(false);
 
-    public HeaderController (){
-        selectedFileProperty = new SimpleStringProperty();
-        isFileSelected = new SimpleBooleanProperty(false);
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        selectedFileName.textProperty().bind(selectedFileProperty);
+        machineSceneNavButton.disableProperty().bind(isFileSelected.not());
+        //todo add other connections
+        encryptSceneNavButton.disableProperty().bind(isFileSelected.not());
+        bruteForceSceneNavButton.disableProperty().bind(isFileSelected.not());
     }
 
     @FXML
@@ -76,15 +80,6 @@ public class HeaderController implements Initializable {
     @FXML
     void onChangeSceneToEncryptButtonClick(ActionEvent event) {
         parentController.changeSceneToEncrypt();
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        selectedFileName.textProperty().bind(selectedFileProperty);
-        machineSceneNavButton.disableProperty().bind(isFileSelected.not());
-        //todo add other connections
-        encryptSceneNavButton.disableProperty().bind(isFileSelected.not());
-        bruteForceSceneNavButton.disableProperty().bind(isFileSelected.not());
     }
 
     public void setMessageLabel(String message) {

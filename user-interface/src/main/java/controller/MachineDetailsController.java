@@ -56,8 +56,18 @@ public class MachineDetailsController implements Initializable {
     private Label machineNotConfiguredLabel;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+    }
+    private void setDetails() {
+        availableRotorNumLabel.setText((String.valueOf(DataService.getInventoryInfo().getNumOfAvailableRotors())));
+//        encryptedMsgLabel.setText(DateService.getInventoryInfo());
+        toUseRotorNumLabel.setText((String.valueOf(DataService.getInventoryInfo().getNumOfRotorsInUse())));
+        availableReflectorNumLabel.setText((String.valueOf(DataService.getInventoryInfo().getNumOfAvailableReflectors())));
+    }
+
+    public void displayOriginalConfig() {
         if(DataService.getIsMachineInventoryConfigured()){
-           setDetails();
+            setDetails();
         }
         if(DataService.getIsOriginalMachineStateConfigured()){
             originalMachineConfigurationAnchor.setVisible(true);
@@ -67,11 +77,5 @@ public class MachineDetailsController implements Initializable {
             originalMachineConfigurationAnchor.setVisible(false);
             machineNotConfiguredLabel.setVisible(true);
         }
-    }
-    private void setDetails() {
-        availableRotorNumLabel.setText((String.valueOf(DataService.getInventoryInfo().getNumOfAvailableRotors())));
-//        encryptedMsgLabel.setText(DateService.getInventoryInfo());
-        toUseRotorNumLabel.setText((String.valueOf(DataService.getInventoryInfo().getNumOfRotorsInUse())));
-        availableReflectorNumLabel.setText((String.valueOf(DataService.getInventoryInfo().getNumOfAvailableReflectors())));
     }
 }

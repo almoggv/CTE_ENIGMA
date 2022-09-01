@@ -65,16 +65,25 @@ public class AppController/* implements Initializable */{
         if(headerComponentRootPaneController !=null){
             headerComponentRootPaneController.setParentController(this);
         }
+        FXMLLoader fxmlLoader;
         machineHandler = new MachineHandlerImpl();
+        //Load Current Machine Config
+        URL currConfigResource = GuiApplication.class.getResource(PropertiesService.getCurrMachineConfigTemplateFxmlPath());
+        System.out.println("found Url of header component:"+ currConfigResource);
+        fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(currConfigResource);
+        GridPane currConfigComponent = fxmlLoader.load(currConfigResource.openStream());
+        CurrMachineConfigController currMachineConfigController = fxmlLoader.getController();
         //Load MachinePage
         URL machinePageResource = GuiApplication.class.getResource(PropertiesService.getMachinePageTemplateFxmlPath());
         System.out.println("found Url of machine component:"+ machinePageResource);
-        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(machinePageResource);
         Parent machinePageComponent = fxmlLoader.load(machinePageResource.openStream());
         machinePageController = fxmlLoader.getController();
         machinePageController.setParentController(this);
         machinePageController.setMachineHandler(machineHandler);
+        machinePageController.bindComponent(currMachineConfigController);
         //Load Encrypt Page
         URL encryptPageResource = GuiApplication.class.getResource(PropertiesService.getEncryptPageTemplateFxmlPath());
         System.out.println("found Url of encrypt component:"+ encryptPageResource);
@@ -84,7 +93,7 @@ public class AppController/* implements Initializable */{
         encryptPageController = fxmlLoader.getController();
         encryptPageController.setParentController(this);
         encryptPageController.setMachineHandler(machineHandler);
-        encryptPageController.bindController(machinePageController.getCurrMachineConfigComponentController());
+        encryptPageController.bindComponent(currMachineConfigController);
 
         // Load Brute Force Page :TODO
     }
@@ -141,12 +150,14 @@ public class AppController/* implements Initializable */{
         machineHandler.buildMachinePartsInventory(absolutePath);
         makeBodyVisible();
         Optional<InventoryInfo> optionalInventoryInfo = machineHandler.getInventoryInfo();
-        optionalInventoryInfo.ifPresent(DataService::setInventoryInfo);
-        if(optionalInventoryInfo.isPresent()){
-            DataService.setIsMachineInventoryConfigured(true);
-            //TODO: try binding the property - to auto-update
-            machinePageController.getSetMachineConfigurationComponentController().setMachineDetails();
-        }
+        optionalInventoryInfo.ifPresent(inventoryInfo -> DataService.getInventoryInfoProperty().setValue(inventoryInfo));
+
+//        optionalInventoryInfo.ifPresent(DataService::setInventoryInfo);
+//        if(optionalInventoryInfo.isPresent()){
+//            DataService.setIsMachineInventoryConfigured(true);
+//            //TODO: try binding the property - to auto-update
+////            machinePageController.getSetMachineConfigurationComponentController().setMachineDetails();
+//        }
 
         /////////////////////////////////////////////
 //        if(loadFile(absolutePath)) {

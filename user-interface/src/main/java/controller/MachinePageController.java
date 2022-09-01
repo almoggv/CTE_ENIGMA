@@ -24,7 +24,7 @@ public class MachinePageController implements Initializable {
     @Setter @Getter @FXML private AppController parentController;
     @Getter @FXML private SetMachineConfigController setMachineConfigurationComponentController;
     @Getter @FXML private CurrMachineConfigController currMachineConfigComponentController;
-    
+
     @FXML public GridPane setMachineConfigurationComponent;
     @FXML public GridPane currMachineConfigComponent;
     @FXML private GridPane rootGridPane;
@@ -60,6 +60,7 @@ public class MachinePageController implements Initializable {
                         DataService.setCurrentMachineState(machineHandler.getMachineState().get());
                         DataService.setIsCurrentMachineStateConfigured(true);
                         currMachineConfigComponentController.showCurrConfiguration();
+                        machineDetailsComponentController.displayOriginalConfig();
                     } catch (Exception ex) {
                         throw new RuntimeException(ex);
                     }
@@ -81,5 +82,11 @@ public class MachinePageController implements Initializable {
 
     public Parent getRootComponent() {
         return rootGridPane;
+    }
+
+    public void bindComponent(CurrMachineConfigController controller){
+        this.currMachineConfigComponentController = controller;
+        currMachineConfigComponent = currMachineConfigComponentController.getRootGridPane();
+        scrollOfRightBottomAnchor.setContent(currMachineConfigComponent);
     }
 }
