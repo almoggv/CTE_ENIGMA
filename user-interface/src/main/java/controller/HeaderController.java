@@ -24,20 +24,21 @@ import java.util.ResourceBundle;
 
 
 public class HeaderController implements Initializable {
-//    public GridPane headerComponentRootPane;
+
+    //    public GridPane headerComponentRootPane;
     @Setter @Getter
     private AppController parentController;
     @FXML private GridPane headerComponentRootPane;
     @FXML private Label titleLabel;
     @FXML private HBox browseFilesHBox;
     @FXML private Button browseFilesButton;
-    @FXML Label selectedFileName;
+    @FXML private TextField selectedFileName;
+    @FXML private Label selectedFileLabel;
     @FXML private HBox componentNavButtonsHBox;
     @FXML private Button machineSceneNavButton;
     @FXML private Button encryptSceneNavButton;
     @FXML private Button bruteForceSceneNavButton;
-    @FXML
-    private Label messageLabel;
+    @FXML private Label messageLabel;
     @Setter private Stage primaryStage;
     @Getter private SimpleStringProperty selectedFileProperty;
     @Getter private SimpleBooleanProperty isFileSelected;

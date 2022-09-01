@@ -8,14 +8,14 @@
    <center>
       <AnchorPane fx:id="bodyWrapAnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
          <children>
-            <ScrollPane fx:id="bodyWrapScrollPane" fitToHeight="true" fitToWidth="true" layoutY="14.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="-14.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="14.0" />
+            <ScrollPane fx:id="bodyWrapScrollPane" fitToHeight="true" fitToWidth="true" layoutY="14.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
          </children>
       </AnchorPane>
    </center>
    <top>
       <AnchorPane fx:id="headerWrapAnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
          <children>
-            <ScrollPane fx:id="headerWrapScrollPane" fitToHeight="true" fitToWidth="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <ScrollPane fx:id="headerWrapScrollPane" fitToHeight="true" fitToWidth="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <content>
                   <fx:include fx:id="headerComponentRootPane" source="subcomponents/headerComponent.fxml" />
                </content>
