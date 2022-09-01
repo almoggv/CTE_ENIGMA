@@ -12,36 +12,40 @@
     <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
   <rowConstraints>
-    <RowConstraints maxHeight="1.7976931348623157E308" minHeight="50.0" prefHeight="220.0" vgrow="SOMETIMES" />
     <RowConstraints maxHeight="1.7976931348623157E308" minHeight="100.0" prefHeight="220.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <SplitPane fx:id="bottomSplitPane" dividerPositions="0.5" prefHeight="160.0" prefWidth="200.0" GridPane.rowIndex="1">
+      <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
         <items>
-            <AnchorPane fx:id="leftAnchorOfBottom" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <ScrollPane fx:id="scrollOfLeftBottomAnchor" fitToHeight="true" fitToWidth="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <ScrollPane fx:id="scrollOfRightBottomAnchor1" fitToHeight="true" fitToWidth="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <content>
-                        <fx:include fx:id="setMachineConfigurationComponent" source="setMachineConfigTemplate.fxml" />
-                     </content></ScrollPane>
+                        <fx:include fx:id="machineDetailsComponent" source="MachineDetails.fxml" />
+                     </content>
+                  </ScrollPane>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="rightAnchorOfBottom" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
-               <children>
-                  <ScrollPane fx:id="scrollOfRightBottomAnchor" fitToHeight="true" fitToWidth="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                  <fx:include fx:id="currentMachineConfigurationComponent" source="currMachineConfigTemplate.fxml" />
-               </children>
-            </AnchorPane>
+            <SplitPane fx:id="bottomSplitPane" dividerPositions="0.5" prefHeight="160.0" prefWidth="200.0">
+              <items>
+                  <AnchorPane fx:id="leftAnchorOfBottom" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                     <children>
+                        <ScrollPane fx:id="scrollOfLeftBottomAnchor" fitToHeight="true" fitToWidth="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <content>
+                              <fx:include fx:id="setMachineConfigurationComponent" source="setMachineConfigTemplate.fxml" />
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="rightAnchorOfBottom" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                     <children>
+                        <ScrollPane fx:id="scrollOfRightBottomAnchor" fitToHeight="true" fitToWidth="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <fx:include fx:id="currentMachineConfigurationComponent" source="currMachineConfigTemplate.fxml" />
+                     </children>
+                  </AnchorPane>
+              </items>
+            </SplitPane>
         </items>
       </SplitPane>
-      <AnchorPane fx:id="rightAnchorOfBottom1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
-         <children>
-            <ScrollPane fx:id="scrollOfRightBottomAnchor1" fitToHeight="true" fitToWidth="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <content>
-                  <fx:include fx:id="machineDetailsComponent" source="MachineDetails.fxml" />
-               </content>
-            </ScrollPane>
-         </children>
-      </AnchorPane>
    </children>
 </GridPane>

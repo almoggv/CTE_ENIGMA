@@ -53,6 +53,20 @@
             </HBox>
             <TabPane fx:id="plugBoardTabPane" prefHeight="150.0" prefWidth="175.0" side="BOTTOM" tabClosingPolicy="UNAVAILABLE" GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.rowSpan="2">
               <tabs>
+                <Tab fx:id="plugBoardAddNewTab" text="Add new">
+                     <content>
+                        <Pane fx:id="plugBoardAddNewInnerPane" prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <ChoiceBox fx:id="plugBoardAddNewEP1Choice" layoutX="18.0" layoutY="33.0" prefHeight="25.0" prefWidth="50.0" />
+                              <ChoiceBox fx:id="plugBoardAddNewEP2Choice" layoutX="108.0" layoutY="33.0" prefHeight="25.0" prefWidth="50.0" />
+                              <Label layoutX="13.0" layoutY="14.0" text="End point 1" />
+                              <Label layoutX="102.0" layoutY="14.0" text="End point 2" />
+                              <Button fx:id="plugBoardAddNewButton" layoutX="18.0" layoutY="77.0" mnemonicParsing="false" onAction="#onPlugBoardAddNewButtonAction" prefHeight="25.0" prefWidth="140.0" text="Add" />
+                              <Label layoutX="71.0" layoutY="37.0" text="&lt;----&gt;" />
+                           </children>
+                        </Pane>
+                     </content>
+                </Tab>
                 <Tab fx:id="plugBoardConnectionsTab" text="Connections">
                      <content>
                         <ScrollPane fx:id="plugBoardConnectionsScroller" fitToWidth="true">
@@ -66,30 +80,16 @@
                                 </columnConstraints>
                                 <rowConstraints>
                                   <RowConstraints maxHeight="7.5" minHeight="7.5" prefHeight="7.5" vgrow="NEVER" />
-                                  <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="SOMETIMES" />
+                                  <RowConstraints maxHeight="1.7976931348623157E308" minHeight="100.0" vgrow="SOMETIMES" />
                                   <RowConstraints maxHeight="7.5" minHeight="7.5" prefHeight="7.5" vgrow="NEVER" />
                                 </rowConstraints>
                                  <children>
-                                    <ListView fx:id="plugBoardConnectionsLeft" prefHeight="40.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                    <ListView fx:id="plugBoardConnectionsRight" prefHeight="40.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                    <ListView fx:id="plugBoardConnectionsLeft" prefWidth="70.0" GridPane.columnIndex="1" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.vgrow="SOMETIMES" />
+                                    <ListView fx:id="plugBoardConnectionsRight" prefWidth="70.0" GridPane.columnIndex="2" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.vgrow="SOMETIMES" />
                                  </children>
                               </GridPane>
                            </content>
                         </ScrollPane>
-                     </content>
-                </Tab>
-                <Tab fx:id="plugBoardAddNewTab" text="Add new">
-                     <content>
-                        <Pane fx:id="plugBoardAddNewInnerPane" prefHeight="200.0" prefWidth="200.0">
-                           <children>
-                              <ChoiceBox fx:id="plugBoardAddNewEP1Choice" layoutX="18.0" layoutY="33.0" prefHeight="25.0" prefWidth="50.0" />
-                              <ChoiceBox fx:id="plugBoardAddNewEP2Choice" layoutX="108.0" layoutY="33.0" prefHeight="25.0" prefWidth="50.0" />
-                              <Label layoutX="13.0" layoutY="14.0" text="End point 1" />
-                              <Label layoutX="102.0" layoutY="14.0" text="End point 2" />
-                              <Button fx:id="plugBoardAddNewButton" layoutX="18.0" layoutY="77.0" mnemonicParsing="false" onAction="#onPlugBoardAddNewButtonAction" prefHeight="25.0" prefWidth="140.0" text="Add" />
-                              <Label layoutX="71.0" layoutY="37.0" text="&lt;----&gt;" />
-                           </children>
-                        </Pane>
                      </content>
                 </Tab>
               </tabs>

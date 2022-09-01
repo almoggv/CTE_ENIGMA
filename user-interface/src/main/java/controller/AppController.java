@@ -133,19 +133,29 @@ public class AppController/* implements Initializable */{
         }
     }
 
-    public boolean handleFileChosen(String absolutePath) {
-        if(loadFile(absolutePath)) {
-            makeBodyVisible();
-            Optional<InventoryInfo> optionalInventoryInfo = machineHandler.getInventoryInfo();
-            optionalInventoryInfo.ifPresent(DateService::setInventoryInfo);
-            if(optionalInventoryInfo.isPresent()){
-                DateService.setIsMachineInventoryConfigured(true);
-                //todo - see if we can connect components to the data service to show automatically
-                machinePageController.getSetMachineConfigurationComponentController().setMachineDetails();
-            }
-            return true;
+    public void handleFileChosen(String absolutePath) throws Exception{
+        machineHandler.buildMachinePartsInventory(absolutePath);
+        makeBodyVisible();
+        Optional<InventoryInfo> optionalInventoryInfo = machineHandler.getInventoryInfo();
+        optionalInventoryInfo.ifPresent(DateService::setInventoryInfo);
+        if(optionalInventoryInfo.isPresent()){
+            DateService.setIsMachineInventoryConfigured(true);
+            //TODO: try binding the property - to auto-update
+            machinePageController.getSetMachineConfigurationComponentController().setMachineDetails();
         }
-        return false;
+        /////////////////////////////////////////////
+//        if(loadFile(absolutePath)) {
+//            makeBodyVisible();
+//            Optional<InventoryInfo> optionalInventoryInfo = machineHandler.getInventoryInfo();
+//            optionalInventoryInfo.ifPresent(DateService::setInventoryInfo);
+//            if(optionalInventoryInfo.isPresent()){
+//                DateService.setIsMachineInventoryConfigured(true);
+//                //todo - see if we can connect components to the data service to show automatically
+//                machinePageController.getSetMachineConfigurationComponentController().setMachineDetails();
+//            }
+//            return true;
+//        }
+//        return false;
     }
 
     public void setPrimaryStage(Stage primaryStage) {

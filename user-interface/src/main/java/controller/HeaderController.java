@@ -57,9 +57,14 @@ public class HeaderController implements Initializable {
             return;
         }
         String absolutePath = selectedFile.getAbsolutePath();
-        selectedFileProperty.set(absolutePath);
-        boolean isFileValid = parentController.handleFileChosen(absolutePath);
-        isFileSelected.set(isFileValid);
+        try{
+            parentController.handleFileChosen(absolutePath);
+            selectedFileProperty.set(absolutePath);
+            isFileSelected.set(true);
+        }
+        catch (Exception e){
+            //TODO: POPUP with error
+        }
     }
 
     @FXML
