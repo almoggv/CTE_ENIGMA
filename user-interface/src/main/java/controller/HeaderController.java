@@ -39,7 +39,7 @@ public class HeaderController implements Initializable {
     @FXML private Button encryptSceneNavButton;
     @FXML private Button bruteForceSceneNavButton;
     @FXML private Label messageLabel;
-    @Setter private Stage primaryStage;
+
     @Getter private SimpleStringProperty selectedFileProperty;
     @Getter private SimpleBooleanProperty isFileSelected;
 
@@ -52,11 +52,10 @@ public class HeaderController implements Initializable {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Select Xml file");
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("xml files", "*.xml"));
-        File selectedFile = fileChooser.showOpenDialog(primaryStage);
+        File selectedFile = fileChooser.showOpenDialog(parentController.getPrimaryStage());
         if (selectedFile == null) {
             return;
         }
-
         String absolutePath = selectedFile.getAbsolutePath();
         selectedFileProperty.set(absolutePath);
         boolean isFileValid = parentController.handleFileChosen(absolutePath);
