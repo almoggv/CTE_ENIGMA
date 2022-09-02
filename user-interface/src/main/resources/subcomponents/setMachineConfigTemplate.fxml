@@ -47,6 +47,7 @@
             <ChoiceBox fx:id="reflectorChoiceBox" prefHeight="25.0" prefWidth="50.0" GridPane.rowIndex="1" />
             <HBox fx:id="rotorsHbox" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="5.0" GridPane.columnIndex="2" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="1" GridPane.vgrow="SOMETIMES">
                <children>
+                  <Label maxWidth="45.0" minWidth="45.0" prefWidth="45.0" text="ID:" />
                   <ChoiceBox fx:id="rotorChoice2" prefHeight="25.0" prefWidth="50.0" />
                   <ChoiceBox fx:id="rotorChoice1" prefHeight="25.0" prefWidth="50.0" />
                </children>
@@ -99,6 +100,7 @@
             <Button fx:id="setRandomChoiceButton" mnemonicParsing="false" onAction="#onSetRandomChoiceButtonAction" text="Set randomly" GridPane.rowIndex="3" />
             <HBox fx:id="rotorsInitialPosHBox" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="5.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <children>
+                  <Label maxWidth="45.0" minWidth="45.0" prefWidth="45.0" text="Position" />
                   <ChoiceBox fx:id="rotorInitialPosChoice2" prefHeight="25.0" prefWidth="50.0" />
                   <ChoiceBox fx:id="rotorInitialPosChoice1" prefHeight="25.0" prefWidth="50.0" />
                </children>

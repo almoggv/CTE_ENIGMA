@@ -29,7 +29,6 @@ import org.controlsfx.control.Notifications;
 
 public class HeaderController implements Initializable {
 
-    //    public GridPane headerComponentRootPane;
     @Setter @Getter private AppController parentController;
     @FXML private GridPane headerComponentRootPane;
     @FXML private Label titleLabel;
@@ -46,7 +45,6 @@ public class HeaderController implements Initializable {
     @Getter private SimpleStringProperty selectedFileProperty = new SimpleStringProperty();;
     @Getter private SimpleBooleanProperty isFileSelected = new SimpleBooleanProperty(false);
     @Getter private SimpleStringProperty notificationMessageProperty = new SimpleStringProperty();;
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

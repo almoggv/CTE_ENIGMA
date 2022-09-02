@@ -78,7 +78,8 @@ public class SetMachineConfigController implements Initializable {
 
     public void setMachineDetails(InventoryInfo inventoryInfo) {
         setReflectorChoiceBoxHbox(inventoryInfo);
-        setRotorsHbox(inventoryInfo);
+        setRotorsIdsHbox(inventoryInfo);
+        setRotorsPositionsHBox(inventoryInfo);
         addPlugboardTab(inventoryInfo);
     }
 
@@ -90,19 +91,41 @@ public class SetMachineConfigController implements Initializable {
         }
     }
 
-    private void setRotorsHbox(InventoryInfo inventoryInfo){
+    private void setRotorsIdsHbox(InventoryInfo inventoryInfo){
         int numOfAvailableRotors = inventoryInfo.getNumOfAvailableRotors();
         int numOfNeededRotors = inventoryInfo.getNumOfRotorsInUse();
+        Label idLabel = (Label) rotorsHbox.getChildren().get(0);
         rotorsHbox.getChildren().clear();
+        rotorsHbox.getChildren().add(idLabel);
         for (int i = 1; i <= numOfNeededRotors; i++) {
-            ChoiceBox<Integer> rotorChoiceBox= makeRotorChoiceBox(numOfAvailableRotors);
+            ChoiceBox<Integer> rotorChoiceBox= createRotorIdChoiceBox(numOfAvailableRotors);
             rotorsHbox.getChildren().add(rotorChoiceBox);
         }
     }
 
-    private ChoiceBox<Integer> makeRotorChoiceBox(int rotorsNum) {
+    private void setRotorsPositionsHBox(InventoryInfo inventoryInfo){
+        int numOfNeededRotors = inventoryInfo.getNumOfRotorsInUse();
+        String Abc = inventoryInfo.getABC();
+        Label posLabel = (Label) rotorsInitialPosHBox.getChildren().get(0);
+        rotorsInitialPosHBox.getChildren().clear();
+        rotorsInitialPosHBox.getChildren().add(posLabel);
+        for(int i = 1; i <= numOfNeededRotors; i++) {
+            ChoiceBox<String> newPosChoiceBox = createRotorPositionChoiceBox(Abc);
+            rotorsInitialPosHBox.getChildren().add(newPosChoiceBox);
+        }
+    }
+
+    private ChoiceBox<String> createRotorPositionChoiceBox(String ABC){
+        ChoiceBox<String> newChoiceBox = new ChoiceBox<>();
+        for (int i = 0; i < ABC.length(); i++) {
+            newChoiceBox.getItems().add(ABC.substring(i,i+1));
+        }
+        return newChoiceBox;
+    }
+
+    private ChoiceBox<Integer> createRotorIdChoiceBox(int amountOfRotors) {
         ChoiceBox<Integer> rotorChoiceBox = new ChoiceBox<>();
-        for (int i = 1; i <= rotorsNum; i++) {
+        for (int i = 1; i <= amountOfRotors; i++) {
             rotorChoiceBox.getItems().add(i);
         }
         return rotorChoiceBox;
@@ -134,26 +157,14 @@ public class SetMachineConfigController implements Initializable {
 
     @FXML
     void onSetRandomChoiceButtonAction(ActionEvent event) {
-        //ignore
-        setRandomChoiceButton.onActionProperty().addListener(new ChangeListener() {
-            @Override
-            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-                System.out.println("onAction - Called from first add Listener");
-            }
-        });
-        setRandomChoiceButton.onActionProperty().addListener(new ChangeListener() {
-            @Override
-            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-                System.out.println("onAction - Called from SECOND add Listener");
-            }
-        });
+
     }
-//    onSetRandomChoiceButtonAction
 
     public void addListenerOnClickSetRandomButton(ChangeListener listener) {
-//        setRandomChoiceButton.pressedProperty().addListener(listener);
-        setRandomChoiceButton.onActionProperty().addListener(listener);
-
+        //Triggers Twice (down click + release) - expected behaviours, but not wanted
+        setRandomChoiceButton.pressedProperty().addListener(listener);
+        //Doesnt Trigger for unknown reason
+//        setRandomChoiceButton.onActionProperty().addListener(listener);
 //        setRandomChoiceButton.onMouseClickedProperty().addListener(listener);
 
     }
