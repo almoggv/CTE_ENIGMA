@@ -839,4 +839,28 @@
   2022-09-02 17:39:55 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
   2022-09-02 17:40:04 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Dev\GitProjects\CTE_JAVA_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\extra-errors\ex1-error - bad-rotor-count.xml
   2022-09-02 17:40:04 ERROR MachineHandlerImpl:73 - Failed to build machine inventory - CteMachine configured in file is invalid: The Rotor Count is Illegal
+  2022-09-02 19:11:01 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Dev\GitProjects\CTE_JAVA_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-paper-enigma.xml
+  2022-09-02 19:11:01 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-02 19:11:01 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-02 19:13:20 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Dev\GitProjects\CTE_JAVA_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-paper-enigma.xml
+  2022-09-02 19:13:20 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-02 19:13:20 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-02 19:14:20 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Dev\GitProjects\CTE_JAVA_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-paper-enigma.xml
+  2022-09-02 19:14:20 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-02 19:14:20 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-02 19:16:15 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Dev\GitProjects\CTE_JAVA_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-paper-enigma.xml
+  2022-09-02 19:16:15 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-02 19:16:15 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-02 19:16:28 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Dev\GitProjects\CTE_JAVA_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-09-02 19:16:28 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-02 19:16:28 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-02 19:18:55 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Dev\GitProjects\CTE_JAVA_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-paper-enigma.xml
+  2022-09-02 19:18:55 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-02 19:18:55 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-02 19:19:49 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Dev\GitProjects\CTE_JAVA_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-paper-enigma.xml
+  2022-09-02 19:19:49 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-02 19:19:50 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-02 19:22:02 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Dev\GitProjects\CTE_JAVA_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-paper-enigma.xml
+  2022-09-02 19:22:02 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-02 19:22:02 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
   
