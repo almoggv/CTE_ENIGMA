@@ -18,11 +18,11 @@ public class DataService {
 
 
 
-    @Getter @Setter private static InventoryInfo inventoryInfo;
-    @Getter @Setter private static EncryptionInfoHistory encryptionInfoHistory;
-    @Getter @Setter private static MachineState originalMachineState;
-    @Getter @Setter private static MachineState currentMachineState;
-    @Getter @Setter private static Boolean isCurrentMachineStateConfigured = new Boolean(false);
-    @Getter @Setter private static Boolean isOriginalMachineStateConfigured = new Boolean(false);
-    @Getter @Setter private static Boolean isMachineInventoryConfigured = new Boolean(false);
+//    @Getter @Setter private static InventoryInfo inventoryInfo;
+//    @Getter @Setter private static EncryptionInfoHistory encryptionInfoHistory;
+//    @Getter @Setter private static MachineState originalMachineState;
+//    @Getter @Setter private static MachineState currentMachineState;
+//    @Getter @Setter private static Boolean isCurrentMachineStateConfigured = new Boolean(false);
+//    @Getter @Setter private static Boolean isOriginalMachineStateConfigured = new Boolean(false);
+//    @Getter @Setter private static Boolean isMachineInventoryConfigured = new Boolean(false);
 }

@@ -60,29 +60,20 @@ public class SetMachineConfigController implements Initializable {
     @FXML private Button plugBoardAddNewButton;
     @FXML private Button setUserChoiceButton;
     @FXML @Getter private Button setRandomChoiceButton;
+    @FXML private HBox rotorsInitialPosHBox;
+    @FXML private ChoiceBox<?> rotorInitialPosChoice2;
+    @FXML private ChoiceBox<?> rotorInitialPosChoice1;
 
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-//        setUserChoiceButton.disableProperty().bind(areValuesSetUp.not());
-//        isSetRandomPressed.bind(setRandomChoiceButton.pressedProperty());
-
         DataService.getInventoryInfoProperty().addListener(new ChangeListener<InventoryInfo>() {
             @Override
             public void changed(ObservableValue<? extends InventoryInfo> observable, InventoryInfo oldValue, InventoryInfo newValue) {
                 setMachineDetails(newValue);
             }
         });
-
-
-
-//        if(DataService.getIsMachineInventoryConfigured()){
-//            setMachineDetails();
-//        }
-//
-//        setRandomChoiceButton.pressedProperty().addListener((observable, oldValue, newValue) ->
-//                System.out.println("setRandom Pressed!"));
     }
 
     public void setMachineDetails(InventoryInfo inventoryInfo) {
@@ -105,12 +96,8 @@ public class SetMachineConfigController implements Initializable {
         rotorsHbox.getChildren().clear();
         for (int i = 1; i <= numOfNeededRotors; i++) {
             ChoiceBox<Integer> rotorChoiceBox= makeRotorChoiceBox(numOfAvailableRotors);
-//            SimpleBooleanProperty rotorProperty = new SimpleBooleanProperty(false);
-//            rotorProperty.bind(rotorChoiceBox.valueProperty().isNotNull());
-//            areRotorsChosenList.add(rotorProperty);
             rotorsHbox.getChildren().add(rotorChoiceBox);
         }
-//        setUserChoiceButton.disableProperty().bind(areRotorsChosen.not());
     }
 
     private ChoiceBox<Integer> makeRotorChoiceBox(int rotorsNum) {
@@ -120,12 +107,6 @@ public class SetMachineConfigController implements Initializable {
         }
         return rotorChoiceBox;
     }
-
-//    public void loadData(InventoryInfo inventoryInfo) {
-////        setReflectorChoiceBoxHbox(inventoryInfo);
-//        setRotorsHbox(inventoryInfo);
-//        addPlugboardTab(inventoryInfo);
-//    }
 
     private void addPlugboardTab(InventoryInfo inventoryInfo) {
         String ABC = inventoryInfo.getABC();
@@ -153,12 +134,28 @@ public class SetMachineConfigController implements Initializable {
 
     @FXML
     void onSetRandomChoiceButtonAction(ActionEvent event) {
-//        parentController.handleSetRandomPressed();
+        //ignore
+        setRandomChoiceButton.onActionProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                System.out.println("onAction - Called from first add Listener");
+            }
+        });
+        setRandomChoiceButton.onActionProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                System.out.println("onAction - Called from SECOND add Listener");
+            }
+        });
     }
+//    onSetRandomChoiceButtonAction
 
+    public void addListenerOnClickSetRandomButton(ChangeListener listener) {
+//        setRandomChoiceButton.pressedProperty().addListener(listener);
+        setRandomChoiceButton.onActionProperty().addListener(listener);
 
-    public void addOnSetButtonListener(ChangeListener<Boolean> booleanChangeListener) {
-        setRandomChoiceButton.pressedProperty().addListener(booleanChangeListener);
+//        setRandomChoiceButton.onMouseClickedProperty().addListener(listener);
+
     }
 
 }

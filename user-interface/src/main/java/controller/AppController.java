@@ -95,6 +95,8 @@ public class AppController/* implements Initializable */{
         encryptPageController.setMachineHandler(machineHandler);
         encryptPageController.bindComponent(currMachineConfigController);
 
+        headerWrapScrollPane.setContent(headerComponentRootPaneController.getRootComponent());
+
         // Load Brute Force Page :TODO
     }
 
@@ -132,46 +134,11 @@ public class AppController/* implements Initializable */{
         bodyWrapScrollPane.setVisible(true);
     }
 
-    public boolean loadFile(String absolutePath) {
-        try {
-            machineHandler.buildMachinePartsInventory(absolutePath);
-            System.out.println("File Loaded Successfully");
-            headerComponentRootPaneController.setMessageLabel("Message: File Loaded Successfully");
-            return true;
-        }
-        catch (Exception e){
-            System.out.println(e.getMessage());
-            headerComponentRootPaneController.setMessageLabel("Message: "+ e.getMessage());
-            return false;
-        }
-    }
-
     public void handleFileChosen(String absolutePath) throws Exception{
         machineHandler.buildMachinePartsInventory(absolutePath);
         makeBodyVisible();
         Optional<InventoryInfo> optionalInventoryInfo = machineHandler.getInventoryInfo();
         optionalInventoryInfo.ifPresent(inventoryInfo -> DataService.getInventoryInfoProperty().setValue(inventoryInfo));
-
-//        optionalInventoryInfo.ifPresent(DataService::setInventoryInfo);
-//        if(optionalInventoryInfo.isPresent()){
-//            DataService.setIsMachineInventoryConfigured(true);
-//            //TODO: try binding the property - to auto-update
-////            machinePageController.getSetMachineConfigurationComponentController().setMachineDetails();
-//        }
-
-        /////////////////////////////////////////////
-//        if(loadFile(absolutePath)) {
-//            makeBodyVisible();
-//            Optional<InventoryInfo> optionalInventoryInfo = machineHandler.getInventoryInfo();
-//            optionalInventoryInfo.ifPresent(DateService::setInventoryInfo);
-//            if(optionalInventoryInfo.isPresent()){
-//                DateService.setIsMachineInventoryConfigured(true);
-//                //todo - see if we can connect components to the data service to show automatically
-//                machinePageController.getSetMachineConfigurationComponentController().setMachineDetails();
-//            }
-//            return true;
-//        }
-//        return false;
     }
 
     public void setPrimaryStage(Stage primaryStage) {

@@ -1,5 +1,6 @@
 package src.main.java.controller;
 
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -10,6 +11,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import main.java.component.MachineHandler;
@@ -46,30 +48,16 @@ public class MachinePageController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         if(setMachineConfigurationComponentController != null){
             setMachineConfigurationComponentController.setParentController(this);
-            setMachineConfigurationComponentController.addOnSetButtonListener(new ChangeListener<Boolean>() {
+            setMachineConfigurationComponentController.addListenerOnClickSetRandomButton(new ChangeListener() {
                 @Override
-                public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                    System.out.println("in MachinePageController, onSetRandPress!");
-                    try {
-                        machineHandler.assembleMachine();
-                        if (isFirstTimeConfigure) {
-                            DataService.setOriginalMachineState(machineHandler.getMachineState().get());
-                            DataService.setIsOriginalMachineStateConfigured(true);
-                            isFirstTimeConfigure = false;
-                        }
-                        DataService.setCurrentMachineState(machineHandler.getMachineState().get());
-                        DataService.setIsCurrentMachineStateConfigured(true);
-                        currMachineConfigComponentController.showCurrConfiguration();
-                        machineDetailsComponentController.displayOriginalConfig();
-                    } catch (Exception ex) {
-                        throw new RuntimeException(ex);
-                    }
+                public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                    setMachineConigRandomlyPressed();
                 }
             });
-
         }
         if(currMachineConfigComponentController != null){
             currMachineConfigComponentController.setParentController(this);
+            getCurrMachineConfigComponentController().bindToData(DataService.getCurrentMachineStateProperty());
         }
         if(machineDetailsComponentController != null){
             machineDetailsComponentController.setParentController(this);
@@ -88,5 +76,18 @@ public class MachinePageController implements Initializable {
         this.currMachineConfigComponentController = controller;
         currMachineConfigComponent = currMachineConfigComponentController.getRootGridPane();
         scrollOfRightBottomAnchor.setContent(currMachineConfigComponent);
+    }
+
+    private void setMachineConigRandomlyPressed(){
+        try{
+            machineHandler.assembleMachine();
+            DataService.getOriginalMachineStateProperty().setValue(machineHandler.getInitialMachineState().get());
+            DataService.getCurrentMachineStateProperty().setValue(machineHandler.getMachineState().get());
+            System.out.println("CurrMachine State =" + machineHandler.getMachineState().get());
+        }
+        catch (Exception e){
+            //TODO: log here
+            throw new RuntimeException("Failed to assemble machine randomly : " + e.getMessage());
+        }
     }
 }

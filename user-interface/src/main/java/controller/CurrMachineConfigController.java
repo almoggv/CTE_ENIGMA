@@ -1,5 +1,8 @@
 package src.main.java.controller;
 
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -8,8 +11,13 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import lombok.Getter;
 import lombok.Setter;
+import main.java.dto.InventoryInfo;
+import main.java.dto.MachineState;
 import main.java.generictype.MappingPair;
+import org.controlsfx.control.ToggleSwitch;
 import src.main.java.service.DataService;
+
+
 
 import java.net.URL;
 import java.util.List;
@@ -21,6 +29,7 @@ public class CurrMachineConfigController implements Initializable {
 
     @Getter @FXML MachinePageController machinePageController;
     @Getter @FXML EncryptPageController encryptPageController;
+    @Getter @FXML MachineDetailsController machineDetailsController;
 
     @Getter @FXML private GridPane rootGridPane;
     @FXML private HBox rotorsHbox;
@@ -33,9 +42,6 @@ public class CurrMachineConfigController implements Initializable {
     @FXML private HBox reflectorHbox;
     @FXML public Label machineNotConfiguredLabel;
 
-    public CurrMachineConfigController(){
-    }
-
     public void setParentController(MachinePageController parentController){
         this.machinePageController = parentController;
     }
@@ -44,34 +50,45 @@ public class CurrMachineConfigController implements Initializable {
         this.encryptPageController = parentController;
     }
 
+    public void setParentController(MachineDetailsController machineDetailsController){
+        this.machineDetailsController = machineDetailsController;
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        if(DataService.getIsCurrentMachineStateConfigured()){
-            showCurrConfiguration();
-        }
+
     }
 
-    public void showCurrConfiguration() {
+    public void bindToData(SimpleObjectProperty<MachineState> dataProperty){
+        dataProperty.addListener(new ChangeListener<MachineState>() {
+            @Override
+            public void changed(ObservableValue<? extends MachineState> observable, MachineState oldValue, MachineState newValue) {
+                showCurrConfiguration(newValue);
+            }
+        });
+    }
+
+    public void showCurrConfiguration(MachineState machineState) {
         machineNotConfiguredLabel.setVisible(false);
-        setRotorsHbox();
-        setPlugBoardHbox();
-        setReflectorLabel();
+        setRotorsHbox(machineState);
+        setPlugBoardHbox(machineState);
+        setReflectorLabel(machineState);
     }
 
-    private void setRotorsHbox() {
+    private void setRotorsHbox(MachineState machineState) {
         rotorsHbox.getChildren().clear();
-        int numOfRotors = DataService.getCurrentMachineState().getRotorIds().size();
-        List<Integer> rotorIds = DataService.getCurrentMachineState().getRotorIds();
+        int numOfRotors = machineState.getRotorIds().size();
+        List<Integer> rotorIds = machineState.getRotorIds();
         for (int i = 0; i < numOfRotors; i++) {
             Button rotor = new Button(new String(String.valueOf(rotorIds.get(i))));
             rotorsHbox.getChildren().add(rotor);
         }
     }
 
-    private void setPlugBoardHbox() {
+    private void setPlugBoardHbox(MachineState machineState) {
         plugBoardHbox.getChildren().clear();
-        int numOfPlugs = DataService.getCurrentMachineState().getPlugMapping().size();
-        List<MappingPair<String, String>> plugMapping = DataService.getCurrentMachineState().getPlugMapping();
+        int numOfPlugs = machineState.getPlugMapping().size();
+        List<MappingPair<String, String>> plugMapping = machineState.getPlugMapping();
         for (MappingPair<String,String> mappingPair : plugMapping) {
             String plugString = mappingPair.getLeft() + "|" + mappingPair.getRight();
             Button plugButton = new Button(plugString);
@@ -79,9 +96,9 @@ public class CurrMachineConfigController implements Initializable {
         }
     }
 
-    private void setReflectorLabel(){
+    private void setReflectorLabel(MachineState machineState){
         reflectorHbox.getChildren().clear();
-        Button refButton = new Button(DataService.getCurrentMachineState().getReflectorId().getName());
+        Button refButton = new Button(machineState.getReflectorId().getName());
         reflectorHbox.getChildren().add(refButton);
     }
 }

@@ -1,9 +1,12 @@
 package src.main.java.controller;
 
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -16,18 +19,18 @@ import javafx.beans.property.SimpleStringProperty;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.controlsfx.control.NotificationPane;
 import src.main.java.service.PropertiesService;
 
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
-
+import org.controlsfx.control.Notifications;
 
 public class HeaderController implements Initializable {
 
     //    public GridPane headerComponentRootPane;
-    @Setter @Getter
-    private AppController parentController;
+    @Setter @Getter private AppController parentController;
     @FXML private GridPane headerComponentRootPane;
     @FXML private Label titleLabel;
     @FXML private HBox browseFilesHBox;
@@ -38,18 +41,24 @@ public class HeaderController implements Initializable {
     @FXML private Button machineSceneNavButton;
     @FXML private Button encryptSceneNavButton;
     @FXML private Button bruteForceSceneNavButton;
-    @FXML private Label messageLabel;
+    private NotificationPane notificationPane;
 
     @Getter private SimpleStringProperty selectedFileProperty = new SimpleStringProperty();;
     @Getter private SimpleBooleanProperty isFileSelected = new SimpleBooleanProperty(false);
+    @Getter private SimpleStringProperty notificationMessageProperty = new SimpleStringProperty();;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         selectedFileName.textProperty().bind(selectedFileProperty);
         machineSceneNavButton.disableProperty().bind(isFileSelected.not());
-        //todo add other connections
         encryptSceneNavButton.disableProperty().bind(isFileSelected.not());
         bruteForceSceneNavButton.disableProperty().bind(isFileSelected.not());
+        createNotificationPane();
+    }
+
+    public NotificationPane getRootComponent(){
+        return notificationPane;
     }
 
     @FXML
@@ -68,7 +77,7 @@ public class HeaderController implements Initializable {
             isFileSelected.set(true);
         }
         catch (Exception e){
-            //TODO: POPUP with error
+            notificationMessageProperty.setValue(e.getMessage());
         }
     }
 
@@ -82,8 +91,19 @@ public class HeaderController implements Initializable {
         parentController.changeSceneToEncrypt();
     }
 
-    public void setMessageLabel(String message) {
-        messageLabel.setText(message);
+    private void createNotificationPane(){
+        this.notificationPane = new NotificationPane(this.getRootComponent());
+        notificationPane.textProperty().bind(notificationMessageProperty);
+        notificationPane.autosize();
+        notificationPane.setContent(headerComponentRootPane);
+        notificationPane.setPrefWidth(headerComponentRootPane.getPrefWidth());
+        notificationPane.setPrefHeight(headerComponentRootPane.getPrefHeight());
+        notificationMessageProperty.addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                notificationPane.show();
+            }
+        });
     }
 }
 
