@@ -17,6 +17,9 @@ import lombok.Getter;
 import lombok.Setter;
 import main.java.dto.InventoryInfo;
 import main.java.enums.ReflectorsId;
+import org.controlsfx.validation.ValidationResult;
+import org.controlsfx.validation.ValidationSupport;
+import org.controlsfx.validation.Validator;
 import src.main.java.fxcomponent.ComboBoxCell;
 import src.main.java.fxcomponent.ComboBoxItem;
 import src.main.java.service.DataService;
@@ -65,6 +68,8 @@ public class SetMachineConfigController implements Initializable {
     @FXML private ChoiceBox<?> rotorInitialPosChoice2;
     @FXML private ChoiceBox<?> rotorInitialPosChoice1;
 
+    private ValidationSupport validationSupport = new ValidationSupport();
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         DataService.getInventoryInfoProperty().addListener(new ChangeListener<InventoryInfo>() {
@@ -73,6 +78,7 @@ public class SetMachineConfigController implements Initializable {
                 setMachineDetails(newValue);
             }
         });
+        setUserChoiceButton.disableProperty().bind(validationSupport.invalidProperty());
 
     }
 
@@ -95,9 +101,10 @@ public class SetMachineConfigController implements Initializable {
         ObservableList<ComboBoxItem<String>> observableRotorIdList = createRotorsIdsObservableList(inventoryInfo);
         for (int i = 1; i <= numOfNeededRotors; i++) {
             ComboBox<ComboBoxItem<String>> rotorsIdsComboBox = new ComboBox<>(observableRotorIdList);
-//            rotorsIdsComboBox.getSelectionModel().select();
+//            rotorsIdsComboBox.getSelectionModel().select(0);
             rotorsIdsComboBox.setCellFactory(param -> new ComboBoxCell<String>());
             rotorsIdsComboBox.setButtonCell(new ComboBoxCell<String>());
+            validationSupport.registerValidator(rotorsIdsComboBox, Validator.createEmptyValidator( "Selection required"));
             rotorsHbox.getChildren().add(rotorsIdsComboBox);
         }
     }
@@ -107,7 +114,8 @@ public class SetMachineConfigController implements Initializable {
         List<ComboBoxItem<String>> availableIdsList = new ArrayList<>(numOfAvailableRotors);
 //        int numOfNeededRotors = inventoryInfo.getNumOfRotorsInUse();
         for (int i = 1; i <= numOfAvailableRotors; i++) {
-            availableIdsList.add(new ComboBoxItem<String>(String.valueOf(i)));
+            ComboBoxItem<String> item = new ComboBoxItem<String>(String.valueOf(i));
+            availableIdsList.add(item);
         }
         ObservableList<ComboBoxItem<String>> observableRotorIdList = FXCollections.observableList(
                 availableIdsList,
@@ -129,6 +137,8 @@ public class SetMachineConfigController implements Initializable {
         for (int i = 1; i <= reflectorNum; i++) {
             reflectorChoiceBox.getItems().add(ReflectorsId.getByNum(i).getName());
         }
+        validationSupport.registerValidator(reflectorChoiceBox, Validator.createEmptyValidator( "Selection required"));
+
     }
 //
 //    private void setRotorsIdsHbox(InventoryInfo inventoryInfo){
@@ -152,6 +162,7 @@ public class SetMachineConfigController implements Initializable {
         for(int i = 1; i <= numOfNeededRotors; i++) {
             ChoiceBox<String> newPosChoiceBox = createRotorPositionChoiceBox(Abc);
             rotorsInitialPosHBox.getChildren().add(newPosChoiceBox);
+            validationSupport.registerValidator(newPosChoiceBox, Validator.createEmptyValidator( "Selection required"));
         }
     }
 

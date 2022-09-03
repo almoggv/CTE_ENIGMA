@@ -863,4 +863,87 @@
   2022-09-02 19:22:02 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Dev\GitProjects\CTE_JAVA_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-paper-enigma.xml
   2022-09-02 19:22:02 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
   2022-09-02 19:22:02 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-03 16:30:32 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-09-03 16:30:32 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-03 16:30:32 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-03 16:32:34 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-09-03 16:32:34 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-03 16:32:34 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-03 16:41:52 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-09-03 16:41:53 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-03 16:41:53 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-03 16:49:49 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-09-03 16:49:49 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-03 16:49:49 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-03 16:49:52 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-03 16:49:52 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-03 16:49:52 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-03 16:49:52 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-03 16:50:33 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-09-03 16:50:33 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-03 16:50:33 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-03 16:50:37 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-03 16:50:37 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-03 16:50:37 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-03 16:50:37 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-03 16:51:52 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-09-03 16:51:52 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-03 16:51:52 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-03 16:52:52 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-09-03 16:52:52 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-03 16:52:52 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-03 16:53:08 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-03 16:53:08 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-03 16:53:08 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-03 16:53:08 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-03 16:53:23 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-09-03 16:53:23 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-03 16:53:23 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-03 16:53:26 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-03 16:53:26 WARN  PlugBoardImpl:71 - Plugboard : Failed to connect endpoints -Bis already connected
+  2022-09-03 16:53:26 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-03 16:53:26 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-03 16:53:26 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-03 16:55:52 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-09-03 16:55:52 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-03 16:55:52 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-03 16:56:14 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-03 16:56:14 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-03 16:56:14 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-03 16:56:14 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-03 16:56:44 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-03 16:56:44 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-03 16:57:23 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-03 16:57:23 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-03 17:00:40 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-09-03 17:00:40 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-03 17:00:40 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-03 17:02:38 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-09-03 17:02:38 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-03 17:02:38 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-03 17:05:25 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-09-03 17:05:25 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-03 17:05:25 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-03 17:07:23 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-09-03 17:07:23 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-03 17:07:23 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-03 17:08:32 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-09-03 17:08:32 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-03 17:08:32 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-03 17:08:46 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-03 17:08:46 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-03 17:08:46 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-03 17:08:46 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-03 17:14:13 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-09-03 17:14:13 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-03 17:14:13 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-03 17:15:04 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-paper-enigma.xml
+  2022-09-03 17:15:04 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-03 17:15:04 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-03 17:15:23 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-03 17:15:23 WARN  PlugBoardImpl:75 - Plugboard : Failed to connect endpoints -Sis already connected
+  2022-09-03 17:15:23 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-03 17:15:23 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-03 17:15:23 WARN  PlugBoardImpl:71 - Plugboard : Failed to connect endpoints -Tis already connected
+  2022-09-03 17:15:23 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
   

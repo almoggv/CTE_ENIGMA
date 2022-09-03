@@ -20,6 +20,7 @@ import javafx.beans.property.SimpleStringProperty;
 import lombok.Getter;
 import lombok.Setter;
 import org.controlsfx.control.NotificationPane;
+import src.main.java.service.DataService;
 import src.main.java.service.PropertiesService;
 
 import java.io.File;
@@ -50,8 +51,8 @@ public class HeaderController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         selectedFileName.textProperty().bind(selectedFileProperty);
         machineSceneNavButton.disableProperty().bind(isFileSelected.not());
-        encryptSceneNavButton.disableProperty().bind(isFileSelected.not());
-        bruteForceSceneNavButton.disableProperty().bind(isFileSelected.not());
+        encryptSceneNavButton.disableProperty().bind(DataService.getCurrentMachineStateProperty().isNotNull().not());
+        bruteForceSceneNavButton.disableProperty().bind(DataService.getCurrentMachineStateProperty().isNotNull().not());
         createNotificationPane();
     }
 
