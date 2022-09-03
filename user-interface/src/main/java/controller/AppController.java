@@ -94,6 +94,7 @@ public class AppController/* implements Initializable */{
         encryptPageController.setParentController(this);
         encryptPageController.setMachineHandler(machineHandler);
         encryptPageController.bindComponent(currMachineConfigController);
+        encryptPageController.setMachineHandler(machineHandler);
 
         headerWrapScrollPane.setContent(headerComponentRootPaneController.getRootComponent());
 
@@ -139,9 +140,16 @@ public class AppController/* implements Initializable */{
         makeBodyVisible();
         Optional<InventoryInfo> optionalInventoryInfo = machineHandler.getInventoryInfo();
         optionalInventoryInfo.ifPresent(inventoryInfo -> DataService.getInventoryInfoProperty().setValue(inventoryInfo));
+        DataService.getOriginalMachineStateProperty().setValue(null);
+        DataService.getCurrentMachineStateProperty().setValue(null);
+        DataService.getEncryptionInfoHistory().setValue(null);
     }
 
     public void setPrimaryStage(Stage primaryStage) {
         this.primaryStage = primaryStage;
+    }
+
+    public void showMessage(String message) {
+        headerComponentRootPaneController.getNotificationMessageProperty().setValue(message);
     }
 }

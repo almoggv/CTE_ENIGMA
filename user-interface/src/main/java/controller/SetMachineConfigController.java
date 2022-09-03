@@ -79,7 +79,6 @@ public class SetMachineConfigController implements Initializable {
             }
         });
         setUserChoiceButton.disableProperty().bind(validationSupport.invalidProperty());
-
     }
 
 
