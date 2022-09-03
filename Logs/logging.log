@@ -1102,4 +1102,18 @@
   2022-09-03 19:17:21 INFO  MachineHandlerImpl:304 - time it took to encrypt:313900
   2022-09-03 19:17:29 INFO  MachineHandlerImpl:303 - encrypted: HELLOHOWAREYOU to: OATCNEISIARHTE
   2022-09-03 19:17:29 INFO  MachineHandlerImpl:304 - time it took to encrypt:2200200
+  2022-09-03 19:31:57 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-09-03 19:31:57 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-03 19:31:57 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-03 19:31:59 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-03 19:31:59 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-03 19:31:59 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-03 19:31:59 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-03 19:34:28 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-09-03 19:34:28 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-03 19:34:28 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-03 19:34:31 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-03 19:34:31 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-03 19:34:31 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-03 19:34:31 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
   
