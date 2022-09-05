@@ -36,7 +36,7 @@
             </ScrollPane>
          </children>
       </AnchorPane>
-      <FlowPane fx:id="inputAbcFlowPane" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2" />
+      <FlowPane fx:id="inputAbcFlowPane" alignment="CENTER" prefHeight="200.0" prefWidth="200.0" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
       <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>
             <Label text="Statistics" textAlignment="CENTER" />
@@ -66,9 +66,9 @@
       </VBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1">
          <children>
-            <Label text="Result" />
+            <Label minWidth="-Infinity" text="Result" />
             <CustomTextField fx:id="resultTextField" prefColumnCount="20" />
-            <Button fx:id="clearButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onClearButtonAction" text="clear" />
+            <Button fx:id="clearButton" alignment="CENTER" contentDisplay="CENTER" minWidth="-Infinity" mnemonicParsing="false" onAction="#onClearButtonAction" text="clear" />
          </children>
       </HBox>
       <AnchorPane GridPane.rowIndex="1">
@@ -83,7 +83,7 @@
                   <HBox alignment="CENTER" spacing="10.0">
                      <children>
                         <CustomTextField fx:id="encryptTextField" prefColumnCount="20" />
-                        <Button fx:id="encryptButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onEncryptButtonAction" text="encrypt" HBox.hgrow="SOMETIMES" />
+                        <Button fx:id="encryptButton" alignment="CENTER" contentDisplay="CENTER" minWidth="-Infinity" mnemonicParsing="false" onAction="#onEncryptButtonAction" text="encrypt" HBox.hgrow="NEVER" />
                      </children>
                   </HBox>
                </content>

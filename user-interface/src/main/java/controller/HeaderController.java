@@ -104,6 +104,10 @@ public class HeaderController implements Initializable {
             }
         });
     }
+
+    public void onSelectFileTextFieldAction(ActionEvent actionEvent) {
+        //todo - maybe add write path of file
+    }
 }
 
 

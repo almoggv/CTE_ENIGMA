@@ -36,7 +36,7 @@
             </ScrollPane>
          </children>
       </AnchorPane>
-      <FlowPane fx:id="inputAbcFlowPane" alignment="CENTER" prefHeight="200.0" prefWidth="200.0" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+      <FlowPane fx:id="inputAbcFlowPane" prefHeight="200.0" prefWidth="200.0" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
       <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>
             <Label text="Statistics" textAlignment="CENTER" />

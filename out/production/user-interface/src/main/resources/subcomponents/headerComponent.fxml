@@ -28,7 +28,7 @@
       <HBox fx:id="browseFilesHBox" alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <children>
             <Label fx:id="selectedFileLabel" maxWidth="-Infinity" minWidth="-Infinity" text="Chosen file: " HBox.hgrow="NEVER" />
-            <TextField fx:id="selectedFileName" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="450.0" HBox.hgrow="ALWAYS" />
+            <TextField fx:id="selectedFileName" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#onSelectFileTextFieldAction" prefHeight="25.0" prefWidth="450.0" HBox.hgrow="ALWAYS" />
 <!--            <TextField fx:id="selectedFileName" editable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />-->
             <Button fx:id="browseFilesButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onBrowseFilesButtonClicked" text="Browse Files" HBox.hgrow="NEVER" />
          </children>

@@ -7,6 +7,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
@@ -21,6 +22,9 @@ import main.java.dto.InventoryInfo;
 import main.java.dto.MachineState;
 import org.controlsfx.control.textfield.CustomTextField;
 import src.main.java.service.DataService;
+import src.main.java.service.PropertiesService;
+import src.main.java.ui.CLIMenu;
+import src.main.java.ui.GuiApplication;
 
 import java.io.IOException;
 import java.net.URL;
@@ -74,6 +78,9 @@ public class EncryptPageController implements Initializable {
                 showAbc(newValue);
             }
         });
+
+        statisticsAccordion.getPanes().clear();
+
     }
 
     private void showAbc(InventoryInfo inventoryInfo) {
@@ -104,22 +111,34 @@ public class EncryptPageController implements Initializable {
 
     private void showStatistics(Map<MachineState, List<EncryptionInfoHistory>> encryptionInfoHistory) {
         for (MachineState machineStateHistory : encryptionInfoHistory.keySet()) {
-//            out.println(lineSeparator() + "Machine state:");
-//            String rotorsInMachineMsg = CLIMenu.buildRotorsInMachineMsg(machineStateHistory,inventoryInfo.get());
-//            String rotorsHeadLocationInMachineMsg = CLIMenu.buildRotorHeadLocationInMachineMsg(machineStateHistory);
-//            String reflectorIdMsg = "<" + machineStateHistory.getReflectorId().getName() + ">";
-//            String plugsMappedMsg = CLIMenu.buildPlugMappingInMachineMsg(machineStateHistory);
-
-//            machineStateMsg = rotorsInMachineMsg + rotorsHeadLocationInMachineMsg + reflectorIdMsg + plugsMappedMsg;
-//            out.println(machineStateMsg);
-//            int i = 1;
-//            List<EncryptionInfoHistory> encryptionInfoHistoryList = encryptionInfoHistory.get(machineStateHistory);
+            String title = "Machine state:" + CLIMenu.getMachineState(DataService.getCurrentMachineStateProperty().get(),
+                    DataService.getInventoryInfoProperty().get());
+            TitledPane a = new TitledPane();
+            a.setText(title);
+            statisticsAccordion.getPanes().add(a);
+            List<EncryptionInfoHistory> encryptionInfoHistoryList = encryptionInfoHistory.get(machineStateHistory);
 //            out.println("Machine encryption history:");
-//            for (EncryptionInfoHistory encryptionHistory : encryptionInfoHistoryList) {
+            for (EncryptionInfoHistory encryptionHistory : encryptionInfoHistoryList) {
 //                out.println(i++ + ". <" + encryptionHistory.getInput() + "> --> <" + encryptionHistory.getOutput() + "> ( " + encryptionHistory.getTimeToEncrypt() + " nano-seconds)");
 //                statisticsColOriginal.
-//            }
-//
+//                encryptionHistory.getInput()
+
+                //try
+//                URL StatisticsTableResource = GuiApplication.class.getResource(PropertiesService.getStatisticsTableFxmlPath());
+//                FXMLLoader fxmlLoader = new FXMLLoader();
+//                fxmlLoader.setLocation(StatisticsTableResource);
+//                Parent table = null;
+//                try {
+//                    table = fxmlLoader.load(StatisticsTableResource.openStream());
+//                } catch (IOException e) {
+//                    throw new RuntimeException(e);
+//                }
+//                StatisticsTableController controller = fxmlLoader.getController();
+//                a.setContent(table);
+//        statisticsColOriginal.setCellFactory();
+//                statisticsAccordion.getPanes().add(a);
+            }
+
         }
     }
 
@@ -127,6 +146,7 @@ public class EncryptPageController implements Initializable {
         try {
             String result = machineHandler.encrypt(encryptTextField.getText());
             resultTextField.setText(result);
+            DataService.getCurrentMachineStateProperty().setValue(machineHandler.getMachineState().get());
             DataService.getEncryptionInfoHistoryProperty().setValue(machineHandler.getMachineStatisticsHistory());
         }
         catch (Exception e){

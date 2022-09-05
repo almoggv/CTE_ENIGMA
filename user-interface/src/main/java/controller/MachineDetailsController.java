@@ -86,5 +86,4 @@ public class MachineDetailsController implements Initializable {
         }
         return resultCount;
     }
-
 }

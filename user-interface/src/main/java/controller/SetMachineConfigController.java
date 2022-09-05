@@ -89,7 +89,7 @@ public class SetMachineConfigController implements Initializable {
         addPlugboardTab(inventoryInfo);
     }
 
-    private void setRotorsIdsHbox(InventoryInfo inventoryInfo){
+    private void setRotorsIdsHbox(InventoryInfo inventoryInfo) {
         int numOfNeededRotors = inventoryInfo.getNumOfRotorsInUse();
         Label idLabel = (Label) rotorsHbox.getChildren().get(0);
         rotorsHbox.getChildren().clear();
@@ -97,21 +97,21 @@ public class SetMachineConfigController implements Initializable {
         ObservableList<ComboBoxItem<String>> observableRotorIdList = createRotorsIdsObservableList(inventoryInfo);
         for (int i = 1; i <= numOfNeededRotors; i++) {
             ComboBox<ComboBoxItem<String>> rotorsIdsComboBox = new ComboBox<>(observableRotorIdList);
-//            rotorsIdsComboBox.getSelectionModel().select(0);
+            rotorsIdsComboBox.getSelectionModel().select(0);
             rotorsIdsComboBox.setCellFactory(param -> new ComboBoxCell<String>());
             rotorsIdsComboBox.setButtonCell(new ComboBoxCell<String>());
-            validationSupport.registerValidator(rotorsIdsComboBox, Validator.createEmptyValidator( "Selection required"));
-//            rotorsIdsComboBox.promptTextProperty().addListener(observable -> observableRotorIdList.);
+            validationSupport.registerValidator(rotorsIdsComboBox, Validator.createEmptyValidator("Selection required"));
             rotorsHbox.getChildren().add(rotorsIdsComboBox);
+            rotorsIdsComboBox.setOnAction(e ->
+                    rotorsIdsComboBox.getSelectionModel()
+                            .getSelectedItem()
+                            .setChosen(true));
+            //todo - remove selection - make available again;
         }
-        ComboBox<String> hi = new ComboBox<>();
-        hi.promptTextProperty();
     }
-
     private ObservableList<ComboBoxItem<String>> createRotorsIdsObservableList(InventoryInfo inventoryInfo){
         int numOfAvailableRotors = inventoryInfo.getNumOfAvailableRotors();
         List<ComboBoxItem<String>> availableIdsList = new ArrayList<>(numOfAvailableRotors);
-//        int numOfNeededRotors = inventoryInfo.getNumOfRotorsInUse();
         for (int i = 1; i <= numOfAvailableRotors; i++) {
             ComboBoxItem<String> item = new ComboBoxItem<String>(String.valueOf(i));
             availableIdsList.add(item);
@@ -123,13 +123,6 @@ public class SetMachineConfigController implements Initializable {
         return observableRotorIdList;
     }
 
-    //    public void setMachineDetails(InventoryInfo inventoryInfo) {
-//        setReflectorChoiceBoxHbox(inventoryInfo);
-//        setRotorsIdsHbox(inventoryInfo);
-//        setRotorsPositionsHBox(inventoryInfo);
-//        addPlugboardTab(inventoryInfo);
-//    }
-//
     private void setReflectorChoiceBoxHbox(InventoryInfo inventoryInfo) {
         int reflectorNum = inventoryInfo.getNumOfAvailableRotors();
         reflectorChoiceBox.getItems().clear();
@@ -139,19 +132,7 @@ public class SetMachineConfigController implements Initializable {
         validationSupport.registerValidator(reflectorChoiceBox, Validator.createEmptyValidator( "Selection required"));
 
     }
-//
-//    private void setRotorsIdsHbox(InventoryInfo inventoryInfo){
-//        int numOfAvailableRotors = inventoryInfo.getNumOfAvailableRotors();
-//        int numOfNeededRotors = inventoryInfo.getNumOfRotorsInUse();
-//        Label idLabel = (Label) rotorsHbox.getChildren().get(0);
-//        rotorsHbox.getChildren().clear();
-//        rotorsHbox.getChildren().add(idLabel);
-//        for (int i = 1; i <= numOfNeededRotors; i++) {
-//            ChoiceBox<Integer> rotorChoiceBox= createRotorIdChoiceBox(numOfAvailableRotors);
-//            rotorsHbox.getChildren().add(rotorChoiceBox);
-//        }
-//    }
-//
+
     private void setRotorsPositionsHBox(InventoryInfo inventoryInfo){
         int numOfNeededRotors = inventoryInfo.getNumOfRotorsInUse();
         String Abc = inventoryInfo.getABC();
@@ -172,15 +153,7 @@ public class SetMachineConfigController implements Initializable {
         }
         return newChoiceBox;
     }
-//
-//    private ChoiceBox<Integer> createRotorIdChoiceBox(int amountOfRotors) {
-//        ChoiceBox<Integer> rotorChoiceBox = new ChoiceBox<>();
-//        for (int i = 1; i <= amountOfRotors; i++) {
-//            rotorChoiceBox.getItems().add(i);
-//        }
-//        return rotorChoiceBox;
-//    }
-//
+
     private void addPlugboardTab(InventoryInfo inventoryInfo) {
         String ABC = inventoryInfo.getABC();
         plugBoardAddNewEP1Choice.getItems().clear();

@@ -1,4 +1,5 @@
 package src.main.java.ui;
+import lombok.Getter;
 import main.java.component.MachineHandler;
 import main.java.component.SerializationHandler;
 import main.java.component.impl.MachineHandlerImpl;
@@ -161,7 +162,10 @@ public class CLIMenu {
         }
     }
 
-    private static String buildMachineStateMsg(MachineState machineState,InventoryInfo inventoryInfo){
+    public static String getMachineState(MachineState machineState, InventoryInfo inventoryInfo){
+        return buildMachineStateMsg(machineState, inventoryInfo);
+    }
+    private static String buildMachineStateMsg(MachineState machineState, InventoryInfo inventoryInfo){
         String resultMsg;
         String rotorsInMachineMsg = CLIMenu.buildRotorsInMachineMsg(machineState,inventoryInfo);
         //2.5.b

@@ -13,5 +13,6 @@ public class PropertiesService {
     @Getter private static final String setMachineConfigTemplateFxmlPath = "/src/main/resources/subcomponents/setMachineConfigTemplate.fxml";
     @Getter private static final String currMachineConfigTemplateFxmlPath = "/src/main/resources/subcomponents/currMachineConfigTemplate.fxml";
     @Getter private static final String encryptPageTemplateFxmlPath = "/src/main/resources/subcomponents/encryptPageTemplate.fxml";
+    @Getter private static final String statisticsTableFxmlPath = "/src/main/resources/subcomponents/statisticsTable.fxml";
 }
 
