@@ -27,6 +27,7 @@ import java.util.ResourceBundle;
 public class CurrMachineConfigController implements Initializable {
 
 
+    public Label machineConfigurationLabel;
     @Getter @FXML MachinePageController machinePageController;
     @Getter @FXML EncryptPageController encryptPageController;
     @Getter @FXML MachineDetailsController machineDetailsController;
@@ -59,6 +60,9 @@ public class CurrMachineConfigController implements Initializable {
 
     }
 
+    public void changeHeaderToOriginal(){
+        this.machineConfigurationLabel.setText("Original machine configuration");
+    }
     public void bindToData(SimpleObjectProperty<MachineState> dataProperty){
         dataProperty.addListener(new ChangeListener<MachineState>() {
             @Override

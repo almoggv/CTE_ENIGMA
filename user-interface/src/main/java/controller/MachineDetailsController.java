@@ -22,7 +22,7 @@ public class MachineDetailsController implements Initializable {
     @Getter @Setter @FXML MachinePageController parentController;
 
     @FXML private GridPane originalMachineConfigComponent;
-    @FXML private CurrMachineConfigController originalMachineConfigComponentController;
+
 
     @FXML public AnchorPane originalMachineConfigurationAnchor;
     @FXML private Label titleLabel;
@@ -37,26 +37,28 @@ public class MachineDetailsController implements Initializable {
     @FXML private Label toUseRotorNumLabel;
     @FXML private Label availableReflectorNumLabel;
     @FXML private GridPane originalMachineConfigurationComponent;
+    @FXML private CurrMachineConfigController originalMachineConfigurationComponentController;
     @FXML private Label machineNotConfiguredLabel;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        if(originalMachineConfigComponentController!=null){
-            originalMachineConfigComponentController.setParentController(this);
-            originalMachineConfigComponentController.bindToData(DataService.getOriginalMachineStateProperty());
+        if(originalMachineConfigurationComponentController!=null){
+            originalMachineConfigurationComponentController.setParentController(this);
+            originalMachineConfigurationComponentController.changeHeaderToOriginal();
+            originalMachineConfigurationComponentController.bindToData(DataService.getOriginalMachineStateProperty());
         }
         DataService.getInventoryInfoProperty().addListener(new ChangeListener<InventoryInfo>() {
            @Override
            public void changed(ObservableValue<? extends InventoryInfo> observable, InventoryInfo oldValue, InventoryInfo newValue) {
                if(newValue != null){
-                   originalMachineConfigurationAnchor.setVisible(true);
-                   machineNotConfiguredLabel.setVisible(false);
+//                   originalMachineConfigurationAnchor.setVisible(true);
+//                   machineNotConfiguredLabel.setVisible(false);
                    showInventory(newValue);
                }
-               else{
-                   originalMachineConfigurationAnchor.setVisible(false);
-                   machineNotConfiguredLabel.setVisible(true);
-               }
+//               else{
+//                   originalMachineConfigurationAnchor.setVisible(false);
+//                   machineNotConfiguredLabel.setVisible(true);
+//               }
            }
         });
     }

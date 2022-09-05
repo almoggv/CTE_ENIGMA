@@ -19,7 +19,7 @@
       <RowConstraints maxHeight="26.666656494140625" minHeight="10.0" prefHeight="26.666656494140625" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" text="Current machine configuration" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
+      <Label fx:id="machineConfigurationLabel" alignment="CENTER" contentDisplay="CENTER" text="Current machine configuration" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
       <GridPane alignment="CENTER" hgap="5.0" prefWidth="306.0" vgap="5.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="NEVER">
          <columnConstraints>
             <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="-Infinity" />

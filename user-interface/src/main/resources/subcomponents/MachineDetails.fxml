@@ -8,10 +8,10 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.main.java.controller.MachineDetailsController">
+<GridPane prefHeight="269.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.main.java.controller.MachineDetailsController">
    <columnConstraints>
       <ColumnConstraints hgrow="NEVER" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-      <ColumnConstraints halignment="CENTER" maxWidth="1.7976931348623157E308" minWidth="350.0" />
+      <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="350.0" />
       <ColumnConstraints hgrow="NEVER" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
    </columnConstraints>
    <rowConstraints>
@@ -24,18 +24,17 @@
       <Label fx:id="titleLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="122.0" prefWidth="162.0" text="Machine Details" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
       <GridPane fx:id="innerGridPane" alignment="CENTER" hgap="5.0" prefHeight="144.0" prefWidth="350.0" vgap="5.0" GridPane.columnIndex="1" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="2" GridPane.vgrow="SOMETIMES">
          <columnConstraints>
-            <ColumnConstraints halignment="CENTER" hgrow="NEVER" minWidth="-Infinity" />
-            <ColumnConstraints halignment="CENTER" hgrow="NEVER" minWidth="-Infinity" />
             <ColumnConstraints halignment="CENTER" maxWidth="1.7976931348623157E308" minWidth="-Infinity" />
+            <ColumnConstraints halignment="CENTER" hgrow="NEVER" minWidth="-Infinity" />
+            <ColumnConstraints halignment="CENTER" minWidth="-Infinity" />
             <ColumnConstraints halignment="CENTER" maxWidth="1.7976931348623157E308" minWidth="-Infinity" />
          </columnConstraints>
          <rowConstraints>
             <RowConstraints maxHeight="60.33331298828125" minHeight="10.0" prefHeight="22.0" vgrow="SOMETIMES" />
             <RowConstraints fillHeight="false" maxHeight="1.7976931348623157E308" minHeight="22.333343505859375" prefHeight="22.333343505859375" vgrow="SOMETIMES" />
-            <RowConstraints fillHeight="false" maxHeight="1.7976931348623157E308" minHeight="19.0" prefHeight="31.666656494140625" vgrow="SOMETIMES" />
-            <RowConstraints fillHeight="false" maxHeight="1.7976931348623157E308" minHeight="12.333343505859375" prefHeight="14.333343505859375" vgrow="ALWAYS" />
-            <RowConstraints fillHeight="false" maxHeight="1.7976931348623157E308" minHeight="32.33331298828125" prefHeight="51.666656494140625" vgrow="ALWAYS" />
-            <RowConstraints fillHeight="false" maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="94.66668701171875" vgrow="ALWAYS" />
+            <RowConstraints fillHeight="false" maxHeight="1.7976931348623157E308" minHeight="19.0" prefHeight="22.333343505859375" vgrow="SOMETIMES" />
+            <RowConstraints fillHeight="false" maxHeight="1.7976931348623157E308" minHeight="12.333343505859375" prefHeight="136.66665649414062" vgrow="ALWAYS" />
+            <RowConstraints fillHeight="false" maxHeight="1.7976931348623157E308" minHeight="6.0" prefHeight="10.33331298828125" vgrow="ALWAYS" />
          </rowConstraints>
          <children>
             <Label fx:id="reflectorLabel" alignment="CENTER" text="Reflectors" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
@@ -57,16 +56,13 @@
                   <Label fx:id="availableRotorNumLabel" />
                </children>
             </HBox>
-            <Label text="Original Machine Configorationl" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <Label fx:id="machineNotConfiguredLabel" text="Not Configured" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <AnchorPane fx:id="originalMachineConfigurationAnchor" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
+            <AnchorPane fx:id="originalMachineConfigurationAnchor" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <children>
-                  <ScrollPane layoutX="-58.0" layoutY="-86.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <content>
-                      <AnchorPane />
-                    </content>
+                  <ScrollPane fitToWidth="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <content>
+                        <fx:include fx:id="originalMachineConfigurationComponent" source="currMachineConfigTemplate.fxml" />
+                     </content>
                   </ScrollPane>
-                  <fx:include fx:id="originalMachineConfigComponent" source="currMachineConfigTemplate.fxml" />
                </children>
             </AnchorPane>
          </children>
