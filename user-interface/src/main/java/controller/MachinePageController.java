@@ -15,10 +15,14 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import main.java.component.MachineHandler;
+import main.java.dto.MachineState;
+import main.java.enums.ReflectorsId;
+import main.java.generictype.MappingPair;
 import src.main.java.service.DataService;
 
 import java.awt.event.ActionListener;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class MachinePageController implements Initializable {
@@ -81,6 +85,22 @@ public class MachinePageController implements Initializable {
     private void setMachineConigRandomlyPressed(){
         try{
             machineHandler.assembleMachine();
+            DataService.getOriginalMachineStateProperty().setValue(machineHandler.getInitialMachineState().get());
+            DataService.getCurrentMachineStateProperty().setValue(machineHandler.getMachineState().get());
+            System.out.println("CurrMachine State =" + machineHandler.getMachineState().get());
+        }
+        catch (Exception e){
+            //TODO: log here
+            throw new RuntimeException("Failed to assemble machine randomly : " + e.getMessage());
+        }
+    }
+
+    public void handleManuelSetMachinePressed(ReflectorsId reflectorId, List<Integer> rotorIdsList,
+                                              String rotorsStartingPositions,
+                                              List<MappingPair<String,String>> plugMapping ) {
+        try{
+            machineHandler.assembleMachine(reflectorId, rotorIdsList, rotorsStartingPositions, plugMapping);
+//            MachineState machineState = machineHandler.getMachineState().get();
             DataService.getOriginalMachineStateProperty().setValue(machineHandler.getInitialMachineState().get());
             DataService.getCurrentMachineStateProperty().setValue(machineHandler.getMachineState().get());
             System.out.println("CurrMachine State =" + machineHandler.getMachineState().get());

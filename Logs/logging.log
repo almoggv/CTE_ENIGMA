@@ -1812,4 +1812,18 @@
   2022-09-05 17:41:58 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
   2022-09-05 17:41:58 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
   2022-09-05 17:41:58 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-05 17:59:28 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-09-05 17:59:28 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-05 17:59:28 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-05 17:59:37 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-05 17:59:37 WARN  PlugBoardImpl:75 - Plugboard : Failed to connect endpoints -Dis already connected
+  2022-09-05 17:59:37 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-05 17:59:37 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-05 17:59:37 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-05 18:01:31 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-09-05 18:01:31 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-05 18:01:31 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-05 18:10:11 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-09-05 18:10:11 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-05 18:10:11 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
   
