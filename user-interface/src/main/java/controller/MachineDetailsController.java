@@ -10,10 +10,14 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import lombok.Getter;
 import lombok.Setter;
+import main.java.dto.EncryptionInfoHistory;
 import main.java.dto.InventoryInfo;
+import main.java.dto.MachineState;
 import src.main.java.service.DataService;
 
 import java.net.URL;
+import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 public class MachineDetailsController implements Initializable {
@@ -51,28 +55,36 @@ public class MachineDetailsController implements Initializable {
            @Override
            public void changed(ObservableValue<? extends InventoryInfo> observable, InventoryInfo oldValue, InventoryInfo newValue) {
                if(newValue != null){
-//                   originalMachineConfigurationAnchor.setVisible(true);
-//                   machineNotConfiguredLabel.setVisible(false);
                    showInventory(newValue);
                }
-//               else{
-//                   originalMachineConfigurationAnchor.setVisible(false);
-//                   machineNotConfiguredLabel.setVisible(true);
-//               }
            }
+        });
+
+        DataService.getEncryptionInfoHistoryProperty().addListener(new ChangeListener<Map<MachineState, List<EncryptionInfoHistory>>>() {
+            @Override
+            public void changed(ObservableValue<? extends Map<MachineState, List<EncryptionInfoHistory>>> observable, Map<MachineState, List<EncryptionInfoHistory>> oldValue, Map<MachineState, List<EncryptionInfoHistory>> newValue) {
+                if(newValue != null){
+                    encryptedMsgLabel.setText(String.valueOf(countNumberOfMessagesInHistory()));
+                }
+            }
         });
     }
 
     private void showInventory(InventoryInfo inventoryInfo){
-
-
+        availableRotorNumLabel.setText((String.valueOf(inventoryInfo.getNumOfAvailableRotors())));
+        availableReflectorNumLabel.setText((String.valueOf(inventoryInfo.getNumOfAvailableReflectors())));
+        toUseRotorNumLabel.setText((String.valueOf(inventoryInfo.getNumOfRotorsInUse())));
     }
 
-    // Use snippets for later
-//    private void setDetails() {
-//        availableRotorNumLabel.setText((String.valueOf(DataService.getInventoryInfo().getNumOfAvailableRotors())));
-////        encryptedMsgLabel.setText(DateService.getInventoryInfo());
-//        toUseRotorNumLabel.setText((String.valueOf(DataService.getInventoryInfo().getNumOfRotorsInUse())));
-//        availableReflectorNumLabel.setText((String.valueOf(DataService.getInventoryInfo().getNumOfAvailableReflectors())));
-//    }
+    private int countNumberOfMessagesInHistory() {
+        if(DataService.getEncryptionInfoHistoryProperty().getValue() == null){
+            return 0;
+        }
+        int resultCount = 0;
+        for (MachineState key : DataService.getEncryptionInfoHistoryProperty().get().keySet()) {
+            resultCount += DataService.getEncryptionInfoHistoryProperty().get().get(key).size();
+        }
+        return resultCount;
+    }
+
 }

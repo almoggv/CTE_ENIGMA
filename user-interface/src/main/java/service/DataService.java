@@ -2,9 +2,7 @@ package src.main.java.service;
 
 
 import javafx.beans.property.SimpleObjectProperty;
-import lombok.Data;
 import lombok.Getter;
-import lombok.Setter;
 import main.java.dto.EncryptionInfoHistory;
 import main.java.dto.InventoryInfo;
 import main.java.dto.MachineState;
@@ -19,7 +17,7 @@ public class DataService {
     @Getter private static final SimpleObjectProperty<MachineState> originalMachineStateProperty = new SimpleObjectProperty<>();
     @Getter private static final SimpleObjectProperty<MachineState> currentMachineStateProperty = new SimpleObjectProperty<>();
 //    @Getter private static final SimpleObjectProperty<EncryptionInfoHistory> encryptionInfoHistory = new SimpleObjectProperty<>();
-    @Getter private static final SimpleObjectProperty<Map<MachineState, List<EncryptionInfoHistory>>> encryptionInfoHistory = new SimpleObjectProperty<>();
+    @Getter private static final SimpleObjectProperty<Map<MachineState, List<EncryptionInfoHistory>>> encryptionInfoHistoryProperty = new SimpleObjectProperty<>();
 
 
 

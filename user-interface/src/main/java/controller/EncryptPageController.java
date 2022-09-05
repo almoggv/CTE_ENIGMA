@@ -21,16 +21,12 @@ import main.java.dto.InventoryInfo;
 import main.java.dto.MachineState;
 import org.controlsfx.control.textfield.CustomTextField;
 import src.main.java.service.DataService;
-import src.main.java.ui.CLIMenu;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
-
-import static java.lang.System.lineSeparator;
-import static java.lang.System.out;
 
 public class EncryptPageController implements Initializable {
 
@@ -131,6 +127,7 @@ public class EncryptPageController implements Initializable {
         try {
             String result = machineHandler.encrypt(encryptTextField.getText());
             resultTextField.setText(result);
+            DataService.getEncryptionInfoHistoryProperty().setValue(machineHandler.getMachineStatisticsHistory());
         }
         catch (Exception e){
             parentController.showMessage(e.getMessage());

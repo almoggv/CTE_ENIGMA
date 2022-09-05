@@ -84,7 +84,9 @@ public class CurrMachineConfigController implements Initializable {
         int numOfRotors = machineState.getRotorIds().size();
         List<Integer> rotorIds = machineState.getRotorIds();
         for (int i = 0; i < numOfRotors; i++) {
-            Button rotor = new Button(new String(String.valueOf(rotorIds.get(i))));
+            int notchDistance = machineState.getNotchDistancesFromHead().get(i);
+            String rotorButtonMsg = i + " (" + notchDistance + ")";
+            Button rotor = new Button(new String(String.valueOf(rotorButtonMsg)));
             rotorsHbox.getChildren().add(rotor);
         }
     }

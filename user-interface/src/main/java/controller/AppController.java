@@ -142,7 +142,7 @@ public class AppController/* implements Initializable */{
         optionalInventoryInfo.ifPresent(inventoryInfo -> DataService.getInventoryInfoProperty().setValue(inventoryInfo));
         DataService.getOriginalMachineStateProperty().setValue(null);
         DataService.getCurrentMachineStateProperty().setValue(null);
-        DataService.getEncryptionInfoHistory().setValue(null);
+        DataService.getEncryptionInfoHistoryProperty().setValue(null);
     }
 
     public void setPrimaryStage(Stage primaryStage) {
