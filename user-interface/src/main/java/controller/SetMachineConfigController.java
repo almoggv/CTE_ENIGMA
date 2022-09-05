@@ -24,6 +24,7 @@ import src.main.java.fxcomponent.ComboBoxCell;
 import src.main.java.fxcomponent.ComboBoxItem;
 import src.main.java.service.DataService;
 
+import javax.swing.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -81,15 +82,11 @@ public class SetMachineConfigController implements Initializable {
         setUserChoiceButton.disableProperty().bind(validationSupport.invalidProperty());
     }
 
-
-
     public void setMachineDetails(InventoryInfo inventoryInfo){
-
         setReflectorChoiceBoxHbox(inventoryInfo);
         setRotorsIdsHbox(inventoryInfo);
         setRotorsPositionsHBox(inventoryInfo);
         addPlugboardTab(inventoryInfo);
-
     }
 
     private void setRotorsIdsHbox(InventoryInfo inventoryInfo){
@@ -104,8 +101,11 @@ public class SetMachineConfigController implements Initializable {
             rotorsIdsComboBox.setCellFactory(param -> new ComboBoxCell<String>());
             rotorsIdsComboBox.setButtonCell(new ComboBoxCell<String>());
             validationSupport.registerValidator(rotorsIdsComboBox, Validator.createEmptyValidator( "Selection required"));
+//            rotorsIdsComboBox.promptTextProperty().addListener(observable -> observableRotorIdList.);
             rotorsHbox.getChildren().add(rotorsIdsComboBox);
         }
+        ComboBox<String> hi = new ComboBox<>();
+        hi.promptTextProperty();
     }
 
     private ObservableList<ComboBoxItem<String>> createRotorsIdsObservableList(InventoryInfo inventoryInfo){

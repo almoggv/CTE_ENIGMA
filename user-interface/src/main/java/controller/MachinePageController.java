@@ -75,7 +75,7 @@ public class MachinePageController implements Initializable {
     public void bindComponent(CurrMachineConfigController controller){
         this.currMachineConfigComponentController = controller;
         currMachineConfigComponent = currMachineConfigComponentController.getRootGridPane();
-        scrollOfRightBottomAnchor.setContent(currMachineConfigComponent);
+//        scrollOfRightBottomAnchor.setContent(currMachineConfigComponent);
     }
 
     private void setMachineConigRandomlyPressed(){

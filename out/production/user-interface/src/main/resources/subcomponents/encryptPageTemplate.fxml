@@ -27,9 +27,9 @@
     <RowConstraints maxHeight="251.33334350585938" minHeight="10.0" prefHeight="212.66668701171875" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <AnchorPane fx:id="rightAnchorOfBottom" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <children>
-            <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="133.0" prefWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <ScrollPane fx:id="scrollOfRightBottomAnchor" fitToHeight="true" fitToWidth="true" prefHeight="133.0" prefWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <content>
                   <fx:include fx:id="currMachineConfigComponent" source="currMachineConfigTemplate.fxml" />
                </content>
