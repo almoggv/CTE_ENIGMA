@@ -11,7 +11,7 @@
          <children>
             <ScrollPane fx:id="bodyWrapScrollPane" fitToHeight="true" fitToWidth="true" layoutY="14.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <content>
-                  <ImageView fx:id="mainViewImage" fitHeight="377.0" fitWidth="692.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="mainViewImage" fitHeight="390.0" fitWidth="697.0" pickOnBounds="true" preserveRatio="true" />
                </content></ScrollPane>
          </children>
       </AnchorPane>

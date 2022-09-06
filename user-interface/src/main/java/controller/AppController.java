@@ -104,7 +104,7 @@ public class AppController/* implements Initializable */{
 
         //added picture
         headerWrapScrollPane.setContent(headerComponentRootPaneController.getRootComponent());
-        mainViewImage.setImage(new Image(ResourcesService.getEnigmaMachineIllustration()));
+        mainViewImage.setImage(new Image(ResourcesService.getEnigmaMachineIllustration2()));
         // Load Brute Force Page :TODO
     }
 

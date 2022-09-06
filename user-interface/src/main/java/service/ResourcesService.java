@@ -7,4 +7,5 @@ import lombok.Getter;
 public class ResourcesService {
     @Getter
     private static final String enigmaMachineIllustration = "/src/main/resources/enigma-illustration.png";
+    @Getter private static final String enigmaMachineIllustration2 = "/src/main/resources/enigma2.jpg";
 }
