@@ -110,4 +110,8 @@ public class MachinePageController implements Initializable {
             throw new RuntimeException("Failed to assemble machine randomly : " + e.getMessage());
         }
     }
+
+    public void showMessage(String message) {
+        parentController.showMessage(message);
+    }
 }

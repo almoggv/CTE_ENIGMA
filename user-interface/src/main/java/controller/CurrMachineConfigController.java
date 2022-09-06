@@ -73,10 +73,22 @@ public class CurrMachineConfigController implements Initializable {
     }
 
     public void showCurrConfiguration(MachineState machineState) {
-        machineNotConfiguredLabel.setVisible(false);
-        setRotorsHbox(machineState);
-        setPlugBoardHbox(machineState);
-        setReflectorLabel(machineState);
+        if(machineState != null){
+            machineNotConfiguredLabel.setVisible(false);
+            setRotorsHbox(machineState);
+            setPlugBoardHbox(machineState);
+            setReflectorLabel(machineState);
+        }
+        else{
+            machineNotConfiguredLabel.setVisible(true);
+            clearConfiguration();
+        }
+    }
+
+    private void clearConfiguration() {
+        rotorsHbox.getChildren().clear();
+        reflectorHbox.getChildren().clear();
+        plugBoardHbox.getChildren().clear();
     }
 
     private void setRotorsHbox(MachineState machineState) {

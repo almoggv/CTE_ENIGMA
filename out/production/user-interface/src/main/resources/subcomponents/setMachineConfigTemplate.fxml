@@ -105,6 +105,7 @@
                   <ChoiceBox fx:id="rotorInitialPosChoice1" prefHeight="25.0" prefWidth="50.0" />
                </children>
             </HBox>
+            <Button fx:id="clearSelectionButton" mnemonicParsing="false" onAction="#onClearSelectionButton" text="Clear selection" GridPane.columnIndex="2" GridPane.rowIndex="3" />
          </children>
       </GridPane>
    </children>

@@ -27,12 +27,14 @@ import src.main.java.service.DataService;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.concurrent.atomic.AtomicReference;
 
 
 public class SetMachineConfigController implements Initializable {
 
+    public Button clearSelectionButton;
     @Getter @Setter
     @FXML MachinePageController parentController;
 
@@ -135,7 +137,6 @@ public class SetMachineConfigController implements Initializable {
             reflectorChoiceBox.getItems().add(ReflectorsId.getByNum(i).getName());
         }
         validationSupport.registerValidator(reflectorChoiceBox, Validator.createEmptyValidator( "Selection required"));
-
     }
 
     private void setRotorsPositionsHBox(InventoryInfo inventoryInfo){
@@ -171,8 +172,24 @@ public class SetMachineConfigController implements Initializable {
 
     @FXML
     void onPlugBoardAddNewButtonAction(ActionEvent event) {
-        plugBoardConnectionsLeft.getItems().add(plugBoardAddNewEP1Choice.getValue());
-        plugBoardConnectionsRight.getItems().add(plugBoardAddNewEP2Choice.getValue());
+        String ep1 = plugBoardAddNewEP1Choice.getValue();
+        String ep2 = plugBoardAddNewEP2Choice.getValue();
+        if(Objects.equals(ep1, ep2) && ep1 != null){
+            parentController.showMessage("Can't connect plug to itself");
+            return;
+        }
+        if(plugBoardConnectionsLeft.getItems().contains(ep1)
+                || plugBoardConnectionsLeft.getItems().contains(ep2)
+                || plugBoardConnectionsRight.getItems().contains(ep1)
+                || plugBoardConnectionsRight.getItems().contains(ep2)){
+            //todo - can make message more clear - not a priority atm
+            parentController.showMessage("Plug already in use");
+        }
+        else if (ep1 != null && ep2 != null){
+            plugBoardConnectionsLeft.getItems().add(ep1);
+            plugBoardConnectionsRight.getItems().add(ep2);
+            parentController.showMessage("Plug connection added successfully");
+        }
     }
 
     @FXML
@@ -191,6 +208,12 @@ public class SetMachineConfigController implements Initializable {
             rotorsStartingPositions = rotorsStartingPositions.concat((String) cb.getSelectionModel().getSelectedItem());
         }
         List<MappingPair<String,String>> plugMapping = new ArrayList<>();
+        for (int i = 0; i < plugBoardConnectionsLeft.getItems().size(); i++) {
+            String ep1 = plugBoardConnectionsLeft.getItems().get(i);
+            String ep2 = plugBoardConnectionsRight.getItems().get(i);
+            MappingPair<String,String> plug = new MappingPair<>(ep1,ep2);
+            plugMapping.add(plug);
+        }
 
         parentController.handleManuelSetMachinePressed(reflectorId, rotorIdsList, rotorsStartingPositions, plugMapping);
     }
@@ -209,4 +232,29 @@ public class SetMachineConfigController implements Initializable {
 
     }
 
+    public void onClearSelectionButton(ActionEvent actionEvent) {
+        //reflector
+        reflectorChoiceBox.getSelectionModel().clearSelection();
+
+        //rotors
+        for (int i = rotorsHbox.getChildren().size()-1; i >= 1; i--) {
+            ComboBox<ComboBoxItem<String>> cb = (ComboBox<ComboBoxItem<String>>) rotorsHbox.getChildren().get(i);
+            if(cb.getSelectionModel() != null && cb.getSelectionModel().getSelectedItem() != null ) {
+                cb.getSelectionModel().getSelectedItem().setChosen(false);
+                cb.getSelectionModel().clearSelection();
+            }
+        }
+
+        //rotor starting pos
+        for (int i = rotorsInitialPosHBox.getChildren().size()-1; i >=1; i--) {
+            ChoiceBox cb = (ChoiceBox) rotorsInitialPosHBox.getChildren().get(i);
+            if(cb.getSelectionModel()!= null && cb.getSelectionModel().getSelectedItem() != null) {
+                cb.getSelectionModel().clearSelection();
+            }
+        }
+
+        //plug board
+        plugBoardConnectionsLeft.getItems().clear();
+        plugBoardConnectionsRight.getItems().clear();
+    }
 }
