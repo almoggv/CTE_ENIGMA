@@ -92,7 +92,12 @@ public class EncryptPageController implements Initializable {
         DataService.getEncryptionInfoHistoryProperty().addListener(new ChangeListener<Map<MachineState, List<EncryptionInfoHistory>>>() {
             @Override
             public void changed(ObservableValue<? extends Map<MachineState, List<EncryptionInfoHistory>>> observable, Map<MachineState, List<EncryptionInfoHistory>> oldValue, Map<MachineState, List<EncryptionInfoHistory>> newValue) {
-                showStatistics(newValue);
+                try{
+                    showStatistics(newValue);
+                }
+                catch (Exception e){
+                    parentController.showMessage(e.getMessage());
+                }
             }
         });
 
@@ -126,24 +131,24 @@ public class EncryptPageController implements Initializable {
 //        });
 //    }
 
-    private void showStatistics(Map<MachineState, List<EncryptionInfoHistory>> encryptionInfoHistory) {
+    private void showStatistics(Map<MachineState, List<EncryptionInfoHistory>> encryptionInfoHistory) throws IOException {
         statisticsAccordion.getPanes().clear();
         String machineStateMsg = "";
         for (MachineState machineStateHistory : encryptionInfoHistory.keySet()) {
             machineStateMsg = "Machine state:" + CLIMenu.getMachineState(machineStateHistory,
                     DataService.getInventoryInfoProperty().get());
 
-            TitledPane statisticsPane = new TitledPane(machineStateMsg, statisticsTable);
-            statisticsAccordion.getPanes().add(statisticsPane);
-            out.println(machineStateMsg);
-            int i = 1;
+            //create statistics grid
+            URL statisticsAnchorUrl = GuiApplication.class.getResource(PropertiesService.getStatisticsAnchorFxmlPath());
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(statisticsAnchorUrl);
+            Parent statisticsAnchor = fxmlLoader.load(statisticsAnchorUrl.openStream());
+            TitledPane statisticsPane = new TitledPane(machineStateMsg, statisticsAnchor);
+            StatisticsGridController statisticsGridController = fxmlLoader.getController();
             List<EncryptionInfoHistory> encryptionInfoHistoryList = encryptionInfoHistory.get(machineStateHistory);
-            out.println("Machine encryption history:");
-            for (EncryptionInfoHistory encryptionHistory : encryptionInfoHistoryList) {
-                out.println(i++ + ". <" + encryptionHistory.getInput() + "> --> <" + encryptionHistory.getOutput() + "> ( " + encryptionHistory.getTimeToEncrypt() + " nano-seconds)");
-            }
+            statisticsGridController.addHistory(encryptionInfoHistoryList);
+            statisticsAccordion.getPanes().add(statisticsPane);
         }
-
     }
 
     public void onEncryptButtonAction(ActionEvent actionEvent) throws IOException {

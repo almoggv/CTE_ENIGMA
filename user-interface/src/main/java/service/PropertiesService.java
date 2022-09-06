@@ -14,6 +14,6 @@ public class PropertiesService {
     @Getter private static final String currMachineConfigTemplateFxmlPath = "/src/main/resources/subcomponents/currMachineConfigTemplate.fxml";
     @Getter private static final String encryptPageTemplateFxmlPath = "/src/main/resources/subcomponents/encryptPageTemplate.fxml";
     @Getter private static final String encryptPageTemplateFxmlPath2 = "/src/main/resources/subcomponents/encryptPageTemplate2.fxml";
-    @Getter private static final String statisticsTableFxmlPath = "/src/main/resources/subcomponents/statisticsTable.fxml";
+    @Getter private static final String statisticsAnchorFxmlPath = "/src/main/resources/subcomponents/statisticsGridController.fxml";
 }
 
