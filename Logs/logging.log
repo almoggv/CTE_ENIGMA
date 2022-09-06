@@ -1826,4 +1826,211 @@
   2022-09-05 18:10:11 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
   2022-09-05 18:10:11 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
   2022-09-05 18:10:11 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-06 08:46:22 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-09-06 08:46:22 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-06 08:46:22 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-06 08:46:31 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-06 08:46:31 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-06 08:46:31 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-06 08:46:31 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-06 08:46:52 INFO  MachineHandlerImpl:303 - encrypted: A to: D
+  2022-09-06 08:46:52 INFO  MachineHandlerImpl:304 - time it took to encrypt:170200
+  2022-09-06 08:46:57 INFO  MachineHandlerImpl:303 - encrypted: B to: F
+  2022-09-06 08:46:57 INFO  MachineHandlerImpl:304 - time it took to encrypt:71200
+  2022-09-06 08:47:04 INFO  MachineHandlerImpl:281 - resetToLastSetState: state reset to: MachineState(reflectorId=I, rotorIds=[2, 3], rotorsHeadsInitialValues=[D, B], plugMapping=[], notchDistancesFromHead=[3, 4])
+  2022-09-06 08:47:12 INFO  MachineHandlerImpl:281 - resetToLastSetState: state reset to: MachineState(reflectorId=I, rotorIds=[2, 3], rotorsHeadsInitialValues=[D, B], plugMapping=[], notchDistancesFromHead=[3, 4])
+  2022-09-06 08:47:13 INFO  MachineHandlerImpl:303 - encrypted: B to: F
+  2022-09-06 08:47:13 INFO  MachineHandlerImpl:304 - time it took to encrypt:77000
+  2022-09-06 08:47:14 INFO  MachineHandlerImpl:303 - encrypted: B to: F
+  2022-09-06 08:47:14 INFO  MachineHandlerImpl:304 - time it took to encrypt:41900
+  2022-09-06 08:47:15 INFO  MachineHandlerImpl:281 - resetToLastSetState: state reset to: MachineState(reflectorId=I, rotorIds=[2, 3], rotorsHeadsInitialValues=[D, B], plugMapping=[], notchDistancesFromHead=[3, 4])
+  2022-09-06 08:47:16 INFO  MachineHandlerImpl:303 - encrypted: B to: F
+  2022-09-06 08:47:16 INFO  MachineHandlerImpl:304 - time it took to encrypt:64400
+  2022-09-06 08:47:17 INFO  MachineHandlerImpl:281 - resetToLastSetState: state reset to: MachineState(reflectorId=I, rotorIds=[2, 3], rotorsHeadsInitialValues=[D, B], plugMapping=[], notchDistancesFromHead=[3, 4])
+  2022-09-06 08:48:22 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-09-06 08:48:22 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-06 08:48:22 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-06 08:48:23 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-06 08:48:23 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-06 08:48:23 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-06 08:48:23 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-06 08:48:28 INFO  MachineHandlerImpl:303 - encrypted: A to: D
+  2022-09-06 08:48:28 INFO  MachineHandlerImpl:304 - time it took to encrypt:133900
+  2022-09-06 08:48:30 INFO  MachineHandlerImpl:281 - resetToLastSetState: state reset to: MachineState(reflectorId=II, rotorIds=[2, 3], rotorsHeadsInitialValues=[F, A], plugMapping=[MappingPair(left=B, right=E)], notchDistancesFromHead=[1, 5])
+  2022-09-06 08:48:35 INFO  MachineHandlerImpl:303 - encrypted: ABAB to: DDFF
+  2022-09-06 08:48:35 INFO  MachineHandlerImpl:304 - time it took to encrypt:250000
+  2022-09-06 08:48:36 INFO  MachineHandlerImpl:281 - resetToLastSetState: state reset to: MachineState(reflectorId=II, rotorIds=[2, 3], rotorsHeadsInitialValues=[F, A], plugMapping=[MappingPair(left=B, right=E)], notchDistancesFromHead=[1, 5])
+  2022-09-06 08:48:39 INFO  MachineHandlerImpl:281 - resetToLastSetState: state reset to: MachineState(reflectorId=II, rotorIds=[2, 3], rotorsHeadsInitialValues=[F, A], plugMapping=[MappingPair(left=B, right=E)], notchDistancesFromHead=[1, 5])
+  2022-09-06 08:48:53 INFO  MachineHandlerImpl:281 - resetToLastSetState: state reset to: MachineState(reflectorId=II, rotorIds=[2, 3], rotorsHeadsInitialValues=[F, A], plugMapping=[MappingPair(left=B, right=E)], notchDistancesFromHead=[1, 5])
+  2022-09-06 08:48:55 INFO  MachineHandlerImpl:303 - encrypted: ABAB to: DDFF
+  2022-09-06 08:48:55 INFO  MachineHandlerImpl:304 - time it took to encrypt:141300
+  2022-09-06 08:48:55 INFO  MachineHandlerImpl:303 - encrypted: ABAB to: EECE
+  2022-09-06 08:48:55 INFO  MachineHandlerImpl:304 - time it took to encrypt:104000
+  2022-09-06 08:48:55 INFO  MachineHandlerImpl:303 - encrypted: ABAB to: BADC
+  2022-09-06 08:48:55 INFO  MachineHandlerImpl:304 - time it took to encrypt:148100
+  2022-09-06 08:48:55 INFO  MachineHandlerImpl:303 - encrypted: ABAB to: DDFF
+  2022-09-06 08:48:55 INFO  MachineHandlerImpl:304 - time it took to encrypt:188200
+  2022-09-06 08:48:56 INFO  MachineHandlerImpl:303 - encrypted: ABAB to: EECE
+  2022-09-06 08:48:56 INFO  MachineHandlerImpl:304 - time it took to encrypt:91300
+  2022-09-06 08:48:56 INFO  MachineHandlerImpl:303 - encrypted: ABAB to: BADC
+  2022-09-06 08:48:56 INFO  MachineHandlerImpl:304 - time it took to encrypt:111600
+  2022-09-06 08:48:56 INFO  MachineHandlerImpl:303 - encrypted: ABAB to: DDFF
+  2022-09-06 08:48:56 INFO  MachineHandlerImpl:304 - time it took to encrypt:80900
+  2022-09-06 08:48:57 INFO  MachineHandlerImpl:281 - resetToLastSetState: state reset to: MachineState(reflectorId=II, rotorIds=[2, 3], rotorsHeadsInitialValues=[F, A], plugMapping=[MappingPair(left=B, right=E)], notchDistancesFromHead=[1, 5])
+  2022-09-06 08:49:31 INFO  MachineHandlerImpl:281 - resetToLastSetState: state reset to: MachineState(reflectorId=II, rotorIds=[2, 3], rotorsHeadsInitialValues=[F, A], plugMapping=[MappingPair(left=B, right=E)], notchDistancesFromHead=[1, 5])
+  2022-09-06 08:49:32 INFO  MachineHandlerImpl:281 - resetToLastSetState: state reset to: MachineState(reflectorId=II, rotorIds=[2, 3], rotorsHeadsInitialValues=[F, A], plugMapping=[MappingPair(left=B, right=E)], notchDistancesFromHead=[1, 5])
+  2022-09-06 08:49:34 INFO  MachineHandlerImpl:281 - resetToLastSetState: state reset to: MachineState(reflectorId=II, rotorIds=[2, 3], rotorsHeadsInitialValues=[F, A], plugMapping=[MappingPair(left=B, right=E)], notchDistancesFromHead=[1, 5])
+  2022-09-06 08:49:35 INFO  MachineHandlerImpl:281 - resetToLastSetState: state reset to: MachineState(reflectorId=II, rotorIds=[2, 3], rotorsHeadsInitialValues=[F, A], plugMapping=[MappingPair(left=B, right=E)], notchDistancesFromHead=[1, 5])
+  2022-09-06 08:49:36 INFO  MachineHandlerImpl:281 - resetToLastSetState: state reset to: MachineState(reflectorId=II, rotorIds=[2, 3], rotorsHeadsInitialValues=[F, A], plugMapping=[MappingPair(left=B, right=E)], notchDistancesFromHead=[1, 5])
+  2022-09-06 08:49:47 INFO  MachineHandlerImpl:303 - encrypted: A to: D
+  2022-09-06 08:49:47 INFO  MachineHandlerImpl:304 - time it took to encrypt:46500
+  2022-09-06 08:49:50 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-06 08:49:50 WARN  PlugBoardImpl:71 - Plugboard : Failed to connect endpoints -Cis already connected
+  2022-09-06 08:49:50 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-06 08:49:50 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-06 08:49:50 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-06 08:59:03 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-09-06 08:59:03 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-06 08:59:03 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-06 09:00:17 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-09-06 09:00:17 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-06 09:00:17 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-06 09:06:07 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-09-06 09:06:07 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-06 09:06:07 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-06 09:08:15 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-09-06 09:08:15 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-06 09:08:15 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-06 09:08:55 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-09-06 09:08:55 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-06 09:08:55 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-06 09:09:56 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-09-06 09:09:56 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-06 09:09:56 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-06 09:12:41 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-09-06 09:12:41 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-06 09:12:41 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-06 09:16:19 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-09-06 09:16:19 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-06 09:16:19 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-06 09:18:30 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-09-06 09:18:30 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-06 09:18:30 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-06 09:19:38 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-09-06 09:19:38 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-06 09:19:38 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-06 09:20:32 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-09-06 09:20:32 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-06 09:20:32 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-06 09:20:52 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-06 09:20:52 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-06 09:21:20 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-06 09:21:20 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-06 09:21:27 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-06 09:21:27 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-06 09:21:29 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-06 09:21:29 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-06 09:21:29 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-06 09:21:29 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-06 09:21:30 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-06 09:21:30 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-06 09:25:42 ERROR FileConfigurationHandler:37 - Failed to generate JAXB CTE Enigma objects by schema : null
+  2022-09-06 09:26:10 ERROR FileConfigurationHandler:37 - Failed to generate JAXB CTE Enigma objects by schema : null
+  2022-09-06 09:26:32 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-09-06 09:26:32 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-06 09:26:32 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-06 09:29:12 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-09-06 09:29:12 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-06 09:29:12 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-06 09:30:09 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-06 09:30:09 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-06 09:32:13 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-09-06 09:32:13 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-06 09:32:13 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-06 09:33:43 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-09-06 09:33:43 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-06 09:33:43 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-06 09:34:06 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-06 09:34:06 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-06 09:34:58 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-09-06 09:34:58 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-06 09:34:58 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-06 09:35:11 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-06 09:35:11 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-06 09:36:03 INFO  MachineHandlerImpl:303 - encrypted: A to: B
+  2022-09-06 09:36:03 INFO  MachineHandlerImpl:304 - time it took to encrypt:187000
+  2022-09-06 09:36:15 INFO  MachineHandlerImpl:303 - encrypted: A to: F
+  2022-09-06 09:36:15 INFO  MachineHandlerImpl:304 - time it took to encrypt:79400
+  2022-09-06 09:36:16 INFO  MachineHandlerImpl:303 - encrypted: A to: D
+  2022-09-06 09:36:16 INFO  MachineHandlerImpl:304 - time it took to encrypt:83600
+  2022-09-06 09:36:16 INFO  MachineHandlerImpl:303 - encrypted: A to: B
+  2022-09-06 09:36:16 INFO  MachineHandlerImpl:304 - time it took to encrypt:132100
+  2022-09-06 09:36:16 INFO  MachineHandlerImpl:303 - encrypted: A to: F
+  2022-09-06 09:36:16 INFO  MachineHandlerImpl:304 - time it took to encrypt:65400
+  2022-09-06 09:36:17 INFO  MachineHandlerImpl:303 - encrypted: A to: D
+  2022-09-06 09:36:17 INFO  MachineHandlerImpl:304 - time it took to encrypt:102300
+  2022-09-06 09:36:17 INFO  MachineHandlerImpl:303 - encrypted: A to: B
+  2022-09-06 09:36:17 INFO  MachineHandlerImpl:304 - time it took to encrypt:62800
+  2022-09-06 09:36:18 INFO  MachineHandlerImpl:303 - encrypted: A to: F
+  2022-09-06 09:36:18 INFO  MachineHandlerImpl:304 - time it took to encrypt:99300
+  2022-09-06 09:36:18 INFO  MachineHandlerImpl:303 - encrypted: A to: D
+  2022-09-06 09:36:18 INFO  MachineHandlerImpl:304 - time it took to encrypt:91900
+  2022-09-06 09:37:36 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-09-06 09:37:36 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-06 09:37:36 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-06 09:37:45 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-06 09:37:45 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-06 09:38:50 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-09-06 09:38:50 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-06 09:38:50 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-06 09:39:06 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-06 09:39:06 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-06 09:43:16 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-09-06 09:43:16 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-06 09:43:16 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-06 09:43:24 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-06 09:43:24 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-06 09:44:11 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-09-06 09:44:11 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-06 09:44:11 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-06 09:44:21 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-06 09:44:21 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-06 09:44:33 INFO  MachineHandlerImpl:303 - encrypted: A to: B
+  2022-09-06 09:44:33 INFO  MachineHandlerImpl:304 - time it took to encrypt:248100
+  2022-09-06 09:44:36 INFO  MachineHandlerImpl:303 - encrypted: AA to: FD
+  2022-09-06 09:44:36 INFO  MachineHandlerImpl:304 - time it took to encrypt:132000
+  2022-09-06 09:44:37 INFO  MachineHandlerImpl:303 - encrypted: AA to: BF
+  2022-09-06 09:44:37 INFO  MachineHandlerImpl:304 - time it took to encrypt:143400
+  2022-09-06 09:44:38 INFO  MachineHandlerImpl:303 - encrypted: AA to: DB
+  2022-09-06 09:44:38 INFO  MachineHandlerImpl:304 - time it took to encrypt:154500
+  2022-09-06 09:44:38 INFO  MachineHandlerImpl:303 - encrypted: AA to: FD
+  2022-09-06 09:44:38 INFO  MachineHandlerImpl:304 - time it took to encrypt:110600
+  2022-09-06 09:44:38 INFO  MachineHandlerImpl:303 - encrypted: AA to: BF
+  2022-09-06 09:44:38 INFO  MachineHandlerImpl:304 - time it took to encrypt:175100
+  2022-09-06 09:44:38 INFO  MachineHandlerImpl:303 - encrypted: AA to: DB
+  2022-09-06 09:44:38 INFO  MachineHandlerImpl:304 - time it took to encrypt:127900
+  2022-09-06 09:44:38 INFO  MachineHandlerImpl:303 - encrypted: AA to: FD
+  2022-09-06 09:44:38 INFO  MachineHandlerImpl:304 - time it took to encrypt:104900
+  2022-09-06 09:44:39 INFO  MachineHandlerImpl:303 - encrypted: AA to: BF
+  2022-09-06 09:44:39 INFO  MachineHandlerImpl:304 - time it took to encrypt:124400
+  2022-09-06 09:44:39 INFO  MachineHandlerImpl:303 - encrypted: AA to: DB
+  2022-09-06 09:44:39 INFO  MachineHandlerImpl:304 - time it took to encrypt:99600
+  2022-09-06 09:44:39 INFO  MachineHandlerImpl:303 - encrypted: AA to: FD
+  2022-09-06 09:44:39 INFO  MachineHandlerImpl:304 - time it took to encrypt:125400
+  2022-09-06 09:44:39 INFO  MachineHandlerImpl:303 - encrypted: AA to: BF
+  2022-09-06 09:44:39 INFO  MachineHandlerImpl:304 - time it took to encrypt:79600
+  2022-09-06 09:44:39 INFO  MachineHandlerImpl:303 - encrypted: AA to: DB
+  2022-09-06 09:44:39 INFO  MachineHandlerImpl:304 - time it took to encrypt:73500
+  2022-09-06 09:44:39 INFO  MachineHandlerImpl:303 - encrypted: AA to: FD
+  2022-09-06 09:44:39 INFO  MachineHandlerImpl:304 - time it took to encrypt:79600
+  2022-09-06 09:44:40 INFO  MachineHandlerImpl:303 - encrypted: AA to: BF
+  2022-09-06 09:44:40 INFO  MachineHandlerImpl:304 - time it took to encrypt:100900
+  2022-09-06 09:44:40 INFO  MachineHandlerImpl:303 - encrypted: AA to: DB
+  2022-09-06 09:44:40 INFO  MachineHandlerImpl:304 - time it took to encrypt:74800
+  2022-09-06 09:44:40 INFO  MachineHandlerImpl:303 - encrypted: AA to: FD
+  2022-09-06 09:44:40 INFO  MachineHandlerImpl:304 - time it took to encrypt:102100
+  2022-09-06 09:44:40 INFO  MachineHandlerImpl:303 - encrypted: AA to: BF
+  2022-09-06 09:44:40 INFO  MachineHandlerImpl:304 - time it took to encrypt:92200
+  2022-09-06 09:44:40 INFO  MachineHandlerImpl:303 - encrypted: AA to: DB
+  2022-09-06 09:44:40 INFO  MachineHandlerImpl:304 - time it took to encrypt:83700
   

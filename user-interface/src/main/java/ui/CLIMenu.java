@@ -17,6 +17,9 @@ import static java.lang.System.*;
 
 public class CLIMenu {
 
+    public static void main(String[] args) {
+        showMenu();
+    }
     private static MachineHandler machineHandler = new MachineHandlerImpl();
     private static SerializationHandler serializationHandler = new SerializationHandlerImpl();
 

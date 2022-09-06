@@ -18,18 +18,17 @@ import lombok.Setter;
 import main.java.dto.InventoryInfo;
 import main.java.enums.ReflectorsId;
 import main.java.generictype.MappingPair;
-import org.controlsfx.validation.ValidationResult;
 import org.controlsfx.validation.ValidationSupport;
 import org.controlsfx.validation.Validator;
 import src.main.java.fxcomponent.ComboBoxCell;
 import src.main.java.fxcomponent.ComboBoxItem;
 import src.main.java.service.DataService;
 
-import javax.swing.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.concurrent.atomic.AtomicReference;
 
 
 public class SetMachineConfigController implements Initializable {
@@ -97,16 +96,20 @@ public class SetMachineConfigController implements Initializable {
         rotorsHbox.getChildren().add(idLabel);
         ObservableList<ComboBoxItem<String>> observableRotorIdList = createRotorsIdsObservableList(inventoryInfo);
         for (int i = 1; i <= numOfNeededRotors; i++) {
+//            AtomicReference<Integer> lastSelected = new AtomicReference<>(0);
             ComboBox<ComboBoxItem<String>> rotorsIdsComboBox = new ComboBox<>(observableRotorIdList);
 //            rotorsIdsComboBox.getSelectionModel().select(0);
             rotorsIdsComboBox.setCellFactory(param -> new ComboBoxCell<String>());
             rotorsIdsComboBox.setButtonCell(new ComboBoxCell<String>());
             validationSupport.registerValidator(rotorsIdsComboBox, Validator.createEmptyValidator("Selection required"));
             rotorsHbox.getChildren().add(rotorsIdsComboBox);
+//            rotorsIdsComboBox.setOnAction(e-> observableRotorIdList.get(lastSelected.get()).setChosen(false));
+//            rotorsIdsComboBox.setOnAction(e-> lastSelected.set(rotorsIdsComboBox.getSelectionModel().getSelectedIndex()));
             rotorsIdsComboBox.setOnAction(e ->
                     rotorsIdsComboBox.getSelectionModel()
                             .getSelectedItem()
                             .setChosen(true));
+
             //todo - remove selection - make available again;
 //            rotorsIdsComboBox.getSelectionModel()
         }
@@ -177,18 +180,19 @@ public class SetMachineConfigController implements Initializable {
         ReflectorsId reflectorId = ReflectorsId.getByNum(reflectorChoiceBox.getSelectionModel().getSelectedIndex()+1);
         List<Integer> rotorIdsList = new ArrayList<>();
         //todo - fix issue - thinks kids are lables
-//        for (int i = 0; i < rotorsHbox.getChildren().size(); i++) {
-//            ChoiceBox cb = (ChoiceBox) rotorsHbox.getChildren().get(i);
-//            rotorIdsList.add(cb.getSelectionModel().getSelectedIndex());
-//        }
-//        String rotorsStartingPositions = "";
-//        for (int i = 0; i < rotorsInitialPosHBox.getChildren().size(); i++) {
-//            ChoiceBox cb = (ChoiceBox) rotorsInitialPosHBox.getChildren().get(i);
-//            rotorsStartingPositions.concat((String) cb.getSelectionModel().getSelectedItem());
-//        }
+        System.out.println(rotorsHbox.getChildren().get(0));
+        for (int i = rotorsHbox.getChildren().size()-1; i >= 1; i--) {
+            ComboBox<ComboBoxItem<String>> cb = (ComboBox<ComboBoxItem<String>>) rotorsHbox.getChildren().get(i);
+            rotorIdsList.add(cb.getSelectionModel().getSelectedIndex()+1);
+        }
+        String rotorsStartingPositions = "";
+        for (int i = rotorsInitialPosHBox.getChildren().size()-1; i >=1; i--) {
+            ChoiceBox cb = (ChoiceBox) rotorsInitialPosHBox.getChildren().get(i);
+            rotorsStartingPositions = rotorsStartingPositions.concat((String) cb.getSelectionModel().getSelectedItem());
+        }
         List<MappingPair<String,String>> plugMapping = new ArrayList<>();
 
-//        parentController.handleManuelSetMachinePressed(reflectorId, rotorIdsList, rotorsStartingPositions, plugMapping);
+        parentController.handleManuelSetMachinePressed(reflectorId, rotorIdsList, rotorsStartingPositions, plugMapping);
     }
 
     @FXML

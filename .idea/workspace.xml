@@ -14,8 +14,11 @@
     <list default="true" id="6467e2d7-ff2a-4abb-a198-685a0fcd06aa" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Logs/logging.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/logging.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/MachinePageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/MachinePageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/EncryptPageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/EncryptPageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/CurrMachineConfigController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/CurrMachineConfigController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/EncryptPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/EncryptPageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/SetMachineConfigController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/SetMachineConfigController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/ui/CLIMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/ui/CLIMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,6 +119,19 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.GuiApplication">
+    <configuration name="CLIMenu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="src.main.java.ui.CLIMenu" />
+      <module name="user-interface" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="src.main.java.ui.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="GuiApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="src.main.java.ui.GuiApplication" />
       <module name="user-interface" />
@@ -138,22 +154,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestSanityMachineHandlerImpl.testSanitySmall" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="encryption-machine-handler" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test.java.component.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="test.java.component" />
-      <option name="MAIN_CLASS_NAME" value="test.java.component.TestSanityMachineHandlerImpl" />
-      <option name="METHOD_NAME" value="testSanitySmall" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -206,10 +206,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.GuiApplication" />
+        <item itemvalue="Application.CLIMenu" />
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.TestSerializationHandlerImpl.testDeserialization" />
         <item itemvalue="JUnit.TestSerializationHandlerImpl.testSerialization" />
-        <item itemvalue="JUnit.TestSanityMachineHandlerImpl.testSanitySmall" />
       </list>
     </recent_temporary>
   </component>
@@ -236,7 +236,7 @@
       <workItem from="1660993805240" duration="5735000" />
       <workItem from="1661345888124" duration="2859000" />
       <workItem from="1661351601734" duration="3659000" />
-      <workItem from="1662386092444" duration="4747000" />
+      <workItem from="1662386092444" duration="8794000" />
     </task>
     <servers />
   </component>
@@ -288,37 +288,19 @@
           <option name="timeStamp" value="225" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/user-interface/src/main/java/controller/MachineDetailsController.java</url>
-          <line>65</line>
-          <option name="timeStamp" value="380" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/user-interface/src/main/java/controller/EncryptPageController.java</url>
           <line>113</line>
           <option name="timeStamp" value="383" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/user-interface/src/main/java/ui/CLIMenu.java</url>
+          <line>228</line>
+          <option name="timeStamp" value="399" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.ClassCastException" package="java.lang" />
           <option name="timeStamp" value="359" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/user-interface/src/main/java/controller/MachineDetailsController.java</url>
-          <line>78</line>
-          <properties class="src.main.java.controller.MachineDetailsController" method="countNumberOfMessagesInHistory">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="381" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/user-interface/src/main/java/controller/MachinePageController.java</url>
-          <line>97</line>
-          <properties class="src.main.java.controller.MachinePageController" method="handleManuelSetMachinePressed">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="384" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>
@@ -339,7 +321,9 @@
         <watch expression="((EnigmaMachine)((MachineHandlerImpl)((TestSanityMachineHandlerImpl)this).machineHandler).encryptionMachine).rotors" language="JAVA" custom="main.java.component.impl.MachineHandlerImpl,main.java.component.impl.EnigmaMachine,test.java.component.TestSanityMachineHandlerImpl" />
       </configuration>
       <configuration name="Application">
+        <watch expression="lastSelected" language="JAVA" />
         <watch expression="(ComboBox&lt;ComboBoxItem&lt;String&gt;&gt;) rotorsHbox.getChildren().get()" language="JAVA" />
+        <watch expression="rotorIdsList" />
       </configuration>
     </watches-manager>
   </component>
