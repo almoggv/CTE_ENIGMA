@@ -7,6 +7,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -17,14 +19,18 @@ import main.java.component.impl.MachineHandlerImpl;
 import main.java.dto.InventoryInfo;
 import src.main.java.service.DataService;
 import src.main.java.service.PropertiesService;
+import src.main.java.service.ResourcesService;
 import src.main.java.ui.GuiApplication;
 
+import java.awt.*;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 
 public class AppController/* implements Initializable */{
 
+    public ImageView mainViewImage;
     private MachineHandler machineHandler;
     private InventoryInfo inventoryInfo;
     @Getter private Stage primaryStage;
@@ -96,8 +102,9 @@ public class AppController/* implements Initializable */{
         encryptPageController.bindComponent(currMachineConfigController);
         encryptPageController.setMachineHandler(machineHandler);
 
+        //added picture
         headerWrapScrollPane.setContent(headerComponentRootPaneController.getRootComponent());
-
+        mainViewImage.setImage(new Image(ResourcesService.getEnigmaMachineIllustration()));
         // Load Brute Force Page :TODO
     }
 

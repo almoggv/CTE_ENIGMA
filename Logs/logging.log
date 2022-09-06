@@ -2772,4 +2772,10 @@
   2022-09-06 14:47:38 INFO  MachineHandlerImpl:281 - resetToLastSetState: state reset to: MachineState(reflectorId=II, rotorIds=[3, 2], rotorsHeadsInitialValues=[B, B], plugMapping=[MappingPair(left=B, right=E)], notchDistancesFromHead=[4, 5])
   2022-09-06 14:48:16 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
   2022-09-06 14:48:16 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-06 19:21:32 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-09-06 19:21:32 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-06 19:21:32 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-06 19:21:37 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-06 19:21:37 WARN  PlugBoardImpl:75 - Plugboard : Failed to connect endpoints -Fis already connected
+  2022-09-06 19:21:37 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
   
