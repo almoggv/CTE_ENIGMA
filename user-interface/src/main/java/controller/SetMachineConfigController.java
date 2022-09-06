@@ -129,7 +129,7 @@ public class SetMachineConfigController implements Initializable {
     }
 
     private void setReflectorChoiceBoxHbox(InventoryInfo inventoryInfo) {
-        int reflectorNum = inventoryInfo.getNumOfAvailableRotors();
+        int reflectorNum = inventoryInfo.getNumOfAvailableReflectors();
         reflectorChoiceBox.getItems().clear();
         for (int i = 1; i <= reflectorNum; i++) {
             reflectorChoiceBox.getItems().add(ReflectorsId.getByNum(i).getName());

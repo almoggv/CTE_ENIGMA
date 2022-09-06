@@ -2033,4 +2033,97 @@
   2022-09-06 09:44:40 INFO  MachineHandlerImpl:304 - time it took to encrypt:92200
   2022-09-06 09:44:40 INFO  MachineHandlerImpl:303 - encrypted: AA to: DB
   2022-09-06 09:44:40 INFO  MachineHandlerImpl:304 - time it took to encrypt:83700
+  2022-09-06 09:47:07 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-paper-enigma.xml
+  2022-09-06 09:47:07 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-06 09:47:07 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-06 09:47:23 ERROR MachineHandlerImpl:169 - Failed to assemble machine parts - could not find REFLECTOR in inventory with id: III
+  2022-09-06 09:48:13 ERROR MachineHandlerImpl:169 - Failed to assemble machine parts - could not find REFLECTOR in inventory with id: III
+  2022-09-06 09:48:30 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-06 09:48:30 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-06 09:48:30 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-06 09:48:30 WARN  PlugBoardImpl:75 - Plugboard : Failed to connect endpoints -Tis already connected
+  2022-09-06 09:48:30 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-06 09:48:32 ERROR MachineHandlerImpl:169 - Failed to assemble machine parts - could not find REFLECTOR in inventory with id: III
+  2022-09-06 09:48:39 ERROR MachineHandlerImpl:169 - Failed to assemble machine parts - could not find REFLECTOR in inventory with id: III
+  2022-09-06 09:48:49 ERROR MachineHandlerImpl:169 - Failed to assemble machine parts - could not find REFLECTOR in inventory with id: III
+  2022-09-06 09:49:03 ERROR MachineHandlerImpl:169 - Failed to assemble machine parts - could not find REFLECTOR in inventory with id: III
+  2022-09-06 09:49:05 ERROR MachineHandlerImpl:169 - Failed to assemble machine parts - could not find REFLECTOR in inventory with id: III
+  2022-09-06 09:49:08 ERROR MachineHandlerImpl:169 - Failed to assemble machine parts - could not find REFLECTOR in inventory with id: II
+  2022-09-06 09:49:32 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-small.xml
+  2022-09-06 09:49:32 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-06 09:49:32 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-06 09:49:38 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-paper-enigma.xml
+  2022-09-06 09:49:38 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-06 09:49:38 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-06 09:50:36 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-paper-enigma.xml
+  2022-09-06 09:50:36 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-06 09:50:36 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-06 09:51:02 ERROR MachineHandlerImpl:169 - Failed to assemble machine parts - could not find REFLECTOR in inventory with id: III
+  2022-09-06 09:54:22 ERROR MachineHandlerImpl:169 - Failed to assemble machine parts - could not find REFLECTOR in inventory with id: III
+  2022-09-06 09:54:32 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-paper-enigma.xml
+  2022-09-06 09:54:32 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-06 09:54:32 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-06 09:54:42 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-06 09:54:42 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-06 09:54:52 INFO  MachineHandlerImpl:303 - encrypted: A to: J
+  2022-09-06 09:54:52 INFO  MachineHandlerImpl:304 - time it took to encrypt:311900
+  2022-09-06 09:54:54 INFO  MachineHandlerImpl:303 - encrypted: A to: U
+  2022-09-06 09:54:54 INFO  MachineHandlerImpl:304 - time it took to encrypt:148300
+  2022-09-06 09:54:54 INFO  MachineHandlerImpl:303 - encrypted: A to: L
+  2022-09-06 09:54:54 INFO  MachineHandlerImpl:304 - time it took to encrypt:181100
+  2022-09-06 09:54:54 INFO  MachineHandlerImpl:303 - encrypted: A to: N
+  2022-09-06 09:54:54 INFO  MachineHandlerImpl:304 - time it took to encrypt:99200
+  2022-09-06 09:54:54 INFO  MachineHandlerImpl:303 - encrypted: A to: G
+  2022-09-06 09:54:54 INFO  MachineHandlerImpl:304 - time it took to encrypt:64100
+  2022-09-06 09:54:55 INFO  MachineHandlerImpl:303 - encrypted: A to: I
+  2022-09-06 09:54:55 INFO  MachineHandlerImpl:304 - time it took to encrypt:71500
+  2022-09-06 09:54:55 INFO  MachineHandlerImpl:303 - encrypted: A to: U
+  2022-09-06 09:54:55 INFO  MachineHandlerImpl:304 - time it took to encrypt:79100
+  2022-09-06 09:54:55 INFO  MachineHandlerImpl:303 - encrypted: A to: F
+  2022-09-06 09:54:55 INFO  MachineHandlerImpl:304 - time it took to encrypt:72700
+  2022-09-06 09:54:55 INFO  MachineHandlerImpl:303 - encrypted: A to: F
+  2022-09-06 09:54:55 INFO  MachineHandlerImpl:304 - time it took to encrypt:64200
+  2022-09-06 09:54:55 INFO  MachineHandlerImpl:303 - encrypted: A to: L
+  2022-09-06 09:54:55 INFO  MachineHandlerImpl:304 - time it took to encrypt:70200
+  2022-09-06 09:54:55 INFO  MachineHandlerImpl:303 - encrypted: A to: U
+  2022-09-06 09:54:55 INFO  MachineHandlerImpl:304 - time it took to encrypt:77400
+  2022-09-06 09:54:56 INFO  MachineHandlerImpl:303 - encrypted: A to: I
+  2022-09-06 09:54:56 INFO  MachineHandlerImpl:304 - time it took to encrypt:86600
+  2022-09-06 09:54:56 INFO  MachineHandlerImpl:303 - encrypted: A to: Q
+  2022-09-06 09:54:56 INFO  MachineHandlerImpl:304 - time it took to encrypt:61500
+  2022-09-06 09:54:56 INFO  MachineHandlerImpl:303 - encrypted: A to: H
+  2022-09-06 09:54:56 INFO  MachineHandlerImpl:304 - time it took to encrypt:89700
+  2022-09-06 09:54:56 INFO  MachineHandlerImpl:303 - encrypted: A to: E
+  2022-09-06 09:54:56 INFO  MachineHandlerImpl:304 - time it took to encrypt:68300
+  2022-09-06 09:54:56 INFO  MachineHandlerImpl:303 - encrypted: A to: W
+  2022-09-06 09:54:56 INFO  MachineHandlerImpl:304 - time it took to encrypt:65700
+  2022-09-06 09:54:56 INFO  MachineHandlerImpl:303 - encrypted: A to: H
+  2022-09-06 09:54:56 INFO  MachineHandlerImpl:304 - time it took to encrypt:70500
+  2022-09-06 09:54:56 INFO  MachineHandlerImpl:303 - encrypted: A to: T
+  2022-09-06 09:54:56 INFO  MachineHandlerImpl:304 - time it took to encrypt:86700
+  2022-09-06 09:54:57 INFO  MachineHandlerImpl:303 - encrypted: A to: O
+  2022-09-06 09:54:57 INFO  MachineHandlerImpl:304 - time it took to encrypt:66100
+  2022-09-06 09:54:57 INFO  MachineHandlerImpl:303 - encrypted: A to: I
+  2022-09-06 09:54:57 INFO  MachineHandlerImpl:304 - time it took to encrypt:65600
+  2022-09-06 09:54:57 INFO  MachineHandlerImpl:303 - encrypted: A to: U
+  2022-09-06 09:54:57 INFO  MachineHandlerImpl:304 - time it took to encrypt:67800
+  2022-09-06 09:54:57 INFO  MachineHandlerImpl:303 - encrypted: A to: T
+  2022-09-06 09:54:57 INFO  MachineHandlerImpl:304 - time it took to encrypt:84000
+  2022-09-06 09:54:57 INFO  MachineHandlerImpl:303 - encrypted: A to: S
+  2022-09-06 09:54:57 INFO  MachineHandlerImpl:304 - time it took to encrypt:105100
+  2022-09-06 09:54:58 INFO  MachineHandlerImpl:303 - encrypted: A to: I
+  2022-09-06 09:54:58 INFO  MachineHandlerImpl:304 - time it took to encrypt:61800
+  2022-09-06 09:54:58 INFO  MachineHandlerImpl:303 - encrypted: A to: S
+  2022-09-06 09:54:58 INFO  MachineHandlerImpl:304 - time it took to encrypt:83600
+  2022-09-06 09:54:58 INFO  MachineHandlerImpl:303 - encrypted: A to: K
+  2022-09-06 09:54:58 INFO  MachineHandlerImpl:304 - time it took to encrypt:59700
+  2022-09-06 09:54:58 INFO  MachineHandlerImpl:303 - encrypted: A to: I
+  2022-09-06 09:54:58 INFO  MachineHandlerImpl:304 - time it took to encrypt:59900
+  2022-09-06 09:54:58 INFO  MachineHandlerImpl:303 - encrypted: A to: Q
+  2022-09-06 09:54:58 INFO  MachineHandlerImpl:304 - time it took to encrypt:59600
+  2022-09-06 09:54:58 INFO  MachineHandlerImpl:303 - encrypted: A to: R
+  2022-09-06 09:54:58 INFO  MachineHandlerImpl:304 - time it took to encrypt:76800
+  2022-09-06 09:54:59 INFO  MachineHandlerImpl:303 - encrypted: A to: P
+  2022-09-06 09:54:59 INFO  MachineHandlerImpl:304 - time it took to encrypt:61900
+  2022-09-06 09:55:06 INFO  MachineHandlerImpl:281 - resetToLastSetState: state reset to: MachineState(reflectorId=I, rotorIds=[2, 3, 1], rotorsHeadsInitialValues=[W, V, V], plugMapping=[], notchDistancesFromHead=[18, 10, 8])
   
