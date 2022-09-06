@@ -220,12 +220,12 @@ public class SetMachineConfigController implements Initializable {
 
     @FXML
     void onSetRandomChoiceButtonAction(ActionEvent event) {
-
+        parentController.handleRandomSetMachinePressed();
     }
 
     public void addListenerOnClickSetRandomButton(ChangeListener listener) {
         //Triggers Twice (down click + release) - expected behaviours, but not wanted
-        setRandomChoiceButton.pressedProperty().addListener(listener);
+//        setRandomChoiceButton.pressedProperty().addListener(listener);
         //Doesnt Trigger for unknown reason
 //        setRandomChoiceButton.onActionProperty().addListener(listener);
 //        setRandomChoiceButton.onMouseClickedProperty().addListener(listener);
@@ -241,6 +241,7 @@ public class SetMachineConfigController implements Initializable {
             ComboBox<ComboBoxItem<String>> cb = (ComboBox<ComboBoxItem<String>>) rotorsHbox.getChildren().get(i);
             if(cb.getSelectionModel() != null && cb.getSelectionModel().getSelectedItem() != null ) {
                 cb.getSelectionModel().getSelectedItem().setChosen(false);
+                //todo - check and fix the error this throws if we want
                 cb.getSelectionModel().clearSelection();
             }
         }

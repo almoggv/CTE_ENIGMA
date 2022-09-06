@@ -87,6 +87,8 @@ public class MachinePageController implements Initializable {
             machineHandler.assembleMachine();
             DataService.getOriginalMachineStateProperty().setValue(machineHandler.getInitialMachineState().get());
             DataService.getCurrentMachineStateProperty().setValue(machineHandler.getMachineState().get());
+            DataService.getEncryptionInfoHistoryProperty().setValue(null);
+            DataService.getEncryptionInfoHistoryProperty().setValue(machineHandler.getMachineStatisticsHistory());
             System.out.println("CurrMachine State =" + machineHandler.getMachineState().get());
         }
         catch (Exception e){
@@ -100,9 +102,10 @@ public class MachinePageController implements Initializable {
                                               List<MappingPair<String,String>> plugMapping ) {
         try{
             machineHandler.assembleMachine(reflectorId, rotorIdsList, rotorsStartingPositions, plugMapping);
-//            MachineState machineState = machineHandler.getMachineState().get();
             DataService.getOriginalMachineStateProperty().setValue(machineHandler.getInitialMachineState().get());
             DataService.getCurrentMachineStateProperty().setValue(machineHandler.getMachineState().get());
+            DataService.getEncryptionInfoHistoryProperty().setValue(null);
+            DataService.getEncryptionInfoHistoryProperty().setValue(machineHandler.getMachineStatisticsHistory());
             System.out.println("CurrMachine State =" + machineHandler.getMachineState().get());
         }
         catch (Exception e){
@@ -113,5 +116,9 @@ public class MachinePageController implements Initializable {
 
     public void showMessage(String message) {
         parentController.showMessage(message);
+    }
+
+    public void handleRandomSetMachinePressed() {
+        setMachineConigRandomlyPressed();
     }
 }

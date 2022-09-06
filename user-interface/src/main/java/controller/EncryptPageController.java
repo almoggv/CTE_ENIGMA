@@ -1,5 +1,10 @@
 package src.main.java.controller;
 
+import com.sun.javafx.geom.BaseBounds;
+import com.sun.javafx.geom.transform.BaseTransform;
+import com.sun.javafx.jmx.MXNodeAlgorithm;
+import com.sun.javafx.jmx.MXNodeAlgorithmContext;
+import com.sun.javafx.sg.prism.NGNode;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -9,6 +14,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
@@ -31,6 +37,9 @@ import java.net.URL;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
+
+import static java.lang.System.lineSeparator;
+import static java.lang.System.out;
 
 public class EncryptPageController implements Initializable {
 
@@ -79,6 +88,14 @@ public class EncryptPageController implements Initializable {
             }
         });
 
+//        issue with pressed twice - very noticeable
+        DataService.getEncryptionInfoHistoryProperty().addListener(new ChangeListener<Map<MachineState, List<EncryptionInfoHistory>>>() {
+            @Override
+            public void changed(ObservableValue<? extends Map<MachineState, List<EncryptionInfoHistory>>> observable, Map<MachineState, List<EncryptionInfoHistory>> oldValue, Map<MachineState, List<EncryptionInfoHistory>> newValue) {
+                showStatistics(newValue);
+            }
+        });
+
         statisticsAccordion.getPanes().clear();
 
     }
@@ -100,46 +117,33 @@ public class EncryptPageController implements Initializable {
 //        currMachineConfigWrapperPane.setContent(currMachineConfigComponent);
     }
 
-    public void bindToData(SimpleObjectProperty<Map<MachineState, List<EncryptionInfoHistory>>> dataProperty){
-        dataProperty.addListener(new ChangeListener<Map<MachineState, List<EncryptionInfoHistory>>>() {
-            @Override
-            public void changed(ObservableValue<? extends Map<MachineState, List<EncryptionInfoHistory>>> observable, Map<MachineState, List<EncryptionInfoHistory>> oldValue, Map<MachineState, List<EncryptionInfoHistory>> newValue) {
-                showStatistics(newValue);
-            }
-        });
-    }
+//    public void bindToData(SimpleObjectProperty<Map<MachineState, List<EncryptionInfoHistory>>> dataProperty){
+//        dataProperty.addListener(new ChangeListener<Map<MachineState, List<EncryptionInfoHistory>>>() {
+//            @Override
+//            public void changed(ObservableValue<? extends Map<MachineState, List<EncryptionInfoHistory>>> observable, Map<MachineState, List<EncryptionInfoHistory>> oldValue, Map<MachineState, List<EncryptionInfoHistory>> newValue) {
+//                showStatistics(newValue);
+//            }
+//        });
+//    }
 
     private void showStatistics(Map<MachineState, List<EncryptionInfoHistory>> encryptionInfoHistory) {
+        statisticsAccordion.getPanes().clear();
+        String machineStateMsg = "";
         for (MachineState machineStateHistory : encryptionInfoHistory.keySet()) {
-            String title = "Machine state:" + CLIMenu.getMachineState(DataService.getCurrentMachineStateProperty().get(),
+            machineStateMsg = "Machine state:" + CLIMenu.getMachineState(machineStateHistory,
                     DataService.getInventoryInfoProperty().get());
-            TitledPane a = new TitledPane();
-            a.setText(title);
-            statisticsAccordion.getPanes().add(a);
+
+            TitledPane statisticsPane = new TitledPane(machineStateMsg, statisticsTable);
+            statisticsAccordion.getPanes().add(statisticsPane);
+            out.println(machineStateMsg);
+            int i = 1;
             List<EncryptionInfoHistory> encryptionInfoHistoryList = encryptionInfoHistory.get(machineStateHistory);
-//            out.println("Machine encryption history:");
+            out.println("Machine encryption history:");
             for (EncryptionInfoHistory encryptionHistory : encryptionInfoHistoryList) {
-//                out.println(i++ + ". <" + encryptionHistory.getInput() + "> --> <" + encryptionHistory.getOutput() + "> ( " + encryptionHistory.getTimeToEncrypt() + " nano-seconds)");
-//                statisticsColOriginal.
-//                encryptionHistory.getInput()
-
-                //try
-//                URL StatisticsTableResource = GuiApplication.class.getResource(PropertiesService.getStatisticsTableFxmlPath());
-//                FXMLLoader fxmlLoader = new FXMLLoader();
-//                fxmlLoader.setLocation(StatisticsTableResource);
-//                Parent table = null;
-//                try {
-//                    table = fxmlLoader.load(StatisticsTableResource.openStream());
-//                } catch (IOException e) {
-//                    throw new RuntimeException(e);
-//                }
-//                StatisticsTableController controller = fxmlLoader.getController();
-//                a.setContent(table);
-//        statisticsColOriginal.setCellFactory();
-//                statisticsAccordion.getPanes().add(a);
+                out.println(i++ + ". <" + encryptionHistory.getInput() + "> --> <" + encryptionHistory.getOutput() + "> ( " + encryptionHistory.getTimeToEncrypt() + " nano-seconds)");
             }
-
         }
+
     }
 
     public void onEncryptButtonAction(ActionEvent actionEvent) throws IOException {
@@ -147,7 +151,11 @@ public class EncryptPageController implements Initializable {
             String result = machineHandler.encrypt(encryptTextField.getText());
             resultTextField.setText(result);
             DataService.getCurrentMachineStateProperty().setValue(machineHandler.getMachineState().get());
+            //need to set to null - because the machine state thinks it hasent changed - only internal structures changed and it dosent register
+            DataService.getEncryptionInfoHistoryProperty().setValue(null);
             DataService.getEncryptionInfoHistoryProperty().setValue(machineHandler.getMachineStatisticsHistory());
+//            System.out.println(System.lineSeparator() + machineHandler.getMachineStatisticsHistory());
+//            showStatistics(machineHandler.getMachineStatisticsHistory());
         }
         catch (Exception e){
             parentController.showMessage(e.getMessage());
