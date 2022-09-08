@@ -6,14 +6,13 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 
 import javafx.beans.property.SimpleStringProperty;
 
@@ -21,12 +20,11 @@ import lombok.Getter;
 import lombok.Setter;
 import org.controlsfx.control.NotificationPane;
 import src.main.java.service.DataService;
-import src.main.java.service.PropertiesService;
+import src.main.java.service.ResourceLocationService;
 
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
-import org.controlsfx.control.Notifications;
 
 public class HeaderController implements Initializable {
 
@@ -41,6 +39,7 @@ public class HeaderController implements Initializable {
     @FXML private Button machineSceneNavButton;
     @FXML private Button encryptSceneNavButton;
     @FXML private Button bruteForceSceneNavButton;
+    @FXML private ChoiceBox<String> themeChoiceBox;
     private NotificationPane notificationPane;
 
     @Getter private SimpleStringProperty selectedFileProperty = new SimpleStringProperty();;
@@ -54,6 +53,25 @@ public class HeaderController implements Initializable {
         encryptSceneNavButton.disableProperty().bind(DataService.getCurrentMachineStateProperty().isNotNull().not());
         bruteForceSceneNavButton.disableProperty().bind(DataService.getCurrentMachineStateProperty().isNotNull().not());
         createNotificationPane();
+        initializeThemeBox();
+    }
+
+    private void initializeThemeBox(){
+        for (String themeName : ResourceLocationService.getCssThemeToFileMap().keySet()) {
+            themeChoiceBox.getItems().add(themeName);
+            themeChoiceBox.valueProperty().addListener(new ChangeListener<String>() {
+                @Override
+                public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue){
+                    String themeResourcePath = ResourceLocationService.getCssThemeToFileMap().getOrDefault(newValue,"");
+                    URL themeUrl = null;
+                    try{
+                        themeUrl = HeaderController.class.getResource(themeResourcePath);
+                    }
+                    catch(Exception ignore){}
+                    parentController.loadCssFile(themeUrl);
+                }
+            });
+        }
     }
 
     public NotificationPane getRootComponent(){
@@ -78,6 +96,8 @@ public class HeaderController implements Initializable {
         catch (Exception e){
             notificationMessageProperty.setValue(e.getMessage());
         }
+
+
     }
 
     @FXML

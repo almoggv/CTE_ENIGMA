@@ -12,10 +12,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6467e2d7-ff2a-4abb-a198-685a0fcd06aa" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/HeaderController$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Logs/logging.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/logging.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/AppController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/AppController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/HeaderController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/HeaderController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/HeaderController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/HeaderController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/service/PropertiesService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/service/PropertiesService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/service/ResourcesService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/ui/GuiApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/ui/GuiApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/app.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/app.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/enigma-illustration.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/images/enigma-illustration.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/enigma2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/images/enigma2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/subcomponents/headerComponent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/subcomponents/headerComponent.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/subcomponents/machinePageTemplate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/subcomponents/machinePageTemplate.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/subcomponents/setMachineConfigTemplate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/subcomponents/setMachineConfigTemplate.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/AppController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/service/ResourcesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/service/ResourcesService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/EncryptPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/EncryptPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/HeaderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/HeaderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/service/DataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/service/DataService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/service/PropertiesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/service/ResourceLocationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/service/ResourcesService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/ui/GuiApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/ui/GuiApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-interface/src/main/resources/app.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/resources/app.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/resources/enigma-illustration.png" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/resources/images/enigma-illustration.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/resources/enigma2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/resources/images/enigma2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/headerComponent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/headerComponent.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/machinePageTemplate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/machinePageTemplate.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/setMachineConfigTemplate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/setMachineConfigTemplate.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,16 +93,9 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Eliya/Desktop/tools/controlsfx/controlsfx-8.40.14.jar&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2581864&quot;
-  }
-}</component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/user-interface/src/main/resources/images" />
+  </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="src.main.java.controller" />
@@ -92,11 +109,11 @@
       <recent name="C:\Dev\GitProjects\CTE_JAVA_ENIGMA\encryption-machine-handler\src\main\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Dev\GitProjects\CTE_JAVA_ENIGMA\user-interface\src\main\resources\images" />
       <recent name="C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\command-line-interface-ui\src\main\resources\" />
       <recent name="C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\command-line-interface-ui\src\main\resources\subcomponents" />
       <recent name="C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\command-line-interface-ui\src\main\java\ui\subcomponents\" />
       <recent name="C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\command-line-interface-ui\src\main\java\ui" />
-      <recent name="C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema" />
     </key>
     <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="src.main.java.component" />
@@ -345,11 +362,11 @@
     <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/CTE_ENIGMA$src_main_java_Main.ic" NAME="src.main.java.Main Coverage Results" MODIFIED="1660063306935" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>src.main.java.*</FILTER>
-    </SUITE>
     <SUITE FILE_PATH="coverage/CTE_ENIGMA$Main.ic" NAME="Main Coverage Results" MODIFIED="1660555486778" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>src.main.java.ui.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/CTE_ENIGMA$src_main_java_Main.ic" NAME="src.main.java.Main Coverage Results" MODIFIED="1660063306935" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>src.main.java.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/CTE_JAVA_ENIGMA$Main.ic" NAME="Main Coverage Results" MODIFIED="1660837619611" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>src.main.java.*</FILTER>

@@ -5,7 +5,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import src.main.java.controller.*;
-import src.main.java.service.PropertiesService;
+import src.main.java.service.ResourceLocationService;
 
 import java.net.URL;
 
@@ -19,13 +19,13 @@ public class GuiApplication extends Application {
     public void start(Stage primaryStage) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader();
         //Load Primary App
-        URL appResource = GuiApplication.class.getResource(PropertiesService.getAppFxmlPath());
+        URL appResource = GuiApplication.class.getResource(ResourceLocationService.getAppFxmlPath());
         System.out.println("found Url of primary scene:"+ appResource);
         fxmlLoader.setLocation(appResource);
         Object primaryScenePane = fxmlLoader.load(appResource.openStream());
         AppController appController = fxmlLoader.getController();
         appController.setPrimaryStage(primaryStage);
-        Scene primaryScene = new Scene((Parent) primaryScenePane,900, 600);
+        Scene primaryScene = new Scene((Parent) primaryScenePane,950, 650);
         primaryStage.setTitle("CTE Machine");
         primaryStage.setScene(primaryScene);
         primaryStage.show();

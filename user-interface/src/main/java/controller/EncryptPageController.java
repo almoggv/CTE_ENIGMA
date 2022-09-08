@@ -1,20 +1,13 @@
 package src.main.java.controller;
 
-import com.sun.javafx.geom.BaseBounds;
-import com.sun.javafx.geom.transform.BaseTransform;
-import com.sun.javafx.jmx.MXNodeAlgorithm;
-import com.sun.javafx.jmx.MXNodeAlgorithmContext;
-import com.sun.javafx.sg.prism.NGNode;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
@@ -28,7 +21,7 @@ import main.java.dto.InventoryInfo;
 import main.java.dto.MachineState;
 import org.controlsfx.control.textfield.CustomTextField;
 import src.main.java.service.DataService;
-import src.main.java.service.PropertiesService;
+import src.main.java.service.ResourceLocationService;
 import src.main.java.ui.CLIMenu;
 import src.main.java.ui.GuiApplication;
 
@@ -37,9 +30,6 @@ import java.net.URL;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
-
-import static java.lang.System.lineSeparator;
-import static java.lang.System.out;
 
 public class EncryptPageController implements Initializable {
 
@@ -139,7 +129,7 @@ public class EncryptPageController implements Initializable {
                     DataService.getInventoryInfoProperty().get());
 
             //create statistics grid
-            URL statisticsAnchorUrl = GuiApplication.class.getResource(PropertiesService.getStatisticsAnchorFxmlPath());
+            URL statisticsAnchorUrl = GuiApplication.class.getResource(ResourceLocationService.getStatisticsAnchorFxmlPath());
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(statisticsAnchorUrl);
             Parent statisticsAnchor = fxmlLoader.load(statisticsAnchorUrl.openStream());

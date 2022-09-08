@@ -7,7 +7,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -18,12 +17,9 @@ import main.java.component.MachineHandler;
 import main.java.component.impl.MachineHandlerImpl;
 import main.java.dto.InventoryInfo;
 import src.main.java.service.DataService;
-import src.main.java.service.PropertiesService;
-import src.main.java.service.ResourcesService;
+import src.main.java.service.ResourceLocationService;
 import src.main.java.ui.GuiApplication;
 
-import java.awt.*;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
@@ -74,14 +70,14 @@ public class AppController/* implements Initializable */{
         FXMLLoader fxmlLoader;
         machineHandler = new MachineHandlerImpl();
         //Load Current Machine Config
-        URL currConfigResource = GuiApplication.class.getResource(PropertiesService.getCurrMachineConfigTemplateFxmlPath());
+        URL currConfigResource = GuiApplication.class.getResource(ResourceLocationService.getCurrMachineConfigTemplateFxmlPath());
         System.out.println("found Url of header component:"+ currConfigResource);
         fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(currConfigResource);
         GridPane currConfigComponent = fxmlLoader.load(currConfigResource.openStream());
         CurrMachineConfigController currMachineConfigController = fxmlLoader.getController();
         //Load MachinePage
-        URL machinePageResource = GuiApplication.class.getResource(PropertiesService.getMachinePageTemplateFxmlPath());
+        URL machinePageResource = GuiApplication.class.getResource(ResourceLocationService.getMachinePageTemplateFxmlPath());
         System.out.println("found Url of machine component:"+ machinePageResource);
         fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(machinePageResource);
@@ -91,7 +87,7 @@ public class AppController/* implements Initializable */{
         machinePageController.setMachineHandler(machineHandler);
         machinePageController.bindComponent(currMachineConfigController);
         //Load Encrypt Page
-        URL encryptPageResource = GuiApplication.class.getResource(PropertiesService.getEncryptPageTemplateFxmlPath2());
+        URL encryptPageResource = GuiApplication.class.getResource(ResourceLocationService.getEncryptPageTemplateFxmlPath2());
         System.out.println("found Url of encrypt component:"+ encryptPageResource);
         fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(encryptPageResource);
@@ -104,7 +100,7 @@ public class AppController/* implements Initializable */{
 
         //added picture
         headerWrapScrollPane.setContent(headerComponentRootPaneController.getRootComponent());
-        mainViewImage.setImage(new Image(ResourcesService.getEnigmaMachineIllustration2()));
+//        mainViewImage.setImage(new Image(ResourcesService.getEnigmaMachineIllustration2()));
         // Load Brute Force Page :TODO
     }
 
@@ -158,5 +154,13 @@ public class AppController/* implements Initializable */{
 
     public void showMessage(String message) {
         headerComponentRootPaneController.getNotificationMessageProperty().setValue(message);
+    }
+
+    public void loadCssFile(URL cssAbsoulutePath) {
+        primaryStage.getScene().getStylesheets().clear();
+        if(cssAbsoulutePath == null || cssAbsoulutePath.getPath().equals("")){
+            return;
+        }
+        primaryStage.getScene().getStylesheets().add(cssAbsoulutePath.getPath());
     }
 }

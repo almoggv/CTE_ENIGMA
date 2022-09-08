@@ -2778,4 +2778,250 @@
   2022-09-06 19:21:37 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
   2022-09-06 19:21:37 WARN  PlugBoardImpl:75 - Plugboard : Failed to connect endpoints -Fis already connected
   2022-09-06 19:21:37 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-07 12:33:10 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Dev\GitProjects\CTE_JAVA_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-paper-enigma.xml
+  2022-09-07 12:33:11 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-07 12:33:11 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-07 12:35:50 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-07 12:35:50 WARN  PlugBoardImpl:71 - Plugboard : Failed to connect endpoints -Bis already connected
+  2022-09-07 12:35:50 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-07 12:36:13 INFO  MachineHandlerImpl:281 - resetToLastSetState: state reset to: MachineState(reflectorId=I, rotorIds=[2, 1, 3], rotorsHeadsInitialValues=[G, P, P], plugMapping=[MappingPair(left=B, right=U)], notchDistancesFromHead=[13, 23, 14])
+  2022-09-07 12:36:20 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-07 12:36:20 WARN  PlugBoardImpl:71 - Plugboard : Failed to connect endpoints -Fis already connected
+  2022-09-07 12:36:20 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-07 12:36:21 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-07 12:36:21 WARN  PlugBoardImpl:75 - Plugboard : Failed to connect endpoints -Gis already connected
+  2022-09-07 12:36:21 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-07 12:36:22 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-07 12:36:22 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-07 12:36:23 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-07 12:36:23 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-07 12:36:39 INFO  MachineHandlerImpl:303 - encrypted: EASEASE to: UNANSEQ
+  2022-09-07 12:36:39 INFO  MachineHandlerImpl:304 - time it took to encrypt:1456300
+  2022-09-07 12:36:54 INFO  MachineHandlerImpl:303 - encrypted: A to: X
+  2022-09-07 12:36:54 INFO  MachineHandlerImpl:304 - time it took to encrypt:55300
+  2022-09-07 12:36:56 INFO  MachineHandlerImpl:303 - encrypted: A to: F
+  2022-09-07 12:36:56 INFO  MachineHandlerImpl:304 - time it took to encrypt:71500
+  2022-09-07 12:36:56 INFO  MachineHandlerImpl:303 - encrypted: A to: F
+  2022-09-07 12:36:56 INFO  MachineHandlerImpl:304 - time it took to encrypt:63500
+  2022-09-07 12:36:57 INFO  MachineHandlerImpl:303 - encrypted: A to: E
+  2022-09-07 12:36:57 INFO  MachineHandlerImpl:304 - time it took to encrypt:65000
+  2022-09-07 12:36:57 INFO  MachineHandlerImpl:303 - encrypted: A to: C
+  2022-09-07 12:36:57 INFO  MachineHandlerImpl:304 - time it took to encrypt:81900
+  2022-09-07 12:36:57 INFO  MachineHandlerImpl:303 - encrypted: A to: G
+  2022-09-07 12:36:57 INFO  MachineHandlerImpl:304 - time it took to encrypt:45600
+  2022-09-07 12:36:57 INFO  MachineHandlerImpl:303 - encrypted: A to: T
+  2022-09-07 12:36:57 INFO  MachineHandlerImpl:304 - time it took to encrypt:144200
+  2022-09-07 12:36:57 INFO  MachineHandlerImpl:303 - encrypted: A to: S
+  2022-09-07 12:36:57 INFO  MachineHandlerImpl:304 - time it took to encrypt:41100
+  2022-09-07 12:36:57 INFO  MachineHandlerImpl:303 - encrypted: A to: M
+  2022-09-07 12:36:57 INFO  MachineHandlerImpl:304 - time it took to encrypt:48200
+  2022-09-07 12:36:58 INFO  MachineHandlerImpl:303 - encrypted: A to: Q
+  2022-09-07 12:36:58 INFO  MachineHandlerImpl:304 - time it took to encrypt:40200
+  2022-09-07 12:36:58 INFO  MachineHandlerImpl:303 - encrypted: A to: D
+  2022-09-07 12:36:58 INFO  MachineHandlerImpl:304 - time it took to encrypt:27900
+  2022-09-07 12:36:58 INFO  MachineHandlerImpl:303 - encrypted: A to: E
+  2022-09-07 12:36:58 INFO  MachineHandlerImpl:304 - time it took to encrypt:66000
+  2022-09-07 12:36:58 INFO  MachineHandlerImpl:303 - encrypted: A to: H
+  2022-09-07 12:36:58 INFO  MachineHandlerImpl:304 - time it took to encrypt:66800
+  2022-09-07 12:36:58 INFO  MachineHandlerImpl:303 - encrypted: A to: Z
+  2022-09-07 12:36:58 INFO  MachineHandlerImpl:304 - time it took to encrypt:36000
+  2022-09-07 12:36:58 INFO  MachineHandlerImpl:303 - encrypted: A to: Z
+  2022-09-07 12:36:58 INFO  MachineHandlerImpl:304 - time it took to encrypt:58800
+  2022-09-07 12:36:58 INFO  MachineHandlerImpl:303 - encrypted: A to: M
+  2022-09-07 12:36:58 INFO  MachineHandlerImpl:304 - time it took to encrypt:50800
+  2022-09-07 12:36:59 INFO  MachineHandlerImpl:303 - encrypted: A to: C
+  2022-09-07 12:36:59 INFO  MachineHandlerImpl:304 - time it took to encrypt:33000
+  2022-09-07 12:36:59 INFO  MachineHandlerImpl:303 - encrypted: A to: H
+  2022-09-07 12:36:59 INFO  MachineHandlerImpl:304 - time it took to encrypt:59500
+  2022-09-07 12:36:59 INFO  MachineHandlerImpl:303 - encrypted: A to: S
+  2022-09-07 12:36:59 INFO  MachineHandlerImpl:304 - time it took to encrypt:46900
+  2022-09-07 12:36:59 INFO  MachineHandlerImpl:303 - encrypted: A to: N
+  2022-09-07 12:36:59 INFO  MachineHandlerImpl:304 - time it took to encrypt:37200
+  2022-09-07 12:37:00 INFO  MachineHandlerImpl:303 - encrypted: A to: W
+  2022-09-07 12:37:00 INFO  MachineHandlerImpl:304 - time it took to encrypt:43500
+  2022-09-07 12:37:01 INFO  MachineHandlerImpl:303 - encrypted: A to: G
+  2022-09-07 12:37:01 INFO  MachineHandlerImpl:304 - time it took to encrypt:38400
+  2022-09-07 12:37:01 INFO  MachineHandlerImpl:303 - encrypted: A to: C
+  2022-09-07 12:37:01 INFO  MachineHandlerImpl:304 - time it took to encrypt:33300
+  2022-09-07 12:37:01 INFO  MachineHandlerImpl:303 - encrypted: A to: J
+  2022-09-07 12:37:01 INFO  MachineHandlerImpl:304 - time it took to encrypt:35800
+  2022-09-07 12:37:01 INFO  MachineHandlerImpl:303 - encrypted: A to: J
+  2022-09-07 12:37:01 INFO  MachineHandlerImpl:304 - time it took to encrypt:51600
+  2022-09-07 12:37:01 INFO  MachineHandlerImpl:303 - encrypted: A to: C
+  2022-09-07 12:37:01 INFO  MachineHandlerImpl:304 - time it took to encrypt:64700
+  2022-09-07 12:37:01 INFO  MachineHandlerImpl:303 - encrypted: A to: P
+  2022-09-07 12:37:01 INFO  MachineHandlerImpl:304 - time it took to encrypt:54400
+  2022-09-07 12:37:01 INFO  MachineHandlerImpl:303 - encrypted: A to: J
+  2022-09-07 12:37:01 INFO  MachineHandlerImpl:304 - time it took to encrypt:41700
+  2022-09-07 12:37:02 INFO  MachineHandlerImpl:303 - encrypted: A to: K
+  2022-09-07 12:37:02 INFO  MachineHandlerImpl:304 - time it took to encrypt:52200
+  2022-09-07 12:37:02 INFO  MachineHandlerImpl:303 - encrypted: A to: K
+  2022-09-07 12:37:02 INFO  MachineHandlerImpl:304 - time it took to encrypt:35600
+  2022-09-07 12:37:02 INFO  MachineHandlerImpl:303 - encrypted: A to: Z
+  2022-09-07 12:37:02 INFO  MachineHandlerImpl:304 - time it took to encrypt:28500
+  2022-09-07 12:37:02 INFO  MachineHandlerImpl:303 - encrypted: A to: F
+  2022-09-07 12:37:02 INFO  MachineHandlerImpl:304 - time it took to encrypt:29500
+  2022-09-07 12:37:02 INFO  MachineHandlerImpl:303 - encrypted: A to: B
+  2022-09-07 12:37:02 INFO  MachineHandlerImpl:304 - time it took to encrypt:31900
+  2022-09-07 12:37:02 INFO  MachineHandlerImpl:303 - encrypted: A to: H
+  2022-09-07 12:37:02 INFO  MachineHandlerImpl:304 - time it took to encrypt:42800
+  2022-09-07 12:37:02 INFO  MachineHandlerImpl:303 - encrypted: A to: V
+  2022-09-07 12:37:02 INFO  MachineHandlerImpl:304 - time it took to encrypt:36500
+  2022-09-07 12:37:02 INFO  MachineHandlerImpl:303 - encrypted: A to: I
+  2022-09-07 12:37:02 INFO  MachineHandlerImpl:304 - time it took to encrypt:76300
+  2022-09-07 12:37:03 INFO  MachineHandlerImpl:303 - encrypted: A to: J
+  2022-09-07 12:37:03 INFO  MachineHandlerImpl:304 - time it took to encrypt:47100
+  2022-09-07 12:37:03 INFO  MachineHandlerImpl:303 - encrypted: A to: D
+  2022-09-07 12:37:03 INFO  MachineHandlerImpl:304 - time it took to encrypt:43100
+  2022-09-07 12:37:03 INFO  MachineHandlerImpl:303 - encrypted: A to: N
+  2022-09-07 12:37:03 INFO  MachineHandlerImpl:304 - time it took to encrypt:47200
+  2022-09-07 12:37:03 INFO  MachineHandlerImpl:303 - encrypted: A to: K
+  2022-09-07 12:37:03 INFO  MachineHandlerImpl:304 - time it took to encrypt:44700
+  2022-09-07 12:37:03 INFO  MachineHandlerImpl:303 - encrypted: A to: I
+  2022-09-07 12:37:03 INFO  MachineHandlerImpl:304 - time it took to encrypt:49500
+  2022-09-07 12:37:03 INFO  MachineHandlerImpl:303 - encrypted: A to: D
+  2022-09-07 12:37:03 INFO  MachineHandlerImpl:304 - time it took to encrypt:48100
+  2022-09-07 12:37:03 INFO  MachineHandlerImpl:303 - encrypted: A to: Q
+  2022-09-07 12:37:03 INFO  MachineHandlerImpl:304 - time it took to encrypt:42500
+  2022-09-07 12:37:04 INFO  MachineHandlerImpl:303 - encrypted: A to: K
+  2022-09-07 12:37:04 INFO  MachineHandlerImpl:304 - time it took to encrypt:43500
+  2022-09-07 12:37:04 INFO  MachineHandlerImpl:303 - encrypted: A to: X
+  2022-09-07 12:37:04 INFO  MachineHandlerImpl:304 - time it took to encrypt:47900
+  2022-09-07 12:37:04 INFO  MachineHandlerImpl:303 - encrypted: A to: M
+  2022-09-07 12:37:04 INFO  MachineHandlerImpl:304 - time it took to encrypt:49900
+  2022-09-07 12:37:04 INFO  MachineHandlerImpl:303 - encrypted: A to: O
+  2022-09-07 12:37:04 INFO  MachineHandlerImpl:304 - time it took to encrypt:37400
+  2022-09-07 12:37:04 INFO  MachineHandlerImpl:303 - encrypted: A to: E
+  2022-09-07 12:37:04 INFO  MachineHandlerImpl:304 - time it took to encrypt:35900
+  2022-09-07 12:37:04 INFO  MachineHandlerImpl:303 - encrypted: A to: C
+  2022-09-07 12:37:04 INFO  MachineHandlerImpl:304 - time it took to encrypt:37000
+  2022-09-07 12:37:04 INFO  MachineHandlerImpl:303 - encrypted: A to: W
+  2022-09-07 12:37:04 INFO  MachineHandlerImpl:304 - time it took to encrypt:36500
+  2022-09-07 12:37:05 INFO  MachineHandlerImpl:303 - encrypted: A to: P
+  2022-09-07 12:37:05 INFO  MachineHandlerImpl:304 - time it took to encrypt:67500
+  2022-09-07 12:37:05 INFO  MachineHandlerImpl:303 - encrypted: A to: O
+  2022-09-07 12:37:05 INFO  MachineHandlerImpl:304 - time it took to encrypt:49800
+  2022-09-07 12:37:05 INFO  MachineHandlerImpl:303 - encrypted: A to: Y
+  2022-09-07 12:37:05 INFO  MachineHandlerImpl:304 - time it took to encrypt:32600
+  2022-09-07 12:37:05 INFO  MachineHandlerImpl:303 - encrypted: A to: Z
+  2022-09-07 12:37:05 INFO  MachineHandlerImpl:304 - time it took to encrypt:45900
+  2022-09-07 12:37:05 INFO  MachineHandlerImpl:303 - encrypted: A to: L
+  2022-09-07 12:37:05 INFO  MachineHandlerImpl:304 - time it took to encrypt:30700
+  2022-09-07 12:37:05 INFO  MachineHandlerImpl:303 - encrypted: A to: P
+  2022-09-07 12:37:05 INFO  MachineHandlerImpl:304 - time it took to encrypt:38900
+  2022-09-07 12:37:05 INFO  MachineHandlerImpl:303 - encrypted: A to: U
+  2022-09-07 12:37:05 INFO  MachineHandlerImpl:304 - time it took to encrypt:34400
+  2022-09-07 12:37:06 INFO  MachineHandlerImpl:303 - encrypted: A to: M
+  2022-09-07 12:37:06 INFO  MachineHandlerImpl:304 - time it took to encrypt:37500
+  2022-09-07 12:37:06 INFO  MachineHandlerImpl:303 - encrypted: A to: N
+  2022-09-07 12:37:06 INFO  MachineHandlerImpl:304 - time it took to encrypt:42300
+  2022-09-07 12:37:06 INFO  MachineHandlerImpl:303 - encrypted: A to: T
+  2022-09-07 12:37:06 INFO  MachineHandlerImpl:304 - time it took to encrypt:44800
+  2022-09-07 12:37:06 INFO  MachineHandlerImpl:303 - encrypted: A to: G
+  2022-09-07 12:37:06 INFO  MachineHandlerImpl:304 - time it took to encrypt:69700
+  2022-09-07 12:37:06 INFO  MachineHandlerImpl:303 - encrypted: A to: M
+  2022-09-07 12:37:06 INFO  MachineHandlerImpl:304 - time it took to encrypt:33300
+  2022-09-07 12:37:06 INFO  MachineHandlerImpl:303 - encrypted: A to: H
+  2022-09-07 12:37:06 INFO  MachineHandlerImpl:304 - time it took to encrypt:39900
+  2022-09-07 12:37:06 INFO  MachineHandlerImpl:303 - encrypted: A to: V
+  2022-09-07 12:37:06 INFO  MachineHandlerImpl:304 - time it took to encrypt:46600
+  2022-09-07 12:37:07 INFO  MachineHandlerImpl:303 - encrypted: A to: N
+  2022-09-07 12:37:07 INFO  MachineHandlerImpl:304 - time it took to encrypt:36800
+  2022-09-07 12:37:07 INFO  MachineHandlerImpl:303 - encrypted: A to: B
+  2022-09-07 12:37:07 INFO  MachineHandlerImpl:304 - time it took to encrypt:36400
+  2022-09-07 12:37:07 INFO  MachineHandlerImpl:303 - encrypted: A to: E
+  2022-09-07 12:37:07 INFO  MachineHandlerImpl:304 - time it took to encrypt:55100
+  2022-09-07 12:37:07 INFO  MachineHandlerImpl:303 - encrypted: A to: I
+  2022-09-07 12:37:07 INFO  MachineHandlerImpl:304 - time it took to encrypt:47800
+  2022-09-07 12:37:07 INFO  MachineHandlerImpl:303 - encrypted: A to: Y
+  2022-09-07 12:37:07 INFO  MachineHandlerImpl:304 - time it took to encrypt:33500
+  2022-09-07 12:37:07 INFO  MachineHandlerImpl:303 - encrypted: A to: K
+  2022-09-07 12:37:07 INFO  MachineHandlerImpl:304 - time it took to encrypt:35400
+  2022-09-07 12:37:12 INFO  MachineHandlerImpl:303 - encrypted: A to: X
+  2022-09-07 12:37:12 INFO  MachineHandlerImpl:304 - time it took to encrypt:47400
+  2022-09-07 23:37:18 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Dev\GitProjects\CTE_JAVA_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-paper-enigma.xml
+  2022-09-07 23:37:18 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-07 23:37:18 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-07 23:42:58 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Dev\GitProjects\CTE_JAVA_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-paper-enigma.xml
+  2022-09-07 23:42:58 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-07 23:42:58 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-07 23:47:28 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Dev\GitProjects\CTE_JAVA_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-paper-enigma.xml
+  2022-09-07 23:47:28 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-07 23:47:28 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-07 23:55:49 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Dev\GitProjects\CTE_JAVA_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-paper-enigma.xml
+  2022-09-07 23:55:49 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-07 23:55:49 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-07 23:57:57 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Dev\GitProjects\CTE_JAVA_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-paper-enigma.xml
+  2022-09-07 23:57:57 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-07 23:57:57 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-08 00:50:03 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Dev\GitProjects\CTE_JAVA_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-paper-enigma.xml
+  2022-09-08 00:50:03 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-08 00:50:03 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-08 11:06:30 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Dev\GitProjects\CTE_JAVA_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-paper-enigma.xml
+  2022-09-08 11:06:30 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-08 11:06:30 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-08 11:09:04 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-08 11:09:04 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-08 11:09:14 INFO  MachineHandlerImpl:303 - encrypted: AAAA to: ZOWZ
+  2022-09-08 11:09:14 INFO  MachineHandlerImpl:304 - time it took to encrypt:264000
+  2022-09-08 11:09:18 INFO  MachineHandlerImpl:303 - encrypted: AAAA to: QTGG
+  2022-09-08 11:09:18 INFO  MachineHandlerImpl:304 - time it took to encrypt:213100
+  2022-09-08 11:09:19 INFO  MachineHandlerImpl:303 - encrypted: AAAA to: ZQDF
+  2022-09-08 11:09:19 INFO  MachineHandlerImpl:304 - time it took to encrypt:209600
+  2022-09-08 11:09:19 INFO  MachineHandlerImpl:303 - encrypted: AAAA to: PCTS
+  2022-09-08 11:09:19 INFO  MachineHandlerImpl:304 - time it took to encrypt:299800
+  2022-09-08 11:09:19 INFO  MachineHandlerImpl:303 - encrypted: AAAA to: VJDG
+  2022-09-08 11:09:19 INFO  MachineHandlerImpl:304 - time it took to encrypt:163800
+  2022-09-08 11:09:19 INFO  MachineHandlerImpl:303 - encrypted: AAAA to: SUFJ
+  2022-09-08 11:09:19 INFO  MachineHandlerImpl:304 - time it took to encrypt:155100
+  2022-09-08 11:09:19 INFO  MachineHandlerImpl:303 - encrypted: AAAA to: FTUM
+  2022-09-08 11:09:19 INFO  MachineHandlerImpl:304 - time it took to encrypt:183100
+  2022-09-08 11:09:19 INFO  MachineHandlerImpl:303 - encrypted: AAAA to: ROVB
+  2022-09-08 11:09:19 INFO  MachineHandlerImpl:304 - time it took to encrypt:168800
+  2022-09-08 11:09:19 INFO  MachineHandlerImpl:303 - encrypted: AAAA to: KZMY
+  2022-09-08 11:09:19 INFO  MachineHandlerImpl:304 - time it took to encrypt:214400
+  2022-09-08 11:09:19 INFO  MachineHandlerImpl:303 - encrypted: AAAA to: WWED
+  2022-09-08 11:09:19 INFO  MachineHandlerImpl:304 - time it took to encrypt:137900
+  2022-09-08 11:09:20 INFO  MachineHandlerImpl:303 - encrypted: AAAA to: SIKC
+  2022-09-08 11:09:20 INFO  MachineHandlerImpl:304 - time it took to encrypt:181400
+  2022-09-08 11:09:20 INFO  MachineHandlerImpl:303 - encrypted: AAAA to: VEFB
+  2022-09-08 11:09:20 INFO  MachineHandlerImpl:304 - time it took to encrypt:270800
+  2022-09-08 11:09:20 INFO  MachineHandlerImpl:303 - encrypted: AAAA to: TNED
+  2022-09-08 11:09:20 INFO  MachineHandlerImpl:304 - time it took to encrypt:91100
+  2022-09-08 11:09:20 INFO  MachineHandlerImpl:303 - encrypted: AAAA to: GYCY
+  2022-09-08 11:09:20 INFO  MachineHandlerImpl:304 - time it took to encrypt:205000
+  2022-09-08 11:09:20 INFO  MachineHandlerImpl:303 - encrypted: AAAA to: CTQN
+  2022-09-08 11:09:20 INFO  MachineHandlerImpl:304 - time it took to encrypt:146100
+  2022-09-08 11:09:20 INFO  MachineHandlerImpl:303 - encrypted: AAAA to: EBED
+  2022-09-08 11:09:20 INFO  MachineHandlerImpl:304 - time it took to encrypt:123000
+  2022-09-08 11:09:20 INFO  MachineHandlerImpl:303 - encrypted: AAAA to: THZI
+  2022-09-08 11:09:20 INFO  MachineHandlerImpl:304 - time it took to encrypt:121500
+  2022-09-08 11:09:21 INFO  MachineHandlerImpl:303 - encrypted: AAAA to: NNII
+  2022-09-08 11:09:21 INFO  MachineHandlerImpl:304 - time it took to encrypt:170900
+  2022-09-08 11:09:21 INFO  MachineHandlerImpl:303 - encrypted: AAAA to: ENIC
+  2022-09-08 11:09:21 INFO  MachineHandlerImpl:304 - time it took to encrypt:70400
+  2022-09-08 11:09:21 INFO  MachineHandlerImpl:303 - encrypted: AAAA to: ZYWK
+  2022-09-08 11:09:21 INFO  MachineHandlerImpl:304 - time it took to encrypt:94400
+  2022-09-08 11:16:44 INFO  FileConfigurationHandler:33 - Generated a CTE Enigma Object from schema successfully from:C:\Dev\GitProjects\CTE_JAVA_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-sanity-paper-enigma.xml
+  2022-09-08 11:16:44 INFO  XmlSchemaVerifierImpl:81 - Machine Configuration schema passed all tests.
+  2022-09-08 11:16:44 INFO  MachineHandlerImpl:271 - Machine handler: created inventory successfully
+  2022-09-08 11:16:49 INFO  MachineHandlerImpl:188 - Machine Handler - assembled machine parts finished
+  2022-09-08 11:16:49 WARN  PlugBoardImpl:75 - Plugboard : Failed to connect endpoints -Uis already connected
+  2022-09-08 11:16:49 INFO  MachineHandlerImpl:210 - Machine Handler - initial state of machine state set
+  2022-09-08 11:16:54 INFO  MachineHandlerImpl:303 - encrypted: AAAAA to: ZDPIL
+  2022-09-08 11:16:54 INFO  MachineHandlerImpl:304 - time it took to encrypt:605200
+  2022-09-08 11:16:58 INFO  MachineHandlerImpl:303 - encrypted: AAAAA to: DBPPX
+  2022-09-08 11:16:58 INFO  MachineHandlerImpl:304 - time it took to encrypt:392300
+  2022-09-08 11:17:22 INFO  MachineHandlerImpl:303 - encrypted: AAAAA to: QYZKF
+  2022-09-08 11:17:22 INFO  MachineHandlerImpl:304 - time it took to encrypt:141300
+  2022-09-08 11:17:24 INFO  MachineHandlerImpl:303 - encrypted: AAAAA to: FEQFB
+  2022-09-08 11:17:24 INFO  MachineHandlerImpl:304 - time it took to encrypt:149200
+  2022-09-08 11:17:25 INFO  MachineHandlerImpl:303 - encrypted: AAAAA to: JXLUW
+  2022-09-08 11:17:25 INFO  MachineHandlerImpl:304 - time it took to encrypt:309200
+  2022-09-08 11:17:25 INFO  MachineHandlerImpl:303 - encrypted: AAAAA to: VFKHB
+  2022-09-08 11:17:25 INFO  MachineHandlerImpl:304 - time it took to encrypt:146300
+  2022-09-08 11:17:25 INFO  MachineHandlerImpl:303 - encrypted: AAAAA to: GIJLQ
+  2022-09-08 11:17:25 INFO  MachineHandlerImpl:304 - time it took to encrypt:122700
+  2022-09-08 11:17:25 INFO  MachineHandlerImpl:303 - encrypted: AAAAA to: KRXXN
+  2022-09-08 11:17:25 INFO  MachineHandlerImpl:304 - time it took to encrypt:229900
   
