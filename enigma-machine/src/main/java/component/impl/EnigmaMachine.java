@@ -2,6 +2,7 @@ package main.java.component.impl;
 
 import main.java.component.*;
 import main.java.dto.MachineState;
+import main.java.generictype.DeepCloneable;
 import main.java.generictype.MappingPair;
 import main.java.handler.FileConfigurationHandler;
 import main.java.service.PropertiesService;
@@ -176,4 +177,17 @@ public class EnigmaMachine implements EncryptionMachine {
         return this.ioWheel.getABC();
     }
 
+    @Override
+    public EnigmaMachine getDeepClone() {
+        EnigmaMachine clonedEnigmaMachine = new EnigmaMachine();
+        PlugBoard clonedPlugBoard = this.plugBoard.getDeepClone();
+        List<Rotor> clonedRotors = new ArrayList<>();
+        for (Rotor rotor: this.rotors ) {
+            clonedRotors.add(rotor.getDeepClone());
+        }
+        IOWheel clonedIoWheel = this.ioWheel.getDeepClone();
+        Reflector clonedReflector = this.reflector.getDeepClone();
+        clonedEnigmaMachine.buildMachine(clonedPlugBoard,clonedReflector,clonedRotors,clonedIoWheel);
+        return clonedEnigmaMachine;
+    }
 }
