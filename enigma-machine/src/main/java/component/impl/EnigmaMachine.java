@@ -4,7 +4,7 @@ import main.java.component.*;
 import main.java.dto.MachineState;
 import main.java.generictype.MappingPair;
 import main.java.handler.FileConfigurationHandler;
-import main.java.handler.PropertiesService;
+import main.java.service.PropertiesService;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 

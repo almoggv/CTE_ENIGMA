@@ -5,15 +5,13 @@ import main.java.component.Rotor;
 import main.java.generictype.MappingPair;
 import main.java.generictype.MappingPairListUtils;
 import main.java.handler.FileConfigurationHandler;
-import main.java.handler.PropertiesService;
+import main.java.service.PropertiesService;
 import main.resources.generated.CTEPositioning;
 import main.resources.generated.CTERotor;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;

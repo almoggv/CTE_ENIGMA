@@ -10,7 +10,7 @@ import main.java.generictype.MappingPair;
 import main.java.handler.FileConfigurationHandler;
 import main.java.component.*;
 import main.java.enums.ReflectorsId;
-import main.java.handler.PropertiesService;
+import main.java.service.PropertiesService;
 import main.java.verifier.XmlSchemaVerifier;
 import main.java.verifier.impl.XmlSchemaVerifierImpl;
 import main.resources.generated.*;
@@ -18,7 +18,6 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
 import java.io.*;
-import java.net.URL;
 import java.util.*;
 import java.util.function.Predicate;
 
@@ -36,7 +35,6 @@ public class MachineHandlerImpl implements MachineHandler {
     private final XmlSchemaVerifier xmlSchemaVerifier = new XmlSchemaVerifierImpl();
 
     static {
-
         try {
             Properties p = new Properties();
             p.load(FileConfigurationHandler.class.getResourceAsStream(PropertiesService.getLog4jPropertiesResourcePath()));

@@ -1,5 +1,6 @@
 package main.java.handler;
 
+import main.java.service.PropertiesService;
 import main.resources.generated.CTEEnigma;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;

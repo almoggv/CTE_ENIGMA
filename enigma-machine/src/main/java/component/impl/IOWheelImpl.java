@@ -4,13 +4,11 @@ import main.java.component.IOWheel;
 import main.java.generictype.MappingPair;
 import main.java.generictype.MappingPairListUtils;
 import main.java.handler.FileConfigurationHandler;
-import main.java.handler.PropertiesService;
+import main.java.service.PropertiesService;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
