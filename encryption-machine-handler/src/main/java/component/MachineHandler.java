@@ -57,4 +57,6 @@ public interface MachineHandler extends Serializable {
     public Map<MachineState, List<EncryptionInfoHistory>> getMachineStatisticsHistory();
 
     public Optional<String> verifyInputInAbcAndFix(String input);
+
+    public EncryptionMachine getEncryptionMachineClone();
  }

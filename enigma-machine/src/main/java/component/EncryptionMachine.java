@@ -42,6 +42,9 @@ public interface EncryptionMachine extends DeepCloneable, Serializable {
     public void setMachineState(MachineState machineState);
 
     public String getABC();
+
+    @Override
+    public EncryptionMachine getDeepClone();
 }
 
 

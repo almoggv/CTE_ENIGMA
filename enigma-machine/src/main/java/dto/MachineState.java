@@ -23,7 +23,7 @@ public class MachineState implements DeepCloneable , Serializable {
     private List<Integer> notchDistancesFromHead;
 
     @Override
-    public DeepCloneable getDeepClone() {
+    public MachineState getDeepClone() {
         ReflectorsId recreatedReflectorsId = this.reflectorId;
         List<Integer> recreatedRotorIds = new ArrayList<>(rotorIds);
         List<String> recreatedRotorsHeadsInitialValues = new ArrayList<>(rotorsHeadsInitialValues);;

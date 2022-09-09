@@ -4,9 +4,7 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import lombok.Getter;
 import lombok.Setter;
-import main.java.agent.DecryptionAgent;
 import main.java.component.MachineHandler;
-import main.java.component.impl.MachineHandlerImpl;
 import main.java.enums.DecryptionDifficultyLevel;
 import main.java.handler.FileConfigurationHandler;
 import main.java.manager.DecryptionManager;
@@ -16,7 +14,6 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.*;
 
@@ -57,10 +54,11 @@ public class DecryptionManagerImpl implements DecryptionManager {
     }
 
     public void bruteForceDecryption(String sourceInput){
+//        AgentWorkManagerImpl agentFactory = new AgentWorkManagerImpl(this.threadPoolService,this.machineHandler,this.difficultyLevel);
 
-
-        //Cases by level
     }
+
+
 
     private int calcTaskSize(){
         return -1;

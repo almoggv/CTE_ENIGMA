@@ -339,4 +339,9 @@ public class MachineHandlerImpl implements MachineHandler {
         }
         return Optional.of(input);
     }
+
+    @Override
+    public EncryptionMachine getEncryptionMachineClone() {
+        return encryptionMachine.getDeepClone();
+    }
 }

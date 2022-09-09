@@ -21,9 +21,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Kotlin Class" />
+        <option value="Enum" />
         <option value="Interface" />
         <option value="Class" />
-        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -94,11 +94,11 @@
       <recent name="main.component" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="main.java.manager" />
       <recent name="main.java.service" />
       <recent name="main.java.enums" />
       <recent name="src.main.java.ui" />
       <recent name="main.java.generictype" />
-      <recent name="main.java.dto" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="src.main.java.handler" />
