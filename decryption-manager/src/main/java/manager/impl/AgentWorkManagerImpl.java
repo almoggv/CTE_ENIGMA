@@ -4,9 +4,11 @@ import javafx.beans.property.*;
 import lombok.Getter;
 import main.java.agent.DecryptionAgent;
 import main.java.agent.impl.DecryptionAgentImpl;
+import main.java.component.EncryptionMachine;
 import main.java.dto.AgentDecryptionInfo;
 import main.java.dto.MachineState;
 import main.java.enums.ReflectorsId;
+import main.java.generictype.MappingPair;
 import main.java.service.XmlFileLoader;
 import main.java.manager.AgentWorkManager;
 import main.java.component.MachineHandler;
@@ -23,7 +25,6 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 public class AgentWorkManagerImpl implements AgentWorkManager {
-
     private static final Logger log = Logger.getLogger(AgentWorkManagerImpl.class);
 
     private final ThreadPoolExecutor threadPoolExecutor;
@@ -40,6 +41,10 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
     private MachineState lastCreatedState;
     @Getter private BooleanProperty isWorkCompletedProperty = new SimpleBooleanProperty();
     @Getter private BooleanProperty isAllWorkAssignedProperty = new SimpleBooleanProperty();
+   /*
+   assignedWorkProgressProperty references the assigned work to the agents - and not the amount actually completed by the agents;
+    */
+    @Getter private ObjectProperty<MappingPair<Integer,Integer>> assignedWorkProgressProperty = new SimpleObjectProperty<>();
     @Getter private ObjectProperty<List<AgentDecryptionInfo>> decryptionCandidatesProperty = new SimpleObjectProperty<>();
 
     static {
@@ -71,6 +76,7 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
 
         //Calculate at the end
         totalWorkToDo = calcTotalWorkToDoByDifficulty();
+        assignedWorkProgressProperty.set(new MappingPair<>(0, totalWorkToDo));
     }
 
     private int calcTotalWorkToDoByDifficulty() {
@@ -93,19 +99,26 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
     }
 
     private List<String> createRotorInitialStartingPosition(){
-        //Not Implemented
-        return Arrays.asList("A", "A","A");
+        List<String> startingPos = new ArrayList<>();
+        for (int i = 0; i < numberOfRotorsInUse; i++) {
+            startingPos.add(abc.substring(0,1));
+        }
+        return startingPos;
     }
 
     private List<Integer> createRotorIDsPlacement(){
+
+//        List<Integer> rotorPlacement = new ArrayList<>()
         //Use the same rotor ids as in the machineState
         // just adjust their location
-        return Arrays.asList(1, 2, 3);
+//        return Arrays.asList(1, 2, 3);
+        throw new NotImplementedException();
     }
 
     private List<Integer> selectRotorIDs(){
         //used for Impossible - tachles - we always start from rotors 1,2,3
-        return Arrays.asList(1, 2, 3);
+        throw new NotImplementedException();
+//        return Arrays.asList(1, 2, 3);
     }
 
     private void initWorkBatchesByDifficulty() {
@@ -166,15 +179,20 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
 
     private List<MachineState> getNextEasyWorkBatch() {
         List<MachineState> newWorkBatch = new ArrayList<>();
-        int currWorkDispatched = fromLettersToBase10(lastCreatedState.getRotorsHeadsInitialValues(),abcSize);
-        int maxWorkToDispatch = totalWorkToDo;
+//        int currWorkDispatched = fromLettersToBase10(lastCreatedState.getRotorsHeadsInitialValues(),abcSize);
+//        int maxWorkToDispatch = totalWorkToDo;
+        int currWorkDispatched = assignedWorkProgressProperty.get().getLeft();
+        int maxWorkToDispatch = assignedWorkProgressProperty.get().getRight();
         int currTaskSize = Math.min((maxWorkToDispatch - currWorkDispatched), taskSize);
-        isAllWorkAssignedProperty.setValue(currWorkDispatched == maxWorkToDispatch);
+
         for (int i = 0; i < currTaskSize; i++) {
             MachineState newWorkState = lastCreatedState.getDeepClone();
             newWorkBatch.add(newWorkState);
             lastCreatedState.setRotorsHeadsInitialValues(advanceRotorPositions(lastCreatedState.getRotorsHeadsInitialValues()));
         }
+        currWorkDispatched += currTaskSize;
+        assignedWorkProgressProperty.set(new MappingPair<>(currWorkDispatched,maxWorkToDispatch));
+        isAllWorkAssignedProperty.setValue(currWorkDispatched == maxWorkToDispatch);
         return newWorkBatch;
     }
 
@@ -207,8 +225,12 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
 
     private DecryptionAgent getNextAgent(){
         List<MachineState> workForAgent = getNextWorkBatch();
-        DecryptionAgent newAgent = new DecryptionAgentImpl(machineHandler.getEncryptionMachineClone());
+        EncryptionMachine handler = machineHandler.getEncryptionMachineClone();
+        log.debug("Agent manager: got clone of machine");
+        DecryptionAgent newAgent = new DecryptionAgentImpl(handler);
+        log.debug("Agent manager: created new agent");
         newAgent.assignWork(workForAgent,this.inputToDecrypt);
+        log.debug("Agent manager: assigned work to agent");
 
         newAgent.getPotentialCandidatesListProperty().addListener(((observable, oldValue, newValue) -> {
             log.debug("AgentWorkManager - received potential");
@@ -223,6 +245,7 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
                 }
                 if(this.amountOfWorkCompleted >= this.totalWorkToDo){
                     this.isWorkCompletedProperty.setValue(true);
+                    System.out.println("Agent completed work: "+ newAgent.getId());
                 }
         }));
         return newAgent;
@@ -231,11 +254,16 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
 
     @Override
     public void run() {
+        System.out.println("IN agentManager run!");
         this.initWorkBatchesByDifficulty();
+        int i = 0;
         while(!isAllWorkAssignedProperty.get()){
             if(threadPoolExecutor.getQueue().remainingCapacity() > 0){
                 log.debug("AgentWorkManager - threadPoolExecutor remainingCapacity of Queue = " + threadPoolExecutor.getQueue().remainingCapacity());
-                threadPoolExecutor.submit(getNextAgent());
+                DecryptionAgent agent = getNextAgent();
+                threadPoolExecutor.execute(agent);
+                log.debug(" Added agent to thread pool: "+ agent.getId());
+                System.out.println(++i + "Added agent to thread pool: "+ agent.getId());
             }
         }
         threadPoolExecutor.shutdown();

@@ -8,11 +8,16 @@ import main.java.component.EncryptionMachine;
 import main.java.dto.AgentDecryptionInfo;
 import main.java.dto.MachineState;
 import main.java.generictype.MappingPair;
+import main.java.manager.DictionaryManager;
+import main.java.manager.impl.AgentWorkManagerImpl;
+import main.java.manager.impl.DecryptionManagerImpl;
+import main.java.service.PropertiesService;
+import main.java.service.XmlFileLoader;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.io.IOException;
+import java.util.*;
 
 public class DecryptionAgentImpl implements DecryptionAgent {
 
@@ -30,22 +35,35 @@ public class DecryptionAgentImpl implements DecryptionAgent {
      * Is updated once ALL the work is done. if no potential candidates were found, wont update.
      */
     @Getter private final ObjectProperty<List<AgentDecryptionInfo>> potentialCandidatesListProperty = new SimpleObjectProperty<>();
+    private static final Logger log = Logger.getLogger(AgentWorkManagerImpl.class);
 
+    static {
+        try {
+            Properties p = new Properties();
+            p.load(XmlFileLoader.class.getResourceAsStream(PropertiesService.getLog4jPropertiesResourcePath()));
+            PropertyConfigurator.configure(p);      //Dont forget here
+            log.debug("Logger Instantiated for : " + DecryptionManagerImpl.class.getSimpleName());
+        } catch (IOException e) {
+            System.out.println("Failed to configure logger of -" + DecryptionManagerImpl.class.getSimpleName() ) ;
+        }
+    }
     public DecryptionAgentImpl(EncryptionMachine encryptionMachine) {
         this.encryptionMachine = encryptionMachine;
-        this.isFinishedProperty.setValue(true);
+        this.isFinishedProperty.setValue(false);
+        log.debug("newly created agent: "+ this.id);
     }
 
     public void assignWork(List<MachineState> startingConfigurations, String inputToDecrypt){
-        if(startingConfigurations != null){
-            startingConfigurations.clear();
-        }
+//        if(startingConfigurations != null){
+//            this.startingConfigurations.clear();
+//        }
         this.startingConfigurations = startingConfigurations;
         this.inputToDecrypt = inputToDecrypt;
         potentialCandidatesListProperty.setValue(null);
         decryptionInfoProperty.setValue(null);
         progressProperty.setValue(new MappingPair<Integer,Integer>(0,startingConfigurations.size()));
         isFinishedProperty.setValue(false);
+        log.debug("agent " + id + " got work");
     }
 
     @Override
@@ -66,6 +84,7 @@ public class DecryptionAgentImpl implements DecryptionAgent {
                 AgentDecryptionInfo decryptionInfo = new AgentDecryptionInfo(this.id,initialState,inputToDecrypt,decryptionCandidate.get(),encryptionTime);
                 decryptionInfoProperty.setValue(decryptionInfo);
                 potentialCandidates.add(decryptionInfo);
+                log.info("found a candidate: "+ decryptionCandidate.get());
             }
             //TODO: update progress
             index++;
@@ -77,6 +96,7 @@ public class DecryptionAgentImpl implements DecryptionAgent {
             potentialCandidatesListProperty.setValue(potentialCandidates);
         }
         isFinishedProperty.setValue(true);
+        log.info("agent "+this.id + "finished work");
     }
 
     private Optional<String> runSingleDecryption(MachineState machineInitialState, String inputToDecrypt){
@@ -91,9 +111,13 @@ public class DecryptionAgentImpl implements DecryptionAgent {
     }
 
     private boolean checkIfInDictionary(String decryptionResult) {
-        //TODO: implement
-        return false;
+
+        String[] decryptedWords = decryptionResult.split(DictionaryManager.getDELIMITER());
+        for (String word :decryptedWords ) {
+            if(!DictionaryManager.getDictionary().containsKey(word)){
+                return false;
+            }
+        }
+        return true;
     }
-
-
 }

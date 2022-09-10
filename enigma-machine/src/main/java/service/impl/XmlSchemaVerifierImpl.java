@@ -36,6 +36,16 @@ public class XmlSchemaVerifierImpl implements XmlSchemaVerifier {
 
     public XmlVerifierState isXmlSchemaValid(CTEEnigma cteEnigma) {
         CTEMachine machine = cteEnigma.getCTEMachine();
+//        CTEDecipher decipher = cteEnigma.getCTEDecipher();
+        XmlVerifierState isMachineValid = isMachineConfigurationValid(machine);
+//        if(isMachineValid != XmlVerifierState.VALID){
+            return isMachineValid;
+//        }
+//        XmlVerifierState isDecipherValid = isDecipherConfigurationValid(decipher);
+//        return isDecipherValid;
+    }
+    public XmlVerifierState isXmlSchemaValidEX2(CTEEnigma cteEnigma) {
+        CTEMachine machine = cteEnigma.getCTEMachine();
         CTEDecipher decipher = cteEnigma.getCTEDecipher();
         XmlVerifierState isMachineValid = isMachineConfigurationValid(machine);
         if(isMachineValid != XmlVerifierState.VALID){
@@ -45,7 +55,7 @@ public class XmlSchemaVerifierImpl implements XmlSchemaVerifier {
         return isDecipherValid;
     }
 
-    private XmlVerifierState isDecipherConfigurationValid(CTEDecipher cteDecipher) {
+    public XmlVerifierState isDecipherConfigurationValid(CTEDecipher cteDecipher) {
         int agentsCount = cteDecipher.getAgents();
         XmlVerifierState state;
         int MIN_AGENT_COUNT = 2;
@@ -60,7 +70,7 @@ public class XmlSchemaVerifierImpl implements XmlSchemaVerifier {
         return state;
     }
 
-    private XmlVerifierState isMachineConfigurationValid(CTEMachine machine) {
+    public XmlVerifierState isMachineConfigurationValid(CTEMachine machine) {
         String ABC = machine.getABC();
         List<CTERotor> rotors = machine.getCTERotors().getCTERotor();
         List<CTEReflector> reflectors = machine.getCTEReflectors().getCTEReflector();
@@ -119,23 +129,23 @@ public class XmlSchemaVerifierImpl implements XmlSchemaVerifier {
 
     }
 
-    public boolean isABCCountEven(String ABC){
+    private boolean isABCCountEven(String ABC){
         String noWhiteSpaces = ABC.trim();
         return noWhiteSpaces.length() % 2 == 0;
     }
 
-    public boolean isRotorCountGood(int requiredRotorsCount, int numOfRotors){
+    private boolean isRotorCountGood(int requiredRotorsCount, int numOfRotors){
         return (requiredRotorsCount <= numOfRotors) && (requiredRotorsCount >= 2) && (requiredRotorsCount <= 99);
     }
 
-    public boolean isRotorsDefinitionGood(CTERotors rotors, String ABC) {
+    private boolean isRotorsDefinitionGood(CTERotors rotors, String ABC) {
 
         return isRotorsIdsLegal(rotors.getCTERotor())
                 && isRotorsMappingLegal(rotors.getCTERotor())
                 && isRotorsNotchLegal(rotors.getCTERotor(), ABC);
     }
 
-    public boolean isRotorsIdsLegal(List<CTERotor> rotors){
+    private boolean isRotorsIdsLegal(List<CTERotor> rotors){
         List<Integer> rotorsIds = new ArrayList<>();// = new Arrays(rotors.size());
         for (CTERotor rotor : rotors) {
             rotorsIds.add(rotor.getId());
@@ -150,7 +160,7 @@ public class XmlSchemaVerifierImpl implements XmlSchemaVerifier {
         return list.equals(rotorsIds);
     }
 
-    public boolean isRotorsMappingLegal(List<CTERotor> rotors){
+    private boolean isRotorsMappingLegal(List<CTERotor> rotors){
         boolean isMappingLegal = true;
         for(CTERotor rotor: rotors){
             isMappingLegal = isMappingLegal && isRotorMappingLegal(rotor);
@@ -158,7 +168,7 @@ public class XmlSchemaVerifierImpl implements XmlSchemaVerifier {
         return isMappingLegal;
     }
 
-    public boolean isRotorMappingLegal(CTERotor rotor){
+    private boolean isRotorMappingLegal(CTERotor rotor){
         List<CTEPositioning> positioning = rotor.getCTEPositioning();
         List<String> left = new ArrayList<>();
         List<String> right = new ArrayList<>();
@@ -176,7 +186,7 @@ public class XmlSchemaVerifierImpl implements XmlSchemaVerifier {
         return true;
     }
 
-    public boolean isRotorsNotchLegal(List<CTERotor> rotors, String ABC){
+    private boolean isRotorsNotchLegal(List<CTERotor> rotors, String ABC){
         boolean isLegal = true;
         int ABCLen = ABC.trim().length();
 
@@ -186,7 +196,7 @@ public class XmlSchemaVerifierImpl implements XmlSchemaVerifier {
         return isLegal;
     }
 
-    public boolean isReflectorsIdsLegal(List<CTEReflector> reflectors){
+    private boolean isReflectorsIdsLegal(List<CTEReflector> reflectors){
         List<Integer> reflectorsIds = new ArrayList<>();
         for (CTEReflector reflector : reflectors) {
             int id = ReflectorsId.valueOf(reflector.getId()).getId();
@@ -202,7 +212,7 @@ public class XmlSchemaVerifierImpl implements XmlSchemaVerifier {
         return list.equals(reflectorsIds) && (list.size() <= 5 && list.size() > 0);
     }
 
-    public boolean isReflectorsMappingLegal(List<CTEReflector> reflectors){
+    private boolean isReflectorsMappingLegal(List<CTEReflector> reflectors){
         boolean isMappingLegal = true;
 
         for(CTEReflector reflector: reflectors){
@@ -212,7 +222,7 @@ public class XmlSchemaVerifierImpl implements XmlSchemaVerifier {
         return isMappingLegal;
     }
 
-    public boolean isReflectorMappingLegal(CTEReflector reflector){
+    private boolean isReflectorMappingLegal(CTEReflector reflector){
         List<CTEReflect> reflects = reflector.getCTEReflect();
 
         for(CTEReflect reflect : reflects) {
@@ -225,5 +235,4 @@ public class XmlSchemaVerifierImpl implements XmlSchemaVerifier {
 
         return true;
     }
-
 }

@@ -81,7 +81,7 @@ public class PlugBoardImpl implements PlugBoard {
         endPoint2Pair.setRight(endPoint1);
         plugBoardMapping.set(indexEndPoint1,endPoint1Pair);
         plugBoardMapping.set(indexEndPoint2,endPoint2Pair);
-        log.debug("Plugboard made new connection: " +  endPoint1 + "<->" + endPoint2);
+        log.debug("Plugboard made new connection: \"" +  endPoint1 + "\"<->\"" + endPoint2+"\"");
         return true;
     }
 
@@ -139,7 +139,8 @@ public class PlugBoardImpl implements PlugBoard {
             recreatedABC = recreatedABC.concat(pair.getLeft());
         }
         PlugBoardImpl clonedPlugBoard = new PlugBoardImpl(recreatedABC);
-        clonedPlugBoard.connectMultiple(plugBoardMapping);
+        List<MappingPair<String, String>> currMapping = this.getCurrentMapping();
+        clonedPlugBoard.connectMultiple(currMapping);
         return clonedPlugBoard;
     }
 

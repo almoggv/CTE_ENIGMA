@@ -8459,4 +8459,19 @@
   2022-08-18 18:17:50 INFO  MachineHandlerImpl:269 - Machine handler: created inventory successfully
   2022-08-18 18:17:50 INFO  MachineHandlerImpl:187 - Machine Handler - assembled machine parts finished
   2022-08-18 18:17:50 INFO  MachineHandlerImpl:209 - Machine Handler - initial state of machine state set
+  2022-09-10 15:17:35 INFO  XmlFileLoader:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-extra-test.xml
+  2022-09-10 15:17:36 INFO  XmlSchemaVerifierImpl:115 - Machine Configuration schema passed all tests.
+  2022-09-10 15:17:36 INFO  MachineHandlerImpl:269 - Machine handler: created inventory successfully
+  2022-09-10 15:17:36 INFO  MachineHandlerImpl:186 - Machine Handler - assembled machine parts finished
+  2022-09-10 15:17:36 INFO  MachineHandlerImpl:208 - Machine Handler - initial state of machine state set
+  2022-09-10 15:18:41 INFO  XmlFileLoader:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema\ex1-extra-test.xml
+  2022-09-10 15:18:41 INFO  XmlSchemaVerifierImpl:115 - Machine Configuration schema passed all tests.
+  2022-09-10 15:18:41 INFO  MachineHandlerImpl:269 - Machine handler: created inventory successfully
+  2022-09-10 15:18:41 INFO  MachineHandlerImpl:186 - Machine Handler - assembled machine parts finished
+  2022-09-10 15:18:41 INFO  MachineHandlerImpl:208 - Machine Handler - initial state of machine state set
+  2022-09-10 15:21:31 INFO  XmlFileLoader:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema-Ex2\ex2-basic.xml
+  2022-09-10 15:21:31 INFO  XmlSchemaVerifierImpl:115 - Machine Configuration schema passed all tests.
+  2022-09-10 15:21:31 INFO  MachineHandlerImpl:269 - Machine handler: created inventory successfully
+  2022-09-10 15:21:31 INFO  MachineHandlerImpl:186 - Machine Handler - assembled machine parts finished
+  2022-09-10 15:21:31 INFO  MachineHandlerImpl:208 - Machine Handler - initial state of machine state set
   
