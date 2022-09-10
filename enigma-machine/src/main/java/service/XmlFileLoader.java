@@ -1,6 +1,5 @@
-package main.java.handler;
+package main.java.service;
 
-import main.java.service.PropertiesService;
 import main.resources.generated.CTEEnigma;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
@@ -11,17 +10,17 @@ import javax.xml.bind.Unmarshaller;
 import java.io.File;
 import java.util.Properties;
 
-public class FileConfigurationHandler {
-    private static final Logger log = Logger.getLogger(FileConfigurationHandler.class);
+public class XmlFileLoader {
+    private static final Logger log = Logger.getLogger(XmlFileLoader.class);
 
     static {
         try {
             Properties p = new Properties();
-            p.load(FileConfigurationHandler.class.getResourceAsStream(PropertiesService.getLog4jPropertiesResourcePath()));
+            p.load(XmlFileLoader.class.getResourceAsStream(PropertiesService.getLog4jPropertiesResourcePath()));
             PropertyConfigurator.configure(p);      //Dont forget here
-            log.debug("Logger Instantiated for : " + FileConfigurationHandler.class.getSimpleName());
+            log.debug("Logger Instantiated for : " + XmlFileLoader.class.getSimpleName());
         } catch (Exception e) {
-            System.out.println("Failed to configure logger of -" + FileConfigurationHandler.class.getSimpleName() ) ;
+            System.out.println("Failed to configure logger of -" + XmlFileLoader.class.getSimpleName() ) ;
         }
     }
 

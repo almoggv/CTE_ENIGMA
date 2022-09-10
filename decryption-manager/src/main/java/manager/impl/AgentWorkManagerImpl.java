@@ -7,7 +7,7 @@ import main.java.agent.impl.DecryptionAgentImpl;
 import main.java.dto.AgentDecryptionInfo;
 import main.java.dto.MachineState;
 import main.java.enums.ReflectorsId;
-import main.java.handler.FileConfigurationHandler;
+import main.java.service.XmlFileLoader;
 import main.java.manager.AgentWorkManager;
 import main.java.component.MachineHandler;
 import main.java.enums.DecryptionDifficultyLevel;
@@ -45,7 +45,7 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
     static {
         try {
             Properties p = new Properties();
-            p.load(FileConfigurationHandler.class.getResourceAsStream(PropertiesService.getLog4jPropertiesResourcePath()));
+            p.load(XmlFileLoader.class.getResourceAsStream(PropertiesService.getLog4jPropertiesResourcePath()));
             PropertyConfigurator.configure(p);      //Dont forget here
             log.debug("Logger Instantiated for : " + AgentWorkManagerImpl.class.getSimpleName());
         } catch (IOException e) {

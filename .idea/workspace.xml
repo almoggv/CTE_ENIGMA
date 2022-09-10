@@ -12,45 +12,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6467e2d7-ff2a-4abb-a198-685a0fcd06aa" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/enigma-machine/src/main/resources/Enigma-Ex2.xsd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/enigma-machine/src/main/resources/generated/CTEDecipher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/enigma-machine/src/main/resources/generated/CTEDictionary.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/enigma-machine/src/main/resources/machine-inventory-schema-Ex2/ex2-basic.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/enigma-machine/src/main/resources/machine-inventory-schema-Ex2/ex2-error-2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/enigma-machine/src/main/resources/machine-inventory-schema-Ex2/ex2-large.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/resources/Enigma-Ex2.xsd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/resources/generated/CTEDecipher.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/resources/generated/CTEDictionary.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/resources/machine-inventory-schema-Ex2/ex2-basic.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/resources/machine-inventory-schema-Ex2/ex2-error-2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/resources/machine-inventory-schema-Ex2/ex2-large.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/service/ResourceLocationService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/logging.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/logging.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/component/MachineHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/component/MachineHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/component/impl/MachineHandlerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/component/impl/MachineHandlerImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/component/impl/SerializationHandlerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/component/impl/SerializationHandlerImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/handler/PropertiesService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/service/PropertiesService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/EncryptionMachine.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/EncryptionMachine.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/EnigmaMachine.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/EnigmaMachine.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/IOWheelImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/IOWheelImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/PlugBoardImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/PlugBoardImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/ReflectorImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/ReflectorImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/RotorImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/RotorImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/dto/MachineState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/dto/MachineState.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/handler/FileConfigurationHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/handler/FileConfigurationHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/handler/PropertiesService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/service/PropertiesService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/AppController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/AppController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/EncryptPageController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/EncryptPageController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/EncryptPageController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/EncryptPageController$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/EncryptPageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/EncryptPageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/HeaderController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/HeaderController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/HeaderController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/HeaderController$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/HeaderController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/HeaderController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/service/DataService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/service/DataService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/service/PropertiesService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/ui/GuiApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/ui/GuiApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/user-interface/user-interface.iml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/user-interface.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/AgentWorkManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/AgentWorkManagerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/DecryptionManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/DecryptionManagerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/DictionaryManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/DictionaryManagerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/impl/MachineHandlerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/impl/MachineHandlerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/impl/SerializationHandlerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/impl/SerializationHandlerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/enums/XmlVerifierState.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/enums/XmlVerifierState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/verifier/XmlSchemaVerifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/service/XmlSchemaVerifier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/verifier/impl/XmlSchemaVerifierImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/service/impl/XmlSchemaVerifierImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/EnigmaMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/EnigmaMachine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/IOWheelImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/IOWheelImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/PlugBoardImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/PlugBoardImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/ReflectorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/ReflectorImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/RotorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/RotorImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/handler/FileConfigurationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/service/XmlFileLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/handler/JaxbObjectGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/service/JaxbObjectGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/resources/generated/CTEDecipher.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/resources/generated/CTEDictionary.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/resources/generated/CTEEnigma.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/resources/generated/CTEMachine.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/resources/generated/CTEPositioning.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/resources/generated/CTEReflect.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/resources/generated/CTEReflector.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/resources/generated/CTEReflectors.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/resources/generated/CTERotor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/resources/generated/CTERotors.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/resources/generated/ObjectFactory.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

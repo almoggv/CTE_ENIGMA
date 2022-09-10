@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 import main.java.component.MachineHandler;
 import main.java.enums.DecryptionDifficultyLevel;
-import main.java.handler.FileConfigurationHandler;
+import main.java.service.XmlFileLoader;
 import main.java.manager.DecryptionManager;
 import main.java.manager.DictionaryManager;
 import main.java.service.PropertiesService;
@@ -21,7 +21,7 @@ public class DecryptionManagerImpl implements DecryptionManager {
     private static final Logger log = Logger.getLogger(DecryptionManagerImpl.class);
     private final int THREAD_POOL_QEUEU_MAX_CAPACITY = 100;
     @Getter private MachineHandler machineHandler;
-    private DictionaryManager dictionaryManager = new DictionaryManagerImpl();
+    private DictionaryManager dictionaryManager;
     @Getter private int numberOfAgents;
     @Getter @Setter private int taskSize;
     @Getter @Setter private DecryptionDifficultyLevel difficultyLevel;
@@ -31,7 +31,7 @@ public class DecryptionManagerImpl implements DecryptionManager {
     static {
         try {
             Properties p = new Properties();
-            p.load(FileConfigurationHandler.class.getResourceAsStream(PropertiesService.getLog4jPropertiesResourcePath()));
+            p.load(XmlFileLoader.class.getResourceAsStream(PropertiesService.getLog4jPropertiesResourcePath()));
             PropertyConfigurator.configure(p);      //Dont forget here
             log.debug("Logger Instantiated for : " + DecryptionManagerImpl.class.getSimpleName());
         } catch (IOException e) {

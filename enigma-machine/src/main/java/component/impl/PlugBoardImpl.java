@@ -4,7 +4,7 @@ package main.java.component.impl;
 import main.java.component.PlugBoard;
 import main.java.generictype.MappingPair;
 import main.java.generictype.MappingPairListUtils;
-import main.java.handler.FileConfigurationHandler;
+import main.java.service.XmlFileLoader;
 import main.java.service.PropertiesService;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
@@ -24,7 +24,7 @@ public class PlugBoardImpl implements PlugBoard {
     static {
         try {
             Properties p = new Properties();
-            p.load(FileConfigurationHandler.class.getResourceAsStream(PropertiesService.getLog4jPropertiesResourcePath()));
+            p.load(XmlFileLoader.class.getResourceAsStream(PropertiesService.getLog4jPropertiesResourcePath()));
             PropertyConfigurator.configure(p);      //Dont forget here
             log.debug("Logger Instantiated for : " + PlugBoardImpl.class.getSimpleName());
         } catch (IOException e) {

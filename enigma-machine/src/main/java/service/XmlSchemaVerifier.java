@@ -1,4 +1,4 @@
-package main.java.verifier;
+package main.java.service;
 
 import main.java.enums.XmlVerifierState;
 import main.resources.generated.*;
@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface XmlSchemaVerifier extends Serializable {
 
-    public XmlVerifierState isMachineConfigurationValid(CTEEnigma cteEnigma);
+    public XmlVerifierState isXmlSchemaValid(CTEEnigma cteEnigma);
 
     public boolean isFileInExistenceAndXML(String path) throws IOException;
 

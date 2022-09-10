@@ -1,9 +1,9 @@
-package main.java.verifier.impl;
+package main.java.service.impl;
 
-import main.java.component.impl.MachineHandlerImpl;
 import main.java.enums.ReflectorsId;
 import main.java.enums.XmlVerifierState;
-import main.java.verifier.XmlSchemaVerifier;
+import main.java.service.PropertiesService;
+import main.java.service.XmlSchemaVerifier;
 import main.resources.generated.*;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
@@ -19,24 +19,48 @@ import java.util.stream.IntStream;
 
 
 public class XmlSchemaVerifierImpl implements XmlSchemaVerifier {
-
     private static final Logger log = Logger.getLogger(XmlSchemaVerifierImpl.class);
 
     static {
         try {
-            URL log4JPropertyUrl = XmlSchemaVerifierImpl.class.getResource("/main/resources/log4j.properties");
+            URL log4JPropertyUrl = XmlSchemaVerifierImpl.class.getResource(PropertiesService.getLog4jPropertiesResourcePath());
             String log4JPropertyFile = log4JPropertyUrl.getFile();
             Properties p = new Properties();
             p.load(new FileInputStream(log4JPropertyFile));
             PropertyConfigurator.configure(p);      //Dont forget here
             log.debug("Logger Instantiated for : " + XmlSchemaVerifierImpl.class.getSimpleName());
         } catch (IOException e) {
-            //TODO: ?
+            System.out.println("failed to configure logger of: " + XmlSchemaVerifierImpl.class.getSimpleName());
         }
     }
 
-    public XmlVerifierState isMachineConfigurationValid(CTEEnigma cteEnigma) {
+    public XmlVerifierState isXmlSchemaValid(CTEEnigma cteEnigma) {
         CTEMachine machine = cteEnigma.getCTEMachine();
+        CTEDecipher decipher = cteEnigma.getCTEDecipher();
+        XmlVerifierState isMachineValid = isMachineConfigurationValid(machine);
+        if(isMachineValid != XmlVerifierState.VALID){
+            return isMachineValid;
+        }
+        XmlVerifierState isDecipherValid = isDecipherConfigurationValid(decipher);
+        return isDecipherValid;
+    }
+
+    private XmlVerifierState isDecipherConfigurationValid(CTEDecipher cteDecipher) {
+        int agentsCount = cteDecipher.getAgents();
+        XmlVerifierState state;
+        int MIN_AGENT_COUNT = 2;
+        int MAX_AGENT_COUNT = 50;
+        if(agentsCount < MIN_AGENT_COUNT || agentsCount > MAX_AGENT_COUNT){
+            state = XmlVerifierState.ERROR_ILLEGAL_AGENTS_NUMBER;
+        }
+        else {
+            state= XmlVerifierState.VALID;
+        }
+        log.debug("decipher check xml validity: " + state.getMessage());
+        return state;
+    }
+
+    private XmlVerifierState isMachineConfigurationValid(CTEMachine machine) {
         String ABC = machine.getABC();
         List<CTERotor> rotors = machine.getCTERotors().getCTERotor();
         List<CTEReflector> reflectors = machine.getCTEReflectors().getCTEReflector();
