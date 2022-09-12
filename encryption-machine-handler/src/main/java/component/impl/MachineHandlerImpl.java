@@ -7,6 +7,7 @@ import main.java.dto.MachineState;
 import main.java.dto.EncryptionInfoHistory;
 import main.java.enums.XmlVerifierState;
 import main.java.generictype.MappingPair;
+import main.java.service.InventoryService;
 import main.java.service.XmlFileLoader;
 import main.java.component.*;
 import main.java.enums.ReflectorsId;
@@ -79,6 +80,7 @@ public class MachineHandlerImpl implements MachineHandler {
         this.reflectorsInventory = null;
         this.plugBoardInventory = null;
         this.rotorsInventory = null;
+        InventoryService.setReflectorsInventory(null);
     }
 
     @Override
@@ -261,6 +263,7 @@ public class MachineHandlerImpl implements MachineHandler {
                 Reflector reflector = new ReflectorImpl(cteReflector);
                 reflectorsInventory.add(reflector);
             }
+            InventoryService.setReflectorsInventory(reflectorsInventory);
             if(ioWheelInventory == null || plugBoardInventory == null || rotorsInventory == null
                     || rotorsInventory.size() <= 0 || reflectorsInventory == null || reflectorsInventory.size()<=0){
                 log.error("Machine Handler - failed to create an inventory item");

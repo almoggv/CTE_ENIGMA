@@ -32,4 +32,5 @@ public class MachineState implements DeepCloneable , Serializable {
 
         return new MachineState(recreatedReflectorsId,recreatedRotorIds,recreatedRotorsHeadsInitialValues,recreatedPlugMapping,recreatedNotchDistancesFromHead);
     }
+
 }

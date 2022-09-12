@@ -77,14 +77,20 @@ public class DecryptionAgentImpl implements DecryptionAgent {
         }
         for (MachineState initialState : startingConfigurations ) {
             long startEncryptionTime = System.nanoTime();
+            MachineState stateBeforeEncryption = initialState;
+//            System.out.println(initialState);
             decryptionCandidate = runSingleDecryption(initialState,this.inputToDecrypt);
             long endEncryptionTime = System.nanoTime();
             long encryptionTime = endEncryptionTime - startEncryptionTime;
             if(decryptionCandidate.isPresent()){
-                AgentDecryptionInfo decryptionInfo = new AgentDecryptionInfo(this.id,initialState,inputToDecrypt,decryptionCandidate.get(),encryptionTime);
+                AgentDecryptionInfo decryptionInfo = new AgentDecryptionInfo(this.id,stateBeforeEncryption,inputToDecrypt,decryptionCandidate.get(),encryptionTime);
                 decryptionInfoProperty.setValue(decryptionInfo);
                 potentialCandidates.add(decryptionInfo);
-                log.info("found a candidate: "+ decryptionCandidate.get());
+//                log.info("found a candidate: "+ decryptionCandidate.get());
+                synchronized (this){
+                    System.out.println("found a candidate: " + inputToDecrypt + "-->"+ decryptionCandidate.get() + " ---- ref: " + stateBeforeEncryption.getReflectorId() + " ,init pos: "+ stateBeforeEncryption.getRotorsHeadsInitialValues()) ;
+//                    System.out.println(initialState);
+                }
             }
             //TODO: update progress
 //            index++;
@@ -100,11 +106,13 @@ public class DecryptionAgentImpl implements DecryptionAgent {
     }
 
     private Optional<String> runSingleDecryption(MachineState machineInitialState, String inputToDecrypt){
+//        MachineState init = machineInitialState.getDeepClone();
         encryptionMachine.setMachineState(machineInitialState);
         String decryptionResult;
 
         decryptionResult = encryptionMachine.decrypt(inputToDecrypt);
-        if(checkIfInDictionary(decryptionResult)){
+        if(checkIfInDictionary(decryptionResult)) {
+            System.out.println(decryptionResult +" by: " /*init*/);
             return Optional.of(decryptionResult);
         }
         return Optional.empty();

@@ -57,11 +57,11 @@ public class DecryptionManagerImpl implements DecryptionManager {
     public void bruteForceDecryption(String sourceInput) {
         AgentWorkManager agentWorkManager = new AgentWorkManagerImpl(this.threadPoolService,this.machineHandler,this.difficultyLevel,this.taskSize, sourceInput);
         Thread agentManagerThread = new Thread(agentWorkManager,"agentManagerThread");
-        agentWorkManager.getDecryptionCandidatesProperty().addListener((observable, oldValue, newValue) -> {
-            System.out.println("oldVal: " + oldValue);
-            System.out.println("----------------------------------------------------------------------------------------------");
-            System.out.println("newVal: " +newValue);
-        });
+//        agentWorkManager.getDecryptionCandidatesProperty().addListener((observable, oldValue, newValue) -> {
+//            System.out.println("oldVal: " + oldValue);
+//            System.out.println("----------------------------------------------------------------------------------------------");
+//            System.out.println("newVal: " +newValue);
+//        });
         agentManagerThread.start();
         try{
             agentManagerThread.join();

@@ -30,6 +30,8 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
     private final ThreadPoolExecutor threadPoolExecutor;
     private final MachineHandler machineHandler;
     private final String inputToDecrypt;
+    private final int numberOfReflectorsAvailable;
+    private final List<String> lastPosibleInitialPos;
     @Getter private DecryptionDifficultyLevel difficultyLevel = DecryptionDifficultyLevel.EASY;
     private int taskSize;
     private int totalWorkToDo = -1;
@@ -38,6 +40,7 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
     private int abcSize;
     private int numberOfRotorsInUse;
     private int numberOfRotorsAvailable;
+    private int numOfPossibleInitialPos;
     private MachineState lastCreatedState;
     @Getter private BooleanProperty isWorkCompletedProperty = new SimpleBooleanProperty();
     @Getter private BooleanProperty isAllWorkAssignedProperty = new SimpleBooleanProperty();
@@ -69,6 +72,7 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
         this.abcSize = machineHandler.getInventoryInfo().get().getABC().length();
         this.numberOfRotorsInUse = machineHandler.getInventoryInfo().get().getNumOfRotorsInUse();
         this.numberOfRotorsAvailable = machineHandler.getInventoryInfo().get().getNumOfAvailableRotors();
+        this.numberOfReflectorsAvailable = machineHandler.getInventoryInfo().get().getNumOfAvailableReflectors();
         this.lastCreatedState = machineHandler.getInitialMachineState().get();
         isWorkCompletedProperty.setValue(false);
         isAllWorkAssignedProperty.setValue(false);
@@ -77,19 +81,22 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
         //Calculate at the end
         totalWorkToDo = calcTotalWorkToDoByDifficulty();
         assignedWorkProgressProperty.set(new MappingPair<>(0, totalWorkToDo));
+        //todo - check best way
+        numOfPossibleInitialPos = (int) Math.pow(abcSize, numberOfRotorsInUse);
+        this.lastPosibleInitialPos = createRotorLastStartingPosition();
     }
 
     private int calcTotalWorkToDoByDifficulty() {
         int result = 0;
         switch(difficultyLevel) {
             case INTERMEDIATE:
-                result = ((int) Math.pow(abcSize,numberOfRotorsInUse)) * machineHandler.getInventoryInfo().get().getNumOfAvailableReflectors();
+                result = ((int) Math.pow(abcSize,numberOfRotorsInUse)) * numberOfReflectorsAvailable;
                 break;
             case HARD:
-                result = ((int) Math.pow(abcSize,numberOfRotorsInUse)) * machineHandler.getInventoryInfo().get().getNumOfAvailableReflectors() * MathService.factorial(numberOfRotorsInUse);
+                result = ((int) Math.pow(abcSize,numberOfRotorsInUse)) * numberOfReflectorsAvailable * MathService.factorial(numberOfRotorsInUse);
                 break;
             case IMPOSSIBLE:
-                result = ((int) Math.pow(abcSize,numberOfRotorsInUse)) * machineHandler.getInventoryInfo().get().getNumOfAvailableReflectors() *  MathService.factorial(numberOfRotorsInUse) * MathService.nChooseK(numberOfRotorsInUse,numberOfRotorsAvailable);
+                result = ((int) Math.pow(abcSize,numberOfRotorsInUse)) * numberOfReflectorsAvailable *  MathService.factorial(numberOfRotorsInUse) * MathService.nChooseK(numberOfRotorsInUse,numberOfRotorsAvailable);
                 break;
             case EASY:
             default:
@@ -106,6 +113,13 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
         return startingPos;
     }
 
+    private List<String> createRotorLastStartingPosition(){
+        List<String> startingPos = new ArrayList<>();
+        for (int i = 0; i < numberOfRotorsInUse; i++) {
+            startingPos.add(abc.substring(abcSize-1,abcSize));
+        }
+        return startingPos;
+    }
     private List<Integer> createRotorIDsPlacement(){
 
 //        List<Integer> rotorPlacement = new ArrayList<>()
@@ -174,13 +188,9 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
     }
 
     private List<MachineState> getNextIntermediateWorkBatch() {
-        throw new NotImplementedException();
-    }
-
-    private List<MachineState> getNextEasyWorkBatch() {
+    //need to check with diff reflectors
         List<MachineState> newWorkBatch = new ArrayList<>();
-//        int currWorkDispatched = fromLettersToBase10(lastCreatedState.getRotorsHeadsInitialValues(),abcSize);
-//        int maxWorkToDispatch = totalWorkToDo;
+
         int currWorkDispatched = assignedWorkProgressProperty.get().getLeft();
         int maxWorkToDispatch = assignedWorkProgressProperty.get().getRight();
         int currTaskSize = Math.min((maxWorkToDispatch - currWorkDispatched), taskSize);
@@ -188,6 +198,39 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
         for (int i = 0; i < currTaskSize; i++) {
             MachineState newWorkState = lastCreatedState.getDeepClone();
             newWorkBatch.add(newWorkState);
+
+            if (lastCreatedState.getRotorsHeadsInitialValues().equals(lastPosibleInitialPos)){
+                lastCreatedState.setReflectorId(advanceReflector());
+            }
+            lastCreatedState.setRotorsHeadsInitialValues(advanceRotorPositions(lastCreatedState.getRotorsHeadsInitialValues()));
+        }
+        currWorkDispatched += currTaskSize;
+        assignedWorkProgressProperty.set(new MappingPair<>(currWorkDispatched,maxWorkToDispatch));
+        isAllWorkAssignedProperty.setValue(currWorkDispatched == maxWorkToDispatch);
+        return newWorkBatch;
+    }
+
+    private ReflectorsId advanceReflector() {
+        MachineState machineState = lastCreatedState.getDeepClone();
+        ReflectorsId lastRefId = machineState.getReflectorId();
+        if(lastRefId != ReflectorsId.getByNum(numberOfReflectorsAvailable)){
+            return ReflectorsId.getByNum(lastRefId.getId() + 1);
+        }
+        //todo - change to optional? deal with diff
+        return null;
+    }
+
+    private List<MachineState> getNextEasyWorkBatch() {
+        List<MachineState> newWorkBatch = new ArrayList<>();
+
+        int currWorkDispatched = assignedWorkProgressProperty.get().getLeft();
+        int maxWorkToDispatch = assignedWorkProgressProperty.get().getRight();
+        int currTaskSize = Math.min((maxWorkToDispatch - currWorkDispatched), taskSize);
+
+        for (int i = 0; i < currTaskSize; i++) {
+            MachineState newWorkState = lastCreatedState.getDeepClone();
+            newWorkBatch.add(newWorkState);
+
             lastCreatedState.setRotorsHeadsInitialValues(advanceRotorPositions(lastCreatedState.getRotorsHeadsInitialValues()));
         }
         currWorkDispatched += currTaskSize;
@@ -226,9 +269,7 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
     private DecryptionAgent getNextAgent(){
         List<MachineState> workForAgent = getNextWorkBatch();
         EncryptionMachine handler = machineHandler.getEncryptionMachineClone();
-        log.debug("Agent manager: got clone of machine");
         DecryptionAgent newAgent = new DecryptionAgentImpl(handler);
-        log.debug("Agent manager: created new agent");
         newAgent.assignWork(workForAgent,this.inputToDecrypt);
         log.debug("Agent manager: assigned work to agent");
 
@@ -262,8 +303,8 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
                 log.debug("AgentWorkManager - threadPoolExecutor remainingCapacity of Queue = " + threadPoolExecutor.getQueue().remainingCapacity());
                 DecryptionAgent agent = getNextAgent();
                 threadPoolExecutor.execute(agent);
-                log.debug(" Added agent to thread pool: "+ agent.getId());
-                System.out.println(++i + "Added agent to thread pool: "+ agent.getId());
+//                log.debug(" Added agent to thread pool: "+ agent.getId());
+//                System.out.println(++i + "Added agent to thread pool: "+ agent.getId());
             }
         }
         threadPoolExecutor.shutdown();

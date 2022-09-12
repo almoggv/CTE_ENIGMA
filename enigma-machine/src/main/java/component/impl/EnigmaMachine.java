@@ -3,6 +3,7 @@ package main.java.component.impl;
 import main.java.component.*;
 import main.java.dto.MachineState;
 import main.java.generictype.MappingPair;
+import main.java.service.InventoryService;
 import main.java.service.XmlFileLoader;
 import main.java.service.PropertiesService;
 import org.apache.log4j.Logger;
@@ -10,6 +11,7 @@ import org.apache.log4j.PropertyConfigurator;
 
 import java.io.IOException;
 import java.util.*;
+import java.util.function.Predicate;
 
 public class EnigmaMachine implements EncryptionMachine {
     private static final Logger log = Logger.getLogger(EnigmaMachine.class);
@@ -168,6 +170,8 @@ public class EnigmaMachine implements EncryptionMachine {
             }
             this.setRotorsStartingPosition(rotorsHeadsInitialValues);
         }
+        Predicate<Reflector> idReflectorPredicate = (reflector) -> reflector.getId() == machineState.getReflectorId();
+        this.reflector = InventoryService.getReflectorsInventory().stream().filter(idReflectorPredicate).findFirst().orElse(null);
     }
 
     @Override
