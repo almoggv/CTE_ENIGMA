@@ -87,10 +87,10 @@ public class DecryptionAgentImpl implements DecryptionAgent {
                 log.info("found a candidate: "+ decryptionCandidate.get());
             }
             //TODO: update progress
-            index++;
-            if(index % PROGRESS_UPDATE_INTERVAL == 0){
-                progressProperty.setValue(new MappingPair<>(index,startingConfigurations.size()));
-            }
+//            index++;
+//            if(index % PROGRESS_UPDATE_INTERVAL == 0){
+//                progressProperty.setValue(new MappingPair<>(index,startingConfigurations.size()));
+//            }
         }
         if(potentialCandidates.size() > 0){
             potentialCandidatesListProperty.setValue(potentialCandidates);

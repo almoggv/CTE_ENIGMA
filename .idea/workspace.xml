@@ -12,40 +12,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6467e2d7-ff2a-4abb-a198-685a0fcd06aa" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/decryption-manager/src/test/java/decryptionManager/TestDecryptionManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/enigma-machine/src/main/resources/machine-inventory-schema-Ex2/ex2-basic-easy.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/enigma-machine/src/test/java/component/EncryptionMachineTesting.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/enigma-machine/src/test/java/component/PlugBoardTesting.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decryption-manager/decryption-manager.iml" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/decryption-manager.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/decryption-manager/Logs/logging.log" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/Logs/logging.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/decryption-manager/src/main/java/agent/impl/DecryptionAgentImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/src/main/java/agent/impl/DecryptionAgentImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/AgentWorkManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/AgentWorkManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/DecryptionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/DecryptionManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/DictionaryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/DictionaryManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/AgentWorkManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/AgentWorkManagerImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/DecryptionManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/DecryptionManagerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/DictionaryManagerImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/encryption-machine-handler/Logs/logging.log" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/Logs/logging.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/test/java/component/TestSanityMachineHandlerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/src/test/java/component/TestSanityMachineHandlerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/PlugBoardImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/PlugBoardImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/service/XmlSchemaVerifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/service/XmlSchemaVerifier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/service/impl/XmlSchemaVerifierImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/service/impl/XmlSchemaVerifierImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/component/impl/MachineHandlerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/component/impl/MachineHandlerImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/component/impl/SerializationHandlerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/component/impl/SerializationHandlerImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/enums/XmlVerifierState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/verifier/XmlSchemaVerifier.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/encryption-machine-handler/main/java/verifier/impl/XmlSchemaVerifierImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/encryption-machine-handler/test/java/component/TestSanityMachineHandlerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/encryption-machine-handler/test/java/component/TestSanityMachineHandlerImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/EnigmaMachine.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/EnigmaMachine.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/IOWheelImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/IOWheelImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/PlugBoardImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/PlugBoardImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/ReflectorImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/ReflectorImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/RotorImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/java/component/impl/RotorImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/handler/FileConfigurationHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/java/handler/JaxbObjectGenerator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/resources/generated/CTEEnigma.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/resources/generated/CTEEnigma.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/resources/generated/CTEPositioning.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/resources/generated/CTEPositioning.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/resources/generated/ObjectFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/resources/generated/ObjectFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/decryption-manager/src/test/java/decryptionManager/TestDecryptionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/src/test/java/decryptionManager/TestDecryptionManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/resources/machine-inventory-schema-Ex2/ex2-basic-easy.xml" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/resources/machine-inventory-schema-Ex2/ex2-basic-easy.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/agent/impl/DecryptionAgentImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/decryption-manager/main/java/agent/impl/DecryptionAgentImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/DictionaryManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/DictionaryManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/test/java/decryptionManager/TestDecryptionManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/decryption-manager/test/java/decryptionManager/TestDecryptionManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/enigma-machine/main/resources/machine-inventory-schema-Ex2/ex2-basic-easy.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/enigma-machine/main/resources/machine-inventory-schema-Ex2/ex2-basic-easy.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,15 +76,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "last_opened_file_path": "C:/Users/Eliya/Documents/java/CTE/CTE_ENIGMA/enigma-machine/src/main/resources/machine-inventory-schema-Ex2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Eliya/Documents/java/CTE/CTE_ENIGMA/enigma-machine/src/main/resources/machine-inventory-schema-Ex2&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="src.main.java.controller" />
@@ -333,18 +310,17 @@
           <option name="timeStamp" value="437" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/AgentWorkManagerImpl.java</url>
-          <line>259</line>
-          <option name="timeStamp" value="459" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/AgentWorkManagerImpl.java</url>
-          <line>194</line>
-          <option name="timeStamp" value="462" />
+          <url>file://$PROJECT_DIR$/decryption-manager/src/main/java/agent/impl/DecryptionAgentImpl.java</url>
+          <line>80</line>
+          <option name="timeStamp" value="473" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.ClassCastException" package="java.lang" />
           <option name="timeStamp" value="359" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.ArithmeticException" package="java.lang" />
+          <option name="timeStamp" value="463" />
         </breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/user-interface/src/main/java/fxcomponent/ComboBoxItem.java</url>

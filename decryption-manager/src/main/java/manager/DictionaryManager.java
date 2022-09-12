@@ -17,7 +17,7 @@ public class DictionaryManager {
 
     @Getter private static final String DELIMITER = " ";
     private static final String EMPTY_CHAR = "";
-    public void loadDictionary(String absolutePath) throws Exception {
+    public static void loadDictionary(String absolutePath) throws Exception {
         XmlSchemaVerifier xmlSchemaVerifier = new XmlSchemaVerifierImpl();
         try{
             xmlSchemaVerifier.isFileInExistenceAndXML(absolutePath);
@@ -32,7 +32,7 @@ public class DictionaryManager {
         buildDictionary(cteEnigma);
     }
 
-    private void buildDictionary(CTEEnigma cteEnigma) {
+    private static void buildDictionary(CTEEnigma cteEnigma) {
         CTEDecipher cteDecipher = cteEnigma.getCTEDecipher();
         String dictionaryWordsString = cteDecipher.getCTEDictionary().getWords();
         String excludeCharsString = cteDecipher.getCTEDictionary().getExcludeChars();
@@ -48,10 +48,10 @@ public class DictionaryManager {
         }
     }
 
-    private String cleanWord(String word) {
+    private static String cleanWord(String word) {
         for (int i = 0; i < word.length(); i++) {
             for (String excludedChar : excludeChars) {
-                word = word.replace(excludedChar, EMPTY_CHAR);
+                word = word.trim().replace(excludedChar, EMPTY_CHAR).toUpperCase();
             }
         }
         return word;

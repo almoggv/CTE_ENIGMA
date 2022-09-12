@@ -70,5 +70,9 @@ public class DecryptionManagerImpl implements DecryptionManager {
 
         }
     }
-
+//
+//
+//    private int calcTaskSize(){
+//        return -1;
+//    }
 }
