@@ -41,6 +41,8 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
     private int numberOfRotorsInUse;
     private int numberOfRotorsAvailable;
     private int numOfPossibleInitialPos;
+
+    List<List<Integer>> possibleRotorIdsList;
     private MachineState lastCreatedState;
     @Getter private BooleanProperty isWorkCompletedProperty = new SimpleBooleanProperty();
     @Getter private BooleanProperty isAllWorkAssignedProperty = new SimpleBooleanProperty();
@@ -82,8 +84,24 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
         totalWorkToDo = calcTotalWorkToDoByDifficulty();
         assignedWorkProgressProperty.set(new MappingPair<>(0, totalWorkToDo));
         //todo - check best way
-        numOfPossibleInitialPos = (int) Math.pow(abcSize, numberOfRotorsInUse);
         this.lastPosibleInitialPos = createRotorLastStartingPosition();
+        this.possibleRotorIdsList = CreateIntermediateRotorIDsPlacementList();
+    }
+
+    private List<List<Integer>> CreateIntermediateRotorIDsPlacementList() {
+        List<Integer> rotorsInUse = machineHandler.getMachineState().get().getRotorIds();
+        List<List<Integer>> indexesPermutationsList = MathService.createPermutationList(rotorsInUse.size());
+
+        List<List<Integer>> allRotorIdsPlacement = new ArrayList<>();
+
+        for (List<Integer> indexList : indexesPermutationsList) {
+            List<Integer> singleRotorIdList = new ArrayList<>();
+            for (Integer index : indexList) {
+                singleRotorIdList.add(rotorsInUse.get(index));
+            }
+            allRotorIdsPlacement.add(singleRotorIdList);
+        }
+        return allRotorIdsPlacement;
     }
 
     private int calcTotalWorkToDoByDifficulty() {
@@ -96,6 +114,7 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
                 result = ((int) Math.pow(abcSize,numberOfRotorsInUse)) * numberOfReflectorsAvailable * MathService.factorial(numberOfRotorsInUse);
                 break;
             case IMPOSSIBLE:
+                //todo- check
                 result = ((int) Math.pow(abcSize,numberOfRotorsInUse)) * numberOfReflectorsAvailable *  MathService.factorial(numberOfRotorsInUse) * MathService.nChooseK(numberOfRotorsInUse,numberOfRotorsAvailable);
                 break;
             case EASY:
@@ -120,13 +139,8 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
         }
         return startingPos;
     }
-    private List<Integer> createRotorIDsPlacement(){
-
-//        List<Integer> rotorPlacement = new ArrayList<>()
-        //Use the same rotor ids as in the machineState
-        // just adjust their location
-//        return Arrays.asList(1, 2, 3);
-        throw new NotImplementedException();
+    private List<Integer> createStartingRotorIDsPlacement(){
+        return possibleRotorIdsList.get(0);
     }
 
     private List<Integer> selectRotorIDs(){
@@ -145,13 +159,14 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
                 lastCreatedState.setRotorsHeadsInitialValues(initialPos);
                 break;
             case HARD:
-                rotorsPlacement = createRotorIDsPlacement();
+                rotorsPlacement = createStartingRotorIDsPlacement();
                 lastCreatedState.setRotorIds(rotorsPlacement);
                 lastCreatedState.setReflectorId(reflectorsId);
                 lastCreatedState.setRotorsHeadsInitialValues(initialPos);
                 break;
             case IMPOSSIBLE:
                 rotorsPlacement = selectRotorIDs();
+                System.out.println(rotorsPlacement);
                 lastCreatedState.setRotorIds(rotorsPlacement);
                 lastCreatedState.setReflectorId(reflectorsId);
                 lastCreatedState.setRotorsHeadsInitialValues(initialPos);
@@ -184,11 +199,52 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
     }
 
     private List<MachineState> getNextHardWorkBatch() {
-        throw new NotImplementedException();
+        List<MachineState> newWorkBatch = new ArrayList<>();
+
+        int currWorkDispatched = assignedWorkProgressProperty.get().getLeft();
+        int maxWorkToDispatch = assignedWorkProgressProperty.get().getRight();
+        int currTaskSize = Math.min((maxWorkToDispatch - currWorkDispatched), taskSize);
+        List<Integer> lastPermutationOfIds = possibleRotorIdsList.get(possibleRotorIdsList.size() - 1);
+        for (int i = 0; i < currTaskSize; i++) {
+            MachineState newWorkState = lastCreatedState.getDeepClone();
+            newWorkBatch.add(newWorkState);
+            //if zz - advance ref
+            if (lastCreatedState.getRotorsHeadsInitialValues().equals(lastPosibleInitialPos)){
+                //if last reflector - advance rotor, reset reflectorsId
+                if(lastCreatedState.getReflectorId().equals(ReflectorsId.getByNum(numberOfReflectorsAvailable)))
+                {
+                    lastCreatedState.setRotorIds(advanceRotorIds(lastCreatedState.getRotorIds()));
+                    lastCreatedState.setReflectorId(ReflectorsId.I);
+//                    System.out.println("Ref: "+ lastCreatedState.getReflectorId() +"Rot: " + lastCreatedState.getRotorIds() );
+                }
+                else{
+                lastCreatedState.setReflectorId(advanceReflector());
+                }
+            }
+                lastCreatedState.setRotorsHeadsInitialValues(advanceRotorPositions(lastCreatedState.getRotorsHeadsInitialValues()));
+//        System.out.println(lastCreatedState);
+        }
+        currWorkDispatched += currTaskSize;
+//        System.out.println(currWorkDispatched);
+        assignedWorkProgressProperty.set(new MappingPair<>(currWorkDispatched,maxWorkToDispatch));
+        isAllWorkAssignedProperty.setValue(currWorkDispatched == maxWorkToDispatch);
+        if(isAllWorkAssignedProperty.get()){
+            System.out.println("all work assigned: " + currWorkDispatched + " / " +maxWorkToDispatch);
+        }
+        return newWorkBatch;
+    }
+
+    private List<Integer> advanceRotorIds(List<Integer> ids) {
+        List<Integer> nextIds;
+        if(!ids.equals(possibleRotorIdsList.get(possibleRotorIdsList.size()-1))){
+            nextIds = possibleRotorIdsList.get(possibleRotorIdsList.indexOf(ids) + 1);
+            return nextIds;
+        }
+        //todo - change to optional? deal with diff
+        return null;
     }
 
     private List<MachineState> getNextIntermediateWorkBatch() {
-    //need to check with diff reflectors
         List<MachineState> newWorkBatch = new ArrayList<>();
 
         int currWorkDispatched = assignedWorkProgressProperty.get().getLeft();
@@ -291,7 +347,6 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
         }));
         return newAgent;
     }
-
 
     @Override
     public void run() {

@@ -232,4 +232,62 @@ found a candidate: EP!RF-->WATER ---- ref: III ,init pos: [ , ?, A]
  */
 
     }
+
+    @Test
+    public void testHardBruteSmallABC() throws Exception {
+        MachineHandler machineHandler = new MachineHandlerImpl();
+        String path = "C:\\Users\\Eliya\\Documents\\java\\CTE\\CTE_ENIGMA\\enigma-machine\\src\\main\\resources\\machine-inventory-schema-Ex2\\ex2-basic-easy.xml";
+
+        machineHandler.buildMachinePartsInventory(path);
+
+        ReflectorsId refid = ReflectorsId.I;
+        List<MappingPair<String,String>> plugBoard = new ArrayList<MappingPair<String,String>>();
+        List<Integer> rotorsIds = Arrays.asList(1,2);
+
+        String rotorsstartingPos = String.valueOf(machineHandler.verifyInputInAbcAndFix("AF").get());
+
+        machineHandler.assembleMachine(refid, rotorsIds,rotorsstartingPos,plugBoard);
+
+        System.out.println("Initial Machine State:" + machineHandler.getMachineState());
+
+        int numberOfAgents = 10 ;
+        int taskSize = 2;
+
+        DictionaryManager.loadDictionary(path);
+
+
+        String encrypted = machineHandler.encrypt("ABBA");
+        DecryptionManager manager = new DecryptionManagerImpl(machineHandler,  numberOfAgents, DecryptionDifficultyLevel.HARD, taskSize);
+
+        manager.bruteForceDecryption(encrypted);
+
+    }
+
+    @Test
+    public void testHardBruteEx2Basic() throws Exception {
+        MachineHandler machineHandler = new MachineHandlerImpl();
+        String path = "C:\\Users\\Eliya\\Documents\\java\\CTE\\CTE_ENIGMA\\enigma-machine\\src\\main\\resources\\machine-inventory-schema-Ex2\\ex2-basic.xml";
+
+        machineHandler.buildMachinePartsInventory(path);
+
+        ReflectorsId refid = ReflectorsId.III;
+        List<MappingPair<String,String>> plugBoard = new ArrayList<MappingPair<String,String>>();
+        List<Integer> rotorsIds = Arrays.asList(1,2,3);
+        String rotorsstartingPos = String.valueOf(machineHandler.verifyInputInAbcAndFix("A? ").get());
+
+        machineHandler.assembleMachine(refid, rotorsIds,rotorsstartingPos,plugBoard);
+        System.out.println("Initial Machine State:" + machineHandler.getMachineState());
+
+        String input = "water";
+//        String input = "water under their battle";
+        String encrypted = machineHandler.encrypt(input);
+        System.out.println("input: " +input + " encrypted to: " + encrypted);
+
+        int numberOfAgents = 10 ;
+        int taskSize = 5;
+
+        DictionaryManager.loadDictionary(path);
+        DecryptionManager manager = new DecryptionManagerImpl(machineHandler,  numberOfAgents, DecryptionDifficultyLevel.HARD, taskSize) ;
+        manager.bruteForceDecryption(encrypted);
+    }
 }

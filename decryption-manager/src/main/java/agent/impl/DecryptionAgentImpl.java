@@ -88,7 +88,7 @@ public class DecryptionAgentImpl implements DecryptionAgent {
                 potentialCandidates.add(decryptionInfo);
 //                log.info("found a candidate: "+ decryptionCandidate.get());
                 synchronized (this){
-                    System.out.println("found a candidate: " + inputToDecrypt + "-->"+ decryptionCandidate.get() + " ---- ref: " + stateBeforeEncryption.getReflectorId() + " ,init pos: "+ stateBeforeEncryption.getRotorsHeadsInitialValues()) ;
+                    System.out.println("found a candidate: " + inputToDecrypt + "-->"+ decryptionCandidate.get() + " ---- ref: " + stateBeforeEncryption.getReflectorId() + " rot: "+ stateBeforeEncryption.getRotorIds() +" ,init pos: "+ stateBeforeEncryption.getRotorsHeadsInitialValues()) ;
 //                    System.out.println(initialState);
                 }
             }

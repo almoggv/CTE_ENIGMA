@@ -12,7 +12,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6467e2d7-ff2a-4abb-a198-685a0fcd06aa" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/service/InventoryService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/decryption-manager/src/test/java/TestMathService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/decryption-manager/Logs/logging.log" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/Logs/logging.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/decryption-manager/Logs/logging.log.1" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/Logs/logging.log.1" afterDir="false" />
@@ -27,16 +27,12 @@
       <change beforePath="$PROJECT_DIR$/decryption-manager/Logs/logging.log.9" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/Logs/logging.log.9" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/decryption-manager/src/main/java/agent/impl/DecryptionAgentImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/src/main/java/agent/impl/DecryptionAgentImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/AgentWorkManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/AgentWorkManagerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/DecryptionManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/DecryptionManagerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/decryption-manager/src/main/java/service/MathService.java" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/src/main/java/service/MathService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/decryption-manager/src/test/java/decryptionManager/TestDecryptionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/src/test/java/decryptionManager/TestDecryptionManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/impl/MachineHandlerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/encryption-machine-handler/src/main/java/component/impl/MachineHandlerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/EncryptionMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/EncryptionMachine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/EnigmaMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/EnigmaMachine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enigma-machine/src/main/java/dto/MachineState.java" beforeDir="false" afterPath="$PROJECT_DIR$/enigma-machine/src/main/java/dto/MachineState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/agent/impl/DecryptionAgentImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/decryption-manager/main/java/agent/impl/DecryptionAgentImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/impl/AgentWorkManagerImpl$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/impl/AgentWorkManagerImpl$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/impl/AgentWorkManagerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/impl/AgentWorkManagerImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/impl/DecryptionManagerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/impl/DecryptionManagerImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/service/MathService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/decryption-manager/main/java/service/MathService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/test/java/decryptionManager/TestDecryptionManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/decryption-manager/test/java/decryptionManager/TestDecryptionManager.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -136,7 +132,39 @@
       <recent name="test.java.component" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TestDecryptionManager.testIntermediateBruteEx2Basic">
+  <component name="RunManager" selected="JUnit.TestDecryptionManager.testHardBruteSmallABC">
+    <configuration name="TestDecryptionManager.testHardBruteEx2Basic" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="decryption-manager" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.java.decryptionManager.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test.java.decryptionManager" />
+      <option name="MAIN_CLASS_NAME" value="test.java.decryptionManager.TestDecryptionManager" />
+      <option name="METHOD_NAME" value="testHardBruteEx2Basic" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestDecryptionManager.testHardBruteSmallABC" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="decryption-manager" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.java.decryptionManager.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test.java.decryptionManager" />
+      <option name="MAIN_CLASS_NAME" value="test.java.decryptionManager.TestDecryptionManager" />
+      <option name="METHOD_NAME" value="testHardBruteSmallABC" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TestDecryptionManager.testIntermediateBruteEx2Basic" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="decryption-manager" />
       <extension name="coverage">
@@ -153,65 +181,33 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestDecryptionManager.testIntermediateBruteSmallABC" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestMathService.perm" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="decryption-manager" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="test.java.decryptionManager.*" />
+          <option name="PATTERN" value="test.java.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="test.java.decryptionManager" />
-      <option name="MAIN_CLASS_NAME" value="test.java.decryptionManager.TestDecryptionManager" />
-      <option name="METHOD_NAME" value="testIntermediateBruteSmallABC" />
+      <option name="PACKAGE_NAME" value="test.java" />
+      <option name="MAIN_CLASS_NAME" value="test.java.TestMathService" />
+      <option name="METHOD_NAME" value="perm" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestDecryptionManager.testIntermediateBruteSmallABCRefI" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestMathService.permutation" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="decryption-manager" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="test.java.decryptionManager.*" />
+          <option name="PATTERN" value="test.java.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="test.java.decryptionManager" />
-      <option name="MAIN_CLASS_NAME" value="test.java.decryptionManager.TestDecryptionManager" />
-      <option name="METHOD_NAME" value="testIntermediateBruteSmallABCRefI" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestDecryptionManager.testIntermediateBruteSmallABCRefII" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="decryption-manager" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test.java.decryptionManager.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="test.java.decryptionManager" />
-      <option name="MAIN_CLASS_NAME" value="test.java.decryptionManager.TestDecryptionManager" />
-      <option name="METHOD_NAME" value="testIntermediateBruteSmallABCRefII" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestDecryptionManager.testReflectors" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="decryption-manager" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test.java.decryptionManager.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="test.java.decryptionManager" />
-      <option name="MAIN_CLASS_NAME" value="test.java.decryptionManager.TestDecryptionManager" />
-      <option name="METHOD_NAME" value="testReflectors" />
+      <option name="PACKAGE_NAME" value="test.java" />
+      <option name="MAIN_CLASS_NAME" value="test.java.TestMathService" />
+      <option name="METHOD_NAME" value="permutation" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -232,11 +228,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TestDecryptionManager.testHardBruteSmallABC" />
+        <item itemvalue="JUnit.TestDecryptionManager.testHardBruteEx2Basic" />
+        <item itemvalue="JUnit.TestMathService.perm" />
+        <item itemvalue="JUnit.TestMathService.permutation" />
         <item itemvalue="JUnit.TestDecryptionManager.testIntermediateBruteEx2Basic" />
-        <item itemvalue="JUnit.TestDecryptionManager.testIntermediateBruteSmallABCRefII" />
-        <item itemvalue="JUnit.TestDecryptionManager.testIntermediateBruteSmallABCRefI" />
-        <item itemvalue="JUnit.TestDecryptionManager.testIntermediateBruteSmallABC" />
-        <item itemvalue="JUnit.TestDecryptionManager.testReflectors" />
       </list>
     </recent_temporary>
   </component>
@@ -292,11 +288,6 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/encryption-machine-handler/src/test/java/component/TestSerializationHandlerImpl.java</url>
-          <line>42</line>
-          <option name="timeStamp" value="210" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/encryption-machine-handler/src/test/java/component/TestSerializationHandlerImpl.java</url>
           <line>57</line>
           <option name="timeStamp" value="211" />
         </line-breakpoint>
@@ -333,19 +324,8 @@
         <line-breakpoint enabled="true" type="java-line">
           <condition expression="i==17" language="JAVA" />
           <url>file://$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/AgentWorkManagerImpl.java</url>
-          <line>303</line>
+          <line>358</line>
           <option name="timeStamp" value="490" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/decryption-manager/src/main/java/agent/impl/DecryptionAgentImpl.java</url>
-          <line>114</line>
-          <option name="timeStamp" value="503" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <condition expression="machineInitialState.getReflectorId() == ReflectorsId.II" language="JAVA" custom="main.java.enums.ReflectorsId" />
-          <url>file://$PROJECT_DIR$/decryption-manager/src/main/java/agent/impl/DecryptionAgentImpl.java</url>
-          <line>109</line>
-          <option name="timeStamp" value="504" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.ClassCastException" package="java.lang" />
@@ -363,15 +343,6 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="408" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/decryption-manager/src/test/java/decryptionManager/TestDecryptionManager.java</url>
-          <line>114</line>
-          <properties class="test.java.decryptionManager.TestDecryptionManager" method="testIntermediateBruteSmallABCRefII">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="500" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -392,9 +363,8 @@
     </pin-to-top-manager>
     <watches-manager>
       <configuration name="JUnit">
-        <watch expression="((EnigmaMachine)((MachineHandlerImpl)((TestSanityMachineHandlerImpl)this).machineHandler).encryptionMachine).rotors" language="JAVA" custom="main.java.component.impl.MachineHandlerImpl,main.java.component.impl.EnigmaMachine,test.java.component.TestSanityMachineHandlerImpl" />
         <watch expression="((EnigmaMachine)((MachineHandlerImpl)machineHandler).encryptionMachine).plugBoard" custom="main.java.component.impl.MachineHandlerImpl,main.java.component.impl.EnigmaMachine" />
-        <watch expression="this" />
+        <watch expression="this" language="JAVA" />
       </configuration>
       <configuration name="Application">
         <watch expression="lastSelected" language="JAVA" />
