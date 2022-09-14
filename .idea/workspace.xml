@@ -11,11 +11,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6467e2d7-ff2a-4abb-a198-685a0fcd06aa" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/BruteForcePageController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-interface/src/main/resources/css/darkTheme.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-interface/src/main/resources/css/lightTheme.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/service/ResourceLocationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/service/ResourceLocationService.java" afterDir="false" />
+    <list default="true" id="6467e2d7-ff2a-4abb-a198-685a0fcd06aa" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,7 +23,6 @@
         <option value="Kotlin Class" />
         <option value="Enum" />
         <option value="Interface" />
-        <option value="CSS File" />
         <option value="Class" />
       </list>
     </option>
@@ -69,16 +64,6 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "last_opened_file_path": "C:/Users/Eliya/Documents/java/CTE/CTE_ENIGMA/user-interface/src/main/resources/css/lightTheme.css",
-    "list.type.of.created.stylesheet": "CSS",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2581864",
-    "two.files.diff.last.used.file": "C:/Users/Eliya/Documents/java/CTE/CTE_ENIGMA/user-interface/src/main/resources/css/lightTheme.css"
-  }
-}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="src.main.java.controller" />
@@ -115,7 +100,20 @@
       <recent name="test.java.component" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TestDecryptionManager.testEasyBruteEx2Basic">
+  <component name="RunManager" selected="Application.GuiApplication">
+    <configuration name="GuiApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="src.main.java.ui.GuiApplication" />
+      <module name="user-interface" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="src.main.java.ui.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TestDecryptionManager.testEasyBruteEx2Basic" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="decryption-manager" />
       <extension name="coverage">
@@ -143,22 +141,6 @@
       <option name="PACKAGE_NAME" value="test.java.decryptionManager" />
       <option name="MAIN_CLASS_NAME" value="test.java.decryptionManager.TestDecryptionManager" />
       <option name="METHOD_NAME" value="testHardBruteEx2Basic" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestDecryptionManager.testHardBruteSmallABC" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="decryption-manager" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test.java.decryptionManager.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="test.java.decryptionManager" />
-      <option name="MAIN_CLASS_NAME" value="test.java.decryptionManager.TestDecryptionManager" />
-      <option name="METHOD_NAME" value="testHardBruteSmallABC" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -211,11 +193,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.GuiApplication" />
         <item itemvalue="JUnit.TestDecryptionManager.testEasyBruteEx2Basic" />
         <item itemvalue="JUnit.TestDecryptionManager.testImpossibleBruteSmallABC" />
         <item itemvalue="JUnit.TestDecryptionManager.testHardBruteEx2Basic" />
         <item itemvalue="JUnit.TestDecryptionManager.testIntermediateBruteEx2Basic" />
-        <item itemvalue="JUnit.TestDecryptionManager.testHardBruteSmallABC" />
       </list>
     </recent_temporary>
   </component>
@@ -337,15 +319,6 @@
           </properties>
           <option name="timeStamp" value="408" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/user-interface/src/main/java/controller/AppController.java</url>
-          <line>160</line>
-          <properties class="src.main.java.controller.AppController" method="loadCssFile">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="607" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>
@@ -354,7 +327,6 @@
         <PinnedItemInfo parentTag="main.java.component.impl.ReflectorImpl" memberName="id" />
         <PinnedItemInfo parentTag="javafx.beans.property.SimpleBooleanProperty" memberName="listener" />
         <PinnedItemInfo parentTag="main.java.component.impl.EnigmaMachine" memberName="plugBoard" />
-        <PinnedItemInfo parentTag="javafx.scene.control.ChoiceBox$3" memberName="this$0" />
         <PinnedItemInfo parentTag="javafx.beans.property.SimpleBooleanProperty" memberName="value" />
         <PinnedItemInfo parentTag="main.resources.generated.CTEReflectors" memberName="cteReflector" />
         <PinnedItemInfo parentTag="main.java.component.impl.MachineHandlerImpl" memberName="reflectorsInventory" />
@@ -369,10 +341,6 @@
         <watch expression="((EnigmaMachine)((MachineHandlerImpl)machineHandler).encryptionMachine).plugBoard" custom="main.java.component.impl.MachineHandlerImpl,main.java.component.impl.EnigmaMachine" />
         <watch expression="this" language="JAVA" />
       </configuration>
-      <configuration name="Application">
-        <watch expression="themeChoiceBox" language="JAVA" />
-        <watch expression="((HeaderController)this).themeChoiceBox" custom="src.main.java.controller.HeaderController" />
-      </configuration>
     </watches-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
@@ -380,11 +348,11 @@
     <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/CTE_ENIGMA$src_main_java_Main.ic" NAME="src.main.java.Main Coverage Results" MODIFIED="1660063306935" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>src.main.java.*</FILTER>
-    </SUITE>
     <SUITE FILE_PATH="coverage/CTE_ENIGMA$Main.ic" NAME="Main Coverage Results" MODIFIED="1660555486778" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>src.main.java.ui.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/CTE_ENIGMA$src_main_java_Main.ic" NAME="src.main.java.Main Coverage Results" MODIFIED="1660063306935" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>src.main.java.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/CTE_JAVA_ENIGMA$Main.ic" NAME="Main Coverage Results" MODIFIED="1660837619611" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>src.main.java.*</FILTER>

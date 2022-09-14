@@ -16,6 +16,8 @@ import lombok.Setter;
 import main.java.component.MachineHandler;
 import main.java.component.impl.MachineHandlerImpl;
 import main.java.dto.InventoryInfo;
+import main.java.manager.DecryptionManager;
+import main.java.manager.impl.DecryptionManagerImpl;
 import src.main.java.service.DataService;
 import src.main.java.service.ResourceLocationService;
 import src.main.java.ui.GuiApplication;
@@ -26,15 +28,16 @@ import java.util.Optional;
 
 public class AppController/* implements Initializable */{
 
-    public ImageView mainViewImage;
     private MachineHandler machineHandler;
     private InventoryInfo inventoryInfo;
+    private DecryptionManager decryptionManager;
+
     @Getter private Stage primaryStage;
 
     @Setter @Getter
     private SimpleBooleanProperty isMachineConfigured;
 
-
+    public ImageView mainViewImage;
     @FXML
     GridPane headerComponentRootPane;
     @Getter
@@ -43,16 +46,12 @@ public class AppController/* implements Initializable */{
     @FXML MachinePageController machinePageController;
     @Getter
     @FXML EncryptPageController encryptPageController;
+    @Getter
+    @FXML private BruteForcePageController bruteForcePageController;
     @FXML private AnchorPane headerWrapAnchorPane;
     @FXML private ScrollPane headerWrapScrollPane;
     @FXML private AnchorPane bodyWrapAnchorPane;
     @FXML private ScrollPane bodyWrapScrollPane;
-
-    //todo - change bodyWrapScrollPane to body component
-    @FXML private MachinePageController machinePageComponentController;
-    @FXML private EncryptPageController encryptPageComponentController;
-//    @FXML private BruteForcePageController bruteForcePageComponentController; //Comment out when created
-
 
 
     public void setMachineHandler(MachineHandler machineHandler) {
@@ -96,9 +95,15 @@ public class AppController/* implements Initializable */{
         encryptPageController.setParentController(this);
         encryptPageController.setMachineHandler(machineHandler);
         encryptPageController.bindComponent(currMachineConfigController);
-        encryptPageController.setMachineHandler(machineHandler);
-
-        //Get a URL to the CSS file and add it to the scene
+        //Load BruteForce Page
+        URL bruteForcePageResource = GuiApplication.class.getResource(ResourceLocationService.getBruteForcePageTemplateFxmlPath());
+        fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(bruteForcePageResource);
+        Parent bruteForcePageComponent = fxmlLoader.load(bruteForcePageResource.openStream());
+        bruteForcePageController = fxmlLoader.getController();
+        bruteForcePageController.setParentController(this);
+        bruteForcePageController.bindComponent(currMachineConfigController);
+        bruteForcePageController.setMachineHandler(machineHandler);
 
         //added picture
         headerWrapScrollPane.setContent(headerComponentRootPaneController.getRootComponent());
@@ -136,6 +141,11 @@ public class AppController/* implements Initializable */{
         bodyWrapScrollPane.setContent(rootComponent);
     }
 
+    public void changeSceneToBruteForce(){
+        Parent rootComponent = bruteForcePageController.getRootComponent();
+        bodyWrapScrollPane.setContent(rootComponent);
+    }
+
     public void makeBodyVisible() {
         bodyWrapScrollPane.setVisible(true);
     }
@@ -164,5 +174,13 @@ public class AppController/* implements Initializable */{
             return;
         }
         primaryStage.getScene().getStylesheets().add(cssAbsolutePath.getPath());
+    }
+
+    public void loadCssFile(String cssAbsolutePath) {
+        if(cssAbsolutePath != null) {
+            primaryStage.getScene().getStylesheets().clear();
+
+            primaryStage.getScene().getStylesheets().add(cssAbsolutePath);
+        }
     }
 }

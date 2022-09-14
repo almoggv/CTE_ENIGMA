@@ -27,7 +27,7 @@ public class GuiApplication extends Application {
         appController.setPrimaryStage(primaryStage);
         Scene primaryScene = new Scene((Parent) primaryScenePane,950, 650);
 //        primaryScene.getStylesheets().add(getClass().getResource(ResourceLocationService.getLightThemeCssPath()).toExternalForm());
-        primaryScene.getStylesheets().add(getClass().getResource(ResourceLocationService.getDarkThemeCssPath()).toExternalForm());
+        primaryScene.getStylesheets().add(getClass().getResource(ResourceLocationService.getLightThemeCssPath()).toExternalForm());
         primaryStage.setTitle("CTE Machine");
         primaryStage.setScene(primaryScene);
         primaryStage.show();

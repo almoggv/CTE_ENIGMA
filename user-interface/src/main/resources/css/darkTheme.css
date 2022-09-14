@@ -2,13 +2,17 @@
     -fx-background-color: #343634;
 }
 
-.rootPane{
+#rootGridPane{
     -fx-background-color: #343634;
 }
-.gridPane{
+
+.RootPane{
     -fx-background-color: #343634;
 }
-.pane{
+.GridPane{
+    -fx-background-color: #343634;
+}
+.Pane{
     -fx-background-color: #343634;
 }
 .scroll-pane{

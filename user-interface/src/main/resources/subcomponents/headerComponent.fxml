@@ -43,7 +43,7 @@
          <children>
             <Button fx:id="machineSceneNavButton" mnemonicParsing="false" onAction="#onChangeSceneToMachineButtonClick" text="Machine" />
             <Button fx:id="encryptSceneNavButton" mnemonicParsing="false" onAction="#onChangeSceneToEncryptButtonClick" text="Encrypt/Decrypt" />
-            <Button fx:id="bruteForceSceneNavButton" mnemonicParsing="false" text="Brute Force" />
+            <Button fx:id="bruteForceSceneNavButton" mnemonicParsing="false" onAction="#onChangeSceneToBruteForceButtonClick" text="Brute Force" />
          </children>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

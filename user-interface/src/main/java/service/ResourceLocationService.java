@@ -20,6 +20,7 @@ public class ResourceLocationService {
     @Getter private static final String encryptPageTemplateFxmlPath = "/src/main/resources/subcomponents/encryptPageTemplate.fxml";
     @Getter private static final String encryptPageTemplateFxmlPath2 = "/src/main/resources/subcomponents/encryptPageTemplate2.fxml";
     @Getter private static final String statisticsAnchorFxmlPath = "/src/main/resources/subcomponents/statisticsGridController.fxml";
+    @Getter private static final String bruteForcePageTemplateFxmlPath = "/src/main/resources/subcomponents/bruteForcePageTemplate.fxml";
 //Images
     @Getter private static final String enigmaMachineIllustration = "/src/main/resources/images/enigma-illustration.png";
     @Getter private static final String enigmaMachineIllustration2 = "/src/main/resources/images/enigma2.jpg";

@@ -62,13 +62,19 @@ public class HeaderController implements Initializable {
             themeChoiceBox.valueProperty().addListener(new ChangeListener<String>() {
                 @Override
                 public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue){
-                    String themeResourcePath = ResourceLocationService.getCssThemeToFileMap().getOrDefault(newValue,"");
+                    String themeResourcePath = ResourceLocationService.getCssThemeToFileMap().getOrDefault(newValue,ResourceLocationService.getDarkThemeCssPath());
                     URL themeUrl = null;
+                    String themeString ="";
                     try{
                         themeUrl = HeaderController.class.getResource(themeResourcePath);
+                        themeString = HeaderController.class.getResource(themeResourcePath).toExternalForm();
+
+                        System.out.println("Theme Url =" + themeUrl);
+                        System.out.println("Theme String Path=" + themeResourcePath);
                     }
                     catch(Exception ignore){}
-                    parentController.loadCssFile(themeUrl);
+//                    parentController.loadCssFile(themeUrl);
+                    parentController.loadCssFile(themeString);
                 }
             });
         }
@@ -109,6 +115,12 @@ public class HeaderController implements Initializable {
     void onChangeSceneToEncryptButtonClick(ActionEvent event) {
         parentController.changeSceneToEncrypt();
     }
+
+    @FXML
+    void onChangeSceneToBruteForceButtonClick(ActionEvent event) {
+        parentController.changeSceneToBruteForce();
+    }
+
 
     private void createNotificationPane(){
         this.notificationPane = new NotificationPane(this.getRootComponent());

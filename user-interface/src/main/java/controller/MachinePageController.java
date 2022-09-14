@@ -30,6 +30,7 @@ public class MachinePageController implements Initializable {
     @Setter @Getter @FXML private AppController parentController;
     @Getter @FXML private SetMachineConfigController setMachineConfigurationComponentController;
     @Getter @FXML private CurrMachineConfigController currMachineConfigComponentController;
+    @FXML private MachineDetailsController machineDetailsComponentController;
 
     @FXML public GridPane setMachineConfigurationComponent;
     @FXML public GridPane currMachineConfigComponent;
@@ -40,7 +41,6 @@ public class MachinePageController implements Initializable {
     @FXML private AnchorPane rightAnchorOfBottom;
     @FXML private ScrollPane scrollOfRightBottomAnchor;
     @FXML private GridPane machineDetailsComponent;
-    @FXML private MachineDetailsController machineDetailsComponentController;
 
     @Setter @Getter private SimpleBooleanProperty isMachineConfigured;
 
@@ -61,7 +61,7 @@ public class MachinePageController implements Initializable {
         }
         if(currMachineConfigComponentController != null){
             currMachineConfigComponentController.setParentController(this);
-            getCurrMachineConfigComponentController().bindToData(DataService.getCurrentMachineStateProperty());
+            currMachineConfigComponentController.bindToData(DataService.getCurrentMachineStateProperty());
         }
         if(machineDetailsComponentController != null){
             machineDetailsComponentController.setParentController(this);

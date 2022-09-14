@@ -30,7 +30,9 @@ public class CurrMachineConfigController implements Initializable {
     public Label machineConfigurationLabel;
     @Getter @FXML MachinePageController machinePageController;
     @Getter @FXML EncryptPageController encryptPageController;
+    @Getter @FXML BruteForcePageController bruteForcePageController;
     @Getter @FXML MachineDetailsController machineDetailsController;
+
 
     @Getter @FXML private GridPane rootGridPane;
     @FXML private HBox rotorsHbox;
@@ -53,6 +55,10 @@ public class CurrMachineConfigController implements Initializable {
 
     public void setParentController(MachineDetailsController machineDetailsController){
         this.machineDetailsController = machineDetailsController;
+    }
+
+    public void setParentController(BruteForcePageController bruteForcePageController) {
+        this.bruteForcePageController = bruteForcePageController;
     }
 
     @Override
@@ -119,4 +125,6 @@ public class CurrMachineConfigController implements Initializable {
         Button refButton = new Button(machineState.getReflectorId().getName());
         reflectorHbox.getChildren().add(refButton);
     }
+
+
 }
