@@ -53,9 +53,8 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
     @Getter private ObjectProperty<List<AgentDecryptionInfo>> decryptionCandidatesProperty = new SimpleObjectProperty<>();
 
     @Getter List<DecryptionAgent> decryptionAgentsList = new ArrayList();
+    @Getter private IntegerProperty numberOfAgentsProperty = new SimpleIntegerProperty();
 
-    @Getter private IntegerProperty decryptionAgentsNum= new SimpleIntegerProperty();
-//    @Getter private ObjectProperty<List<DecryptionAgent>> decryptionAgents = new SimpleObjectProperty<>();
     static {
         try {
             Properties p = new Properties();
@@ -426,7 +425,7 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
                 log.debug("AgentWorkManager - threadPoolExecutor remainingCapacity of Queue = " + threadPoolExecutor.getQueue().remainingCapacity());
                 DecryptionAgent agent = getNextAgent();
                 decryptionAgentsList.add(agent);
-                decryptionAgentsNum.setValue(decryptionAgentsList.size());
+                numberOfAgentsProperty.setValue(decryptionAgentsList.size());
                 threadPoolExecutor.execute(agent);
 //                log.debug(" Added agent to thread pool: "+ agent.getId());
 //                System.out.println(++i + "Added agent to thread pool: "+ agent.getId());
