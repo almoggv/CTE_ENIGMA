@@ -44,4 +44,41 @@ public class TestMathService {
         }
         System.out.println(allRotorIdsPlacement);
     }
+
+    @Test public void nCk() throws Exception {
+        MachineHandler machineHandler = new MachineHandlerImpl();
+        String path = "C:\\Users\\Eliya\\Documents\\java\\CTE\\CTE_ENIGMA\\enigma-machine\\src\\main\\resources\\machine-inventory-schema-Ex2\\ex2-basic-easy.xml";
+
+        machineHandler.buildMachinePartsInventory(path);
+        machineHandler.assembleMachine();
+
+        int nCk = MathService.nChooseKSize(machineHandler.getInventoryInfo().get().getNumOfRotorsInUse(),machineHandler.getInventoryInfo().get().getNumOfAvailableRotors() );
+        System.out.println(nCk);
+    }
+    @Test public void nCk2() throws Exception {
+        MachineHandler machineHandler = new MachineHandlerImpl();
+        String path = "C:\\Users\\Eliya\\Documents\\java\\CTE\\CTE_ENIGMA\\enigma-machine\\src\\main\\resources\\machine-inventory-schema-Ex2\\ex2-basic-easy.xml";
+
+        machineHandler.buildMachinePartsInventory(path);
+        machineHandler.assembleMachine();
+
+        List<int[]> nck= MathService.nChooseKOptions(machineHandler.getInventoryInfo().get().getNumOfAvailableRotors(),machineHandler.getInventoryInfo().get().getNumOfRotorsInUse() );
+//        List<int[]> nck= MathService.generate(2,3 );
+//        List<int[]> nck= MathService.generate(3,2 );
+        System.out.println(nck);
+    }
+
+    @Test public void nCk_get_ids(){
+        List<int[]> indexesComboList = MathService.nChooseKOptions(3, 2);
+        List<List<Integer>> allRotorIdsPlacement = new ArrayList<>();
+
+        for (int[] indexList : indexesComboList) {
+            List<Integer> singleRotorIdList = new ArrayList<>();
+            for (Integer index : indexList) {
+                singleRotorIdList.add(index+1);
+            }
+            allRotorIdsPlacement.add(singleRotorIdList);
+        }
+        System.out.println(allRotorIdsPlacement);
+    }
 }

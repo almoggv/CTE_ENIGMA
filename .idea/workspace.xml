@@ -12,7 +12,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6467e2d7-ff2a-4abb-a198-685a0fcd06aa" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/decryption-manager/src/test/java/TestMathService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/decryption-manager/Logs/logging.log" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/Logs/logging.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/decryption-manager/Logs/logging.log.1" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/Logs/logging.log.1" afterDir="false" />
@@ -25,14 +24,14 @@
       <change beforePath="$PROJECT_DIR$/decryption-manager/Logs/logging.log.7" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/Logs/logging.log.7" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/decryption-manager/Logs/logging.log.8" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/Logs/logging.log.8" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/decryption-manager/Logs/logging.log.9" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/Logs/logging.log.9" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decryption-manager/src/main/java/agent/impl/DecryptionAgentImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/src/main/java/agent/impl/DecryptionAgentImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/AgentWorkManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/AgentWorkManagerImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/decryption-manager/src/main/java/service/MathService.java" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/src/main/java/service/MathService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/decryption-manager/src/test/java/TestMathService.java" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/src/test/java/TestMathService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/decryption-manager/src/test/java/decryptionManager/TestDecryptionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/src/test/java/decryptionManager/TestDecryptionManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/agent/impl/DecryptionAgentImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/decryption-manager/main/java/agent/impl/DecryptionAgentImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/impl/AgentWorkManagerImpl$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/impl/AgentWorkManagerImpl$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/impl/AgentWorkManagerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/impl/AgentWorkManagerImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/service/MathService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/decryption-manager/main/java/service/MathService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/test/java/TestMathService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/decryption-manager/test/java/TestMathService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/test/java/decryptionManager/TestDecryptionManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/decryption-manager/test/java/decryptionManager/TestDecryptionManager.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -132,7 +131,7 @@
       <recent name="test.java.component" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TestDecryptionManager.testHardBruteSmallABC">
+  <component name="RunManager" selected="JUnit.TestDecryptionManager.testIntermediateBruteEx2Basic">
     <configuration name="TestDecryptionManager.testHardBruteEx2Basic" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="decryption-manager" />
       <extension name="coverage">
@@ -165,6 +164,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TestDecryptionManager.testImpossibleBruteSmallABC" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="decryption-manager" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.java.decryptionManager.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test.java.decryptionManager" />
+      <option name="MAIN_CLASS_NAME" value="test.java.decryptionManager.TestDecryptionManager" />
+      <option name="METHOD_NAME" value="testImpossibleBruteSmallABC" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TestDecryptionManager.testIntermediateBruteEx2Basic" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="decryption-manager" />
       <extension name="coverage">
@@ -181,7 +196,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestMathService.perm" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestMathService.nCk_get_ids" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="decryption-manager" />
       <extension name="coverage">
         <pattern>
@@ -191,23 +206,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="test.java" />
       <option name="MAIN_CLASS_NAME" value="test.java.TestMathService" />
-      <option name="METHOD_NAME" value="perm" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestMathService.permutation" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="decryption-manager" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test.java.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="test.java" />
-      <option name="MAIN_CLASS_NAME" value="test.java.TestMathService" />
-      <option name="METHOD_NAME" value="permutation" />
+      <option name="METHOD_NAME" value="nCk_get_ids" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -228,11 +227,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TestDecryptionManager.testHardBruteSmallABC" />
-        <item itemvalue="JUnit.TestDecryptionManager.testHardBruteEx2Basic" />
-        <item itemvalue="JUnit.TestMathService.perm" />
-        <item itemvalue="JUnit.TestMathService.permutation" />
         <item itemvalue="JUnit.TestDecryptionManager.testIntermediateBruteEx2Basic" />
+        <item itemvalue="JUnit.TestDecryptionManager.testHardBruteEx2Basic" />
+        <item itemvalue="JUnit.TestDecryptionManager.testImpossibleBruteSmallABC" />
+        <item itemvalue="JUnit.TestDecryptionManager.testHardBruteSmallABC" />
+        <item itemvalue="JUnit.TestMathService.nCk_get_ids" />
       </list>
     </recent_temporary>
   </component>
@@ -324,8 +323,24 @@
         <line-breakpoint enabled="true" type="java-line">
           <condition expression="i==17" language="JAVA" />
           <url>file://$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/AgentWorkManagerImpl.java</url>
-          <line>358</line>
+          <line>424</line>
           <option name="timeStamp" value="490" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/decryption-manager/src/test/java/TestMathService.java</url>
+          <line>55</line>
+          <option name="timeStamp" value="579" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <condition expression="currWorkDispatched ==430" language="JAVA" />
+          <url>file://$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/AgentWorkManagerImpl.java</url>
+          <line>251</line>
+          <option name="timeStamp" value="605" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/AgentWorkManagerImpl.java</url>
+          <line>217</line>
+          <option name="timeStamp" value="606" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.ClassCastException" package="java.lang" />
