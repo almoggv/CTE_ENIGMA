@@ -3,14 +3,12 @@ package main.java.component.impl;
 import main.java.component.IOWheel;
 import main.java.generictype.MappingPair;
 import main.java.generictype.MappingPairListUtils;
-import main.java.handler.FileConfigurationHandler;
-import main.java.handler.PropertiesService;
+import main.java.service.XmlFileLoader;
+import main.java.service.PropertiesService;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -24,7 +22,7 @@ public class IOWheelImpl implements IOWheel {
     static {
         try {
             Properties p = new Properties();
-            p.load(FileConfigurationHandler.class.getResourceAsStream(PropertiesService.getLog4jPropertiesResourcePath()));
+            p.load(XmlFileLoader.class.getResourceAsStream(PropertiesService.getLog4jPropertiesResourcePath()));
             PropertyConfigurator.configure(p);      //Dont forget here
             log.debug("Logger Instantiated for : " + IOWheelImpl.class.getSimpleName());
         } catch (IOException e) {

@@ -1,5 +1,6 @@
 package test.java.component;
 
+import main.java.component.EncryptionMachine;
 import main.java.component.MachineHandler;
 import main.java.component.impl.MachineHandlerImpl;
 import main.java.enums.ReflectorsId;
@@ -103,6 +104,31 @@ public class TestSanityMachineHandlerImpl {
         }
     }
 
+    @Test
+    public void testMachineClone(){
+        try{
+            String path = "C:\\Users\\Eliya\\Documents\\java\\CTE\\CTE_ENIGMA\\enigma-machine\\src\\main\\resources\\machine-inventory-schema-Ex2\\ex2-basic.xml";
+            machineHandler.buildMachinePartsInventory(path);
+
+            ReflectorsId refid = ReflectorsId.I;
+            List<MappingPair<String,String>> plugBoard = new ArrayList<MappingPair<String,String>>();
+            List<Integer> rotorsIds = Arrays.asList(1,2,3);
+
+            String rotorsstartingPos = String.valueOf(machineHandler.verifyInputInAbcAndFix("AB ").get());
+
+            plugBoard.add(new MappingPair<String,String>("F","A"));
+            plugBoard.add(new MappingPair<String,String>("B","?"));
+            plugBoard.add(new MappingPair<String,String>("C"," "));
+
+            machineHandler.assembleMachine(refid, rotorsIds,rotorsstartingPos,plugBoard);
+
+            EncryptionMachine clonedMachine = machineHandler.getEncryptionMachineClone();
+            System.out.println("cloned");
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
     @Test
     public void testBadReflectorsIdSchema(){
         try{

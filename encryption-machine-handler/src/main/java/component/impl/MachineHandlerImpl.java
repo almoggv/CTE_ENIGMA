@@ -7,18 +7,18 @@ import main.java.dto.MachineState;
 import main.java.dto.EncryptionInfoHistory;
 import main.java.enums.XmlVerifierState;
 import main.java.generictype.MappingPair;
-import main.java.handler.FileConfigurationHandler;
+import main.java.service.InventoryService;
+import main.java.service.XmlFileLoader;
 import main.java.component.*;
 import main.java.enums.ReflectorsId;
-import main.java.handler.PropertiesService;
-import main.java.verifier.XmlSchemaVerifier;
-import main.java.verifier.impl.XmlSchemaVerifierImpl;
+import main.java.service.PropertiesService;
+import main.java.service.XmlSchemaVerifier;
+import main.java.service.impl.XmlSchemaVerifierImpl;
 import main.resources.generated.*;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
 import java.io.*;
-import java.net.URL;
 import java.util.*;
 import java.util.function.Predicate;
 
@@ -36,10 +36,9 @@ public class MachineHandlerImpl implements MachineHandler {
     private final XmlSchemaVerifier xmlSchemaVerifier = new XmlSchemaVerifierImpl();
 
     static {
-
         try {
             Properties p = new Properties();
-            p.load(FileConfigurationHandler.class.getResourceAsStream(PropertiesService.getLog4jPropertiesResourcePath()));
+            p.load(XmlFileLoader.class.getResourceAsStream(PropertiesService.getLog4jPropertiesResourcePath()));
             PropertyConfigurator.configure(p);      //Dont forget here
             log.debug("Logger Instantiated for : " + MachineHandlerImpl.class.getSimpleName());
         } catch (IOException e) {
@@ -49,20 +48,20 @@ public class MachineHandlerImpl implements MachineHandler {
 
     @Override
     public void buildMachinePartsInventory(String absolutePath) throws Exception {
-        String usingLastloadedInvntoryMsg = "\n--Last successful load is used.--";
+        String usingLastLoadedInventoryMsg = "\n--Last successful load is used.";
         try{
             xmlSchemaVerifier.isFileInExistenceAndXML(absolutePath);
         }
         catch(IOException e){
             String msg = "The File: \"" + absolutePath + "\" - Does not exist Or is not a valid .xml file.";
-            msg = getInventoryInfo().isPresent() ? msg + usingLastloadedInvntoryMsg : msg;
+            msg = getInventoryInfo().isPresent() ? msg + usingLastLoadedInventoryMsg : msg;
             throw new Exception(msg);
         }
-        CTEEnigma cteEnigma = FileConfigurationHandler.fromXmlFileToCTE(absolutePath);
+        CTEEnigma cteEnigma = XmlFileLoader.fromXmlFileToCTE(absolutePath);
         if(cteEnigma == null){
             throw new Exception("Failed to generate JAXB CTE Enigma objects by schema");
         }
-        XmlVerifierState xmlVerifierResponse = xmlSchemaVerifier.isMachineConfigurationValid(cteEnigma);
+        XmlVerifierState xmlVerifierResponse = xmlSchemaVerifier.isXmlSchemaValid(cteEnigma);
         if(xmlVerifierResponse == XmlVerifierState.VALID){
             clearInventory();
             buildMachinePartsInventory(cteEnigma);
@@ -71,7 +70,7 @@ public class MachineHandlerImpl implements MachineHandler {
         else{
             String msg = "Failed to build machine inventory - CteMachine configured in file is invalid: " + xmlVerifierResponse;
             log.error(msg);
-            msg = getInventoryInfo().isPresent() ? msg + usingLastloadedInvntoryMsg : msg;
+            msg = getInventoryInfo().isPresent() ? msg + usingLastLoadedInventoryMsg : msg;
             throw new Exception(msg);
         }
     }
@@ -81,6 +80,7 @@ public class MachineHandlerImpl implements MachineHandler {
         this.reflectorsInventory = null;
         this.plugBoardInventory = null;
         this.rotorsInventory = null;
+        InventoryService.setReflectorsInventory(null);
     }
 
     @Override
@@ -263,6 +263,7 @@ public class MachineHandlerImpl implements MachineHandler {
                 Reflector reflector = new ReflectorImpl(cteReflector);
                 reflectorsInventory.add(reflector);
             }
+            InventoryService.setReflectorsInventory(reflectorsInventory);
             if(ioWheelInventory == null || plugBoardInventory == null || rotorsInventory == null
                     || rotorsInventory.size() <= 0 || reflectorsInventory == null || reflectorsInventory.size()<=0){
                 log.error("Machine Handler - failed to create an inventory item");
@@ -340,5 +341,10 @@ public class MachineHandlerImpl implements MachineHandler {
             }
         }
         return Optional.of(input);
+    }
+
+    @Override
+    public EncryptionMachine getEncryptionMachineClone() {
+        return encryptionMachine.getDeepClone();
     }
 }
