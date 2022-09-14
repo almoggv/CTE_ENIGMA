@@ -25,12 +25,15 @@ public class ResourceLocationService {
     @Getter private static final String enigmaMachineIllustration2 = "/src/main/resources/images/enigma2.jpg";
 //CSSs
     @Getter private static final String darkThemeName = "Dark Theme";
-    @Getter private static final String darkThemeCssPath = "";
+    @Getter private static final String darkThemeCssPath = "/src/main/resources/css/darkTheme.css";
+    @Getter private static final String lightThemeName = "Light Theme";
+    @Getter private static final String lightThemeCssPath = "/src/main/resources/css/lightTheme.css";
     @Getter private static final Map<String,String> cssThemeToFileMap;
 
     static{
         Map<String,String> tempCssThemeToFileMap = new HashMap<>();
         tempCssThemeToFileMap.put(darkThemeName,darkThemeCssPath);
+        tempCssThemeToFileMap.put(lightThemeName,lightThemeCssPath);
 
         cssThemeToFileMap = Collections.unmodifiableMap(tempCssThemeToFileMap);
     }

@@ -12,34 +12,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6467e2d7-ff2a-4abb-a198-685a0fcd06aa" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/HeaderController$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/BruteForcePageController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user-interface/src/main/resources/css/darkTheme.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user-interface/src/main/resources/css/lightTheme.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Logs/logging.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/logging.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/AppController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/AppController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/HeaderController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/HeaderController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/HeaderController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/HeaderController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/service/PropertiesService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/service/PropertiesService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/service/ResourcesService.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/ui/GuiApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/ui/GuiApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/app.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/app.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/enigma-illustration.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/images/enigma-illustration.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/enigma2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/images/enigma2.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/subcomponents/headerComponent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/subcomponents/headerComponent.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/subcomponents/machinePageTemplate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/subcomponents/machinePageTemplate.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/subcomponents/setMachineConfigTemplate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/subcomponents/setMachineConfigTemplate.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/AppController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/EncryptPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/EncryptPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/HeaderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/HeaderController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/service/DataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/service/DataService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/service/PropertiesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/service/ResourceLocationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/service/ResourcesService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/service/ResourceLocationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/service/ResourceLocationService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/ui/GuiApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/ui/GuiApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-interface/src/main/resources/app.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/resources/app.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-interface/src/main/resources/enigma-illustration.png" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/resources/images/enigma-illustration.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-interface/src/main/resources/enigma2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/resources/images/enigma2.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/headerComponent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/headerComponent.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/machinePageTemplate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/machinePageTemplate.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/setMachineConfigTemplate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/setMachineConfigTemplate.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +35,7 @@
         <option value="Enum" />
         <option value="Kotlin Class" />
         <option value="Interface" />
+        <option value="CSS File" />
         <option value="Class" />
       </list>
     </option>
@@ -93,9 +77,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/user-interface/src/main/resources/images" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "last_opened_file_path": "C:/Users/Eliya/Documents/java/CTE/CTE_ENIGMA/user-interface/src/main/resources/css/lightTheme.css",
+    "list.type.of.created.stylesheet": "CSS",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2581864",
+    "two.files.diff.last.used.file": "C:/Users/Eliya/Documents/java/CTE/CTE_ENIGMA/user-interface/src/main/resources/css/lightTheme.css"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="src.main.java.controller" />
@@ -330,6 +321,15 @@
           </properties>
           <option name="timeStamp" value="408" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/user-interface/src/main/java/controller/AppController.java</url>
+          <line>160</line>
+          <properties class="src.main.java.controller.AppController" method="loadCssFile">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="607" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>
@@ -337,6 +337,9 @@
         <PinnedItemInfo parentTag="main.java.component.impl.PlugBoardImpl" memberName="plugBoardMapping" />
         <PinnedItemInfo parentTag="main.java.component.impl.ReflectorImpl" memberName="id" />
         <PinnedItemInfo parentTag="javafx.beans.property.SimpleBooleanProperty" memberName="listener" />
+        <PinnedItemInfo parentTag="main.java.component.impl.EnigmaMachine" memberName="plugBoard" />
+        <PinnedItemInfo parentTag="javafx.scene.control.ChoiceBox$3" memberName="this$0" />
+        <PinnedItemInfo parentTag="javafx.beans.property.SimpleBooleanProperty" memberName="value" />
         <PinnedItemInfo parentTag="main.resources.generated.CTEReflectors" memberName="cteReflector" />
         <PinnedItemInfo parentTag="main.java.component.impl.MachineHandlerImpl" memberName="reflectorsInventory" />
         <PinnedItemInfo parentTag="java.lang.String" memberName="value" />
@@ -350,10 +353,8 @@
         <watch expression="((EnigmaMachine)((MachineHandlerImpl)((TestSanityMachineHandlerImpl)this).machineHandler).encryptionMachine).rotors" language="JAVA" custom="main.java.component.impl.MachineHandlerImpl,main.java.component.impl.EnigmaMachine,test.java.component.TestSanityMachineHandlerImpl" />
       </configuration>
       <configuration name="Application">
-        <watch expression="lastSelected" language="JAVA" />
-        <watch expression="(ComboBox&lt;ComboBoxItem&lt;String&gt;&gt;) rotorsHbox.getChildren().get()" language="JAVA" />
-        <watch expression="rotorIdsList" />
-        <watch expression=" (value != newValue)" language="JAVA" />
+        <watch expression="themeChoiceBox" language="JAVA" />
+        <watch expression="((HeaderController)this).themeChoiceBox" custom="src.main.java.controller.HeaderController" />
       </configuration>
     </watches-manager>
   </component>
@@ -362,11 +363,11 @@
     <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/CTE_ENIGMA$Main.ic" NAME="Main Coverage Results" MODIFIED="1660555486778" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>src.main.java.ui.*</FILTER>
-    </SUITE>
     <SUITE FILE_PATH="coverage/CTE_ENIGMA$src_main_java_Main.ic" NAME="src.main.java.Main Coverage Results" MODIFIED="1660063306935" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>src.main.java.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/CTE_ENIGMA$Main.ic" NAME="Main Coverage Results" MODIFIED="1660555486778" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>src.main.java.ui.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/CTE_JAVA_ENIGMA$Main.ic" NAME="Main Coverage Results" MODIFIED="1660837619611" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>src.main.java.*</FILTER>

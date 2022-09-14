@@ -1,0 +1,21 @@
+#headerComponentRootPane {
+    -fx-background-color: #343634;
+}
+
+.rootPane{
+    -fx-background-color: #343634;
+}
+.gridPane{
+    -fx-background-color: #343634;
+}
+.pane{
+    -fx-background-color: #343634;
+}
+.scroll-pane{
+    -fx-background-color: #343634;
+
+}
+.label{
+    -fx-text-fill: #e1e1e1;
+    -fx-font-weight: bold;
+}

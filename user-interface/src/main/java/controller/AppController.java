@@ -98,6 +98,8 @@ public class AppController/* implements Initializable */{
         encryptPageController.bindComponent(currMachineConfigController);
         encryptPageController.setMachineHandler(machineHandler);
 
+        //Get a URL to the CSS file and add it to the scene
+
         //added picture
         headerWrapScrollPane.setContent(headerComponentRootPaneController.getRootComponent());
 //        mainViewImage.setImage(new Image(ResourcesService.getEnigmaMachineIllustration2()));
@@ -156,11 +158,11 @@ public class AppController/* implements Initializable */{
         headerComponentRootPaneController.getNotificationMessageProperty().setValue(message);
     }
 
-    public void loadCssFile(URL cssAbsoulutePath) {
+    public void loadCssFile(URL cssAbsolutePath) {
         primaryStage.getScene().getStylesheets().clear();
-        if(cssAbsoulutePath == null || cssAbsoulutePath.getPath().equals("")){
+        if(cssAbsolutePath == null || cssAbsolutePath.getPath().equals("")){
             return;
         }
-        primaryStage.getScene().getStylesheets().add(cssAbsoulutePath.getPath());
+        primaryStage.getScene().getStylesheets().add(cssAbsolutePath.getPath());
     }
 }
