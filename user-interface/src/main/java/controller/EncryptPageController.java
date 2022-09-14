@@ -13,6 +13,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import lombok.Getter;
 import lombok.Setter;
 import main.java.component.MachineHandler;
@@ -46,6 +47,8 @@ public class EncryptPageController implements Initializable {
     public ScrollPane scrollOfRightBottomAnchor;
     public AnchorPane rightAnchorOfBottom;
     public Accordion statisticsAccordion;
+    public ScrollPane encryptScroll;
+    public HBox encryptHbox;
     @Getter @Setter private MachineHandler machineHandler;
 
     @Getter @Setter @FXML AppController parentController;

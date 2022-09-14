@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane fx:id="rootGridPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.main.java.controller.CurrMachineConfigController">
+<GridPane fx:id="rootGridPane" prefHeight="81.0" prefWidth="335.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.main.java.controller.CurrMachineConfigController">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="94.33331298828125" minWidth="10.0" prefWidth="14.333343505859375" />
       <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" />
@@ -14,9 +14,9 @@
    </columnConstraints>
    <rowConstraints>
       <RowConstraints maxHeight="43.0" minHeight="0.0" prefHeight="4.66668701171875" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="98.0" minHeight="10.0" prefHeight="24.666656494140625" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="99.33334350585938" minHeight="10.0" prefHeight="92.33334350585938" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="26.666656494140625" minHeight="10.0" prefHeight="26.666656494140625" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="98.0" minHeight="10.0" prefHeight="21.666656494140625" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="99.33334350585938" minHeight="10.0" prefHeight="46.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="26.666656494140625" minHeight="10.0" prefHeight="17.0" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
       <Label fx:id="machineConfigurationLabel" alignment="CENTER" contentDisplay="CENTER" text="Current machine configuration" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
@@ -27,8 +27,8 @@
             <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="-Infinity" />
          </columnConstraints>
          <rowConstraints>
-            <RowConstraints maxHeight="60.33331298828125" minHeight="10.0" prefHeight="23.666656494140625" vgrow="SOMETIMES" />
-            <RowConstraints fillHeight="false" maxHeight="68.33334350585938" minHeight="10.0" prefHeight="68.33334350585938" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="60.33331298828125" minHeight="10.0" prefHeight="16.666656494140625" vgrow="SOMETIMES" />
+            <RowConstraints fillHeight="false" maxHeight="68.33334350585938" minHeight="10.0" prefHeight="22.333343505859375" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
             <Label alignment="CENTER" text="Reflector" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />

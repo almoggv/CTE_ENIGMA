@@ -45,9 +45,9 @@
                      <content>
                         <AnchorPane>
                            <children>
-                              <ScrollPane fx:id="plugBoardConnectionsScroller" fitToWidth="true" prefHeight="438.0" prefWidth="368.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <ScrollPane fitToWidth="true" prefHeight="438.0" prefWidth="368.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <content>
-                                    <GridPane fx:id="plugBoardConnectionsGridOfScroll">
+                                    <GridPane>
                                        <columnConstraints>
                                           <ColumnConstraints hgrow="NEVER" maxWidth="7.5" minWidth="7.5" prefWidth="7.5" />
                                           <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="100.0" />
@@ -91,11 +91,11 @@
             <Button fx:id="resetMachineStateButton" layoutX="23.0" layoutY="21.0" mnemonicParsing="false" onAction="#onResetMachineStateButtonAction" text="reset to last state" />
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+      <AnchorPane fx:id="encryptAnchor" prefHeight="200.0" prefWidth="200.0">
          <children>
-            <ScrollPane fitToHeight="true" fitToWidth="true" layoutX="-35.0" layoutY="-70.0" prefHeight="60.0" prefWidth="403.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <ScrollPane fx:id="encryptScroll" fitToHeight="true" fitToWidth="true" layoutX="-35.0" layoutY="-70.0" prefHeight="60.0" prefWidth="403.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <content>
-                  <HBox alignment="CENTER" spacing="10.0">
+                  <HBox fx:id="encryptHbox" alignment="CENTER" spacing="10.0">
                      <children>
                         <CustomTextField fx:id="encryptTextField" prefColumnCount="20" />
                         <Button fx:id="encryptButton" alignment="CENTER" contentDisplay="CENTER" minWidth="-Infinity" mnemonicParsing="false" onAction="#onEncryptButtonAction" text="encrypt" HBox.hgrow="NEVER" />

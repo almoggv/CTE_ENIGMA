@@ -129,6 +129,7 @@ public class HeaderController implements Initializable {
         notificationPane.setContent(headerComponentRootPane);
         notificationPane.setPrefWidth(headerComponentRootPane.getPrefWidth());
         notificationPane.setPrefHeight(headerComponentRootPane.getPrefHeight());
+        notificationPane.getStyleClass().add("notify");
         notificationMessageProperty.addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
