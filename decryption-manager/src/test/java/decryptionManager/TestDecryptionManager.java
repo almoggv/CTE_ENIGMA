@@ -61,7 +61,7 @@ public class TestDecryptionManager {
 
         System.out.println("Initial Machine State:" + machineHandler.getMachineState());
 
-        int numberOfAgents = 10 ;
+        int numberOfAgents = 20 ;
         int taskSize = 5;
 
         DictionaryManager.loadDictionary(path);
@@ -300,7 +300,8 @@ found a candidate: EP!RF-->WATER ---- ref: III ,init pos: [ , ?, A]
 
         ReflectorsId refid = ReflectorsId.I;
         List<MappingPair<String,String>> plugBoard = new ArrayList<MappingPair<String,String>>();
-        List<Integer> rotorsIds = Arrays.asList(1,2);
+//        List<Integer> rotorsIds = Arrays.asList(1,2);
+        List<Integer> rotorsIds = Arrays.asList(2,3);
 
         String rotorsstartingPos = String.valueOf(machineHandler.verifyInputInAbcAndFix("AF").get());
 
@@ -308,11 +309,10 @@ found a candidate: EP!RF-->WATER ---- ref: III ,init pos: [ , ?, A]
 
         System.out.println("Initial Machine State:" + machineHandler.getMachineState());
 
-        int numberOfAgents = 10 ;
+        int numberOfAgents = 5 ;
         int taskSize = 2;
 
         DictionaryManager.loadDictionary(path);
-
 
         String encrypted = machineHandler.encrypt("ABBA");
         DecryptionManager manager = new DecryptionManagerImpl(machineHandler,  numberOfAgents, DecryptionDifficultyLevel.IMPOSSIBLE, taskSize);

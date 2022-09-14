@@ -11,29 +11,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6467e2d7-ff2a-4abb-a198-685a0fcd06aa" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decryption-manager/Logs/logging.log" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/Logs/logging.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decryption-manager/Logs/logging.log.1" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/Logs/logging.log.1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decryption-manager/Logs/logging.log.10" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/Logs/logging.log.10" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decryption-manager/Logs/logging.log.2" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/Logs/logging.log.2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decryption-manager/Logs/logging.log.3" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/Logs/logging.log.3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decryption-manager/Logs/logging.log.4" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/Logs/logging.log.4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decryption-manager/Logs/logging.log.5" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/Logs/logging.log.5" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decryption-manager/Logs/logging.log.6" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/Logs/logging.log.6" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decryption-manager/Logs/logging.log.7" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/Logs/logging.log.7" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decryption-manager/Logs/logging.log.8" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/Logs/logging.log.8" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decryption-manager/Logs/logging.log.9" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/Logs/logging.log.9" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/AgentWorkManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/AgentWorkManagerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decryption-manager/src/main/java/service/MathService.java" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/src/main/java/service/MathService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decryption-manager/src/test/java/TestMathService.java" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/src/test/java/TestMathService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decryption-manager/src/test/java/decryptionManager/TestDecryptionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/src/test/java/decryptionManager/TestDecryptionManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/impl/AgentWorkManagerImpl$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/impl/AgentWorkManagerImpl$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/impl/AgentWorkManagerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/impl/AgentWorkManagerImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/service/MathService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/decryption-manager/main/java/service/MathService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/test/java/TestMathService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/decryption-manager/test/java/TestMathService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/test/java/decryptionManager/TestDecryptionManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/decryption-manager/test/java/decryptionManager/TestDecryptionManager.class" afterDir="false" />
-    </list>
+    <list default="true" id="6467e2d7-ff2a-4abb-a198-685a0fcd06aa" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -86,15 +64,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Eliya/Documents/java/CTE/CTE_ENIGMA/enigma-machine/src/main/resources/machine-inventory-schema-Ex2&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/Eliya/Documents/java/CTE/CTE_ENIGMA/enigma-machine/src/main/resources/machine-inventory-schema-Ex2"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="src.main.java.controller" />
@@ -131,7 +110,23 @@
       <recent name="test.java.component" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TestDecryptionManager.testIntermediateBruteEx2Basic">
+  <component name="RunManager" selected="JUnit.TestDecryptionManager.testEasyBruteEx2Basic">
+    <configuration name="TestDecryptionManager.testEasyBruteEx2Basic" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="decryption-manager" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.java.decryptionManager.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test.java.decryptionManager" />
+      <option name="MAIN_CLASS_NAME" value="test.java.decryptionManager.TestDecryptionManager" />
+      <option name="METHOD_NAME" value="testEasyBruteEx2Basic" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TestDecryptionManager.testHardBruteEx2Basic" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="decryption-manager" />
       <extension name="coverage">
@@ -196,22 +191,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestMathService.nCk_get_ids" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="decryption-manager" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test.java.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="test.java" />
-      <option name="MAIN_CLASS_NAME" value="test.java.TestMathService" />
-      <option name="METHOD_NAME" value="nCk_get_ids" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="enigma-machine" />
       <method v="2">
@@ -227,11 +206,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TestDecryptionManager.testIntermediateBruteEx2Basic" />
-        <item itemvalue="JUnit.TestDecryptionManager.testHardBruteEx2Basic" />
+        <item itemvalue="JUnit.TestDecryptionManager.testEasyBruteEx2Basic" />
         <item itemvalue="JUnit.TestDecryptionManager.testImpossibleBruteSmallABC" />
+        <item itemvalue="JUnit.TestDecryptionManager.testHardBruteEx2Basic" />
+        <item itemvalue="JUnit.TestDecryptionManager.testIntermediateBruteEx2Basic" />
         <item itemvalue="JUnit.TestDecryptionManager.testHardBruteSmallABC" />
-        <item itemvalue="JUnit.TestMathService.nCk_get_ids" />
       </list>
     </recent_temporary>
   </component>
@@ -260,6 +239,7 @@
       <workItem from="1661351601734" duration="3659000" />
       <workItem from="1662386092444" duration="18599000" />
       <workItem from="1662462894733" duration="4553000" />
+      <workItem from="1663162208758" duration="3009000" />
     </task>
     <servers />
   </component>
@@ -323,7 +303,7 @@
         <line-breakpoint enabled="true" type="java-line">
           <condition expression="i==17" language="JAVA" />
           <url>file://$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/AgentWorkManagerImpl.java</url>
-          <line>424</line>
+          <line>423</line>
           <option name="timeStamp" value="490" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -339,8 +319,43 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/AgentWorkManagerImpl.java</url>
-          <line>217</line>
-          <option name="timeStamp" value="606" />
+          <line>258</line>
+          <option name="timeStamp" value="608" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/AgentWorkManagerImpl.java</url>
+          <line>235</line>
+          <option name="timeStamp" value="610" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/AgentWorkManagerImpl.java</url>
+          <line>224</line>
+          <option name="timeStamp" value="616" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/AgentWorkManagerImpl.java</url>
+          <line>231</line>
+          <option name="timeStamp" value="618" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/AgentWorkManagerImpl.java</url>
+          <line>221</line>
+          <option name="timeStamp" value="619" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/AgentWorkManagerImpl.java</url>
+          <line>222</line>
+          <option name="timeStamp" value="622" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/AgentWorkManagerImpl.java</url>
+          <line>169</line>
+          <option name="timeStamp" value="624" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/AgentWorkManagerImpl.java</url>
+          <line>174</line>
+          <option name="timeStamp" value="625" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.ClassCastException" package="java.lang" />
@@ -358,6 +373,15 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="408" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/AgentWorkManagerImpl.java</url>
+          <line>301</line>
+          <properties class="main.java.manager.impl.AgentWorkManagerImpl" method="advanceRotorIds">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="623" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
