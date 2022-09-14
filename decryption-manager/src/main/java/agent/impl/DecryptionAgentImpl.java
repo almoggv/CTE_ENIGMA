@@ -71,7 +71,7 @@ public class DecryptionAgentImpl implements DecryptionAgent {
         List<AgentDecryptionInfo> potentialCandidates = new ArrayList<>();
         Optional<String> decryptionCandidate;
         int index = 1;
-        int PROGRESS_UPDATE_INTERVAL = (int)((0.1)*(startingConfigurations.size()));
+        int PROGRESS_UPDATE_INTERVAL = (int)(Math.ceil((0.1)*(startingConfigurations.size())));
         if(startingConfigurations == null){
             throw new RuntimeException("MachineStates given to agent is null");
         }
@@ -93,10 +93,10 @@ public class DecryptionAgentImpl implements DecryptionAgent {
                 }
             }
             //TODO: update progress
-//            index++;
-//            if(index % PROGRESS_UPDATE_INTERVAL == 0){
-//                progressProperty.setValue(new MappingPair<>(index,startingConfigurations.size()));
-//            }
+            index++;
+            if(index % PROGRESS_UPDATE_INTERVAL == 0){
+                progressProperty.setValue(new MappingPair<>(index,startingConfigurations.size()));
+            }
         }
         if(potentialCandidates.size() > 0){
             potentialCandidatesListProperty.setValue(potentialCandidates);

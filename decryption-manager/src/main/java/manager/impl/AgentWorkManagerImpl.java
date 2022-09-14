@@ -52,6 +52,10 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
     @Getter private ObjectProperty<MappingPair<Integer,Integer>> assignedWorkProgressProperty = new SimpleObjectProperty<>();
     @Getter private ObjectProperty<List<AgentDecryptionInfo>> decryptionCandidatesProperty = new SimpleObjectProperty<>();
 
+    @Getter List<DecryptionAgent> decryptionAgentsList = new ArrayList();
+
+    @Getter private IntegerProperty decryptionAgentsNum= new SimpleIntegerProperty();
+//    @Getter private ObjectProperty<List<DecryptionAgent>> decryptionAgents = new SimpleObjectProperty<>();
     static {
         try {
             Properties p = new Properties();
@@ -421,6 +425,8 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
             if(threadPoolExecutor.getQueue().remainingCapacity() > 0){
                 log.debug("AgentWorkManager - threadPoolExecutor remainingCapacity of Queue = " + threadPoolExecutor.getQueue().remainingCapacity());
                 DecryptionAgent agent = getNextAgent();
+                decryptionAgentsList.add(agent);
+                decryptionAgentsNum.setValue(decryptionAgentsList.size());
                 threadPoolExecutor.execute(agent);
 //                log.debug(" Added agent to thread pool: "+ agent.getId());
 //                System.out.println(++i + "Added agent to thread pool: "+ agent.getId());
@@ -439,14 +445,3 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
 
 
 
-
-//        agentFactory.build(INTERMEDIATE);
-//        agentFactory.deployAgents();
-//        //Cases by level
-//
-//        while(workNotFinished){
-//            if(queue != full){
-//                agent = getnextAgent();
-//                pool.sumbit(agent)
-//            }
-//        }
