@@ -1,10 +1,35 @@
 package main.java.enums;
 
 public enum DecryptionDifficultyLevel {
-    EASY,
-    INTERMEDIATE,
-    HARD,
-    IMPOSSIBLE
+    EASY("EASY"),
+    INTERMEDIATE("INTERMEDIATE"),
+    HARD("HARD"),
+    IMPOSSIBLE("IMPOSSIBLE");
+
+    private final String name;
+
+    DecryptionDifficultyLevel(String name) {
+        this.name = name;
+    }
+
+    public static DecryptionDifficultyLevel getByName(String name) {
+        switch (name) {
+            case ("EASY"):
+                return EASY;
+            case ("INTERMEDIATE"):
+                return INTERMEDIATE;
+            case ("HARD"):
+                return HARD;
+            case ("IMPOSSIBLE"):
+                return IMPOSSIBLE;
+            default:
+                throw new IllegalArgumentException();
+        }
+    }
+}
+//    public static DecryptionDifficultyLevel getByNum(int num){
+//
+
 
     /*
     EASY =
@@ -40,4 +65,6 @@ public enum DecryptionDifficultyLevel {
          - Reflector
          - Rotor Starting Position
      */
-}
+
+
+

@@ -50,8 +50,8 @@ public class TestDecryptionManager {
     @Test
     public void testEasyBruteEx2Basic() throws Exception {
         MachineHandler machineHandler = new MachineHandlerImpl();
-        String path = PropertiesService.getTestSchemaEx2Basic();
-        machineHandler.buildMachinePartsInventory(path);
+//        String path = PropertiesService.getTestSchemaEx2Basic();
+//        machineHandler.buildMachinePartsInventory(path);
 
         ReflectorsId refid = ReflectorsId.I;
         List<MappingPair<String,String>> plugBoard = new ArrayList<MappingPair<String,String>>();
@@ -66,7 +66,7 @@ public class TestDecryptionManager {
         int numberOfAgents = 20 ;
         int taskSize = 5;
 
-        DictionaryManager.loadDictionary(path);
+//        DictionaryManager.loadDictionary(path);
 
 //        String encrypted = machineHandler.encrypt("water under their battle ");
         String encrypted = machineHandler.encrypt("if fire inferno blue than midnight ");

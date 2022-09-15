@@ -14,6 +14,7 @@ import main.java.manager.DecryptionManager;
 import main.java.service.PropertiesService;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
+import src.main.java.adapter.UIAdapter;
 
 import java.io.IOException;
 import java.util.Properties;
@@ -24,12 +25,13 @@ public class DecryptionManagerImpl implements DecryptionManager {
     private final int THREAD_POOL_QEUEU_MAX_CAPACITY = 10;
     @Getter private MachineHandler machineHandler;
     private DictionaryManager dictionaryManager;
-    @Getter private int numberOfAgents;
+    @Getter @Setter private int numberOfAgents;
     @Getter @Setter private int taskSize;
     @Getter @Setter private DecryptionDifficultyLevel difficultyLevel;
     private PausableThreadPoolExecutor threadPoolService;
     @Getter private final BooleanProperty isRunningProperty = new SimpleBooleanProperty();
 
+    @Setter private UIAdapter UIAdapter;
     private Thread workManagerThread;
 //    private final UiAdapter uiAdapter;
 
@@ -57,8 +59,25 @@ public class DecryptionManagerImpl implements DecryptionManager {
         isRunningProperty.setValue(false);
     }
 
-    public void bruteForceDecryption(String sourceInput) {
+    public DecryptionManagerImpl(MachineHandler machineHandler) {
+        this.machineHandler = machineHandler;
+        if(machineHandler.getInventoryInfo().isPresent()){
+            dictionaryManager.setAbc(machineHandler.getInventoryInfo().get().getABC());
+        }
+        isRunningProperty.setValue(false);
+    }
 
+    public void setUserInput(int numberOfAgents, DecryptionDifficultyLevel difficultyLevel, int taskSize){
+        this.numberOfAgents = numberOfAgents;
+        this.difficultyLevel= difficultyLevel;
+        this.taskSize = taskSize;
+        int keepAliveForWhenIdle = 1;
+        threadPoolService = new PausableThreadPoolExecutor(numberOfAgents, numberOfAgents, keepAliveForWhenIdle , TimeUnit.SECONDS, new ArrayBlockingQueue(THREAD_POOL_QEUEU_MAX_CAPACITY));
+    }
+
+    public void bruteForceDecryption(String sourceInput) {
+        int keepAliveForWhenIdle = 1;
+        threadPoolService = new PausableThreadPoolExecutor(numberOfAgents, numberOfAgents, keepAliveForWhenIdle , TimeUnit.SECONDS, new ArrayBlockingQueue(THREAD_POOL_QEUEU_MAX_CAPACITY));
         AgentWorkManager agentWorkManager = new AgentWorkManagerImpl(this.threadPoolService,this.machineHandler,this.difficultyLevel,this.taskSize, sourceInput);
         this.workManagerThread = new Thread(agentWorkManager,"agentManagerThread");
         //TODO: connect to manager's properties
@@ -77,6 +96,11 @@ public class DecryptionManagerImpl implements DecryptionManager {
 
     public void resumeWork(){
         threadPoolService.resume();
+    }
+
+    @Override
+    public int getAmountOfTasks() {
+        return 0;
     }
 
 }
