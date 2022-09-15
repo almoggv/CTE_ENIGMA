@@ -72,14 +72,13 @@ public class MachinePageController implements Initializable {
         isMachineConfigured = new SimpleBooleanProperty(false);
     }
 
-    public Parent getRootComponent() {
+    public GridPane getRootComponent() {
         return rootGridPane;
     }
 
     public void bindComponent(CurrMachineConfigController controller){
         this.currMachineConfigComponentController = controller;
         currMachineConfigComponent = currMachineConfigComponentController.getRootGridPane();
-//        scrollOfRightBottomAnchor.setContent(currMachineConfigComponent);
     }
 
     private void setMachineConigRandomlyPressed(){
