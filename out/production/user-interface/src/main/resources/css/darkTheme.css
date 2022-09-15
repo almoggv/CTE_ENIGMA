@@ -6,20 +6,59 @@
     -fx-background-color: #343634;
 }
 
-.RootPane{
+#rootGrid{
     -fx-background-color: #343634;
 }
-.GridPane{
-    -fx-background-color: #343634;
-}
-.Pane{
-    -fx-background-color: #343634;
-}
-.scroll-pane{
-    -fx-background-color: #343634;
 
+#headerComponentRootPane .label{
+    -fx-text-fill: #e1e1e1;
+    -fx-font-weight: bold;
 }
+
 .label{
     -fx-text-fill: #e1e1e1;
     -fx-font-weight: bold;
+}
+#headerComponentRootPane .choice-box .label {
+    -fx-text-fill: #000000;
+    /*-fx-font-weight: bold;*/
+}
+.menu-item{
+    -fx-text-fill: #000000;
+    /*-fx-font-weight: bold;*/
+}
+.choice-box .label {
+    -fx-text-fill: #000000;
+    /*-fx-font-weight: bold;*/
+}
+.notify .label{
+    -fx-text-fill: #000000;
+    /*-fx-font-weight: bold;*/
+}
+
+.scroll-pane{
+    -fx-background-color: #545456;
+}
+
+#encryptHbox{
+    -fx-background-color: #343634;
+}
+#statisticsAnchor{
+    -fx-background-color: #343634;
+}
+#statisticsGridOfScroll{
+    -fx-background-color: #343634;
+}
+
+.listView{
+    -fx-background-color: #545456;
+}
+
+.list-view .list-cell:even {
+    -fx-background-color: #5b5b5b;
+    -fx-text-fill: white;
+}
+.list-view .list-cell:odd {
+    -fx-background-color: #414040;
+    -fx-text-fill: white;
 }

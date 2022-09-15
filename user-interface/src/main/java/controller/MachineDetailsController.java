@@ -23,6 +23,7 @@ import java.util.ResourceBundle;
 public class MachineDetailsController implements Initializable {
 
 
+    public GridPane rootGridPane;
     @Getter @Setter @FXML MachinePageController parentController;
 
     @FXML private GridPane originalMachineConfigComponent;

@@ -35,6 +35,7 @@ import java.util.concurrent.atomic.AtomicReference;
 public class SetMachineConfigController implements Initializable {
 
     public Button clearSelectionButton;
+    public GridPane rootGridPane;
     @Getter @Setter
     @FXML MachinePageController parentController;
 
