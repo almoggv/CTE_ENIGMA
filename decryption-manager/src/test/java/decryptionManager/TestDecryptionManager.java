@@ -72,6 +72,14 @@ public class TestDecryptionManager {
         String encrypted = machineHandler.encrypt("if fire inferno blue than midnight ");
         DecryptionManager manager = new DecryptionManagerImpl(machineHandler,  numberOfAgents, DecryptionDifficultyLevel.EASY, taskSize) ;
         manager.bruteForceDecryption(encrypted);
+        System.out.println("Test - going to sleep");
+        Thread.sleep(2000);
+        System.out.println("Test - Pausing work");
+        manager.pauseWork();
+        Thread.sleep(4000);
+        System.out.println("Test - Resuming work");
+        manager.resumeWork();
+
     }
 
     @Test

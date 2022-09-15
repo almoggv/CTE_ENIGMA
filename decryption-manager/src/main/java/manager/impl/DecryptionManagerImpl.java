@@ -8,6 +8,7 @@ import main.java.component.MachineHandler;
 import main.java.enums.DecryptionDifficultyLevel;
 import main.java.manager.AgentWorkManager;
 import main.java.manager.DictionaryManager;
+import main.java.service.PausableThreadPoolExecutor;
 import main.java.service.XmlFileLoader;
 import main.java.manager.DecryptionManager;
 import main.java.service.PropertiesService;
@@ -26,7 +27,7 @@ public class DecryptionManagerImpl implements DecryptionManager {
     @Getter private int numberOfAgents;
     @Getter @Setter private int taskSize;
     @Getter @Setter private DecryptionDifficultyLevel difficultyLevel;
-    private ThreadPoolExecutor threadPoolService;
+    private PausableThreadPoolExecutor threadPoolService;
     @Getter private final BooleanProperty isRunningProperty = new SimpleBooleanProperty();
 
     private Thread workManagerThread;
@@ -52,7 +53,7 @@ public class DecryptionManagerImpl implements DecryptionManager {
         this.difficultyLevel= difficultyLevel;
         this.taskSize = taskSize;
         int keepAliveForWhenIdle = 1;
-        threadPoolService = new ThreadPoolExecutor(numberOfAgents, numberOfAgents, keepAliveForWhenIdle , TimeUnit.SECONDS, new ArrayBlockingQueue(THREAD_POOL_QEUEU_MAX_CAPACITY));
+        threadPoolService = new PausableThreadPoolExecutor(numberOfAgents, numberOfAgents, keepAliveForWhenIdle , TimeUnit.SECONDS, new ArrayBlockingQueue(THREAD_POOL_QEUEU_MAX_CAPACITY));
         isRunningProperty.setValue(false);
     }
 
@@ -68,6 +69,14 @@ public class DecryptionManagerImpl implements DecryptionManager {
         catch (Exception e){
 
         }
+    }
+
+    public void pauseWork(){
+        threadPoolService.pause();
+    }
+
+    public void resumeWork(){
+        threadPoolService.resume();
     }
 
 }

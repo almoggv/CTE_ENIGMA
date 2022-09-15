@@ -76,6 +76,7 @@ public class DecryptionAgentImpl implements DecryptionAgent {
             throw new RuntimeException("MachineStates given to agent is null");
         }
         for (MachineState initialState : startingConfigurations ) {
+            System.out.println("Agent " + this.id + " is running decryption");
             long startEncryptionTime = System.nanoTime();
             MachineState stateBeforeEncryption = initialState;
 //            System.out.println(initialState);
