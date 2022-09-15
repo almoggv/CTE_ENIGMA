@@ -9,7 +9,9 @@ import main.java.manager.DecryptionManager;
 import main.java.manager.DictionaryManager;
 import main.java.manager.impl.DecryptionManagerImpl;
 import org.junit.Test;
+import test.java.service.PropertiesService;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -44,11 +46,11 @@ public class TestDecryptionManager {
         manager.bruteForceDecryption(encrypted);
 
     }
- @Test
+
+    @Test
     public void testEasyBruteEx2Basic() throws Exception {
         MachineHandler machineHandler = new MachineHandlerImpl();
-        String path = "C:\\Users\\Eliya\\Documents\\java\\CTE\\CTE_ENIGMA\\enigma-machine\\src\\main\\resources\\machine-inventory-schema-Ex2\\ex2-basic.xml";
-
+        String path = PropertiesService.getTestSchemaEx2Basic();
         machineHandler.buildMachinePartsInventory(path);
 
         ReflectorsId refid = ReflectorsId.I;
@@ -75,7 +77,7 @@ public class TestDecryptionManager {
     @Test
     public void testIntermediateBruteSmallABCRefI() throws Exception {
         MachineHandler machineHandler = new MachineHandlerImpl();
-        String path = "C:\\Users\\Eliya\\Documents\\java\\CTE\\CTE_ENIGMA\\enigma-machine\\src\\main\\resources\\machine-inventory-schema-Ex2\\ex2-basic-easy.xml";
+        String path = PropertiesService.getTestSchemaEx2BasicEasy();
 
         machineHandler.buildMachinePartsInventory(path);
 
