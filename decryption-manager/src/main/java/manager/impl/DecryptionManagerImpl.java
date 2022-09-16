@@ -73,12 +73,12 @@ public class DecryptionManagerImpl implements DecryptionManager {
         this.workManagerThread = new Thread(agentWorkManager,"agentManagerThread");
         //TODO: connect to manager's properties - UIAdapter
         workManagerThread.start();
-        try{
-            workManagerThread.join();
-        }
-        catch (Exception e){
-
-        }
+//        try{
+//            workManagerThread.join();
+//        }
+//        catch (Exception e){
+//
+//        }
     }
 
     public void pauseWork(){
@@ -99,6 +99,18 @@ public class DecryptionManagerImpl implements DecryptionManager {
             agentWorkManager.stop();
         }
     }
+
+    @Override
+    public void awaitWork() {
+        if(workManagerThread!=null){
+            try {
+                workManagerThread.join();
+            } catch (InterruptedException e) {
+                log.error("DecryptionManager - failed to await work -" + e.getMessage());
+            }
+        }
+    }
+
 
     @Override
     public int getAmountOfTasks() {

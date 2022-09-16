@@ -86,6 +86,9 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
         isWorkCompletedProperty.setValue(false);
         isAllWorkAssignedProperty.setValue(false);
         decryptionCandidatesProperty.setValue(new ArrayList<>());
+        isRunningProperty.setValue(true);
+        isStoppedProperty.setValue(false);
+
         //Calculate at the end
         totalWorkToDo = calcTotalWorkToDoByDifficulty();
         assignedWorkProgressProperty.set(new MappingPair<>(0, totalWorkToDo));
@@ -453,22 +456,25 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
             synchronized (lockContext) {
                 if (isRunningProperty.get() == false) {
                     try {
+                        System.out.println("AgentManager - is in waiting block");
                         lockContext.wait();
                     } catch (InterruptedException ignore) {}
                 }
             }
             //Actual Logic
             if(threadPoolExecutor.getQueue().remainingCapacity() > 0){
+                System.out.println("AgentManager - creating new agent - agents List Size=[" +decryptionAgentsList.size()+"]" );
                 DecryptionAgent agent = getNextAgent();
                 decryptionAgentsList.add(agent);
                 numberOfAgentsProperty.setValue(decryptionAgentsList.size());
                 threadPoolExecutor.execute(agent);
             }
-            if(isAllWorkAssignedProperty.get() == true){
-                this.pause();
-                this.stop();
-            }
+//            if(isAllWorkAssignedProperty.get() == true){
+//                this.pause();
+//                this.stop();
+//            }
         }
+        System.out.println("All Work Assigned");
         threadPoolExecutor.shutdown();
         try {
             threadPoolExecutor.awaitTermination(10, TimeUnit.MINUTES);

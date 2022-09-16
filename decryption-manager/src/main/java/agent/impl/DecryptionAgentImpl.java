@@ -77,6 +77,7 @@ public class DecryptionAgentImpl implements DecryptionAgent {
 
     @Override
     public void run() {
+//        System.out.println("Agent " + this.id + " started running decryption");
         List<AgentDecryptionInfo> potentialCandidates = new ArrayList<>();
         Optional<String> decryptionCandidate;
         int PROGRESS_UPDATE_INTERVAL = (int)(Math.ceil((0.1)*(startingConfigurations.size())));
@@ -87,16 +88,17 @@ public class DecryptionAgentImpl implements DecryptionAgent {
             synchronized (lockContext) {
                 if (isRunningProperty.get() == false) {
                     try {
+                        System.out.println("AgentWorker ["+id+"] is in waiting block");
                         lockContext.wait();
                     } catch (InterruptedException ignore) {}
                 }
             }
             //Actual Run Logic:
-            for (; lastStateTestedIndex < startingConfigurations.size();  lastStateTestedIndex++) {
+            for (; this.lastStateTestedIndex < startingConfigurations.size();  lastStateTestedIndex++) {
+//                System.out.println("AgentWorker ["+id+"] - in for with index=" + lastStateTestedIndex);
                 if(isRunningProperty.get() == false || isStoppedProperty.get() == true){
                     break;
                 }
-                System.out.println("Agent " + this.id + " is running decryption");
                 long startEncryptionTime = System.nanoTime();
                 MachineState initialState = startingConfigurations.get(lastStateTestedIndex);
                 MachineState stateBeforeEncryption = initialState.getDeepClone();
@@ -115,7 +117,7 @@ public class DecryptionAgentImpl implements DecryptionAgent {
                     progressProperty.setValue(new MappingPair<>((lastStateTestedIndex+1),startingConfigurations.size()));
                 }
             }
-            /////////////////// - if finished work
+            //if finished work
             if(progressProperty.get().getLeft().equals(progressProperty.get().getRight())){
                 if(potentialCandidates.size() > 0){
                     potentialCandidatesListProperty.setValue(potentialCandidates);
@@ -196,10 +198,12 @@ public class DecryptionAgentImpl implements DecryptionAgent {
     }
 
     public void pause() {
+//        System.out.println("AgentWorker "+id+" is being PAUSED");
         isRunningProperty.setValue(false);
     }
 
     public void resume() {
+//        System.out.println("AgentWorker "+id+" is being RESUMED");
         synchronized (lockContext) {
             isRunningProperty.setValue(true);
             lockContext.notifyAll(); // Unblocks thread

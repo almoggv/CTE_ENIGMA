@@ -8,11 +8,11 @@ public interface DecryptionManager {
 
 //    public void setUserInput(int numberOfAgents, DecryptionDifficultyLevel difficultyLevel, int taskSize);
 
-    public void pauseWork();
+    void pauseWork();
+    void resumeWork();
+    void stopWork();
+    void awaitWork();
 
-    public void resumeWork();
-
-    public void stopWork();
 
     int getNumberOfAgents();
 
@@ -27,4 +27,5 @@ public interface DecryptionManager {
     void setDifficultyLevel(DecryptionDifficultyLevel level);
 
     int getAmountOfTasks();
+
 }

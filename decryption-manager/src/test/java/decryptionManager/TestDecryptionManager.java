@@ -49,36 +49,45 @@ public class TestDecryptionManager {
 
     @Test
     public void testEasyBruteEx2Basic() throws Exception {
-//        MachineHandler machineHandler = new MachineHandlerImpl();
-////        String path = PropertiesService.getTestSchemaEx2Basic();
-////        machineHandler.buildMachinePartsInventory(path);
-//
-//        ReflectorsId refid = ReflectorsId.I;
-//        List<MappingPair<String,String>> plugBoard = new ArrayList<MappingPair<String,String>>();
-//        List<Integer> rotorsIds = Arrays.asList(1,2,3);
-//
-//        String rotorsstartingPos = String.valueOf(machineHandler.verifyInputInAbcAndFix("?FY").get());
-//
-//        machineHandler.assembleMachine(refid, rotorsIds,rotorsstartingPos,plugBoard);
-//
-//        System.out.println("Initial Machine State:" + machineHandler.getMachineState());
-//
-//        int numberOfAgents = 20 ;
-//        int taskSize = 5;
-//
-////        DictionaryManager.loadDictionary(path);
-//
-////        String encrypted = machineHandler.encrypt("water under their battle ");
-//        String encrypted = machineHandler.encrypt("if fire inferno blue than midnight ");
-//        DecryptionManager manager = new DecryptionManagerImpl(machineHandler,  numberOfAgents, DecryptionDifficultyLevel.EASY, taskSize) ;
-//        manager.bruteForceDecryption(encrypted);
-//        System.out.println("Test - going to sleep");
-//        Thread.sleep(2000);
-//        System.out.println("Test - Pausing work");
-//        manager.pauseWork();
-//        Thread.sleep(4000);
-//        System.out.println("Test - Resuming work");
-//        manager.resumeWork();
+        MachineHandler machineHandler = new MachineHandlerImpl();
+        String path = PropertiesService.getTestSchemaEx2Basic();
+        machineHandler.buildMachinePartsInventory(path);
+
+        ReflectorsId refid = ReflectorsId.I;
+        List<MappingPair<String,String>> plugBoard = new ArrayList<MappingPair<String,String>>();
+        List<Integer> rotorsIds = Arrays.asList(1,2,3);
+
+        String rotorsstartingPos = String.valueOf(machineHandler.verifyInputInAbcAndFix("?FY").get());
+
+        machineHandler.assembleMachine(refid, rotorsIds,rotorsstartingPos,plugBoard);
+
+        System.out.println("Initial Machine State:" + machineHandler.getMachineState());
+
+        int numberOfAgents = 20 ;
+        int taskSize = 5;
+
+        DictionaryManager.loadDictionary(path);
+
+//        String encrypted = machineHandler.encrypt("water under their battle ");
+        String encrypted = machineHandler.encrypt("if fire inferno blue than midnight ");
+        DecryptionManager manager = new DecryptionManagerImpl(machineHandler,  numberOfAgents, DecryptionDifficultyLevel.EASY, taskSize) ;
+        manager.bruteForceDecryption(encrypted);
+        System.out.println("JUnit Test - going to sleep - 1");
+        Thread.sleep(3000);
+        System.out.println("JUnit Test - Pausing work - 1");
+        manager.pauseWork();
+        Thread.sleep(4000);
+        System.out.println("JUnit Test - Resuming work - 1");
+        manager.resumeWork();
+        System.out.println("JUnit Test - going to sleep - 2");
+        Thread.sleep(4000);
+        manager.pauseWork();
+        Thread.sleep(4000);
+        System.out.println("JUnit Test - Resuming work - 2");
+        manager.resumeWork();
+
+        System.out.println("JUnit Test - resumed and awaiting");
+        manager.awaitWork();
 
     }
 
@@ -120,6 +129,8 @@ public class TestDecryptionManager {
         DictionaryManager.loadDictionary(path);
         DecryptionManager manager = new DecryptionManagerImpl(machineHandler,  numberOfAgents, DecryptionDifficultyLevel.INTERMEDIATE, taskSize) ;
         manager.bruteForceDecryption("DACF");
+
+
     }
   @Test
     public void testIntermediateBruteSmallABCRefII() throws Exception {
