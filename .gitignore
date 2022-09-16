@@ -1,0 +1,12 @@
+# Compiled class file
+*.class
+
+# Log file
+*.log
+*.log.*
+
+*.orig
+
+workspace.xml
+
+out/

@@ -26,10 +26,6 @@ public enum DecryptionDifficultyLevel {
                 throw new IllegalArgumentException();
         }
     }
-}
-//    public static DecryptionDifficultyLevel getByNum(int num){
-//
-
 
     /*
     EASY =
@@ -65,6 +61,4 @@ public enum DecryptionDifficultyLevel {
          - Reflector
          - Rotor Starting Position
      */
-
-
-
+}

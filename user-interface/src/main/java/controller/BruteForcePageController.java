@@ -19,7 +19,7 @@ import main.java.manager.DecryptionManager;
 import org.controlsfx.control.textfield.CustomTextField;
 import org.controlsfx.validation.ValidationSupport;
 import org.controlsfx.validation.Validator;
-import src.main.java.adapter.UIAdapter;
+//import src.main.java.adapter.UIAdapter;
 import src.main.java.service.DataService;
 import src.main.java.service.ResourceLocationService;
 import src.main.java.ui.GuiApplication;
@@ -41,7 +41,7 @@ public class BruteForcePageController implements Initializable {
     MachineHandler machineHandler;
     @Setter private DecryptionManager decryptionManager;
 
-    @Setter @Getter private UIAdapter uiAdapter;
+//    @Setter @Getter private UIAdapter uiAdapter;
 
     private AppController parentController;
     @FXML
@@ -171,31 +171,31 @@ public class BruteForcePageController implements Initializable {
             parentController.showMessage("Please encrypt first.");
         }
         else{
-            UIAdapter uiAdapter = createUIAdapter();
-            decryptionManager.setUIAdapter(uiAdapter);
+//            UIAdapter uiAdapter = createUIAdapter();
+//            decryptionManager.setUIAdapter(uiAdapter);
             decryptionManager.bruteForceDecryption(resultTextField.getText());
         }
     }
 
-    private UIAdapter createUIAdapter() {
-        UIAdapter adapter = new UIAdapter( candidate -> {
-            createTile(candidate.getOutput(), candidate.getTimeToDecrypt());
-        });
-        return adapter;
-    }
+//    private UIAdapter createUIAdapter() {
+//        UIAdapter adapter = new UIAdapter( candidate -> {
+//            createTile(candidate.getOutput(), candidate.getTimeToDecrypt());
+//        });
+//        return adapter;
+//    }
 
-    private void createTile(String output, long timeToDecrypt) {
-        try {
-            URL decodedCandidateURL = GuiApplication.class.getResource(ResourceLocationService.getDecodeCandidatePath());
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(decodedCandidateURL);
-            Parent decodedCandidate = fxmlLoader.load(decodedCandidateURL.openStream());
-            DecodedCandidateController decodedCandidateController = fxmlLoader.getController();
-            decodedCandidateController.setCandidateLabel(output);
-            decodedCandidateController.setTimeLabel(String.valueOf(Math.floor(timeToDecrypt)));
-            dmResultsFlowPane.getChildren().add(decodedCandidate);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+//    private void createTile(String output, long timeToDecrypt) {
+//        try {
+//            URL decodedCandidateURL = GuiApplication.class.getResource(ResourceLocationService.getDecodeCandidatePath());
+//            FXMLLoader fxmlLoader = new FXMLLoader();
+//            fxmlLoader.setLocation(decodedCandidateURL);
+//            Parent decodedCandidate = fxmlLoader.load(decodedCandidateURL.openStream());
+//            DecodedCandidateController decodedCandidateController = fxmlLoader.getController();
+//            decodedCandidateController.setCandidateLabel(output);
+//            decodedCandidateController.setTimeLabel(String.valueOf(Math.floor(timeToDecrypt)));
+//            dmResultsFlowPane.getChildren().add(decodedCandidate);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 }
