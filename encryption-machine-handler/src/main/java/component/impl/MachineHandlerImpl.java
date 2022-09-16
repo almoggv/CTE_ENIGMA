@@ -61,10 +61,11 @@ public class MachineHandlerImpl implements MachineHandler {
         if(cteEnigma == null){
             throw new Exception("Failed to generate JAXB CTE Enigma objects by schema");
         }
-        XmlVerifierState xmlVerifierResponse = xmlSchemaVerifier.isXmlSchemaValid(cteEnigma);
+        XmlVerifierState xmlVerifierResponse = xmlSchemaVerifier.isXmlSchemaValidEX2(cteEnigma);
         if(xmlVerifierResponse == XmlVerifierState.VALID){
             clearInventory();
             buildMachinePartsInventory(cteEnigma);
+            InventoryService.setAgentsInventory(cteEnigma.getCTEDecipher().getAgents());
 //            machineStatisticsHistory.clear();
         }
         else{
