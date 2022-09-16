@@ -6,10 +6,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.FileChooser;
@@ -28,6 +25,8 @@ import java.util.ResourceBundle;
 
 public class HeaderController implements Initializable {
 
+    public MenuBar menuBar;
+    public Menu themeMenu;
     @Setter @Getter private AppController parentController;
     @FXML private GridPane headerComponentRootPane;
     @FXML private Label titleLabel;
@@ -58,6 +57,10 @@ public class HeaderController implements Initializable {
 
     private void initializeThemeBox(){
         for (String themeName : ResourceLocationService.getCssThemeToFileMap().keySet()) {
+            /*
+             MenuItem item = new MenuItem(themeName);
+            themeMenu.getItems().add(item);
+             */
             themeChoiceBox.getItems().add(themeName);
             themeChoiceBox.valueProperty().addListener(new ChangeListener<String>() {
                 @Override
@@ -140,6 +143,14 @@ public class HeaderController implements Initializable {
 
     public void onSelectFileTextFieldAction(ActionEvent actionEvent) {
         //todo - maybe add write path of file
+    }
+
+    public void onAnimationsOnAction(ActionEvent actionEvent) {
+        parentController.turnAnimationsOn();
+    }
+
+    public void onAnimationsOffAction(ActionEvent actionEvent) {
+        parentController.turnAnimationsOff();
     }
 }
 

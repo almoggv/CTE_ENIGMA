@@ -53,7 +53,7 @@ public class AppController/* implements Initializable */{
     @FXML private ScrollPane headerWrapScrollPane;
     @FXML private AnchorPane bodyWrapAnchorPane;
     @FXML private ScrollPane bodyWrapScrollPane;
-
+    CurrMachineConfigController currMachineConfigController;
 
     public void setMachineHandler(MachineHandler machineHandler) {
         this.machineHandler = machineHandler;
@@ -75,7 +75,7 @@ public class AppController/* implements Initializable */{
         fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(currConfigResource);
         GridPane currConfigComponent = fxmlLoader.load(currConfigResource.openStream());
-        CurrMachineConfigController currMachineConfigController = fxmlLoader.getController();
+        currMachineConfigController = fxmlLoader.getController();
         //Load MachinePage
         URL machinePageResource = GuiApplication.class.getResource(ResourceLocationService.getMachinePageTemplateFxmlPath());
         System.out.println("found Url of machine component:"+ machinePageResource);
@@ -186,5 +186,13 @@ public class AppController/* implements Initializable */{
 
             primaryStage.getScene().getStylesheets().add(cssAbsolutePath);
         }
+    }
+
+    public void turnAnimationsOn() {
+        currMachineConfigController.getIsAnimationOn().setValue(true);
+    }
+
+    public void turnAnimationsOff() {
+        currMachineConfigController.getIsAnimationOn().setValue(false);
     }
 }

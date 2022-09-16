@@ -18,7 +18,7 @@
                   <GridPane>
                      <columnConstraints>
                         <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="CENTER" hgrow="NEVER" minWidth="-Infinity" />
+                        <ColumnConstraints halignment="CENTER" minWidth="-Infinity" />
                         <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="10.0" />
                      </columnConstraints>
                      <rowConstraints>
@@ -44,6 +44,7 @@
             <ScrollPane fx:id="headerWrapScrollPane" fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <content>
                   <fx:include fx:id="headerComponentRootPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" source="subcomponents/headerComponent.fxml" />
+<!--                  <fx:include fx:id="headerComponentRootPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" source="subcomponents/headerComponentWithMenu.fxml" />-->
                </content>
             </ScrollPane>
          </children>
