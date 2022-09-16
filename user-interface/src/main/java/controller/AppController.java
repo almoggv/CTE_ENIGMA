@@ -107,6 +107,7 @@ public class AppController/* implements Initializable */{
         bruteForcePageController.setMachineHandler(machineHandler);
         decryptionManager = new DecryptionManagerImpl(machineHandler);
         bruteForcePageController.setDecryptionManager(decryptionManager);
+
         //added picture
         headerWrapScrollPane.setContent(headerComponentRootPaneController.getRootComponent());
 //        mainViewImage.setImage(new Image(ResourcesService.getEnigmaMachineIllustration2()));

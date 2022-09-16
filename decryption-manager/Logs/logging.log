@@ -21893,4 +21893,5 @@
   2022-09-15 13:00:48 INFO  AgentWorkManagerImpl:106 - agent cdcbbd7a-1f7a-429e-be23-84f51e195ec8finished work
   2022-09-15 13:00:48 INFO  AgentWorkManagerImpl:106 - agent 1340ab81-a7b6-4492-8b47-65dc6e506d73finished work
   2022-09-15 13:00:48 INFO  AgentWorkManagerImpl:106 - agent 86501683-4362-4b31-b3bd-978f6515b0b6finished work
+  2022-09-16 11:45:39 ERROR MachineHandlerImpl:328 - Failed to verify and fix input, no IOWheel present yet in inventory
   

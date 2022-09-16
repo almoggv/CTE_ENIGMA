@@ -352,7 +352,7 @@
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/user-interface/src/main/java/controller/BruteForcePageController.java</url>
           <line>134</line>
-          <properties class="src.main.java.controller.BruteForcePageController" method="onTaskSizeTextFieldFilled">
+          <properties class="src.main.java.controller.BruteForcePageController">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
