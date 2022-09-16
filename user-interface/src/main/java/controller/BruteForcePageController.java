@@ -19,7 +19,7 @@ import main.java.manager.DecryptionManager;
 import org.controlsfx.control.textfield.CustomTextField;
 import org.controlsfx.validation.ValidationSupport;
 import org.controlsfx.validation.Validator;
-//import src.main.java.adapter.UIAdapter;
+import main.java.adapter.UIAdapter;
 import src.main.java.service.DataService;
 import src.main.java.service.ResourceLocationService;
 import src.main.java.ui.GuiApplication;

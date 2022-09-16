@@ -1,4 +1,4 @@
-package src.main.java.adapter;
+package main.java.adapter;
 
 import javafx.application.Platform;
 import main.java.dto.AgentDecryptionInfo;

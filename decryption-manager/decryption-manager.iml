@@ -28,6 +28,5 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="module" module-name="user-interface" />
   </component>
 </module>

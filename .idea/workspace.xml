@@ -12,15 +12,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6467e2d7-ff2a-4abb-a198-685a0fcd06aa" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/DecryptionManager.java.orig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/DecryptionManagerImpl.java.orig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/decryption-manager/src/test/java/decryptionManager/TestDecryptionManager.java.orig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/AppController.java.orig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/BruteForcePageController.java.orig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/bruteForcePageTemplate.fxml.orig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/decodeCandidate.fxml.orig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/agent/DecryptionAgent.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/agent/impl/DecryptionAgentImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/dto/AgentDecryptionInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/enums/DecryptionDifficultyLevel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/AgentWorkManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/DecryptionManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/DictionaryManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/impl/AgentWorkManagerImpl$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/impl/AgentWorkManagerImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/impl/DecryptionManagerImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/service/MathService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/service/PausableThreadPoolExecutor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/service/PropertiesService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/test/java/TestMathService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/test/java/decryptionManager/TestDecryptionManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/test/java/service/PropertiesService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/AppController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/BruteForcePageController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/HeaderController$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/HeaderController$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/HeaderController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/MachineDetailsController$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/MachineDetailsController$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/MachineDetailsController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/SetMachineConfigController$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/SetMachineConfigController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/service/ResourceLocationService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/adapter/UIAdapter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/BruteForcePageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/BruteForcePageController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,6 +98,10 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/decryption-manager/src" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -102,11 +127,11 @@
       <recent name="main.component" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="src.main.java.service" />
+      <recent name="src.main.java.adapter" />
       <recent name="main.java.manager" />
       <recent name="main.java.service" />
       <recent name="main.java.enums" />
-      <recent name="src.main.java.ui" />
-      <recent name="main.java.generictype" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="src.main.java.handler" />
@@ -241,7 +266,7 @@
       <workItem from="1662386092444" duration="18599000" />
       <workItem from="1662462894733" duration="4553000" />
       <workItem from="1663162208758" duration="4809000" />
-      <workItem from="1663325739692" duration="349000" />
+      <workItem from="1663325739692" duration="892000" />
     </task>
     <servers />
   </component>
