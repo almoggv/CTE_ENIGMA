@@ -55,6 +55,10 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
     @Getter List<DecryptionAgent> decryptionAgentsList = new ArrayList();
     @Getter private IntegerProperty numberOfAgentsProperty = new SimpleIntegerProperty();
 
+    private final Object lockContext = new Object();
+    @Getter private final BooleanProperty isRunningProperty = new SimpleBooleanProperty();
+    @Getter private final BooleanProperty isStoppedProperty = new SimpleBooleanProperty();
+
     static {
         try {
             Properties p = new Properties();
@@ -82,7 +86,6 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
         isWorkCompletedProperty.setValue(false);
         isAllWorkAssignedProperty.setValue(false);
         decryptionCandidatesProperty.setValue(new ArrayList<>());
-
         //Calculate at the end
         totalWorkToDo = calcTotalWorkToDoByDifficulty();
         assignedWorkProgressProperty.set(new MappingPair<>(0, totalWorkToDo));
@@ -415,8 +418,53 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
         return newAgent;
     }
 
+    public void stop(){
+        isStoppedProperty.setValue(true);
+    }
+
+    public void pause() {
+        isRunningProperty.setValue(false);
+    }
+
+    public void resume() {
+        synchronized (lockContext) {
+            isRunningProperty.setValue(true);
+            lockContext.notifyAll();
+        }
+    }
+
     @Override
     public void run() {
+        this.initWorkBatchesByDifficulty();
+        while (!isStoppedProperty.get()) {
+            synchronized (lockContext) {
+                if (isRunningProperty.get() == false) {
+                    try {
+                        lockContext.wait();
+                    } catch (InterruptedException ignore) {}
+                }
+            }
+            //Actual Logic
+            if(threadPoolExecutor.getQueue().remainingCapacity() > 0){
+                DecryptionAgent agent = getNextAgent();
+                decryptionAgentsList.add(agent);
+                numberOfAgentsProperty.setValue(decryptionAgentsList.size());
+                threadPoolExecutor.execute(agent);
+            }
+            if(isAllWorkAssignedProperty.get() == true){
+                this.pause();
+                this.stop();
+            }
+        }
+        threadPoolExecutor.shutdown();
+        try {
+            threadPoolExecutor.awaitTermination(10, TimeUnit.MINUTES);
+        } catch (InterruptedException e) {
+            log.error("AgentWorkManager - awaited termination caught an InterruptedException = " + e.getMessage());
+        }
+    }
+
+    private void runLogic(){
         System.out.println("IN agentManager run!");
         this.initWorkBatchesByDifficulty();
         int i = 0;
@@ -437,8 +485,9 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
         } catch (InterruptedException e) {
             log.error("AgentWorkManager - awaited termination caught an InterruptedException = " + e.getMessage());
         }
-
     }
+
+
 }
 
 

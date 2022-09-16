@@ -1,9 +1,7 @@
 package main.java.agent;
 
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
+import main.java.common.Pausable;
 import main.java.dto.AgentDecryptionInfo;
 import main.java.dto.MachineState;
 import main.java.generictype.MappingPair;
@@ -11,7 +9,7 @@ import main.java.generictype.MappingPair;
 import java.util.List;
 import java.util.UUID;
 
-public interface DecryptionAgent extends Runnable {
+public interface DecryptionAgent extends Runnable, Pausable {
 
     void assignWork(List<MachineState> startingConfigurations, String inputToDecrypt);
 

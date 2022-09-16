@@ -7,9 +7,8 @@ import lombok.Getter;
 public class PausableRunnable implements Runnable {
 
     private final Object lockContext = new Object();
-    @Getter
-    private final BooleanProperty isRunningProperty = new SimpleBooleanProperty();
-    private final BooleanProperty isStoppedProperty = new SimpleBooleanProperty();
+    @Getter private final BooleanProperty isRunningProperty = new SimpleBooleanProperty();
+    @Getter private final BooleanProperty isStoppedProperty = new SimpleBooleanProperty();
 
 
     public PausableRunnable() {
