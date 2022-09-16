@@ -11,33 +11,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6467e2d7-ff2a-4abb-a198-685a0fcd06aa" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decryption-manager/Logs/logging.log" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/Logs/logging.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decryption-manager/Logs/logging.log.1" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/Logs/logging.log.1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decryption-manager/Logs/logging.log.10" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/Logs/logging.log.10" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decryption-manager/Logs/logging.log.2" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/Logs/logging.log.2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decryption-manager/Logs/logging.log.3" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/Logs/logging.log.3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decryption-manager/Logs/logging.log.4" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/Logs/logging.log.4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decryption-manager/Logs/logging.log.5" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/Logs/logging.log.5" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decryption-manager/Logs/logging.log.7" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/Logs/logging.log.7" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decryption-manager/Logs/logging.log.8" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/Logs/logging.log.8" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decryption-manager/Logs/logging.log.9" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/Logs/logging.log.9" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decryption-manager/src/main/java/agent/impl/DecryptionAgentImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/src/main/java/agent/impl/DecryptionAgentImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/DecryptionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/DecryptionManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/AgentWorkManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/AgentWorkManagerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/DecryptionManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/DecryptionManagerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decryption-manager/src/test/java/decryptionManager/TestDecryptionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/src/test/java/decryptionManager/TestDecryptionManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/agent/DecryptionAgent.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/decryption-manager/main/java/agent/DecryptionAgent.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/agent/impl/DecryptionAgentImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/decryption-manager/main/java/agent/impl/DecryptionAgentImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/AgentWorkManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/AgentWorkManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/DecryptionManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/DecryptionManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/impl/AgentWorkManagerImpl$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/impl/AgentWorkManagerImpl$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/impl/AgentWorkManagerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/impl/AgentWorkManagerImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/impl/DecryptionManagerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/impl/DecryptionManagerImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/service/PausableThreadPoolExecutor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/test/java/decryptionManager/TestDecryptionManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/decryption-manager/test/java/decryptionManager/TestDecryptionManager.class" afterDir="false" />
-    </list>
+    <list default="true" id="6467e2d7-ff2a-4abb-a198-685a0fcd06aa" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -261,7 +235,7 @@
       <workItem from="1662386092444" duration="18599000" />
       <workItem from="1662462894733" duration="4553000" />
       <workItem from="1663162208758" duration="4809000" />
-      <workItem from="1663325739692" duration="15816000" />
+      <workItem from="1663325739692" duration="16410000" />
     </task>
     <servers />
   </component>
@@ -339,7 +313,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/user-interface/src/main/java/controller/HeaderController.java</url>
-          <line>102</line>
+          <line>105</line>
           <option name="timeStamp" value="641" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
