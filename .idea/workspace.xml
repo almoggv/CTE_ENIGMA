@@ -12,13 +12,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6467e2d7-ff2a-4abb-a198-685a0fcd06aa" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/decryption-manager/src/main/java/common/Pausable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decryption-manager/src/main/java/agent/DecryptionAgent.java" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/src/main/java/agent/DecryptionAgent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decryption-manager/src/main/java/agent/impl/DecryptionAgentImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/src/main/java/agent/impl/DecryptionAgentImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/AgentWorkManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/AgentWorkManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/AgentWorkManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/AgentWorkManagerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decryption-manager/src/test/java/pausePlayThreadTesting/PausableRunnable.java" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/src/test/java/pausePlayThreadTesting/PausableRunnable.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -243,7 +238,7 @@
       <workItem from="1662386092444" duration="18599000" />
       <workItem from="1662462894733" duration="4553000" />
       <workItem from="1663162208758" duration="4809000" />
-      <workItem from="1663325739692" duration="10048000" />
+      <workItem from="1663325739692" duration="10327000" />
     </task>
     <servers />
   </component>

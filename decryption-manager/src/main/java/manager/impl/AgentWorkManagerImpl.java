@@ -415,6 +415,19 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
                     System.out.println("Agent completed work: "+ newAgent.getId());
                 }
         }));
+        isRunningProperty.addListener(((observable, oldValue, newValue) -> {
+            if(newValue == true){
+                newAgent.resume();
+            }
+            else{
+                newAgent.pause();
+            }
+        }));
+        isStoppedProperty.addListener(((observable, oldValue, newValue) -> {
+            if(newValue == true){
+                newAgent.stop();
+            }
+        }));
         return newAgent;
     }
 
