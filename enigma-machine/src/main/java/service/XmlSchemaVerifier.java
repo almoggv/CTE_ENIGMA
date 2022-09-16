@@ -12,4 +12,5 @@ public interface XmlSchemaVerifier extends Serializable {
     public XmlVerifierState isMachineConfigurationValid(CTEMachine machine);
     public XmlVerifierState isDecipherConfigurationValid(CTEDecipher cteDecipher);
     XmlVerifierState isXmlSchemaValid(CTEEnigma cteEnigma);
+    XmlVerifierState isXmlSchemaValidEX2(CTEEnigma cteEnigma);
 }

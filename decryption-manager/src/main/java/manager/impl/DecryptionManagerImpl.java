@@ -24,7 +24,7 @@ public class DecryptionManagerImpl implements DecryptionManager {
     private final int THREAD_POOL_QEUEU_MAX_CAPACITY = 10;
     @Getter private MachineHandler machineHandler;
     private DictionaryManager dictionaryManager;
-    @Getter private int numberOfAgents;
+    @Getter @Setter private int numberOfAgents;
     @Getter @Setter private int taskSize;
     @Getter @Setter private DecryptionDifficultyLevel difficultyLevel;
     private PausableThreadPoolExecutor threadPoolService;
@@ -57,7 +57,16 @@ public class DecryptionManagerImpl implements DecryptionManager {
         isRunningProperty.setValue(false);
     }
 
+    public DecryptionManagerImpl(MachineHandler machineHandler) {
+        this.machineHandler = machineHandler;
+        if(machineHandler.getInventoryInfo().isPresent()){
+            dictionaryManager.setAbc(machineHandler.getInventoryInfo().get().getABC());
+        }
+        isRunningProperty.setValue(false);
+    }
     public void bruteForceDecryption(String sourceInput) {
+        int keepAliveForWhenIdle = 1;
+        threadPoolService = new PausableThreadPoolExecutor(numberOfAgents, numberOfAgents, keepAliveForWhenIdle , TimeUnit.SECONDS, new ArrayBlockingQueue(THREAD_POOL_QEUEU_MAX_CAPACITY));
 
         AgentWorkManager agentWorkManager = new AgentWorkManagerImpl(this.threadPoolService,this.machineHandler,this.difficultyLevel,this.taskSize, sourceInput);
         this.workManagerThread = new Thread(agentWorkManager,"agentManagerThread");
@@ -77,6 +86,11 @@ public class DecryptionManagerImpl implements DecryptionManager {
 
     public void resumeWork(){
         threadPoolService.resume();
+    }
+
+    @Override
+    public int getAmountOfTasks() {
+        return 0;
     }
 
 }

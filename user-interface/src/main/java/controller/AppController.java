@@ -18,6 +18,7 @@ import main.java.component.impl.MachineHandlerImpl;
 import main.java.dto.InventoryInfo;
 import main.java.manager.DecryptionManager;
 import main.java.manager.impl.DecryptionManagerImpl;
+import main.java.service.InventoryService;
 import src.main.java.service.DataService;
 import src.main.java.service.ResourceLocationService;
 import src.main.java.ui.GuiApplication;
@@ -104,6 +105,8 @@ public class AppController/* implements Initializable */{
         bruteForcePageController.setParentController(this);
         bruteForcePageController.bindComponent(currMachineConfigController);
         bruteForcePageController.setMachineHandler(machineHandler);
+        decryptionManager = new DecryptionManagerImpl(machineHandler);
+        bruteForcePageController.setDecryptionManager(decryptionManager);
 
         //added picture
         headerWrapScrollPane.setContent(headerComponentRootPaneController.getRootComponent());
@@ -158,6 +161,7 @@ public class AppController/* implements Initializable */{
         DataService.getOriginalMachineStateProperty().setValue(null);
         DataService.getCurrentMachineStateProperty().setValue(null);
         DataService.getEncryptionInfoHistoryProperty().setValue(null);
+        DataService.getMaxAgentNumProperty().setValue(InventoryService.getAgentsInventory());
     }
 
     public void setPrimaryStage(Stage primaryStage) {
