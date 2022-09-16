@@ -12,6 +12,8 @@ public interface DecryptionManager {
 
     public void resumeWork();
 
+    public void stopWork();
+
     int getNumberOfAgents();
 
     void setNumberOfAgents(int value);
