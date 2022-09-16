@@ -8,8 +8,6 @@ import main.java.component.MachineHandler;
 import main.java.enums.DecryptionDifficultyLevel;
 import main.java.manager.AgentWorkManager;
 import main.java.manager.DictionaryManager;
-import main.java.service.PausableThreadPoolExecutor;
-import main.java.service.XmlFileLoader;
 import main.java.manager.DecryptionManager;
 import main.java.service.PropertiesService;
 import org.apache.log4j.Logger;
@@ -68,10 +66,12 @@ public class DecryptionManagerImpl implements DecryptionManager {
     }
     public void bruteForceDecryption(String sourceInput) {
         int keepAliveForWhenIdle = 1;
-        threadPoolService = new PausableThreadPoolExecutor(numberOfAgents, numberOfAgents, keepAliveForWhenIdle , TimeUnit.SECONDS, new ArrayBlockingQueue(THREAD_POOL_QEUEU_MAX_CAPACITY));
+        if(threadPoolService==null){
+            threadPoolService = new ThreadPoolExecutor(numberOfAgents, numberOfAgents, keepAliveForWhenIdle , TimeUnit.SECONDS, new ArrayBlockingQueue(THREAD_POOL_QEUEU_MAX_CAPACITY));
+        }
         agentWorkManager = new AgentWorkManagerImpl(this.threadPoolService,this.machineHandler,this.difficultyLevel,this.taskSize, sourceInput);
         this.workManagerThread = new Thread(agentWorkManager,"agentManagerThread");
-        //TODO: connect to manager's properties
+        //TODO: connect to manager's properties - UIAdapter
         workManagerThread.start();
         try{
             workManagerThread.join();
