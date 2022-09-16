@@ -12,36 +12,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6467e2d7-ff2a-4abb-a198-685a0fcd06aa" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/decryption-manager/src/test/java/pausePlayThreadTesting/PausableRunnable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/decryption-manager/src/test/java/pausePlayThreadTesting/PausePlayThreadTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/agent/DecryptionAgent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/agent/impl/DecryptionAgentImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/dto/AgentDecryptionInfo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/enums/DecryptionDifficultyLevel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/AgentWorkManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/DecryptionManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/DictionaryManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/impl/AgentWorkManagerImpl$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/impl/AgentWorkManagerImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/impl/DecryptionManagerImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/service/MathService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/service/PausableThreadPoolExecutor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/service/PropertiesService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/test/java/TestMathService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/test/java/decryptionManager/TestDecryptionManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/test/java/service/PropertiesService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/AppController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/BruteForcePageController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/HeaderController$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/HeaderController$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/HeaderController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/MachineDetailsController$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/MachineDetailsController$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/MachineDetailsController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/SetMachineConfigController$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/SetMachineConfigController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/service/ResourceLocationService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/adapter/UIAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/BruteForcePageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/BruteForcePageController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +112,7 @@
       <recent name="test.java.component" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.GuiApplication">
+  <component name="RunManager" selected="JUnit.PausePlayThreadTest.pauseAndResumeThread">
     <configuration name="GuiApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="src.main.java.ui.GuiApplication" />
       <module name="user-interface" />
@@ -149,6 +122,22 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PausePlayThreadTest.pauseAndResumeThread" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="decryption-manager" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.java.pausePlayThreadTesting.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test.java.pausePlayThreadTesting" />
+      <option name="MAIN_CLASS_NAME" value="test.java.pausePlayThreadTesting.PausePlayThreadTest" />
+      <option name="METHOD_NAME" value="pauseAndResumeThread" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -201,22 +190,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestDecryptionManager.testIntermediateBruteEx2Basic" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="decryption-manager" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test.java.decryptionManager.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="test.java.decryptionManager" />
-      <option name="MAIN_CLASS_NAME" value="test.java.decryptionManager.TestDecryptionManager" />
-      <option name="METHOD_NAME" value="testIntermediateBruteEx2Basic" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="enigma-machine" />
       <method v="2">
@@ -232,11 +205,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.PausePlayThreadTest.pauseAndResumeThread" />
         <item itemvalue="Application.GuiApplication" />
         <item itemvalue="JUnit.TestDecryptionManager.testEasyBruteEx2Basic" />
         <item itemvalue="JUnit.TestDecryptionManager.testImpossibleBruteSmallABC" />
         <item itemvalue="JUnit.TestDecryptionManager.testHardBruteEx2Basic" />
-        <item itemvalue="JUnit.TestDecryptionManager.testIntermediateBruteEx2Basic" />
       </list>
     </recent_temporary>
   </component>
@@ -266,7 +239,7 @@
       <workItem from="1662386092444" duration="18599000" />
       <workItem from="1662462894733" duration="4553000" />
       <workItem from="1663162208758" duration="4809000" />
-      <workItem from="1663325739692" duration="892000" />
+      <workItem from="1663325739692" duration="4413000" />
     </task>
     <servers />
   </component>
