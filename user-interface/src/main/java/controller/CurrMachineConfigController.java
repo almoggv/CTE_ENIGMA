@@ -1,5 +1,8 @@
 package src.main.java.controller;
 
+import javafx.animation.FadeTransition;
+import javafx.application.Platform;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -9,14 +12,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.util.Duration;
 import lombok.Getter;
-import lombok.Setter;
-import main.java.dto.InventoryInfo;
 import main.java.dto.MachineState;
 import main.java.generictype.MappingPair;
-import org.controlsfx.control.ToggleSwitch;
-import src.main.java.service.DataService;
-
 
 
 import java.net.URL;
@@ -25,8 +24,6 @@ import java.util.ResourceBundle;
 
 
 public class CurrMachineConfigController implements Initializable {
-
-
     public Label machineConfigurationLabel;
     @Getter @FXML MachinePageController machinePageController;
     @Getter @FXML EncryptPageController encryptPageController;
@@ -42,6 +39,8 @@ public class CurrMachineConfigController implements Initializable {
     @FXML private Button reflectorButton;
     @FXML private HBox reflectorHbox;
     @FXML public Label machineNotConfiguredLabel;
+
+    @Getter private SimpleBooleanProperty isAnimationOn = new SimpleBooleanProperty(false);
 
     public void setParentController(MachinePageController parentController){
         this.machinePageController = parentController;
@@ -96,33 +95,69 @@ public class CurrMachineConfigController implements Initializable {
     }
 
     private void setRotorsHbox(MachineState machineState) {
-        rotorsHbox.getChildren().clear();
-        int numOfRotors = machineState.getRotorIds().size();
-        List<Integer> rotorIds = machineState.getRotorIds();
-        for (int i = numOfRotors - 1 ; i >= 0; i--) {
-            int notchDistance = machineState.getNotchDistancesFromHead().get(i);
-            String rotorButtonMsg = (rotorIds.get(i)) + " (" + notchDistance + ")";
-            Button rotor = new Button(new String(String.valueOf(rotorButtonMsg)));
-            rotorsHbox.getChildren().add(rotor);
-        }
+        Platform.runLater(() -> {
+            if (isAnimationOn.get()) {
+                fadeOutComponent(rotorsHbox);
+            }
+            rotorsHbox.getChildren().clear();
+            int numOfRotors = machineState.getRotorIds().size();
+            List<Integer> rotorIds = machineState.getRotorIds();
+            for (int i = numOfRotors - 1; i >= 0; i--) {
+                int notchDistance = machineState.getNotchDistancesFromHead().get(i);
+                String rotorButtonMsg = (rotorIds.get(i)) + " (" + notchDistance + ")";
+                Button rotor = new Button(new String(String.valueOf(rotorButtonMsg)));
+                rotorsHbox.getChildren().add(rotor);
+            }
+            if (isAnimationOn.get()) {
+                fadeInComponent(rotorsHbox);
+            }
+        });
+    }
+
+    private void fadeInComponent(HBox Hbox) {
+        FadeTransition fadeTransitionUp = new FadeTransition(Duration.seconds(0.3), Hbox);
+        fadeTransitionUp.setFromValue(0.0);
+        fadeTransitionUp.setToValue(1.0);
+        fadeTransitionUp.play();
+    }
+
+    private void fadeOutComponent(HBox Hbox) {
+        FadeTransition fadeTransitionDown = new FadeTransition(Duration.seconds(0.3), Hbox);
+        fadeTransitionDown.setFromValue(1.0);
+        fadeTransitionDown.setToValue(0.0);
+        fadeTransitionDown.play();
     }
 
     private void setPlugBoardHbox(MachineState machineState) {
-        plugBoardHbox.getChildren().clear();
-        int numOfPlugs = machineState.getPlugMapping().size();
-        List<MappingPair<String, String>> plugMapping = machineState.getPlugMapping();
-        for (MappingPair<String,String> mappingPair : plugMapping) {
-            String plugString = mappingPair.getLeft() + "|" + mappingPair.getRight();
-            Button plugButton = new Button(plugString);
-            plugBoardHbox.getChildren().add(plugButton);
-        }
+        Platform.runLater(() -> {
+            if (isAnimationOn.get()) {
+                fadeOutComponent(plugBoardHbox);
+            }
+            plugBoardHbox.getChildren().clear();
+            int numOfPlugs = machineState.getPlugMapping().size();
+            List<MappingPair<String, String>> plugMapping = machineState.getPlugMapping();
+            for (MappingPair<String, String> mappingPair : plugMapping) {
+                String plugString = mappingPair.getLeft() + "|" + mappingPair.getRight();
+                Button plugButton = new Button(plugString);
+                plugBoardHbox.getChildren().add(plugButton);
+            }
+            if (isAnimationOn.get()) {
+                fadeInComponent(plugBoardHbox);
+            }
+        });
     }
 
     private void setReflectorLabel(MachineState machineState){
-        reflectorHbox.getChildren().clear();
-        Button refButton = new Button(machineState.getReflectorId().getName());
-        reflectorHbox.getChildren().add(refButton);
+        Platform.runLater(() -> {
+            if (isAnimationOn.get()) {
+                fadeOutComponent(reflectorHbox);
+            }
+            reflectorHbox.getChildren().clear();
+            Button refButton = new Button(machineState.getReflectorId().getName());
+            reflectorHbox.getChildren().add(refButton);
+            if (isAnimationOn.get()) {
+                fadeInComponent(reflectorHbox);
+            }
+        });
     }
-
-
 }

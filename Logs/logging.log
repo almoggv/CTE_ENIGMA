@@ -28219,4 +28219,188 @@
   2022-09-16 20:35:47 INFO  MachineHandlerImpl:189 - Machine Handler - assembled machine parts finished
   2022-09-16 20:35:47 WARN  PlugBoardImpl:73 - Plugboard : Failed to connect endpoints -Nis already connected
   2022-09-16 20:35:47 INFO  MachineHandlerImpl:211 - Machine Handler - initial state of machine state set
+  2022-09-16 20:52:55 INFO  XmlFileLoader:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema-Ex2\ex2-basic.xml
+  2022-09-16 20:52:55 INFO  XmlSchemaVerifierImpl:115 - Machine Configuration schema passed all tests.
+  2022-09-16 20:52:55 INFO  MachineHandlerImpl:273 - Machine handler: created inventory successfully
+  2022-09-16 20:52:58 INFO  MachineHandlerImpl:189 - Machine Handler - assembled machine parts finished
+  2022-09-16 20:52:58 WARN  PlugBoardImpl:73 - Plugboard : Failed to connect endpoints -Cis already connected
+  2022-09-16 20:52:58 INFO  MachineHandlerImpl:211 - Machine Handler - initial state of machine state set
+  2022-09-16 20:53:00 INFO  MachineHandlerImpl:189 - Machine Handler - assembled machine parts finished
+  2022-09-16 20:53:00 WARN  PlugBoardImpl:73 - Plugboard : Failed to connect endpoints -Tis already connected
+  2022-09-16 20:53:00 INFO  MachineHandlerImpl:211 - Machine Handler - initial state of machine state set
+  2022-09-16 20:53:01 INFO  MachineHandlerImpl:189 - Machine Handler - assembled machine parts finished
+  2022-09-16 20:53:01 WARN  PlugBoardImpl:73 - Plugboard : Failed to connect endpoints -Lis already connected
+  2022-09-16 20:53:01 INFO  MachineHandlerImpl:211 - Machine Handler - initial state of machine state set
+  2022-09-16 20:53:02 INFO  MachineHandlerImpl:189 - Machine Handler - assembled machine parts finished
+  2022-09-16 20:53:02 INFO  MachineHandlerImpl:211 - Machine Handler - initial state of machine state set
+  2022-09-16 20:53:03 INFO  MachineHandlerImpl:189 - Machine Handler - assembled machine parts finished
+  2022-09-16 20:53:03 WARN  PlugBoardImpl:73 - Plugboard : Failed to connect endpoints -Yis already connected
+  2022-09-16 20:53:03 INFO  MachineHandlerImpl:211 - Machine Handler - initial state of machine state set
+  2022-09-16 20:53:03 INFO  MachineHandlerImpl:189 - Machine Handler - assembled machine parts finished
+  2022-09-16 20:53:03 WARN  PlugBoardImpl:69 - Plugboard : Failed to connect endpoints -Cis already connected
+  2022-09-16 20:53:03 INFO  MachineHandlerImpl:211 - Machine Handler - initial state of machine state set
+  2022-09-16 20:53:04 INFO  MachineHandlerImpl:189 - Machine Handler - assembled machine parts finished
+  2022-09-16 20:53:04 WARN  PlugBoardImpl:73 - Plugboard : Failed to connect endpoints -'is already connected
+  2022-09-16 20:53:04 INFO  MachineHandlerImpl:211 - Machine Handler - initial state of machine state set
+  2022-09-16 20:53:05 INFO  MachineHandlerImpl:189 - Machine Handler - assembled machine parts finished
+  2022-09-16 20:53:05 WARN  PlugBoardImpl:69 - Plugboard : Failed to connect endpoints -Sis already connected
+  2022-09-16 20:53:05 INFO  MachineHandlerImpl:211 - Machine Handler - initial state of machine state set
+  2022-09-16 20:53:06 INFO  MachineHandlerImpl:189 - Machine Handler - assembled machine parts finished
+  2022-09-16 20:53:06 WARN  PlugBoardImpl:69 - Plugboard : Failed to connect endpoints -Bis already connected
+  2022-09-16 20:53:06 INFO  MachineHandlerImpl:211 - Machine Handler - initial state of machine state set
+  2022-09-16 20:53:07 INFO  MachineHandlerImpl:189 - Machine Handler - assembled machine parts finished
+  2022-09-16 20:53:07 INFO  MachineHandlerImpl:211 - Machine Handler - initial state of machine state set
+  2022-09-16 20:53:08 INFO  MachineHandlerImpl:189 - Machine Handler - assembled machine parts finished
+  2022-09-16 20:53:08 WARN  PlugBoardImpl:73 - Plugboard : Failed to connect endpoints -Tis already connected
+  2022-09-16 20:53:08 INFO  MachineHandlerImpl:211 - Machine Handler - initial state of machine state set
+  2022-09-16 20:53:09 INFO  MachineHandlerImpl:189 - Machine Handler - assembled machine parts finished
+  2022-09-16 20:53:09 WARN  PlugBoardImpl:69 - Plugboard : Failed to connect endpoints -Ris already connected
+  2022-09-16 20:53:09 INFO  MachineHandlerImpl:211 - Machine Handler - initial state of machine state set
+  2022-09-16 20:53:10 INFO  MachineHandlerImpl:189 - Machine Handler - assembled machine parts finished
+  2022-09-16 20:53:10 WARN  PlugBoardImpl:69 - Plugboard : Failed to connect endpoints -Vis already connected
+  2022-09-16 20:53:10 INFO  MachineHandlerImpl:211 - Machine Handler - initial state of machine state set
+  2022-09-16 21:05:39 INFO  XmlFileLoader:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema-Ex2\ex2-large.xml
+  2022-09-16 21:05:39 INFO  XmlSchemaVerifierImpl:115 - Machine Configuration schema passed all tests.
+  2022-09-16 21:05:39 INFO  MachineHandlerImpl:273 - Machine handler: created inventory successfully
+  2022-09-16 21:05:41 INFO  MachineHandlerImpl:189 - Machine Handler - assembled machine parts finished
+  2022-09-16 21:05:41 WARN  PlugBoardImpl:73 - Plugboard : Failed to connect endpoints -Jis already connected
+  2022-09-16 21:05:41 INFO  MachineHandlerImpl:211 - Machine Handler - initial state of machine state set
+  2022-09-16 21:05:42 INFO  MachineHandlerImpl:189 - Machine Handler - assembled machine parts finished
+  2022-09-16 21:05:42 WARN  PlugBoardImpl:69 - Plugboard : Failed to connect endpoints -Pis already connected
+  2022-09-16 21:05:42 INFO  MachineHandlerImpl:211 - Machine Handler - initial state of machine state set
+  2022-09-16 21:05:43 INFO  MachineHandlerImpl:189 - Machine Handler - assembled machine parts finished
+  2022-09-16 21:05:43 WARN  PlugBoardImpl:69 - Plugboard : Failed to connect endpoints -Uis already connected
+  2022-09-16 21:05:43 INFO  MachineHandlerImpl:211 - Machine Handler - initial state of machine state set
+  2022-09-16 21:05:43 INFO  MachineHandlerImpl:189 - Machine Handler - assembled machine parts finished
+  2022-09-16 21:05:43 INFO  MachineHandlerImpl:211 - Machine Handler - initial state of machine state set
+  2022-09-16 21:05:44 INFO  MachineHandlerImpl:189 - Machine Handler - assembled machine parts finished
+  2022-09-16 21:05:44 WARN  PlugBoardImpl:73 - Plugboard : Failed to connect endpoints -Pis already connected
+  2022-09-16 21:05:44 INFO  MachineHandlerImpl:211 - Machine Handler - initial state of machine state set
+  2022-09-16 21:05:45 INFO  MachineHandlerImpl:189 - Machine Handler - assembled machine parts finished
+  2022-09-16 21:05:45 WARN  PlugBoardImpl:73 - Plugboard : Failed to connect endpoints -Yis already connected
+  2022-09-16 21:05:45 INFO  MachineHandlerImpl:211 - Machine Handler - initial state of machine state set
+  2022-09-16 21:05:50 INFO  MachineHandlerImpl:189 - Machine Handler - assembled machine parts finished
+  2022-09-16 21:05:50 INFO  MachineHandlerImpl:211 - Machine Handler - initial state of machine state set
+  2022-09-16 21:05:51 INFO  MachineHandlerImpl:189 - Machine Handler - assembled machine parts finished
+  2022-09-16 21:05:51 WARN  PlugBoardImpl:69 - Plugboard : Failed to connect endpoints -Yis already connected
+  2022-09-16 21:05:51 INFO  MachineHandlerImpl:211 - Machine Handler - initial state of machine state set
+  2022-09-16 21:05:52 INFO  MachineHandlerImpl:189 - Machine Handler - assembled machine parts finished
+  2022-09-16 21:05:52 WARN  PlugBoardImpl:73 - Plugboard : Failed to connect endpoints -Cis already connected
+  2022-09-16 21:05:52 INFO  MachineHandlerImpl:211 - Machine Handler - initial state of machine state set
+  2022-09-16 21:05:53 INFO  MachineHandlerImpl:189 - Machine Handler - assembled machine parts finished
+  2022-09-16 21:05:53 INFO  MachineHandlerImpl:211 - Machine Handler - initial state of machine state set
+  2022-09-16 21:05:54 INFO  MachineHandlerImpl:189 - Machine Handler - assembled machine parts finished
+  2022-09-16 21:05:54 WARN  PlugBoardImpl:69 - Plugboard : Failed to connect endpoints -'is already connected
+  2022-09-16 21:05:54 INFO  MachineHandlerImpl:211 - Machine Handler - initial state of machine state set
+  2022-09-16 21:05:55 INFO  MachineHandlerImpl:189 - Machine Handler - assembled machine parts finished
+  2022-09-16 21:05:55 WARN  PlugBoardImpl:73 - Plugboard : Failed to connect endpoints -Iis already connected
+  2022-09-16 21:05:55 INFO  MachineHandlerImpl:211 - Machine Handler - initial state of machine state set
+  2022-09-16 21:05:56 INFO  MachineHandlerImpl:189 - Machine Handler - assembled machine parts finished
+  2022-09-16 21:05:56 WARN  PlugBoardImpl:73 - Plugboard : Failed to connect endpoints -Lis already connected
+  2022-09-16 21:05:56 INFO  MachineHandlerImpl:211 - Machine Handler - initial state of machine state set
+  2022-09-16 21:05:57 INFO  MachineHandlerImpl:189 - Machine Handler - assembled machine parts finished
+  2022-09-16 21:05:57 WARN  PlugBoardImpl:69 - Plugboard : Failed to connect endpoints -Eis already connected
+  2022-09-16 21:05:57 INFO  MachineHandlerImpl:211 - Machine Handler - initial state of machine state set
+  2022-09-16 21:06:44 INFO  XmlFileLoader:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema-Ex2\ex2-basic.xml
+  2022-09-16 21:06:44 INFO  XmlSchemaVerifierImpl:115 - Machine Configuration schema passed all tests.
+  2022-09-16 21:06:44 INFO  MachineHandlerImpl:273 - Machine handler: created inventory successfully
+  2022-09-16 21:06:45 INFO  MachineHandlerImpl:189 - Machine Handler - assembled machine parts finished
+  2022-09-16 21:06:45 INFO  MachineHandlerImpl:211 - Machine Handler - initial state of machine state set
+  2022-09-16 21:06:46 INFO  MachineHandlerImpl:189 - Machine Handler - assembled machine parts finished
+  2022-09-16 21:06:46 WARN  PlugBoardImpl:73 - Plugboard : Failed to connect endpoints -Wis already connected
+  2022-09-16 21:06:46 INFO  MachineHandlerImpl:211 - Machine Handler - initial state of machine state set
+  2022-09-16 21:06:47 INFO  MachineHandlerImpl:189 - Machine Handler - assembled machine parts finished
+  2022-09-16 21:06:47 WARN  PlugBoardImpl:73 - Plugboard : Failed to connect endpoints -Sis already connected
+  2022-09-16 21:06:47 INFO  MachineHandlerImpl:211 - Machine Handler - initial state of machine state set
+  2022-09-16 21:06:49 INFO  MachineHandlerImpl:189 - Machine Handler - assembled machine parts finished
+  2022-09-16 21:06:49 INFO  MachineHandlerImpl:211 - Machine Handler - initial state of machine state set
+  2022-09-16 21:06:54 INFO  MachineHandlerImpl:305 - encrypted: A to:  
+  2022-09-16 21:06:54 INFO  MachineHandlerImpl:306 - time it took to encrypt:485000
+  2022-09-16 21:06:55 INFO  MachineHandlerImpl:305 - encrypted: A to: S
+  2022-09-16 21:06:55 INFO  MachineHandlerImpl:306 - time it took to encrypt:77600
+  2022-09-16 21:06:56 INFO  MachineHandlerImpl:305 - encrypted: A to: L
+  2022-09-16 21:06:56 INFO  MachineHandlerImpl:306 - time it took to encrypt:65200
+  2022-09-16 21:06:57 INFO  MachineHandlerImpl:305 - encrypted: A to: V
+  2022-09-16 21:06:57 INFO  MachineHandlerImpl:306 - time it took to encrypt:70600
+  2022-09-16 21:06:58 INFO  MachineHandlerImpl:305 - encrypted: A to: D
+  2022-09-16 21:06:58 INFO  MachineHandlerImpl:306 - time it took to encrypt:138900
+  2022-09-16 21:06:59 INFO  MachineHandlerImpl:305 - encrypted: A to: O
+  2022-09-16 21:06:59 INFO  MachineHandlerImpl:306 - time it took to encrypt:70000
+  2022-09-16 21:07:00 INFO  MachineHandlerImpl:305 - encrypted: A to: M
+  2022-09-16 21:07:00 INFO  MachineHandlerImpl:306 - time it took to encrypt:78300
+  2022-09-16 21:07:02 INFO  MachineHandlerImpl:305 - encrypted: A to: Y
+  2022-09-16 21:07:02 INFO  MachineHandlerImpl:306 - time it took to encrypt:58300
+  2022-09-16 21:07:02 INFO  MachineHandlerImpl:305 - encrypted: A to:  
+  2022-09-16 21:07:02 INFO  MachineHandlerImpl:306 - time it took to encrypt:62700
+  2022-09-16 21:07:03 INFO  MachineHandlerImpl:305 - encrypted: A to: J
+  2022-09-16 21:07:03 INFO  MachineHandlerImpl:306 - time it took to encrypt:58600
+  2022-09-16 21:07:11 INFO  MachineHandlerImpl:283 - resetToLastSetState: state reset to: MachineState(reflectorId=I, rotorIds=[3, 4, 5], rotorsHeadsInitialValues=[L, Y, B], plugMapping=[MappingPair(left=A, right=?), MappingPair(left=C, right=X), MappingPair(left=F, right='), MappingPair(left=G, right=!), MappingPair(left=N, right=Y)], notchDistancesFromHead=[7, 5, 16])
+  2022-09-16 21:30:31 INFO  XmlFileLoader:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema-Ex2\ex2-basic-easy.xml
+  2022-09-16 21:30:31 INFO  XmlSchemaVerifierImpl:115 - Machine Configuration schema passed all tests.
+  2022-09-16 21:30:31 INFO  MachineHandlerImpl:273 - Machine handler: created inventory successfully
+  2022-09-16 21:30:37 INFO  MachineHandlerImpl:189 - Machine Handler - assembled machine parts finished
+  2022-09-16 21:30:37 INFO  MachineHandlerImpl:211 - Machine Handler - initial state of machine state set
+  2022-09-16 21:30:41 INFO  MachineHandlerImpl:189 - Machine Handler - assembled machine parts finished
+  2022-09-16 21:30:41 WARN  PlugBoardImpl:69 - Plugboard : Failed to connect endpoints -Dis already connected
+  2022-09-16 21:30:41 INFO  MachineHandlerImpl:211 - Machine Handler - initial state of machine state set
+  2022-09-16 21:30:42 INFO  MachineHandlerImpl:189 - Machine Handler - assembled machine parts finished
+  2022-09-16 21:30:42 INFO  MachineHandlerImpl:211 - Machine Handler - initial state of machine state set
+  2022-09-16 21:30:45 INFO  MachineHandlerImpl:189 - Machine Handler - assembled machine parts finished
+  2022-09-16 21:30:45 INFO  MachineHandlerImpl:211 - Machine Handler - initial state of machine state set
+  2022-09-16 21:31:30 INFO  XmlFileLoader:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema-Ex2\ex2-basic.xml
+  2022-09-16 21:31:30 INFO  XmlSchemaVerifierImpl:115 - Machine Configuration schema passed all tests.
+  2022-09-16 21:31:30 INFO  MachineHandlerImpl:273 - Machine handler: created inventory successfully
+  2022-09-16 21:31:34 INFO  MachineHandlerImpl:189 - Machine Handler - assembled machine parts finished
+  2022-09-16 21:31:34 INFO  MachineHandlerImpl:211 - Machine Handler - initial state of machine state set
+  2022-09-16 21:31:35 INFO  MachineHandlerImpl:189 - Machine Handler - assembled machine parts finished
+  2022-09-16 21:31:35 WARN  PlugBoardImpl:69 - Plugboard : Failed to connect endpoints -Tis already connected
+  2022-09-16 21:31:35 INFO  MachineHandlerImpl:211 - Machine Handler - initial state of machine state set
+  2022-09-16 21:31:38 INFO  MachineHandlerImpl:189 - Machine Handler - assembled machine parts finished
+  2022-09-16 21:31:38 WARN  PlugBoardImpl:69 - Plugboard : Failed to connect endpoints -?is already connected
+  2022-09-16 21:31:38 INFO  MachineHandlerImpl:211 - Machine Handler - initial state of machine state set
+  2022-09-16 21:31:39 INFO  MachineHandlerImpl:189 - Machine Handler - assembled machine parts finished
+  2022-09-16 21:31:39 WARN  PlugBoardImpl:69 - Plugboard : Failed to connect endpoints -Iis already connected
+  2022-09-16 21:31:39 INFO  MachineHandlerImpl:211 - Machine Handler - initial state of machine state set
+  2022-09-16 21:31:41 INFO  MachineHandlerImpl:189 - Machine Handler - assembled machine parts finished
+  2022-09-16 21:31:41 WARN  PlugBoardImpl:69 - Plugboard : Failed to connect endpoints -Xis already connected
+  2022-09-16 21:31:41 INFO  MachineHandlerImpl:211 - Machine Handler - initial state of machine state set
+  2022-09-16 21:31:42 INFO  MachineHandlerImpl:189 - Machine Handler - assembled machine parts finished
+  2022-09-16 21:31:42 INFO  MachineHandlerImpl:211 - Machine Handler - initial state of machine state set
+  2022-09-16 21:31:45 INFO  MachineHandlerImpl:189 - Machine Handler - assembled machine parts finished
+  2022-09-16 21:31:45 INFO  MachineHandlerImpl:211 - Machine Handler - initial state of machine state set
+  2022-09-16 21:32:39 INFO  XmlFileLoader:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema-Ex2\ex2-basic.xml
+  2022-09-16 21:32:39 INFO  XmlSchemaVerifierImpl:115 - Machine Configuration schema passed all tests.
+  2022-09-16 21:32:39 INFO  MachineHandlerImpl:273 - Machine handler: created inventory successfully
+  2022-09-16 21:32:42 INFO  MachineHandlerImpl:189 - Machine Handler - assembled machine parts finished
+  2022-09-16 21:32:42 WARN  PlugBoardImpl:73 - Plugboard : Failed to connect endpoints -Fis already connected
+  2022-09-16 21:32:42 INFO  MachineHandlerImpl:211 - Machine Handler - initial state of machine state set
+  2022-09-16 21:33:02 INFO  MachineHandlerImpl:189 - Machine Handler - assembled machine parts finished
+  2022-09-16 21:33:02 WARN  PlugBoardImpl:69 - Plugboard : Failed to connect endpoints -Fis already connected
+  2022-09-16 21:33:02 INFO  MachineHandlerImpl:211 - Machine Handler - initial state of machine state set
+  2022-09-16 21:33:03 INFO  MachineHandlerImpl:189 - Machine Handler - assembled machine parts finished
+  2022-09-16 21:33:03 WARN  PlugBoardImpl:69 - Plugboard : Failed to connect endpoints -Dis already connected
+  2022-09-16 21:33:03 INFO  MachineHandlerImpl:211 - Machine Handler - initial state of machine state set
+  2022-09-16 21:33:04 INFO  MachineHandlerImpl:189 - Machine Handler - assembled machine parts finished
+  2022-09-16 21:33:04 INFO  MachineHandlerImpl:211 - Machine Handler - initial state of machine state set
+  2022-09-16 21:33:23 INFO  MachineHandlerImpl:189 - Machine Handler - assembled machine parts finished
+  2022-09-16 21:33:23 INFO  MachineHandlerImpl:211 - Machine Handler - initial state of machine state set
+  2022-09-16 21:35:46 INFO  XmlFileLoader:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema-Ex2\ex2-basic.xml
+  2022-09-16 21:35:46 INFO  XmlSchemaVerifierImpl:115 - Machine Configuration schema passed all tests.
+  2022-09-16 21:35:46 INFO  MachineHandlerImpl:273 - Machine handler: created inventory successfully
+  2022-09-16 21:35:47 INFO  MachineHandlerImpl:189 - Machine Handler - assembled machine parts finished
+  2022-09-16 21:35:47 WARN  PlugBoardImpl:69 - Plugboard : Failed to connect endpoints -Iis already connected
+  2022-09-16 21:35:47 INFO  MachineHandlerImpl:211 - Machine Handler - initial state of machine state set
+  2022-09-16 21:36:17 INFO  MachineHandlerImpl:189 - Machine Handler - assembled machine parts finished
+  2022-09-16 21:36:17 WARN  PlugBoardImpl:69 - Plugboard : Failed to connect endpoints -Eis already connected
+  2022-09-16 21:36:17 INFO  MachineHandlerImpl:211 - Machine Handler - initial state of machine state set
+  2022-09-16 21:36:18 INFO  MachineHandlerImpl:189 - Machine Handler - assembled machine parts finished
+  2022-09-16 21:36:18 INFO  MachineHandlerImpl:211 - Machine Handler - initial state of machine state set
+  2022-09-16 21:36:37 INFO  MachineHandlerImpl:189 - Machine Handler - assembled machine parts finished
+  2022-09-16 21:36:37 INFO  MachineHandlerImpl:211 - Machine Handler - initial state of machine state set
+  2022-09-16 21:38:44 INFO  XmlFileLoader:33 - Generated a CTE Enigma Object from schema successfully from:C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema-Ex2\ex2-basic.xml
+  2022-09-16 21:38:44 INFO  XmlSchemaVerifierImpl:115 - Machine Configuration schema passed all tests.
+  2022-09-16 21:38:44 INFO  MachineHandlerImpl:273 - Machine handler: created inventory successfully
+  2022-09-16 21:38:45 INFO  MachineHandlerImpl:189 - Machine Handler - assembled machine parts finished
+  2022-09-16 21:38:45 WARN  PlugBoardImpl:73 - Plugboard : Failed to connect endpoints -Yis already connected
+  2022-09-16 21:38:45 INFO  MachineHandlerImpl:211 - Machine Handler - initial state of machine state set
   

@@ -13,6 +13,7 @@ public class ResourceLocationService {
     @Getter private static final String log4jPropertiesResourcePath = "/main/resources/log4j.properties";
 //Fxmls
     @Getter private static final String headerFxmlPath = "/src/main/resources/subcomponents/headerComponent.fxml";
+    @Getter private static final String headerWithMenuFxmlPath = "/src/main/resources/subcomponents/headerComponentWithMenu.fxml";
     @Getter private static final String appFxmlPath = "/src/main/resources/app.fxml";
     @Getter private static final String machinePageTemplateFxmlPath = "/src/main/resources/subcomponents/machinePageTemplate.fxml";
     @Getter private static final String setMachineConfigTemplateFxmlPath = "/src/main/resources/subcomponents/setMachineConfigTemplate.fxml";

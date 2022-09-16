@@ -13,18 +13,18 @@
   <component name="ChangeListManager">
     <list default="true" id="6467e2d7-ff2a-4abb-a198-685a0fcd06aa" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/agent/DecryptionAgent.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/decryption-manager/main/java/agent/DecryptionAgent.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/agent/impl/DecryptionAgentImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/decryption-manager/main/java/agent/impl/DecryptionAgentImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/AgentWorkManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/AgentWorkManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/DecryptionManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/DecryptionManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/impl/AgentWorkManagerImpl$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/impl/AgentWorkManagerImpl$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/impl/AgentWorkManagerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/impl/AgentWorkManagerImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/impl/DecryptionManagerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/impl/DecryptionManagerImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/AppController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/AppController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/CurrMachineConfigController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/CurrMachineConfigController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/CurrMachineConfigController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/CurrMachineConfigController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/HeaderController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/HeaderController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/HeaderController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/HeaderController$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/HeaderController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/HeaderController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/service/ResourceLocationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/service/ResourceLocationService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/AppController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/CurrMachineConfigController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/CurrMachineConfigController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/HeaderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/HeaderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/service/ResourceLocationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/service/ResourceLocationService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-interface/src/main/resources/app.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/resources/app.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-interface/src/main/resources/css/darkTheme.css" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/resources/css/darkTheme.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-interface/src/main/resources/css/lightTheme.css" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/resources/css/lightTheme.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/bruteForcePageTemplate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/bruteForcePageTemplate.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -327,7 +327,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/user-interface/src/main/java/controller/HeaderController.java</url>
-          <line>102</line>
+          <line>105</line>
           <option name="timeStamp" value="641" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -339,6 +339,26 @@
           <url>file://$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/DecryptionManagerImpl.java</url>
           <line>107</line>
           <option name="timeStamp" value="647" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/user-interface/src/main/java/controller/AppController.java</url>
+          <line>195</line>
+          <option name="timeStamp" value="650" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/user-interface/src/main/java/controller/AppController.java</url>
+          <line>77</line>
+          <option name="timeStamp" value="651" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/user-interface/src/main/java/controller/AppController.java</url>
+          <line>79</line>
+          <option name="timeStamp" value="652" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/user-interface/src/main/java/controller/AppController.java</url>
+          <line>191</line>
+          <option name="timeStamp" value="653" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.ClassCastException" package="java.lang" />
