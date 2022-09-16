@@ -50,6 +50,7 @@
     -fx-background-color: #343634;
 }
 
+
 .listView{
     -fx-background-color: #545456;
 }
@@ -60,5 +61,45 @@
 }
 .list-view .list-cell:odd {
     -fx-background-color: #414040;
+    -fx-text-fill: white;
+}
+#dictionaryList  {
+    -fx-background-color: #343634;
+    -fx-text-fill: white;
+}
+#dictionaryList .list-cell:odd {
+    -fx-background-color: #414040;
+    -fx-text-fill: white;
+}
+
+.pane{
+    -fx-background-color: #414040;
+    -fx-text-fill: white;
+}
+.GridPane{
+    -fx-background-color: #414040;
+    -fx-text-fill: white;
+}
+.flow-pane{
+    -fx-background-color: #414040;
+    -fx-text-fill: white;
+}
+
+#bruteForceDecryptionGrid{
+    -fx-background-color: #343634;
+    -fx-text-fill: white;
+}
+
+.VBox{
+    -fx-background-color: #343634;
+    -fx-text-fill: white;
+}
+
+#dictionaryVBox{
+    -fx-background-color: #343634;
+    -fx-text-fill: white;
+}
+#dmResultsFlowPane{
+    -fx-background-color: #343634;
     -fx-text-fill: white;
 }

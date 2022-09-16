@@ -32,8 +32,6 @@ public class CurrMachineConfigController implements Initializable {
     @Getter @FXML EncryptPageController encryptPageController;
     @Getter @FXML BruteForcePageController bruteForcePageController;
     @Getter @FXML MachineDetailsController machineDetailsController;
-
-
     @Getter @FXML private GridPane rootGridPane;
     @FXML private HBox rotorsHbox;
     @FXML private Button rotorButton2;

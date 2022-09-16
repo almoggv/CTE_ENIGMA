@@ -18,7 +18,7 @@
                   <GridPane>
                      <columnConstraints>
                         <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints halignment="CENTER" hgrow="NEVER" minWidth="-Infinity" />
+                        <ColumnConstraints halignment="CENTER" minWidth="-Infinity" />
                         <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="10.0" />
                      </columnConstraints>
                      <rowConstraints>
