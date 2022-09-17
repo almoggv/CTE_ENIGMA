@@ -1,5 +1,6 @@
 package main.java.manager;
 
+import javafx.beans.property.SimpleObjectProperty;
 import lombok.Getter;
 import lombok.Setter;
 import main.java.service.XmlFileLoader;
@@ -13,8 +14,9 @@ import java.util.*;
 public class DictionaryManager {
     @Getter @Setter private static String Abc;
     @Getter private static final Map<String,String> dictionary = new HashMap<>();
-    private static List<String> excludeChars = new ArrayList<>();
 
+    @Getter private static SimpleObjectProperty<List<String>> dictionaryProperty = new SimpleObjectProperty<>();
+    private static List<String> excludeChars = new ArrayList<>();
     @Getter private static final String DELIMITER = " ";
     private static final String EMPTY_CHAR = "";
     public static void loadDictionary(String absolutePath) throws Exception {
@@ -34,6 +36,7 @@ public class DictionaryManager {
 
     private static void buildDictionary(CTEEnigma cteEnigma) {
         CTEDecipher cteDecipher = cteEnigma.getCTEDecipher();
+        Abc = cteEnigma.getCTEMachine().getABC();
         String dictionaryWordsString = cteDecipher.getCTEDictionary().getWords();
         String excludeCharsString = cteDecipher.getCTEDictionary().getExcludeChars();
         excludeChars = new ArrayList<>();
@@ -44,8 +47,24 @@ public class DictionaryManager {
         String[] dictionaryWords = dictionaryWordsString.split(DELIMITER);
         for (String word : dictionaryWords) {
             String cleanedWord = cleanWord(word);
-            dictionary.putIfAbsent(cleanedWord,cleanedWord);
+            if(inAbc(cleanedWord)){
+                dictionary.putIfAbsent(cleanedWord,cleanedWord);
+            }
         }
+        List<String> dictionaryList = new ArrayList<>();
+        for (String word : dictionary.keySet()) {
+            dictionaryList.add(word);
+        }
+        dictionaryProperty.setValue(dictionaryList);
+    }
+
+    private static boolean inAbc(String cleanedWord) {
+        for (int i = 0; i < cleanedWord.length(); i++) {
+            if(!Abc.contains(cleanedWord.substring(i,i+1))){
+                return false;
+            }
+        }
+        return true;
     }
 
     private static String cleanWord(String word) {

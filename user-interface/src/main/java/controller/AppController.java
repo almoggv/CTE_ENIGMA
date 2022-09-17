@@ -19,6 +19,7 @@ import main.java.component.MachineHandler;
 import main.java.component.impl.MachineHandlerImpl;
 import main.java.dto.InventoryInfo;
 import main.java.manager.DecryptionManager;
+import main.java.manager.DictionaryManager;
 import main.java.manager.impl.DecryptionManagerImpl;
 import main.java.service.InventoryService;
 import src.main.java.service.DataService;
@@ -165,7 +166,10 @@ public class AppController/* implements Initializable */{
         DataService.getOriginalMachineStateProperty().setValue(null);
         DataService.getCurrentMachineStateProperty().setValue(null);
         DataService.getEncryptionInfoHistoryProperty().setValue(null);
-        DataService.getMaxAgentNumProperty().setValue(InventoryService.getAgentsInventory());
+        if(optionalInventoryInfo.isPresent()){
+            DataService.getMaxAgentNumProperty().setValue(InventoryService.getAgentsInventory());
+            DictionaryManager.loadDictionary(absolutePath);
+        }
     }
 
     public void setPrimaryStage(Stage primaryStage) {

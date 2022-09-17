@@ -44,7 +44,6 @@ public class TestDecryptionManager {
         String encrypted = machineHandler.encrypt("ABBA");
         DecryptionManager manager = new DecryptionManagerImpl(machineHandler,  numberOfAgents, DecryptionDifficultyLevel.EASY, taskSize) ;
         manager.bruteForceDecryption(encrypted);
-
     }
 
     @Test

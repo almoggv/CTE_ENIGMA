@@ -111,14 +111,14 @@
                                         <ComboBox fx:id="difficultyComboBox" prefHeight="25.0" prefWidth="159.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                                         <TextField fx:id="taskSizeTextField" onAction="#onTaskSizeTextFieldFilled" prefHeight="25.0" prefWidth="153.0" promptText="natural number over 0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
                                         <Button fx:id="startDecryptButton" mnemonicParsing="false" onAction="#onStartDecryptButtonAction" text="Start decrypting" GridPane.columnIndex="7" />
-                                        <Button mnemonicParsing="false" text="pause decrypting" GridPane.columnIndex="7" GridPane.rowIndex="2" />
-                                        <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                        <Button fx:id="pauseDecryptButton" mnemonicParsing="false" onAction="#onPauseDecryptButtonAction" text="Pause decrypting" GridPane.columnIndex="7" GridPane.rowIndex="1" />
+                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                             <children>
                                                 <Label text="Amount of tasks:" />
                                                 <Label fx:id="amountOfTasksNumLabel" />
                                             </children>
                                         </HBox>
-                                        <HBox GridPane.columnIndex="1">
+                                        <HBox alignment="CENTER_LEFT" GridPane.columnIndex="1">
                                             <children>
                                                 <Label text="Amount of agents: " />
                                                 <Label fx:id="amountOfAgentsValueLabel" />
@@ -127,6 +127,7 @@
                                         <Label text="Difficulty level" GridPane.columnIndex="3" />
                                         <Label text="Task size" GridPane.columnIndex="5" />
                               <ProgressBar prefHeight="18.0" prefWidth="339.0" progress="0.0" GridPane.columnIndex="3" GridPane.columnSpan="2147483647" GridPane.rowIndex="2" />
+                              <Button fx:id="stopDecryptButton" mnemonicParsing="false" onAction="#onStopDecryptButtonAction" text="Stop decrypting" GridPane.columnIndex="7" GridPane.rowIndex="2" />
                                     </children>
                                 </GridPane>
                             </content>

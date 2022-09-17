@@ -16,12 +16,14 @@ import main.java.component.MachineHandler;
 import main.java.dto.EncryptionInfoHistory;
 import main.java.enums.DecryptionDifficultyLevel;
 import main.java.manager.DecryptionManager;
+import main.java.manager.DictionaryManager;
 import org.controlsfx.control.textfield.CustomTextField;
 import org.controlsfx.validation.ValidationSupport;
 import org.controlsfx.validation.Validator;
 import main.java.adapter.UIAdapter;
 import src.main.java.service.DataService;
 import src.main.java.service.ResourceLocationService;
+import src.main.java.service.Trie;
 import src.main.java.ui.GuiApplication;
 
 import java.io.IOException;
@@ -38,6 +40,7 @@ public class BruteForcePageController implements Initializable {
     public Button encryptButton;
     public CustomTextField resultTextField;
     public Button clearButton;
+    public TextField dictionaryTextField;
     MachineHandler machineHandler;
     @Setter private DecryptionManager decryptionManager;
 
@@ -60,11 +63,24 @@ public class BruteForcePageController implements Initializable {
 
     private ValidationSupport validationSupport = new ValidationSupport();
 
+    private Trie dictionaryTrie;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         DataService.getMaxAgentNumProperty().addListener((observable, oldValue, newValue) -> {
             setDMDetails(newValue);
         });
+
+        DictionaryManager.getDictionaryProperty().addListener(((observable, oldValue, newValue) ->{
+            dictionaryTrie = new Trie(DictionaryManager.getDictionaryProperty().get());
+            dictionaryList.getItems().addAll(dictionaryTrie.suggest(""));
+        }));
+
+        dictionaryTextField.textProperty().addListener((observable, oldValue, newValue) -> {
+//            dictionaryList.getItems().addAll(dictionaryTrie.suggest(dictionaryTextField.getText()));
+            dictionaryList.getItems().addAll(dictionaryTrie.suggest(newValue));
+        });
+
 
         startDecryptButton.disableProperty().bind(validationSupport.invalidProperty());
 //        startDecryptButton.disableProperty().bind(resultTextField.promptTextProperty().isNotNull());
@@ -86,8 +102,6 @@ public class BruteForcePageController implements Initializable {
         difficultyComboBox.valueProperty().addListener((observable, oldValue, newValue) -> {
             decryptionManager.setDifficultyLevel(newValue);
         });
-
-
     }
 
     private void showAmountOfTasks() {
@@ -177,6 +191,16 @@ public class BruteForcePageController implements Initializable {
         }
     }
 
+    public void onPauseDecryptButtonAction(ActionEvent actionEvent) {
+    }
+
+    public void onStopDecryptButtonAction(ActionEvent actionEvent) {
+    }
+//
+//    public void onDictionaryTextFieldAction(ActionEvent actionEvent) {
+//
+//    }
+
 //    private UIAdapter createUIAdapter() {
 //        UIAdapter adapter = new UIAdapter( candidate -> {
 //            createTile(candidate.getOutput(), candidate.getTimeToDecrypt());
@@ -198,4 +222,6 @@ public class BruteForcePageController implements Initializable {
 //            e.printStackTrace();
 //        }
 //    }
+
+
 }
