@@ -19,21 +19,18 @@
     -fx-text-fill: #e1e1e1;
     -fx-font-weight: bold;
 }
+
 #headerComponentRootPane .choice-box .label {
     -fx-text-fill: #000000;
-    /*-fx-font-weight: bold;*/
 }
 .menu-item{
     -fx-text-fill: #000000;
-    /*-fx-font-weight: bold;*/
 }
 .choice-box .label {
     -fx-text-fill: #000000;
-    /*-fx-font-weight: bold;*/
 }
 .notify .label{
-    -fx-text-fill: #000000;
-    /*-fx-font-weight: bold;*/
+    -fx-text-fill: white;
 }
 
 .scroll-pane{
@@ -50,8 +47,7 @@
     -fx-background-color: #343634;
 }
 
-
-.listView{
+.list-view{
     -fx-background-color: #545456;
 }
 
@@ -103,3 +99,24 @@
     -fx-background-color: #343634;
     -fx-text-fill: white;
 }
+
+#menuBar{
+    -fx-background-color: #343634;
+    -fx-text-fill: white;
+    -fx-border-color: white;
+    -fx-border-width: 0 0 3 0;
+}
+
+.menu-item{
+    -fx-background-color: #343634;
+    -fx-text-fill: white;
+}
+
+#imageGrid{
+    -fx-background-color: #515451;
+}
+
+#basicEncryptFlowPane .label{
+    -fx-font-size: 10;
+}
+/*todo - fix statistics*/

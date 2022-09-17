@@ -27,6 +27,7 @@ public class ResourceLocationService {
     //Images
     @Getter private static final String enigmaMachineIllustration = "/src/main/resources/images/enigma-illustration.png";
     @Getter private static final String enigmaMachineIllustration2 = "/src/main/resources/images/enigma2.jpg";
+    @Getter private static final String enigmaMachineIllustrationDark = "/src/main/resources/images/darkEnigma.jpg";
 //CSSs
     @Getter private static final String darkThemeName = "Dark Theme";
     @Getter private static final String darkThemeCssPath = "/src/main/resources/css/darkTheme.css";
