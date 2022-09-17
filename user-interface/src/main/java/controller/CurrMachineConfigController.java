@@ -40,7 +40,7 @@ public class CurrMachineConfigController implements Initializable {
     @FXML private HBox reflectorHbox;
     @FXML public Label machineNotConfiguredLabel;
 
-    @Getter private SimpleBooleanProperty isAnimationOn = new SimpleBooleanProperty(false);
+    @Getter private SimpleBooleanProperty isAnimationOn = new SimpleBooleanProperty(true);
 
     public void setParentController(MachinePageController parentController){
         this.machinePageController = parentController;

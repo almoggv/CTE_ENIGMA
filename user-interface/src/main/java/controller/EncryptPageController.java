@@ -1,10 +1,17 @@
 package src.main.java.controller;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.beans.binding.Bindings;
+import javafx.beans.binding.StringBinding;
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -14,6 +21,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
+import javafx.util.Duration;
 import lombok.Getter;
 import lombok.Setter;
 import main.java.component.MachineHandler;
@@ -28,39 +37,51 @@ import src.main.java.ui.GuiApplication;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.concurrent.Callable;
 
 public class EncryptPageController implements Initializable {
 
-    public CustomTextField encryptTextField;
-    public Button encryptButton;
-    public TableView statisticsTable;
-    public TableColumn statisticsColOriginal;
-    public TableColumn statisticsColEncrypted;
-    public TableColumn statisticsColTime;
-    public CustomTextField resultTextField;
-    public FlowPane inputAbcFlowPane;
-    public Button clearButton;
-    public Button resetMachineStateButton;
-    public ScrollPane scrollOfRightBottomAnchor;
-    public AnchorPane rightAnchorOfBottom;
-    public Accordion statisticsAccordion;
-    public ScrollPane encryptScroll;
-    public HBox encryptHbox;
     @Getter @Setter private MachineHandler machineHandler;
 
     @Getter @Setter @FXML AppController parentController;
     @Getter @FXML private CurrMachineConfigController currMachineConfigComponentController;
 
+    @FXML public CustomTextField encryptTextField;
+    @FXML public Button encryptButton;
+    @FXML public TableView statisticsTable;
+    @FXML public TableColumn statisticsColOriginal;
+    @FXML public TableColumn statisticsColEncrypted;
+    @FXML public TableColumn statisticsColTime;
+    @FXML public CustomTextField resultTextField;
+    @FXML public FlowPane inputKeyboardFlowPane;
+    @FXML public FlowPane outputKeyboardFlowPane;
+    @FXML public Button clearButton;
+    @FXML public Button resetMachineStateButton;
+    @FXML public ScrollPane scrollOfRightBottomAnchor;
+    @FXML public AnchorPane rightAnchorOfBottom;
+    @FXML public Accordion statisticsAccordion;
+    @FXML public ScrollPane encryptScroll;
+    @FXML public HBox encryptHbox;
     @FXML public GridPane currMachineConfigComponent;
     @FXML private GridPane rootGrid;
     @FXML private ScrollPane currMachineConfigWrapperPane;
-    @FXML private TextField testTextArea;
-    @FXML private FlowPane keyboardFlowPane;
+    @FXML private TextField liveEncryptInputTextField;
+    @FXML private TextField liveEncryptOutTextField;
+//    @FXML private FlowPane keyboardFlowPane;
+
+    private Map<String,Button> letterToInputKeyboardButtonMap = new HashMap<>();
+    private Map<String,Button> letterToOutputKeyboardButtonMap = new HashMap<>();
+    private Color startColor;
+    private Color endColor;
+
 
     private SimpleBooleanProperty isEncryptionTextFieldEmpty = new SimpleBooleanProperty(true);
+
+
     public Parent getRootComponent(){
         return rootGrid;
     }
@@ -77,7 +98,7 @@ public class EncryptPageController implements Initializable {
         DataService.getInventoryInfoProperty().addListener(new ChangeListener<InventoryInfo>() {
             @Override
             public void changed(ObservableValue<? extends InventoryInfo> observable, InventoryInfo oldValue, InventoryInfo newValue) {
-                showAbc(newValue);
+                buildKeyboards(newValue);
             }
         });
 
@@ -95,15 +116,71 @@ public class EncryptPageController implements Initializable {
         });
 
         statisticsAccordion.getPanes().clear();
+    }
+
+    private void buildKeyboards(InventoryInfo inventoryInfo) {
+        String abc = inventoryInfo.getABC();
+        startColor = Color.web("#e08090");
+        endColor = Color.web("#80e090");
+
+//        button.setOnAction(new EventHandler<ActionEvent>() {
+//            @Override
+//            public void handle(ActionEvent event) {
+//                timeline.play();
+//            }
+//        });
+
+        for (int i = 0; i < abc.length(); i++) {
+            String letter = abc.substring(i,i+1);
+            Button letterButton = new Button(letter);
+            inputKeyboardFlowPane.getChildren().add(letterButton);
+            letterToInputKeyboardButtonMap.putIfAbsent(letter,letterButton);
+        }
+        for (int i = 0; i < abc.length(); i++) {
+            String letter = abc.substring(i,i+1);
+            Button letterButton = new Button(letter);
+            outputKeyboardFlowPane.getChildren().add(letterButton);
+            letterToOutputKeyboardButtonMap.putIfAbsent(letter,letterButton);
+        }
+
+        for (String letter: letterToInputKeyboardButtonMap.keySet()) {
+            ObjectProperty<Color> colorProperty = new SimpleObjectProperty<Color>(startColor);
+            StringBinding cssColorSpec = Bindings.createStringBinding(new Callable<String>() {
+                @Override
+                public String call() throws Exception {
+                    return String.format("-fx-body-color: rgb(%d, %d, %d);",
+                            (int) (256*colorProperty.get().getRed()),
+                            (int) (256*colorProperty.get().getGreen()),
+                            (int) (256*colorProperty.get().getBlue()));
+                }
+            }, colorProperty);
+            Timeline timelineAnimation = new Timeline(
+                    new KeyFrame(Duration.ZERO, new KeyValue(colorProperty, startColor)),
+                    new KeyFrame(Duration.seconds(1), new KeyValue(colorProperty, endColor)));
+            Button inputButton = letterToInputKeyboardButtonMap.get(letter);
+            Button outputButton = letterToOutputKeyboardButtonMap.get(letter);
+            outputButton.styleProperty().bind(cssColorSpec);
+            inputButton.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    timelineAnimation.play();
+                }
+            });
+
+        }
 
     }
 
-    private void showAbc(InventoryInfo inventoryInfo) {
-        String abc = inventoryInfo.getABC();
-        for (int i = 0; i < abc.length(); i++) {
-            Button letter = new Button(abc.substring(i,i+1));
-            inputAbcFlowPane.getChildren().add(letter);
-        }
+    private void setupLiveEncryption(){
+
+
+
+    }
+
+
+
+    private void setupLiveEncryptionTextFields(){
+
     }
 
     /**

@@ -10,8 +10,6 @@ import main.java.dto.AgentDecryptionInfo;
 import main.java.dto.MachineState;
 import main.java.generictype.MappingPair;
 import main.java.manager.DictionaryManager;
-import main.java.manager.impl.AgentWorkManagerImpl;
-import main.java.manager.impl.DecryptionManagerImpl;
 import main.java.service.PropertiesService;
 import main.java.service.XmlFileLoader;
 import org.apache.log4j.Logger;
@@ -21,7 +19,7 @@ import java.io.IOException;
 import java.util.*;
 
 public class DecryptionAgentImpl implements DecryptionAgent {
-    private static final Logger log = Logger.getLogger(AgentWorkManagerImpl.class);
+    private static final Logger log = Logger.getLogger(DecryptionAgentImpl.class);
 
     @Getter UUID id = UUID.randomUUID();
     private final EncryptionMachine encryptionMachine;
@@ -47,13 +45,14 @@ public class DecryptionAgentImpl implements DecryptionAgent {
     static {
         try {
             Properties p = new Properties();
-            p.load(XmlFileLoader.class.getResourceAsStream(PropertiesService.getLog4jPropertiesResourcePath()));
+            p.load(DecryptionAgentImpl.class.getResourceAsStream(PropertiesService.getLog4jPropertiesResourcePath()));
             PropertyConfigurator.configure(p);      //Dont forget here
-            log.debug("Logger Instantiated for : " + DecryptionManagerImpl.class.getSimpleName());
+            log.debug("Logger Instantiated for : " + DecryptionAgentImpl.class.getSimpleName());
         } catch (IOException e) {
-            System.out.println("Failed to configure logger of -" + DecryptionManagerImpl.class.getSimpleName() ) ;
+            System.out.println("Failed to configure logger of -" + DecryptionAgentImpl.class.getSimpleName() ) ;
         }
     }
+
     public DecryptionAgentImpl(EncryptionMachine encryptionMachine) {
         this.encryptionMachine = encryptionMachine;
         this.isFinishedProperty.setValue(false);

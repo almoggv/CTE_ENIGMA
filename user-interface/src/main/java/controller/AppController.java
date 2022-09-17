@@ -87,7 +87,7 @@ public class AppController/* implements Initializable */{
         machinePageController.setMachineHandler(machineHandler);
         machinePageController.bindComponent(currMachineConfigController);
         //Load Encrypt Page
-        URL encryptPageResource = GuiApplication.class.getResource(ResourceLocationService.getEncryptPageTemplateFxmlPath2());
+        URL encryptPageResource = GuiApplication.class.getResource(ResourceLocationService.getEncryptPageTemplateFxmlPath());
         System.out.println("found Url of encrypt component:"+ encryptPageResource);
         fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(encryptPageResource);
