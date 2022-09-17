@@ -5,9 +5,7 @@ import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.StringBinding;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -75,6 +73,9 @@ public class EncryptPageController implements Initializable {
 
     private Map<String,Button> letterToInputKeyboardButtonMap = new HashMap<>();
     private Map<String,Button> letterToOutputKeyboardButtonMap = new HashMap<>();
+    private Map<String,Timeline> letterToButtonColorAnimationMap = new HashMap<>();
+    private StringProperty liveEncryptionInputProperty = new SimpleStringProperty("");
+    private StringProperty liveEncryptionOutputProperty = new SimpleStringProperty("");
     private Color startColor;
     private Color endColor;
 
@@ -88,6 +89,31 @@ public class EncryptPageController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        liveEncryptInputTextField.textProperty().bindBidirectional(liveEncryptionInputProperty);
+        liveEncryptOutTextField.textProperty().bindBidirectional(liveEncryptionOutputProperty);
+        liveEncryptInputTextField.textProperty().addListener(((observable, oldValue, newValue) -> {
+            try {
+                if(!newValue.equals("") && newValue.length()>= oldValue.length()){
+                    String newChar = newValue.substring(newValue.length()-1);
+                    String newEncryption = machineHandler.encrypt(newChar);
+                    String newOutText = liveEncryptionOutputProperty.get() + newEncryption;
+                    liveEncryptionOutputProperty.setValue(newOutText);
+                    DataService.getCurrentMachineStateProperty().setValue(machineHandler.getMachineState().get());
+                    //need to set to null - because the machine state thinks it hasent changed - only internal structures changed and it dosent register
+                    DataService.getEncryptionInfoHistoryProperty().setValue(null);
+                    DataService.getEncryptionInfoHistoryProperty().setValue(machineHandler.getMachineStatisticsHistory());
+                }
+                if(oldValue.length() > newValue.length() && newValue.equals("")){
+                    liveEncryptionOutputProperty.setValue("");
+                }
+            } catch (IOException e) { getParentController().showMessage(e.getMessage());}
+        }));
+        liveEncryptionOutputProperty.addListener(((observable, oldValue, newValue) -> {
+            if(oldValue!=null && !oldValue.equals("") && newValue.equals("") && !liveEncryptionInputProperty.get().equals("")){
+                liveEncryptionInputProperty.setValue("");
+            }
+        }));
+
         if(currMachineConfigComponentController != null){
             currMachineConfigComponentController.setParentController(this);
             currMachineConfigComponentController.bindToData(DataService.getCurrentMachineStateProperty());
@@ -120,15 +146,10 @@ public class EncryptPageController implements Initializable {
 
     private void buildKeyboards(InventoryInfo inventoryInfo) {
         String abc = inventoryInfo.getABC();
-        startColor = Color.web("#e08090");
-        endColor = Color.web("#80e090");
-
-//        button.setOnAction(new EventHandler<ActionEvent>() {
-//            @Override
-//            public void handle(ActionEvent event) {
-//                timeline.play();
-//            }
-//        });
+        startColor = Color.web("#E7E7E7");
+        endColor = Color.web("#F1C360");
+//        startColor = Color.web("#e08090");
+//        endColor = Color.web("#80e090");
 
         for (int i = 0; i < abc.length(); i++) {
             String letter = abc.substring(i,i+1);
@@ -141,9 +162,6 @@ public class EncryptPageController implements Initializable {
             Button letterButton = new Button(letter);
             outputKeyboardFlowPane.getChildren().add(letterButton);
             letterToOutputKeyboardButtonMap.putIfAbsent(letter,letterButton);
-        }
-
-        for (String letter: letterToInputKeyboardButtonMap.keySet()) {
             ObjectProperty<Color> colorProperty = new SimpleObjectProperty<Color>(startColor);
             StringBinding cssColorSpec = Bindings.createStringBinding(new Callable<String>() {
                 @Override
@@ -154,32 +172,31 @@ public class EncryptPageController implements Initializable {
                             (int) (256*colorProperty.get().getBlue()));
                 }
             }, colorProperty);
-            Timeline timelineAnimation = new Timeline(
+            Timeline lightUpAnimation = new Timeline(
                     new KeyFrame(Duration.ZERO, new KeyValue(colorProperty, startColor)),
-                    new KeyFrame(Duration.seconds(1), new KeyValue(colorProperty, endColor)));
+                    new KeyFrame(Duration.seconds(1), new KeyValue(colorProperty, endColor)),
+                    new KeyFrame(Duration.seconds(2), new KeyValue(colorProperty, startColor)));
+            letterToButtonColorAnimationMap.putIfAbsent(letter,lightUpAnimation);
+            letterButton.styleProperty().bind(cssColorSpec);
+            liveEncryptionOutputProperty.addListener(((observable, oldValue, newValue) -> {
+                if(oldValue.length() < newValue.length() && !newValue.equals("")){
+                    String lastLetter = newValue.substring(newValue.length()-1);
+                    letterToButtonColorAnimationMap.get(lastLetter).play();
+                }
+            }));
+
+        }
+        for (String letter: letterToInputKeyboardButtonMap.keySet()) {
             Button inputButton = letterToInputKeyboardButtonMap.get(letter);
-            Button outputButton = letterToOutputKeyboardButtonMap.get(letter);
-            outputButton.styleProperty().bind(cssColorSpec);
             inputButton.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
-                    timelineAnimation.play();
+                    String oldValue = liveEncryptionInputProperty.get();
+                    liveEncryptionInputProperty.setValue(oldValue + inputButton.getText());
                 }
             });
 
         }
-
-    }
-
-    private void setupLiveEncryption(){
-
-
-
-    }
-
-
-
-    private void setupLiveEncryptionTextFields(){
 
     }
 
@@ -189,17 +206,7 @@ public class EncryptPageController implements Initializable {
     public void bindComponent(CurrMachineConfigController currMachineConfigComponentController) {
         this.currMachineConfigComponentController = currMachineConfigComponentController;
         currMachineConfigComponent = currMachineConfigComponentController.getRootGridPane();
-//        currMachineConfigWrapperPane.setContent(currMachineConfigComponent);
     }
-
-//    public void bindToData(SimpleObjectProperty<Map<MachineState, List<EncryptionInfoHistory>>> dataProperty){
-//        dataProperty.addListener(new ChangeListener<Map<MachineState, List<EncryptionInfoHistory>>>() {
-//            @Override
-//            public void changed(ObservableValue<? extends Map<MachineState, List<EncryptionInfoHistory>>> observable, Map<MachineState, List<EncryptionInfoHistory>> oldValue, Map<MachineState, List<EncryptionInfoHistory>> newValue) {
-//                showStatistics(newValue);
-//            }
-//        });
-//    }
 
     private void showStatistics(Map<MachineState, List<EncryptionInfoHistory>> encryptionInfoHistory) throws IOException {
         statisticsAccordion.getPanes().clear();

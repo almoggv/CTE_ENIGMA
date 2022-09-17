@@ -168,6 +168,10 @@ public class AppController/* implements Initializable */{
         this.primaryStage = primaryStage;
     }
 
+    /**
+     * Displays a message in the Notification Panel
+     * @param message
+     */
     public void showMessage(String message) {
         headerComponentRootPaneController.getNotificationMessageProperty().setValue(message);
     }
