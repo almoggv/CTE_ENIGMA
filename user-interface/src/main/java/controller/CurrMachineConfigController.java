@@ -16,6 +16,7 @@ import javafx.util.Duration;
 import lombok.Getter;
 import main.java.dto.MachineState;
 import main.java.generictype.MappingPair;
+import src.main.java.service.DataService;
 
 
 import java.net.URL;
@@ -40,7 +41,7 @@ public class CurrMachineConfigController implements Initializable {
     @FXML private HBox reflectorHbox;
     @FXML public Label machineNotConfiguredLabel;
 
-    @Getter private SimpleBooleanProperty isAnimationOn = new SimpleBooleanProperty(true);
+    @Getter private SimpleBooleanProperty isAnimationOn = new SimpleBooleanProperty(false);
 
     public void setParentController(MachinePageController parentController){
         this.machinePageController = parentController;
@@ -60,7 +61,7 @@ public class CurrMachineConfigController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        isAnimationOn.bind(DataService.getIsAnimationOn());
     }
 
     public void changeHeaderToOriginal(){

@@ -7,8 +7,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import lombok.Getter;
@@ -29,6 +31,8 @@ import java.util.Optional;
 
 public class AppController/* implements Initializable */{
 
+    public GridPane imageGrid;
+    public BorderPane appBorderPane;
     private MachineHandler machineHandler;
     private InventoryInfo inventoryInfo;
     private DecryptionManager decryptionManager;
@@ -109,9 +113,9 @@ public class AppController/* implements Initializable */{
         bruteForcePageController.setDecryptionManager(decryptionManager);
 
         //added picture
+//        mainViewImage.setFitHeight( appBorderPane.getHeight()- headerComponentRootPane.getHeight());
+//        mainViewImage.setFitWidth(imageGrid.getLayoutY());
         headerWrapScrollPane.setContent(headerComponentRootPaneController.getRootComponent());
-//        mainViewImage.setImage(new Image(ResourcesService.getEnigmaMachineIllustration2()));
-        // Load Brute Force Page :TODO
     }
 
     //Generic Utility Method
@@ -183,16 +187,13 @@ public class AppController/* implements Initializable */{
     public void loadCssFile(String cssAbsolutePath) {
         if(cssAbsolutePath != null) {
             primaryStage.getScene().getStylesheets().clear();
-
             primaryStage.getScene().getStylesheets().add(cssAbsolutePath);
+            if(cssAbsolutePath.contains(ResourceLocationService.getDarkThemeCssPath())){
+                mainViewImage.setImage(new Image(ResourceLocationService.getEnigmaMachineIllustrationDark()));
+            }
+            else if (cssAbsolutePath.contains(ResourceLocationService.getLightThemeCssPath())){
+                mainViewImage.setImage(new Image(ResourceLocationService.getEnigmaMachineIllustration2()));
+            }
         }
-    }
-
-    public void turnAnimationsOn() {
-        currMachineConfigController.getIsAnimationOn().setValue(true);
-    }
-
-    public void turnAnimationsOff() {
-        currMachineConfigController.getIsAnimationOn().setValue(false);
     }
 }

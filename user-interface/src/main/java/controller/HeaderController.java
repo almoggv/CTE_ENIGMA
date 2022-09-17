@@ -52,35 +52,6 @@ public class HeaderController implements Initializable {
         encryptSceneNavButton.disableProperty().bind(DataService.getCurrentMachineStateProperty().isNotNull().not());
         bruteForceSceneNavButton.disableProperty().bind(DataService.getCurrentMachineStateProperty().isNotNull().not());
         createNotificationPane();
-        initializeThemeBox();
-    }
-
-    private void initializeThemeBox(){
-        for (String themeName : ResourceLocationService.getCssThemeToFileMap().keySet()) {
-            /*
-             MenuItem item = new MenuItem(themeName);
-            themeMenu.getItems().add(item);
-             */
-            themeChoiceBox.getItems().add(themeName);
-            themeChoiceBox.valueProperty().addListener(new ChangeListener<String>() {
-                @Override
-                public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue){
-                    String themeResourcePath = ResourceLocationService.getCssThemeToFileMap().getOrDefault(newValue,ResourceLocationService.getDarkThemeCssPath());
-                    URL themeUrl = null;
-                    String themeString ="";
-                    try{
-                        themeUrl = HeaderController.class.getResource(themeResourcePath);
-                        themeString = HeaderController.class.getResource(themeResourcePath).toExternalForm();
-
-                        System.out.println("Theme Url =" + themeUrl);
-                        System.out.println("Theme String Path=" + themeResourcePath);
-                    }
-                    catch(Exception ignore){}
-//                    parentController.loadCssFile(themeUrl);
-                    parentController.loadCssFile(themeString);
-                }
-            });
-        }
     }
 
     public NotificationPane getRootComponent(){
@@ -146,11 +117,34 @@ public class HeaderController implements Initializable {
     }
 
     public void onAnimationsOnAction(ActionEvent actionEvent) {
-        parentController.turnAnimationsOn();
+        DataService.getIsAnimationOn().setValue(true);
     }
 
     public void onAnimationsOffAction(ActionEvent actionEvent) {
-        parentController.turnAnimationsOff();
+        DataService.getIsAnimationOn().setValue(false);
+    }
+
+    public void onDarkThemeMenuAction(ActionEvent actionEvent) {
+        changeTheme(ResourceLocationService.getDarkThemeName());
+    }
+
+    public void onLightThemeMenuAction(ActionEvent actionEvent) {
+        changeTheme(ResourceLocationService.getLightThemeName());
+    }
+
+    private void changeTheme(String themeName){
+        String themeResourcePath = ResourceLocationService.getCssThemeToFileMap().getOrDefault(themeName,ResourceLocationService.getLightThemeCssPath());
+        URL themeUrl = null;
+        String themeString ="";
+        try{
+            themeUrl = HeaderController.class.getResource(themeResourcePath);
+            themeString = HeaderController.class.getResource(themeResourcePath).toExternalForm();
+
+            System.out.println("Theme Url =" + themeUrl);
+            System.out.println("Theme String Path=" + themeResourcePath);
+        }
+        catch(Exception ignore){}
+        parentController.loadCssFile(themeString);
     }
 }
 

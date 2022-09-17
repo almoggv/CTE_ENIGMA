@@ -1,6 +1,7 @@
 package src.main.java.service;
 
 
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import lombok.Getter;
@@ -18,4 +19,6 @@ public class DataService {
     @Getter private static final SimpleObjectProperty<MachineState> currentMachineStateProperty = new SimpleObjectProperty<>();
     @Getter private static final SimpleObjectProperty<Map<MachineState, List<EncryptionInfoHistory>>> encryptionInfoHistoryProperty = new SimpleObjectProperty<>();
     @Getter private static final SimpleIntegerProperty maxAgentNumProperty = new SimpleIntegerProperty();
+
+    @Getter private static final SimpleBooleanProperty isAnimationOn = new SimpleBooleanProperty(false);
 }

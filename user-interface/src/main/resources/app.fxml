@@ -9,13 +9,13 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.main.java.controller.AppController">
+<BorderPane fx:id="appBorderPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.main.java.controller.AppController">
    <center>
       <AnchorPane fx:id="bodyWrapAnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
          <children>
             <ScrollPane fx:id="bodyWrapScrollPane" fitToHeight="true" fitToWidth="true" layoutY="14.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <content>
-                  <GridPane>
+                  <GridPane fx:id="imageGrid">
                      <columnConstraints>
                         <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="10.0" />
                         <ColumnConstraints halignment="CENTER" minWidth="-Infinity" />
@@ -43,8 +43,8 @@
          <children>
             <ScrollPane fx:id="headerWrapScrollPane" fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <content>
-                  <fx:include fx:id="headerComponentRootPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" source="subcomponents/headerComponent.fxml" />
-<!--                  <fx:include fx:id="headerComponentRootPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" source="subcomponents/headerComponentWithMenu.fxml" />-->
+<!--                  <fx:include fx:id="headerComponentRootPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" source="subcomponents/headerComponent.fxml" />-->
+                  <fx:include fx:id="headerComponentRootPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" source="subcomponents/headerComponentWithMenu.fxml" />
                </content>
             </ScrollPane>
          </children>
