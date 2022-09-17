@@ -12,14 +12,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6467e2d7-ff2a-4abb-a198-685a0fcd06aa" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/user-interface/src/main/java/service/Trie.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/DictionaryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/DictionaryManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decryption-manager/src/test/java/decryptionManager/TestDecryptionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/src/test/java/decryptionManager/TestDecryptionManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/DictionaryManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/DictionaryManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/AppController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/AppController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/BruteForcePageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/BruteForcePageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/AppController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/BruteForcePageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/BruteForcePageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/bruteForcePageTemplate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/bruteForcePageTemplate.fxml" afterDir="false" />
     </list>
@@ -324,8 +318,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/user-interface/src/main/java/controller/BruteForcePageController.java</url>
-          <line>78</line>
-          <option name="timeStamp" value="675" />
+          <line>202</line>
+          <option name="timeStamp" value="680" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.ClassCastException" package="java.lang" />

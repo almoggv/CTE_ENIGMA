@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import lombok.Getter;
@@ -77,10 +78,9 @@ public class BruteForcePageController implements Initializable {
         }));
 
         dictionaryTextField.textProperty().addListener((observable, oldValue, newValue) -> {
-//            dictionaryList.getItems().addAll(dictionaryTrie.suggest(dictionaryTextField.getText()));
-            dictionaryList.getItems().addAll(dictionaryTrie.suggest(newValue));
+            dictionaryList.getItems().clear();
+            dictionaryList.getItems().addAll(dictionaryTrie.suggest(newValue.toUpperCase()));
         });
-
 
         startDecryptButton.disableProperty().bind(validationSupport.invalidProperty());
 //        startDecryptButton.disableProperty().bind(resultTextField.promptTextProperty().isNotNull());
@@ -196,10 +196,22 @@ public class BruteForcePageController implements Initializable {
 
     public void onStopDecryptButtonAction(ActionEvent actionEvent) {
     }
-//
-//    public void onDictionaryTextFieldAction(ActionEvent actionEvent) {
-//
-//    }
+
+    public void onDictionaryListClicked(MouseEvent mouseEvent) {
+        try {
+            String word = dictionaryList.getSelectionModel().getSelectedItem().toString();
+            String result = machineHandler.encryptWithoutHistory(word);
+            resultTextField.setText(result);
+            encryptTextField.setText(word);
+            DataService.getCurrentMachineStateProperty().setValue(machineHandler.getMachineState().get());
+            DataService.getEncryptionInfoHistoryProperty().setValue(null);
+            DataService.getEncryptionInfoHistoryProperty().setValue(machineHandler.getMachineStatisticsHistory());
+        }
+        catch (Exception e){
+            parentController.showMessage(e.getMessage());
+        }
+    }
+
 
 //    private UIAdapter createUIAdapter() {
 //        UIAdapter adapter = new UIAdapter( candidate -> {

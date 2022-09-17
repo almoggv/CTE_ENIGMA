@@ -67,7 +67,7 @@
                                             <children>
                                                 <Label fx:id="dictionaryLabel" text="Dictionary" />
                                     <TextField fx:id="dictionaryTextField" />
-                                                <ListView fx:id="dictionaryList" prefHeight="200.0" prefWidth="137.0" />
+                                                <ListView fx:id="dictionaryList" onMouseClicked="#onDictionaryListClicked" prefHeight="200.0" prefWidth="137.0" />
                                             </children>
                                  <padding>
                                     <Insets top="5.0" />
