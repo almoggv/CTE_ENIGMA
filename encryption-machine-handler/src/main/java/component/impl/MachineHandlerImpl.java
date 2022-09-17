@@ -309,6 +309,20 @@ public class MachineHandlerImpl implements MachineHandler {
         return encryptedOutput;
     }
 
+    @Override
+    public String encryptWithoutHistory(String input) throws RuntimeException, IOException {
+        Optional<String> verifiedInput = verifyInputInAbcAndFix(input);
+        if (!encryptionMachine.getMachineState().isPresent()){
+            throw new RuntimeException("Need to assemble machine");
+        }
+        else if(!verifiedInput.isPresent()){
+            throw new IOException("Input not in ABC: " + ioWheelInventory.getABC());
+        }
+        String encryptedOutput = encryptionMachine.encrypt(verifiedInput.get());
+
+        return encryptedOutput;
+    }
+
     private void addToHistory(MachineState machineStateBeforeEncrypt, String input, String output, long duration){
         EncryptionInfoHistory infoHistory = new EncryptionInfoHistory(input,output,duration);
         if(!machineStatisticsHistory.containsKey(machineStateBeforeEncrypt)){

@@ -95,13 +95,14 @@ public class EncryptPageController implements Initializable {
             try {
                 if(!newValue.equals("") && newValue.length()>= oldValue.length()){
                     String newChar = newValue.substring(newValue.length()-1);
-                    String newEncryption = machineHandler.encrypt(newChar);
+//                    String newEncryption = machineHandler.encrypt(newChar);
+                    String newEncryption = machineHandler.encryptWithoutHistory(newChar);
                     String newOutText = liveEncryptionOutputProperty.get() + newEncryption;
                     liveEncryptionOutputProperty.setValue(newOutText);
                     DataService.getCurrentMachineStateProperty().setValue(machineHandler.getMachineState().get());
                     //need to set to null - because the machine state thinks it hasent changed - only internal structures changed and it dosent register
-                    DataService.getEncryptionInfoHistoryProperty().setValue(null);
-                    DataService.getEncryptionInfoHistoryProperty().setValue(machineHandler.getMachineStatisticsHistory());
+//                    DataService.getEncryptionInfoHistoryProperty().setValue(null);
+//                    DataService.getEncryptionInfoHistoryProperty().setValue(machineHandler.getMachineStatisticsHistory());
                 }
                 if(oldValue.length() > newValue.length() && newValue.equals("")){
                     liveEncryptionOutputProperty.setValue("");

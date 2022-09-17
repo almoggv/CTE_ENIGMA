@@ -92,9 +92,9 @@
             </HBox>
          </children>
       </GridPane>
-      <ScrollPane GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.rowSpan="3">
+      <ScrollPane fx:id="statisticsScrollPane" GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.rowSpan="3">
          <content>
-            <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+            <VBox fx:id="statisticsVBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                <children>
                   <Label text="Statistics" textAlignment="CENTER" />
                   <Accordion fx:id="statisticsAccordion" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">

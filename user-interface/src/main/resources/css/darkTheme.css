@@ -43,10 +43,24 @@
 #statisticsAnchor{
     -fx-background-color: #343634;
 }
+
 #statisticsGridOfScroll{
     -fx-background-color: #343634;
 }
+#statisticsScroller{
+    -fx-background-color: #343634;
+}
+#statisticsScrollPane{
+    -fx-background-color: #343634;
 
+}
+#statisticsAccordion{
+    -fx-background-color: #343634;
+}
+
+#statisticsVBox{
+    -fx-background-color: #343634;
+}
 .list-view{
     -fx-background-color: #545456;
 }

@@ -53,6 +53,7 @@ public interface MachineHandler extends Serializable {
      * @return encrypted message
      */
     public String encrypt(String input) throws IOException;
+    public String encryptWithoutHistory(String input) throws IOException;
 
     public Map<MachineState, List<EncryptionInfoHistory>> getMachineStatisticsHistory();
 
