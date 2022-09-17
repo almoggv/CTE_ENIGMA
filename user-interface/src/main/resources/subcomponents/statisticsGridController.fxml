@@ -8,27 +8,27 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane fx:id="statisticsAnchor" prefHeight="438.0" prefWidth="315.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.main.java.controller.StatisticsGridController">
+<AnchorPane fx:id="statisticsAnchor" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.main.java.controller.StatisticsGridController">
    <children>
-      <ScrollPane fx:id="statisticsScroller" fitToWidth="true" prefHeight="438.0" prefWidth="368.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <ScrollPane fx:id="statisticsScroller" fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <content>
-            <GridPane fx:id="statisticsGridOfScroll">
+            <GridPane fx:id="statisticsGridOfScroll" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="200.0" minWidth="300.0">
                <columnConstraints>
                   <ColumnConstraints hgrow="NEVER" maxWidth="7.5" minWidth="7.5" prefWidth="7.5" />
-                  <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" />
                   <ColumnConstraints hgrow="NEVER" maxWidth="7.5" minWidth="7.5" prefWidth="7.5" />
                </columnConstraints>
                <rowConstraints>
-                  <RowConstraints maxHeight="32.66667366027832" minHeight="7.5" prefHeight="28.66667366027832" vgrow="NEVER" />
-                  <RowConstraints maxHeight="1.7976931348623157E308" minHeight="100.0" prefHeight="379.3333263397217" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" valignment="CENTER" vgrow="NEVER" />
+                  <RowConstraints maxHeight="1.7976931348623157E308" minHeight="200.0" vgrow="ALWAYS" />
                   <RowConstraints maxHeight="7.5" minHeight="7.5" prefHeight="7.5" vgrow="NEVER" />
                </rowConstraints>
                <children>
-                  <ListView fx:id="listViewOriginal" prefWidth="70.0" GridPane.columnIndex="1" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.vgrow="SOMETIMES" />
-                  <ListView fx:id="listViewNanoSecs" prefWidth="70.0" GridPane.columnIndex="3" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.vgrow="SOMETIMES" />
-                  <ListView fx:id="listViewEncrypted" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <ListView fx:id="listViewOriginal" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="125.0" GridPane.columnIndex="1" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="1" GridPane.vgrow="SOMETIMES" />
+                  <ListView fx:id="listViewNanoSecs" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="75.0" GridPane.columnIndex="3" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="1" GridPane.vgrow="SOMETIMES" />
+                  <ListView fx:id="listViewEncrypted" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="125.0" GridPane.columnIndex="2" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="1" GridPane.vgrow="SOMETIMES" />
                   <Label text="Original" GridPane.columnIndex="1" />
                   <Label text="Encrypted" GridPane.columnIndex="2" />
                   <Label text="Nano-secs" GridPane.columnIndex="3" />
