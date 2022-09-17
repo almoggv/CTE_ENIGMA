@@ -11,12 +11,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6467e2d7-ff2a-4abb-a198-685a0fcd06aa" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/BruteForcePageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/BruteForcePageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/BruteForcePageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/BruteForcePageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/bruteForcePageTemplate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/bruteForcePageTemplate.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="6467e2d7-ff2a-4abb-a198-685a0fcd06aa" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -315,11 +310,6 @@
           <url>file://$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/AgentWorkManagerImpl.java</url>
           <line>183</line>
           <option name="timeStamp" value="625" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/user-interface/src/main/java/controller/BruteForcePageController.java</url>
-          <line>202</line>
-          <option name="timeStamp" value="680" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.ClassCastException" package="java.lang" />

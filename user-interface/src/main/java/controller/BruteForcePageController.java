@@ -212,6 +212,12 @@ public class BruteForcePageController implements Initializable {
         }
     }
 
+    public void onResetMachineStateButtonAction(ActionEvent actionEvent) {
+        machineHandler.resetToLastSetState();
+        DataService.getCurrentMachineStateProperty().setValue(machineHandler.getMachineState().get());
+        parentController.showMessage("Reset to last set machine state.");
+    }
+
 
 //    private UIAdapter createUIAdapter() {
 //        UIAdapter adapter = new UIAdapter( candidate -> {
