@@ -15,11 +15,10 @@ public class UIAdapter {
         this.updateCandidates = updateCandidates;
     }
 
-    public void addNewWord(AgentDecryptionInfo agentDecryptionInfo) {
+    public void addNewCandidate(AgentDecryptionInfo agentDecryptionInfo) {
         Platform.runLater(
                 () -> {
                     updateCandidates.accept(agentDecryptionInfo);
-//                    updateCandidates.run();
                 }
         );
     }

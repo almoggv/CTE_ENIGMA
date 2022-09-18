@@ -112,7 +112,7 @@
                                         <RowConstraints maxHeight="1.7976931348623157E308" minHeight="30.0" prefHeight="30.0" vgrow="NEVER" />
                                     </rowConstraints>
                                     <children>
-                                        <Slider fx:id="amountOfAgentsSlider" blockIncrement="5.0" max="50.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" min="2.0" minHeight="40.0" minWidth="150.0" showTickLabels="true" GridPane.columnIndex="1" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="1" GridPane.vgrow="NEVER" />
+                                        <Slider fx:id="amountOfAgentsSlider" blockIncrement="1.0" max="50.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" min="2.0" minHeight="40.0" minWidth="150.0" showTickLabels="true" GridPane.columnIndex="1" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="1" GridPane.vgrow="NEVER" />
                                         <ComboBox fx:id="difficultyComboBox" prefHeight="25.0" prefWidth="159.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                                         <TextField fx:id="taskSizeTextField" onAction="#onTaskSizeTextFieldFilled" prefHeight="25.0" prefWidth="153.0" promptText="natural number over 0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
                                         <Button fx:id="startDecryptButton" maxWidth="110.0" minWidth="110.0" mnemonicParsing="false" onAction="#onStartDecryptButtonAction" prefWidth="110.0" text="Start decrypting" GridPane.columnIndex="7" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
@@ -156,7 +156,7 @@
                                 </GridPane>
                             </content>
                         </ScrollPane>
-                        <FlowPane fx:id="dmResultsFlowPane" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+                        <FlowPane fx:id="dmResultsFlowPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.rowIndex="1" />
                     </children>
                 </GridPane>
             </items>

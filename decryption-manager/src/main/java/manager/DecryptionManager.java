@@ -1,5 +1,7 @@
 package main.java.manager;
 
+import javafx.beans.property.BooleanProperty;
+import main.java.adapter.UIAdapter;
 import main.java.enums.DecryptionDifficultyLevel;
 
 public interface DecryptionManager {
@@ -12,7 +14,10 @@ public interface DecryptionManager {
     void resumeWork();
     void stopWork();
     void awaitWork();
+    BooleanProperty getIsRunningProperty();
 
+    UIAdapter getUiAdapter();
+    void setUiAdapter(UIAdapter uiAdapter);
 
     int getNumberOfAgents();
 

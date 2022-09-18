@@ -4,9 +4,11 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import lombok.Getter;
 import lombok.Setter;
+import main.java.adapter.UIAdapter;
 import main.java.component.MachineHandler;
 import main.java.enums.DecryptionDifficultyLevel;
 import main.java.manager.AgentWorkManager;
+import main.java.manager.CandidatesListener;
 import main.java.manager.DictionaryManager;
 import main.java.manager.DecryptionManager;
 import main.java.service.PropertiesService;
@@ -28,9 +30,12 @@ public class DecryptionManagerImpl implements DecryptionManager {
     @Getter @Setter private DecryptionDifficultyLevel difficultyLevel;
     private ThreadPoolExecutor threadPoolService;
     private AgentWorkManager agentWorkManager;
+    private CandidatesListener candidatesListener;
+    @Getter @Setter private UIAdapter uiAdapter;
     @Getter private final BooleanProperty isRunningProperty = new SimpleBooleanProperty();
 
     private Thread workManagerThread;
+    private Thread candidatesListenerThread;
 //    private final UiAdapter uiAdapter;
 
     static {
@@ -57,33 +62,37 @@ public class DecryptionManagerImpl implements DecryptionManager {
         isRunningProperty.setValue(false);
     }
 
-    public DecryptionManagerImpl(MachineHandler machineHandler) {
+    public DecryptionManagerImpl(MachineHandler machineHandler,UIAdapter uiAdapter) {
         this.machineHandler = machineHandler;
+        this.uiAdapter = uiAdapter;
         if(machineHandler.getInventoryInfo().isPresent()){
             dictionaryManager.setAbc(machineHandler.getInventoryInfo().get().getABC());
         }
         isRunningProperty.setValue(false);
     }
+
     public void bruteForceDecryption(String sourceInput) {
         int keepAliveForWhenIdle = 1;
         if(threadPoolService==null){
             threadPoolService = new ThreadPoolExecutor(numberOfAgents, numberOfAgents, keepAliveForWhenIdle , TimeUnit.SECONDS, new ArrayBlockingQueue(THREAD_POOL_QEUEU_MAX_CAPACITY));
         }
         agentWorkManager = new AgentWorkManagerImpl(this.threadPoolService,this.machineHandler,this.difficultyLevel,this.taskSize, sourceInput);
+        candidatesListener = new CandidatesListenerImpl(uiAdapter,agentWorkManager.getIsWorkCompletedProperty());
+//        candidatesListener.BindToWorkers(agentWorkManager.getNumberOfAgentsProperty(), agentWorkManager.getAgentIdToDecryptAgentMap());
+        candidatesListener.BindToWorkers(agentWorkManager.getNewestAgentProperty());
         this.workManagerThread = new Thread(agentWorkManager,"agentManagerThread");
-        //TODO: connect to manager's properties - UIAdapter
+        this.candidatesListenerThread = new Thread(candidatesListener, "candidatesListenerThread");
+
         workManagerThread.start();
-//        try{
-//            workManagerThread.join();
-//        }
-//        catch (Exception e){
-//
-//        }
+        candidatesListenerThread.start();
     }
 
     public void pauseWork(){
         if(agentWorkManager != null){
             agentWorkManager.pause();
+        }
+        if(candidatesListener!=null){
+            candidatesListener.pause();
         }
     }
 
@@ -91,12 +100,18 @@ public class DecryptionManagerImpl implements DecryptionManager {
         if(agentWorkManager!=null){
             agentWorkManager.resume();
         }
+        if(candidatesListener!=null){
+            candidatesListener.resume();
+        }
     }
 
     @Override
     public void stopWork() {
         if(agentWorkManager!=null){
             agentWorkManager.stop();
+        }
+        if(candidatesListener!=null){
+            candidatesListener.stop();
         }
     }
 

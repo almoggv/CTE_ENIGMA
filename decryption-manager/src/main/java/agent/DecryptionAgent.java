@@ -15,7 +15,13 @@ public interface DecryptionAgent extends Runnable, Pausable {
 
     UUID getId();
 
+    /**
+     * Will Trigger after each found candidate
+     */
     ObjectProperty<AgentDecryptionInfo> getDecryptionInfoProperty();
+    /**
+     * Will Trigger only onFinish, if any found
+     */
     ObjectProperty<List<AgentDecryptionInfo>> getPotentialCandidatesListProperty();
     BooleanProperty getIsFinishedProperty();
     ObjectProperty<MappingPair<Integer,Integer>> getProgressProperty();

@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import org.controlsfx.control.textfield.CustomTextField?>
 
-<GridPane fx:id="rootGrid" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.main.java.controller.EncryptPageController">
+<GridPane fx:id="rootGrid" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="850.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.main.java.controller.EncryptPageController">
   <columnConstraints>
       <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="10.0" />
     <ColumnConstraints hgrow="NEVER" minWidth="110.0" />

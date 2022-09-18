@@ -9,6 +9,8 @@ import main.java.dto.AgentDecryptionInfo;
 import main.java.enums.DecryptionDifficultyLevel;
 
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 public interface AgentWorkManager extends Runnable, Pausable {
 
@@ -16,6 +18,7 @@ public interface AgentWorkManager extends Runnable, Pausable {
     BooleanProperty getIsAllWorkAssignedProperty();
     ObjectProperty<List<AgentDecryptionInfo>> getDecryptionCandidatesProperty();
 
-    List<DecryptionAgent> getDecryptionAgentsList();
+    Map<UUID,DecryptionAgent> getAgentIdToDecryptAgentMap();
     IntegerProperty getNumberOfAgentsProperty();
+    ObjectProperty<DecryptionAgent> getNewestAgentProperty();
 }

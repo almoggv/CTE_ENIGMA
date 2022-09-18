@@ -14,6 +14,7 @@ import javafx.scene.layout.GridPane;
 import lombok.Getter;
 import lombok.Setter;
 import main.java.component.MachineHandler;
+import main.java.dto.AgentDecryptionInfo;
 import main.java.dto.EncryptionInfoHistory;
 import main.java.enums.DecryptionDifficultyLevel;
 import main.java.manager.DecryptionManager;
@@ -31,6 +32,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.function.Consumer;
 
 public class BruteForcePageController implements Initializable {
 
@@ -42,6 +44,7 @@ public class BruteForcePageController implements Initializable {
     public CustomTextField resultTextField;
     public Button clearButton;
     public TextField dictionaryTextField;
+    public Button pauseDecryptButton;
     MachineHandler machineHandler;
     @Setter private DecryptionManager decryptionManager;
 
@@ -89,15 +92,20 @@ public class BruteForcePageController implements Initializable {
             currMachineConfigComponentController.setParentController(this);
             currMachineConfigComponentController.bindToData(DataService.getCurrentMachineStateProperty());
         }
-
         startDecryptButton.disableProperty().addListener((observable, oldValue, newValue) -> {
             showAmountOfTasks();
         });
-
         amountOfAgentsSlider.valueProperty().addListener((observable, oldValue, newValue) ->{
-            decryptionManager.setNumberOfAgents((int) Math.floor((Double) newValue));
+            if(decryptionManager!=null){
+                decryptionManager.setNumberOfAgents((int) Math.floor((Double) newValue));
+            }
             amountOfAgentsValueLabel.setText(String.valueOf((int) Math.floor((Double) newValue)));
         });
+        amountOfAgentsSlider.valueProperty().bindBidirectional(DataService.getCurrNumberOfAgentsProperty());
+        //Patch to trigger an on value change for the DataService property
+        //so that we will set it in the creating of the decryption manager
+        amountOfAgentsSlider.valueProperty().setValue(amountOfAgentsSlider.getMax());
+        amountOfAgentsSlider.valueProperty().setValue(amountOfAgentsSlider.getMin());
 
         difficultyComboBox.valueProperty().addListener((observable, oldValue, newValue) -> {
             decryptionManager.setDifficultyLevel(newValue);
@@ -183,18 +191,32 @@ public class BruteForcePageController implements Initializable {
     public void onStartDecryptButtonAction(ActionEvent actionEvent) throws InterruptedException {
         if(resultTextField.getText().isEmpty()){
             parentController.showMessage("Please encrypt first.");
+            return;
+        }
+        if(!decryptionManager.getIsRunningProperty().get()){
+            decryptionManager.bruteForceDecryption(resultTextField.getText());
         }
         else{
-//            UIAdapter uiAdapter = createUIAdapter();
-//            decryptionManager.setUIAdapter(uiAdapter);
-            decryptionManager.bruteForceDecryption(resultTextField.getText());
+
         }
     }
 
     public void onPauseDecryptButtonAction(ActionEvent actionEvent) {
+        if(decryptionManager.getIsRunningProperty().get()){
+            decryptionManager.pauseWork();
+            pauseDecryptButton.setText("Resume decrypting");
+        }
+        else{
+            decryptionManager.resumeWork();
+            pauseDecryptButton.setText("Pause decrypting");
+        }
+
     }
 
     public void onStopDecryptButtonAction(ActionEvent actionEvent) {
+        if(decryptionManager!=null){
+            decryptionManager.stopWork();
+        }
     }
 
     public void onDictionaryListClicked(MouseEvent mouseEvent) {
@@ -219,27 +241,28 @@ public class BruteForcePageController implements Initializable {
     }
 
 
-//    private UIAdapter createUIAdapter() {
-//        UIAdapter adapter = new UIAdapter( candidate -> {
-//            createTile(candidate.getOutput(), candidate.getTimeToDecrypt());
-//        });
-//        return adapter;
-//    }
+    public UIAdapter createUIAdapter() {
+        Consumer<AgentDecryptionInfo>  updateCandidates = candidate -> {
+            createTile(candidate.getOutput(), candidate.getTimeToDecrypt());
+        };
+        UIAdapter adapter = new UIAdapter( updateCandidates);
+        return adapter;
+    }
 
-//    private void createTile(String output, long timeToDecrypt) {
-//        try {
-//            URL decodedCandidateURL = GuiApplication.class.getResource(ResourceLocationService.getDecodeCandidatePath());
-//            FXMLLoader fxmlLoader = new FXMLLoader();
-//            fxmlLoader.setLocation(decodedCandidateURL);
-//            Parent decodedCandidate = fxmlLoader.load(decodedCandidateURL.openStream());
-//            DecodedCandidateController decodedCandidateController = fxmlLoader.getController();
-//            decodedCandidateController.setCandidateLabel(output);
-//            decodedCandidateController.setTimeLabel(String.valueOf(Math.floor(timeToDecrypt)));
-//            dmResultsFlowPane.getChildren().add(decodedCandidate);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
+    private void createTile(String output, long timeToDecrypt) {
+        try {
+            URL decodedCandidateURL = GuiApplication.class.getResource(ResourceLocationService.getDecodeCandidatePath());
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(decodedCandidateURL);
+            Parent decodedCandidate = fxmlLoader.load(decodedCandidateURL.openStream());
+            DecodedCandidateController decodedCandidateController = fxmlLoader.getController();
+            decodedCandidateController.setCandidateLabel(output);
+            decodedCandidateController.setTimeLabel(String.valueOf(Math.floor(timeToDecrypt)));
+            dmResultsFlowPane.getChildren().add(decodedCandidate);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
 }

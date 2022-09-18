@@ -76,7 +76,7 @@ public class DecryptionAgentImpl implements DecryptionAgent {
 
     @Override
     public void run() {
-//        System.out.println("Agent " + this.id + " started running decryption");
+        System.out.println("Agent " + this.id + " started running decryption");
         List<AgentDecryptionInfo> potentialCandidates = new ArrayList<>();
         Optional<String> decryptionCandidate;
         int PROGRESS_UPDATE_INTERVAL = (int)(Math.ceil((0.1)*(startingConfigurations.size())));
@@ -87,7 +87,6 @@ public class DecryptionAgentImpl implements DecryptionAgent {
             synchronized (lockContext) {
                 if (isRunningProperty.get() == false) {
                     try {
-                        System.out.println("AgentWorker ["+id+"] is in waiting block");
                         lockContext.wait();
                     } catch (InterruptedException ignore) {}
                 }
@@ -194,6 +193,7 @@ public class DecryptionAgentImpl implements DecryptionAgent {
 
     public void stop(){
         isStoppedProperty.setValue(true);
+        isRunningProperty.setValue(false);
     }
 
     public void pause() {

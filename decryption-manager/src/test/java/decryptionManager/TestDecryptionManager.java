@@ -1,7 +1,9 @@
 package test.java.decryptionManager;
 
+import main.java.adapter.UIAdapter;
 import main.java.component.MachineHandler;
 import main.java.component.impl.MachineHandlerImpl;
+import main.java.dto.AgentDecryptionInfo;
 import main.java.enums.DecryptionDifficultyLevel;
 import main.java.enums.ReflectorsId;
 import main.java.generictype.MappingPair;
@@ -15,13 +17,14 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class TestDecryptionManager {
 
     @Test
     public void testEasyBruteSmallABC() throws Exception {
         MachineHandler machineHandler = new MachineHandlerImpl();
-        String path = "C:\\Users\\Eliya\\Documents\\java\\CTE\\CTE_ENIGMA\\enigma-machine\\src\\main\\resources\\machine-inventory-schema-Ex2\\ex2-basic-easy.xml";
+        String path = PropertiesService.getTestSchemaEx2BasicEasy();
 
         machineHandler.buildMachinePartsInventory(path);
 
@@ -43,7 +46,15 @@ public class TestDecryptionManager {
 
         String encrypted = machineHandler.encrypt("ABBA");
         DecryptionManager manager = new DecryptionManagerImpl(machineHandler,  numberOfAgents, DecryptionDifficultyLevel.EASY, taskSize) ;
+        Consumer<AgentDecryptionInfo> stopAndShowCandidate = candidate -> {
+            manager.stopWork();
+            System.out.println("Candidate Found = " + candidate);
+
+        };
+        UIAdapter uiAdapter = new UIAdapter(stopAndShowCandidate);
+        manager.setUiAdapter(uiAdapter);
         manager.bruteForceDecryption(encrypted);
+        manager.awaitWork();
     }
 
     @Test

@@ -149,8 +149,6 @@ public class EncryptPageController implements Initializable {
         String abc = inventoryInfo.getABC();
         startColor = Color.web("#E7E7E7");
         endColor = Color.web("#F1C360");
-//        startColor = Color.web("#e08090");
-//        endColor = Color.web("#80e090");
 
         for (int i = 0; i < abc.length(); i++) {
             String letter = abc.substring(i,i+1);

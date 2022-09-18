@@ -110,7 +110,8 @@ public class AppController/* implements Initializable */{
         bruteForcePageController.setParentController(this);
         bruteForcePageController.bindComponent(currMachineConfigController);
         bruteForcePageController.setMachineHandler(machineHandler);
-        decryptionManager = new DecryptionManagerImpl(machineHandler);
+        decryptionManager = new DecryptionManagerImpl(machineHandler, bruteForcePageController.createUIAdapter());
+        decryptionManager.setNumberOfAgents(DataService.getCurrNumberOfAgentsProperty().get());
         bruteForcePageController.setDecryptionManager(decryptionManager);
 
         //added picture

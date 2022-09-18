@@ -44,16 +44,17 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
     private int numOfPossibleInitialPos;
     List<List<Integer>> possibleRotorIdsList;
     private MachineState lastCreatedState;
-    @Getter private BooleanProperty isWorkCompletedProperty = new SimpleBooleanProperty();
-    @Getter private BooleanProperty isAllWorkAssignedProperty = new SimpleBooleanProperty();
+    @Getter private final BooleanProperty isWorkCompletedProperty = new SimpleBooleanProperty();
+    @Getter private final BooleanProperty isAllWorkAssignedProperty = new SimpleBooleanProperty();
    /*
    assignedWorkProgressProperty references the assigned work to the agents - and not the amount actually completed by the agents;
     */
-    @Getter private ObjectProperty<MappingPair<Integer,Integer>> assignedWorkProgressProperty = new SimpleObjectProperty<>();
-    @Getter private ObjectProperty<List<AgentDecryptionInfo>> decryptionCandidatesProperty = new SimpleObjectProperty<>();
+    @Getter private final ObjectProperty<MappingPair<Integer,Integer>> assignedWorkProgressProperty = new SimpleObjectProperty<>();
+    @Getter private final ObjectProperty<List<AgentDecryptionInfo>> decryptionCandidatesProperty = new SimpleObjectProperty<>();
 
-    @Getter List<DecryptionAgent> decryptionAgentsList = new ArrayList();
-    @Getter private IntegerProperty numberOfAgentsProperty = new SimpleIntegerProperty();
+    @Getter private final Map<UUID,DecryptionAgent> agentIdToDecryptAgentMap = new HashMap<>();
+    @Getter private final IntegerProperty numberOfAgentsProperty = new SimpleIntegerProperty();
+    @Getter private final ObjectProperty<DecryptionAgent> newestAgentProperty = new SimpleObjectProperty<>();
 
     private final Object lockContext = new Object();
     @Getter private final BooleanProperty isRunningProperty = new SimpleBooleanProperty();
@@ -396,49 +397,75 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
     }
 
     private DecryptionAgent getNextAgent(){
-        List<MachineState> workForAgent = getNextWorkBatch();
-        EncryptionMachine handler = machineHandler.getEncryptionMachineClone();
-        DecryptionAgent newAgent = new DecryptionAgentImpl(handler);
-        newAgent.assignWork(workForAgent,this.inputToDecrypt);
-        log.debug("Agent manager: assigned work to agent");
-
-        newAgent.getPotentialCandidatesListProperty().addListener(((observable, oldValue, newValue) -> {
-            log.debug("AgentWorkManager - received potential");
-            List<AgentDecryptionInfo> currCandidates = new ArrayList<>(this.decryptionCandidatesProperty.get());
-            currCandidates.addAll(newValue);
-            this.decryptionCandidatesProperty.setValue(currCandidates);
-        }));
-        newAgent.getProgressProperty().addListener(((observable, oldValue, newValue) -> {
-                int delta = newValue.getLeft() - oldValue.getLeft();
-                synchronized (this){
-                    this.amountOfWorkCompleted += delta;
+        if(!isAllWorkAssignedProperty.get()){
+            List<MachineState> workForAgent = getNextWorkBatch();
+            EncryptionMachine handler = machineHandler.getEncryptionMachineClone();
+            DecryptionAgent newAgent = new DecryptionAgentImpl(handler);
+            newAgent.assignWork(workForAgent,this.inputToDecrypt);
+            log.debug("Agent manager: assigned work to agent");
+            newAgent.getIsFinishedProperty().addListener(((observable, oldValue, newValue) -> {
+                if(newValue == true){
+                    try{
+                        synchronized (this){
+                            this.amountOfWorkCompleted += newAgent.getProgressProperty().get().getRight();
+                            if(amountOfWorkCompleted >= totalWorkToDo){
+                                isWorkCompletedProperty.setValue(true);
+                            }
+                        }
+                        this.numberOfAgentsProperty.setValue(agentIdToDecryptAgentMap.keySet().size());
+                        agentIdToDecryptAgentMap.remove(newAgent.getId());
+                    }
+                    catch (Exception ignore){
+                    }
                 }
-                if(this.amountOfWorkCompleted >= this.totalWorkToDo){
-                    this.isWorkCompletedProperty.setValue(true);
-                    System.out.println("Agent completed work: "+ newAgent.getId());
+            }));
+            newAgent.getPotentialCandidatesListProperty().addListener(((observable, oldValue, newValue) -> {
+                log.debug("AgentWorkManager - received potential");
+                List<AgentDecryptionInfo> currCandidates = new ArrayList<>(this.decryptionCandidatesProperty.get());
+                currCandidates.addAll(newValue);
+                this.decryptionCandidatesProperty.setValue(currCandidates);
+            }));
+            newAgent.getProgressProperty().addListener(((observable, oldValue, newValue) -> {
+//                    int delta = newValue.getLeft() - oldValue.getLeft();
+//                    synchronized (this){
+//                        System.out.println("ProgressProperty = (" +amountOfWorkCompleted+"/"+totalWorkToDo+")");
+//                        this.amountOfWorkCompleted += delta;
+//                    }
+//                    if(this.amountOfWorkCompleted >= this.totalWorkToDo){
+//                        this.isWorkCompletedProperty.setValue(true);
+//                        System.out.println("Agent completed work: "+ newAgent.getId());
+//                    }
+            }));
+            isRunningProperty.addListener(((observable, oldValue, newValue) -> {
+                if(newValue == true){
+                    newAgent.resume();
                 }
-        }));
-        isRunningProperty.addListener(((observable, oldValue, newValue) -> {
-            if(newValue == true){
-                newAgent.resume();
-            }
-            else{
-                newAgent.pause();
-            }
-        }));
-        isStoppedProperty.addListener(((observable, oldValue, newValue) -> {
-            if(newValue == true){
-                newAgent.stop();
-            }
-        }));
-        return newAgent;
+                else{
+                    newAgent.pause();
+                }
+            }));
+            isStoppedProperty.addListener(((observable, oldValue, newValue) -> {
+                if(newValue == true){
+                    newAgent.stop();
+                }
+            }));
+            newestAgentProperty.setValue(newAgent);
+            return newAgent;
+        }
+        else{
+            return null;
+        }
     }
 
     public void stop(){
         isStoppedProperty.setValue(true);
+        isRunningProperty.setValue(false);
+        isWorkCompletedProperty.setValue(true);
+        this.threadPoolExecutor.shutdownNow();
     }
 
     public void pause() {
+        System.out.println("WorkManager - was paused");
         isRunningProperty.setValue(false);
     }
 
@@ -446,6 +473,7 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
         synchronized (lockContext) {
             isRunningProperty.setValue(true);
             lockContext.notifyAll();
+            System.out.println("WorkManager - was resumed");
         }
     }
 
@@ -463,16 +491,20 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
             }
             //Actual Logic
             if(threadPoolExecutor.getQueue().remainingCapacity() > 0){
-                System.out.println("AgentManager - creating new agent - agents List Size=[" +decryptionAgentsList.size()+"]" );
+//                System.out.println("AgentManager - creating new agent - agents List Size=[" +agentIdToDecryptAgentMap.size()+"]" );
                 DecryptionAgent agent = getNextAgent();
-                decryptionAgentsList.add(agent);
-                numberOfAgentsProperty.setValue(decryptionAgentsList.size());
-                threadPoolExecutor.execute(agent);
+                if(agent != null){
+                    System.out.println("WorkManager - created new agent  id=["+agent.getId()+"]");
+                    agentIdToDecryptAgentMap.putIfAbsent(agent.getId(),agent);
+                    numberOfAgentsProperty.setValue(agentIdToDecryptAgentMap.keySet().size());
+                    threadPoolExecutor.execute(agent);
+                }
+                else{
+                    if(isAllWorkAssignedProperty.get()){
+                        break;
+                    }
+                }
             }
-//            if(isAllWorkAssignedProperty.get() == true){
-//                this.pause();
-//                this.stop();
-//            }
         }
         System.out.println("All Work Assigned");
         threadPoolExecutor.shutdown();
@@ -482,31 +514,6 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
             log.error("AgentWorkManager - awaited termination caught an InterruptedException = " + e.getMessage());
         }
     }
-
-    private void runLogic(){
-        System.out.println("IN agentManager run!");
-        this.initWorkBatchesByDifficulty();
-        int i = 0;
-        while(!isAllWorkAssignedProperty.get()){
-            if(threadPoolExecutor.getQueue().remainingCapacity() > 0){
-                log.debug("AgentWorkManager - threadPoolExecutor remainingCapacity of Queue = " + threadPoolExecutor.getQueue().remainingCapacity());
-                DecryptionAgent agent = getNextAgent();
-                decryptionAgentsList.add(agent);
-                numberOfAgentsProperty.setValue(decryptionAgentsList.size());
-                threadPoolExecutor.execute(agent);
-//                log.debug(" Added agent to thread pool: "+ agent.getId());
-//                System.out.println(++i + "Added agent to thread pool: "+ agent.getId());
-            }
-        }
-        threadPoolExecutor.shutdown();
-        try {
-            threadPoolExecutor.awaitTermination(10, TimeUnit.MINUTES);
-        } catch (InterruptedException e) {
-            log.error("AgentWorkManager - awaited termination caught an InterruptedException = " + e.getMessage());
-        }
-    }
-
-
 }
 
 
