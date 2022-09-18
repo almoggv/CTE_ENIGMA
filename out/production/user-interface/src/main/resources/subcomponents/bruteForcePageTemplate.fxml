@@ -156,7 +156,11 @@
                                 </GridPane>
                             </content>
                         </ScrollPane>
-                        <FlowPane fx:id="dmResultsFlowPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.rowIndex="1" />
+                  <ScrollPane GridPane.hgrow="NEVER" GridPane.rowIndex="1">
+                     <content>
+                              <FlowPane fx:id="dmResultsFlowPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" />
+                     </content>
+                  </ScrollPane>
                     </children>
                 </GridPane>
             </items>

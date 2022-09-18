@@ -33,6 +33,7 @@ public class DecryptionManagerImpl implements DecryptionManager {
     private CandidatesListener candidatesListener;
     @Getter @Setter private UIAdapter uiAdapter;
     @Getter private final BooleanProperty isRunningProperty = new SimpleBooleanProperty();
+    @Getter private final BooleanProperty isPausedProperty = new SimpleBooleanProperty(false);
 
     private Thread workManagerThread;
     private Thread candidatesListenerThread;
@@ -109,6 +110,7 @@ public class DecryptionManagerImpl implements DecryptionManager {
         if(candidatesListener!=null){
             candidatesListener.pause();
         }
+        isPausedProperty.setValue(true);
     }
 
     public void resumeWork(){
@@ -118,6 +120,7 @@ public class DecryptionManagerImpl implements DecryptionManager {
         if(candidatesListener!=null){
             candidatesListener.resume();
         }
+        isPausedProperty.setValue(false);
     }
 
     @Override
@@ -128,6 +131,7 @@ public class DecryptionManagerImpl implements DecryptionManager {
         if(candidatesListener!=null){
             candidatesListener.stop();
         }
+        isRunningProperty.setValue(false);
     }
 
     @Override

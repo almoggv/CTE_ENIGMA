@@ -12,3 +12,9 @@
     -fx-background-color: #aed9d1;
     /*-fx-background-color: #c91697;*/
 }
+
+#candidatePane{
+    -fx-background-color: #aed9d1;
+    -fx-border-color: #033949;
+    -fx-border-width: 3 3 3 3;
+}

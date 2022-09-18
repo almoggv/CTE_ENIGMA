@@ -1,6 +1,8 @@
 package src.main.java.controller;
 
+import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -48,8 +50,9 @@ public class BruteForcePageController implements Initializable {
     public Button pauseDecryptButton;
     public Label progressPrecentNumberLabel;
     public ProgressBar progressBar;
+    public Button stopDecryptButton;
     MachineHandler machineHandler;
-    @Setter private DecryptionManager decryptionManager;
+    private DecryptionManager decryptionManager;
 
 //    @Setter @Getter private UIAdapter uiAdapter;
 
@@ -70,6 +73,8 @@ public class BruteForcePageController implements Initializable {
 
     private ValidationSupport validationSupport = new ValidationSupport();
 
+    private BooleanProperty isDecryptionRunningProperty = new SimpleBooleanProperty(false);
+
     private Trie dictionaryTrie;
 
     @Override
@@ -89,6 +94,8 @@ public class BruteForcePageController implements Initializable {
         });
 
         startDecryptButton.disableProperty().bind(validationSupport.invalidProperty());
+        pauseDecryptButton.disableProperty().bind(isDecryptionRunningProperty.not());
+        stopDecryptButton.disableProperty().bind(isDecryptionRunningProperty.not());
 
         if(currMachineConfigComponentController != null){
             currMachineConfigComponentController.setParentController(this);
@@ -214,8 +221,6 @@ public class BruteForcePageController implements Initializable {
         }
 
         decryptionManager.bruteForceDecryption(resultTextField.getText());
-        decryptionManager.getIsRunningProperty().setValue(true);
-
     }
 
     public void onPauseDecryptButtonAction(ActionEvent actionEvent) {
@@ -234,6 +239,13 @@ public class BruteForcePageController implements Initializable {
         if(decryptionManager!=null){
             decryptionManager.stopWork();
         }
+        clearDecryptionResults();
+    }
+
+    private void clearDecryptionResults() {
+        this.dmResultsFlowPane.getChildren().clear();
+        this.progressBar.setProgress(0.0);
+        this.progressPrecentNumberLabel.setText("%");
     }
 
     public void onDictionaryListClicked(MouseEvent mouseEvent) {
@@ -287,5 +299,8 @@ public class BruteForcePageController implements Initializable {
         }
     }
 
-
+    public void setDecryptionManager(DecryptionManager decryptionManager) {
+        this.decryptionManager = decryptionManager;
+        this.isDecryptionRunningProperty.bind(decryptionManager.getIsRunningProperty());
+    }
 }

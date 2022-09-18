@@ -89,6 +89,8 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
         decryptionCandidatesProperty.setValue(new ArrayList<>());
         isRunningProperty.setValue(true);
         isStoppedProperty.setValue(false);
+        //connect properties
+        connectProperties();
 
         //Calculate at the end
         totalWorkToDo = calcTotalWorkToDoByDifficulty();
@@ -96,6 +98,23 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
         this.possibleRotorIdsList = createIntermediateRotorIDsPlacementList(machineHandler.getMachineState().get().getRotorIds());
         this.lastPossibleInitialPos = createRotorLastStartingPosition();
         this.possibleRotorIdsCombinationList = createImpossibleRotorIdCombinationOptions();
+    }
+
+    private void connectProperties() {
+        /*
+         isWorkCompletedProperty.setValue(false);
+        isAllWorkAssignedProperty.setValue(false);
+        decryptionCandidatesProperty.setValue(new ArrayList<>());
+        isRunningProperty.setValue(true);
+        isStoppedProperty.setValue(false);
+         */
+        isWorkCompletedProperty.addListener(observable -> {
+            isStoppedProperty.setValue(isWorkCompletedProperty.get());
+        });
+
+        isStoppedProperty.addListener(observable -> {
+            isRunningProperty.setValue(isStoppedProperty.get());
+        });
     }
 
     private List<List<Integer>> createIntermediateRotorIDsPlacementList(List<Integer> rotorIds) {
@@ -464,8 +483,8 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
     }
 
     public void pause() {
-        System.out.println("WorkManager - was paused");
         isRunningProperty.setValue(false);
+        System.out.println("WorkManager - was paused");
     }
 
     public void resume() {
@@ -493,8 +512,8 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
 //                System.out.println("AgentManager - creating new agent - agents List Size=[" +agentIdToDecryptAgentMap.size()+"]" );
                 DecryptionAgent agent = getNextAgent();
                 if(agent != null){
-                    System.out.println("Assigned Work Property: (" + assignedWorkProgressProperty.get().getLeft()  + "/" + assignedWorkProgressProperty.get().getRight() + ")" );
-                    System.out.println("WorkManager - created new agent  id=["+agent.getId()+"]");
+//                    System.out.println("Assigned Work Property: (" + assignedWorkProgressProperty.get().getLeft()  + "/" + assignedWorkProgressProperty.get().getRight() + ")" );
+//                    System.out.println("WorkManager - created new agent  id=["+agent.getId()+"]");
                     agentIdToDecryptAgentMap.putIfAbsent(agent.getId(),agent);
                     numberOfAgentsProperty.setValue(agentIdToDecryptAgentMap.keySet().size());
                     threadPoolExecutor.execute(agent);
