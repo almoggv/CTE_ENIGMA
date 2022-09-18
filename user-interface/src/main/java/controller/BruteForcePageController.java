@@ -212,7 +212,10 @@ public class BruteForcePageController implements Initializable {
         if(decryptionManager.getIsRunningProperty().get()){
             decryptionManager.stopWork();
         }
+
         decryptionManager.bruteForceDecryption(resultTextField.getText());
+        decryptionManager.getIsRunningProperty().setValue(true);
+
     }
 
     public void onPauseDecryptButtonAction(ActionEvent actionEvent) {

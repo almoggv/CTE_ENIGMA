@@ -93,9 +93,13 @@ public class DecryptionManagerImpl implements DecryptionManager {
             }
         }));
         isRunningProperty.bind(candidatesListener.getIsRunningProperty());
+        isRunningProperty.addListener(((observable, oldValue, newValue) -> {
+            if(newValue == false){
+                this.threadPoolService = null;
+            }
+        }));
         workManagerThread.start();
         candidatesListenerThread.start();
-
     }
 
     public void pauseWork(){
