@@ -75,6 +75,7 @@ public class BruteForcePageController implements Initializable {
 
     private BooleanProperty isDecryptionRunningProperty = new SimpleBooleanProperty(false);
 
+
     private Trie dictionaryTrie;
 
     @Override
@@ -94,8 +95,8 @@ public class BruteForcePageController implements Initializable {
         });
 
         startDecryptButton.disableProperty().bind(validationSupport.invalidProperty());
-        pauseDecryptButton.disableProperty().bind(isDecryptionRunningProperty.not());
         stopDecryptButton.disableProperty().bind(isDecryptionRunningProperty.not());
+        pauseDecryptButton.disableProperty().bind(isDecryptionRunningProperty.not());
 
         if(currMachineConfigComponentController != null){
             currMachineConfigComponentController.setParentController(this);
@@ -216,15 +217,15 @@ public class BruteForcePageController implements Initializable {
             parentController.showMessage("Please encrypt first.");
             return;
         }
-        if(decryptionManager.getIsRunningProperty().get()){
+        if(decryptionManager.getIsBruteForceInitiatedProperty().get()){
             decryptionManager.stopWork();
         }
-
+        clearDecryptionResults();
         decryptionManager.bruteForceDecryption(resultTextField.getText());
     }
 
     public void onPauseDecryptButtonAction(ActionEvent actionEvent) {
-        if(decryptionManager.getIsRunningProperty().get()){
+        if(decryptionManager.getIsBruteForcePausedProperty().get() == false){
             decryptionManager.pauseWork();
             pauseDecryptButton.setText("Resume decrypting");
         }
@@ -269,7 +270,6 @@ public class BruteForcePageController implements Initializable {
         parentController.showMessage("Reset to last set machine state.");
     }
 
-
     public UIAdapter createUIAdapter() {
         Consumer<AgentDecryptionInfo>  updateCandidates = candidate -> {
             createTile(candidate.getOutput(), candidate.getTimeToDecrypt());
@@ -301,6 +301,6 @@ public class BruteForcePageController implements Initializable {
 
     public void setDecryptionManager(DecryptionManager decryptionManager) {
         this.decryptionManager = decryptionManager;
-        this.isDecryptionRunningProperty.bind(decryptionManager.getIsRunningProperty());
+        this.isDecryptionRunningProperty.bind(decryptionManager.getIsBruteForceInitiatedProperty());
     }
 }

@@ -32,8 +32,10 @@ public class DecryptionManagerImpl implements DecryptionManager {
     private AgentWorkManager agentWorkManager;
     private CandidatesListener candidatesListener;
     @Getter @Setter private UIAdapter uiAdapter;
-    @Getter private final BooleanProperty isRunningProperty = new SimpleBooleanProperty();
-    @Getter private final BooleanProperty isPausedProperty = new SimpleBooleanProperty(false);
+
+    @Getter private final BooleanProperty isBruteForceInitiatedProperty = new SimpleBooleanProperty(false);
+    @Getter private final BooleanProperty isBruteForcePausedProperty = new SimpleBooleanProperty(false);
+    @Getter private final BooleanProperty isBruteForceStoppedProperty = new SimpleBooleanProperty(true);
 
     private Thread workManagerThread;
     private Thread candidatesListenerThread;
@@ -60,7 +62,21 @@ public class DecryptionManagerImpl implements DecryptionManager {
         this.taskSize = taskSize;
         int keepAliveForWhenIdle = 1;
         threadPoolService = new ThreadPoolExecutor(numberOfAgents, numberOfAgents, keepAliveForWhenIdle , TimeUnit.SECONDS, new ArrayBlockingQueue(THREAD_POOL_QEUEU_MAX_CAPACITY));
-        isRunningProperty.setValue(false);
+        isBruteForceStoppedProperty.addListener(((observable, oldValue, newValue) -> {
+            if(newValue == true){
+                isBruteForcePausedProperty.setValue(true);
+                isBruteForceInitiatedProperty.setValue(false);
+            }
+        }));
+        isBruteForceInitiatedProperty.addListener((observable, oldValue, newValue) -> {
+            if(newValue == true){
+                isBruteForcePausedProperty.setValue(false);
+                isBruteForceStoppedProperty.setValue(false);
+            }
+            if(newValue == false){
+                this.threadPoolService = null;
+            }
+        });
     }
 
     public DecryptionManagerImpl(MachineHandler machineHandler,UIAdapter uiAdapter) {
@@ -69,7 +85,6 @@ public class DecryptionManagerImpl implements DecryptionManager {
         if(machineHandler.getInventoryInfo().isPresent()){
             dictionaryManager.setAbc(machineHandler.getInventoryInfo().get().getABC());
         }
-        isRunningProperty.setValue(false);
     }
 
     public void bruteForceDecryption(String sourceInput) {
@@ -93,10 +108,11 @@ public class DecryptionManagerImpl implements DecryptionManager {
                 candidatesListenerThread.interrupt();
             }
         }));
-        isRunningProperty.bind(candidatesListener.getIsRunningProperty());
-        isRunningProperty.addListener(((observable, oldValue, newValue) -> {
-            if(newValue == false){
-                this.threadPoolService = null;
+        isBruteForceInitiatedProperty.setValue(true);
+        isBruteForceStoppedProperty.setValue(false);
+        agentWorkManager.getIsWorkCompletedProperty().addListener(((observable, oldValue, newValue) -> {
+            if(newValue == true){
+                isBruteForceStoppedProperty.setValue(true);
             }
         }));
         workManagerThread.start();
@@ -110,7 +126,7 @@ public class DecryptionManagerImpl implements DecryptionManager {
         if(candidatesListener!=null){
             candidatesListener.pause();
         }
-        isPausedProperty.setValue(true);
+        isBruteForcePausedProperty.setValue(true);
     }
 
     public void resumeWork(){
@@ -120,7 +136,7 @@ public class DecryptionManagerImpl implements DecryptionManager {
         if(candidatesListener!=null){
             candidatesListener.resume();
         }
-        isPausedProperty.setValue(false);
+        isBruteForcePausedProperty.setValue(false);
     }
 
     @Override
@@ -131,7 +147,9 @@ public class DecryptionManagerImpl implements DecryptionManager {
         if(candidatesListener!=null){
             candidatesListener.stop();
         }
-        isRunningProperty.setValue(false);
+        isBruteForceStoppedProperty.setValue(true);
+        isBruteForceInitiatedProperty.setValue(false);
+        this.threadPoolService = null;
     }
 
     @Override

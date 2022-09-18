@@ -14,8 +14,9 @@ public interface DecryptionManager {
     void resumeWork();
     void stopWork();
     void awaitWork();
-    BooleanProperty getIsRunningProperty();
-    BooleanProperty getIsPausedProperty();
+    BooleanProperty getIsBruteForceInitiatedProperty();
+    BooleanProperty getIsBruteForcePausedProperty();
+    BooleanProperty getIsBruteForceStoppedProperty();
 
     UIAdapter getUiAdapter();
     void setUiAdapter(UIAdapter uiAdapter);

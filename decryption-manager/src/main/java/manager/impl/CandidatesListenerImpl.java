@@ -30,7 +30,6 @@ public class CandidatesListenerImpl implements CandidatesListener {
 
     private final Object lockContext = new Object();
     @Getter private final BooleanProperty isRunningProperty = new SimpleBooleanProperty(true);
-    @Getter private final BooleanProperty isPausedProperty = new SimpleBooleanProperty(false);
     @Getter private final BooleanProperty isStoppedProperty = new SimpleBooleanProperty(false);
 
     public CandidatesListenerImpl(UIAdapter uiAdapter, BooleanProperty onAllWorkersFinishedSignal, int totalWorkAmount) {
@@ -50,12 +49,13 @@ public class CandidatesListenerImpl implements CandidatesListener {
     }
 
     public void pause() {
-        isPausedProperty.setValue(true);
+//        isPausedProperty.setValue(true);
+        isRunningProperty.setValue(false);
     }
 
     public void resume() {
         synchronized (lockContext) {
-            isPausedProperty.setValue(false);
+            isRunningProperty.setValue(true);
             lockContext.notifyAll(); // Unblocks thread
         }
     }

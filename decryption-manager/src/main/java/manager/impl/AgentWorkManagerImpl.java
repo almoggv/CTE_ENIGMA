@@ -44,21 +44,21 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
     private int numOfPossibleInitialPos;
     List<List<Integer>> possibleRotorIdsList;
     private MachineState lastCreatedState;
-    @Getter private final BooleanProperty isWorkCompletedProperty = new SimpleBooleanProperty();
-    @Getter private final BooleanProperty isAllWorkAssignedProperty = new SimpleBooleanProperty();
+    @Getter private final BooleanProperty isWorkCompletedProperty = new SimpleBooleanProperty(false);
+    @Getter private final BooleanProperty isAllWorkAssignedProperty = new SimpleBooleanProperty(false);
    /*
    assignedWorkProgressProperty references the assigned work to the agents - and not the amount actually completed by the agents;
     */
     @Getter private final ObjectProperty<MappingPair<Integer,Integer>> assignedWorkProgressProperty = new SimpleObjectProperty<>();
-    @Getter private final ObjectProperty<List<AgentDecryptionInfo>> decryptionCandidatesProperty = new SimpleObjectProperty<>();
+    @Getter private final ObjectProperty<List<AgentDecryptionInfo>> decryptionCandidatesProperty = new SimpleObjectProperty<>(new ArrayList<>());
 
     @Getter private final Map<UUID,DecryptionAgent> agentIdToDecryptAgentMap = new HashMap<>();
     @Getter private final IntegerProperty numberOfAgentsProperty = new SimpleIntegerProperty();
     @Getter private final ObjectProperty<DecryptionAgent> newestAgentProperty = new SimpleObjectProperty<>();
 
     private final Object lockContext = new Object();
-    @Getter private final BooleanProperty isRunningProperty = new SimpleBooleanProperty();
-    @Getter private final BooleanProperty isStoppedProperty = new SimpleBooleanProperty();
+    @Getter private final BooleanProperty isRunningProperty = new SimpleBooleanProperty(true);
+    @Getter private final BooleanProperty isStoppedProperty = new SimpleBooleanProperty(false);
 
     static {
         try {
@@ -76,22 +76,16 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
         this.threadPoolExecutor = threadPoolExecutor;
         this.machineHandler = machineHandler;
         this.difficultyLevel = difficultyLevel;
-        this.taskSize = (taskSize <= 0 ) ? PropertiesService.getDefaultTaskSize() : taskSize;
         this.inputToDecrypt = inputToDecrypt;
+        this.taskSize = (taskSize <= 0 ) ? PropertiesService.getDefaultTaskSize() : taskSize;
         this.abc = machineHandler.getInventoryInfo().get().getABC();
         this.abcSize = machineHandler.getInventoryInfo().get().getABC().length();
         this.numberOfRotorsInUse = machineHandler.getInventoryInfo().get().getNumOfRotorsInUse();
         this.numberOfRotorsAvailable = machineHandler.getInventoryInfo().get().getNumOfAvailableRotors();
         this.numberOfReflectorsAvailable = machineHandler.getInventoryInfo().get().getNumOfAvailableReflectors();
         this.lastCreatedState = machineHandler.getInitialMachineState().get();
-        isWorkCompletedProperty.setValue(false);
-        isAllWorkAssignedProperty.setValue(false);
-        decryptionCandidatesProperty.setValue(new ArrayList<>());
-        isRunningProperty.setValue(true);
-        isStoppedProperty.setValue(false);
         //connect properties
         connectProperties();
-
         //Calculate at the end
         totalWorkToDo = calcTotalWorkToDoByDifficulty();
         assignedWorkProgressProperty.set(new MappingPair<>(0, totalWorkToDo));
@@ -101,17 +95,19 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
     }
 
     private void connectProperties() {
-        /*
-         isWorkCompletedProperty.setValue(false);
-        isAllWorkAssignedProperty.setValue(false);
-        decryptionCandidatesProperty.setValue(new ArrayList<>());
-        isRunningProperty.setValue(true);
-        isStoppedProperty.setValue(false);
-         */
-        isWorkCompletedProperty.addListener(observable -> {
+        assignedWorkProgressProperty.addListener(((observable, oldValue, newValue) -> {
+            if(newValue != null && newValue.getLeft() >= newValue.getRight()){
+                isAllWorkAssignedProperty.setValue(true);
+            }
+        }));
+        isWorkCompletedProperty.addListener((observable, oldValue, newValue) -> {
             isStoppedProperty.setValue(isWorkCompletedProperty.get());
+            if(newValue == true){
+                isAllWorkAssignedProperty.setValue(true);
+                isStoppedProperty.setValue(true);
+                isRunningProperty.setValue(false);
+            }
         });
-
         isStoppedProperty.addListener(observable -> {
             isRunningProperty.setValue(isStoppedProperty.get());
         });

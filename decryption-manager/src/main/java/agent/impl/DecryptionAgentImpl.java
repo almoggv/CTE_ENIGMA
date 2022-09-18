@@ -30,17 +30,16 @@ public class DecryptionAgentImpl implements DecryptionAgent {
      */
     @Getter private final ObjectProperty<AgentDecryptionInfo> decryptionInfoProperty = new SimpleObjectProperty<>();
     @Getter private final ObjectProperty<MappingPair<Integer,Integer>> progressProperty = new SimpleObjectProperty<>();
-    @Getter private final BooleanProperty isFinishedProperty = new SimpleBooleanProperty();
+    @Getter private final BooleanProperty isFinishedProperty = new SimpleBooleanProperty(false);
     /**
      * Is updated once ALL the work is done. if no potential candidates were found, wont update.
      */
     @Getter private final ObjectProperty<List<AgentDecryptionInfo>> potentialCandidatesListProperty = new SimpleObjectProperty<>(); //Is triggered only when the worker finishes its job, after fininding all potential
 
     private final Object lockContext = new Object();
-    @Getter private final BooleanProperty isRunningProperty = new SimpleBooleanProperty();
-    @Getter private final BooleanProperty isStoppedProperty = new SimpleBooleanProperty();
+    @Getter private final BooleanProperty isRunningProperty = new SimpleBooleanProperty(true);
+    @Getter private final BooleanProperty isStoppedProperty = new SimpleBooleanProperty(false);
     private int lastStateTestedIndex = 0;
-
 
     static {
         try {
@@ -55,9 +54,22 @@ public class DecryptionAgentImpl implements DecryptionAgent {
 
     public DecryptionAgentImpl(EncryptionMachine encryptionMachine) {
         this.encryptionMachine = encryptionMachine;
-        this.isFinishedProperty.setValue(false);
-        isRunningProperty.setValue(true);
-        isStoppedProperty.setValue(false);
+        progressProperty.addListener(((observable, oldValue, newValue) -> {
+            if(newValue != null && newValue.getLeft() >= newValue.getRight()){
+                isFinishedProperty.setValue(true);
+            }
+        }));
+        isFinishedProperty.addListener(((observable, oldValue, newValue) -> {
+            if(newValue == true){
+                isStoppedProperty.setValue(true);
+                isRunningProperty.setValue(false);
+            }
+        }));
+        isStoppedProperty.addListener(((observable, oldValue, newValue) -> {
+            if(newValue == true){
+                isRunningProperty.setValue(false);
+            }
+        }));
         log.debug("newly created agent: "+ this.id);
     }
 
@@ -72,6 +84,7 @@ public class DecryptionAgentImpl implements DecryptionAgent {
         progressProperty.setValue(new MappingPair<Integer,Integer>(0,startingConfigurations.size()));
         isFinishedProperty.setValue(false);
         log.debug("agent " + id + " got work");
+        //Connect inner Run Properties:
     }
 
     @Override
