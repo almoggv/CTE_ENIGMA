@@ -106,6 +106,20 @@ public class BruteForcePageController implements Initializable {
         //so that we will set it in the creating of the decryption manager
         amountOfAgentsSlider.valueProperty().setValue(amountOfAgentsSlider.getMax());
         amountOfAgentsSlider.valueProperty().setValue(amountOfAgentsSlider.getMin());
+        taskSizeTextField.textProperty().addListener(((observable, oldValue, newValue) -> {
+            try{
+                int value = Integer.parseInt(newValue);
+                if(value > 0){
+                    decryptionManager.setTaskSize(value);
+                }
+                else{
+                    parentController.showMessage("Please enter natural number over 1");
+                }
+            }
+            catch(Exception ignore){
+                parentController.showMessage("Please enter natural number over 1");
+            }
+        }));
 
         difficultyComboBox.valueProperty().addListener((observable, oldValue, newValue) -> {
             decryptionManager.setDifficultyLevel(newValue);

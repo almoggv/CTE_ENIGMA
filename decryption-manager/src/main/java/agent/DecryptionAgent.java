@@ -24,6 +24,10 @@ public interface DecryptionAgent extends Runnable, Pausable {
      */
     ObjectProperty<List<AgentDecryptionInfo>> getPotentialCandidatesListProperty();
     BooleanProperty getIsFinishedProperty();
+
+    /**
+     * the progress is in the form of a pair = (workCompletedSoFar,TotalWorkToDo)
+     */
     ObjectProperty<MappingPair<Integer,Integer>> getProgressProperty();
 
 

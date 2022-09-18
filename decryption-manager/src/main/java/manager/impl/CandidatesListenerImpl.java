@@ -82,9 +82,11 @@ public class CandidatesListenerImpl implements CandidatesListener {
     public void BindToWorkers(ObjectProperty<DecryptionAgent> newestAgentProperty) {
         newestAgentProperty.addListener(((observable, oldValue, newValue) -> {
             newValue.getPotentialCandidatesListProperty().addListener(((observable1, oldInfoListValue, newInfoListValue) -> {
-                for (AgentDecryptionInfo info : newInfoListValue ) {
-                    this.decryptionInfoList.add(info);
-                    uiAdapter.addNewCandidate(info);
+                synchronized (this){
+                    for (AgentDecryptionInfo info : newInfoListValue ) {
+                        this.decryptionInfoList.add(info);
+                        uiAdapter.addNewCandidate(info);
+                    }
                 }
             }));
         }));

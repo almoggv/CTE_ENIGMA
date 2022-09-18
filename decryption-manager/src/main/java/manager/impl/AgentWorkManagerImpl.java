@@ -76,7 +76,7 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
         this.threadPoolExecutor = threadPoolExecutor;
         this.machineHandler = machineHandler;
         this.difficultyLevel = difficultyLevel;
-        this.taskSize = taskSize;
+        this.taskSize = (taskSize <= 0 ) ? PropertiesService.getDefaultTaskSize() : taskSize;
         this.inputToDecrypt = inputToDecrypt;
         this.abc = machineHandler.getInventoryInfo().get().getABC();
         this.abcSize = machineHandler.getInventoryInfo().get().getABC().length();
@@ -250,7 +250,7 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
         }
         currWorkDispatched += currTaskSize;
         System.out.println(currWorkDispatched);
-        assignedWorkProgressProperty.set(new MappingPair<>(currWorkDispatched,maxWorkToDispatch));
+        assignedWorkProgressProperty.setValue(new MappingPair<>(currWorkDispatched,maxWorkToDispatch));
         isAllWorkAssignedProperty.setValue(currWorkDispatched == maxWorkToDispatch);
         if(isAllWorkAssignedProperty.get()){
             System.out.println("all work assigned: " + currWorkDispatched + " / " +maxWorkToDispatch);
@@ -300,7 +300,7 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
         }
         currWorkDispatched += currTaskSize;
 //        System.out.println(currWorkDispatched);
-        assignedWorkProgressProperty.set(new MappingPair<>(currWorkDispatched,maxWorkToDispatch));
+        assignedWorkProgressProperty.setValue(new MappingPair<>(currWorkDispatched,maxWorkToDispatch));
         isAllWorkAssignedProperty.setValue(currWorkDispatched == maxWorkToDispatch);
         if(isAllWorkAssignedProperty.get()){
             System.out.println("all work assigned: " + currWorkDispatched + " / " +maxWorkToDispatch);
@@ -335,7 +335,7 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
             lastCreatedState.setRotorsHeadsInitialValues(advanceRotorPositions(lastCreatedState.getRotorsHeadsInitialValues()));
         }
         currWorkDispatched += currTaskSize;
-        assignedWorkProgressProperty.set(new MappingPair<>(currWorkDispatched,maxWorkToDispatch));
+        assignedWorkProgressProperty.setValue(new MappingPair<>(currWorkDispatched,maxWorkToDispatch));
         isAllWorkAssignedProperty.setValue(currWorkDispatched == maxWorkToDispatch);
         return newWorkBatch;
     }
@@ -360,12 +360,11 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
         for (int i = 0; i < currTaskSize; i++) {
             MachineState newWorkState = lastCreatedState.getDeepClone();
             newWorkBatch.add(newWorkState);
-
             lastCreatedState.setRotorsHeadsInitialValues(advanceRotorPositions(lastCreatedState.getRotorsHeadsInitialValues()));
         }
         currWorkDispatched += currTaskSize;
-        assignedWorkProgressProperty.set(new MappingPair<>(currWorkDispatched,maxWorkToDispatch));
-        isAllWorkAssignedProperty.setValue(currWorkDispatched == maxWorkToDispatch);
+        assignedWorkProgressProperty.setValue(new MappingPair<>(currWorkDispatched,maxWorkToDispatch));
+        isAllWorkAssignedProperty.setValue(currWorkDispatched >= maxWorkToDispatch);
         return newWorkBatch;
     }
 
@@ -411,9 +410,9 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
                             if(amountOfWorkCompleted >= totalWorkToDo){
                                 isWorkCompletedProperty.setValue(true);
                             }
+                            agentIdToDecryptAgentMap.remove(newAgent.getId());
+                            this.numberOfAgentsProperty.setValue(agentIdToDecryptAgentMap.keySet().size());
                         }
-                        this.numberOfAgentsProperty.setValue(agentIdToDecryptAgentMap.keySet().size());
-                        agentIdToDecryptAgentMap.remove(newAgent.getId());
                     }
                     catch (Exception ignore){
                     }
@@ -494,22 +493,21 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
 //                System.out.println("AgentManager - creating new agent - agents List Size=[" +agentIdToDecryptAgentMap.size()+"]" );
                 DecryptionAgent agent = getNextAgent();
                 if(agent != null){
+                    System.out.println("Assigned Work Property: (" + assignedWorkProgressProperty.get().getLeft()  + "/" + assignedWorkProgressProperty.get().getRight() + ")" );
                     System.out.println("WorkManager - created new agent  id=["+agent.getId()+"]");
                     agentIdToDecryptAgentMap.putIfAbsent(agent.getId(),agent);
                     numberOfAgentsProperty.setValue(agentIdToDecryptAgentMap.keySet().size());
                     threadPoolExecutor.execute(agent);
                 }
-                else{
-                    if(isAllWorkAssignedProperty.get()){
-                        break;
-                    }
-                }
+            }
+            if(isAllWorkAssignedProperty.get()){
+                break;
             }
         }
         System.out.println("All Work Assigned");
         threadPoolExecutor.shutdown();
         try {
-            threadPoolExecutor.awaitTermination(10, TimeUnit.MINUTES);
+            threadPoolExecutor.awaitTermination(2, TimeUnit.MINUTES);
         } catch (InterruptedException e) {
             log.error("AgentWorkManager - awaited termination caught an InterruptedException = " + e.getMessage());
         }
