@@ -508,9 +508,15 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
         threadPoolExecutor.shutdown();
         try {
             threadPoolExecutor.awaitTermination(2, TimeUnit.MINUTES);
+            agentIdToDecryptAgentMap.clear();
         } catch (InterruptedException e) {
             log.error("AgentWorkManager - awaited termination caught an InterruptedException = " + e.getMessage());
         }
+    }
+
+    @Override
+    public ObjectProperty<MappingPair<Integer, Integer>> getProgressProperty() {
+        return assignedWorkProgressProperty;
     }
 }
 

@@ -17,6 +17,7 @@ import main.java.component.MachineHandler;
 import main.java.dto.AgentDecryptionInfo;
 import main.java.dto.EncryptionInfoHistory;
 import main.java.enums.DecryptionDifficultyLevel;
+import main.java.generictype.MappingPair;
 import main.java.manager.DecryptionManager;
 import main.java.manager.DictionaryManager;
 import org.controlsfx.control.textfield.CustomTextField;
@@ -45,6 +46,8 @@ public class BruteForcePageController implements Initializable {
     public Button clearButton;
     public TextField dictionaryTextField;
     public Button pauseDecryptButton;
+    public Label progressPrecentNumberLabel;
+    public ProgressBar progressBar;
     MachineHandler machineHandler;
     @Setter private DecryptionManager decryptionManager;
 
@@ -86,7 +89,6 @@ public class BruteForcePageController implements Initializable {
         });
 
         startDecryptButton.disableProperty().bind(validationSupport.invalidProperty());
-//        startDecryptButton.disableProperty().bind(resultTextField.promptTextProperty().isNotNull());
 
         if(currMachineConfigComponentController != null){
             currMachineConfigComponentController.setParentController(this);
@@ -207,12 +209,10 @@ public class BruteForcePageController implements Initializable {
             parentController.showMessage("Please encrypt first.");
             return;
         }
-        if(!decryptionManager.getIsRunningProperty().get()){
-            decryptionManager.bruteForceDecryption(resultTextField.getText());
+        if(decryptionManager.getIsRunningProperty().get()){
+            decryptionManager.stopWork();
         }
-        else{
-
-        }
+        decryptionManager.bruteForceDecryption(resultTextField.getText());
     }
 
     public void onPauseDecryptButtonAction(ActionEvent actionEvent) {
@@ -259,7 +259,13 @@ public class BruteForcePageController implements Initializable {
         Consumer<AgentDecryptionInfo>  updateCandidates = candidate -> {
             createTile(candidate.getOutput(), candidate.getTimeToDecrypt());
         };
-        UIAdapter adapter = new UIAdapter( updateCandidates);
+        Consumer<MappingPair<Integer,Integer>> updateProgress = (progress) ->{
+            double progressValue = (double)progress.getLeft() / (double)progress.getRight();
+            int progressPrecentage = (int)Math.floor(progressValue*100);
+            progressPrecentNumberLabel.setText(progressPrecentage+"%");
+            progressBar.setProgress(progressValue);
+        };
+        UIAdapter adapter = new UIAdapter( updateCandidates,updateProgress);
         return adapter;
     }
 

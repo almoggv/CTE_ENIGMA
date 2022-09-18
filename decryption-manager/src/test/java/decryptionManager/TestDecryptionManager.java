@@ -51,8 +51,8 @@ public class TestDecryptionManager {
             System.out.println("Candidate Found = " + candidate);
 
         };
-        UIAdapter uiAdapter = new UIAdapter(stopAndShowCandidate);
-        manager.setUiAdapter(uiAdapter);
+//        UIAdapter uiAdapter = new UIAdapter(stopAndShowCandidate);
+//        manager.setUiAdapter(uiAdapter);
         manager.bruteForceDecryption(encrypted);
         manager.awaitWork();
     }

@@ -8,6 +8,7 @@ import lombok.Getter;
 import main.java.adapter.UIAdapter;
 import main.java.agent.DecryptionAgent;
 import main.java.dto.AgentDecryptionInfo;
+import main.java.generictype.MappingPair;
 import main.java.manager.AgentWorkManager;
 import main.java.manager.CandidatesListener;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
@@ -21,30 +22,25 @@ public class CandidatesListenerImpl implements CandidatesListener {
 
 
     private UIAdapter uiAdapter;
+    private int totalWorkAmount;
+    private int amountOfWorkCompleted = 0;
 
     private List<AgentDecryptionInfo> decryptionInfoList = new ArrayList<>();
+    @Getter private final BooleanProperty isWorkCompletedProperty = new SimpleBooleanProperty(false);
 
     private final Object lockContext = new Object();
     @Getter private final BooleanProperty isRunningProperty = new SimpleBooleanProperty();
-    @Getter private final BooleanProperty isStoppedProperty = new SimpleBooleanProperty();
+    @Getter private final BooleanProperty isStoppedProperty = new SimpleBooleanProperty(false);
 
-    public CandidatesListenerImpl(UIAdapter uiAdapter, BooleanProperty onAllWorkersFinishedSignal) {
+    public CandidatesListenerImpl(UIAdapter uiAdapter, BooleanProperty onAllWorkersFinishedSignal, int totalWorkAmount) {
         this.uiAdapter = uiAdapter;
+        this.totalWorkAmount = totalWorkAmount;
         onAllWorkersFinishedSignal.addListener(((observable, oldValue, newValue) -> {
             if(newValue == true){
                 this.stop();
+                isWorkCompletedProperty.setValue(true);
             }
         }));
-    }
-
-    @Override
-    public BooleanProperty getIsRunningProperty() {
-        return null;
-    }
-
-    @Override
-    public BooleanProperty getIsStoppedProperty() {
-        return null;
     }
 
     public void stop(){
@@ -63,8 +59,6 @@ public class CandidatesListenerImpl implements CandidatesListener {
         }
     }
 
-
-
     //Not in use
 //    public void BindToWorkers(IntegerProperty sizeOfMapProperty, Map<UUID,DecryptionAgent> agentIdToDecryptAgentMap ) {
 //        this.agentIdToDecryptAgentMap = agentIdToDecryptAgentMap;
@@ -80,8 +74,19 @@ public class CandidatesListenerImpl implements CandidatesListener {
 
     @Override
     public void BindToWorkers(ObjectProperty<DecryptionAgent> newestAgentProperty) {
-        newestAgentProperty.addListener(((observable, oldValue, newValue) -> {
-            newValue.getPotentialCandidatesListProperty().addListener(((observable1, oldInfoListValue, newInfoListValue) -> {
+        newestAgentProperty.addListener(((observable, oldAgent, newAgent) -> {
+            newAgent.getIsFinishedProperty().addListener(((observable1, isFinishedOldValue, isFinishedNewValue) -> {
+                synchronized (this){
+                    if(isFinishedNewValue == true){
+                        int oldAmountOfWorkCompleted = amountOfWorkCompleted;
+                        amountOfWorkCompleted += newAgent.getProgressProperty().get().getRight();
+                        if(oldAmountOfWorkCompleted< amountOfWorkCompleted){
+                            uiAdapter.updateProgress(new MappingPair<>(amountOfWorkCompleted,totalWorkAmount));
+                        }
+                    }
+                }
+            }));
+            newAgent.getPotentialCandidatesListProperty().addListener(((observable1, oldInfoListValue, newInfoListValue) -> {
                 synchronized (this){
                     for (AgentDecryptionInfo info : newInfoListValue ) {
                         this.decryptionInfoList.add(info);
@@ -108,7 +113,7 @@ public class CandidatesListenerImpl implements CandidatesListener {
                 }
             }
             //Actual Work:
-            //Do nothing
+            //Do nothing - works with listeners
         }
     }
 }

@@ -77,14 +77,25 @@ public class DecryptionManagerImpl implements DecryptionManager {
             threadPoolService = new ThreadPoolExecutor(numberOfAgents, numberOfAgents, keepAliveForWhenIdle , TimeUnit.SECONDS, new ArrayBlockingQueue(THREAD_POOL_QEUEU_MAX_CAPACITY));
         }
         agentWorkManager = new AgentWorkManagerImpl(this.threadPoolService,this.machineHandler,this.difficultyLevel,this.taskSize, sourceInput);
-        candidatesListener = new CandidatesListenerImpl(uiAdapter,agentWorkManager.getIsWorkCompletedProperty());
+        candidatesListener = new CandidatesListenerImpl(uiAdapter,agentWorkManager.getIsWorkCompletedProperty(),agentWorkManager.getProgressProperty().get().getRight());
 //        candidatesListener.BindToWorkers(agentWorkManager.getNumberOfAgentsProperty(), agentWorkManager.getAgentIdToDecryptAgentMap());
         candidatesListener.BindToWorkers(agentWorkManager.getNewestAgentProperty());
         this.workManagerThread = new Thread(agentWorkManager,"agentManagerThread");
         this.candidatesListenerThread = new Thread(candidatesListener, "candidatesListenerThread");
-
+        agentWorkManager.getIsWorkCompletedProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue == true){
+                workManagerThread.interrupt();
+            }
+        });
+        candidatesListener.getIsWorkCompletedProperty().addListener(((observable, oldValue, newValue) -> {
+            if(newValue == true){
+                candidatesListenerThread.interrupt();
+            }
+        }));
+        isRunningProperty.bind(candidatesListener.getIsRunningProperty());
         workManagerThread.start();
         candidatesListenerThread.start();
+
     }
 
     public void pauseWork(){

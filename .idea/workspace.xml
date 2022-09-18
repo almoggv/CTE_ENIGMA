@@ -13,14 +13,21 @@
   <component name="ChangeListManager">
     <list default="true" id="6467e2d7-ff2a-4abb-a198-685a0fcd06aa" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decryption-manager/src/main/java/agent/DecryptionAgent.java" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/src/main/java/agent/DecryptionAgent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/decryption-manager/src/main/java/adapter/UIAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/src/main/java/adapter/UIAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/AgentWorkManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/AgentWorkManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/CandidatesListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/CandidatesListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/AgentWorkManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/AgentWorkManagerImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/CandidatesListenerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/CandidatesListenerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decryption-manager/src/main/java/service/PropertiesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/src/main/java/service/PropertiesService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/DecryptionManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/DecryptionManagerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/decryption-manager/src/test/java/decryptionManager/TestDecryptionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/src/test/java/decryptionManager/TestDecryptionManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/AgentWorkManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/AgentWorkManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/impl/AgentWorkManagerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/impl/AgentWorkManagerImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/service/PropertiesService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/decryption-manager/main/java/service/PropertiesService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/impl/DecryptionManagerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/impl/DecryptionManagerImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/test/java/decryptionManager/TestDecryptionManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/decryption-manager/test/java/decryptionManager/TestDecryptionManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/BruteForcePageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/BruteForcePageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/subcomponents/bruteForcePageTemplate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/subcomponents/bruteForcePageTemplate.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/BruteForcePageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/BruteForcePageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/bruteForcePageTemplate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/bruteForcePageTemplate.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -245,7 +252,7 @@
       <workItem from="1662386092444" duration="18599000" />
       <workItem from="1662462894733" duration="4553000" />
       <workItem from="1663162208758" duration="4809000" />
-      <workItem from="1663325739692" duration="44924000" />
+      <workItem from="1663325739692" duration="48953000" />
     </task>
     <servers />
   </component>
@@ -310,11 +317,6 @@
           <url>file://$PROJECT_DIR$/user-interface/src/main/java/controller/HeaderController.java</url>
           <line>76</line>
           <option name="timeStamp" value="641" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/AgentWorkManagerImpl.java</url>
-          <line>365</line>
-          <option name="timeStamp" value="667" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.ClassCastException" package="java.lang" />
