@@ -240,11 +240,16 @@ public class SetMachineConfigController implements Initializable {
         //rotors
         for (int i = rotorsHbox.getChildren().size()-1; i >= 1; i--) {
             ComboBox<ComboBoxItem<String>> cb = (ComboBox<ComboBoxItem<String>>) rotorsHbox.getChildren().get(i);
-            if(cb.getSelectionModel() != null && cb.getSelectionModel().getSelectedItem() != null ) {
-                cb.getSelectionModel().getSelectedItem().setChosen(false);
-                //todo - check and fix the error this throws if we want
-                cb.getSelectionModel().clearSelection();
+            try{
+                if(cb!=null && cb.getSelectionModel() != null && !cb.getSelectionModel().isEmpty() ){
+                    cb.getSelectionModel().clearSelection();
+                }
             }
+            catch(NullPointerException ignore){}
+            for (ComboBoxItem<String> item : cb.getItems()) {
+                item.setChosen(false);
+            }
+
         }
 
         //rotor starting pos
