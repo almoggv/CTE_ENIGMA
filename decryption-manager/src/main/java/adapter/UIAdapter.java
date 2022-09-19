@@ -1,5 +1,6 @@
 package main.java.adapter;
 
+import com.sun.deploy.net.socket.UnixDomainSocket;
 import javafx.application.Platform;
 import main.java.dto.AgentDecryptionInfo;
 import main.java.generictype.MappingPair;
@@ -9,13 +10,15 @@ import java.util.function.Consumer;
 public class UIAdapter {
     private Consumer<AgentDecryptionInfo> updateCandidates;
     private Consumer<MappingPair<Integer,Integer>> updateProgress;
+    private Consumer<Long> updateMeanDecryptionTime;
 
 //    private Runnable updateDistinct;
 
 
-    public UIAdapter(Consumer<AgentDecryptionInfo> updateCandidates, Consumer<MappingPair<Integer,Integer>> updateProgress) {
+    public UIAdapter(Consumer<AgentDecryptionInfo> updateCandidates, Consumer<MappingPair<Integer,Integer>> updateProgress, Consumer<Long> updateMeanDecryptionTime) {
         this.updateCandidates = updateCandidates;
         this.updateProgress = updateProgress;
+        this.updateMeanDecryptionTime = updateMeanDecryptionTime;
     }
 
     public void addNewCandidate(AgentDecryptionInfo agentDecryptionInfo) {
@@ -30,6 +33,14 @@ public class UIAdapter {
         Platform.runLater(
                 ()->{
                     updateProgress.accept(progress);
+                }
+        );
+    }
+
+    public void sendMeanTimeOfDecryption(Long meanDecryptionTime) {
+        Platform.runLater(
+                ()->{
+                    updateMeanDecryptionTime.accept(meanDecryptionTime);
                 }
         );
     }

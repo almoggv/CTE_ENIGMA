@@ -34,6 +34,8 @@ public class DecryptionManagerImpl implements DecryptionManager {
     private AgentWorkManager agentWorkManager;
     private CandidatesListener candidatesListener;
     @Getter @Setter private UIAdapter uiAdapter;
+    private long startEncryptionTime = -1;
+    private long endEncryptionTime = -1;
 
     @Getter private final BooleanProperty isBruteForceInitiatedProperty = new SimpleBooleanProperty(false);
     @Getter private final BooleanProperty isBruteForcePausedProperty = new SimpleBooleanProperty(false);
@@ -63,6 +65,19 @@ public class DecryptionManagerImpl implements DecryptionManager {
         this.taskSize = taskSize;
         int keepAliveForWhenIdle = 1;
         threadPoolService = new ThreadPoolExecutor(numberOfAgents, numberOfAgents, keepAliveForWhenIdle , TimeUnit.SECONDS, new ArrayBlockingQueue(THREAD_POOL_QEUEU_MAX_CAPACITY));
+        ctorConnectProperties();
+    }
+
+    public DecryptionManagerImpl(MachineHandler machineHandler,UIAdapter uiAdapter) {
+        this.machineHandler = machineHandler;
+        this.uiAdapter = uiAdapter;
+        if(machineHandler.getInventoryInfo().isPresent()){
+            dictionaryManager.setAbc(machineHandler.getInventoryInfo().get().getABC());
+        }
+        ctorConnectProperties();
+    }
+
+    private void ctorConnectProperties(){
         isBruteForceStoppedProperty.addListener(((observable, oldValue, newValue) -> {
             if(newValue == true){
                 isBruteForcePausedProperty.setValue(true);
@@ -78,14 +93,16 @@ public class DecryptionManagerImpl implements DecryptionManager {
                 this.threadPoolService = null;
             }
         });
-    }
-
-    public DecryptionManagerImpl(MachineHandler machineHandler,UIAdapter uiAdapter) {
-        this.machineHandler = machineHandler;
-        this.uiAdapter = uiAdapter;
-        if(machineHandler.getInventoryInfo().isPresent()){
-            dictionaryManager.setAbc(machineHandler.getInventoryInfo().get().getABC());
-        }
+        isBruteForceInitiatedProperty.addListener(((observable, oldValue, newValue) -> {
+            if(newValue==true){
+                startEncryptionTime = System.nanoTime();
+            }
+        }));
+        isBruteForceStoppedProperty.addListener(((observable, oldValue, newValue) -> {
+            if(newValue == true){
+                endEncryptionTime = System.nanoTime();
+            }
+        }));
     }
 
     public void bruteForceDecryption(String sourceInput) {
@@ -169,6 +186,14 @@ public class DecryptionManagerImpl implements DecryptionManager {
             return 0;
         }
         return agentWorkManager.getNumberOfTasks();
+    }
+
+    @Override
+    public long getTimeTookToDecrypt() {
+        if(isBruteForceStoppedProperty.get()==false|| isBruteForceInitiatedProperty.get()==false) {
+            return 0;
+        }
+        return endEncryptionTime - startEncryptionTime;
     }
 
 }

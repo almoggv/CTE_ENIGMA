@@ -1,7 +1,6 @@
 package main.java.manager.impl;
 
 import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import lombok.Getter;
@@ -15,8 +14,6 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.UUID;
 
 public class CandidatesListenerImpl implements CandidatesListener {
 
@@ -27,6 +24,8 @@ public class CandidatesListenerImpl implements CandidatesListener {
 
     private List<AgentDecryptionInfo> decryptionInfoList = new ArrayList<>();
     @Getter private final BooleanProperty isWorkCompletedProperty = new SimpleBooleanProperty(false);
+
+    private long meanDecryptionTime = 0;
 
     private final Object lockContext = new Object();
     @Getter private final BooleanProperty isRunningProperty = new SimpleBooleanProperty(true);
@@ -41,6 +40,16 @@ public class CandidatesListenerImpl implements CandidatesListener {
                 isWorkCompletedProperty.setValue(true);
             }
         }));
+        this.isStoppedProperty.addListener((observable, oldValue, newValue) -> {
+            if(newValue == true && meanDecryptionTime != 0){
+                uiAdapter.sendMeanTimeOfDecryption(meanDecryptionTime);
+            }
+        });
+        this.isWorkCompletedProperty.addListener((observable, oldValue, newValue) -> {
+            if(newValue == true && meanDecryptionTime != 0){
+                uiAdapter.sendMeanTimeOfDecryption(meanDecryptionTime);
+            }
+        });
     }
 
     public void stop(){
@@ -83,6 +92,13 @@ public class CandidatesListenerImpl implements CandidatesListener {
                         amountOfWorkCompleted += newAgent.getProgressProperty().get().getRight();
                         if(oldAmountOfWorkCompleted< amountOfWorkCompleted){
                             uiAdapter.updateProgress(new MappingPair<>(amountOfWorkCompleted,totalWorkAmount));
+                        }
+                        //Elapsed Encryption Time:
+                        if(meanDecryptionTime == 0){
+                            meanDecryptionTime += newAgent.getTimeTookToCompleteWork();
+                        }
+                        else{
+                            meanDecryptionTime = (meanDecryptionTime/newAgent.getTimeTookToCompleteWork());
                         }
                     }
                 }

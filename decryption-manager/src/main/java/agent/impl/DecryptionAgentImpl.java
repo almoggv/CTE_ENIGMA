@@ -35,6 +35,8 @@ public class DecryptionAgentImpl implements DecryptionAgent {
      * Is updated once ALL the work is done. if no potential candidates were found, wont update.
      */
     @Getter private final ObjectProperty<List<AgentDecryptionInfo>> potentialCandidatesListProperty = new SimpleObjectProperty<>(); //Is triggered only when the worker finishes its job, after fininding all potential
+    private long startEncryptionTime = -1;
+    private long endEncryptionTime = -1;
 
     private final Object lockContext = new Object();
     @Getter private final BooleanProperty isRunningProperty = new SimpleBooleanProperty(true);
@@ -70,6 +72,8 @@ public class DecryptionAgentImpl implements DecryptionAgent {
                 isRunningProperty.setValue(false);
             }
         }));
+
+
         log.debug("newly created agent: "+ this.id);
     }
 
@@ -88,6 +92,14 @@ public class DecryptionAgentImpl implements DecryptionAgent {
     }
 
     @Override
+    public long getTimeTookToCompleteWork() {
+        if(isFinishedProperty.get() == false || isStoppedProperty.get() == false){
+            return 0;
+        }
+        return endEncryptionTime - startEncryptionTime;
+    }
+
+    @Override
     public void run() {
         log.debug("Agent " + this.id + " started running decryption");
         List<AgentDecryptionInfo> potentialCandidates = new ArrayList<>();
@@ -96,6 +108,7 @@ public class DecryptionAgentImpl implements DecryptionAgent {
         if(startingConfigurations == null){
             throw new RuntimeException("MachineStates given to agent is null");
         }
+        startEncryptionTime = System.nanoTime();
         while (!isStoppedProperty.get()) {
             synchronized (lockContext) {
                 if (isRunningProperty.get() == false) {
@@ -136,6 +149,7 @@ public class DecryptionAgentImpl implements DecryptionAgent {
                 log.debug("agent "+this.id + "finished work");
             }
         }
+        endEncryptionTime = System.nanoTime();
     }
 
     private Optional<String> runSingleDecryption(MachineState machineInitialState, String inputToDecrypt){

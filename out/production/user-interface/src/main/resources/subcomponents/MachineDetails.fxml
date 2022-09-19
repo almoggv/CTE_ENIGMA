@@ -56,7 +56,7 @@
                   <Label fx:id="availableRotorNumLabel" />
                </children>
             </HBox>
-            <AnchorPane fx:id="originalMachineConfigurationAnchor" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="150.0" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS">
+            <AnchorPane fx:id="originalMachineConfigurationAnchor" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="130.0" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS">
                <children>
                   <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <content>

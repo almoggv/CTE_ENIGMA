@@ -35,6 +35,9 @@ import java.util.function.Consumer;
 
 public class BruteForcePageController implements Initializable {
 
+    private MachineHandler machineHandler;
+    private DecryptionManager decryptionManager;
+
     private AppController parentController;
     @FXML
     private CurrMachineConfigController currMachineConfigComponentController;
@@ -51,8 +54,6 @@ public class BruteForcePageController implements Initializable {
     public Label progressPrecentNumberLabel;
     public ProgressBar progressBar;
     public Button stopDecryptButton;
-    MachineHandler machineHandler;
-    private DecryptionManager decryptionManager;
     public GridPane rootGridPane;
     public Slider amountOfAgentsSlider;
     public ComboBox<DecryptionDifficultyLevel> difficultyComboBox;
@@ -60,9 +61,10 @@ public class BruteForcePageController implements Initializable {
     public FlowPane dmResultsFlowPane;
     public Button startDecryptButton;
     @FXML public GridPane currMachineConfigComponent;
+    @FXML public Label averegelTimeLabel;
+    @FXML public Label overallTimeLabel;
 
     private final Integer MIN_AGENT_AMOUNT = 2;
-
     private ValidationSupport validationSupport = new ValidationSupport();
     private BooleanProperty isDecryptionRunningProperty = new SimpleBooleanProperty(false);
 
@@ -246,6 +248,7 @@ public class BruteForcePageController implements Initializable {
     public void onStopDecryptButtonAction(ActionEvent actionEvent) {
         if(decryptionManager!=null){
             decryptionManager.stopWork();
+            overallTimeLabel.setText(String.valueOf(decryptionManager.getTimeTookToDecrypt()));
         }
     }
 
@@ -285,8 +288,14 @@ public class BruteForcePageController implements Initializable {
             int progressPrecentage = (int)Math.floor(progressValue*100);
             progressPrecentNumberLabel.setText(progressPrecentage+"%");
             progressBar.setProgress(progressValue);
+            if(progressPrecentage >= 100){
+                overallTimeLabel.setText(String.valueOf(decryptionManager.getTimeTookToDecrypt()));
+            }
         };
-        UIAdapter adapter = new UIAdapter( updateCandidates,updateProgress);
+        Consumer<Long> updateMeanDecryptionTime = (meanTimeAgentWork) ->{
+            averegelTimeLabel.setText(String.valueOf(meanTimeAgentWork));
+        } ;
+        UIAdapter adapter = new UIAdapter( updateCandidates,updateProgress,updateMeanDecryptionTime);
         return adapter;
     }
 

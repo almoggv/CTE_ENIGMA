@@ -31,5 +31,6 @@ public interface DecryptionManager {
     void setDifficultyLevel(DecryptionDifficultyLevel level);
 
     int getAmountOfTasks();
+    long getTimeTookToDecrypt();
 
 }

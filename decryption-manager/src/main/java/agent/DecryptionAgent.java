@@ -29,7 +29,7 @@ public interface DecryptionAgent extends Runnable, Pausable {
      * the progress is in the form of a pair = (workCompletedSoFar,TotalWorkToDo)
      */
     ObjectProperty<MappingPair<Integer,Integer>> getProgressProperty();
-
+    long getTimeTookToCompleteWork();
 
 
 }
