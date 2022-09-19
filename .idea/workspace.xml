@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
+      <artifact name="decryption-manager:jar" />
+      <artifact name="encryption-machine-handler:jar" />
+      <artifact name="enigma-machine:jar" />
       <artifact name="user-interface:jar" />
     </artifacts-to-build>
   </component>
@@ -11,12 +14,13 @@
   <component name="ChangeListManager">
     <list default="true" id="6467e2d7-ff2a-4abb-a198-685a0fcd06aa" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/SetMachineConfigController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/SetMachineConfigController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/SetMachineConfigController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/SetMachineConfigController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/service/ResourceLocationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/service/ResourceLocationService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/subcomponents/MachineDetails.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/subcomponents/MachineDetails.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/subcomponents/currMachineConfigTemplate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/subcomponents/currMachineConfigTemplate.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/subcomponents/machinePageTemplate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/subcomponents/machinePageTemplate.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/subcomponents/setMachineConfigTemplate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/subcomponents/setMachineConfigTemplate.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/SetMachineConfigController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/SetMachineConfigController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/service/ResourceLocationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/service/ResourceLocationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/MachineDetails.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/MachineDetails.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/currMachineConfigTemplate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/currMachineConfigTemplate.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/machinePageTemplate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/machinePageTemplate.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/setMachineConfigTemplate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/setMachineConfigTemplate.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -304,7 +308,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/user-interface/src/main/java/controller/EncryptPageController.java</url>
-          <line>257</line>
+          <line>267</line>
           <option name="timeStamp" value="706" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -320,6 +324,15 @@
           <properties class="java.lang.ArithmeticException" package="java.lang" />
           <option name="timeStamp" value="463" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/user-interface/src/main/java/controller/BruteForcePageController.java</url>
+          <line>191</line>
+          <properties class="src.main.java.controller.BruteForcePageController" method="onEncryptButtonAction">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="721" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>
@@ -349,11 +362,11 @@
     <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/CTE_ENIGMA$src_main_java_Main.ic" NAME="src.main.java.Main Coverage Results" MODIFIED="1660063306935" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>src.main.java.*</FILTER>
-    </SUITE>
     <SUITE FILE_PATH="coverage/CTE_ENIGMA$Main.ic" NAME="Main Coverage Results" MODIFIED="1660555486778" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>src.main.java.ui.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/CTE_ENIGMA$src_main_java_Main.ic" NAME="src.main.java.Main Coverage Results" MODIFIED="1660063306935" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>src.main.java.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/CTE_JAVA_ENIGMA$Main.ic" NAME="Main Coverage Results" MODIFIED="1660837619611" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>src.main.java.*</FILTER>

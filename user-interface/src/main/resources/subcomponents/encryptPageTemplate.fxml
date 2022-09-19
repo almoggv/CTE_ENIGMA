@@ -56,27 +56,31 @@
             <GridPane GridPane.rowIndex="2">
                <columnConstraints>
                   <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints hgrow="NEVER" maxWidth="1.7976931348623157E308" minWidth="200.0" prefWidth="300.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="1.7976931348623157E308" minWidth="200.0" prefWidth="300.0" />
                   <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="10.0" />
                </columnConstraints>
                <rowConstraints>
+                  <RowConstraints maxHeight="17.0" minHeight="17.0" prefHeight="17.0" vgrow="NEVER" />
                   <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <FlowPane fx:id="outputKeyboardFlowPane" alignment="CENTER" GridPane.columnIndex="1" />
+                  <FlowPane fx:id="outputKeyboardFlowPane" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label text="Output" GridPane.columnIndex="1" />
                </children>
             </GridPane>
             <GridPane GridPane.rowIndex="4">
                <columnConstraints>
                   <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints hgrow="NEVER" minWidth="300.0" prefWidth="300.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="NEVER" minWidth="300.0" prefWidth="300.0" />
                   <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="10.0" />
                </columnConstraints>
                <rowConstraints>
+                  <RowConstraints minHeight="17.0" prefHeight="17.0" vgrow="NEVER" />
                   <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <FlowPane fx:id="inputKeyboardFlowPane" alignment="CENTER" GridPane.columnIndex="1" />
+                  <FlowPane fx:id="inputKeyboardFlowPane" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label text="Input:" GridPane.columnIndex="1" />
                </children>
             </GridPane>
             <HBox alignment="CENTER" spacing="10.0" GridPane.rowIndex="1">
@@ -89,6 +93,25 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </HBox>
+            <GridPane>
+               <columnConstraints>
+                  <ColumnConstraints hgrow="NEVER" />
+                  <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="NEVER" />
+                  <ColumnConstraints hgrow="NEVER" maxWidth="5.0" minWidth="5.0" prefWidth="5.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="90.0" text="Live Ecnryption:" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER" />
+                  <Button fx:id="liveEncryptionDoneButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onLiveEncryptDoneButtonClick" prefHeight="27.0" prefWidth="60.0" text="Done" GridPane.columnIndex="2" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </Button>
+               </children>
+            </GridPane>
          </children>
       </GridPane>
       <ScrollPane fx:id="statisticsScrollPane" fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.rowSpan="3">

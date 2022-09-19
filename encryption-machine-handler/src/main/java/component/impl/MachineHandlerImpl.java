@@ -219,6 +219,13 @@ public class MachineHandlerImpl implements MachineHandler {
         return encryptionMachine.getMachineState();
     }
 
+    @Override
+    public void setMachineState(MachineState machineState) {
+        if(machineState!=null){
+            encryptionMachine.setMachineState(machineState);
+        }
+    }
+
     public Optional<MachineState> getInitialMachineState() {
         if(this.initialMachineState == null){
             return Optional.empty();

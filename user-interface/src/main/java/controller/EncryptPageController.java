@@ -81,13 +81,15 @@ public class EncryptPageController implements Initializable {
     @FXML private ScrollPane currMachineConfigWrapperPane;
     @FXML private TextField liveEncryptInputTextField;
     @FXML private TextField liveEncryptOutTextField;
-//    @FXML private FlowPane keyboardFlowPane;
+    @FXML private Button liveEncryptionDoneButton;
+
 
     private Map<String,Button> letterToInputKeyboardButtonMap = new HashMap<>();
     private Map<String,Button> letterToOutputKeyboardButtonMap = new HashMap<>();
     private Map<String,Timeline> letterToButtonColorAnimationMap = new HashMap<>();
     private StringProperty liveEncryptionInputProperty = new SimpleStringProperty("");
     private StringProperty liveEncryptionOutputProperty = new SimpleStringProperty("");
+    private MachineState liveEncryptionMachineStateWhenStarted;
     private Color startColor;
     private Color endColor;
 
@@ -105,16 +107,24 @@ public class EncryptPageController implements Initializable {
         liveEncryptOutTextField.textProperty().bindBidirectional(liveEncryptionOutputProperty);
         liveEncryptInputTextField.textProperty().addListener(((observable, oldValue, newValue) -> {
             try {
+                //Save the current MachineState to be able to recreate it
+                if(oldValue.equals("") && !newValue.equals("")){
+                    if(machineHandler.getMachineState().isPresent()){
+                        liveEncryptionMachineStateWhenStarted = machineHandler.getMachineState().get();
+                    }
+                }
                 if(!newValue.equals("") && newValue.length()>= oldValue.length()){
                     String newChar = newValue.substring(newValue.length()-1);
-//                    String newEncryption = machineHandler.encrypt(newChar);
-                    String newEncryption = machineHandler.encryptWithoutHistory(newChar);
-                    String newOutText = liveEncryptionOutputProperty.get() + newEncryption;
-                    liveEncryptionOutputProperty.setValue(newOutText);
-                    DataService.getCurrentMachineStateProperty().setValue(machineHandler.getMachineState().get());
-                    //need to set to null - because the machine state thinks it hasent changed - only internal structures changed and it dosent register
-//                    DataService.getEncryptionInfoHistoryProperty().setValue(null);
-//                    DataService.getEncryptionInfoHistoryProperty().setValue(machineHandler.getMachineStatisticsHistory());
+                    if(DataService.getInventoryInfoProperty().get() != null && !DataService.getInventoryInfoProperty().get().getABC().contains(newChar.toUpperCase())){
+                        parentController.showMessage("The letter \"" + newChar + "\" is not in the ABC");
+                        liveEncryptionInputProperty.setValue(oldValue);
+                    }
+                    else{
+                        String newEncryption = machineHandler.encryptWithoutHistory(newChar);
+                        String newOutText = liveEncryptionOutputProperty.get() + newEncryption;
+                        liveEncryptionOutputProperty.setValue(newOutText);
+                        DataService.getCurrentMachineStateProperty().setValue(machineHandler.getMachineState().get());
+                    }
                 }
                 if(oldValue.length() > newValue.length() && newValue.equals("")){
                     liveEncryptionOutputProperty.setValue("");
@@ -281,5 +291,25 @@ public class EncryptPageController implements Initializable {
         liveEncryptionInputProperty.setValue("");
         liveEncryptionOutputProperty.setValue("");
         parentController.showMessage("Reset to last set machine state.");
+    }
+
+    public void onLiveEncryptDoneButtonClick(ActionEvent actionEvent) {
+        if(liveEncryptionInputProperty.get().equals("")){
+            return;
+        }
+        if(liveEncryptionMachineStateWhenStarted == null){
+            parentController.showMessage("No initial MachineState found");
+        }
+        machineHandler.setMachineState(liveEncryptionMachineStateWhenStarted);
+        try {
+            machineHandler.encrypt(liveEncryptionInputProperty.get());
+        } catch (IOException e) {
+            parentController.showMessage("Failed to encrypt: "+e.getMessage());
+        }
+        //need to set to null - because the machine state thinks it hasent changed - only internal structures changed and it dosent register
+        DataService.getEncryptionInfoHistoryProperty().setValue(null);
+        DataService.getEncryptionInfoHistoryProperty().setValue(machineHandler.getMachineStatisticsHistory());
+        //add to statistics
+
     }
 }
