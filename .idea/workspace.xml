@@ -11,12 +11,15 @@
   <component name="ChangeListManager">
     <list default="true" id="6467e2d7-ff2a-4abb-a198-685a0fcd06aa" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/AgentWorkManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/AgentWorkManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/DecryptionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/DecryptionManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/AgentWorkManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/AgentWorkManagerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/DecryptionManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/DecryptionManagerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/AgentWorkManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/AgentWorkManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/impl/AgentWorkManagerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/impl/AgentWorkManagerImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/impl/DecryptionManagerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/impl/DecryptionManagerImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/BruteForcePageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/BruteForcePageController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/BruteForcePageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/BruteForcePageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/DecodedCandidateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/DecodedCandidateController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/MachineDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/MachineDetailsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/bruteForcePageTemplate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/bruteForcePageTemplate.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/decodeCandidate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/decodeCandidate.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -301,16 +304,6 @@
           <line>76</line>
           <option name="timeStamp" value="641" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/user-interface/src/main/java/controller/BruteForcePageController.java</url>
-          <line>236</line>
-          <option name="timeStamp" value="694" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/user-interface/src/main/java/controller/BruteForcePageController.java</url>
-          <line>224</line>
-          <option name="timeStamp" value="695" />
-        </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.ClassCastException" package="java.lang" />
           <option name="timeStamp" value="359" />
@@ -348,11 +341,11 @@
     <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/CTE_ENIGMA$src_main_java_Main.ic" NAME="src.main.java.Main Coverage Results" MODIFIED="1660063306935" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>src.main.java.*</FILTER>
-    </SUITE>
     <SUITE FILE_PATH="coverage/CTE_ENIGMA$Main.ic" NAME="Main Coverage Results" MODIFIED="1660555486778" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>src.main.java.ui.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/CTE_ENIGMA$src_main_java_Main.ic" NAME="src.main.java.Main Coverage Results" MODIFIED="1660063306935" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>src.main.java.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/CTE_JAVA_ENIGMA$Main.ic" NAME="Main Coverage Results" MODIFIED="1660837619611" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>src.main.java.*</FILTER>

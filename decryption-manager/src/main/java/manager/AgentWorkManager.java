@@ -27,4 +27,6 @@ public interface AgentWorkManager extends Runnable, Pausable {
     Map<UUID,DecryptionAgent> getAgentIdToDecryptAgentMap();
     IntegerProperty getNumberOfAgentsProperty();
     ObjectProperty<DecryptionAgent> getNewestAgentProperty();
+
+    int getNumberOfTasks();
 }

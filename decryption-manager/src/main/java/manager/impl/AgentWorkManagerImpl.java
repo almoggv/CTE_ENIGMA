@@ -46,8 +46,8 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
     private MachineState lastCreatedState;
     @Getter private final BooleanProperty isWorkCompletedProperty = new SimpleBooleanProperty(false);
     @Getter private final BooleanProperty isAllWorkAssignedProperty = new SimpleBooleanProperty(false);
-   /*
-   assignedWorkProgressProperty references the assigned work to the agents - and not the amount actually completed by the agents;
+    /**
+        assignedWorkProgressProperty references the assigned work to the agents - and not the amount actually completed by the agents;
     */
     @Getter private final ObjectProperty<MappingPair<Integer,Integer>> assignedWorkProgressProperty = new SimpleObjectProperty<>();
     @Getter private final ObjectProperty<List<AgentDecryptionInfo>> decryptionCandidatesProperty = new SimpleObjectProperty<>(new ArrayList<>());
@@ -532,6 +532,12 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
     @Override
     public ObjectProperty<MappingPair<Integer, Integer>> getProgressProperty() {
         return assignedWorkProgressProperty;
+    }
+
+    @Override
+    public int getNumberOfTasks() {
+        int numOfTasks = (int)Math.ceil((double)totalWorkToDo/(double)taskSize);
+        return numOfTasks;
     }
 }
 
