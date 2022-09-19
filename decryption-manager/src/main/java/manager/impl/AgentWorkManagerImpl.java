@@ -46,8 +46,8 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
     private MachineState lastCreatedState;
     @Getter private final BooleanProperty isWorkCompletedProperty = new SimpleBooleanProperty(false);
     @Getter private final BooleanProperty isAllWorkAssignedProperty = new SimpleBooleanProperty(false);
-   /*
-   assignedWorkProgressProperty references the assigned work to the agents - and not the amount actually completed by the agents;
+    /**
+        assignedWorkProgressProperty references the assigned work to the agents - and not the amount actually completed by the agents;
     */
     @Getter private final ObjectProperty<MappingPair<Integer,Integer>> assignedWorkProgressProperty = new SimpleObjectProperty<>();
     @Getter private final ObjectProperty<List<AgentDecryptionInfo>> decryptionCandidatesProperty = new SimpleObjectProperty<>(new ArrayList<>());
@@ -264,14 +264,12 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
             lastCreatedState.setRotorsHeadsInitialValues(advanceRotorPositions(lastCreatedState.getRotorsHeadsInitialValues()));
         }
         currWorkDispatched += currTaskSize;
-        System.out.println(currWorkDispatched);
+        log.debug("AgentWorkManagerImpl - current amount of work dispatched=" + currWorkDispatched);
         assignedWorkProgressProperty.setValue(new MappingPair<>(currWorkDispatched,maxWorkToDispatch));
-        isAllWorkAssignedProperty.setValue(currWorkDispatched == maxWorkToDispatch);
+        isAllWorkAssignedProperty.setValue(currWorkDispatched >= maxWorkToDispatch);
         if(isAllWorkAssignedProperty.get()){
-            System.out.println("all work assigned: " + currWorkDispatched + " / " +maxWorkToDispatch);
-        }
-        for (int i = 0; i < currTaskSize; i++) {
-            System.out.println(newWorkBatch.get(i));
+            log.info("AgentWorkManagerImpl - all work assigned: (currWorkDispatched/maxWorkToDispatch)=(" + currWorkDispatched + " / " +maxWorkToDispatch +")");
+            log.info("AgentWorkManagerImpl - all work assigned: property=" + isAllWorkAssignedProperty.get());
         }
         return newWorkBatch;
     }
@@ -290,7 +288,6 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
 
     private List<MachineState> getNextHardWorkBatch() {
         List<MachineState> newWorkBatch = new ArrayList<>();
-
         int currWorkDispatched = assignedWorkProgressProperty.get().getLeft();
         int maxWorkToDispatch = assignedWorkProgressProperty.get().getRight();
         int currTaskSize = Math.min((maxWorkToDispatch - currWorkDispatched), taskSize);
@@ -311,14 +308,14 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
                 }
             }
                 lastCreatedState.setRotorsHeadsInitialValues(advanceRotorPositions(lastCreatedState.getRotorsHeadsInitialValues()));
-//        System.out.println(lastCreatedState);
+
         }
         currWorkDispatched += currTaskSize;
-//        System.out.println(currWorkDispatched);
         assignedWorkProgressProperty.setValue(new MappingPair<>(currWorkDispatched,maxWorkToDispatch));
-        isAllWorkAssignedProperty.setValue(currWorkDispatched == maxWorkToDispatch);
+        isAllWorkAssignedProperty.setValue(currWorkDispatched >= maxWorkToDispatch);
         if(isAllWorkAssignedProperty.get()){
-            System.out.println("all work assigned: " + currWorkDispatched + " / " +maxWorkToDispatch);
+            log.info("AgentWorkManagerImpl - all work assigned: (currWorkDispatched/maxWorkToDispatch)=(" + currWorkDispatched + " / " +maxWorkToDispatch +")");
+            log.info("AgentWorkManagerImpl - all work assigned: property=" + isAllWorkAssignedProperty.get());
         }
         return newWorkBatch;
     }
@@ -351,7 +348,11 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
         }
         currWorkDispatched += currTaskSize;
         assignedWorkProgressProperty.setValue(new MappingPair<>(currWorkDispatched,maxWorkToDispatch));
-        isAllWorkAssignedProperty.setValue(currWorkDispatched == maxWorkToDispatch);
+        isAllWorkAssignedProperty.setValue(currWorkDispatched >= maxWorkToDispatch);
+        if(isAllWorkAssignedProperty.get()){
+            log.info("AgentWorkManagerImpl - all work assigned: (currWorkDispatched/maxWorkToDispatch)=(" + currWorkDispatched + " / " +maxWorkToDispatch +")");
+            log.info("AgentWorkManagerImpl - all work assigned: property=" + isAllWorkAssignedProperty.get());
+        }
         return newWorkBatch;
     }
 
@@ -380,6 +381,10 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
         currWorkDispatched += currTaskSize;
         assignedWorkProgressProperty.setValue(new MappingPair<>(currWorkDispatched,maxWorkToDispatch));
         isAllWorkAssignedProperty.setValue(currWorkDispatched >= maxWorkToDispatch);
+        if(isAllWorkAssignedProperty.get()){
+            log.info("AgentWorkManagerImpl - all work assigned: (currWorkDispatched/maxWorkToDispatch)=(" + currWorkDispatched + " / " +maxWorkToDispatch +")");
+            log.info("AgentWorkManagerImpl - all work assigned: property=" + isAllWorkAssignedProperty.get());
+        }
         return newWorkBatch;
     }
 
@@ -440,15 +445,6 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
                 this.decryptionCandidatesProperty.setValue(currCandidates);
             }));
             newAgent.getProgressProperty().addListener(((observable, oldValue, newValue) -> {
-//                    int delta = newValue.getLeft() - oldValue.getLeft();
-//                    synchronized (this){
-//                        System.out.println("ProgressProperty = (" +amountOfWorkCompleted+"/"+totalWorkToDo+")");
-//                        this.amountOfWorkCompleted += delta;
-//                    }
-//                    if(this.amountOfWorkCompleted >= this.totalWorkToDo){
-//                        this.isWorkCompletedProperty.setValue(true);
-//                        System.out.println("Agent completed work: "+ newAgent.getId());
-//                    }
             }));
             isRunningProperty.addListener(((observable, oldValue, newValue) -> {
                 if(newValue == true){
@@ -472,6 +468,7 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
     }
 
     public void stop(){
+        log.info("AgentWorkManager - was stopped, shutting down..");
         isStoppedProperty.setValue(true);
         isRunningProperty.setValue(false);
         isWorkCompletedProperty.setValue(true);
@@ -480,14 +477,14 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
 
     public void pause() {
         isRunningProperty.setValue(false);
-        System.out.println("WorkManager - was paused");
+        log.info("AgentWorkManager - was paused");
     }
 
     public void resume() {
         synchronized (lockContext) {
             isRunningProperty.setValue(true);
             lockContext.notifyAll();
-            System.out.println("WorkManager - was resumed");
+            log.info("AgentWorkManager - was resumed");
         }
     }
 
@@ -498,7 +495,7 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
             synchronized (lockContext) {
                 if (isRunningProperty.get() == false) {
                     try {
-                        System.out.println("AgentManager - is in waiting block");
+                        log.debug("AgentWorkManagerImpl - is in waiting block");
                         lockContext.wait();
                     } catch (InterruptedException ignore) {}
                 }
@@ -519,7 +516,7 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
                 break;
             }
         }
-        System.out.println("All Work Assigned");
+        log.info("AgentWorkManagerImpl - inside [run] function - All Work Assigned, initiating orderly shutdown");
         threadPoolExecutor.shutdown();
         try {
             threadPoolExecutor.awaitTermination(2, TimeUnit.MINUTES);
@@ -532,6 +529,12 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
     @Override
     public ObjectProperty<MappingPair<Integer, Integer>> getProgressProperty() {
         return assignedWorkProgressProperty;
+    }
+
+    @Override
+    public int getNumberOfTasks() {
+        int numOfTasks = (int)Math.ceil((double)totalWorkToDo/(double)taskSize);
+        return numOfTasks;
     }
 }
 

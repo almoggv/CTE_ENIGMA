@@ -35,6 +35,10 @@ import java.util.function.Consumer;
 
 public class BruteForcePageController implements Initializable {
 
+    private AppController parentController;
+    @FXML
+    private CurrMachineConfigController currMachineConfigComponentController;
+
     public Label amountOfTasksNumLabel;
     public Label amountOfAgentsValueLabel;
     public ListView dictionaryList;
@@ -49,26 +53,17 @@ public class BruteForcePageController implements Initializable {
     public Button stopDecryptButton;
     MachineHandler machineHandler;
     private DecryptionManager decryptionManager;
-
-//    @Setter @Getter private UIAdapter uiAdapter;
-
-    private AppController parentController;
-    @FXML
-    private CurrMachineConfigController currMachineConfigComponentController;
-
     public GridPane rootGridPane;
     public Slider amountOfAgentsSlider;
     public ComboBox<DecryptionDifficultyLevel> difficultyComboBox;
     public TextField taskSizeTextField;
     public FlowPane dmResultsFlowPane;
     public Button startDecryptButton;
+    @FXML public GridPane currMachineConfigComponent;
 
     private final Integer MIN_AGENT_AMOUNT = 2;
-    @FXML
-    public GridPane currMachineConfigComponent;
 
     private ValidationSupport validationSupport = new ValidationSupport();
-
     private BooleanProperty isDecryptionRunningProperty = new SimpleBooleanProperty(false);
 
 
@@ -79,12 +74,11 @@ public class BruteForcePageController implements Initializable {
         DataService.getMaxAgentNumProperty().addListener((observable, oldValue, newValue) -> {
             setDMDetails(newValue);
         });
-
         DictionaryManager.getDictionaryProperty().addListener(((observable, oldValue, newValue) ->{
             dictionaryTrie = new Trie(DictionaryManager.getDictionaryProperty().get());
             dictionaryList.getItems().addAll(dictionaryTrie.suggest(""));
         }));
-
+        amountOfTasksNumLabel.setText("0");
         dictionaryTextField.textProperty().addListener((observable, oldValue, newValue) -> {
             dictionaryList.getItems().clear();
             dictionaryList.getItems().addAll(dictionaryTrie.suggest(newValue.toUpperCase()));
@@ -98,9 +92,11 @@ public class BruteForcePageController implements Initializable {
             currMachineConfigComponentController.setParentController(this);
             currMachineConfigComponentController.bindToData(DataService.getCurrentMachineStateProperty());
         }
-        startDecryptButton.disableProperty().addListener((observable, oldValue, newValue) -> {
-            showAmountOfTasks();
-        });
+        isDecryptionRunningProperty.addListener(((observable, oldValue, newValue) -> {
+            if(newValue == true){
+                showAmountOfTasks();
+            }
+        }));
         amountOfAgentsSlider.valueProperty().addListener((observable, oldValue, newValue) ->{
             if(decryptionManager!=null){
                 decryptionManager.setNumberOfAgents((int) Math.floor((Double) newValue));

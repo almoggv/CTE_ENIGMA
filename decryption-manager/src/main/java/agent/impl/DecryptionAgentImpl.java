@@ -89,7 +89,7 @@ public class DecryptionAgentImpl implements DecryptionAgent {
 
     @Override
     public void run() {
-        System.out.println("Agent " + this.id + " started running decryption");
+        log.debug("Agent " + this.id + " started running decryption");
         List<AgentDecryptionInfo> potentialCandidates = new ArrayList<>();
         Optional<String> decryptionCandidate;
         int PROGRESS_UPDATE_INTERVAL = (int)(Math.ceil((0.1)*(startingConfigurations.size())));
@@ -106,7 +106,6 @@ public class DecryptionAgentImpl implements DecryptionAgent {
             }
             //Actual Run Logic:
             for (; this.lastStateTestedIndex < startingConfigurations.size();  lastStateTestedIndex++) {
-//                System.out.println("AgentWorker ["+id+"] - in for with index=" + lastStateTestedIndex);
                 if(isRunningProperty.get() == false || isStoppedProperty.get() == true){
                     break;
                 }
@@ -120,8 +119,7 @@ public class DecryptionAgentImpl implements DecryptionAgent {
                     decryptionInfoProperty.setValue(decryptionInfo);
                     potentialCandidates.add(decryptionInfo);
                     synchronized (this){
-                        log.info("Agent ["+id+"] found a candidate: "+ decryptionCandidate.get());
-                        System.out.println("found a candidate: " + inputToDecrypt + "-->"+ decryptionCandidate.get() + " ---- ref: " + stateBeforeEncryption.getReflectorId() + " rot: "+ stateBeforeEncryption.getRotorIds() +" ,init pos: "+ stateBeforeEncryption.getRotorsHeadsInitialValues()) ;
+                        log.info("Agent ["+id+"] found a candidate: " + inputToDecrypt + "-->"+ decryptionCandidate.get() + " ---- ref: " + stateBeforeEncryption.getReflectorId() + " rot: "+ stateBeforeEncryption.getRotorIds() +" ,init pos: "+ stateBeforeEncryption.getRotorsHeadsInitialValues()) ;
                     }
                 }
                 if((lastStateTestedIndex+1) % PROGRESS_UPDATE_INTERVAL == 0){
@@ -135,59 +133,16 @@ public class DecryptionAgentImpl implements DecryptionAgent {
                 }
                 isFinishedProperty.setValue(true);
                 isStoppedProperty.setValue((true));
-                log.info("agent "+this.id + "finished work");
+                log.debug("agent "+this.id + "finished work");
             }
         }
-    }
-
-    private void runLogic(){
-        List<AgentDecryptionInfo> potentialCandidates = new ArrayList<>();
-        Optional<String> decryptionCandidate;
-        int index = 1;
-        int PROGRESS_UPDATE_INTERVAL = (int)(Math.ceil((0.1)*(startingConfigurations.size())));
-        if(startingConfigurations == null){
-            throw new RuntimeException("MachineStates given to agent is null");
-        }
-        for (MachineState initialState : startingConfigurations ) {
-            System.out.println("Agent " + this.id + " is running decryption");
-            long startEncryptionTime = System.nanoTime();
-            MachineState stateBeforeEncryption = initialState;
-//            System.out.println(initialState);
-            decryptionCandidate = runSingleDecryption(initialState,this.inputToDecrypt);
-            long endEncryptionTime = System.nanoTime();
-            long encryptionTime = endEncryptionTime - startEncryptionTime;
-            if(decryptionCandidate.isPresent()){
-                AgentDecryptionInfo decryptionInfo = new AgentDecryptionInfo(this.id,stateBeforeEncryption,inputToDecrypt,decryptionCandidate.get(),encryptionTime);
-                decryptionInfoProperty.setValue(decryptionInfo);
-                potentialCandidates.add(decryptionInfo);
-//                log.info("found a candidate: "+ decryptionCandidate.get());
-                synchronized (this){
-                    System.out.println("found a candidate: " + inputToDecrypt + "-->"+ decryptionCandidate.get() + " ---- ref: " + stateBeforeEncryption.getReflectorId() + " rot: "+ stateBeforeEncryption.getRotorIds() +" ,init pos: "+ stateBeforeEncryption.getRotorsHeadsInitialValues()) ;
-//                    System.out.println(initialState);
-                }
-            }
-            //TODO: update progress
-            index++;
-            if(index % PROGRESS_UPDATE_INTERVAL == 0){
-                progressProperty.setValue(new MappingPair<>(index,startingConfigurations.size()));
-            }
-        }
-        if(potentialCandidates.size() > 0){
-            potentialCandidatesListProperty.setValue(potentialCandidates);
-        }
-        isFinishedProperty.setValue(true);
-        isStoppedProperty.setValue((true));
-        log.info("agent "+this.id + "finished work");
     }
 
     private Optional<String> runSingleDecryption(MachineState machineInitialState, String inputToDecrypt){
-//        MachineState init = machineInitialState.getDeepClone();
         encryptionMachine.setMachineState(machineInitialState);
         String decryptionResult;
-
         decryptionResult = encryptionMachine.decrypt(inputToDecrypt);
         if(checkIfInDictionary(decryptionResult)) {
-            System.out.println(decryptionResult +" by: " /*init*/);
             return Optional.of(decryptionResult);
         }
         return Optional.empty();
@@ -210,12 +165,10 @@ public class DecryptionAgentImpl implements DecryptionAgent {
     }
 
     public void pause() {
-//        System.out.println("AgentWorker "+id+" is being PAUSED");
         isRunningProperty.setValue(false);
     }
 
     public void resume() {
-//        System.out.println("AgentWorker "+id+" is being RESUMED");
         synchronized (lockContext) {
             isRunningProperty.setValue(true);
             lockContext.notifyAll(); // Unblocks thread

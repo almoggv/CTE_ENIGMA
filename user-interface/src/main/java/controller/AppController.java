@@ -22,6 +22,9 @@ import main.java.manager.DecryptionManager;
 import main.java.manager.DictionaryManager;
 import main.java.manager.impl.DecryptionManagerImpl;
 import main.java.service.InventoryService;
+import main.java.service.PropertiesService;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 import src.main.java.service.DataService;
 import src.main.java.service.ResourceLocationService;
 import src.main.java.ui.GuiApplication;
@@ -29,44 +32,52 @@ import src.main.java.ui.GuiApplication;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
+import java.util.Properties;
 
 public class AppController/* implements Initializable */{
+    private static final Logger log = Logger.getLogger(AppController.class);
+    static {
+        try {
+            Properties p = new Properties();
+            p.load(AppController.class.getResourceAsStream(PropertiesService.getLog4jPropertiesResourcePath()));
+            PropertyConfigurator.configure(p);      //Dont forget here
+            log.debug("Logger Instantiated for : " + AppController.class.getSimpleName());
+        } catch (IOException e) {
+            System.out.println("Failed to configure logger of -" + AppController.class.getSimpleName() ) ;
+        }
+    }
 
-    public GridPane imageGrid;
-    public BorderPane appBorderPane;
     private MachineHandler machineHandler;
     private InventoryInfo inventoryInfo;
     private DecryptionManager decryptionManager;
+    @Setter @Getter
+    private final SimpleBooleanProperty isMachineConfigured = new SimpleBooleanProperty(false);;
 
     @Getter private Stage primaryStage;
 
-    @Setter @Getter
-    private SimpleBooleanProperty isMachineConfigured;
-
-    public ImageView mainViewImage;
-    @FXML
-    GridPane headerComponentRootPane;
     @Getter
     @FXML private HeaderController headerComponentRootPaneController;
     @Getter
-    @FXML MachinePageController machinePageController;
+    @FXML private MachinePageController machinePageController;
     @Getter
-    @FXML EncryptPageController encryptPageController;
+    @FXML private EncryptPageController encryptPageController;
     @Getter
     @FXML private BruteForcePageController bruteForcePageController;
+    CurrMachineConfigController currMachineConfigController;
+
+    public GridPane imageGrid;
+    public BorderPane appBorderPane;
+    public ImageView mainViewImage;
+    @FXML GridPane headerComponentRootPane;
     @FXML private AnchorPane headerWrapAnchorPane;
     @FXML private ScrollPane headerWrapScrollPane;
     @FXML private AnchorPane bodyWrapAnchorPane;
     @FXML private ScrollPane bodyWrapScrollPane;
-    CurrMachineConfigController currMachineConfigController;
 
     public void setMachineHandler(MachineHandler machineHandler) {
         this.machineHandler = machineHandler;
     }
 
-    public AppController(){
-        isMachineConfigured = new SimpleBooleanProperty(false);
-    }
     @FXML
     public void initialize(/*URL location, ResourceBundle resources*/) throws IOException {
         if(headerComponentRootPaneController !=null){
@@ -76,14 +87,14 @@ public class AppController/* implements Initializable */{
         machineHandler = new MachineHandlerImpl();
         //Load Current Machine Config
         URL currConfigResource = GuiApplication.class.getResource(ResourceLocationService.getCurrMachineConfigTemplateFxmlPath());
-        System.out.println("found Url of header component:"+ currConfigResource);
+        log.info("AppController - found Url of header component:"+ currConfigResource);
         fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(currConfigResource);
         GridPane currConfigComponent = fxmlLoader.load(currConfigResource.openStream());
         currMachineConfigController = fxmlLoader.getController();
         //Load MachinePage
         URL machinePageResource = GuiApplication.class.getResource(ResourceLocationService.getMachinePageTemplateFxmlPath());
-        System.out.println("found Url of machine component:"+ machinePageResource);
+        log.info("AppController - found Url of machine component:"+ machinePageResource);
         fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(machinePageResource);
         Parent machinePageComponent = fxmlLoader.load(machinePageResource.openStream());
@@ -93,7 +104,7 @@ public class AppController/* implements Initializable */{
         machinePageController.bindComponent(currMachineConfigController);
         //Load Encrypt Page
         URL encryptPageResource = GuiApplication.class.getResource(ResourceLocationService.getEncryptPageTemplateFxmlPath());
-        System.out.println("found Url of encrypt component:"+ encryptPageResource);
+        log.info("AppController - found Url of encrypt component:"+ encryptPageResource);
         fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(encryptPageResource);
         Parent encryptPageComponent = fxmlLoader.load(encryptPageResource.openStream());
@@ -114,9 +125,6 @@ public class AppController/* implements Initializable */{
         decryptionManager.setNumberOfAgents(DataService.getCurrNumberOfAgentsProperty().get());
         bruteForcePageController.setDecryptionManager(decryptionManager);
 
-        //added picture
-//        mainViewImage.setFitHeight( appBorderPane.getHeight()- headerComponentRootPane.getHeight());
-//        mainViewImage.setFitWidth(imageGrid.getLayoutY());
         headerWrapScrollPane.setContent(headerComponentRootPaneController.getRootComponent());
     }
 
@@ -182,6 +190,9 @@ public class AppController/* implements Initializable */{
      * @param message
      */
     public void showMessage(String message) {
+        if(message == null || message.trim().equals("")){
+            return;
+        }
         headerComponentRootPaneController.getNotificationMessageProperty().setValue(message);
     }
 

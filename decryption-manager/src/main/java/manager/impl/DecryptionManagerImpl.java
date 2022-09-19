@@ -1,7 +1,9 @@
 package main.java.manager.impl;
 
 import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import lombok.Getter;
 import lombok.Setter;
 import main.java.adapter.UIAdapter;
@@ -39,7 +41,6 @@ public class DecryptionManagerImpl implements DecryptionManager {
 
     private Thread workManagerThread;
     private Thread candidatesListenerThread;
-//    private final UiAdapter uiAdapter;
 
     static {
         try {
@@ -94,7 +95,6 @@ public class DecryptionManagerImpl implements DecryptionManager {
         }
         agentWorkManager = new AgentWorkManagerImpl(this.threadPoolService,this.machineHandler,this.difficultyLevel,this.taskSize, sourceInput);
         candidatesListener = new CandidatesListenerImpl(uiAdapter,agentWorkManager.getIsWorkCompletedProperty(),agentWorkManager.getProgressProperty().get().getRight());
-//        candidatesListener.BindToWorkers(agentWorkManager.getNumberOfAgentsProperty(), agentWorkManager.getAgentIdToDecryptAgentMap());
         candidatesListener.BindToWorkers(agentWorkManager.getNewestAgentProperty());
         this.workManagerThread = new Thread(agentWorkManager,"agentManagerThread");
         this.candidatesListenerThread = new Thread(candidatesListener, "candidatesListenerThread");
@@ -163,10 +163,12 @@ public class DecryptionManagerImpl implements DecryptionManager {
         }
     }
 
-
     @Override
     public int getAmountOfTasks() {
-        return 0;
+        if(agentWorkManager == null){
+            return 0;
+        }
+        return agentWorkManager.getNumberOfTasks();
     }
 
 }

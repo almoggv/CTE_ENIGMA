@@ -27,6 +27,9 @@ import main.java.component.MachineHandler;
 import main.java.dto.EncryptionInfoHistory;
 import main.java.dto.InventoryInfo;
 import main.java.dto.MachineState;
+import main.java.service.PropertiesService;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 import org.controlsfx.control.textfield.CustomTextField;
 import src.main.java.service.DataService;
 import src.main.java.service.ResourceLocationService;
@@ -35,13 +38,22 @@ import src.main.java.ui.GuiApplication;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.concurrent.Callable;
 
 public class EncryptPageController implements Initializable {
+
+    private static final Logger log = Logger.getLogger(EncryptPageController.class);
+    static {
+        try {
+            Properties p = new Properties();
+            p.load(EncryptPageController.class.getResourceAsStream(PropertiesService.getLog4jPropertiesResourcePath()));
+            PropertyConfigurator.configure(p);      //Dont forget here
+            log.debug("Logger Instantiated for : " + EncryptPageController.class.getSimpleName());
+        } catch (IOException e) {
+            System.out.println("Failed to configure logger of -" + EncryptPageController.class.getSimpleName() ) ;
+        }
+    }
 
     @Getter @Setter private MachineHandler machineHandler;
 
@@ -235,8 +247,7 @@ public class EncryptPageController implements Initializable {
             //need to set to null - because the machine state thinks it hasent changed - only internal structures changed and it dosent register
             DataService.getEncryptionInfoHistoryProperty().setValue(null);
             DataService.getEncryptionInfoHistoryProperty().setValue(machineHandler.getMachineStatisticsHistory());
-//            System.out.println(System.lineSeparator() + machineHandler.getMachineStatisticsHistory());
-//            showStatistics(machineHandler.getMachineStatisticsHistory());
+            log.debug("EncryptPageController - machine handler's statistics and history" + System.lineSeparator() + machineHandler.getMachineStatisticsHistory());
         }
         catch (Exception e){
             parentController.showMessage(e.getMessage());

@@ -208,7 +208,6 @@ public class SetMachineConfigController implements Initializable {
         ReflectorsId reflectorId = ReflectorsId.getByNum(reflectorChoiceBox.getSelectionModel().getSelectedIndex()+1);
         List<Integer> rotorIdsList = new ArrayList<>();
         //todo - fix issue - thinks kids are lables
-        System.out.println(rotorsHbox.getChildren().get(0));
         for (int i = rotorsHbox.getChildren().size()-1; i >= 1; i--) {
             ComboBox<ComboBoxItem<String>> cb = (ComboBox<ComboBoxItem<String>>) rotorsHbox.getChildren().get(i);
             rotorIdsList.add(cb.getSelectionModel().getSelectedIndex()+1);

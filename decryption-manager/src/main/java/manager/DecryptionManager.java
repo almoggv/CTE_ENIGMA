@@ -22,15 +22,12 @@ public interface DecryptionManager {
     void setUiAdapter(UIAdapter uiAdapter);
 
     int getNumberOfAgents();
-
     void setNumberOfAgents(int value);
 
     int getTaskSize();
-
     void setTaskSize(int value);
 
     DecryptionDifficultyLevel getDifficultyLevel();
-
     void setDifficultyLevel(DecryptionDifficultyLevel level);
 
     int getAmountOfTasks();
