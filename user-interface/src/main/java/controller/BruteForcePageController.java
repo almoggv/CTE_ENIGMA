@@ -76,9 +76,11 @@ public class BruteForcePageController implements Initializable {
         });
         DictionaryManager.getDictionaryProperty().addListener(((observable, oldValue, newValue) ->{
             dictionaryTrie = new Trie(DictionaryManager.getDictionaryProperty().get());
+            dictionaryList.getItems().clear();
             dictionaryList.getItems().addAll(dictionaryTrie.suggest(""));
         }));
         amountOfTasksNumLabel.setText("0");
+
         dictionaryTextField.textProperty().addListener((observable, oldValue, newValue) -> {
             dictionaryList.getItems().clear();
             dictionaryList.getItems().addAll(dictionaryTrie.suggest(newValue.toUpperCase()));
@@ -236,7 +238,7 @@ public class BruteForcePageController implements Initializable {
         clearDecryptionResults();
     }
 
-    private void clearDecryptionResults() {
+    public void clearDecryptionResults() {
         this.dmResultsFlowPane.getChildren().clear();
         this.progressBar.setProgress(0.0);
         this.progressPrecentNumberLabel.setText("%");

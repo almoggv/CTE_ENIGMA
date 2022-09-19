@@ -137,7 +137,9 @@ public class EncryptPageController implements Initializable {
         DataService.getInventoryInfoProperty().addListener(new ChangeListener<InventoryInfo>() {
             @Override
             public void changed(ObservableValue<? extends InventoryInfo> observable, InventoryInfo oldValue, InventoryInfo newValue) {
-                buildKeyboards(newValue);
+                if(newValue!= null) {
+                    buildKeyboards(newValue);
+                }
             }
         });
 
@@ -146,7 +148,12 @@ public class EncryptPageController implements Initializable {
             @Override
             public void changed(ObservableValue<? extends Map<MachineState, List<EncryptionInfoHistory>>> observable, Map<MachineState, List<EncryptionInfoHistory>> oldValue, Map<MachineState, List<EncryptionInfoHistory>> newValue) {
                 try{
-                    showStatistics(newValue);
+                    if(newValue != null) {
+                        showStatistics(newValue);
+                    }
+                    else{
+                        statisticsAccordion.getPanes().clear();
+                    }
                 }
                 catch (Exception e){
                     parentController.showMessage(e.getMessage());
@@ -158,6 +165,12 @@ public class EncryptPageController implements Initializable {
     }
 
     private void buildKeyboards(InventoryInfo inventoryInfo) {
+        inputKeyboardFlowPane.getChildren().clear();
+        outputKeyboardFlowPane.getChildren().clear();
+        letterToInputKeyboardButtonMap.clear();
+        letterToButtonColorAnimationMap.clear();
+        letterToOutputKeyboardButtonMap.clear();
+
         String abc = inventoryInfo.getABC();
         startColor = Color.web("#E7E7E7");
         endColor = Color.web("#F1C360");
@@ -203,7 +216,7 @@ public class EncryptPageController implements Initializable {
                 @Override
                 public void handle(ActionEvent event) {
                     String oldValue = liveEncryptionInputProperty.get();
-                    liveEncryptionInputProperty.setValue(oldValue + inputButton.getText());
+                     liveEncryptionInputProperty.setValue(oldValue + inputButton.getText());
                 }
             });
 
@@ -221,6 +234,7 @@ public class EncryptPageController implements Initializable {
 
     private void showStatistics(Map<MachineState, List<EncryptionInfoHistory>> encryptionInfoHistory) throws IOException {
         statisticsAccordion.getPanes().clear();
+
         String machineStateMsg = "";
         for (MachineState machineStateHistory : encryptionInfoHistory.keySet()) {
             machineStateMsg = "Machine state:" + CLIMenu.getMachineState(machineStateHistory,

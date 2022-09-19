@@ -13,8 +13,7 @@ import java.util.*;
 
 public class DictionaryManager {
     @Getter @Setter private static String Abc;
-    @Getter private static final Map<String,String> dictionary = new HashMap<>();
-
+    @Getter private static Map<String,String> dictionary = new HashMap<>();
     @Getter private static SimpleObjectProperty<List<String>> dictionaryProperty = new SimpleObjectProperty<>();
     private static List<String> excludeChars = new ArrayList<>();
     @Getter private static final String DELIMITER = " ";
@@ -35,6 +34,9 @@ public class DictionaryManager {
     }
 
     private static void buildDictionary(CTEEnigma cteEnigma) {
+        dictionary = new HashMap<>();
+        dictionaryProperty.setValue(null);
+
         CTEDecipher cteDecipher = cteEnigma.getCTEDecipher();
         Abc = cteEnigma.getCTEMachine().getABC();
         String dictionaryWordsString = cteDecipher.getCTEDictionary().getWords();

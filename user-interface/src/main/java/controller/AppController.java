@@ -171,14 +171,17 @@ public class AppController/* implements Initializable */{
         machineHandler.buildMachinePartsInventory(absolutePath);
         makeBodyVisible();
         Optional<InventoryInfo> optionalInventoryInfo = machineHandler.getInventoryInfo();
-        optionalInventoryInfo.ifPresent(inventoryInfo -> DataService.getInventoryInfoProperty().setValue(inventoryInfo));
-        DataService.getOriginalMachineStateProperty().setValue(null);
-        DataService.getCurrentMachineStateProperty().setValue(null);
-        DataService.getEncryptionInfoHistoryProperty().setValue(null);
         if(optionalInventoryInfo.isPresent()){
+            DataService.getInventoryInfoProperty().setValue(null);
+            optionalInventoryInfo.ifPresent(inventoryInfo -> DataService.getInventoryInfoProperty().setValue(inventoryInfo));
+            DataService.getOriginalMachineStateProperty().setValue(null);
+            DataService.getCurrentMachineStateProperty().setValue(null);
+            DataService.getEncryptionInfoHistoryProperty().setValue(null);
             DataService.getMaxAgentNumProperty().setValue(InventoryService.getAgentsInventory());
             DictionaryManager.loadDictionary(absolutePath);
+            bruteForcePageController.clearDecryptionResults();
         }
+        changeSceneToMachine();
     }
 
     public void setPrimaryStage(Stage primaryStage) {

@@ -66,7 +66,7 @@ public class MachineHandlerImpl implements MachineHandler {
             clearInventory();
             buildMachinePartsInventory(cteEnigma);
             InventoryService.setAgentsInventory(cteEnigma.getCTEDecipher().getAgents());
-//            machineStatisticsHistory.clear();
+            machineStatisticsHistory.clear();
         }
         else{
             String msg = "Failed to build machine inventory - CteMachine configured in file is invalid: " + xmlVerifierResponse;
