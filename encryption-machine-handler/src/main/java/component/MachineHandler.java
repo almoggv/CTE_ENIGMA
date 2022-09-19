@@ -41,6 +41,7 @@ public interface MachineHandler extends Serializable {
                                         List<MappingPair<String,String>> plugMapping);
 
     public Optional<MachineState> getMachineState();
+    public void setMachineState(MachineState machineState);
     public Optional<MachineState> getInitialMachineState();
 
     public Optional<InventoryInfo> getInventoryInfo();
