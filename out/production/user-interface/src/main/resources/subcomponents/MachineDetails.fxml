@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane fx:id="rootGridPane"  prefHeight="269.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.main.java.controller.MachineDetailsController">
+<GridPane fx:id="rootGridPane" minHeight="275.0" minWidth="500.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.main.java.controller.MachineDetailsController">
    <columnConstraints>
       <ColumnConstraints hgrow="NEVER" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
       <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="350.0" />
@@ -33,7 +33,7 @@
             <RowConstraints maxHeight="60.33331298828125" minHeight="10.0" prefHeight="22.0" vgrow="SOMETIMES" />
             <RowConstraints fillHeight="false" maxHeight="1.7976931348623157E308" minHeight="22.333343505859375" prefHeight="22.333343505859375" vgrow="SOMETIMES" />
             <RowConstraints fillHeight="false" maxHeight="1.7976931348623157E308" minHeight="19.0" prefHeight="22.333343505859375" vgrow="SOMETIMES" />
-            <RowConstraints fillHeight="false" maxHeight="1.7976931348623157E308" minHeight="12.333343505859375" prefHeight="136.66665649414062" vgrow="ALWAYS" />
+            <RowConstraints fillHeight="false" maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
             <RowConstraints fillHeight="false" maxHeight="1.7976931348623157E308" minHeight="6.0" prefHeight="10.33331298828125" vgrow="ALWAYS" />
          </rowConstraints>
          <children>
@@ -56,9 +56,9 @@
                   <Label fx:id="availableRotorNumLabel" />
                </children>
             </HBox>
-            <AnchorPane fx:id="originalMachineConfigurationAnchor" GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <AnchorPane fx:id="originalMachineConfigurationAnchor" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="150.0" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS">
                <children>
-                  <ScrollPane fitToWidth="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <content>
                         <fx:include fx:id="originalMachineConfigurationComponent" source="currMachineConfigTemplate.fxml" />
                      </content>
