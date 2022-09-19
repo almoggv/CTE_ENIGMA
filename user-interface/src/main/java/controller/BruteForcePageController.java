@@ -191,7 +191,7 @@ public class BruteForcePageController implements Initializable {
 
     public void onEncryptButtonAction(ActionEvent actionEvent) {
         if (!DictionaryManager.getDictionary().containsKey(encryptTextField.getText().toUpperCase())) {
-            parentController.showMessage("Word not in dictionary, please choose another one or click on the dictionary.");
+            parentController.showMessage("Word: \"" + encryptTextField.getText() + "\" not in dictionary, please choose another one or click on the dictionary.");
             return;
         }
         else try {
@@ -216,7 +216,7 @@ public class BruteForcePageController implements Initializable {
             parentController.showMessage("Please encrypt first.");
             return;
         } else if (!DictionaryManager.getDictionary().containsKey(encryptTextField.getText().toUpperCase())) {
-            parentController.showMessage("Word not in dictionary, please choose another one or click on the dictionary");
+            parentController.showMessage("Word: \"" + encryptTextField.getText() + "\" not in dictionary, please choose another one or click on the dictionary");
             return;
         }
         if(decryptionManager.getIsBruteForceInitiatedProperty().get()){
