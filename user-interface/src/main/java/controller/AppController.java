@@ -196,6 +196,7 @@ public class AppController/* implements Initializable */{
         if(message == null || message.trim().equals("")){
             return;
         }
+        headerComponentRootPaneController.getNotificationMessageProperty().setValue("");
         headerComponentRootPaneController.getNotificationMessageProperty().setValue(message);
     }
 
