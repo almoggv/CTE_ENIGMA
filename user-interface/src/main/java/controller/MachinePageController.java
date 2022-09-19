@@ -18,14 +18,31 @@ import main.java.component.MachineHandler;
 import main.java.dto.MachineState;
 import main.java.enums.ReflectorsId;
 import main.java.generictype.MappingPair;
+import main.java.service.PropertiesService;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 import src.main.java.service.DataService;
 
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
+import java.util.Properties;
 import java.util.ResourceBundle;
 
 public class MachinePageController implements Initializable {
+
+    private static final Logger log = Logger.getLogger(MachinePageController.class);
+    static {
+        try {
+            Properties p = new Properties();
+            p.load(MachinePageController.class.getResourceAsStream(PropertiesService.getLog4jPropertiesResourcePath()));
+            PropertyConfigurator.configure(p);      //Dont forget here
+            log.debug("Logger Instantiated for : " + MachinePageController.class.getSimpleName());
+        } catch (IOException e) {
+            System.out.println("Failed to configure logger of -" + MachinePageController.class.getSimpleName() ) ;
+        }
+    }
 
     @Setter @Getter @FXML private AppController parentController;
     @Getter @FXML private SetMachineConfigController setMachineConfigurationComponentController;
@@ -88,7 +105,7 @@ public class MachinePageController implements Initializable {
             DataService.getCurrentMachineStateProperty().setValue(machineHandler.getMachineState().get());
             DataService.getEncryptionInfoHistoryProperty().setValue(null);
             DataService.getEncryptionInfoHistoryProperty().setValue(machineHandler.getMachineStatisticsHistory());
-            System.out.println("CurrMachine State =" + machineHandler.getMachineState().get());
+            log.info("CurrMachine State =" + machineHandler.getMachineState().get());
         }
         catch (Exception e){
             //TODO: log here

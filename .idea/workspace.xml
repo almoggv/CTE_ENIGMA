@@ -11,12 +11,38 @@
   <component name="ChangeListManager">
     <list default="true" id="6467e2d7-ff2a-4abb-a198-685a0fcd06aa" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/AppController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/EncryptPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/EncryptPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/HeaderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/HeaderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/SetMachineConfigController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/SetMachineConfigController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/fxcomponent/ComboBoxCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/fxcomponent/ComboBoxCell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/ui/GuiApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/ui/GuiApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/command-line-interface-ui/command-line-interface-ui.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/command-line-interface-ui/src/main/java/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/command-line-interface-ui/src/main/java/controller/AppController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/command-line-interface-ui/src/main/java/controller/BruteForceSceneController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/command-line-interface-ui/src/main/java/controller/HeaderController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/command-line-interface-ui/src/main/java/controller/MachineSceneController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/command-line-interface-ui/src/main/java/enums/MenuOptions.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/command-line-interface-ui/src/main/java/handler/PropertiesService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/command-line-interface-ui/src/main/java/ui/CLIMenu$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/command-line-interface-ui/src/main/java/ui/CLIMenu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/command-line-interface-ui/src/main/java/ui/GuiApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/command-line-interface-ui/src/main/java/ui/app.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/command-line-interface-ui/src/main/resources/app.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/command-line-interface-ui/src/main/resources/subcomponents/header.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/command-line-interface-ui/src/main/resources/subcomponents/headerGrid - Copy.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/command-line-interface-ui/src/main/resources/subcomponents/headerGrid.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/command-line-interface-ui/src/main/resources/subcomponents/headerPane.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/agent/impl/DecryptionAgentImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/decryption-manager/main/java/agent/impl/DecryptionAgentImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/impl/AgentWorkManagerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/impl/AgentWorkManagerImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/AppController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/AppController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/BruteForcePageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/BruteForcePageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/EncryptPageController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/EncryptPageController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/EncryptPageController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/EncryptPageController$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/EncryptPageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/EncryptPageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/HeaderController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/HeaderController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/HeaderController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/HeaderController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/MachinePageController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/MachinePageController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/MachinePageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/MachinePageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/SetMachineConfigController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/SetMachineConfigController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/fxcomponent/ComboBoxCell.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/fxcomponent/ComboBoxCell.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/ui/GuiApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/ui/GuiApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/MachinePageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/MachinePageController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
