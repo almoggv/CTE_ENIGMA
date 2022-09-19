@@ -118,7 +118,7 @@ public class MachinePageController implements Initializable {
             DataService.getCurrentMachineStateProperty().setValue(machineHandler.getMachineState().get());
             DataService.getEncryptionInfoHistoryProperty().setValue(null);
             DataService.getEncryptionInfoHistoryProperty().setValue(machineHandler.getMachineStatisticsHistory());
-            System.out.println("CurrMachine State =" + machineHandler.getMachineState().get());
+            log.info("MachinePageController - CurrMachine State =" + machineHandler.getMachineState().get());
         }
         catch (Exception e){
             //TODO: log here

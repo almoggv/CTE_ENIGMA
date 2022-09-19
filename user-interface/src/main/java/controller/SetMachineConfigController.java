@@ -97,7 +97,7 @@ public class SetMachineConfigController implements Initializable {
 
         setMachineImageView.setImage(new Image(ResourceLocationService.getEnigmaMachineIllustration()));
         origX = setMachineImageView.getX();
-        origY = setMachineImageView.getY();
+        origY = 50;
     }
 
     public void setMachineDetails(InventoryInfo inventoryInfo){
@@ -324,11 +324,10 @@ public class SetMachineConfigController implements Initializable {
 
         Random ran = new Random();
         int randomIndex = ran.nextInt(ResourceLocationService.getImageListForAnimation().size());
-        setMachineImageView.setImage(new Image(ResourceLocationService.getImageListForAnimation().get(randomIndex)));
 
         Path path = new Path();
-        path.getElements().addAll(new MoveTo(50, 70), new HLineTo(250));
-        path.getElements().addAll(new MoveTo(origX, 70), new HLineTo(50));
+        path.getElements().addAll(new MoveTo(50, origY), new HLineTo(2000));
+        path.getElements().addAll(new MoveTo(origX, origY), new HLineTo(50));
 
         PathTransition pathTransition = new PathTransition();
         pathTransition.setDuration(Duration.millis(2000));
@@ -337,8 +336,7 @@ public class SetMachineConfigController implements Initializable {
         pathTransition.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
         pathTransition.setCycleCount(1);
         pathTransition.setAutoReverse(true);
-
         pathTransition.play();
+        setMachineImageView.setImage(new Image(ResourceLocationService.getImageListForAnimation().get(randomIndex)));
     }
-
 }
