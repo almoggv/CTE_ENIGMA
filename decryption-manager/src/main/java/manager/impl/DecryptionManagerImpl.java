@@ -190,9 +190,6 @@ public class DecryptionManagerImpl implements DecryptionManager {
 
     @Override
     public long getTimeTookToDecrypt() {
-        if(isBruteForceStoppedProperty.get()==false|| isBruteForceInitiatedProperty.get()==false) {
-            return 0;
-        }
         return endEncryptionTime - startEncryptionTime;
     }
 

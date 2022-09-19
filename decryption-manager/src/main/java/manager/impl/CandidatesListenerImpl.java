@@ -98,7 +98,7 @@ public class CandidatesListenerImpl implements CandidatesListener {
                             meanDecryptionTime += newAgent.getTimeTookToCompleteWork();
                         }
                         else{
-                            meanDecryptionTime = (meanDecryptionTime/newAgent.getTimeTookToCompleteWork());
+                            meanDecryptionTime = (long)(meanDecryptionTime + newAgent.getTimeTookToCompleteWork())/2;
                         }
                     }
                 }

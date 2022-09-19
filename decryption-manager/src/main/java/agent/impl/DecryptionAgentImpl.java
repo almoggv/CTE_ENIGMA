@@ -93,7 +93,7 @@ public class DecryptionAgentImpl implements DecryptionAgent {
 
     @Override
     public long getTimeTookToCompleteWork() {
-        if(isFinishedProperty.get() == false || isStoppedProperty.get() == false){
+        if(isFinishedProperty.get() == false || isStoppedProperty.get() == false || endEncryptionTime == -1){
             return 0;
         }
         return endEncryptionTime - startEncryptionTime;
@@ -138,6 +138,7 @@ public class DecryptionAgentImpl implements DecryptionAgent {
                 if((lastStateTestedIndex+1) % PROGRESS_UPDATE_INTERVAL == 0){
                     progressProperty.setValue(new MappingPair<>((lastStateTestedIndex+1),startingConfigurations.size()));
                 }
+                endEncryptionTime = System.nanoTime();
             }
             //if finished work
             if(progressProperty.get().getLeft().equals(progressProperty.get().getRight())){
@@ -149,7 +150,6 @@ public class DecryptionAgentImpl implements DecryptionAgent {
                 log.debug("agent "+this.id + "finished work");
             }
         }
-        endEncryptionTime = System.nanoTime();
     }
 
     private Optional<String> runSingleDecryption(MachineState machineInitialState, String inputToDecrypt){
