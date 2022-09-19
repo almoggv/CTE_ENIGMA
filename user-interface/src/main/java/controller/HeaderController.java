@@ -15,15 +15,33 @@ import javafx.beans.property.SimpleStringProperty;
 
 import lombok.Getter;
 import lombok.Setter;
+import main.java.manager.impl.DecryptionManagerImpl;
+import main.java.service.PropertiesService;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 import org.controlsfx.control.NotificationPane;
 import src.main.java.service.DataService;
 import src.main.java.service.ResourceLocationService;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.util.Properties;
 import java.util.ResourceBundle;
 
 public class HeaderController implements Initializable {
+
+    private static final Logger log = Logger.getLogger(HeaderController.class);
+    static {
+        try {
+            Properties p = new Properties();
+            p.load(HeaderController.class.getResourceAsStream(PropertiesService.getLog4jPropertiesResourcePath()));
+            PropertyConfigurator.configure(p);      //Dont forget here
+            log.debug("Logger Instantiated for : " + HeaderController.class.getSimpleName());
+        } catch (IOException e) {
+            System.out.println("Failed to configure logger of -" + HeaderController.class.getSimpleName() ) ;
+        }
+    }
 
     public MenuBar menuBar;
     public Menu themeMenu;
@@ -140,8 +158,8 @@ public class HeaderController implements Initializable {
             themeUrl = HeaderController.class.getResource(themeResourcePath);
             themeString = HeaderController.class.getResource(themeResourcePath).toExternalForm();
 
-            System.out.println("Theme Url =" + themeUrl);
-            System.out.println("Theme String Path=" + themeResourcePath);
+            log.info("HeaderController - Theme Url =" + themeUrl);
+            log.debug("HeaderController - Theme String Path=" + themeResourcePath);
         }
         catch(Exception ignore){}
         parentController.loadCssFile(themeString);

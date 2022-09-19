@@ -22,7 +22,5 @@ public class ComboBoxCell<T> extends ListCell<ComboBoxItem<T>> {
 
         setText(item.getValue().toString());
         setDisable(item.isChosen());
-        //taken from example - ignored
-//        System.out.println(item.getTaskName() + ", disabled? " + isDisabled());
     }
 }
