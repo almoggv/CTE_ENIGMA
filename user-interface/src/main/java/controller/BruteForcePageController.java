@@ -1,23 +1,19 @@
 package src.main.java.controller;
 
 import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
-import lombok.Getter;
-import lombok.Setter;
 import main.java.component.MachineHandler;
 import main.java.dto.AgentDecryptionInfo;
-import main.java.dto.EncryptionInfoHistory;
+import main.java.dto.MachineState;
 import main.java.enums.DecryptionDifficultyLevel;
 import main.java.generictype.MappingPair;
 import main.java.manager.DecryptionManager;
@@ -33,8 +29,8 @@ import src.main.java.ui.GuiApplication;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
+import java.util.UUID;
 import java.util.function.Consumer;
 
 public class BruteForcePageController implements Initializable {
@@ -272,7 +268,7 @@ public class BruteForcePageController implements Initializable {
 
     public UIAdapter createUIAdapter() {
         Consumer<AgentDecryptionInfo>  updateCandidates = candidate -> {
-            createTile(candidate.getOutput(), candidate.getTimeToDecrypt());
+            createTile(candidate.getOutput(), candidate.getInitialState(),candidate.getAgentID() /*candidate.getTimeToDecrypt()*/);
         };
         Consumer<MappingPair<Integer,Integer>> updateProgress = (progress) ->{
             double progressValue = (double)progress.getLeft() / (double)progress.getRight();
@@ -284,7 +280,7 @@ public class BruteForcePageController implements Initializable {
         return adapter;
     }
 
-    private void createTile(String output, long timeToDecrypt) {
+    private void createTile(String output, MachineState foundByState, UUID agentID /*long timeToDecrypt*/) {
         try {
             URL decodedCandidateURL = GuiApplication.class.getResource(ResourceLocationService.getDecodeCandidatePath());
             FXMLLoader fxmlLoader = new FXMLLoader();
@@ -292,7 +288,10 @@ public class BruteForcePageController implements Initializable {
             Parent decodedCandidate = fxmlLoader.load(decodedCandidateURL.openStream());
             DecodedCandidateController decodedCandidateController = fxmlLoader.getController();
             decodedCandidateController.setCandidateLabel(output);
-            decodedCandidateController.setTimeLabel(String.valueOf(Math.floor(timeToDecrypt)));
+            decodedCandidateController.setFoundByConfigLabel(foundByState);
+            decodedCandidateController.setFoundByAgentIdLabel(agentID.toString());
+
+//            decodedCandidateController.setTimeLabel(String.valueOf(Math.floor(timeToDecrypt)));
             dmResultsFlowPane.getChildren().add(decodedCandidate);
         } catch (IOException e) {
             e.printStackTrace();

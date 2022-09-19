@@ -78,7 +78,7 @@ public class MachineDetailsController implements Initializable {
     }
 
     private int countNumberOfMessagesInHistory() {
-        if(DataService.getEncryptionInfoHistoryProperty().getValue() == null){
+        if(DataService.getEncryptionInfoHistoryProperty().get() == null){
             return 0;
         }
         int resultCount = 0;

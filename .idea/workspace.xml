@@ -10,10 +10,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6467e2d7-ff2a-4abb-a198-685a0fcd06aa" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/command_line_interface_ui_jar.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/user-interface/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-interface/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/BruteForcePageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/BruteForcePageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/BruteForcePageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/BruteForcePageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/DecodedCandidateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/DecodedCandidateController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/MachineDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/MachineDetailsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/bruteForcePageTemplate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/bruteForcePageTemplate.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/decodeCandidate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/decodeCandidate.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -300,18 +303,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/user-interface/src/main/java/controller/BruteForcePageController.java</url>
-          <line>239</line>
+          <line>236</line>
           <option name="timeStamp" value="694" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/user-interface/src/main/java/controller/BruteForcePageController.java</url>
-          <line>227</line>
+          <line>224</line>
           <option name="timeStamp" value="695" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/user-interface/src/main/java/controller/SetMachineConfigController.java</url>
-          <line>241</line>
-          <option name="timeStamp" value="696" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.ClassCastException" package="java.lang" />
@@ -350,11 +348,11 @@
     <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/CTE_ENIGMA$Main.ic" NAME="Main Coverage Results" MODIFIED="1660555486778" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>src.main.java.ui.*</FILTER>
-    </SUITE>
     <SUITE FILE_PATH="coverage/CTE_ENIGMA$src_main_java_Main.ic" NAME="src.main.java.Main Coverage Results" MODIFIED="1660063306935" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>src.main.java.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/CTE_ENIGMA$Main.ic" NAME="Main Coverage Results" MODIFIED="1660555486778" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>src.main.java.ui.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/CTE_JAVA_ENIGMA$Main.ic" NAME="Main Coverage Results" MODIFIED="1660837619611" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>src.main.java.*</FILTER>

@@ -156,7 +156,7 @@
                                 </GridPane>
                             </content>
                         </ScrollPane>
-                  <ScrollPane GridPane.hgrow="NEVER" GridPane.rowIndex="1">
+                  <ScrollPane fitToWidth="true" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
                      <content>
                               <FlowPane fx:id="dmResultsFlowPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" />
                      </content>
