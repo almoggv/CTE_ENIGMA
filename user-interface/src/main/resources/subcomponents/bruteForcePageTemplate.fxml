@@ -19,7 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import org.controlsfx.control.textfield.CustomTextField?>
 
-<GridPane fx:id="rootGridPane" gridLinesVisible="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.main.java.controller.BruteForcePageController">
+<GridPane fx:id="rootGridPane" gridLinesVisible="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="500.0" minWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.main.java.controller.BruteForcePageController">
     <columnConstraints>
         <ColumnConstraints maxWidth="1.7976931348623157E308" minWidth="-Infinity" />
     </columnConstraints>
@@ -31,24 +31,24 @@
             <items>
                 <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                     <children>
-                        <ScrollPane fitToHeight="true" fitToWidth="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <content>
-                                <GridPane>
+                                <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="200.0">
                                     <columnConstraints>
-                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="640.6666870117188" minWidth="10.0" prefWidth="559.3333740234375" />
-                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="339.33331298828125" minWidth="10.0" prefWidth="136.6666259765625" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="-Infinity" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" />
                                     </columnConstraints>
                                     <rowConstraints>
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints maxHeight="1.7976931348623157E308" vgrow="SOMETIMES" />
+                                        <RowConstraints maxHeight="1.7976931348623157E308" vgrow="SOMETIMES" />
                                     </rowConstraints>
                                     <children>
-                                        <ScrollPane fx:id="scrollOfRightBottomAnchor" fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="104.0" prefWidth="560.0">
+                                        <ScrollPane fx:id="scrollOfRightBottomAnchor" fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="100.0" minWidth="600.0">
                                             <content>
                                                 <fx:include fx:id="currMachineConfigComponent" source="currMachineConfigTemplate.fxml" />
                                             </content>
                                         </ScrollPane>
-                              <VBox fx:id="BFencryptionVBox" alignment="CENTER" GridPane.rowIndex="1">
+                              <VBox fx:id="BFencryptionVBox" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="100.0" minWidth="600.0" GridPane.rowIndex="1">
                                  <GridPane.margin>
                                     <Insets />
                                  </GridPane.margin>
@@ -68,11 +68,11 @@
                                     <Button fx:id="resetMachineStateButton" mnemonicParsing="false" onAction="#onResetMachineStateButtonAction" text="reset to last state" />
                                  </children>
                               </VBox>
-                                        <VBox fx:id="dictionaryVBox" spacing="3.0" GridPane.columnIndex="1" GridPane.rowSpan="2">
+                                        <VBox fx:id="dictionaryVBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="3.0" GridPane.columnIndex="1" GridPane.rowSpan="2">
                                             <children>
                                                 <Label fx:id="dictionaryLabel" text="Dictionary" />
                                     <TextField fx:id="dictionaryTextField" />
-                                                <ListView fx:id="dictionaryList" onMouseClicked="#onDictionaryListClicked" prefHeight="200.0" prefWidth="137.0" />
+                                                <ListView fx:id="dictionaryList" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="150.0" minWidth="200.0" onMouseClicked="#onDictionaryListClicked" />
                                             </children>
                                  <padding>
                                     <Insets top="5.0" />
@@ -84,81 +84,80 @@
                         </ScrollPane>
                     </children>
                 </AnchorPane>
-                <GridPane fx:id="dmResultsGridPane" prefHeight="269.0" prefWidth="699.0">
+                <GridPane fx:id="dmResultsGridPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" />
                     </columnConstraints>
                     <rowConstraints>
                         <RowConstraints maxHeight="1.7976931348623157E308" minHeight="100.0" vgrow="NEVER" />
-                        <RowConstraints fx:id="BFGridCellResults" maxHeight="170.0" minHeight="10.0" prefHeight="170.0" vgrow="SOMETIMES" />
+                        <RowConstraints fx:id="BFGridCellResults" maxHeight="1.7976931348623157E308" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
-                            <content>
-                                <GridPane fx:id="bruteForceDecryptionGrid" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
-                                    <columnConstraints>
-                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="378.6666259765625" minWidth="6.666656494140625" prefWidth="9.999969482421875" />
-                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="688.3333435058594" minWidth="10.0" prefWidth="685.0000305175781" />
-                                        <ColumnConstraints hgrow="NEVER" minWidth="10.0" />
-                                        <ColumnConstraints maxWidth="688.3333435058594" minWidth="10.0" prefWidth="685.0000305175781" />
-                              <ColumnConstraints hgrow="NEVER" minWidth="10.0" />
-                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="688.3333435058594" minWidth="10.0" prefWidth="685.0000305175781" />
-                              <ColumnConstraints hgrow="NEVER" minWidth="10.0" />
-                                        <ColumnConstraints hgrow="NEVER" />
-                                    </columnConstraints>
-                                    <rowConstraints>
-                                        <RowConstraints maxHeight="1.7976931348623157E308" minHeight="30.0" prefHeight="30.0" vgrow="NEVER" />
-                                        <RowConstraints maxHeight="1.7976931348623157E308" minHeight="30.0" prefHeight="30.0" vgrow="NEVER" />
-                                        <RowConstraints maxHeight="1.7976931348623157E308" minHeight="30.0" prefHeight="30.0" vgrow="NEVER" />
-                                    </rowConstraints>
-                                    <children>
-                                        <Slider fx:id="amountOfAgentsSlider" blockIncrement="1.0" max="50.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" min="2.0" minHeight="40.0" minWidth="150.0" showTickLabels="true" GridPane.columnIndex="1" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="1" GridPane.vgrow="NEVER" />
-                                        <ComboBox fx:id="difficultyComboBox" prefHeight="25.0" prefWidth="159.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                                        <TextField fx:id="taskSizeTextField" onAction="#onTaskSizeTextFieldFilled" prefHeight="25.0" prefWidth="153.0" promptText="natural number over 0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
-                                        <Button fx:id="startDecryptButton" maxWidth="110.0" minWidth="150.0" mnemonicParsing="false" onAction="#onStartDecryptButtonAction" prefWidth="150.0" text="Start decrypting" GridPane.columnIndex="7" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
-                                 <GridPane.margin>
-                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                 </GridPane.margin></Button>
-                                        <Button fx:id="pauseDecryptButton" maxWidth="110.0" minWidth="150.0" mnemonicParsing="false" onAction="#onPauseDecryptButtonAction" prefWidth="150.0" text="Pause decrypting" GridPane.columnIndex="7" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.vgrow="NEVER">
-                                 <GridPane.margin>
-                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                 </GridPane.margin></Button>
-                                        <HBox alignment="CENTER_LEFT" minHeight="-Infinity" minWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                                            <children>
-                                                <Label text="Amount of tasks:" />
-                                                <Label fx:id="amountOfTasksNumLabel" />
-                                            </children>
-                                        </HBox>
-                                        <HBox alignment="CENTER_LEFT" GridPane.columnIndex="1">
-                                            <children>
-                                                <Label text="Amount of agents: " />
-                                                <Label fx:id="amountOfAgentsValueLabel" />
-                                            </children>
-                                        </HBox>
-                                        <Label text="Difficulty level" GridPane.columnIndex="3" />
-                                        <Label text="Task size" GridPane.columnIndex="5" />
-                              <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="3" GridPane.columnSpan="3" GridPane.rowIndex="2">
-                                 <children>
-                                    <Label text="progress: " />
-                                    <ProgressBar fx:id="progressBar" maxWidth="1.7976931348623157E308" minWidth="100.0" progress="0.0" HBox.hgrow="ALWAYS" />
-                                    <Label fx:id="progressPrecentNumberLabel" text="\%">
-                                       <opaqueInsets>
-                                          <Insets left="5.0" right="5.0" />
-                                       </opaqueInsets>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                              <Button fx:id="stopDecryptButton" maxWidth="110.0" minWidth="150.0" mnemonicParsing="false" onAction="#onStopDecryptButtonAction" prefWidth="150.0" text="Stop decrypting" GridPane.columnIndex="7" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.vgrow="NEVER">
-                                 <GridPane.margin>
-                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                 </GridPane.margin></Button>
-                                    </children>
-                                </GridPane>
-                            </content>
-                        </ScrollPane>
-                  <ScrollPane fx:id="dmResultsScrollPane" fitToWidth="true" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+                  <GridPane fx:id="bruteForceDecryptionGrid" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="100.0" minWidth="850.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="NEVER" maxWidth="7.5" minWidth="7.5" prefWidth="7.5" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="200.0" />
+                        <ColumnConstraints hgrow="NEVER" minWidth="10.0" />
+                        <ColumnConstraints maxWidth="1.7976931348623157E308" minWidth="150.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="10.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" />
+                        <ColumnConstraints hgrow="NEVER" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                        <ColumnConstraints hgrow="NEVER" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="1.7976931348623157E308" minHeight="30.0" prefHeight="30.0" vgrow="NEVER" />
+                        <RowConstraints maxHeight="1.7976931348623157E308" minHeight="30.0" prefHeight="30.0" vgrow="NEVER" />
+                        <RowConstraints maxHeight="1.7976931348623157E308" minHeight="30.0" prefHeight="30.0" vgrow="NEVER" />
+                     </rowConstraints>
+                     <children>
+                        <Slider fx:id="amountOfAgentsSlider" blockIncrement="1.0" max="50.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" min="2.0" minHeight="40.0" minWidth="150.0" showTickLabels="true" GridPane.columnIndex="1" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="1" GridPane.vgrow="NEVER" />
+                        <ComboBox fx:id="difficultyComboBox" prefHeight="25.0" prefWidth="159.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                        <TextField fx:id="taskSizeTextField" onAction="#onTaskSizeTextFieldFilled" prefHeight="25.0" prefWidth="153.0" promptText="natural number over 0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                        <Button fx:id="startDecryptButton" maxWidth="110.0" minWidth="150.0" mnemonicParsing="false" onAction="#onStartDecryptButtonAction" prefWidth="150.0" text="Start decrypting" GridPane.columnIndex="7" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                        </Button>
+                        <Button fx:id="pauseDecryptButton" maxWidth="110.0" minWidth="150.0" mnemonicParsing="false" onAction="#onPauseDecryptButtonAction" prefWidth="150.0" text="Pause decrypting" GridPane.columnIndex="7" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.vgrow="NEVER">
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                        </Button>
+                        <HBox alignment="CENTER_LEFT" minHeight="-Infinity" minWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <children>
+                              <Label text="Amount of tasks:" />
+                              <Label fx:id="amountOfTasksNumLabel" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" GridPane.columnIndex="1">
+                           <children>
+                              <Label text="Amount of agents: " />
+                              <Label fx:id="amountOfAgentsValueLabel" />
+                           </children>
+                        </HBox>
+                        <Label text="Difficulty level" GridPane.columnIndex="3" />
+                        <Label text="Task size" GridPane.columnIndex="5" />
+                        <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="3" GridPane.columnSpan="3" GridPane.rowIndex="2">
+                           <children>
+                              <Label text="progress: " />
+                              <ProgressBar fx:id="progressBar" maxWidth="1.7976931348623157E308" minWidth="100.0" progress="0.0" HBox.hgrow="ALWAYS" />
+                              <Label fx:id="progressPrecentNumberLabel" text="\%">
+                                 <opaqueInsets>
+                                    <Insets left="5.0" right="5.0" />
+                                 </opaqueInsets>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <Button fx:id="stopDecryptButton" maxWidth="110.0" minWidth="150.0" mnemonicParsing="false" onAction="#onStopDecryptButtonAction" prefWidth="150.0" text="Stop decrypting" GridPane.columnIndex="7" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.vgrow="NEVER">
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                        </Button>
+                     </children>
+                  </GridPane>
+                  <ScrollPane fx:id="dmResultsScrollPane" fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
                      <content>
-                              <FlowPane fx:id="dmResultsFlowPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" />
+                              <FlowPane fx:id="dmResultsFlowPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="150.0" />
                      </content>
                   </ScrollPane>
                     </children>
