@@ -66,7 +66,6 @@ public class BruteForcePageController implements Initializable {
     private ValidationSupport validationSupport = new ValidationSupport();
     private BooleanProperty isDecryptionRunningProperty = new SimpleBooleanProperty(false);
 
-
     private Trie dictionaryTrie;
 
     @Override
@@ -222,6 +221,12 @@ public class BruteForcePageController implements Initializable {
         if(decryptionManager.getIsBruteForceInitiatedProperty().get()){
             decryptionManager.stopWork();
         }
+        decryptionManager.getIsBruteForceInitiatedProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue == true){
+                decryptionManager.resumeWork();
+                pauseDecryptButton.setText("Pause decrypting");
+            }
+        });
         clearDecryptionResults();
         decryptionManager.bruteForceDecryption(resultTextField.getText());
     }
@@ -242,7 +247,6 @@ public class BruteForcePageController implements Initializable {
         if(decryptionManager!=null){
             decryptionManager.stopWork();
         }
-        clearDecryptionResults();
     }
 
     public void clearDecryptionResults() {
