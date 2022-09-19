@@ -12,14 +12,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6467e2d7-ff2a-4abb-a198-685a0fcd06aa" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decryption-manager/src/main/java/agent/impl/DecryptionAgentImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/src/main/java/agent/impl/DecryptionAgentImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/CandidatesListenerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/CandidatesListenerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/DecryptionManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/DecryptionManagerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/agent/impl/DecryptionAgentImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/decryption-manager/main/java/agent/impl/DecryptionAgentImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/impl/DecryptionManagerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/decryption-manager/main/java/manager/impl/DecryptionManagerImpl.class" afterDir="false" />
-    </list>
+    <list default="true" id="6467e2d7-ff2a-4abb-a198-685a0fcd06aa" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -301,31 +294,6 @@
           <url>file://$PROJECT_DIR$/user-interface/src/main/java/controller/MachinePageController.java</url>
           <line>119</line>
           <option name="timeStamp" value="716" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/DecryptionManagerImpl.java</url>
-          <line>192</line>
-          <option name="timeStamp" value="728" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/decryption-manager/src/main/java/adapter/UIAdapter.java</url>
-          <line>42</line>
-          <option name="timeStamp" value="731" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/CandidatesListenerImpl.java</url>
-          <line>97</line>
-          <option name="timeStamp" value="733" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/decryption-manager/src/main/java/manager/impl/CandidatesListenerImpl.java</url>
-          <line>100</line>
-          <option name="timeStamp" value="734" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/decryption-manager/src/main/java/agent/impl/DecryptionAgentImpl.java</url>
-          <line>98</line>
-          <option name="timeStamp" value="735" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.ClassCastException" package="java.lang" />
