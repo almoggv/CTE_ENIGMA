@@ -181,7 +181,12 @@ public class AppController/* implements Initializable */{
             DictionaryManager.loadDictionary(absolutePath);
             bruteForcePageController.clearDecryptionResults();
         }
-        changeSceneToMachine();
+        changeSceneToStartPicture();
+//        changeSceneToMachine();
+    }
+
+    public void changeSceneToStartPicture(){
+        bodyWrapScrollPane.setContent(imageGrid);
     }
 
     public void setPrimaryStage(Stage primaryStage) {
