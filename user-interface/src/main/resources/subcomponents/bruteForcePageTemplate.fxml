@@ -27,7 +27,7 @@
         <RowConstraints maxHeight="1.7976931348623157E308" minHeight="-Infinity" />
     </rowConstraints>
     <children>
-        <SplitPane dividerPositions="0.45582329317269077" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" orientation="VERTICAL" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+        <SplitPane fx:id="BFSplitPane" dividerPositions="0.45582329317269077" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" orientation="VERTICAL" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
             <items>
                 <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                     <children>
@@ -48,7 +48,7 @@
                                                 <fx:include fx:id="currMachineConfigComponent" source="currMachineConfigTemplate.fxml" />
                                             </content>
                                         </ScrollPane>
-                              <VBox alignment="CENTER" GridPane.rowIndex="1">
+                              <VBox fx:id="BFencryptionVBox" alignment="CENTER" GridPane.rowIndex="1">
                                  <GridPane.margin>
                                     <Insets />
                                  </GridPane.margin>
@@ -84,13 +84,13 @@
                         </ScrollPane>
                     </children>
                 </AnchorPane>
-                <GridPane prefHeight="269.0" prefWidth="699.0">
+                <GridPane fx:id="dmResultsGridPane" prefHeight="269.0" prefWidth="699.0">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
                     <rowConstraints>
                         <RowConstraints maxHeight="1.7976931348623157E308" minHeight="100.0" vgrow="NEVER" />
-                        <RowConstraints maxHeight="170.0" minHeight="10.0" prefHeight="170.0" vgrow="SOMETIMES" />
+                        <RowConstraints fx:id="BFGridCellResults" maxHeight="170.0" minHeight="10.0" prefHeight="170.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
                         <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
@@ -115,15 +115,15 @@
                                         <Slider fx:id="amountOfAgentsSlider" blockIncrement="1.0" max="50.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" min="2.0" minHeight="40.0" minWidth="150.0" showTickLabels="true" GridPane.columnIndex="1" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="1" GridPane.vgrow="NEVER" />
                                         <ComboBox fx:id="difficultyComboBox" prefHeight="25.0" prefWidth="159.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                                         <TextField fx:id="taskSizeTextField" onAction="#onTaskSizeTextFieldFilled" prefHeight="25.0" prefWidth="153.0" promptText="natural number over 0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
-                                        <Button fx:id="startDecryptButton" maxWidth="110.0" minWidth="110.0" mnemonicParsing="false" onAction="#onStartDecryptButtonAction" prefWidth="110.0" text="Start decrypting" GridPane.columnIndex="7" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
+                                        <Button fx:id="startDecryptButton" maxWidth="110.0" minWidth="150.0" mnemonicParsing="false" onAction="#onStartDecryptButtonAction" prefWidth="150.0" text="Start decrypting" GridPane.columnIndex="7" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
                                  <GridPane.margin>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </GridPane.margin></Button>
-                                        <Button fx:id="pauseDecryptButton" maxWidth="110.0" minWidth="110.0" mnemonicParsing="false" onAction="#onPauseDecryptButtonAction" prefWidth="110.0" text="Pause decrypting" GridPane.columnIndex="7" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.vgrow="NEVER">
+                                        <Button fx:id="pauseDecryptButton" maxWidth="110.0" minWidth="150.0" mnemonicParsing="false" onAction="#onPauseDecryptButtonAction" prefWidth="150.0" text="Pause decrypting" GridPane.columnIndex="7" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.vgrow="NEVER">
                                  <GridPane.margin>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </GridPane.margin></Button>
-                                        <HBox alignment="CENTER_LEFT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                        <HBox alignment="CENTER_LEFT" minHeight="-Infinity" minWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                             <children>
                                                 <Label text="Amount of tasks:" />
                                                 <Label fx:id="amountOfTasksNumLabel" />
@@ -148,7 +148,7 @@
                                     </Label>
                                  </children>
                               </HBox>
-                              <Button fx:id="stopDecryptButton" maxWidth="110.0" minWidth="110.0" mnemonicParsing="false" onAction="#onStopDecryptButtonAction" prefWidth="110.0" text="Stop decrypting" GridPane.columnIndex="7" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.vgrow="NEVER">
+                              <Button fx:id="stopDecryptButton" maxWidth="110.0" minWidth="150.0" mnemonicParsing="false" onAction="#onStopDecryptButtonAction" prefWidth="150.0" text="Stop decrypting" GridPane.columnIndex="7" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.vgrow="NEVER">
                                  <GridPane.margin>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </GridPane.margin></Button>
@@ -156,7 +156,7 @@
                                 </GridPane>
                             </content>
                         </ScrollPane>
-                  <ScrollPane fitToWidth="true" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+                  <ScrollPane fx:id="dmResultsScrollPane" fitToWidth="true" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
                      <content>
                               <FlowPane fx:id="dmResultsFlowPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" />
                      </content>

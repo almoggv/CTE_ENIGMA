@@ -10,6 +10,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.image.ImageView;
+import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -23,7 +28,9 @@ import org.controlsfx.validation.Validator;
 import src.main.java.fxcomponent.ComboBoxCell;
 import src.main.java.fxcomponent.ComboBoxItem;
 import src.main.java.service.DataService;
+import src.main.java.service.ResourceLocationService;
 
+import java.awt.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +43,7 @@ public class SetMachineConfigController implements Initializable {
 
     public Button clearSelectionButton;
     public GridPane rootGridPane;
+    public ImageView setMachineImageView;
     @Getter @Setter
     @FXML MachinePageController parentController;
 
@@ -83,6 +91,8 @@ public class SetMachineConfigController implements Initializable {
             }
         });
         setUserChoiceButton.disableProperty().bind(validationSupport.invalidProperty());
+
+        setMachineImageView.setImage(new Image(ResourceLocationService.getEnigmaMachineIllustration()));
     }
 
     public void setMachineDetails(InventoryInfo inventoryInfo){

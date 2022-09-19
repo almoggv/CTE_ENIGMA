@@ -18,3 +18,9 @@
     -fx-border-color: #033949;
     -fx-border-width: 3 3 3 3;
 }
+
+
+#setMachineImageView{
+    -fx-background-radius: 10;
+    -fx-border-radius: 10%;
+}

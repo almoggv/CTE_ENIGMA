@@ -134,3 +134,33 @@
     -fx-font-size: 10;
 }
 /*todo - fix statistics*/
+
+#candidatePane{
+    -fx-background-color: #515451;
+    -fx-border-color: white;
+    -fx-border-width: 3 3 3 3;
+}
+#dmResultsFlowPane{
+    -fx-background-color: #343634;
+}
+#dmResultsScrollPane{
+    -fx-background-color: #343634;
+}
+#dmResultsGridPane{
+    -fx-background-color: #343634;
+}
+#BFSplitPane{
+    -fx-background-color: #343634;
+}
+#BFGridCellResults{
+    -fx-background-color: #343634;
+}
+#BFencryptionVBox{
+    -fx-background-color: #343634;
+}
+
+
+.slider .axis {
+    -fx-tick-label-fill: white;
+    -fx-text-fill: white;
+}

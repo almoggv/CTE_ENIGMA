@@ -7,21 +7,21 @@
 
 <GridPane fx:id="candidatePane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.main.java.controller.DecodedCandidateController">
    <columnConstraints>
-      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="5.0" />
-      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="100.0" />
-      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="5.0" />
+      <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="NEVER" minWidth="5.0" />
+      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="250.0" minWidth="250.0" />
+      <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="NEVER" minWidth="5.0" />
       <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" />
       <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" />
    </columnConstraints>
    <rowConstraints>
-      <RowConstraints minHeight="5.0" vgrow="SOMETIMES" />
+      <RowConstraints fillHeight="false" minHeight="10.0" vgrow="NEVER" />
       <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="5.0" vgrow="SOMETIMES" />
+      <RowConstraints fillHeight="false" minHeight="10.0" vgrow="NEVER" />
       <RowConstraints minHeight="5.0" vgrow="SOMETIMES" />
       <RowConstraints vgrow="SOMETIMES" />
-      <RowConstraints minHeight="5.0" vgrow="SOMETIMES" />
+      <RowConstraints fillHeight="false" minHeight="10.0" vgrow="NEVER" />
       <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="5.0" vgrow="SOMETIMES" />
+      <RowConstraints fillHeight="false" minHeight="10.0" vgrow="NEVER" />
    </rowConstraints>
    <children>
       <Label fx:id="candidateLabel" text="Candidate" GridPane.columnIndex="1" GridPane.rowIndex="1" />

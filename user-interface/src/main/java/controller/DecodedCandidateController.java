@@ -27,7 +27,8 @@ public class DecodedCandidateController {
 //    }
 
     public void setFoundByAgentIdLabel(String value){
-        agentIdLabel.setText(value);
+        String agentId = value.substring(0,value.length()/2) + System.lineSeparator() + value.substring(value.length()/2,value.length());
+        agentIdLabel.setText(agentId);
     }
     public void setFoundByConfigLabel(MachineState state){
         String machineState = CLIMenu.getMachineState(state, DataService.getInventoryInfoProperty().get());

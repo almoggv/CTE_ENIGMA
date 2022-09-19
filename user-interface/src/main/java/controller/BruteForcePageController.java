@@ -154,6 +154,7 @@ public class BruteForcePageController implements Initializable {
         for (DecryptionDifficultyLevel level : DecryptionDifficultyLevel.values()) {
             difficultyComboBox.getItems().add(level);
         }
+        difficultyComboBox.getSelectionModel().select(0);
         validationSupport.registerValidator(difficultyComboBox, Validator.createEmptyValidator("Selection required"));
     }
 

@@ -1,21 +1,17 @@
 package src.main.java.controller;
 
-import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import main.java.component.MachineHandler;
-import main.java.dto.MachineState;
 import main.java.enums.ReflectorsId;
 import main.java.generictype.MappingPair;
 import src.main.java.service.DataService;
@@ -55,7 +51,7 @@ public class MachinePageController implements Initializable {
             setMachineConfigurationComponentController.addListenerOnClickSetRandomButton(new ChangeListener() {
                 @Override
                 public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-                    setMachineConigRandomlyPressed();
+                    setMachineConfigRandomlyPressed();
                 }
             });
         }
@@ -81,7 +77,7 @@ public class MachinePageController implements Initializable {
         currMachineConfigComponent = currMachineConfigComponentController.getRootGridPane();
     }
 
-    private void setMachineConigRandomlyPressed(){
+    private void setMachineConfigRandomlyPressed(){
         try{
             machineHandler.assembleMachine();
             DataService.getOriginalMachineStateProperty().setValue(machineHandler.getInitialMachineState().get());
@@ -118,6 +114,6 @@ public class MachinePageController implements Initializable {
     }
 
     public void handleRandomSetMachinePressed() {
-        setMachineConigRandomlyPressed();
+        setMachineConfigRandomlyPressed();
     }
 }
