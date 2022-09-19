@@ -190,7 +190,11 @@ public class BruteForcePageController implements Initializable {
     }
 
     public void onEncryptButtonAction(ActionEvent actionEvent) {
-        try {
+        if (!DictionaryManager.getDictionary().containsKey(encryptTextField.getText().toUpperCase())) {
+            parentController.showMessage("Word not in dictionary, please choose another one or click on the dictionary.");
+            return;
+        }
+        else try {
             String result = machineHandler.encrypt(encryptTextField.getText());
             resultTextField.setText(result);
             DataService.getCurrentMachineStateProperty().setValue(machineHandler.getMachineState().get());
@@ -210,6 +214,9 @@ public class BruteForcePageController implements Initializable {
     public void onStartDecryptButtonAction(ActionEvent actionEvent) throws InterruptedException {
         if(resultTextField.getText().isEmpty()){
             parentController.showMessage("Please encrypt first.");
+            return;
+        } else if (!DictionaryManager.getDictionary().containsKey(encryptTextField.getText().toUpperCase())) {
+            parentController.showMessage("Word not in dictionary, please choose another one or click on the dictionary");
             return;
         }
         if(decryptionManager.getIsBruteForceInitiatedProperty().get()){

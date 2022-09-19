@@ -276,6 +276,10 @@ public class EncryptPageController implements Initializable {
     public void onResetMachineStateButtonAction(ActionEvent actionEvent) {
         machineHandler.resetToLastSetState();
         DataService.getCurrentMachineStateProperty().setValue(machineHandler.getMachineState().get());
+        encryptTextField.clear();
+        resultTextField.clear();
+        liveEncryptionInputProperty.setValue("");
+        liveEncryptionOutputProperty.setValue("");
         parentController.showMessage("Reset to last set machine state.");
     }
 }
