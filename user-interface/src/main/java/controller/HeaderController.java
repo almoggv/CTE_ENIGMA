@@ -15,7 +15,6 @@ import javafx.beans.property.SimpleStringProperty;
 
 import lombok.Getter;
 import lombok.Setter;
-import main.java.manager.impl.DecryptionManagerImpl;
 import main.java.service.PropertiesService;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
@@ -146,7 +145,7 @@ public class HeaderController implements Initializable {
         changeTheme(ResourceLocationService.getDarkThemeName());
     }
 
-    public void onLightThemeMenuAction(ActionEvent actionEvent) {
+    public void onGreenThemeMenuAction(ActionEvent actionEvent) {
         changeTheme(ResourceLocationService.getLightThemeName());
     }
 
@@ -163,6 +162,10 @@ public class HeaderController implements Initializable {
         }
         catch(Exception ignore){}
         parentController.loadCssFile(themeString);
+    }
+
+    public void onOriginalThemeMenuAction(ActionEvent actionEvent) {
+        changeTheme(ResourceLocationService.getDefaultThemeName());
     }
 }
 

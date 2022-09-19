@@ -34,7 +34,9 @@ public class ResourceLocationService {
     @Getter private static final String darkThemeName = "Dark Theme";
     @Getter private static final String darkThemeCssPath = "/src/main/resources/css/darkTheme.css";
     @Getter private static final String lightThemeName = "Light Theme";
-    @Getter private static final String lightThemeCssPath = "/src/main/resources/css/lightTheme.css";
+    @Getter private static final String lightThemeCssPath = "/src/main/resources/css/greenTheme.css";
+    @Getter private static final String defaultThemeName = "Default Theme";
+    @Getter private static final String defaultThemeCssPath = "/src/main/resources/css/defaultTheme.css";
     @Getter private static final Map<String,String> cssThemeToFileMap;
     @Getter private static final List<String> imageListForAnimation;
 
@@ -43,6 +45,7 @@ public class ResourceLocationService {
         Map<String,String> tempCssThemeToFileMap = new HashMap<>();
         tempCssThemeToFileMap.put(darkThemeName,darkThemeCssPath);
         tempCssThemeToFileMap.put(lightThemeName,lightThemeCssPath);
+        tempCssThemeToFileMap.put(defaultThemeName,defaultThemeCssPath);
 
         cssThemeToFileMap = Collections.unmodifiableMap(tempCssThemeToFileMap);
 

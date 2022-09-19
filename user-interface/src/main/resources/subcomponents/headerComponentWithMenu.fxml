@@ -61,8 +61,9 @@
         <menus>
           <Menu mnemonicParsing="false" text="Theme">
             <items>
-              <MenuItem fx:id="darkThemeMenu" mnemonicParsing="false" onAction="#onDarkThemeMenuAction" text="Dark Theme" />
-                  <MenuItem fx:id="lightThemeMenu" mnemonicParsing="false" onAction="#onLightThemeMenuAction" text="Light Theme" />
+                    <MenuItem fx:id="darkThemeMenu" mnemonicParsing="false" onAction="#onDarkThemeMenuAction" text="Dark Theme" />
+                  <MenuItem fx:id="greenThemeMenu" mnemonicParsing="false" onAction="#onGreenThemeMenuAction" text="Green Theme" />
+                  <MenuItem fx:id="originalMenu" mnemonicParsing="false" onAction="#onOriginalThemeMenuAction" text="Default Theme" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Animations">

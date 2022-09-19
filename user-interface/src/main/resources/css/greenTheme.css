@@ -1,0 +1,208 @@
+
+
+#headerComponentRootPane {
+    -fx-background-color: #aed9d1;
+}
+
+#rootGridPane{
+    -fx-background-color:  #04604f;
+}
+
+#rootGrid{
+    -fx-background-color:  #04604f;
+}
+
+#headerComponentRootPane .label{
+    -fx-text-fill: #033949;
+    -fx-font-size: 12px;
+    /*-fx-font-weight:;*/
+    font-family: 'Lato', sans-serif;
+}
+
+.label{
+    font-family: Verdana, Geneva, sans-serif;
+    /*font-size: 1px;*/
+    -fx-text-fill: #e1e1e1;
+    -fx-font-weight: bold;
+}
+
+#headerComponentRootPane .choice-box .label {
+    -fx-text-fill: #033949;
+}
+
+#encryptHbox{
+    -fx-background-color:  #04604f;
+}
+#statisticsAnchor{
+    -fx-background-color:  #04604f;
+}
+
+#statisticsGridOfScroll{
+    -fx-background-color:  #04604f;
+}
+#statisticsScroller{
+    -fx-background-color: #adb9b0;
+}
+#statisticsScrollPane{
+    -fx-background-color:  #04604f;
+
+}
+#statisticsAccordion{
+    -fx-background-color:  #04604f;
+}
+
+#statisticsVBox{
+    -fx-background-color:  #04604f;
+}
+
+.pane{
+    -fx-background-color: #04604f;
+}
+.GridPane{
+    -fx-background-color:  #04604f;
+}
+.flow-pane{
+    -fx-background-color:  #04604f;
+}
+
+#bruteForceDecryptionGrid{
+    -fx-background-color:  #04604f;
+
+}
+
+.VBox{
+    -fx-background-color: #04604f;
+
+}
+
+#dictionaryVBox{
+    -fx-background-color: #04604f;
+}
+#dmResultsFlowPane{
+    -fx-background-color: #04604f;
+}
+
+#menuBar{
+    -fx-background-color: #04604f;
+    -fx-border-width: 0 0 3 0;
+}
+#menuBar .label{
+
+    -fx-text-fill: white;
+}
+.menu-item {
+    -fx-background-color: #033949;
+}
+
+
+.list-view{
+    -fx-background-color: #04604f;
+}
+
+.list-view .list-cell:even {
+    -fx-background-color: #045d49;
+    -fx-text-fill: white;
+}
+.list-view .list-cell:odd {
+    -fx-background-color: #0f8c74;
+    -fx-text-fill: white;
+}
+#imageGrid{
+    -fx-background-color: #04604f;
+}
+
+#basicEncryptFlowPane .label{
+    -fx-font-size: 10;
+}
+
+
+#candidatePane{
+    -fx-background-color: #04604f;
+    -fx-border-width: 3 3 3 3;
+}
+#dmResultsFlowPane{
+    -fx-background-color: #04604f;
+}
+#dmResultsScrollPane{
+    -fx-background-color: #04604f;
+}
+#dmResultsGridPane{
+    -fx-background-color: #04604f;
+}
+#BFSplitPane{
+    -fx-background-color: #04604f;
+}
+#BFGridCellResults{
+    -fx-background-color: #04604f;
+}
+#BFencryptionVBox{
+    -fx-background-color: #04604f;
+}
+
+#dmResultsFlowPane{
+    -fx-background-color: #04604f;
+}
+#dmResultsScrollPane{
+    -fx-background-color: #04604f;
+}
+#dmResultsGridPane{
+    -fx-background-color: #04604f;
+}
+#BFSplitPane{
+    -fx-background-color: #04604f;
+}
+#BFGridCellResults{
+    -fx-background-color: #04604f;
+}
+.button{
+    -fx-border-color: #033949;
+    -fx-border-width: 3 3 3 3;
+}
+
+#headerComponentRootPane{
+    -fx-background-color: #c5cec9;
+    -fx-text-fill:  #04604f;
+}
+
+#bodyWrapAnchorPane {
+    -fx-background-color:  #04604f;
+    /*-fx-background-color: #c91697;*/
+}
+
+#candidatePane{
+    -fx-background-color: #aed9d1;
+    -fx-border-color: #033949;
+    -fx-border-width: 3 3 3 3;
+}
+
+#candidatePane .label {
+    -fx-text-fill: black;
+}
+#statisticsAnchor{
+    -fx-background-color:  #04604f;
+}
+
+#statisticsGridOfScroll{
+    -fx-background-color:  #04604f;
+}
+#statisticsScroller{
+    -fx-background-color:  #04604f;
+}
+#statisticsScrollPane{
+    -fx-background-color:  #04604f;
+}
+
+.VBox{
+    -fx-background-color:  #04604f;
+    -fx-text-fill: white;
+}
+
+#dictionaryVBox{
+    -fx-background-color: #04604f;
+    -fx-text-fill: white;
+}
+
+#setMachineImageView{
+    -fx-background-radius: 10;
+    -fx-border-radius: 10%;
+}

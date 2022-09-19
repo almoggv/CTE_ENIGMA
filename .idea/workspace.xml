@@ -13,10 +13,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6467e2d7-ff2a-4abb-a198-685a0fcd06aa" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/user-interface/src/main/resources/css/default.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user-interface/src/main/resources/css/greenTheme.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/BruteForcePageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/BruteForcePageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/MachinePageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/MachinePageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/BruteForcePageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/BruteForcePageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/HeaderController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/HeaderController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/HeaderController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/HeaderController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/service/ResourceLocationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/service/ResourceLocationService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/css/darkTheme.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/css/darkTheme.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/css/lightTheme.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/subcomponents/encryptPageTemplate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/subcomponents/encryptPageTemplate.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/AppController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/HeaderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/HeaderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/service/ResourceLocationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/service/ResourceLocationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/ui/GuiApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/ui/GuiApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/resources/css/darkTheme.css" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/resources/css/darkTheme.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/resources/css/lightTheme.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/encryptPageTemplate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/encryptPageTemplate.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/headerComponentWithMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/headerComponentWithMenu.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +43,7 @@
         <option value="Enum" />
         <option value="Class" />
         <option value="Interface" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -70,13 +84,11 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/jars" />
-    <property name="project.structure.last.edited" value="Artifacts" />
-    <property name="project.structure.proportion" value="0.12974203" />
-    <property name="project.structure.side.proportion" value="0.21902269" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "list.type.of.created.stylesheet": "CSS"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="src.main.java.controller" />
@@ -298,7 +310,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/user-interface/src/main/java/controller/HeaderController.java</url>
-          <line>94</line>
+          <line>93</line>
           <option name="timeStamp" value="641" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">

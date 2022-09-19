@@ -182,7 +182,6 @@ public class AppController/* implements Initializable */{
             bruteForcePageController.clearDecryptionResults();
         }
         changeSceneToStartPicture();
-//        changeSceneToMachine();
     }
 
     public void changeSceneToStartPicture(){
