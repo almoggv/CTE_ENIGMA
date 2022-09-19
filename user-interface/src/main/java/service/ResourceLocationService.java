@@ -3,9 +3,7 @@ package src.main.java.service;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @EqualsAndHashCode
 public class ResourceLocationService {
@@ -28,12 +26,18 @@ public class ResourceLocationService {
     @Getter private static final String enigmaMachineIllustration = "/src/main/resources/images/enigma.jpg";
     @Getter private static final String enigmaMachineIllustration2 = "/src/main/resources/images/enigma2.jpg";
     @Getter private static final String enigmaMachineIllustrationDark = "/src/main/resources/images/darkEnigma.jpg";
+    @Getter private static final String aviadPic = "/src/main/resources/images/aviad.jpg";
+    @Getter private static final String aviadPic2 = "/src/main/resources/images/aviad2.jpg";
+    @Getter private static final String bisliPic = "/src/main/resources/images/bisli.jpg";
+    @Getter private static final String cifliPic = "/src/main/resources/images/cifli.jpg";
 //CSSs
     @Getter private static final String darkThemeName = "Dark Theme";
     @Getter private static final String darkThemeCssPath = "/src/main/resources/css/darkTheme.css";
     @Getter private static final String lightThemeName = "Light Theme";
     @Getter private static final String lightThemeCssPath = "/src/main/resources/css/lightTheme.css";
     @Getter private static final Map<String,String> cssThemeToFileMap;
+    @Getter private static final List<String> imageListForAnimation;
+
 
     static{
         Map<String,String> tempCssThemeToFileMap = new HashMap<>();
@@ -41,6 +45,15 @@ public class ResourceLocationService {
         tempCssThemeToFileMap.put(lightThemeName,lightThemeCssPath);
 
         cssThemeToFileMap = Collections.unmodifiableMap(tempCssThemeToFileMap);
+
+        List<String> tempImageListForAnimation = new ArrayList<>();
+        tempImageListForAnimation.add(enigmaMachineIllustration);
+        tempImageListForAnimation.add(aviadPic);
+        tempImageListForAnimation.add(aviadPic2);
+        tempImageListForAnimation.add(bisliPic);
+        tempImageListForAnimation.add(cifliPic);
+
+        imageListForAnimation = Collections.unmodifiableList(tempImageListForAnimation);
     }
 }
 

@@ -1,5 +1,7 @@
 package src.main.java.controller;
 
+import javafx.animation.*;
+import javafx.application.Platform;
 import javafx.beans.Observable;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ChangeListener;
@@ -18,6 +20,8 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.*;
+import javafx.util.Duration;
 import lombok.Getter;
 import lombok.Setter;
 import main.java.dto.InventoryInfo;
@@ -32,12 +36,9 @@ import src.main.java.service.ResourceLocationService;
 
 import java.awt.*;
 import java.net.URL;
-import java.util.ArrayList;
+import java.util.*;
 import java.util.List;
-import java.util.Objects;
-import java.util.ResourceBundle;
 import java.util.concurrent.atomic.AtomicReference;
-
 
 public class SetMachineConfigController implements Initializable {
 
@@ -80,6 +81,8 @@ public class SetMachineConfigController implements Initializable {
     @FXML private ChoiceBox<?> rotorInitialPosChoice2;
     @FXML private ChoiceBox<?> rotorInitialPosChoice1;
 
+    private double origX;
+    private double origY;
     private ValidationSupport validationSupport = new ValidationSupport();
 
     @Override
@@ -93,6 +96,8 @@ public class SetMachineConfigController implements Initializable {
         setUserChoiceButton.disableProperty().bind(validationSupport.invalidProperty());
 
         setMachineImageView.setImage(new Image(ResourceLocationService.getEnigmaMachineIllustration()));
+        origX = setMachineImageView.getX();
+        origY = setMachineImageView.getY();
     }
 
     public void setMachineDetails(InventoryInfo inventoryInfo){
@@ -226,11 +231,23 @@ public class SetMachineConfigController implements Initializable {
         }
 
         parentController.handleManuelSetMachinePressed(reflectorId, rotorIdsList, rotorsStartingPositions, plugMapping);
+        Platform.runLater(() -> {
+            if (DataService.getIsAnimationOn().get()) {
+                rotatePicture();
+            }
+        });
     }
 
     @FXML
     void onSetRandomChoiceButtonAction(ActionEvent event) {
         parentController.handleRandomSetMachinePressed();
+        Platform.runLater(() -> {
+            if (DataService.getIsAnimationOn().get()) {
+//                fadeAndChangePic();
+                movePic();
+//                fadeAndChangePic();
+            }
+        });
     }
 
     public void addListenerOnClickSetRandomButton(ChangeListener listener) {
@@ -273,4 +290,55 @@ public class SetMachineConfigController implements Initializable {
         plugBoardConnectionsLeft.getItems().clear();
         plugBoardConnectionsRight.getItems().clear();
     }
+
+    private void rotatePicture() {
+        RotateTransition rt = new RotateTransition(Duration.millis(3000), setMachineImageView);
+        rt.setByAngle(360);
+        rt.setCycleCount(1);
+        rt.setInterpolator(Interpolator.LINEAR);
+        rt.play();
+    }
+
+    private void fadeAndChangePic(){
+        Platform.runLater(() -> {
+            if (DataService.getIsAnimationOn().get()) {
+                FadeTransition fadeTransitionDown = new FadeTransition(Duration.seconds(0.3), setMachineImageView);
+                fadeTransitionDown.setFromValue(1.0);
+                fadeTransitionDown.setToValue(0.0);
+                fadeTransitionDown.play();
+
+                Random ran = new Random();
+                int randomIndex = ran.nextInt(ResourceLocationService.getImageListForAnimation().size());
+                setMachineImageView.setImage(new Image(ResourceLocationService.getImageListForAnimation().get(randomIndex)));
+
+
+                FadeTransition fadeTransitionUp = new FadeTransition(Duration.seconds(0.3), setMachineImageView);
+                fadeTransitionUp.setFromValue(0.0);
+                fadeTransitionUp.setToValue(1.0);
+                fadeTransitionUp.play();
+            }
+        });
+    }
+
+    public void movePic() {
+
+        Random ran = new Random();
+        int randomIndex = ran.nextInt(ResourceLocationService.getImageListForAnimation().size());
+        setMachineImageView.setImage(new Image(ResourceLocationService.getImageListForAnimation().get(randomIndex)));
+
+        Path path = new Path();
+        path.getElements().addAll(new MoveTo(50, 70), new HLineTo(250));
+        path.getElements().addAll(new MoveTo(origX, 70), new HLineTo(50));
+
+        PathTransition pathTransition = new PathTransition();
+        pathTransition.setDuration(Duration.millis(2000));
+        pathTransition.setNode(setMachineImageView);
+        pathTransition.setPath(path);
+        pathTransition.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+        pathTransition.setCycleCount(1);
+        pathTransition.setAutoReverse(true);
+
+        pathTransition.play();
+    }
+
 }
