@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane fx:id="rootGridPane" minHeight="125.0" minWidth="330.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.main.java.controller.CurrMachineConfigController">
+   <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="94.33331298828125" minWidth="10.0" prefWidth="14.333343505859375" />
+      <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="94.6666259765625" minWidth="0.0" prefWidth="13.33331298828125" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints maxHeight="43.0" minHeight="0.0" prefHeight="4.66668701171875" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="98.0" minHeight="10.0" prefHeight="21.666656494140625" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="99.33334350585938" minHeight="10.0" prefHeight="46.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="26.666656494140625" minHeight="10.0" prefHeight="17.0" vgrow="SOMETIMES" />
+   </rowConstraints>
+   <children>
+      <Label fx:id="machineConfigurationLabel" alignment="CENTER" contentDisplay="CENTER" text="Current machine configuration" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
+      <GridPane alignment="CENTER" hgap="5.0" prefWidth="306.0" vgap="5.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="NEVER">
+         <columnConstraints>
+            <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="-Infinity" />
+            <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="-Infinity" />
+            <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="-Infinity" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="60.33331298828125" minHeight="10.0" prefHeight="16.666656494140625" vgrow="SOMETIMES" />
+            <RowConstraints fillHeight="false" maxHeight="68.33334350585938" minHeight="10.0" prefHeight="22.333343505859375" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Label alignment="CENTER" text="Reflector" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <Label alignment="CENTER" contentDisplay="CENTER" text="Rotors" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <Label contentDisplay="CENTER" text="Plugboard" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <HBox fx:id="rotorsHbox" alignment="TOP_CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <HBox fx:id="plugBoardHbox" alignment="TOP_CENTER" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <HBox fx:id="reflectorHbox" alignment="TOP_CENTER" GridPane.rowIndex="1" />
+            <Label fx:id="machineNotConfiguredLabel" text="Not configured yet" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+         </children>
+      </GridPane>
+   </children>
+</GridPane>

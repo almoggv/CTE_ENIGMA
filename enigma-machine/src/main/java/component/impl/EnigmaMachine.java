@@ -3,13 +3,15 @@ package main.java.component.impl;
 import main.java.component.*;
 import main.java.dto.MachineState;
 import main.java.generictype.MappingPair;
-import main.java.handler.FileConfigurationHandler;
-import main.java.handler.PropertiesService;
+import main.java.service.InventoryService;
+import main.java.service.XmlFileLoader;
+import main.java.service.PropertiesService;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
 import java.io.IOException;
 import java.util.*;
+import java.util.function.Predicate;
 
 public class EnigmaMachine implements EncryptionMachine {
     private static final Logger log = Logger.getLogger(EnigmaMachine.class);
@@ -21,7 +23,7 @@ public class EnigmaMachine implements EncryptionMachine {
     static {
         try {
             Properties p = new Properties();
-            p.load(FileConfigurationHandler.class.getResourceAsStream(PropertiesService.getLog4jPropertiesResourcePath()));
+            p.load(XmlFileLoader.class.getResourceAsStream(PropertiesService.getLog4jPropertiesResourcePath()));
             PropertyConfigurator.configure(p);      //Dont forget here
             log.debug("Logger Instantiated for : " + EnigmaMachine.class.getSimpleName());
         } catch (IOException e) {
@@ -168,6 +170,8 @@ public class EnigmaMachine implements EncryptionMachine {
             }
             this.setRotorsStartingPosition(rotorsHeadsInitialValues);
         }
+        Predicate<Reflector> idReflectorPredicate = (reflector) -> reflector.getId() == machineState.getReflectorId();
+        this.reflector = InventoryService.getReflectorsInventory().stream().filter(idReflectorPredicate).findFirst().orElse(null);
     }
 
     @Override
@@ -176,4 +180,17 @@ public class EnigmaMachine implements EncryptionMachine {
         return this.ioWheel.getABC();
     }
 
+    @Override
+    public EnigmaMachine getDeepClone() {
+        EnigmaMachine clonedEnigmaMachine = new EnigmaMachine();
+        PlugBoard clonedPlugBoard = this.plugBoard.getDeepClone();
+        List<Rotor> clonedRotors = new ArrayList<>();
+        for (Rotor rotor: this.rotors ) {
+            clonedRotors.add(rotor.getDeepClone());
+        }
+        IOWheel clonedIoWheel = this.ioWheel.getDeepClone();
+        Reflector clonedReflector = this.reflector.getDeepClone();
+        clonedEnigmaMachine.buildMachine(clonedPlugBoard,clonedReflector,clonedRotors,clonedIoWheel);
+        return clonedEnigmaMachine;
+    }
 }

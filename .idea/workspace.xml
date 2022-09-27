@@ -2,30 +2,17 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="command-line-interface-ui:jar" />
+      <artifact name="decryption-manager:jar" />
       <artifact name="encryption-machine-handler:jar" />
       <artifact name="enigma-machine:jar" />
+      <artifact name="user-interface:jar" />
     </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6467e2d7-ff2a-4abb-a198-685a0fcd06aa" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/appWithMachineConfController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/HeaderController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/controller/HeaderController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/handler/PropertiesService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/handler/PropertiesService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/java/ui/GuiApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/java/ui/GuiApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/appWithMachineConf.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/appWithMachineConf.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/subcomponents/headerGrid.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/user-interface/src/main/resources/subcomponents/headerGrid.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/AppController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/controller/HeaderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/controller/HeaderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/handler/PropertiesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/handler/PropertiesService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-interface/src/main/java/ui/GuiApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/java/ui/GuiApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-interface/src/main/resources/appWithMachineConf.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/resources/appWithMachineConf.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/headerGrid.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/user-interface/src/main/resources/subcomponents/headerGrid.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="6467e2d7-ff2a-4abb-a198-685a0fcd06aa" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,9 +21,11 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Kotlin Class" />
         <option value="Enum" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -77,39 +66,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="Downloaded.Files.Path.Enabled" value="false" />
-    <property name="Repository.Attach.Annotations" value="false" />
-    <property name="Repository.Attach.JavaDocs" value="false" />
-    <property name="Repository.Attach.Sources" value="false" />
-  </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="src.main.java.controller" />
       <recent name="main.java.component" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema-Ex2" />
+      <recent name="C:\Dev\GitProjects\CTE_JAVA_ENIGMA\decryption-manager\src\main\resources" />
       <recent name="C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\command-line-interface-ui\src\main\resources\scenebuilder" />
       <recent name="C:\Dev\GitProjects\CTE_JAVA_ENIGMA\enigma-machine\src\main\resources" />
       <recent name="C:\Dev\GitProjects\CTE_JAVA_ENIGMA\enigma-machine\src\main\resources\machine-inventory-schema" />
-      <recent name="C:\Dev\GitProjects\CTE_JAVA_ENIGMA\encryption-machine-handler\src\main\resources\machine-inventory-schema" />
-      <recent name="C:\Dev\GitProjects\CTE_JAVA_ENIGMA\encryption-machine-handler\src\main\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\user-interface\src\main\resources\subcomponents" />
-      <recent name="C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\command-line-interface-ui\src\main\resources\subcomponents" />
+      <recent name="C:\Dev\GitProjects\CTE_JAVA_ENIGMA\user-interface\src\main\resources\images" />
       <recent name="C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\command-line-interface-ui\src\main\resources\" />
+      <recent name="C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\command-line-interface-ui\src\main\resources\subcomponents" />
       <recent name="C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\command-line-interface-ui\src\main\java\ui\subcomponents\" />
       <recent name="C:\Users\Eliya\Documents\java\CTE\CTE_ENIGMA\command-line-interface-ui\src\main\java\ui" />
     </key>
     <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="src.main.java.component" />
       <recent name="main.component" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="src.main.java.service" />
+      <recent name="src.main.java.adapter" />
+      <recent name="main.java.manager" />
+      <recent name="main.java.service" />
       <recent name="main.java.enums" />
-      <recent name="src.main.java.ui" />
-      <recent name="main.java.generictype" />
-      <recent name="main.java.dto" />
-      <recent name="main.java.handler" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="src.main.java.handler" />
@@ -117,26 +102,13 @@
       <recent name="test.java.component" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.src.main.java.ui.GuiApplication">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="src.main.java.Main" />
-      <module name="user-interface" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="src.main.java.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="src.main.java.ui.GuiApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.GuiApplication">
+    <configuration name="GuiApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="src.main.java.ui.GuiApplication" />
       <module name="user-interface" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="src.main.java.controller.*" />
+          <option name="PATTERN" value="src.main.java.ui.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -144,49 +116,65 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestSanityMachineHandlerImpl.testSanitySmall" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="encryption-machine-handler" />
+    <configuration name="PausePlayThreadTest.pauseAndResumeThread" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="decryption-manager" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="test.java.component.*" />
+          <option name="PATTERN" value="test.java.pausePlayThreadTesting.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="test.java.component" />
-      <option name="MAIN_CLASS_NAME" value="test.java.component.TestSanityMachineHandlerImpl" />
-      <option name="METHOD_NAME" value="testSanitySmall" />
+      <option name="PACKAGE_NAME" value="test.java.pausePlayThreadTesting" />
+      <option name="MAIN_CLASS_NAME" value="test.java.pausePlayThreadTesting.PausePlayThreadTest" />
+      <option name="METHOD_NAME" value="pauseAndResumeThread" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestSerializationHandlerImpl.testDeserialization" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="encryption-machine-handler" />
+    <configuration name="TestDecryptionManager.testEasyBruteEx2Basic" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="decryption-manager" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="test.java.component.*" />
+          <option name="PATTERN" value="test.java.decryptionManager.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="test.java.component" />
-      <option name="MAIN_CLASS_NAME" value="test.java.component.TestSerializationHandlerImpl" />
-      <option name="METHOD_NAME" value="testDeserialization" />
+      <option name="PACKAGE_NAME" value="test.java.decryptionManager" />
+      <option name="MAIN_CLASS_NAME" value="test.java.decryptionManager.TestDecryptionManager" />
+      <option name="METHOD_NAME" value="testEasyBruteEx2Basic" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestSerializationHandlerImpl.testSerialization" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="encryption-machine-handler" />
+    <configuration name="TestDecryptionManager.testEasyBruteSmallABC" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="decryption-manager" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="test.java.component.*" />
+          <option name="PATTERN" value="test.java.decryptionManager.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="test.java.component" />
-      <option name="MAIN_CLASS_NAME" value="test.java.component.TestSerializationHandlerImpl" />
-      <option name="METHOD_NAME" value="testSerialization" />
+      <option name="PACKAGE_NAME" value="test.java.decryptionManager" />
+      <option name="MAIN_CLASS_NAME" value="test.java.decryptionManager.TestDecryptionManager" />
+      <option name="METHOD_NAME" value="testEasyBruteSmallABC" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestDecryptionManager.testImpossibleBruteSmallABC" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="decryption-manager" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.java.decryptionManager.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test.java.decryptionManager" />
+      <option name="MAIN_CLASS_NAME" value="test.java.decryptionManager.TestDecryptionManager" />
+      <option name="METHOD_NAME" value="testImpossibleBruteSmallABC" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -207,11 +195,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.src.main.java.ui.GuiApplication" />
-        <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.TestSerializationHandlerImpl.testDeserialization" />
-        <item itemvalue="JUnit.TestSerializationHandlerImpl.testSerialization" />
-        <item itemvalue="JUnit.TestSanityMachineHandlerImpl.testSanitySmall" />
+        <item itemvalue="Application.GuiApplication" />
+        <item itemvalue="JUnit.TestDecryptionManager.testEasyBruteSmallABC" />
+        <item itemvalue="JUnit.TestDecryptionManager.testEasyBruteEx2Basic" />
+        <item itemvalue="JUnit.PausePlayThreadTest.pauseAndResumeThread" />
+        <item itemvalue="JUnit.TestDecryptionManager.testImpossibleBruteSmallABC" />
       </list>
     </recent_temporary>
   </component>
@@ -238,6 +226,10 @@
       <workItem from="1660993805240" duration="5735000" />
       <workItem from="1661345888124" duration="2859000" />
       <workItem from="1661351601734" duration="3659000" />
+      <workItem from="1662386092444" duration="18599000" />
+      <workItem from="1662462894733" duration="4553000" />
+      <workItem from="1663162208758" duration="4809000" />
+      <workItem from="1663325739692" duration="58381000" />
     </task>
     <servers />
   </component>
@@ -260,23 +252,8 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/PlugBoardImpl.java</url>
-          <line>47</line>
+          <line>45</line>
           <option name="timeStamp" value="71" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/encryption-machine-handler/src/test/java/component/TestSanityMachineHandlerImpl.java</url>
-          <line>65</line>
-          <option name="timeStamp" value="113" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/encryption-machine-handler/src/test/java/component/TestSanityMachineHandlerImpl.java</url>
-          <line>61</line>
-          <option name="timeStamp" value="126" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/encryption-machine-handler/src/test/java/component/TestSerializationHandlerImpl.java</url>
-          <line>42</line>
-          <option name="timeStamp" value="210" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/encryption-machine-handler/src/test/java/component/TestSerializationHandlerImpl.java</url>
@@ -285,54 +262,68 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/enigma-machine/src/main/java/component/impl/RotorImpl.java</url>
-          <line>124</line>
+          <line>122</line>
           <option name="timeStamp" value="225" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/user-interface/src/main/java/controller/SetMachineConfigurationController.java</url>
-          <line>52</line>
-          <option name="timeStamp" value="239" />
+          <url>jar://$PROJECT_DIR$/../../../../../../Program Files/Java/jdk1.8.0_341/javafx-src.zip!/javafx/beans/property/ObjectPropertyBase.java</url>
+          <line>142</line>
+          <option name="timeStamp" value="412" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/user-interface/src/main/java/ui/GuiApplication.java</url>
-          <line>23</line>
-          <option name="timeStamp" value="241" />
+          <url>file://$PROJECT_DIR$/encryption-machine-handler/src/test/java/component/TestSanityMachineHandlerImpl.java</url>
+          <line>124</line>
+          <option name="timeStamp" value="436" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/user-interface/src/main/java/ui/GuiApplication.java</url>
-          <line>22</line>
-          <option name="timeStamp" value="242" />
+          <url>file://$PROJECT_DIR$/encryption-machine-handler/src/test/java/component/TestSanityMachineHandlerImpl.java</url>
+          <line>125</line>
+          <option name="timeStamp" value="437" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/user-interface/src/main/java/controller/appWithMachineConfController.java</url>
-          <line>31</line>
-          <option name="timeStamp" value="243" />
+          <url>file://$PROJECT_DIR$/decryption-manager/src/test/java/TestMathService.java</url>
+          <line>55</line>
+          <option name="timeStamp" value="579" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/user-interface/src/main/java/controller/MachineConfigurationController.java</url>
-          <line>24</line>
-          <properties class="src.main.java.controller.MachineConfigurationController" method="initialize">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="240" />
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/user-interface/src/main/java/controller/EncryptPageController.java</url>
+          <line>267</line>
+          <option name="timeStamp" value="706" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/user-interface/src/main/java/controller/MachinePageController.java</url>
+          <line>119</line>
+          <option name="timeStamp" value="716" />
+        </line-breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.ClassCastException" package="java.lang" />
+          <option name="timeStamp" value="359" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.ArithmeticException" package="java.lang" />
+          <option name="timeStamp" value="463" />
+        </breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="main.java.component.impl.PlugBoardImpl" memberName="plugBoardMapping" />
         <PinnedItemInfo parentTag="main.java.component.impl.ReflectorImpl" memberName="id" />
+        <PinnedItemInfo parentTag="javafx.beans.property.SimpleBooleanProperty" memberName="listener" />
+        <PinnedItemInfo parentTag="main.java.component.impl.EnigmaMachine" memberName="plugBoard" />
+        <PinnedItemInfo parentTag="javafx.beans.property.SimpleBooleanProperty" memberName="value" />
         <PinnedItemInfo parentTag="main.resources.generated.CTEReflectors" memberName="cteReflector" />
         <PinnedItemInfo parentTag="main.java.component.impl.MachineHandlerImpl" memberName="reflectorsInventory" />
         <PinnedItemInfo parentTag="java.lang.String" memberName="value" />
         <PinnedItemInfo parentTag="main.java.component.impl.EnigmaMachine" memberName="rotors" />
+        <PinnedItemInfo parentTag="java.lang.NullPointerException" memberName="stackTrace" />
         <PinnedItemInfo parentTag="java.util.stream.SortedOps$OfRef" memberName="sourceCloseAction" />
       </pinned-members>
     </pin-to-top-manager>
     <watches-manager>
       <configuration name="JUnit">
-        <watch expression="((EnigmaMachine)((MachineHandlerImpl)((TestSanityMachineHandlerImpl)this).machineHandler).encryptionMachine).rotors" language="JAVA" custom="main.java.component.impl.MachineHandlerImpl,main.java.component.impl.EnigmaMachine,test.java.component.TestSanityMachineHandlerImpl" />
+        <watch expression="((EnigmaMachine)((MachineHandlerImpl)machineHandler).encryptionMachine).plugBoard" custom="main.java.component.impl.MachineHandlerImpl,main.java.component.impl.EnigmaMachine" />
+        <watch expression="this" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>

@@ -1,0 +1,16 @@
+# Compiled class file
+*.class
+
+# Log file
+*.log
+*.log.[0-9]
+*.log.[0-9][0-9]
+*.log.[0-9][0-9][0-9]
+
+
+*.orig
+
+workspace.xml
+.idea/workspace.xml
+
+out/

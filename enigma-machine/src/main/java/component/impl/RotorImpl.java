@@ -4,16 +4,14 @@ import lombok.Getter;
 import main.java.component.Rotor;
 import main.java.generictype.MappingPair;
 import main.java.generictype.MappingPairListUtils;
-import main.java.handler.FileConfigurationHandler;
-import main.java.handler.PropertiesService;
+import main.java.service.XmlFileLoader;
+import main.java.service.PropertiesService;
 import main.resources.generated.CTEPositioning;
 import main.resources.generated.CTERotor;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -38,7 +36,7 @@ public class RotorImpl implements Rotor {
     static {
         try {
             Properties p = new Properties();
-            p.load(FileConfigurationHandler.class.getResourceAsStream(PropertiesService.getLog4jPropertiesResourcePath()));
+            p.load(XmlFileLoader.class.getResourceAsStream(PropertiesService.getLog4jPropertiesResourcePath()));
             PropertyConfigurator.configure(p);      //Dont forget here
             log.debug("Logger Instantiated for : " + RotorImpl.class.getSimpleName());
         } catch (IOException e) {

@@ -2,14 +2,12 @@ package main.java.component.impl;
 
 import main.java.component.MachineHandler;
 import main.java.component.SerializationHandler;
-import main.java.handler.FileConfigurationHandler;
-import main.java.handler.PropertiesService;
+import main.java.service.XmlFileLoader;
+import main.java.service.PropertiesService;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
-import sun.misc.ClassLoaderUtil;
 
 import java.io.*;
-import java.net.URL;
 import java.nio.file.Paths;
 import java.util.Properties;
 
@@ -20,7 +18,7 @@ public class SerializationHandlerImpl implements SerializationHandler {
     static {
         try {
             Properties p = new Properties();
-            p.load(FileConfigurationHandler.class.getResourceAsStream(PropertiesService.getLog4jPropertiesResourcePath()));
+            p.load(XmlFileLoader.class.getResourceAsStream(PropertiesService.getLog4jPropertiesResourcePath()));
             PropertyConfigurator.configure(p);      //Dont forget here
             log.debug("Logger Instantiated for : " + SerializationHandlerImpl.class.getSimpleName());
         } catch (IOException e) {

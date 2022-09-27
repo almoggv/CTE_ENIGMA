@@ -41,6 +41,7 @@ public interface MachineHandler extends Serializable {
                                         List<MappingPair<String,String>> plugMapping);
 
     public Optional<MachineState> getMachineState();
+    public void setMachineState(MachineState machineState);
     public Optional<MachineState> getInitialMachineState();
 
     public Optional<InventoryInfo> getInventoryInfo();
@@ -53,8 +54,11 @@ public interface MachineHandler extends Serializable {
      * @return encrypted message
      */
     public String encrypt(String input) throws IOException;
+    public String encryptWithoutHistory(String input) throws IOException;
 
     public Map<MachineState, List<EncryptionInfoHistory>> getMachineStatisticsHistory();
 
     public Optional<String> verifyInputInAbcAndFix(String input);
+
+    public EncryptionMachine getEncryptionMachineClone();
  }

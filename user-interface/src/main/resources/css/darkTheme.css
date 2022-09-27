@@ -1,0 +1,198 @@
+
+
+#headerComponentRootPane {
+    -fx-background-color: #343634;
+}
+
+#rootGridPane{
+    -fx-background-color: #343634;
+}
+
+#rootGrid{
+    -fx-background-color: #343634;
+}
+
+#headerComponentRootPane .label{
+    -fx-text-fill: #e1e1e1;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    font-family: Verdana, Geneva, sans-serif;
+}
+
+.label{
+    font-family: Verdana, Geneva, sans-serif;
+    /*font-size: 1px;*/
+    -fx-text-fill: #e1e1e1;
+    -fx-font-weight: bold;
+}
+
+#headerComponentRootPane .choice-box .label {
+    -fx-text-fill: #000000;
+}
+.menu-item{
+    -fx-text-fill: #000000;
+}
+.choice-box .label {
+    -fx-text-fill: #000000;
+}
+.notify .label{
+    -fx-text-fill: white;
+}
+
+.scroll-pane{
+    -fx-background-color: #545456;
+}
+
+#encryptHbox{
+    -fx-background-color: #343634;
+}
+#statisticsAnchor{
+    -fx-background-color: #343634;
+}
+
+#statisticsGridOfScroll{
+    -fx-background-color: #343634;
+}
+#statisticsScroller{
+    -fx-background-color: #343634;
+}
+#statisticsScrollPane{
+    -fx-background-color: #343634;
+
+}
+#statisticsAccordion{
+    -fx-background-color: #343634;
+}
+
+#statisticsVBox{
+    -fx-background-color: #343634;
+}
+
+.list-view{
+    -fx-background-color: #545456;
+}
+
+.list-view .list-cell:even {
+    -fx-background-color: #5b5b5b;
+    -fx-text-fill: white;
+}
+.list-view .list-cell:odd {
+    -fx-background-color: #414040;
+    -fx-text-fill: white;
+}
+#dictionaryList  {
+    -fx-background-color: #343634;
+    -fx-text-fill: white;
+}
+#dictionaryList .list-cell:odd {
+    -fx-background-color: #414040;
+    -fx-text-fill: white;
+}
+
+.pane{
+    -fx-background-color: #414040;
+    -fx-text-fill: white;
+}
+.GridPane{
+    -fx-background-color: #414040;
+    -fx-text-fill: white;
+}
+.flow-pane{
+    -fx-background-color: #414040;
+    -fx-text-fill: white;
+}
+
+#bruteForceDecryptionGrid{
+    -fx-background-color: #343634;
+    -fx-text-fill: white;
+}
+
+.VBox{
+    -fx-background-color: #343634;
+    -fx-text-fill: white;
+}
+
+#dictionaryVBox{
+    -fx-background-color: #343634;
+    -fx-text-fill: white;
+}
+#dmResultsFlowPane{
+    -fx-background-color: #343634;
+    -fx-text-fill: white;
+}
+
+#menuBar{
+    -fx-background-color: #343634;
+    -fx-text-fill: white;
+    -fx-border-color: white;
+    -fx-border-width: 0 0 3 0;
+}
+
+.menu-item{
+    -fx-background-color: #343634;
+    -fx-text-fill: white;
+}
+
+#imageGrid{
+    -fx-background-color: #515451;
+}
+
+#basicEncryptFlowPane .label{
+    -fx-font-size: 10;
+}
+/*todo - fix statistics*/
+
+#candidatePane{
+    -fx-background-color: #515451;
+    -fx-border-color: white;
+    -fx-border-width: 3 3 3 3;
+}
+#dmResultsFlowPane{
+    -fx-background-color: #343634;
+}
+#dmResultsScrollPane{
+    -fx-background-color: #343634;
+}
+#dmResultsGridPane{
+    -fx-background-color: #343634;
+}
+#BFSplitPane{
+    -fx-background-color: #343634;
+}
+#BFGridCellResults{
+    -fx-background-color: #343634;
+}
+#BFencryptionVBox{
+    -fx-background-color: #343634;
+}
+
+
+.slider .axis {
+    -fx-tick-label-fill: white;
+    -fx-text-fill: white;
+}
+
+.button{
+    /*-fx-border-color: #0366b6;*/
+    /*-fx-background-color: rgba(168, 205, 243, 0.98);*/
+    /*-fx-border-width: 2 2 2 2;*/
+
+    /*-fx-border-radius: 5;*/
+    /*-fx-background-color:*/
+    /*        linear-gradient(#686868 0%, #232723 25%, #373837 75%, #757575 100%),*/
+    /*        linear-gradient(#020b02, #3a3a3a),*/
+    /*        linear-gradient(#9d9e9d 0%, #6b6a6b 20%, #343534 80%, #242424 100%),*/
+    /*        linear-gradient(#8a8a8a 0%, #6b6a6b 20%, #343534 80%, #262626 100%),*/
+    /*        linear-gradient(#777777 0%, #606060 50%, #505250 51%, #2a2b2a 100%);*/
+    -fx-background-insets: 0,1,4,5,6;
+    -fx-background-radius: 9,8,5,4,3;
+    -fx-font-family: "Helvetica";
+
+    -fx-font-weight: bold;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(255,255,255,0.2) , 1, 0.0 , 0 , 1);
+}
+
+/*#outputKeyboardFlowPane .button{*/
+/*    -fx-background-color: #E7E7E7;*/
+/*}*/
