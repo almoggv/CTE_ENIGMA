@@ -4,7 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/decryption-manager/decryption-manager.iml" filepath="$PROJECT_DIR$/decryption-manager/decryption-manager.iml" />
       <module fileurl="file://$PROJECT_DIR$/encryption-machine-handler/encryption-machine-handler.iml" filepath="$PROJECT_DIR$/encryption-machine-handler/encryption-machine-handler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/enigma-battlefield-server/enigma-battlefield-server.iml" filepath="$PROJECT_DIR$/enigma-battlefield-server/enigma-battlefield-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/enigma-machine/enigma-machine.iml" filepath="$PROJECT_DIR$/enigma-machine/enigma-machine.iml" />
+      <module fileurl="file://$PROJECT_DIR$/uboat-client/uboat-client.iml" filepath="$PROJECT_DIR$/uboat-client/uboat-client.iml" />
       <module fileurl="file://$PROJECT_DIR$/user-interface/user-interface.iml" filepath="$PROJECT_DIR$/user-interface/user-interface.iml" />
     </modules>
   </component>
