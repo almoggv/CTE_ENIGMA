@@ -18,8 +18,4 @@
             <url-pattern>/hello</url-pattern>
         </servlet-mapping>
              -->
-<!--        <servlet-mapping>-->
-<!--                <servlet-name>VersionServlet</servlet-name>-->
-<!--                <url-pattern>/version</url-pattern>-->
-<!--        </servlet-mapping>-->
 </web-app>
