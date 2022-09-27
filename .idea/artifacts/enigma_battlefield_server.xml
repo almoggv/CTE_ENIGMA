@@ -8,6 +8,7 @@
           <element id="module-output" name="encryption-machine-handler" />
           <element id="module-output" name="enigma-machine" />
           <element id="module-output" name="decryption-manager" />
+          <element id="module-output" name="common-server-logic" />
         </element>
         <element id="directory" name="lib">
           <element id="file-copy" path="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.20/lombok-1.18.20.jar" />
