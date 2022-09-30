@@ -31,6 +31,7 @@ public interface MachineHandler extends Serializable {
      * @return
      */
     public void assembleMachine() throws Exception;
+    public void assembleMachine(MachineState machineState) throws Exception;
 
     public void assembleMachine(ReflectorsId reflectorId, List<Integer> rotorIds,
                                 String rotorsStartingPositions,

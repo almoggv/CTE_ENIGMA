@@ -20,11 +20,17 @@ public class MachineInventoryDetails extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try{
             MachineHandler machineHandler = (MachineHandler) this.getServletContext().getAttribute(PropertiesService.getMachineHandlerAttributeName());
-            Optional<InventoryInfo> inventoryInfo = machineHandler.getInventoryInfo();
-            if(inventoryInfo.isPresent()){
-                Gson gson = new Gson();
-                resp.getWriter().print(gson.toJson(inventoryInfo.get()));
-                resp.setStatus(200);
+            if(machineHandler == null){
+                resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                resp.getWriter().print("Please upload a schema file first. (/upload-machine-file)");
+            }
+            else{
+                Optional<InventoryInfo> inventoryInfo = machineHandler.getInventoryInfo();
+                if(inventoryInfo.isPresent()){
+                    Gson gson = new Gson();
+                    resp.getWriter().print(gson.toJson(inventoryInfo.get()));
+                    resp.setStatus(200);
+                }
             }
         }
         catch (Exception ignore){

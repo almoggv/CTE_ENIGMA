@@ -15,9 +15,15 @@ public class AssembleMachineRandomly extends CurrMachineConfiguration {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try{
             MachineHandler machineHandler = (MachineHandler) this.getServletContext().getAttribute(PropertiesService.getMachineHandlerAttributeName());
-            machineHandler.assembleMachine();
-            resp.setStatus(200);
-            resp.getWriter().print("Machine assembled");
+            if(machineHandler == null){
+                resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                resp.getWriter().print("Please upload a schema file first. (/upload-machine-file)");
+            }
+            else {
+                machineHandler.assembleMachine();
+                resp.setStatus(200);
+                resp.getWriter().print("Machine assembled");
+            }
         } catch (Exception e) {
             resp.setStatus(500);
             resp.getWriter().print(e.getMessage());

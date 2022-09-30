@@ -20,11 +20,17 @@ public class CurrMachineConfiguration extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try{
             MachineHandler machineHandler = (MachineHandler) this.getServletContext().getAttribute(PropertiesService.getMachineHandlerAttributeName());
-            Optional<MachineState> machineState = machineHandler.getMachineState();
-            if(machineState.isPresent()){
-                Gson gson = new Gson();
-                resp.getWriter().print(gson.toJson(machineState.get()));
-                resp.setStatus(200);
+            if(machineHandler == null){
+                resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                resp.getWriter().print("Please upload a schema file first. (/upload-machine-file)");
+            }
+            else {
+                Optional<MachineState> machineState = machineHandler.getMachineState();
+                if (machineState.isPresent()) {
+                    Gson gson = new Gson();
+                    resp.getWriter().print(gson.toJson(machineState.get()));
+                    resp.setStatus(200);
+                }
             }
         }
         catch (Exception ignore){

@@ -102,6 +102,22 @@ public class MachineHandlerImpl implements MachineHandler {
 
     }
 
+    @Override
+    public void assembleMachine(MachineState machineState) throws Exception {
+        ReflectorsId reflectorId = machineState.getReflectorId();
+        List<Integer> rotorIds = machineState.getRotorIds();
+        List<String> rotorsStartingPositions = machineState.getRotorsHeadsInitialValues();
+        List<MappingPair<String, String>> plugMapping = machineState.getPlugMapping();
+
+        String rotorStartingPosString = "";
+        for (String position : rotorsStartingPositions ) {
+            rotorStartingPosString = rotorStartingPosString + position;
+        }
+
+        assembleMachineParts(reflectorId, rotorIds);
+        setStartingMachineState(rotorStartingPosString, plugMapping);
+    }
+
     private List<MappingPair<String,String>> generateRandomPlugboardConnections(String ABC) {
         Random random = new Random();
         List<String> plugsLeft = new ArrayList<>();
@@ -162,6 +178,7 @@ public class MachineHandlerImpl implements MachineHandler {
         setStartingMachineState(rotorsStartingPositions, plugMapping);
     }
 
+
     @Override
     public void assembleMachineParts(ReflectorsId reflectorId, List<Integer> rotorIds) throws Exception {
         Predicate<Reflector> idReflectorPredicate = (reflector) -> reflector.getId() == reflectorId;
@@ -210,6 +227,7 @@ public class MachineHandlerImpl implements MachineHandler {
         addToHistory(initialMachineState);
         log.info("Machine Handler - initial state of machine state set");
     }
+
 
     @Override
     public Optional<MachineState> getMachineState() {
