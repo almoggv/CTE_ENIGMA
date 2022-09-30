@@ -22,7 +22,7 @@ public class AssembleMachineRandomly extends CurrMachineConfiguration {
             else {
                 machineHandler.assembleMachine();
                 resp.setStatus(200);
-                resp.getWriter().print("Machine assembled");
+                resp.getWriter().print("Machine assembled successfully");
             }
         } catch (Exception e) {
             resp.setStatus(500);

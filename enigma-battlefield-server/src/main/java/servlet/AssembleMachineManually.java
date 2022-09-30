@@ -30,12 +30,11 @@ public class AssembleMachineManually extends HttpServlet {
             resp.getWriter().print("Must enter a legal state in json format.");
             return;
         }
-        if(!req.getContentType().equals(PropertiesService.getJsonHttpContentType())){
+        if(!req.getHeader(PropertiesService.getHttpHeaderContentType()).equals(PropertiesService.getJsonHttpContentType())){
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             resp.getWriter().print("Expecting json content type");
             return;
         }
-
 
         MachineHandler machineHandler = (MachineHandler) this.getServletContext().getAttribute(PropertiesService.getMachineHandlerAttributeName());
         if(machineHandler == null){
@@ -59,6 +58,8 @@ public class AssembleMachineManually extends HttpServlet {
             }
             try {
                 machineHandler.assembleMachine(machineState);
+                resp.setStatus(HttpServletResponse.SC_OK);
+                resp.getWriter().print("Machine assembled successfully");
             }
             catch (Exception exception){
                 resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);

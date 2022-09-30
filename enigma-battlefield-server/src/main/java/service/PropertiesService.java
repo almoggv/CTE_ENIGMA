@@ -12,6 +12,9 @@ public class PropertiesService {
     @Getter private static final String tokenAttributeName = "access_token";
 
     @Getter private static final String jsonHttpContentType = "application/json";
+    @Getter private static final String textHttpContentType = "application/text";
+    @Getter private static final String textPlainHttpContentType = "text/plain";
+    @Getter private static final String HttpHeaderContentType = "Content-Type";
 
     //server context attributes
     @Getter private static final String machineHandlerAttributeName = "MachineHandler";
