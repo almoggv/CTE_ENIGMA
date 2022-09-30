@@ -369,4 +369,26 @@ public class MachineHandlerImpl implements MachineHandler {
     public EncryptionMachine getEncryptionMachineClone() {
         return encryptionMachine.getDeepClone();
     }
+
+    @Override
+    public void buildMachinePartsInventory(InputStream inputStream) throws Exception {
+        String usingLastLoadedInventoryMsg = "\n--Last successful load is used.";
+        CTEEnigma cteEnigma = XmlFileLoader.fromXmlFileToCTE(inputStream);
+        if(cteEnigma == null){
+            throw new Exception("Failed to generate JAXB CTE Enigma objects by schema");
+        }
+        XmlVerifierState xmlVerifierResponse = xmlSchemaVerifier.isXmlSchemaValidEX2(cteEnigma);
+        if(xmlVerifierResponse == XmlVerifierState.VALID){
+            clearInventory();
+            buildMachinePartsInventory(cteEnigma);
+            InventoryService.setAgentsInventory(cteEnigma.getCTEDecipher().getAgents());
+            machineStatisticsHistory.clear();
+        }
+        else{
+            String msg = "Failed to build machine inventory - CteMachine configured in file is invalid: " + xmlVerifierResponse;
+            log.error(msg);
+            msg = getInventoryInfo().isPresent() ? msg + usingLastLoadedInventoryMsg : msg;
+            throw new Exception(msg);
+        }
+    }
 }

@@ -8,6 +8,7 @@ import main.java.enums.ReflectorsId;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
@@ -61,4 +62,6 @@ public interface MachineHandler extends Serializable {
     public Optional<String> verifyInputInAbcAndFix(String input);
 
     public EncryptionMachine getEncryptionMachineClone();
- }
+
+    void buildMachinePartsInventory(InputStream inputStream) throws Exception;
+}

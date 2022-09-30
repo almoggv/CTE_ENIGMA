@@ -17,6 +17,8 @@
           <element id="library" level="module" name="JUnit4" module-name="encryption-machine-handler" />
           <element id="file-copy" path="$PROJECT_DIR$/lombok/lombok/1.18.20/lombok-1.18.20.jar" />
           <element id="library" level="module" name="JUnit4" module-name="decryption-manager" />
+          <element id="file-copy" path="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.22/lombok-1.18.22.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/enigma-battlefield-server/web/WEB-INF/lib/gson-2.8.8.jar" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="enigma-battlefield-server/web/Web" />

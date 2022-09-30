@@ -8,7 +8,9 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
+import java.io.InputStream;
 import java.util.Properties;
+import java.util.stream.Stream;
 
 public class XmlFileLoader {
     private static final Logger log = Logger.getLogger(XmlFileLoader.class);
@@ -34,6 +36,20 @@ public class XmlFileLoader {
             return cte;
 
         } catch (JAXBException e) {
+            log.error("Failed to generate JAXB CTE Enigma objects by schema : " + e.getMessage());
+            return null;
+        }
+    }
+
+    public static CTEEnigma fromXmlFileToCTE(InputStream inputStream) {
+        try {
+            JAXBContext jaxbContext = JAXBContext.newInstance(CTEEnigma.class);
+            Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+            CTEEnigma cte = (CTEEnigma) jaxbUnmarshaller.unmarshal(inputStream);
+            log.info("Generated a CTE Enigma Object from schema successfully from:" + inputStream);
+            return cte;
+        }
+        catch (JAXBException e) {
             log.error("Failed to generate JAXB CTE Enigma objects by schema : " + e.getMessage());
             return null;
         }
