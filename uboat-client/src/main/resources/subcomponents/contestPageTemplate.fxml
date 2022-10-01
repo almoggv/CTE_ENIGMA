@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
@@ -19,5 +23,12 @@
    <children>
       <fx:include source="currMachineConfigTemplate.fxml" GridPane.columnIndex="1" />
       <fx:include source="encryptionComponent.fxml" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <ScrollPane fx:id="dmResultsScrollPane" fitToWidth="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+         <content>
+            <FlowPane fx:id="dmResultsFlowPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" />
+         </content>
+      </ScrollPane>
+      <Button fx:id="logoutButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onLogoutButtonAction" text="Logout" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+      <Label prefWidth="181.0" text="Active team details will come here" GridPane.columnIndex="2" />
    </children>
 </GridPane>
