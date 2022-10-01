@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<BorderPane fx:id="appBorderPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.main.java.controller.AppController">
+   <center>
+      <AnchorPane fx:id="bodyWrapAnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
+         <children>
+            <ScrollPane fx:id="bodyWrapScrollPane" fitToHeight="true" fitToWidth="true" layoutY="14.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <content>
+                  <GridPane fx:id="imageGrid">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="10.0" />
+                        <ColumnConstraints halignment="CENTER" minWidth="20.0" />
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="10.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="ALWAYS" />
+                        <RowConstraints minHeight="10.0" valignment="CENTER" vgrow="NEVER" />
+                        <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="ALWAYS" />
+                     </rowConstraints>
+                     <children>
+                        <fx:include source="subcomponents/login.fxml" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                     </children>
+                  </GridPane>
+               </content></ScrollPane>
+         </children>
+      </AnchorPane>
+   </center>
+   <top>
+      <AnchorPane fx:id="headerWrapAnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+         <children>
+            <ScrollPane fx:id="headerWrapScrollPane" fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <fx:include source="subcomponents/header.fxml" />
+         </children>
+      </AnchorPane>
+   </top>
+</BorderPane>

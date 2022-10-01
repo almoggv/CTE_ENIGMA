@@ -26,7 +26,7 @@
       <RowConstraints maxHeight="17.66668701171875" minHeight="5.0" prefHeight="9.0" vgrow="ALWAYS" />
    </rowConstraints>
    <children>
-      <Label fx:id="titleLabel" text="Enigma Machine" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+      <Label fx:id="titleLabel" text="Uboat" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
       <HBox fx:id="browseFilesHBox" alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="10.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
          <children>
             <Label fx:id="selectedFileLabel" maxWidth="-Infinity" minWidth="-Infinity" text="Chosen file: " HBox.hgrow="NEVER" />
