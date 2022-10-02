@@ -17,10 +17,5 @@ public class DataService {
     @Getter private static final SimpleObjectProperty<InventoryInfo> inventoryInfoProperty = new SimpleObjectProperty<>();
     @Getter private static final SimpleObjectProperty<MachineState> originalMachineStateProperty = new SimpleObjectProperty<>();
     @Getter private static final SimpleObjectProperty<MachineState> currentMachineStateProperty = new SimpleObjectProperty<>();
-    @Getter private static final SimpleObjectProperty<Map<MachineState, List<EncryptionInfoHistory>>> encryptionInfoHistoryProperty = new SimpleObjectProperty<>();
-    @Getter private static final SimpleIntegerProperty maxAgentNumProperty = new SimpleIntegerProperty();
-    @Getter private static final SimpleIntegerProperty currNumberOfAgentsProperty = new SimpleIntegerProperty();
-
-    @Getter private static final SimpleBooleanProperty isAnimationOn = new SimpleBooleanProperty(false);
 
 }

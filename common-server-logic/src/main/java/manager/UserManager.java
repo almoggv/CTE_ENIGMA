@@ -7,9 +7,18 @@ import java.util.*;
 
 public class UserManager {
     private final Map<String,User> usernamesToUserMap;
+    private final Map<String,User> authTokenToUserMap;
 
     public UserManager() {
         usernamesToUserMap = new HashMap<>();
+        authTokenToUserMap = new HashMap<>();
+    }
+
+    public boolean isUserRegistered(String userToken){
+        //Actual implementation
+//        return authTokenToUserMap.containsKey(userToken);
+        //Used to save development time:
+        return true;
     }
 
     public synchronized void addUser(String username) {
@@ -17,6 +26,7 @@ public class UserManager {
         newUser.setUsername(username);
         newUser.setToken(UUID.randomUUID().toString());
         usernamesToUserMap.put(username,newUser);
+        authTokenToUserMap.put(newUser.getToken(),newUser);
     }
 
     public synchronized String getUserToken(String username){

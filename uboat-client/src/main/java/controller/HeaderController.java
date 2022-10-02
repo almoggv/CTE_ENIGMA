@@ -2,6 +2,7 @@ package main.java.controller;
 
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -19,7 +20,6 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.controlsfx.control.NotificationPane;
 
-
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -29,6 +29,7 @@ import java.util.ResourceBundle;
 public class HeaderController implements Initializable {
 
     private static final Logger log = Logger.getLogger(HeaderController.class);
+
     static {
         try {
             Properties p = new Properties();
@@ -40,66 +41,52 @@ public class HeaderController implements Initializable {
         }
     }
 
-    public MenuBar menuBar;
-    public Menu themeMenu;
-    public Button contestSceneNavButton;
-//    @Setter @Getter private AppController parentController;
-    @FXML private GridPane headerComponentRootPane;
-    @FXML private Label titleLabel;
-    @FXML private HBox browseFilesHBox;
-    @FXML private Button browseFilesButton;
-    @FXML private TextField selectedFileName;
-    @FXML private Label selectedFileLabel;
-    @FXML private HBox componentNavButtonsHBox;
-    @FXML private Button machineSceneNavButton;
-    @FXML private Button encryptSceneNavButton;
-    @FXML private Button bruteForceSceneNavButton;
-    @FXML private ChoiceBox<String> themeChoiceBox;
+    @Getter @Setter private AppController parentController;
+
+    @Getter private final SimpleStringProperty selectedFileNameProperty = new SimpleStringProperty();;
+    @Getter private final SimpleBooleanProperty isFileSelected = new SimpleBooleanProperty(false);
+
+    @Getter private final SimpleStringProperty notificationMessageProperty = new SimpleStringProperty();;
     private NotificationPane notificationPane;
-    @Getter private SimpleStringProperty selectedFileProperty = new SimpleStringProperty();;
-    @Getter private SimpleBooleanProperty isFileSelected = new SimpleBooleanProperty(false);
-    @Getter private SimpleStringProperty notificationMessageProperty = new SimpleStringProperty();;
+
+    @FXML GridPane headerComponentRootPane;
+    @FXML Label titleLabel;
+    @FXML HBox browseFilesHBox;
+    @FXML Label selectedFileLabel;
+    @FXML TextField selectedFileName;
+    @FXML Button browseFilesButton;
+    @FXML HBox componentNavButtonsHBox;
+    @FXML Button machineSceneNavButton;
+    @FXML Button contestSceneNavButton;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        selectedFileName.textProperty().bind(selectedFileProperty);
+        selectedFileName.textProperty().bind(selectedFileNameProperty);
         machineSceneNavButton.disableProperty().bind(isFileSelected.not());
-        encryptSceneNavButton.disableProperty().bind(DataService.getCurrentMachineStateProperty().isNotNull().not());
-        bruteForceSceneNavButton.disableProperty().bind(DataService.getCurrentMachineStateProperty().isNotNull().not());
+        contestSceneNavButton.disableProperty().bind(DataService.getCurrentMachineStateProperty().isNotNull().not());
+//  ======================================================
+        supportPastePathingInTextField();
+//  ======================================================
         createNotificationPane();
     }
 
-    public NotificationPane getRootComponent(){
-        return notificationPane;
+    private void supportPastePathingInTextField(){
+        // paste path
+        selectedFileName.textProperty().addListener(((observable, oldValue, newValue) -> {
+            if(parentController!=null){
+                parentController.handleFileChosen(newValue);
+            }
+        }));
     }
 
-    @FXML
-    void onBrowseFilesButtonClicked(ActionEvent event) {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Select Xml file");
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("xml files", "*.xml"));
-//        File selectedFile = fileChooser.showOpenDialog(parentController.getPrimaryStage());
-//        if (selectedFile == null) {
-//            return;
-//        }
-//        String absolutePath = selectedFile.getAbsolutePath();
-//        try{
-//            parentController.handleFileChosen(absolutePath);
-//            selectedFileProperty.set(absolutePath);
-//            isFileSelected.set(true);
-//        }
-//        catch (Exception e){
-//            notificationMessageProperty.setValue(e.getMessage());
-//        }
-
-
+    public StringProperty selectedFileProperty(){
+        return selectedFileNameProperty;
     }
 
-    @FXML
-    void onChangeSceneToMachineButtonClick(ActionEvent event) {
-//        parentController.changeSceneToMachine();
+    public GridPane getRootComponent(){
+        return headerComponentRootPane;
     }
-
 
     private void createNotificationPane(){
         this.notificationPane = new NotificationPane(this.getRootComponent());
@@ -117,20 +104,36 @@ public class HeaderController implements Initializable {
         });
     }
 
-    public void onSelectFileTextFieldAction(ActionEvent actionEvent) {
-        //todo - maybe add write path of file
+    @FXML
+    void onBrowseFilesButtonClicked(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select Xml file");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("xml files", "*.xml"));
+        File selectedFile = fileChooser.showOpenDialog(parentController.getPrimaryStage());
+        if (selectedFile == null) {
+            return;
+        }
+        String absolutePath = selectedFile.getAbsolutePath();
+        parentController.handleFileChosen(absolutePath);
     }
 
-    public void onAnimationsOnAction(ActionEvent actionEvent) {
-        DataService.getIsAnimationOn().setValue(true);
-    }
-
-    public void onAnimationsOffAction(ActionEvent actionEvent) {
-        DataService.getIsAnimationOn().setValue(false);
-    }
-
+    @FXML
     public void onChangeSceneToContestButtonClick(ActionEvent actionEvent) {
+        if(parentController!=null){
+            parentController.changeSceneToMachine();
+        }
     }
+
+    @FXML
+    void onChangeSceneToMachineButtonClick(ActionEvent event) {
+        if(parentController!=null){
+            parentController.changeSceneToContest();
+        }
+    }
+
+
+
+
 }
 
 

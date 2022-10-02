@@ -9,7 +9,9 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
 import main.java.component.MachineHandler;
 import main.java.component.impl.MachineHandlerImpl;
+import main.java.manager.UserManager;
 import main.java.service.PropertiesService;
+import main.java.utils.ServletUtils;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -23,6 +25,13 @@ public class UploadMachineFile extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //TODO: use this template to authenticate users
+        UserManager userManager = ServletUtils.getUserManager(this.getServletContext());
+        if(!userManager.isUserRegistered(req.getHeader(PropertiesService.getTokenAttributeName()))){
+            resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            return;
+        }
+
         resp.setContentType("text/plain");
         PrintWriter outWriter = resp.getWriter();
 

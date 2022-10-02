@@ -21,7 +21,6 @@
       <element id="extracted-dir" path="$PROJECT_DIR$/lombok/lombok/1.18.20/lombok-1.18.20.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$USER_HOME$/AppData/Local/SceneBuilder/jars_resources/controlsfx-8.40.14.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/apache-log4j-1.2.17/log4j-1.2.17.jar" path-in-jar="/" />
-      <element id="library" level="project" name="controlsfx-8.40.14" />
     </root>
   </artifact>
 </component>
