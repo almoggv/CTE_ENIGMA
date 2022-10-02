@@ -35,7 +35,9 @@ public class GuiApplication extends Application {
     public void start(Stage primaryStage) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader();
         //Load Primary App
-        URL appResource = GuiApplication.class.getResource(PropertiesService.getAppFxmlPath());
+//        URL appResource = GuiApplication.class.getResource(PropertiesService.getAppFxmlPath());
+        URL appResource = this.getClass().getResource(PropertiesService.getAppFxmlPath());
+
         if(appResource == null){
             log.fatal("GuiApplication - Start - Failed to find AppFxmlPath Url=" + appResource);
             throw new NullPointerException("GuiApplication - Start - Failed to find AppFxmlPath Url=" + appResource + ", Resource String="+PropertiesService.getAppFxmlPath());
