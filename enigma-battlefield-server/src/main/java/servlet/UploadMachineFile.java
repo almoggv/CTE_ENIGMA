@@ -42,9 +42,10 @@ public class UploadMachineFile extends HttpServlet {
         MachineHandler machineHandler = new MachineHandlerImpl();
         try{
             machineHandler.buildMachinePartsInventory(uploadedFile.getInputStream());
-            this.getServletContext().setAttribute(PropertiesService.getMachineHandlerAttributeName(), machineHandler);
+            req.getSession(true).setAttribute(PropertiesService.getMachineHandlerAttributeName(), machineHandler);
+//            this.getServletContext().setAttribute(PropertiesService.getMachineHandlerAttributeName(), machineHandler);
             resp.setStatus(HttpServletResponse.SC_OK);
-            outWriter.println("Machine built successfully from file.");
+            outWriter.println("Machine built successfully from file."+ machineHandler.getInventoryInfo());
         }
         catch (Exception exception){
             resp.setStatus(400);
