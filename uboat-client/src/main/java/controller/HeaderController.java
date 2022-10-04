@@ -43,10 +43,10 @@ public class HeaderController implements Initializable {
 
     @Getter @Setter private AppController parentController;
 
-    @Getter private final SimpleStringProperty selectedFileNameProperty = new SimpleStringProperty();;
+    @Getter private final SimpleStringProperty selectedFileNameProperty = new SimpleStringProperty();
     @Getter private final SimpleBooleanProperty isFileSelected = new SimpleBooleanProperty(false);
 
-    @Getter private final SimpleStringProperty notificationMessageProperty = new SimpleStringProperty();;
+    @Getter private final SimpleStringProperty notificationMessageProperty = new SimpleStringProperty();
     private NotificationPane notificationPane;
 
     @FXML GridPane headerComponentRootPane;
@@ -117,12 +117,12 @@ public class HeaderController implements Initializable {
         parentController.handleFileChosen(absolutePath);
     }
 
-    @FXML
-    public void onChangeSceneToContestButtonClick(ActionEvent actionEvent) {
-        if(parentController!=null){
-            parentController.changeSceneToMachine();
-        }
-    }
+//    @FXML
+//    public void onChangeSceneToContestButtonClick(ActionEvent actionEvent) {
+//        if(parentController!=null){
+//            parentController.changeSceneToMachine();
+//        }
+//    }
 
     @FXML
     void onChangeSceneToMachineButtonClick(ActionEvent event) {

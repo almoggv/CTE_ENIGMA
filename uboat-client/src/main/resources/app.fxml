@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane fx:id="appBorderPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.main.java.controller.AppController">
+<BorderPane fx:id="appBorderPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controller.AppController">
    <center>
       <AnchorPane fx:id="bodyWrapAnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
          <children>
@@ -35,8 +35,10 @@
    <top>
       <AnchorPane fx:id="headerWrapAnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
          <children>
-            <ScrollPane fx:id="headerWrapScrollPane" fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-            <fx:include source="subcomponents/header.fxml" />
+            <ScrollPane fx:id="headerWrapScrollPane" fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <content>
+                  <fx:include fx:id="headerComponent" source="subcomponents/header.fxml" />
+               </content></ScrollPane>
          </children>
       </AnchorPane>
    </top>

@@ -40,12 +40,10 @@ public class AppController implements Initializable {
         }
     }
 
-    @FXML @Getter HeaderController headerController;
-    @FXML private MachinePageController machinePageController;
+    @FXML @Getter HeaderController headerComponentController;
+//    @FXML private MachinePageController machinePageController;
 
     @Setter @Getter private Stage primaryStage;
-
-
     @FXML private BorderPane appBorderPane;
     @FXML private AnchorPane bodyWrapAnchorPane;
     @FXML private ScrollPane bodyWrapScrollPane;
@@ -53,51 +51,53 @@ public class AppController implements Initializable {
     @FXML private AnchorPane headerWrapAnchorPane;
     @FXML private ScrollPane headerWrapScrollPane;
 
+    @FXML GridPane headerComponent;
+
     public void showMessage(String message) {
         if(message == null || message.trim().equals("")){
             return;
         }
-        headerController.getNotificationMessageProperty().setValue("");
-        headerController.getNotificationMessageProperty().setValue(message);
+        headerComponentController.getNotificationMessageProperty().setValue("");
+        headerComponentController.getNotificationMessageProperty().setValue(message);
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        if (headerController != null) {
-            headerController.setParentController(this);
+        if (headerComponentController != null) {
+            headerComponentController.setParentController(this);
         }
         FXMLLoader fxmlLoader;
-        //Load Current Machine Config
-        URL currConfigResource = AppController.class.getResource(PropertiesService.getCurrMachineConfigFxmlPath());
-        log.info("AppController - found Url of header component:"+ currConfigResource);
-        fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(currConfigResource);
-        try {
-            GridPane currConfigComponent = fxmlLoader.load(currConfigResource.openStream());
-        } catch (IOException e) {
-            log.error("Failed to load currConfigResource:" + currConfigResource.toString() + "Exception throws: " + e.getMessage());
-        }
-        CurrMachineConfigController currMachineConfigController = fxmlLoader.getController();
-        //Load MachinePage
-        URL machinePageResource = AppController.class.getResource(PropertiesService.getMachinePageTemplateFxmlPath());
-        log.info("AppController - found Url of machine component:"+ machinePageResource);
-        fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(machinePageResource);
-        try {
-            Parent machinePageComponent = fxmlLoader.load(machinePageResource.openStream());
-        } catch (IOException e) {
-            log.error("Failed to load machinePageResource:" + machinePageResource.toString() + "Exception throws: " + e.getMessage());
-        }
-        machinePageController = fxmlLoader.getController();
-        machinePageController.setParentController(this);
-        machinePageController.bindComponent(currMachineConfigController);
-        //TODO: Load Contest Page
+//        //Load Current Machine Config
+//        URL currConfigResource = AppController.class.getResource(PropertiesService.getCurrMachineConfigFxmlPath());
+//        log.info("AppController - found Url of header component:"+ currConfigResource);
+//        fxmlLoader = new FXMLLoader();
+//        fxmlLoader.setLocation(currConfigResource);
+//        try {
+//            GridPane currConfigComponent = fxmlLoader.load(currConfigResource.openStream());
+//        } catch (IOException e) {
+//            log.error("Failed to load currConfigResource:" + currConfigResource.toString() + "Exception throws: " + e.getMessage());
+//        }
+//        CurrMachineConfigController currMachineConfigController = fxmlLoader.getController();
+//        //Load MachinePage
+//        URL machinePageResource = AppController.class.getResource(PropertiesService.getMachinePageTemplateFxmlPath());
+//        log.info("AppController - found Url of machine component:"+ machinePageResource);
+//        fxmlLoader = new FXMLLoader();
+//        fxmlLoader.setLocation(machinePageResource);
+//        try {
+//            Parent machinePageComponent = fxmlLoader.load(machinePageResource.openStream());
+//        } catch (IOException e) {
+//            log.error("Failed to load machinePageResource:" + machinePageResource.toString() + "Exception throws: " + e.getMessage());
+//        }
+//        machinePageController = fxmlLoader.getController();
+//        machinePageController.setParentController(this);
+//        machinePageController.bindComponent(currMachineConfigController);
+//        //TODO: Load Contest Page
     }
 
-    public void changeSceneToMachine(){
-        Parent rootComponent = machinePageController.getRootComponent();
-        bodyWrapScrollPane.setContent(rootComponent);
-    }
+//    public void changeSceneToMachine(){
+//        Parent rootComponent = machinePageController.getRootComponent();
+//        bodyWrapScrollPane.setContent(rootComponent);
+//    }
 
     public void changeSceneToContest(){
 //        Parent rootComponent = contestPageController.getRootComponent();

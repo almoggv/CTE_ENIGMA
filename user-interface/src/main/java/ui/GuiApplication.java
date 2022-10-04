@@ -47,5 +47,4 @@ public class GuiApplication extends Application {
         primaryStage.setScene(primaryScene);
         primaryStage.show();
     }
-
 }

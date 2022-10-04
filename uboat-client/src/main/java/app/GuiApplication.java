@@ -35,8 +35,7 @@ public class GuiApplication extends Application {
     public void start(Stage primaryStage) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader();
         //Load Primary App
-//        URL appResource = GuiApplication.class.getResource(PropertiesService.getAppFxmlPath());
-        URL appResource = this.getClass().getResource(PropertiesService.getAppFxmlPath());
+        URL appResource = this.getClass().getResource("C:\\Users\\Eliya\\Documents\\java\\CTE\\CTE_ENIGMA\\uboat-client\\src\\main\\resources\\subcomponents\\login.fxml");
 
         if(appResource == null){
             log.fatal("GuiApplication - Start - Failed to find AppFxmlPath Url=" + appResource);
@@ -45,8 +44,8 @@ public class GuiApplication extends Application {
         log.info("GuiApplication - found Url of primary scene:"+ appResource);
         fxmlLoader.setLocation(appResource);
         Object primaryScenePane = fxmlLoader.load(appResource.openStream());
-        AppController appController = fxmlLoader.getController();
-        appController.setPrimaryStage(primaryStage);
+//        AppController appController = fxmlLoader.getController();
+//        appController.setPrimaryStage(primaryStage);
         Scene primaryScene = new Scene((Parent) primaryScenePane,950, 650);
         primaryStage.setTitle("CTE Machine");
         primaryStage.setScene(primaryScene);
