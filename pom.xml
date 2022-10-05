@@ -12,6 +12,7 @@
         <module>enigma-machine</module>
         <module>encryption-machine-handler</module>
         <module>decryption-manager</module>
+        <module>uboat-client</module>
     </modules>
 
     <properties>

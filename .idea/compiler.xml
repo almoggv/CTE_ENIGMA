@@ -11,6 +11,7 @@
         <module name="enigma-machine" />
         <module name="encryption-machine-handler" />
         <module name="decryption-manager" />
+        <module name="uboat-client" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
