@@ -1,6 +1,7 @@
 package manager;
 
 import generated.CTEEnigma;
+import javafx.beans.property.SimpleObjectProperty;
 import lombok.Getter;
 import lombok.Setter;
 import service.XmlFileLoader;
