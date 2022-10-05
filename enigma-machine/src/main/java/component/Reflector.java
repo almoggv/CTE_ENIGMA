@@ -1,8 +1,8 @@
-package main.java.component;
+package component;
 
 import lombok.Getter;
-import main.java.enums.ReflectorsId;
-import main.java.generictype.DeepCloneable;
+import enums.ReflectorsId;
+import generictype.DeepCloneable;
 
 import java.io.Serializable;
 

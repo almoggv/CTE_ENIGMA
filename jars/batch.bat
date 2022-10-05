@@ -1,1 +1,0 @@
-java -jar user-interface.jar > NUL

@@ -1,4 +1,4 @@
-package main.java.generictype;
+package generictype;
 
 import lombok.*;
 
@@ -11,4 +11,5 @@ import java.io.Serializable;
 public class MappingPair <T1,T2> implements Serializable {
     private T1 left;
     private T2 right;
+
 }

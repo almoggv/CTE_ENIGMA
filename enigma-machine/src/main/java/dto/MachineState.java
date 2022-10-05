@@ -1,12 +1,12 @@
-package main.java.dto;
+package dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import main.java.component.impl.IOWheelImpl;
-import main.java.generictype.DeepCloneable;
-import main.java.generictype.MappingPair;
-import main.java.enums.ReflectorsId;
+import component.impl.IOWheelImpl;
+import generictype.DeepCloneable;
+import generictype.MappingPair;
+import enums.ReflectorsId;
 
 import java.io.Serializable;
 import java.util.ArrayList;

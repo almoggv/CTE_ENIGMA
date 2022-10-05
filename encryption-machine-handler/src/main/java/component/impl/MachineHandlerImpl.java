@@ -1,20 +1,24 @@
-package main.java.component.impl;
+package component.impl;
 
 
+import dto.InventoryInfo;
+import dto.MachineState;
+import dto.EncryptionInfoHistory;
+import enums.XmlVerifierState;
+import generated.CTEEnigma;
+import generated.CTEMachine;
+import generated.CTEReflector;
+import generated.CTERotor;
+import generictype.MappingPair;
 import lombok.Getter;
-import main.java.dto.InventoryInfo;
-import main.java.dto.MachineState;
-import main.java.dto.EncryptionInfoHistory;
-import main.java.enums.XmlVerifierState;
-import main.java.generictype.MappingPair;
-import main.java.service.InventoryService;
-import main.java.service.XmlFileLoader;
-import main.java.component.*;
-import main.java.enums.ReflectorsId;
-import main.java.service.PropertiesService;
-import main.java.service.XmlSchemaVerifier;
-import main.java.service.impl.XmlSchemaVerifierImpl;
-import main.resources.generated.*;
+import service.InventoryService;
+import service.XmlFileLoader;
+import component.*;
+import enums.ReflectorsId;
+import service.PropertiesService;
+import service.XmlSchemaVerifier;
+import service.impl.XmlSchemaVerifierImpl;
+//import resources.generated.*;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
@@ -31,7 +35,8 @@ public class MachineHandlerImpl implements MachineHandler {
     private int expectedNumOfRotors;
     private EncryptionMachine encryptionMachine = new EnigmaMachine();
     private MachineState initialMachineState = new MachineState();
-    @Getter private final Map<MachineState, List<EncryptionInfoHistory>> machineStatisticsHistory = new HashMap<>();
+    @Getter
+    private final Map<MachineState, List<EncryptionInfoHistory>> machineStatisticsHistory = new HashMap<>();
 
     private final XmlSchemaVerifier xmlSchemaVerifier = new XmlSchemaVerifierImpl();
 
@@ -178,7 +183,6 @@ public class MachineHandlerImpl implements MachineHandler {
         setStartingMachineState(rotorsStartingPositions, plugMapping);
     }
 
-
     @Override
     public void assembleMachineParts(ReflectorsId reflectorId, List<Integer> rotorIds) throws Exception {
         Predicate<Reflector> idReflectorPredicate = (reflector) -> reflector.getId() == reflectorId;
@@ -227,7 +231,6 @@ public class MachineHandlerImpl implements MachineHandler {
         addToHistory(initialMachineState);
         log.info("Machine Handler - initial state of machine state set");
     }
-
 
     @Override
     public Optional<MachineState> getMachineState() {

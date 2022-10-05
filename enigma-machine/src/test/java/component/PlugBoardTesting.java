@@ -1,7 +1,7 @@
-package test.java.component;
+package component;
 
-import main.java.component.PlugBoard;
-import main.java.component.impl.PlugBoardImpl;
+import component.PlugBoard;
+import component.impl.PlugBoardImpl;
 import org.junit.Test;
 
 public class PlugBoardTesting {

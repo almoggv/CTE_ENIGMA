@@ -1,10 +1,10 @@
-package test.java.component;
+package component;
 
-import main.java.component.EncryptionMachine;
-import main.java.component.MachineHandler;
-import main.java.component.impl.MachineHandlerImpl;
-import main.java.enums.ReflectorsId;
-import main.java.generictype.MappingPair;
+import component.EncryptionMachine;
+import component.MachineHandler;
+import component.impl.MachineHandlerImpl;
+import enums.ReflectorsId;
+import generictype.MappingPair;
 import org.junit.Assert;
 import org.junit.Test;
 

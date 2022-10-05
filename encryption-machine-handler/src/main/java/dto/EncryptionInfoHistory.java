@@ -1,4 +1,4 @@
-package main.java.dto;
+package dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

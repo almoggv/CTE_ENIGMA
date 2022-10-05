@@ -1,8 +1,8 @@
-package main.java.service;
+package service;
 
 import lombok.Getter;
 import lombok.Setter;
-import main.java.component.Reflector;
+import component.Reflector;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package main.java.component;
+package component;
 
 import java.io.FileNotFoundException;
 

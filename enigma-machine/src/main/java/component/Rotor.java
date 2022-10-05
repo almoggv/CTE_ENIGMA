@@ -1,6 +1,6 @@
-package main.java.component;
+package component;
 
-import main.java.generictype.DeepCloneable;
+import generictype.DeepCloneable;
 
 import java.io.Serializable;
 

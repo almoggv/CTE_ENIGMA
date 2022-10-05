@@ -1,7 +1,9 @@
-package main.java.service;
+package service;
 
-import main.java.enums.XmlVerifierState;
-import main.resources.generated.*;
+import enums.XmlVerifierState;
+import generated.CTEDecipher;
+import generated.CTEEnigma;
+import generated.CTEMachine;
 
 import java.io.IOException;
 import java.io.Serializable;

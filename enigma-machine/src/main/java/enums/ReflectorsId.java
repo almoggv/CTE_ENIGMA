@@ -1,4 +1,4 @@
-package main.java.enums;
+package enums;
 
 public enum ReflectorsId {
     I("I", 1),

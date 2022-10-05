@@ -1,0 +1,7 @@
+component\impl\SerializationHandlerImpl.class
+dto\EncryptionInfoHistory.class
+service\PropertiesService.class
+component\impl\MachineHandlerImpl.class
+component\MachineHandler.class
+component\SerializationHandler.class
+dto\InventoryInfo.class

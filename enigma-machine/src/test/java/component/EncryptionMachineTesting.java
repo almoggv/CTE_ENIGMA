@@ -1,7 +1,7 @@
-package test.java.component;
+package component;
 
-import main.java.enums.ReflectorsId;
-import main.java.generictype.MappingPair;
+import enums.ReflectorsId;
+import generictype.MappingPair;
 import org.junit.Test;
 
 import java.util.ArrayList;

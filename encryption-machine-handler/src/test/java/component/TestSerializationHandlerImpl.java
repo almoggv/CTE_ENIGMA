@@ -1,11 +1,11 @@
-package test.java.component;
+package component;
 
-import main.java.component.MachineHandler;
-import main.java.component.SerializationHandler;
-import main.java.component.impl.MachineHandlerImpl;
-import main.java.component.impl.SerializationHandlerImpl;
-import main.java.enums.ReflectorsId;
-import main.java.generictype.MappingPair;
+import component.MachineHandler;
+import component.SerializationHandler;
+import component.impl.MachineHandlerImpl;
+import component.impl.SerializationHandlerImpl;
+import enums.ReflectorsId;
+import generictype.MappingPair;
 import org.junit.Assert;
 import org.junit.Test;
 

@@ -1,6 +1,6 @@
-package main.java.service;
+package service;
 
-import main.resources.generated.CTEEnigma;
+import generated.CTEEnigma;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 

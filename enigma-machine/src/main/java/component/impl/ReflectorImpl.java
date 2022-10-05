@@ -1,14 +1,15 @@
-package main.java.component.impl;
+package component.impl;
 
+import generated.CTEReflect;
+import generated.CTEReflector;
 import lombok.Getter;
-import main.java.component.Reflector;
-import main.java.enums.ReflectorsId;
-import main.java.generictype.MappingPair;
-import main.java.generictype.MappingPairListUtils;
-import main.java.service.XmlFileLoader;
-import main.java.service.PropertiesService;
-import main.resources.generated.CTEReflect;
-import main.resources.generated.CTEReflector;
+import component.Reflector;
+import enums.ReflectorsId;
+import generictype.MappingPair;
+import generictype.MappingPairListUtils;
+import service.XmlFileLoader;
+import service.PropertiesService;
+
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 

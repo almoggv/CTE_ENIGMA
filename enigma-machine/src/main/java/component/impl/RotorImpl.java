@@ -1,13 +1,13 @@
-package main.java.component.impl;
+package component.impl;
 
+import generated.CTEPositioning;
+import generated.CTERotor;
 import lombok.Getter;
-import main.java.component.Rotor;
-import main.java.generictype.MappingPair;
-import main.java.generictype.MappingPairListUtils;
-import main.java.service.XmlFileLoader;
-import main.java.service.PropertiesService;
-import main.resources.generated.CTEPositioning;
-import main.resources.generated.CTERotor;
+import component.Rotor;
+import generictype.MappingPair;
+import generictype.MappingPairListUtils;
+import service.XmlFileLoader;
+import service.PropertiesService;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 

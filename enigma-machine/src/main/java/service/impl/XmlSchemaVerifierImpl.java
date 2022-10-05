@@ -1,10 +1,10 @@
-package main.java.service.impl;
+package service.impl;
 
-import main.java.enums.ReflectorsId;
-import main.java.enums.XmlVerifierState;
-import main.java.service.PropertiesService;
-import main.java.service.XmlSchemaVerifier;
-import main.resources.generated.*;
+import enums.ReflectorsId;
+import enums.XmlVerifierState;
+import generated.*;
+import service.PropertiesService;
+import service.XmlSchemaVerifier;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 

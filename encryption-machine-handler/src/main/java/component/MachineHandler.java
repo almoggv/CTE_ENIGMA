@@ -1,10 +1,10 @@
-package main.java.component;
+package component;
 
-import main.java.dto.InventoryInfo;
-import main.java.generictype.MappingPair;
-import main.java.dto.MachineState;
-import main.java.dto.EncryptionInfoHistory;
-import main.java.enums.ReflectorsId;
+import dto.InventoryInfo;
+import generictype.MappingPair;
+import dto.MachineState;
+import dto.EncryptionInfoHistory;
+import enums.ReflectorsId;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package main.java.generictype;
+package generictype;
 
 public interface DeepCloneable {
 

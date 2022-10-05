@@ -1,11 +1,11 @@
-package main.java.component.impl;
+package component.impl;
 
-import main.java.component.*;
-import main.java.dto.MachineState;
-import main.java.generictype.MappingPair;
-import main.java.service.InventoryService;
-import main.java.service.XmlFileLoader;
-import main.java.service.PropertiesService;
+import component.*;
+import dto.MachineState;
+import generictype.MappingPair;
+import service.InventoryService;
+import service.XmlFileLoader;
+import service.PropertiesService;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 

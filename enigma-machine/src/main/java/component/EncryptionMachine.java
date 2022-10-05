@@ -1,8 +1,8 @@
-package main.java.component;
+package component;
 
-import main.java.generictype.DeepCloneable;
-import main.java.generictype.MappingPair;
-import main.java.dto.MachineState;
+import generictype.DeepCloneable;
+import generictype.MappingPair;
+import dto.MachineState;
 
 import java.io.Serializable;
 import java.util.List;

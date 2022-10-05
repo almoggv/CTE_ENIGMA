@@ -1,9 +1,9 @@
-package main.java.component.impl;
+package component.impl;
 
-import main.java.component.MachineHandler;
-import main.java.component.SerializationHandler;
-import main.java.service.XmlFileLoader;
-import main.java.service.PropertiesService;
+import component.MachineHandler;
+import component.SerializationHandler;
+import service.XmlFileLoader;
+import service.PropertiesService;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 

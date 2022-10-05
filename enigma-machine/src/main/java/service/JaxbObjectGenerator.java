@@ -1,4 +1,4 @@
-package main.java.service;
+package service;
 
 public class JaxbObjectGenerator {
     //TODO: actually do

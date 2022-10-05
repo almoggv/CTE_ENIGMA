@@ -1,17 +1,17 @@
-package main.java.agent.impl;
+package agent.impl;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
+//import com.sun.org.apache.xpath.internal.operations.Bool;
 import javafx.beans.property.*;
 import javafx.util.Pair;
 import lombok.Getter;
-import main.java.agent.DecryptionAgent;
-import main.java.component.EncryptionMachine;
-import main.java.dto.AgentDecryptionInfo;
-import main.java.dto.MachineState;
-import main.java.generictype.MappingPair;
-import main.java.manager.DictionaryManager;
-import main.java.service.PropertiesService;
-import main.java.service.XmlFileLoader;
+import agent.DecryptionAgent;
+import component.EncryptionMachine;
+import dto.AgentDecryptionInfo;
+import dto.MachineState;
+import generictype.MappingPair;
+import manager.DictionaryManager;
+import service.PropertiesService;
+import service.XmlFileLoader;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 

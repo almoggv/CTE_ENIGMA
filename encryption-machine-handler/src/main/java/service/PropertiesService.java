@@ -1,4 +1,4 @@
-package main.java.service;
+package service;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

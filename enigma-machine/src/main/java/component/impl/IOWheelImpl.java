@@ -1,10 +1,10 @@
-package main.java.component.impl;
+package component.impl;
 
-import main.java.component.IOWheel;
-import main.java.generictype.MappingPair;
-import main.java.generictype.MappingPairListUtils;
-import main.java.service.XmlFileLoader;
-import main.java.service.PropertiesService;
+import component.IOWheel;
+import generictype.MappingPair;
+import generictype.MappingPairListUtils;
+import service.XmlFileLoader;
+import service.PropertiesService;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
