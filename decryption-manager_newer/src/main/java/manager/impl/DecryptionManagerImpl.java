@@ -1,5 +1,7 @@
 package manager.impl;
 
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import lombok.Getter;
 import lombok.Setter;
 import adapter.UIAdapter;

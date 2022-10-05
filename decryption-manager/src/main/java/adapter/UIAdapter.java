@@ -1,9 +1,9 @@
 package adapter;
 
-//import com.sun.deploy.net.socket.UnixDomainSocket;
 import generictype.MappingPair;
 import javafx.application.Platform;
 import dto.AgentDecryptionInfo;
+
 
 
 import java.util.function.Consumer;
@@ -12,8 +12,6 @@ public class UIAdapter {
     private Consumer<AgentDecryptionInfo> updateCandidates;
     private Consumer<MappingPair<Integer,Integer>> updateProgress;
     private Consumer<Long> updateMeanDecryptionTime;
-
-//    private Runnable updateDistinct;
 
 
     public UIAdapter(Consumer<AgentDecryptionInfo> updateCandidates, Consumer<MappingPair<Integer,Integer>> updateProgress, Consumer<Long> updateMeanDecryptionTime) {

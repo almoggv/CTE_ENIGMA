@@ -1,9 +1,10 @@
 package adapter;
 
-import com.sun.deploy.net.socket.UnixDomainSocket;
+//import com.sun.deploy.net.socket.UnixDomainSocket;
+import generictype.MappingPair;
 import javafx.application.Platform;
 import dto.AgentDecryptionInfo;
-import generictype.MappingPair;
+
 
 import java.util.function.Consumer;
 

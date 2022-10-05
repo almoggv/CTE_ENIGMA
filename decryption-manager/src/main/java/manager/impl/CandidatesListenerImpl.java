@@ -10,7 +10,6 @@ import dto.AgentDecryptionInfo;
 import generictype.MappingPair;
 import manager.AgentWorkManager;
 import manager.CandidatesListener;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -116,7 +115,7 @@ public class CandidatesListenerImpl implements CandidatesListener {
 
     @Override
     public void BindToManager(AgentWorkManager agentWorkManager) {
-        throw new NotImplementedException();
+        throw new Exception("Method not implemented");
     }
 
     @Override
