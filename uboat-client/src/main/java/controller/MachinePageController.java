@@ -18,7 +18,6 @@ import service.DataService;
 import service.PropertiesService;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.io.IOException;
 import java.net.URL;
@@ -80,7 +79,7 @@ public class MachinePageController implements Initializable {
 //        DataService.getCurrentMachineStateProperty().setValue(machineHandler.getMachineState().get());
 //        log.info("MachinePageController - CurrMachine State =" + machineHandler.getMachineState().get());
 
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException();
     }
 
     public void handleRandomSetMachinePressed() {
@@ -90,7 +89,7 @@ public class MachinePageController implements Initializable {
 //        DataService.getOriginalMachineStateProperty().setValue(machineHandler.getInitialMachineState().get());
 //        DataService.getCurrentMachineStateProperty().setValue(machineHandler.getMachineState().get());
 //        log.info("CurrMachine State =" + machineHandler.getMachineState().get());
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException();
     }
 
     public GridPane getRootComponent() {

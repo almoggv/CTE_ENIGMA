@@ -1,0 +1,16 @@
+service\PropertiesService.class
+controller\MachineDetailsController.class
+controller\MachineDetailsController$1.class
+controller\MachinePageController.class
+controller\CurrMachineConfigController$1.class
+service\DataService.class
+controller\LoginController.class
+controller\AppController.class
+controller\CurrMachineConfigController.class
+app\GuiApplication.class
+controller\HeaderController$1.class
+controller\HeaderController.class
+controller\SetMachineConfigController.class
+fx\component\ComboBoxItem.class
+controller\SetMachineConfigController$1.class
+fx\component\ComboBoxCell.class
