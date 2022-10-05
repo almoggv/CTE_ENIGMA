@@ -115,7 +115,7 @@ public class CandidatesListenerImpl implements CandidatesListener {
 
     @Override
     public void BindToManager(AgentWorkManager agentWorkManager) {
-        throw new Exception("Method not implemented");
+        throw new UnsupportedOperationException();
     }
 
     @Override

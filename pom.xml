@@ -12,7 +12,6 @@
         <module>enigma-machine</module>
         <module>encryption-machine-handler</module>
         <module>decryption-manager</module>
-        <module>decryption-manager</module>
     </modules>
 
     <properties>

@@ -1,0 +1,16 @@
+service\PropertiesService.class
+agent\DecryptionAgent.class
+manager\impl\AgentWorkManagerImpl.class
+manager\impl\DecryptionManagerImpl.class
+manager\AgentWorkManager.class
+common\Pausable.class
+manager\impl\CandidatesListenerImpl.class
+agent\impl\DecryptionAgentImpl.class
+adapter\UIAdapter.class
+dto\AgentDecryptionInfo.class
+enums\DecryptionDifficultyLevel.class
+manager\CandidatesListener.class
+manager\DecryptionManager.class
+service\MathService.class
+manager\impl\AgentWorkManagerImpl$1.class
+manager\DictionaryManager.class
