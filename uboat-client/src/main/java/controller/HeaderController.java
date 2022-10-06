@@ -108,26 +108,29 @@ public class HeaderController implements Initializable {
             return;
         }
         String absolutePath = selectedFile.getAbsolutePath();
-        isFileSelected.setValue(true);
+//        isFileSelected.setValue(true);
         selectedFileNameProperty.setValue(absolutePath);
     }
 
     @FXML
     public void onChangeSceneToContestButtonClick(ActionEvent actionEvent) {
         if(parentController!=null){
-            parentController.changeSceneToMachine();
+            parentController.changeSceneToContest();
         }
     }
 
     @FXML
     void onChangeSceneToMachineButtonClick(ActionEvent event) {
         if(parentController!=null){
-            parentController.changeSceneToContest();
+            parentController.changeSceneToMachine();
         }
     }
 
-
-    public void onUploadButton(ActionEvent actionEvent) {
+    public void onUploadButton(ActionEvent actionEvent) throws IOException {
+        if(selectedFileNameProperty.get() == null){
+            parentController.showMessage("Please choose a file first");
+            return;
+        }
         Path p = Paths.get(selectedFileProperty().get());
         if (!p.isAbsolute()) {
             parentController.showMessage("\""+ selectedFileProperty().get() +"\" is not an absolute path");

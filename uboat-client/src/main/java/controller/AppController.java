@@ -12,16 +12,14 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import lombok.Getter;
 import lombok.Setter;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.HttpUrl;
-import okhttp3.Response;
+import okhttp3.*;
 import org.jetbrains.annotations.NotNull;
 import service.HttpClientService;
 import service.PropertiesService;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Path;
@@ -107,6 +105,9 @@ public class AppController implements Initializable {
         machinePageController = fxmlLoader.getController();
         machinePageController.setParentController(this);
         machinePageController.bindComponent(currMachineConfigController);
+
+        System.out.println("app initialized");
+        showMessage("app initialized");
 //        //TODO: Load Contest Page
     }
 
@@ -127,12 +128,24 @@ public class AppController implements Initializable {
         bodyWrapScrollPane.setVisible(true);
     }
 
-    public void handleUploadFile(String absolutePath) {
+    public void handleUploadFile(String absolutePath) throws IOException {
         Path p = Paths.get(absolutePath);
         if (!p.isAbsolute()) {
             this.showMessage("\"" + absolutePath + "\" is not an absolute path");
             return;
         }
+
+        //todo - decide if need to fix issue here - thinks folder is a file
+        File f = new File(absolutePath);
+        if(!f.exists()){
+            this.showMessage("Problem with file, doesn't exist " + absolutePath);
+            return;
+        }
+        RequestBody body =
+                new MultipartBody.Builder()
+                        .addFormDataPart("file", f.getName(), RequestBody.create(f, MediaType.parse("text/plain")))
+                        //.addFormDataPart("key1", "value1") // you can add multiple, different parts as needed
+                        .build();
 
         String finalUrl = HttpUrl
                 .parse(PropertiesService.getApiUploadPageUrl())
@@ -140,20 +153,35 @@ public class AppController implements Initializable {
 //                .addQueryParameter("username", userName)
                 .build()
                 .toString();
-//
-//        updateHttpStatusLine("New request is launched for: " + finalUrl);
-//
-        HttpClientService.runAsync(finalUrl, new Callback() {
+
+        Request request = new Request.Builder()
+                .url(finalUrl)
+                .post(body)
+                .build();
+
+//        Call call = HttpClientService.getHTTP_CLIENT().newCall(request);
+//        Response response = call.execute();
+//        System.out.println(response.body().string());
+//        this.showMessage(response.body().string());
+
+        HttpClientService.runAsync(request, new Callback() {
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 if (response.code() != 200) {
                     String responseBody = response.body().string();
                     Platform.runLater(() ->
-                            showMessage("Something went wrong: " + responseBody)
+                            System.out.println("Something went wrong: " + responseBody)
+//                            showMessage("Something went wrong: " + responseBody)
                     );
                 } else {
                     Platform.runLater(() -> {
-                        showMessage("Uploaded machine file successfully");
+                        try {
+                            System.out.println("Uploaded machine file successfully" + response.body().string());
+                        } catch (IOException ignored) {
+
+                        }
+//                        showMessage("Uploaded machine file successfully" );
+                        headerComponentController.getIsFileSelected().set(true);
                     });
                 }
             }
@@ -161,9 +189,12 @@ public class AppController implements Initializable {
             @Override
             public void onFailure(@NotNull Call call, @NotNull IOException e) {
                 Platform.runLater(() ->
-                        showMessage("Something went wrong: " + e.getMessage())
+                        System.out.println("Something went wrong: " + e.getMessage())
+//                        showMessage("Something went wrong: " + e.getMessage())
                 );
             }
         });
     }
 }
+
+
