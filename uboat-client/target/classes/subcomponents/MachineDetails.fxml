@@ -27,6 +27,7 @@
             <ColumnConstraints halignment="CENTER" maxWidth="1.7976931348623157E308" minWidth="-Infinity" />
             <ColumnConstraints halignment="CENTER" hgrow="NEVER" minWidth="-Infinity" />
             <ColumnConstraints halignment="CENTER" minWidth="-Infinity" />
+            <ColumnConstraints halignment="CENTER" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints halignment="CENTER" maxWidth="1.7976931348623157E308" minWidth="-Infinity" />
          </columnConstraints>
          <rowConstraints>
@@ -62,6 +63,9 @@
                   </ScrollPane>
                </children>
             </AnchorPane>
+            <Label fx:id="plugboardLabel" contentDisplay="CENTER" text="Messages" GridPane.columnIndex="3" />
+            <Label text="Encrypted" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <Label fx:id="encryptedMsgLabel" text="0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
          </children>
       </GridPane>
    </children>

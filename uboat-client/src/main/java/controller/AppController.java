@@ -122,9 +122,46 @@ public class AppController implements Initializable {
     }
 
     public void changeSceneToMachine() {
+        //get inventory - todo decide if better elsewhere
+        getMachineInventory();
+
         //TODO: check null
         Parent rootComponent = machinePageController.getRootComponent();
         bodyWrapScrollPane.setContent(rootComponent);
+
+    }
+
+    private void getMachineInventory() {
+        String finalUrl = HttpUrl
+                .parse(PropertiesService.getApiInventoryPageUrl())
+                .newBuilder()
+                .build()
+                .toString();
+
+        System.out.println("New request is launched for: " + finalUrl);
+        HttpClientService.runAsync(finalUrl, new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                Platform.runLater(() ->
+                        System.out.println("Something went wrong: " + e.getMessage())
+                );
+            }
+
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                if (response.code() != 200) {
+                    String responseBody = response.body().string();
+                    Platform.runLater(() ->
+                            System.out.println("Something went wrong: " + responseBody)
+                    );
+                } else {
+                    Platform.runLater(() -> {
+                        System.out.println("loaded inventory");
+                    });
+                }
+            }
+        });
+
     }
 
     public void changeSceneToContest() {
@@ -169,11 +206,6 @@ public class AppController implements Initializable {
                 .post(body)
                 .build();
 
-//        Call call = HttpClientService.getHTTP_CLIENT().newCall(request);
-//        Response response = call.execute();
-//        System.out.println(response.body().string());
-//        this.showMessage(response.body().string());
-
         HttpClientService.runAsync(request, new Callback() {
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
@@ -186,6 +218,7 @@ public class AppController implements Initializable {
                 } else {
                     Platform.runLater(() -> {
                         try {
+                            System.out.println("Uploaded machine file successfully" + response.body().string());
                             System.out.println("Uploaded machine file successfully" + response.body().string());
                         } catch (IOException ignored) {
 
@@ -206,51 +239,9 @@ public class AppController implements Initializable {
         });
     }
 
-    public void handleLogin(String username) {
-
-        if (username.isEmpty()) {
-            System.out.println("User name is empty. You can't login with empty user name");
-            return;
-        }
-
-        //noinspection ConstantConditions
-        String finalUrl = HttpUrl
-                .parse(PropertiesService.getApiLoginPageUrl())
-                .newBuilder()
-                .addQueryParameter("username", username)
-                .build()
-                .toString();
-
-        System.out.println("New request is launched for: " + finalUrl);
-
-        HttpClientService.runAsync(finalUrl, new Callback() {
-
-            @Override
-            public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                Platform.runLater(() ->
-                        System.out.println("Something went wrong: " + e.getMessage())
-                );
-            }
-
-            @Override
-            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-                if (response.code() != 200) {
-                    String responseBody = response.body().string();
-                    Platform.runLater(() ->
-                            System.out.println("Something went wrong: " + responseBody)
-                    );
-                } else {
-                    Platform.runLater(() -> {
-//                        chatAppMainController.updateUserName(userName);
-                        System.out.println("HI " + username);
-                        loginComponent.setVisible(false);
-                    });
-                }
-            }
-        });
-
-
-    }
+//    public void handleLogin(String username) {
+//
+//    }
 }
 
 

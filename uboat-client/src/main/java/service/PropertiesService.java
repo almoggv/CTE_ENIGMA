@@ -27,6 +27,11 @@ public class PropertiesService {
 
     @Getter private static final String apiLoginPageUrl = FULL_SERVER_PATH + "/login";
     @Getter private static final String apiUploadPageUrl = FULL_SERVER_PATH + "/upload-machine-file";
+    @Getter private static final String apiInventoryPageUrl = FULL_SERVER_PATH + "/get-machine-details";
+    @Getter private static final String apiAssembleMachineRandomlyPageUrl = FULL_SERVER_PATH + "/assemble-machine-randomly";
+    @Getter private static final String apiAssembleMachineManuallyPageUrl = FULL_SERVER_PATH + "/assemble-machine-manually";
+    @Getter private static final String apiCurrMachineConfigPageUrl = FULL_SERVER_PATH + "/curr-machine-config";
+    @Getter private static final String apiEncryptPageUrl = FULL_SERVER_PATH + "/encrypt";
 
 }
 

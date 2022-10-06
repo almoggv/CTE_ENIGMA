@@ -34,7 +34,6 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class SetMachineConfigController implements Initializable {
-
     private final ValidationSupport validationSupport = new ValidationSupport();
 
     @Getter @Setter @FXML MachinePageController parentController;
