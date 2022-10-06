@@ -4,8 +4,6 @@ import generictype.MappingPair;
 import javafx.application.Platform;
 import dto.AgentDecryptionInfo;
 
-
-
 import java.util.function.Consumer;
 
 public class UIAdapter {
