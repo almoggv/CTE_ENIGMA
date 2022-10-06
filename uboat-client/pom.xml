@@ -70,10 +70,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
-                <configuration>
-                    <source>18</source>
-                    <target>18</target>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.openjfx</groupId>
@@ -84,7 +80,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.example.uboatclient2/com.example.uboatclient2.HelloApplication</mainClass>
+                            <mainClass>com.example.uboatclient/com.example.uboatclient.app.GuiApplication</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>

@@ -14,9 +14,5 @@
         <module name="uboat-client" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="javafxTest" target="18" />
-      <module name="uboat-client-2" target="18" />
-    </bytecodeTargetLevel>
   </component>
 </project>
