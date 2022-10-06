@@ -45,7 +45,7 @@ public class UploadMachineFile extends HttpServlet {
             req.getSession(true).setAttribute(PropertiesService.getMachineHandlerAttributeName(), machineHandler);
 //            this.getServletContext().setAttribute(PropertiesService.getMachineHandlerAttributeName(), machineHandler);
             resp.setStatus(HttpServletResponse.SC_OK);
-            outWriter.println("Machine built successfully from file."+ machineHandler.getInventoryInfo());
+            outWriter.println(/*"Machine built successfully from file."+ */machineHandler.getInventoryInfo().get());
         }
         catch (Exception exception){
             resp.setStatus(400);

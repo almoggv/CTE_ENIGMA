@@ -1,5 +1,7 @@
 package controller;
 
+import com.google.gson.Gson;
+import dto.InventoryInfo;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,6 +16,7 @@ import lombok.Getter;
 import lombok.Setter;
 import okhttp3.*;
 import org.jetbrains.annotations.NotNull;
+import service.DataService;
 import service.HttpClientService;
 import service.PropertiesService;
 import org.apache.log4j.Logger;
@@ -123,7 +126,7 @@ public class AppController implements Initializable {
 
     public void changeSceneToMachine() {
         //get inventory - todo decide if better elsewhere
-        getMachineInventory();
+//        getMachineInventory();
 
         //TODO: check null
         Parent rootComponent = machinePageController.getRootComponent();
@@ -131,38 +134,38 @@ public class AppController implements Initializable {
 
     }
 
-    private void getMachineInventory() {
-        String finalUrl = HttpUrl
-                .parse(PropertiesService.getApiInventoryPageUrl())
-                .newBuilder()
-                .build()
-                .toString();
-
-        System.out.println("New request is launched for: " + finalUrl);
-        HttpClientService.runAsync(finalUrl, new Callback() {
-            @Override
-            public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                Platform.runLater(() ->
-                        System.out.println("Something went wrong: " + e.getMessage())
-                );
-            }
-
-            @Override
-            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-                if (response.code() != 200) {
-                    String responseBody = response.body().string();
-                    Platform.runLater(() ->
-                            System.out.println("Something went wrong: " + responseBody)
-                    );
-                } else {
-                    Platform.runLater(() -> {
-                        System.out.println("loaded inventory");
-                    });
-                }
-            }
-        });
-
-    }
+//    private void getMachineInventory() {
+//        String finalUrl = HttpUrl
+//                .parse(PropertiesService.getApiInventoryPageUrl())
+//                .newBuilder()
+//                .build()
+//                .toString();
+//
+//        System.out.println("New request is launched for: " + finalUrl);
+//        HttpClientService.runAsync(finalUrl, new Callback() {
+//            @Override
+//            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+//                Platform.runLater(() ->
+//                        System.out.println("Something went wrong: " + e.getMessage())
+//                );
+//            }
+//
+//            @Override
+//            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+//                if (response.code() != 200) {
+//                    String responseBody = response.body().string();
+//                    Platform.runLater(() ->
+//                            System.out.println("Something went wrong: " + responseBody)
+//                    );
+//                } else {
+//                    Platform.runLater(() -> {
+//                        System.out.println("loaded inventory");
+//                    });
+//                }
+//            }
+//        });
+//
+//    }
 
     public void changeSceneToContest() {
         //TODO: check null
@@ -219,11 +222,15 @@ public class AppController implements Initializable {
                     Platform.runLater(() -> {
                         try {
                             System.out.println("Uploaded machine file successfully" + response.body().string());
-                            System.out.println("Uploaded machine file successfully" + response.body().string());
+                            String inventoryString = response.body().string();
+                            Gson gson = new Gson();
+                            InventoryInfo inventoryInfo = gson.fromJson(inventoryString, InventoryInfo.class);
+                            DataService.getInventoryInfoProperty().setValue(inventoryInfo);
                         } catch (IOException ignored) {
 
                         }
 //                        showMessage("Uploaded machine file successfully" );
+                        System.out.println("Uploaded machine file successfully" );
                         headerComponentController.getIsFileSelected().set(true);
                     });
                 }
@@ -239,9 +246,6 @@ public class AppController implements Initializable {
         });
     }
 
-//    public void handleLogin(String username) {
-//
-//    }
 }
 
 
