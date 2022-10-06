@@ -23,6 +23,8 @@ import org.controlsfx.control.NotificationPane;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
@@ -41,6 +43,8 @@ public class HeaderController implements Initializable {
         }
     }
 
+
+
     @Getter @Setter private AppController parentController;
 
     @Getter private final SimpleStringProperty selectedFileNameProperty = new SimpleStringProperty();
@@ -58,27 +62,17 @@ public class HeaderController implements Initializable {
     @FXML HBox componentNavButtonsHBox;
     @FXML Button machineSceneNavButton;
     @FXML Button contestSceneNavButton;
-
-
+    @FXML Button uploadButton;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        selectedFileName.textProperty().bind(selectedFileNameProperty);
         machineSceneNavButton.disableProperty().bind(isFileSelected.not());
         contestSceneNavButton.disableProperty().bind(DataService.getCurrentMachineStateProperty().isNotNull().not());
-//  ======================================================
-        supportPastePathingInTextField();
+        selectedFileName.textProperty().bindBidirectional(selectedFileNameProperty);
+
 //  ======================================================
         createNotificationPane();
     }
 
-    private void supportPastePathingInTextField(){
-        // paste path
-        selectedFileName.textProperty().addListener(((observable, oldValue, newValue) -> {
-            if(parentController!=null){
-                parentController.handleFileChosen(newValue);
-            }
-        }));
-    }
 
     public StringProperty selectedFileProperty(){
         return selectedFileNameProperty;
@@ -114,7 +108,8 @@ public class HeaderController implements Initializable {
             return;
         }
         String absolutePath = selectedFile.getAbsolutePath();
-        parentController.handleFileChosen(absolutePath);
+        isFileSelected.setValue(true);
+        selectedFileNameProperty.setValue(absolutePath);
     }
 
     @FXML
@@ -132,8 +127,14 @@ public class HeaderController implements Initializable {
     }
 
 
-
-
+    public void onUploadButton(ActionEvent actionEvent) {
+        Path p = Paths.get(selectedFileProperty().get());
+        if (!p.isAbsolute()) {
+            parentController.showMessage("\""+ selectedFileProperty().get() +"\" is not an absolute path");
+            return;
+        }
+        parentController.handleUploadFile(selectedFileProperty().get());
+    }
 }
 
 

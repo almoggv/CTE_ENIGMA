@@ -19,6 +19,14 @@ public class PropertiesService {
     @Getter private static final int appWindowWidth = 950;
     @Getter private static final int appWindowHeight = 650;
 
+    //Api Url
+    public final static String BASE_DOMAIN = "localhost";
+    private final static String BASE_URL = "http://" + BASE_DOMAIN + ":8080";
+//    private final static String CONTEXT_PATH = "/uboat";
+    private final static String FULL_SERVER_PATH = BASE_URL;/* + CONTEXT_PATH*/;
+
+    @Getter private static final String apiLoginPageUrl = FULL_SERVER_PATH + "/login";
+
 
 }
 

@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -11,8 +12,12 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import lombok.Getter;
 import lombok.Setter;
-import dto.InventoryInfo;
-import service.InventoryService;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.HttpUrl;
+import okhttp3.Response;
+import org.jetbrains.annotations.NotNull;
+import service.HttpClientService;
 import service.PropertiesService;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
@@ -21,7 +26,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Optional;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
@@ -110,20 +114,80 @@ public class AppController implements Initializable {
         bodyWrapScrollPane.setVisible(true);
     }
 
-    public void handleFileChosen(String absolutePath){
-        //TODO: implement
-//        TODO: check string is really absolute path
+    public void handleUploadFile(String absolutePath){
         Path p = Paths.get(absolutePath);
         if (!p.isAbsolute()) {
             this.showMessage("\""+absolutePath+"\" is not an absolute path");
             return;
         }
+
+        String finalUrl = HttpUrl
+                .parse(PropertiesService.getApiLoginPageUrl())
+                .newBuilder()
+//                .addQueryParameter("username", userName)
+                .build()
+                .toString();
+//
+//        updateHttpStatusLine("New request is launched for: " + finalUrl);
+//
+        HttpClientService.runAsync(finalUrl, new Callback() {
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                if (response.code() != 200) {
+                    String responseBody = response.body().string();
+                    Platform.runLater(() ->
+                            showMessage("Something went wrong: " + responseBody)
+                    );
+                } else {
+                    Platform.runLater(() -> {
+                        showMessage("Uploaded machine file successfully");
+                        
+                    });
+                }
+            }
+
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                Platform.runLater(() ->
+                        showMessage("Something went wrong: " + e.getMessage())
+                );
+            }
 ////      if Status = 200
 //        headerController.getSelectedFileNameProperty().setValue(absolutePath);
 //        headerController.getIsFileSelected().setValue(true);
 //        makeBodyVisible();
 ////      else
 //        this.showMessage(error message);
+
+        /*
+         HttpClientUtil.runAsync(finalUrl, new Callback() {
+
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                Platform.runLater(() ->
+                        errorMessageProperty.set("Something went wrong: " + e.getMessage())
+                );
+            }
+
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                if (response.code() != 200) {
+                    String responseBody = response.body().string();
+                    Platform.runLater(() ->
+                            errorMessageProperty.set("Something went wrong: " + responseBody)
+                    );
+                } else {
+                    Platform.runLater(() -> {
+                            chatAppMainController.updateUserName(userName);
+                            chatAppMainController.switchToChatRoom();
+                    });
+                }
+            }
+        });
+    }
+
+         */
+
 
         throw new UnsupportedOperationException();
     }
