@@ -101,7 +101,4 @@ public class MachinePageController implements Initializable {
         currMachineConfigComponent = currMachineConfigComponentController.getRootGridPane();
     }
 
-
-
-
 }

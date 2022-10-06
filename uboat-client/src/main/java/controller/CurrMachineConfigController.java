@@ -21,7 +21,6 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class CurrMachineConfigController implements Initializable {
-
     @Getter @FXML MachinePageController machinePageController;
     @Getter @FXML MachineDetailsController machineDetailsController;
 

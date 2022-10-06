@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane fx:id="rootGridPane" minHeight="125.0" minWidth="330.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane fx:id="rootGridPane" minHeight="125.0" minWidth="330.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CurrMachineConfigController">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="94.33331298828125" minWidth="10.0" prefWidth="14.333343505859375" />
       <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" />

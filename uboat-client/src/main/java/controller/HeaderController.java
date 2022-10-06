@@ -117,12 +117,12 @@ public class HeaderController implements Initializable {
         parentController.handleFileChosen(absolutePath);
     }
 
-//    @FXML
-//    public void onChangeSceneToContestButtonClick(ActionEvent actionEvent) {
-//        if(parentController!=null){
-//            parentController.changeSceneToMachine();
-//        }
-//    }
+    @FXML
+    public void onChangeSceneToContestButtonClick(ActionEvent actionEvent) {
+        if(parentController!=null){
+            parentController.changeSceneToMachine();
+        }
+    }
 
     @FXML
     void onChangeSceneToMachineButtonClick(ActionEvent event) {
