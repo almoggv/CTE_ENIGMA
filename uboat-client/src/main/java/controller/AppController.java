@@ -32,6 +32,7 @@ import java.util.ResourceBundle;
 public class AppController implements Initializable {
 
     private static final Logger log = Logger.getLogger(AppController.class);
+
     static {
         try {
             Properties p = new Properties();
@@ -39,25 +40,37 @@ public class AppController implements Initializable {
             PropertyConfigurator.configure(p);      //Dont forget here
             log.debug("Logger Instantiated for : " + AppController.class.getSimpleName());
         } catch (IOException e) {
-            System.out.println("Failed to configure logger of -" + AppController.class.getSimpleName() ) ;
+            System.out.println("Failed to configure logger of -" + AppController.class.getSimpleName());
         }
     }
 
-    @FXML @Getter HeaderController headerComponentController;
-    @FXML private MachinePageController machinePageController;
+    @FXML
+    @Getter
+    HeaderController headerComponentController;
+    @FXML
+    private MachinePageController machinePageController;
 
-    @Setter @Getter private Stage primaryStage;
-    @FXML private BorderPane appBorderPane;
-    @FXML private AnchorPane bodyWrapAnchorPane;
-    @FXML private ScrollPane bodyWrapScrollPane;
-    @FXML private GridPane imageGrid;
-    @FXML private AnchorPane headerWrapAnchorPane;
-    @FXML private ScrollPane headerWrapScrollPane;
+    @Setter
+    @Getter
+    private Stage primaryStage;
+    @FXML
+    private BorderPane appBorderPane;
+    @FXML
+    private AnchorPane bodyWrapAnchorPane;
+    @FXML
+    private ScrollPane bodyWrapScrollPane;
+    @FXML
+    private GridPane imageGrid;
+    @FXML
+    private AnchorPane headerWrapAnchorPane;
+    @FXML
+    private ScrollPane headerWrapScrollPane;
 
-    @FXML GridPane headerComponent;
+    @FXML
+    GridPane headerComponent;
 
     public void showMessage(String message) {
-        if(message == null || message.trim().equals("")){
+        if (message == null || message.trim().equals("")) {
             return;
         }
         headerComponentController.getNotificationMessageProperty().setValue("");
@@ -72,7 +85,7 @@ public class AppController implements Initializable {
         FXMLLoader fxmlLoader;
         //Load Current Machine Config
         URL currConfigResource = AppController.class.getResource(PropertiesService.getCurrMachineConfigFxmlPath());
-        log.info("AppController - found Url of header component:"+ currConfigResource);
+        log.info("AppController - found Url of header component:" + currConfigResource);
         fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(currConfigResource);
         try {
@@ -83,7 +96,7 @@ public class AppController implements Initializable {
         CurrMachineConfigController currMachineConfigController = fxmlLoader.getController();
         //Load MachinePage
         URL machinePageResource = AppController.class.getResource(PropertiesService.getMachinePageTemplateFxmlPath());
-        log.info("AppController - found Url of machine component:"+ machinePageResource);
+        log.info("AppController - found Url of machine component:" + machinePageResource);
         fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(machinePageResource);
         try {
@@ -97,13 +110,13 @@ public class AppController implements Initializable {
 //        //TODO: Load Contest Page
     }
 
-    public void changeSceneToMachine(){
+    public void changeSceneToMachine() {
         //TODO: check null
         Parent rootComponent = machinePageController.getRootComponent();
         bodyWrapScrollPane.setContent(rootComponent);
     }
 
-    public void changeSceneToContest(){
+    public void changeSceneToContest() {
         //TODO: check null
 //        Parent rootComponent = contestPageController.getRootComponent();
 //        bodyWrapScrollPane.setContent(rootComponent);
@@ -114,15 +127,15 @@ public class AppController implements Initializable {
         bodyWrapScrollPane.setVisible(true);
     }
 
-    public void handleUploadFile(String absolutePath){
+    public void handleUploadFile(String absolutePath) {
         Path p = Paths.get(absolutePath);
         if (!p.isAbsolute()) {
-            this.showMessage("\""+absolutePath+"\" is not an absolute path");
+            this.showMessage("\"" + absolutePath + "\" is not an absolute path");
             return;
         }
 
         String finalUrl = HttpUrl
-                .parse(PropertiesService.getApiLoginPageUrl())
+                .parse(PropertiesService.getApiUploadPageUrl())
                 .newBuilder()
 //                .addQueryParameter("username", userName)
                 .build()
@@ -141,7 +154,6 @@ public class AppController implements Initializable {
                 } else {
                     Platform.runLater(() -> {
                         showMessage("Uploaded machine file successfully");
-                        
                     });
                 }
             }
@@ -152,43 +164,6 @@ public class AppController implements Initializable {
                         showMessage("Something went wrong: " + e.getMessage())
                 );
             }
-////      if Status = 200
-//        headerController.getSelectedFileNameProperty().setValue(absolutePath);
-//        headerController.getIsFileSelected().setValue(true);
-//        makeBodyVisible();
-////      else
-//        this.showMessage(error message);
-
-        /*
-         HttpClientUtil.runAsync(finalUrl, new Callback() {
-
-            @Override
-            public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                Platform.runLater(() ->
-                        errorMessageProperty.set("Something went wrong: " + e.getMessage())
-                );
-            }
-
-            @Override
-            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-                if (response.code() != 200) {
-                    String responseBody = response.body().string();
-                    Platform.runLater(() ->
-                            errorMessageProperty.set("Something went wrong: " + responseBody)
-                    );
-                } else {
-                    Platform.runLater(() -> {
-                            chatAppMainController.updateUserName(userName);
-                            chatAppMainController.switchToChatRoom();
-                    });
-                }
-            }
         });
-    }
-
-         */
-
-
-        throw new UnsupportedOperationException();
     }
 }

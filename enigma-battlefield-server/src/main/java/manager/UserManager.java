@@ -10,8 +10,8 @@ public class UserManager {
     private final Map<String,User> authTokenToUserMap;
 
     public UserManager() {
-        usernamesToUserMap = new HashMap<>();
-        authTokenToUserMap = new HashMap<>();
+        usernamesToUserMap = new HashMap<String, User>();
+        authTokenToUserMap = new HashMap<String, User>();
     }
 
     public boolean isUserRegistered(String userToken){
@@ -38,7 +38,7 @@ public class UserManager {
     }
 
     public synchronized Set<User> getUsers() {
-        Set<User> usersSet = new HashSet<>(usernamesToUserMap.values());
+        Set<User> usersSet = new HashSet(usernamesToUserMap.values());
         return Collections.unmodifiableSet(usersSet);
     }
 
