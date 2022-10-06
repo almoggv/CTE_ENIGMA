@@ -45,6 +45,10 @@ public class AppController implements Initializable {
     @FXML
     @Getter
     HeaderController headerComponentController;
+
+    @FXML
+    @Getter
+    LoginController loginComponentController;
     @FXML
     private MachinePageController machinePageController;
 
@@ -67,6 +71,9 @@ public class AppController implements Initializable {
     @FXML
     GridPane headerComponent;
 
+    @FXML
+    GridPane loginComponent;
+
     public void showMessage(String message) {
         if (message == null || message.trim().equals("")) {
             return;
@@ -79,6 +86,9 @@ public class AppController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         if (headerComponentController != null) {
             headerComponentController.setParentController(this);
+        }
+        if(loginComponentController != null){
+            loginComponentController.setParentController(this);
         }
         FXMLLoader fxmlLoader;
         //Load Current Machine Config
@@ -194,6 +204,52 @@ public class AppController implements Initializable {
                 );
             }
         });
+    }
+
+    public void handleLogin(String username) {
+
+        if (username.isEmpty()) {
+            System.out.println("User name is empty. You can't login with empty user name");
+            return;
+        }
+
+        //noinspection ConstantConditions
+        String finalUrl = HttpUrl
+                .parse(PropertiesService.getApiLoginPageUrl())
+                .newBuilder()
+                .addQueryParameter("username", username)
+                .build()
+                .toString();
+
+        System.out.println("New request is launched for: " + finalUrl);
+
+        HttpClientService.runAsync(finalUrl, new Callback() {
+
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                Platform.runLater(() ->
+                        System.out.println("Something went wrong: " + e.getMessage())
+                );
+            }
+
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                if (response.code() != 200) {
+                    String responseBody = response.body().string();
+                    Platform.runLater(() ->
+                            System.out.println("Something went wrong: " + responseBody)
+                    );
+                } else {
+                    Platform.runLater(() -> {
+//                        chatAppMainController.updateUserName(userName);
+                        System.out.println("HI " + username);
+                        loginComponent.setVisible(false);
+                    });
+                }
+            }
+        });
+
+
     }
 }
 
