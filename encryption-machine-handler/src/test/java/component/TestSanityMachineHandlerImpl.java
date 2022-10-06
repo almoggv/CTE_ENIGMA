@@ -18,7 +18,7 @@ public class TestSanityMachineHandlerImpl {
     @Test
     public void testSanitySmall(){
         try{
-            String sanitySmallXmlPath = "./src/main/resources/machine-inventory-schema/ex1-sanity-small.xml";
+            String sanitySmallXmlPath = "./machine-inventory-schema/ex1-sanity-small.xml";
             machineHandler.buildMachinePartsInventory(sanitySmallXmlPath);
             //<F|A><I><CC><2,1>
             ReflectorsId refid = ReflectorsId.I;
@@ -47,7 +47,7 @@ public class TestSanityMachineHandlerImpl {
     @Test
     public void testSanityBig(){
         try{
-            String sanityBigXmlPath = "./src/main/resources/machine-inventory-schema/ex1-sanity-paper-enigma.xml";
+            String sanityBigXmlPath = "./machine-inventory-schema/ex1-sanity-paper-enigma.xml";
             machineHandler.buildMachinePartsInventory(sanityBigXmlPath);
             //<I><ODX><1,2,3>
             ReflectorsId refid = ReflectorsId.I;
@@ -132,7 +132,7 @@ public class TestSanityMachineHandlerImpl {
     @Test
     public void testBadReflectorsIdSchema(){
         try{
-            String badReflectorIdXml = "./src/main/resources/machine-inventory-schema/extra-errors/ex1-error - reflector-id.xml";
+            String badReflectorIdXml = "./machine-inventory-schema/extra-errors/ex1-error - reflector-id.xml";
             machineHandler.buildMachinePartsInventory(badReflectorIdXml);
         }
         catch(Exception e){
@@ -144,7 +144,7 @@ public class TestSanityMachineHandlerImpl {
    @Test
     public void testBadRotorCountsIdSchema(){
         try{
-            String badReflectorIdXml = "./src/main/resources/machine-inventory-schema/extra-errors/ex1-error - bad-rotor-count.xml";
+            String badReflectorIdXml = "./machine-inventory-schema/extra-errors/ex1-error - bad-rotor-count.xml";
             machineHandler.buildMachinePartsInventory(badReflectorIdXml);
         }
         catch(Exception e){
@@ -156,7 +156,7 @@ public class TestSanityMachineHandlerImpl {
     @Test
     public void testBadRotorCountsId2Schema(){
         try{
-            String badReflectorIdXml = "./src/main/resources/machine-inventory-schema/extra-errors/ex1-error - bad-rotor-count2.xml";
+            String badReflectorIdXml = "./machine-inventory-schema/extra-errors/ex1-error - bad-rotor-count2.xml";
             machineHandler.buildMachinePartsInventory(badReflectorIdXml);
         }
         catch(Exception e){
@@ -168,7 +168,7 @@ public class TestSanityMachineHandlerImpl {
    @Test
     public void testBadReflectionMappingIdSchema(){
         try{
-            String badReflectorIdXml = "./src/main/resources/machine-inventory-schema/extra-errors/ex1-error - reflector-mapping.xml";
+            String badReflectorIdXml = "./machine-inventory-schema/extra-errors/ex1-error - reflector-mapping.xml";
             machineHandler.buildMachinePartsInventory(badReflectorIdXml);
         }
         catch(Exception e){
@@ -180,7 +180,7 @@ public class TestSanityMachineHandlerImpl {
    @Test
     public void testBadRotorMappingSchema(){
         try{
-            String badReflectorIdXml = "./src/main/resources/machine-inventory-schema/extra-errors/ex1-error - rotor-mapping.xml";
+            String badReflectorIdXml = "./machine-inventory-schema/extra-errors/ex1-error - rotor-mapping.xml";
             machineHandler.buildMachinePartsInventory(badReflectorIdXml);
         }
         catch(Exception e){
@@ -192,7 +192,7 @@ public class TestSanityMachineHandlerImpl {
     @Test
     public void testBadRotorIdSchema(){
         try{
-            String badReflectorIdXml = "./src/main/resources/machine-inventory-schema/extra-errors/ex1-error - rotor id.xml";
+            String badReflectorIdXml = "./machine-inventory-schema/extra-errors/ex1-error - rotor id.xml";
             machineHandler.buildMachinePartsInventory(badReflectorIdXml);
         }
         catch(Exception e){
@@ -204,7 +204,7 @@ public class TestSanityMachineHandlerImpl {
     @Test
     public void testBadNotchSchema(){
         try{
-            String badReflectorIdXml = "./src/main/resources/machine-inventory-schema/extra-errors/ex1-error -notch.xml";
+            String badReflectorIdXml = "./machine-inventory-schema/extra-errors/ex1-error -notch.xml";
             machineHandler.buildMachinePartsInventory(badReflectorIdXml);
         }
         catch(Exception e){
@@ -216,7 +216,7 @@ public class TestSanityMachineHandlerImpl {
     @Test
     public void testABCSchema(){
         try{
-            String badReflectorIdXml = "./src/main/resources/machine-inventory-schema/extra-errors/ex1-error-odd-abc.xml";
+            String badReflectorIdXml = "./machine-inventory-schema/extra-errors/ex1-error-odd-abc.xml";
             machineHandler.buildMachinePartsInventory(badReflectorIdXml);
         }
         catch(Exception e){
