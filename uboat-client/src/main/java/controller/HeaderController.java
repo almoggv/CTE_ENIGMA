@@ -31,7 +31,6 @@ import java.util.ResourceBundle;
 public class HeaderController implements Initializable {
 
     private static final Logger log = Logger.getLogger(HeaderController.class);
-
     static {
         try {
             Properties p = new Properties();
@@ -43,14 +42,12 @@ public class HeaderController implements Initializable {
         }
     }
 
-
-
     @Getter @Setter private AppController parentController;
 
     @Getter private final SimpleStringProperty selectedFileNameProperty = new SimpleStringProperty();
     @Getter private final SimpleBooleanProperty isFileSelected = new SimpleBooleanProperty(false);
 
-    @Getter private final SimpleStringProperty notificationMessageProperty = new SimpleStringProperty();
+    private final SimpleStringProperty notificationMessageProperty = new SimpleStringProperty();
     private NotificationPane notificationPane;
 
     @FXML GridPane headerComponentRootPane;
@@ -63,13 +60,12 @@ public class HeaderController implements Initializable {
     @FXML Button machineSceneNavButton;
     @FXML Button contestSceneNavButton;
     @FXML Button uploadButton;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         machineSceneNavButton.disableProperty().bind(isFileSelected.not());
         contestSceneNavButton.disableProperty().bind(DataService.getCurrentMachineStateProperty().isNotNull().not());
         selectedFileName.textProperty().bindBidirectional(selectedFileNameProperty);
-
-//  ======================================================
         createNotificationPane();
     }
 
@@ -78,12 +74,13 @@ public class HeaderController implements Initializable {
         return selectedFileNameProperty;
     }
 
-    public GridPane getRootComponent(){
-        return headerComponentRootPane;
+    public NotificationPane getRootComponent(){
+        return notificationPane;
     }
 
     private void createNotificationPane(){
         this.notificationPane = new NotificationPane(this.getRootComponent());
+        notificationPane.setVisible(true);
         notificationPane.textProperty().bind(notificationMessageProperty);
         notificationPane.autosize();
         notificationPane.setContent(headerComponentRootPane);
@@ -93,9 +90,26 @@ public class HeaderController implements Initializable {
         notificationMessageProperty.addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                notificationPane.show();
+                if(newValue == null || newValue.equals("")){
+                    return;
+                }
+                try{
+                    log.debug("Notification pane listener - calling .show()");
+                    notificationPane.show();
+                }
+                catch(Exception e){
+                    log.error("Error showing message=" + newValue + " exception=" + e.getMessage());
+                }
             }
         });
+    }
+
+    public void showMessage(String message){
+        if (message == null || message.trim().equals("")) {
+            return;
+        }
+        notificationMessageProperty.setValue("");
+        notificationMessageProperty.setValue(message);
     }
 
     @FXML

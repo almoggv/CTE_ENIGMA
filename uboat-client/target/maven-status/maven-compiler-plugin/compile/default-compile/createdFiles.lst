@@ -1,3 +1,4 @@
+controller\LoginController$1.class
 service\PropertiesService.class
 controller\MachineDetailsController.class
 controller\MachineDetailsController$1.class
@@ -8,6 +9,7 @@ controller\LoginController.class
 controller\AppController.class
 controller\CurrMachineConfigController.class
 app\GuiApplication.class
+service\SimpleCookieManager.class
 controller\HeaderController$1.class
 controller\HeaderController.class
 controller\SetMachineConfigController.class

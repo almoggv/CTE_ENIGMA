@@ -19,6 +19,9 @@ public class PropertiesService {
     @Getter private static final int appWindowWidth = 950;
     @Getter private static final int appWindowHeight = 650;
 
+    //Attributes
+    @Getter private static final String usernameAttribute = "username";
+
     //Api Url
     public final static String BASE_DOMAIN = "localhost";
     private final static String BASE_URL = "http://" + BASE_DOMAIN + ":8080";

@@ -26,5 +26,6 @@
       <Label alignment="TOP_CENTER" text="Please enter name" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
       <TextField fx:id="loginTextField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
       <Button fx:id="loginButton" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onLoginButtonAction" text="Login" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+      <Button mnemonicParsing="false" onAction="#onShowMessageButtonClick" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="5" />
    </children>
 </GridPane>

@@ -33,7 +33,6 @@ import java.util.ResourceBundle;
 public class AppController implements Initializable {
 
     private static final Logger log = Logger.getLogger(AppController.class);
-
     static {
         try {
             Properties p = new Properties();
@@ -78,11 +77,9 @@ public class AppController implements Initializable {
     GridPane loginComponent;
 
     public void showMessage(String message) {
-        if (message == null || message.trim().equals("")) {
-            return;
+        if(headerComponentController!=null){
+            headerComponentController.showMessage(message);
         }
-        headerComponentController.getNotificationMessageProperty().setValue("");
-        headerComponentController.getNotificationMessageProperty().setValue(message);
     }
 
     @Override
@@ -118,20 +115,20 @@ public class AppController implements Initializable {
         machinePageController = fxmlLoader.getController();
         machinePageController.setParentController(this);
         machinePageController.bindComponent(currMachineConfigController);
-
-        System.out.println("app initialized");
-        showMessage("app initialized");
 //        //TODO: Load Contest Page
+
+        headerWrapScrollPane.setContent(headerComponentController.getRootComponent());
+        log.info("AppController - app initialized");
     }
 
     public void changeSceneToMachine() {
-        //get inventory - todo decide if better elsewhere
-//        getMachineInventory();
-
-        //TODO: check null
-        Parent rootComponent = machinePageController.getRootComponent();
-        bodyWrapScrollPane.setContent(rootComponent);
-
+        if(machinePageController != null){
+            Parent rootComponent = machinePageController.getRootComponent();
+            bodyWrapScrollPane.setContent(rootComponent);
+        }
+        else{
+            log.error("Failed to change scene to machine - machineController == null");
+        }
     }
 
 //    private void getMachineInventory() {
