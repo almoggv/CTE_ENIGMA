@@ -52,11 +52,12 @@ public class Login extends HttpServlet {
             log.error("Failed to get response Writer, Exception Message=" + e.getMessage());
             return;
         }
-        if(usernameFromSession != null){ //user is already logged in
+        //user is already logged in
+        if(usernameFromSession != null){
             String userAccessToken = userManager.getUserToken(usernameFromSession);
             resp.setStatus(SC_OK);
-            resp.setHeader(PropertiesService.getTokenAttributeName(),userAccessToken);
-            return;
+            repsPayload.setMessage("Successfully logged in");
+            repsPayload.setAccessToken(userAccessToken);
         }
         //user is not logged in yet, has no seesion yet
         String usernameFromParameter = req.getParameter(PropertiesService.getUsernameAttributeName());
@@ -83,10 +84,10 @@ public class Login extends HttpServlet {
                 }
             }
         }
+        resp.setHeader(PropertiesService.getHttpHeaderContentType(),PropertiesService.getJsonHttpContentType());
         Gson gson = buildGsonLoginPayloadSerializer();
         String serializedPayload = gson.toJson(repsPayload);
         respWriter.print(serializedPayload);
-        resp.setHeader(PropertiesService.getHttpHeaderContentType(),PropertiesService.getJsonHttpContentType());
         //Before:
         //resp.setHeader(PropertiesService.getTokenAttributeName(),userAccessToken);
     }

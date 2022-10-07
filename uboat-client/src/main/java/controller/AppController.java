@@ -115,9 +115,17 @@ public class AppController implements Initializable {
         machinePageController = fxmlLoader.getController();
         machinePageController.setParentController(this);
         machinePageController.bindComponent(currMachineConfigController);
-//        //TODO: Load Contest Page
+//      //TODO: Load Contest Page
 
         headerWrapScrollPane.setContent(headerComponentController.getRootComponent());
+        loginComponentController.getIsLoggedInProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue==true){
+                this.changeSceneToMachine();
+            }
+            else{
+                this.changeSceneToLogin();
+            }
+        });
         log.info("AppController - app initialized");
     }
 
@@ -128,6 +136,16 @@ public class AppController implements Initializable {
         }
         else{
             log.error("Failed to change scene to machine - machineController == null");
+        }
+    }
+
+    public void changeSceneToLogin(){
+        if(loginComponentController!=null){
+            Parent rootComponent = loginComponentController.getRootComponent();
+            bodyWrapScrollPane.setContent(imageGrid);
+        }
+        else{
+            log.error("Failed to change scene to login - loginComponentController == null");
         }
     }
 
@@ -243,6 +261,14 @@ public class AppController implements Initializable {
         });
     }
 
+    public void handleLogout() {
+        if(loginComponentController!=null){
+            loginComponentController.handleLogout();
+        }
+        else{
+            log.error("Failed to logout - loginComponentController is null");
+        }
+    }
 }
 
 

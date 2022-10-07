@@ -38,15 +38,24 @@
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>
       </HBox>
-      <HBox fx:id="componentNavButtonsHBox" alignment="CENTER" spacing="40.0" GridPane.columnIndex="3" GridPane.rowIndex="4">
+      <GridPane GridPane.columnIndex="3" GridPane.rowIndex="4">
+         <columnConstraints>
+            <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="50.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="NEVER" />
+            <ColumnConstraints hgrow="NEVER" maxWidth="20.0" minWidth="20.0" prefWidth="20.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="NEVER" />
+            <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="50.0" />
+            <ColumnConstraints hgrow="NEVER" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+         </rowConstraints>
          <children>
-            <Button fx:id="machineSceneNavButton" mnemonicParsing="false" onAction="#onChangeSceneToMachineButtonClick" text="Machine" />
-            <Button fx:id="contestSceneNavButton" mnemonicParsing="false" onAction="#onChangeSceneToContestButtonClick" text="Contest" />
+            <Button fx:id="machineSceneNavButton" mnemonicParsing="false" onAction="#onChangeSceneToMachineButtonClick" text="Machine" GridPane.columnIndex="1" />
+            <Button fx:id="contestSceneNavButton" mnemonicParsing="false" onAction="#onChangeSceneToContestButtonClick" text="Contest" GridPane.columnIndex="3" />
+            <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#onLogoutButtonClick" text="Logout" GridPane.columnIndex="5" />
          </children>
-         <padding>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </padding>
-      </HBox>
+      </GridPane>
       <HBox alignment="CENTER_LEFT" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
          <GridPane.margin>
             <Insets left="10.0" />

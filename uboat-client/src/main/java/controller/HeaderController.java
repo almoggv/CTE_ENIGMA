@@ -152,6 +152,16 @@ public class HeaderController implements Initializable {
         }
         parentController.handleUploadFile(selectedFileProperty().get());
     }
+
+    @FXML
+    void onLogoutButtonClick(ActionEvent event) {
+        if(parentController!=null){
+            parentController.handleLogout();
+        }
+        else{
+            log.error("Failed to logout - ParentController is null");
+        }
+    }
 }
 
 

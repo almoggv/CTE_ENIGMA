@@ -29,6 +29,7 @@ public class PropertiesService {
     private final static String FULL_SERVER_PATH = BASE_URL + CONTEXT_PATH;
 
     @Getter private static final String apiLoginPageUrl = FULL_SERVER_PATH + "/login";
+    @Getter private static final String apiLogoutPageUrl = FULL_SERVER_PATH + "/logout";
     @Getter private static final String apiUploadPageUrl = FULL_SERVER_PATH + "/upload-machine-file";
     @Getter private static final String apiInventoryPageUrl = FULL_SERVER_PATH + "/get-machine-details";
     @Getter private static final String apiAssembleMachineRandomlyPageUrl = FULL_SERVER_PATH + "/assemble-machine-randomly";

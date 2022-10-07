@@ -10,6 +10,7 @@ controller\AppController.class
 controller\CurrMachineConfigController.class
 app\GuiApplication.class
 service\SimpleCookieManager.class
+controller\LoginController$2.class
 controller\HeaderController$1.class
 controller\HeaderController.class
 controller\SetMachineConfigController.class
