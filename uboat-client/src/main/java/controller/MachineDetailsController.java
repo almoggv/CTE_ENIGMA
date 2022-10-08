@@ -63,4 +63,8 @@ public class MachineDetailsController implements Initializable {
         availableReflectorNumLabel.setText((String.valueOf(inventoryInfo.getNumOfAvailableReflectors())));
         toUseRotorNumLabel.setText((String.valueOf(inventoryInfo.getNumOfRotorsInUse())));
     }
+
+    private void fetchInventoryInfo(){
+
+    }
 }

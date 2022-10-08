@@ -2,6 +2,7 @@ package controller;
 
 import com.google.gson.Gson;
 import dto.InventoryInfo;
+import dto.MachineInventoryPayload;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -211,52 +212,57 @@ public class AppController implements Initializable {
                         .addFormDataPart("file", f.getName(), RequestBody.create(f, MediaType.parse("text/plain")))
                         //.addFormDataPart("key1", "value1") // you can add multiple, different parts as needed
                         .build();
-
         String finalUrl = HttpUrl
                 .parse(PropertiesService.getApiUploadPageUrl())
                 .newBuilder()
 //                .addQueryParameter("username", userName)
                 .build()
                 .toString();
-
         Request request = new Request.Builder()
                 .url(finalUrl)
                 .post(body)
                 .build();
-
         HttpClientService.runAsync(request, new Callback() {
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                String responseBody = response.body().string();
+                if (response.code() >= 500) {
+                    Platform.runLater(() ->{
+                        log.error("Failed to UploadFile  - statusCode=" + response.code());
+                        showMessage("A Server side error occurred");
+                    });
+                    return;
+                }
+                MachineInventoryPayload inventoryPayload;
+                try{
+                    inventoryPayload = new Gson().fromJson(responseBody,MachineInventoryPayload.class);
+                }
+                catch (Exception e){
+                    log.error("Failed to parse response on FileUpload, Message=" + e.getMessage());
+                    Platform.runLater(()->showMessage("Ran into a problem uploading the file"));
+                    return;
+                }
                 if (response.code() != 200) {
-                    String responseBody = response.body().string();
-                    Platform.runLater(() ->
-                            System.out.println("Something went wrong: " + responseBody)
-//                            showMessage("Something went wrong: " + responseBody)
-                    );
-                } else {
+                    Platform.runLater(() ->{
+                        log.error("Failed to UploadFile  - statusCode=" + response.code() + ", ServerMessage=" + inventoryPayload.getMessage());
+                        showMessage(inventoryPayload.getMessage());
+                    });
+                }
+                else {
                     Platform.runLater(() -> {
-                        try {
-                            System.out.println("Uploaded machine file successfully" + response.body().string());
-                            String inventoryString = response.body().string();
-                            Gson gson = new Gson();
-                            InventoryInfo inventoryInfo = gson.fromJson(inventoryString, InventoryInfo.class);
-                            DataService.getInventoryInfoProperty().setValue(inventoryInfo);
-                        } catch (IOException ignored) {
-
-                        }
-//                        showMessage("Uploaded machine file successfully" );
-                        System.out.println("Uploaded machine file successfully" );
+                        log.info("File Uploaded Successfully - responseCode = 200, ServerMessage="+ inventoryPayload.getMessage());
+                        showMessage("Uploaded machine file successfully");
                         headerComponentController.getIsFileSelected().set(true);
+                        DataService.fetchInventoryInfo(inventoryPayload.getInventory());
                     });
                 }
             }
-
             @Override
             public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                Platform.runLater(() ->
-                        System.out.println("Something went wrong: " + e.getMessage())
-//                        showMessage("Something went wrong: " + e.getMessage())
-                );
+                Platform.runLater(() -> {
+                    log.error("Failed to UploadFile - OnFailure triggered, ExceptionMessage=" + e.getMessage());
+                    showMessage("Failed to contact server");
+                });
             }
         });
     }

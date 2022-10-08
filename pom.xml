@@ -13,6 +13,7 @@
         <module>encryption-machine-handler</module>
         <module>decryption-manager</module>
         <module>uboat-client</module>
+        <module>common-module</module>
     </modules>
 
 

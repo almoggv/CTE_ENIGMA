@@ -1,14 +1,13 @@
 package servlet;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import dto.LoginPayload;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jsonadapter.LoginPayloadSerializer;
+import jsonadapter.LoginPayloadJsonAdapter;
 import manager.UserManager;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
@@ -50,6 +49,7 @@ public class Login extends HttpServlet {
         }
         catch (Exception e){
             log.error("Failed to get response Writer, Exception Message=" + e.getMessage());
+            resp.setStatus(SC_INTERNAL_SERVER_ERROR);
             return;
         }
         //user is already logged in
@@ -85,19 +85,11 @@ public class Login extends HttpServlet {
             }
         }
         resp.setHeader(PropertiesService.getHttpHeaderContentType(),PropertiesService.getJsonHttpContentType());
-        Gson gson = buildGsonLoginPayloadSerializer();
+        Gson gson = LoginPayloadJsonAdapter.buildGsonLoginPayloadAdapter();
         String serializedPayload = gson.toJson(repsPayload);
         respWriter.print(serializedPayload);
         //Before:
         //resp.setHeader(PropertiesService.getTokenAttributeName(),userAccessToken);
-    }
-
-    private Gson buildGsonLoginPayloadSerializer(){
-        Gson gson = new GsonBuilder()
-                .registerTypeAdapter(LoginPayload.class, new LoginPayloadSerializer())
-                .setPrettyPrinting()
-                .create();
-        return gson;
     }
 
     @Override

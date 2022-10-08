@@ -36,6 +36,7 @@ public class PropertiesService {
     @Getter private static final String apiAssembleMachineManuallyPageUrl = FULL_SERVER_PATH + "/assemble-machine-manually";
     @Getter private static final String apiCurrMachineConfigPageUrl = FULL_SERVER_PATH + "/curr-machine-config";
     @Getter private static final String apiEncryptPageUrl = FULL_SERVER_PATH + "/encrypt";
+    @Getter private static final String apiInventoryInfoUrl = FULL_SERVER_PATH + "/get-machine-inventory";
 
 }
 

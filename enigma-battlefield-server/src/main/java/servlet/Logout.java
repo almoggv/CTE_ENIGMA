@@ -1,14 +1,13 @@
 package servlet;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import dto.LoginPayload;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jsonadapter.LoginPayloadSerializer;
+import jsonadapter.LoginPayloadJsonAdapter;
 import manager.UserManager;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
@@ -80,16 +79,8 @@ public class Logout extends HttpServlet {
             }
         }
         resp.setHeader(PropertiesService.getHttpHeaderContentType(),PropertiesService.getJsonHttpContentType());
-        Gson gson = buildGsonLoginPayloadSerializer();
+        Gson gson = LoginPayloadJsonAdapter.buildGsonLoginPayloadAdapter();
         String serializedPayload = gson.toJson(repsPayload);
         respWriter.print(serializedPayload);
-    }
-
-    private Gson buildGsonLoginPayloadSerializer(){
-        Gson gson = new GsonBuilder()
-                .registerTypeAdapter(LoginPayload.class, new LoginPayloadSerializer())
-                .setPrettyPrinting()
-                .create();
-        return gson;
     }
 }

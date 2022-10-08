@@ -28,7 +28,6 @@ import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
     private static final Logger log = Logger.getLogger(LoginController.class);
-
     static {
         try {
             Properties p = new Properties();
@@ -62,13 +61,6 @@ public class LoginController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         loginTextField.textProperty().bindBidirectional(usernameProperty);
         loginButton.disableProperty().bind(isLoggedInProperty);
-//        loginTextField.textProperty().addListener((observable, oldValue, newValue) -> {
-//            if (newValue != null && !newValue.equals("")) {
-//                isNameSelected.setValue(true);
-//            } else {
-//                isNameSelected.setValue(false);
-//            }
-//        });
     }
 
     @FXML
