@@ -243,5 +243,8 @@ public class SetMachineConfigController implements Initializable {
         plugBoardConnectionsRight.getItems().clear();
     }
 
-
+    @FXML
+    void onRefreshInventoryButtonClick(ActionEvent event) {
+        DataService.fetchInventoryInfo();
+    }
 }

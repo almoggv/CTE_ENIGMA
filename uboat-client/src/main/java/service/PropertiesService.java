@@ -21,6 +21,9 @@ public class PropertiesService {
 
     //Attributes
     @Getter private static final String usernameAttribute = "username";
+    @Getter private static final String tokenAttributeName = "access_token";
+    @Getter private static final String messageAttributeName = "message";
+    @Getter private static final String inventoryAttributeName = "inventory";
 
     //Api Url
     public final static String BASE_DOMAIN = "localhost";

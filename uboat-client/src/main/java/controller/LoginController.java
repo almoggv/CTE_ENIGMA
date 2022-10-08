@@ -1,5 +1,7 @@
 package controller;
 
+import com.google.gson.Gson;
+import dto.LoginPayload;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -9,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import jsonadapter.LoginPayloadJsonAdapter;
 import lombok.Getter;
 import lombok.Setter;
 import okhttp3.Call;
@@ -92,11 +95,18 @@ public class LoginController implements Initializable {
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 String responseBody = response.body().string();
+                if (response.code() >= 500){
+                    parentController.showMessage("Failed to login - server error");
+                    log.error("Failed to login to server - status=" + response.code() + " body=" + responseBody);
+                    return;
+                }
+                Gson gson = LoginPayloadJsonAdapter.buildGsonLoginPayloadAdapter();
+                LoginPayload loginPayload = gson.fromJson(responseBody,LoginPayload.class);
                 if (response.code() != 200) {
                     Platform.runLater(() -> {
                         isLoggedInProperty.setValue(false);
                         log.warn("Failed to login to server - status=" + response.code() + " body=" + responseBody);
-                        parentController.showMessage("Failed to login");
+                        parentController.showMessage("Failed to login - "+ loginPayload.getMessage());
                     });
                 } else {
                     Platform.runLater(() -> {
@@ -138,10 +148,17 @@ public class LoginController implements Initializable {
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 String responseBody = response.body().string();
+                if (response.code() >= 500){
+                    parentController.showMessage("Failed to Logout - server error");
+                    log.error("Failed to logout from server - status=" + response.code() + " body=" + responseBody);
+                    return;
+                }
+                Gson gson = LoginPayloadJsonAdapter.buildGsonLoginPayloadAdapter();
+                LoginPayload loginPayload = gson.fromJson(responseBody,LoginPayload.class);
                 if (response.code() != 200) {
                     Platform.runLater(() -> {
                         log.warn("Failed to logout from server - status=" + response.code() + " body=" + responseBody);
-                        parentController.showMessage("Failed to logout");
+                        parentController.showMessage("Failed to logout - " + loginPayload.getMessage());
                     });
                 } else {
                     Platform.runLater(() -> {

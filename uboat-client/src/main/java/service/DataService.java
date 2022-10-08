@@ -100,7 +100,7 @@ public class DataService {
                     log.error("Failed to FetchInventoryInfo - statusCode=" + response.code() + ", ServerMessage=" + inventoryPayload.getMessage());
                 }
                 else {
-                    log.debug("Inventory Successfully Fetched - responseCode = 200, ServerMessage=" + inventoryPayload.getMessage());
+                    log.info("Inventory Successfully Fetched - responseCode = 200, ServerMessage=" + inventoryPayload.getMessage());
                     inventoryInfoProperty.setValue(inventoryPayload.getInventory());
                 }
             }

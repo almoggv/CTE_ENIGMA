@@ -25,6 +25,11 @@ public class LoginPayloadJsonAdapter implements JsonSerializer<LoginPayload> ,Js
 
     @Override
     public LoginPayload deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
-        throw new UnsupportedOperationException("Not implemented yet");
+        JsonObject jsonObject = json.getAsJsonObject();
+        LoginPayload loginPayload = new LoginPayload(
+                jsonObject.get(PropertiesService.getMessageAttributeName()).getAsString(),
+                jsonObject.get(PropertiesService.getTokenAttributeName()).getAsString()
+        );
+        return loginPayload;
     }
 }
