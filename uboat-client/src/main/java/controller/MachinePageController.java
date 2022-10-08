@@ -84,11 +84,63 @@ public class MachinePageController implements Initializable {
     }
 
     public void handleManuelSetMachinePressed(MachineState userMachineSetupChoices) {
-//        DataService.getOriginalMachineStateProperty().setValue(machineHandler.getInitialMachineState().get());
-//        DataService.getCurrentMachineStateProperty().setValue(machineHandler.getMachineState().get());
-//        log.info("MachinePageController - CurrMachine State =" + machineHandler.getMachineState().get());
+        String finalUrl = HttpUrl
+                .parse(PropertiesService.getApiAssembleMachineManuallyPageUrl())
+                .newBuilder()
+                .build()
+                .toString();
 
-        throw new UnsupportedOperationException();
+        MachineStatePayload sendPayload = new MachineStatePayload();
+        sendPayload.setMachineState(userMachineSetupChoices);
+        String userChoiceStateJson = new Gson().toJson(sendPayload);
+
+        RequestBody body = RequestBody.create(
+                MediaType.parse("application/json"), userChoiceStateJson);
+
+        Request request = new Request.Builder()
+                .url(finalUrl)
+                .post(body)
+                .build();
+
+        log.info("New request is sent for: " + finalUrl);
+        HttpClientService.runAsync(request, new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                Platform.runLater(() -> {
+                    parentController.showMessage("Failed to assemble machine - cannot contact server");
+                    log.error("Request with URL=\"" + finalUrl + "\" FAILED, exception message=" + e.getMessage());
+                });
+            }
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                String responseBody = response.body().string();
+                if (response.code() >= 500){
+                    parentController.showMessage("Failed to assemble machine - server error");
+                    log.error("Failed to login to server - status=" + response.code() + " body=" + responseBody);
+                    return;
+                }
+                MachineStatePayload receiveMachineStatePayload;
+                try{
+                    receiveMachineStatePayload = new Gson().fromJson(responseBody, MachineStatePayload.class);
+                }
+                catch (Exception e){
+                    log.error("Failed to parse response on assemble machine state randomly, Message=" + e.getMessage());
+                    return;
+                }
+                if (response.code() != 200) {
+                    Platform.runLater(() -> {
+                        log.warn("Failed to assemble machine - status=" + response.code() + " body=" + responseBody);
+                        parentController.showMessage("Failed to assemble machine - "+ receiveMachineStatePayload.getMessage());
+                    });
+                } else {
+                    Platform.runLater(() -> {
+                        log.info("Successfully assembled machine, status=" + response.code() + ", response body=" + responseBody);
+                        parentController.showMessage("Successfully assembled machine");
+                    });
+                    DataService.startPullingMachineConfig();
+                }
+            }
+        });
     }
 
     public void handleRandomSetMachinePressed() {
