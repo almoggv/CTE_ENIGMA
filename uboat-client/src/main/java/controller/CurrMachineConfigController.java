@@ -1,6 +1,7 @@
 package controller;
 
 import javafx.application.Platform;
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ChangeListener;
@@ -107,7 +108,7 @@ public class CurrMachineConfigController implements Initializable {
         this.machineConfigurationLabel.setText("Original machine configuration");
     }
 
-    public void bindToData(SimpleObjectProperty<MachineState> dataProperty){
+    public void bindToData(ObjectProperty<MachineState> dataProperty){
         dataProperty.addListener(new ChangeListener<MachineState>() {
             @Override
             public void changed(ObservableValue<? extends MachineState> observable, MachineState oldValue, MachineState newValue) {

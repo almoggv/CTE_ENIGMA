@@ -8,6 +8,7 @@ service\DataService.class
 controller\LoginController.class
 controller\AppController.class
 controller\CurrMachineConfigController.class
+service\DataService$1.class
 app\GuiApplication.class
 service\SimpleCookieManager.class
 controller\LoginController$2.class
@@ -16,6 +17,8 @@ controller\HeaderController.class
 controller\SetMachineConfigController.class
 fx\component\ComboBoxItem.class
 controller\AppController$1.class
+service\DataService$1$1.class
 controller\SetMachineConfigController$1.class
+service\DataService$2.class
 service\HttpClientService.class
 fx\component\ComboBoxCell.class

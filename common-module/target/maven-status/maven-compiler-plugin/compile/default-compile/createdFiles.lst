@@ -1,0 +1,5 @@
+dto\LoginPayload.class
+jsonadapter\LoginPayloadJsonAdapter.class
+dto\MachineInventoryPayload.class
+dto\VersionDto.class
+service\PropertiesService.class

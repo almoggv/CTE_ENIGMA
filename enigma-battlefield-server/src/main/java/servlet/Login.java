@@ -28,7 +28,7 @@ public class Login extends HttpServlet {
         try {
             Properties p = new Properties();
             p.load(Login.class.getResourceAsStream(PropertiesService.getLog4jPropertiesResourcePath()));
-            PropertyConfigurator.configure(p);      //Dont forget here
+            PropertyConfigurator.configure(p);      //Don't forget here
             log.debug("Logger Instantiated for : " + Login.class.getSimpleName());
         } catch (IOException e) {
             System.out.println("Failed to configure logger of -" + Login.class.getSimpleName() ) ;
@@ -59,7 +59,7 @@ public class Login extends HttpServlet {
             repsPayload.setMessage("Successfully logged in");
             repsPayload.setAccessToken(userAccessToken);
         }
-        //user is not logged in yet, has no seesion yet
+        //user is not logged in yet, has no session yet
         String usernameFromParameter = req.getParameter(PropertiesService.getUsernameAttributeName());
         if (usernameFromParameter == null || usernameFromParameter.isEmpty()) {
             resp.setStatus(SC_BAD_REQUEST);
@@ -88,8 +88,6 @@ public class Login extends HttpServlet {
         Gson gson = LoginPayloadJsonAdapter.buildGsonLoginPayloadAdapter();
         String serializedPayload = gson.toJson(repsPayload);
         respWriter.print(serializedPayload);
-        //Before:
-        //resp.setHeader(PropertiesService.getTokenAttributeName(),userAccessToken);
     }
 
     @Override
@@ -99,7 +97,7 @@ public class Login extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //TOOD: do we want to support Post req to login?
+        //TODO: do we want to support Post req to login?
 
         // get body
         //        req.getReader()

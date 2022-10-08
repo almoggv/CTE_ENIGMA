@@ -26,6 +26,7 @@ component\IOWheel.class
 component\impl\RotorImpl.class
 enums\ReflectorsId.class
 generated\CTEReflect.class
+jsonadapter\MachineStateJsonAdapter.class
 service\InventoryService.class
 component\Reflector.class
 generated\ObjectFactory.class

@@ -147,7 +147,7 @@ public class LoginController implements Initializable {
                     Platform.runLater(() -> {
                         isLoggedInProperty.setValue(false);
                         log.info("Successfully Logged Out as :\"" + username + "\", status=" + response.code() + ", response body=" + responseBody);
-                        parentController.showMessage("Successfully Logged in as :" + username);
+                        parentController.showMessage("Logged Out from: " + username);
                         usernameProperty.setValue("");
                     });
                 }
