@@ -52,11 +52,6 @@ public class AssembleMachineManually extends HttpServlet {
             resp.getWriter().print("Expecting json content type");
             return;
         }
-        /*if(!req.getHeader(PropertiesService.getHttpHeaderContentType()).equals(PropertiesService.getJsonHttpContentType())){
-            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            resp.getWriter().print("Expecting json content type");
-            return;
-        }*/
         PrintWriter respWriter;
         try {
             respWriter = resp.getWriter();

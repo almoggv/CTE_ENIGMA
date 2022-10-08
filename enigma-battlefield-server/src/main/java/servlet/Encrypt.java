@@ -1,5 +1,8 @@
 package servlet;
 
+import com.google.gson.Gson;
+import dto.EncryptionInfoHistory;
+import dto.EncryptionPayload;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -42,7 +45,7 @@ public class Encrypt extends HttpServlet {
             resp.getWriter().print("Please enter a word to encrypt.");
             return;
         }
-        if(!req.getHeader(PropertiesService.getHttpHeaderContentType()).equals(PropertiesService.getTextPlainHttpContentType())){
+        if(!req.getHeader(PropertiesService.getHttpHeaderContentType()).contains(PropertiesService.getTextPlainHttpContentType())){
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             resp.getWriter().print("Expecting text content type");
             return;
@@ -57,30 +60,30 @@ public class Encrypt extends HttpServlet {
             return;
         }
         MachineHandler machineHandler = (MachineHandler) req.getSession(false).getAttribute(PropertiesService.getMachineHandlerAttributeName());
+        EncryptionPayload sendPayload = new EncryptionPayload();
         if(machineHandler == null){
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            respWriter.print("Please upload a schema file first. (/upload-machine-file)");
+            sendPayload.setMessage("Please upload a schema file first. (/upload-machine-file)");
             return;
         }
         Optional<MachineState> machineState = machineHandler.getMachineState();
         if(!machineState.isPresent()){
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            resp.getWriter().print("Please configure a machine state first. (/assemble-machine-randomly, or //assemble-machine-manually)");
+            sendPayload.setMessage("Please configure a machine state first. (/assemble-machine-randomly, or //assemble-machine-manually)");
             return;
         }
 
         BufferedReader bufferedReader = req.getReader();
-
         if(machineHandler.getInventoryInfo().get().getABC().contains(System.lineSeparator())){
             String input = bufferedReader.lines().collect(Collectors.joining());
             try {
                 String output = machineHandler.encrypt(input);
                 resp.setStatus(HttpServletResponse.SC_OK);
-                resp.getWriter().print("input was encrypted to: "+ output);
+                sendPayload.setMessage("input was encrypted to: "+ output);
             }
             catch (Exception e){
                 resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-                resp.getWriter().print("Input contains letters not in machine ABC." + e.getMessage());
+                sendPayload.setMessage("Input contains letters not in machine ABC." + e.getMessage());
             }
         }
         else{
@@ -92,14 +95,19 @@ public class Encrypt extends HttpServlet {
                 }
                 catch (IOException e){
                     resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-                    try {
-                        resp.getWriter().print("Input contains letters not in machine ABC." + e.getMessage());
-                    } catch (IOException ignore) {}
+                    sendPayload.setMessage("Input contains letters not in machine ABC." + e.getMessage());
                 }
             });
 
             resp.setStatus(HttpServletResponse.SC_OK);
-            resp.getWriter().print("input was encrypted to: "+ result);
+            EncryptionInfoHistory encryptionInfo = new EncryptionInfoHistory();
+            encryptionInfo.setInput(input.collect(Collectors.joining()));
+            encryptionInfo.setOutput(result.get());
+            sendPayload.setMessage("input was encrypted to: "+ result);
+            sendPayload.setEncryptionInfoHistory(encryptionInfo);
+            Gson gson = new Gson();
+            resp.setHeader(PropertiesService.getHttpHeaderContentType(),PropertiesService.getJsonHttpContentType());
+            respWriter.print(gson.toJson(sendPayload));
         }
 
     }
