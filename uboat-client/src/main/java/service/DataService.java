@@ -4,6 +4,7 @@ package service;
 import com.google.gson.Gson;
 import controller.LoginController;
 import dto.MachineInventoryPayload;
+import dto.MachineStatePayload;
 import javafx.application.Platform;
 import javafx.beans.property.*;
 import lombok.Getter;
@@ -50,11 +51,29 @@ public class DataService {
             HttpClientService.runAsync(machineConfigUrl, new Callback() {
                 @Override
                 public void onFailure(@NotNull Call call, @NotNull IOException e) {
-//                TODO: Implement
-                }
+                    log.error("currMachineStateFetcher failed, ExceptionMessage="+e.getMessage());                }
                 @Override
                 public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-//                  TODO: implement
+                    String responseBody = response.body().string();
+                    if (response.code() >= 500) {
+                        log.error("Current machine state Fetching failed - statusCode=" + response.code());
+                        return;
+                    }
+                    MachineStatePayload machineStatePayload;
+                    try{
+                        machineStatePayload = new Gson().fromJson(responseBody,MachineStatePayload.class);
+                    }
+                    catch (Exception e){
+                        log.error("Failed to parse response on currMachineStateFetcher, Message=" + e.getMessage());
+                        return;
+                    }
+                    if (response.code() != 200) {
+                        log.error("Failed to fetch current machine configuration - statusCode=" + response.code() + ", ServerMessage=" + machineStatePayload.getMessage());
+                    }
+                    else {
+                        log.info("Current machine state Successfully Fetched - responseCode = 200, ServerMessage=" + machineStatePayload.getMessage());
+                        currentMachineStateProperty.setValue(machineStatePayload.getMachineState());
+                    }
                 }
             });
         }

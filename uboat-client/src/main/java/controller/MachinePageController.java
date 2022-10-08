@@ -1,5 +1,10 @@
 package controller;
 
+import com.google.gson.Gson;
+import dto.LoginPayload;
+import dto.MachineInventoryPayload;
+import dto.MachineStatePayload;
+import javafx.application.Platform;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -9,12 +14,16 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import jsonadapter.LoginPayloadJsonAdapter;
 import lombok.Getter;
 import lombok.Setter;
 import dto.MachineState;
 import enums.ReflectorsId;
 import generictype.MappingPair;
+import okhttp3.*;
+import org.jetbrains.annotations.NotNull;
 import service.DataService;
+import service.HttpClientService;
 import service.PropertiesService;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
@@ -83,13 +92,59 @@ public class MachinePageController implements Initializable {
     }
 
     public void handleRandomSetMachinePressed() {
-//        send http request to set machine state randomly
+        String finalUrl = HttpUrl
+                .parse(PropertiesService.getApiAssembleMachineRandomlyPageUrl())
+                .newBuilder()
+                .build()
+                .toString();
 
-//        send http requst to get machine states
-//        DataService.getOriginalMachineStateProperty().setValue(machineHandler.getInitialMachineState().get());
-//        DataService.getCurrentMachineStateProperty().setValue(machineHandler.getMachineState().get());
-//        log.info("CurrMachine State =" + machineHandler.getMachineState().get());
-        throw new UnsupportedOperationException();
+        RequestBody body = new FormBody.Builder()
+                .build();
+
+        Request request = new Request.Builder()
+                .url(finalUrl)
+                .post(body)
+                .build();
+
+        log.info("New request is sent for: " + finalUrl);
+        HttpClientService.runAsync(request, new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                Platform.runLater(() -> {
+                    parentController.showMessage("Failed to assemble machine - cannot contact server");
+                    log.error("Request with URL=\"" + finalUrl + "\" FAILED, exception message=" + e.getMessage());
+                });
+            }
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                String responseBody = response.body().string();
+                if (response.code() >= 500){
+                    parentController.showMessage("Failed to assemble machine - server error");
+                    log.error("Failed to login to server - status=" + response.code() + " body=" + responseBody);
+                    return;
+                }
+                MachineStatePayload machineStatePayload;
+                try{
+                    machineStatePayload = new Gson().fromJson(responseBody, MachineStatePayload.class);
+                }
+                catch (Exception e){
+                    log.error("Failed to parse response on assemble machine state randomly, Message=" + e.getMessage());
+                    return;
+                }
+                if (response.code() != 200) {
+                    Platform.runLater(() -> {
+                        log.warn("Failed to assemble machine - status=" + response.code() + " body=" + responseBody);
+                        parentController.showMessage("Failed to assemble machine - "+ machineStatePayload.getMessage());
+                    });
+                } else {
+                    Platform.runLater(() -> {
+                        log.info("Successfully assembled machine, status=" + response.code() + ", response body=" + responseBody);
+                        parentController.showMessage("Successfully assembled machine");
+                    });
+                    DataService.startPullingMachineConfig();
+                }
+            }
+        });
     }
 
     public GridPane getRootComponent() {
