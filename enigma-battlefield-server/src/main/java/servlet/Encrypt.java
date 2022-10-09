@@ -1,8 +1,9 @@
 package servlet;
 
 import com.google.gson.Gson;
+import com.sun.deploy.util.StringUtils;
 import dto.EncryptionInfoHistory;
-import dto.EncryptionPayload;
+import dto.EncryptionResponsePayload;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -17,40 +18,47 @@ import service.PropertiesService;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Optional;
-import java.util.Properties;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static jakarta.servlet.http.HttpServletResponse.SC_INTERNAL_SERVER_ERROR;
+import static jakarta.servlet.http.HttpServletResponse.*;
 
-@WebServlet("/encrypt")
+@WebServlet(name = "EncryptServlet" ,urlPatterns = {"/encrypt"})
 public class Encrypt extends HttpServlet {
     private static final Logger log = Logger.getLogger(CurrMachineConfiguration.class);
     static {
         try {
             Properties p = new Properties();
-            p.load(CurrMachineConfiguration.class.getResourceAsStream(PropertiesService.getLog4jPropertiesResourcePath()));
+            p.load(Encrypt.class.getResourceAsStream(PropertiesService.getLog4jPropertiesResourcePath()));
             PropertyConfigurator.configure(p);      //Dont forget here
-            log.debug("Logger Instantiated for : " + CurrMachineConfiguration.class.getSimpleName());
+            log.debug("Logger Instantiated for : " + Encrypt.class.getSimpleName());
         } catch (IOException e) {
-            System.out.println("Failed to configure logger of -" + CurrMachineConfiguration.class.getSimpleName() ) ;
+            System.out.println("Failed to configure logger of -" + Encrypt.class.getSimpleName() ) ;
         }
     }
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if(req.getContentType() == null){
-            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            resp.getWriter().print("Please enter a word to encrypt.");
-            return;
-        }
-        if(!req.getHeader(PropertiesService.getHttpHeaderContentType()).contains(PropertiesService.getTextPlainHttpContentType())){
-            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            resp.getWriter().print("Expecting text content type");
-            return;
-        }
-        PrintWriter respWriter;
+
+    private void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //////////////////////////////////////////////////////// - working with input params, so removed
+//        if(req.getContentType() == null){
+//            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+//            resp.getWriter().print("Please enter a word to encrypt.");
+//            return;
+//        }
+//        if(!req.getHeader(PropertiesService.getHttpHeaderContentType()).contains(PropertiesService.getTextPlainHttpContentType())){
+//            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+//            resp.getWriter().print("Expecting text content type");
+//            return;
+//        }
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        Gson gson = new Gson();
+        PrintWriter respWriter = null;
+        MachineHandler machineHandler;
+        String encryptionInputRaw = null;
+        List<String> encryptionInputs = new ArrayList<>();
+        List<String> encryptionOutputs = new ArrayList<>();
+        EncryptionResponsePayload responsePayload = new EncryptionResponsePayload();
         try {
             respWriter = resp.getWriter();
         }
@@ -59,56 +67,74 @@ public class Encrypt extends HttpServlet {
             resp.setStatus(SC_INTERNAL_SERVER_ERROR);
             return;
         }
-        MachineHandler machineHandler = (MachineHandler) req.getSession(false).getAttribute(PropertiesService.getMachineHandlerAttributeName());
-        EncryptionPayload sendPayload = new EncryptionPayload();
+        try{
+            encryptionInputRaw = req.getParameter(PropertiesService.getEncryptionInputAttributeName());
+            responsePayload.setInput(encryptionInputRaw);
+        }
+        catch(Exception e){
+            log.info("Encrypt request failed - no input param in request, ExceptionMessage=" + e.getMessage());
+            resp.setStatus(SC_BAD_REQUEST);
+            responsePayload.setMessage("Missing encryption input");
+            respWriter.print(gson.toJson(responsePayload));
+            return;
+        }
+        machineHandler = (MachineHandler) req.getSession(false).getAttribute(PropertiesService.getMachineHandlerAttributeName());
         if(machineHandler == null){
-            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            sendPayload.setMessage("Please upload a schema file first. (/upload-machine-file)");
+            log.info("Encrypt request failed - missing machine schema for session");
+            resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            responsePayload.setMessage("Missing Machine schema. please upload a schema first. (/upload-machine-file)");
+            respWriter.print(gson.toJson(responsePayload));
             return;
         }
         Optional<MachineState> machineState = machineHandler.getMachineState();
         if(!machineState.isPresent()){
-            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            sendPayload.setMessage("Please configure a machine state first. (/assemble-machine-randomly, or //assemble-machine-manually)");
+            log.info("Encrypt request failed - missing machine configuration for session");
+            resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            responsePayload.setMessage("Please configure a machine state first. (/assemble-machine-randomly, or //assemble-machine-manually)");
+            respWriter.print(gson.toJson(responsePayload));
             return;
         }
-
-        BufferedReader bufferedReader = req.getReader();
-        if(machineHandler.getInventoryInfo().get().getABC().contains(System.lineSeparator())){
-            String input = bufferedReader.lines().collect(Collectors.joining());
-            try {
-                String output = machineHandler.encrypt(input);
-                resp.setStatus(HttpServletResponse.SC_OK);
-                sendPayload.setMessage("input was encrypted to: "+ output);
-            }
-            catch (Exception e){
-                resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-                sendPayload.setMessage("Input contains letters not in machine ABC." + e.getMessage());
-            }
+        //Input validation check
+        final String abc = machineHandler.getInventoryInfo().get().getABC();
+        if(abc.contains(System.lineSeparator())){
+            encryptionInputs.add(encryptionInputRaw);
         }
         else{
-            Stream<String> input = bufferedReader.lines();
-            AtomicReference<String> result = new AtomicReference<>("");
-            input.forEach((line)->{
-                try {
-                    result.set(result + machineHandler.encrypt(line) + System.lineSeparator());
-                }
-                catch (IOException e){
-                    resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-                    sendPayload.setMessage("Input contains letters not in machine ABC." + e.getMessage());
-                }
-            });
-
-            resp.setStatus(HttpServletResponse.SC_OK);
-            EncryptionInfoHistory encryptionInfo = new EncryptionInfoHistory();
-            encryptionInfo.setInput(input.collect(Collectors.joining()));
-            encryptionInfo.setOutput(result.get());
-            sendPayload.setMessage("input was encrypted to: "+ result);
-            sendPayload.setEncryptionInfoHistory(encryptionInfo);
-            Gson gson = new Gson();
-            resp.setHeader(PropertiesService.getHttpHeaderContentType(),PropertiesService.getJsonHttpContentType());
-            respWriter.print(gson.toJson(sendPayload));
+            encryptionInputs.addAll(Arrays.asList(encryptionInputRaw.split(System.lineSeparator())));
         }
+        for (String input : encryptionInputs) {
+            for (int i = 0; i < input.length(); i++) {
+                String currLetter = input.substring(i,i+1);
+                if(!abc.contains(currLetter)){
+                    log.info("Encrypt request failed - \"" + input + "\" in not in the abc=" + abc);
+                    resp.setStatus(SC_BAD_REQUEST);
+                    responsePayload.setMessage("\"" + input + "\" in not in the abc=" + abc);
+                    respWriter.print(gson.toJson(responsePayload));
+                    return;
+                }
+            }
+        }
+        //Actual Encryption:
+        synchronized (this){
+            for (String input : encryptionInputs ){
+                encryptionOutputs.add(machineHandler.encrypt(input));
+            }
+        }
+        //Preparing response:
+        responsePayload.setOutput(StringUtils.join(encryptionOutputs,System.lineSeparator()));
+        resp.setStatus(SC_OK);
+        responsePayload.setMessage("Encrypted Successfully");
+        respWriter.print(gson.toJson(responsePayload));
+        return;
+    }
 
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        processRequest(req,resp);
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        processRequest(req,resp);
     }
 }

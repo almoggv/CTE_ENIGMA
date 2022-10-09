@@ -1,5 +1,7 @@
 dto\LoginPayload.class
-jsonadapter\LoginPayloadJsonAdapter.class
-dto\MachineInventoryPayload.class
 dto\VersionDto.class
 service\PropertiesService.class
+jsonadapter\LoginPayloadJsonAdapter.class
+dto\EncryptionPayload.class
+dto\MachineInventoryPayload.class
+dto\MachineStatePayload.class

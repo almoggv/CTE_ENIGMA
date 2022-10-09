@@ -7,7 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class EncryptionPayload {
+public class EncryptionResponsePayload {
     private String message;
-    private EncryptionInfoHistory encryptionInfoHistory;
+    private String input;
+    private String output;
 }

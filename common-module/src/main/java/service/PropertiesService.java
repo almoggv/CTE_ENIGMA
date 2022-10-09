@@ -11,4 +11,5 @@ public class PropertiesService {
     @Getter private static final String inventoryAttributeName = "inventory";
 
 
+
 }

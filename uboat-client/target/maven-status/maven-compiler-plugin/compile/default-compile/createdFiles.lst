@@ -17,8 +17,10 @@ controller\HeaderController.class
 controller\SetMachineConfigController.class
 fx\component\ComboBoxItem.class
 controller\AppController$1.class
+controller\MachinePageController$2.class
 service\DataService$1$1.class
 controller\SetMachineConfigController$1.class
 service\DataService$2.class
 service\HttpClientService.class
+controller\MachinePageController$1.class
 fx\component\ComboBoxCell.class
