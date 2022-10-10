@@ -15,4 +15,5 @@ public class AgentDecryptionInfo {
     private String input;
     private String output;
     private long timeToDecrypt;
+    private String allyTeamName;
 }

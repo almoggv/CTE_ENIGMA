@@ -7,7 +7,7 @@ import java.util.*;
 
 public class UserManager {
     private final Map<String, User> usernamesToUserMap;
-    private final Map<String,User> authTokenToUserMap;
+    private final Map<String, User> authTokenToUserMap;
 
     public UserManager() {
         usernamesToUserMap = new HashMap<String, User>();
