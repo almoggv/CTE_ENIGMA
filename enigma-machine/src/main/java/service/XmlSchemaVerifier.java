@@ -12,7 +12,7 @@ import java.util.List;
 public interface XmlSchemaVerifier extends Serializable {
     public boolean isFileInExistenceAndXML(String path) throws IOException;
     public XmlVerifierState isMachineConfigurationValid(CTEMachine machine);
-    public XmlVerifierState isDecipherConfigurationValid(CTEDecipher cteDecipher);
+//    public XmlVerifierState isDecipherConfigurationValid(CTEDecipher cteDecipher);
     XmlVerifierState isXmlSchemaValid(CTEEnigma cteEnigma);
     XmlVerifierState isXmlSchemaValidEX2(CTEEnigma cteEnigma);
 }

@@ -70,7 +70,7 @@ public class MachineHandlerImpl implements MachineHandler {
         if(xmlVerifierResponse == XmlVerifierState.VALID){
             clearInventory();
             buildMachinePartsInventory(cteEnigma);
-            InventoryService.setAgentsInventory(cteEnigma.getCTEDecipher().getAgents());
+//            InventoryService.setAgentsInventory(cteEnigma.getCTEDecipher().getAgents());
             machineStatisticsHistory.clear();
         }
         else{
@@ -402,7 +402,7 @@ public class MachineHandlerImpl implements MachineHandler {
         if(xmlVerifierResponse == XmlVerifierState.VALID){
             clearInventory();
             buildMachinePartsInventory(cteEnigma);
-            InventoryService.setAgentsInventory(cteEnigma.getCTEDecipher().getAgents());
+//            InventoryService.setAgentsInventory(cteEnigma.getCTEDecipher().getAgents());
             machineStatisticsHistory.clear();
         }
         else{

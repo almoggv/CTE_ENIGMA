@@ -128,9 +128,9 @@ public class DecryptionAgentImpl implements DecryptionAgent {
                 decryptionCandidate = runSingleDecryption(initialState,this.inputToDecrypt);
                 long encryptionTime = System.nanoTime() - startEncryptionTime;
                 if(decryptionCandidate.isPresent()){
-                    AgentDecryptionInfo decryptionInfo = new AgentDecryptionInfo(this.id,stateBeforeEncryption,inputToDecrypt,decryptionCandidate.get(),encryptionTime);
-                    decryptionInfoProperty.setValue(decryptionInfo);
-                    potentialCandidates.add(decryptionInfo);
+//                    AgentDecryptionInfo decryptionInfo = new AgentDecryptionInfo(this.id,stateBeforeEncryption,inputToDecrypt,decryptionCandidate.get(),encryptionTime);
+//                    decryptionInfoProperty.setValue(decryptionInfo);
+//                    potentialCandidates.add(decryptionInfo);
                     synchronized (this){
                         log.info("Agent ["+id+"] found a candidate: " + inputToDecrypt + "-->"+ decryptionCandidate.get() + " ---- ref: " + stateBeforeEncryption.getReflectorId() + " rot: "+ stateBeforeEncryption.getRotorIds() +" ,init pos: "+ stateBeforeEncryption.getRotorsHeadsInitialValues()) ;
                     }

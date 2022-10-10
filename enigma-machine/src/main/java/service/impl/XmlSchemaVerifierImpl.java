@@ -36,7 +36,12 @@ public class XmlSchemaVerifierImpl implements XmlSchemaVerifier {
 
     public XmlVerifierState isXmlSchemaValid(CTEEnigma cteEnigma) {
         CTEMachine machine = cteEnigma.getCTEMachine();
-//        CTEDecipher decipher = cteEnigma.getCTEDecipher();
+        XmlVerifierState isMachineValid = isMachineConfigurationValid(machine);
+            return isMachineValid;
+    }
+    public XmlVerifierState isXmlSchemaValidEX2(CTEEnigma cteEnigma) {
+        CTEMachine machine = cteEnigma.getCTEMachine();
+        CTEDecipher decipher = cteEnigma.getCTEDecipher();
         XmlVerifierState isMachineValid = isMachineConfigurationValid(machine);
 //        if(isMachineValid != XmlVerifierState.VALID){
             return isMachineValid;
@@ -44,31 +49,21 @@ public class XmlSchemaVerifierImpl implements XmlSchemaVerifier {
 //        XmlVerifierState isDecipherValid = isDecipherConfigurationValid(decipher);
 //        return isDecipherValid;
     }
-    public XmlVerifierState isXmlSchemaValidEX2(CTEEnigma cteEnigma) {
-        CTEMachine machine = cteEnigma.getCTEMachine();
-        CTEDecipher decipher = cteEnigma.getCTEDecipher();
-        XmlVerifierState isMachineValid = isMachineConfigurationValid(machine);
-        if(isMachineValid != XmlVerifierState.VALID){
-            return isMachineValid;
-        }
-        XmlVerifierState isDecipherValid = isDecipherConfigurationValid(decipher);
-        return isDecipherValid;
-    }
 
-    public XmlVerifierState isDecipherConfigurationValid(CTEDecipher cteDecipher) {
-        int agentsCount = cteDecipher.getAgents();
-        XmlVerifierState state;
-        int MIN_AGENT_COUNT = 2;
-        int MAX_AGENT_COUNT = 50;
-        if(agentsCount < MIN_AGENT_COUNT || agentsCount > MAX_AGENT_COUNT){
-            state = XmlVerifierState.ERROR_ILLEGAL_AGENTS_NUMBER;
-        }
-        else {
-            state= XmlVerifierState.VALID;
-        }
-        log.debug("decipher check xml validity: " + state.getMessage());
-        return state;
-    }
+//    public XmlVerifierState isDecipherConfigurationValid(CTEDecipher cteDecipher) {
+//        int agentsCount = cteDecipher.getAgents();
+//        XmlVerifierState state;
+//        int MIN_AGENT_COUNT = 2;
+//        int MAX_AGENT_COUNT = 50;
+//        if(agentsCount < MIN_AGENT_COUNT || agentsCount > MAX_AGENT_COUNT){
+//            state = XmlVerifierState.ERROR_ILLEGAL_AGENTS_NUMBER;
+//        }
+//        else {
+//            state= XmlVerifierState.VALID;
+//        }
+//        log.debug("decipher check xml validity: " + state.getMessage());
+//        return state;
+//    }
 
     public XmlVerifierState isMachineConfigurationValid(CTEMachine machine) {
         String ABC = machine.getABC();
