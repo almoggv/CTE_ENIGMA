@@ -2,7 +2,10 @@ package servlet;
 
 import com.google.gson.Gson;
 import dto.BattlefieldInfo;
+import dto.ContestRoom;
 import dto.MachineInventoryPayload;
+import enums.DecryptionDifficultyLevel;
+import enums.GameStatus;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
@@ -12,6 +15,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
 import component.MachineHandler;
 import component.impl.MachineHandlerImpl;
+import manager.RoomManager;
 import manager.UserManager;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
@@ -24,7 +28,8 @@ import java.util.Collection;
 import java.util.Properties;
 import java.util.Scanner;
 
-import static jakarta.servlet.http.HttpServletResponse.SC_INTERNAL_SERVER_ERROR;
+import static jakarta.servlet.http.HttpServletResponse.*;
+import static jakarta.servlet.http.HttpServletResponse.SC_OK;
 
 @WebServlet("/upload-machine-file")
 @MultipartConfig(fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 5, maxRequestSize = 1024 * 1024 * 5 * 5)
@@ -50,6 +55,7 @@ public class UploadMachineFile extends HttpServlet {
             resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             return;
         }
+        RoomManager roomManager = ServletUtils.getRoomManager(this.getServletContext());
         Gson gson = new Gson();
         MachineInventoryPayload inventoryPayload = new MachineInventoryPayload();
         resp.setContentType("text/plain");
@@ -67,14 +73,27 @@ public class UploadMachineFile extends HttpServlet {
         new Scanner(uploadedFile.getInputStream()).useDelimiter("\\Z").next();
         MachineHandler machineHandler = new MachineHandlerImpl();
         try{
-//            BattlefieldInfo battlefieldInfo = machineHandler.buildBattlefieldInfoInventory(uploadedFile.getInputStream());
-            
-            machineHandler.buildMachinePartsInventory(uploadedFile.getInputStream());
-            req.getSession(true).setAttribute(PropertiesService.getMachineHandlerAttributeName(), machineHandler);
-            resp.setStatus(HttpServletResponse.SC_OK);
-            inventoryPayload.setInventory(machineHandler.getInventoryInfo().get());
-            inventoryPayload.setMessage("Machine built successfully");
+            BattlefieldInfo battlefieldInfo = machineHandler.buildBattlefieldInfoInventory(uploadedFile.getInputStream());
+            synchronized (this) {
+                if (roomManager.isRoomExists(battlefieldInfo.getBattlefieldName())){
+                    resp.setStatus(SC_BAD_REQUEST);
+                    inventoryPayload.setMessage("Can't upload file. There is already a battlefield with the defined name.");
+                    return;
+                }
+                else{
+                    //create inventory from file
+                    machineHandler.buildMachinePartsInventory(uploadedFile.getInputStream());
+                    //create and save to room
+                    String creatorName = (String) req.getSession(false).getAttribute(PropertiesService.getUsernameAttributeName());
+                    ContestRoom contestRoom = createContestRoomInfo(creatorName, battlefieldInfo);
+                    roomManager.addRoom(battlefieldInfo.getBattlefieldName(), contestRoom);
 
+                    req.getSession(true).setAttribute(PropertiesService.getMachineHandlerAttributeName(), machineHandler);
+                    resp.setStatus(HttpServletResponse.SC_OK);
+                    inventoryPayload.setInventory(machineHandler.getInventoryInfo().get());
+                    inventoryPayload.setMessage("Machine built successfully");
+                }
+            }
         }
         catch (Exception e){
             resp.setStatus(SC_INTERNAL_SERVER_ERROR);
@@ -83,5 +102,19 @@ public class UploadMachineFile extends HttpServlet {
         finally {
             outWriter.print(gson.toJson(inventoryPayload));
         }
+    }
+
+    private ContestRoom createContestRoomInfo(String creatorName, BattlefieldInfo battlefieldInfo) {
+        ContestRoom contestRoom = new ContestRoom();
+        contestRoom.setCreatorName(creatorName);
+        contestRoom.setCurrNumOfTeams(0);
+        contestRoom.setGameStatus(GameStatus.WAITING);
+        contestRoom.setName(battlefieldInfo.getBattlefieldName());
+        String levelName = battlefieldInfo.getDifficultyLevel();
+//        DecryptionDifficultyLevel.getByName(levelName);
+//        contestRoom.setDifficultyLevel(DecryptionDifficultyLevel.getByName(battlefieldInfo.getDifficultyLevel()));
+//        contestRoom.setDifficultyLevel(DecryptionDifficultyLevel.EASY);
+        contestRoom.setRequiredNumOfTeams(battlefieldInfo.getRequiredNumOfTeams());
+        return contestRoom;
     }
 }

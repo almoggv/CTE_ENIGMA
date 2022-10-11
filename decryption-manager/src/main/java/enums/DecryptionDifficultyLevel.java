@@ -13,6 +13,7 @@ public enum DecryptionDifficultyLevel {
     }
 
     public static DecryptionDifficultyLevel getByName(String name) {
+        name = name.toUpperCase();
         switch (name) {
             case ("EASY"):
                 return EASY;
