@@ -10,7 +10,6 @@ import java.io.PrintWriter;
 import java.util.Optional;
 
 public class ServletUtils {
-
     private static final Object userManagerLock = new Object();
 
     public static UserManager getUserManager(ServletContext servletContext) {

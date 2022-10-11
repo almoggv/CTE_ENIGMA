@@ -1,14 +1,12 @@
 package component.impl;
 
 
+import dto.BattlefieldInfo;
 import dto.InventoryInfo;
 import dto.MachineState;
 import dto.EncryptionInfoHistory;
 import enums.XmlVerifierState;
-import generated.CTEEnigma;
-import generated.CTEMachine;
-import generated.CTEReflector;
-import generated.CTERotor;
+import generated.*;
 import generictype.MappingPair;
 import lombok.Getter;
 import service.InventoryService;
@@ -33,6 +31,7 @@ public class MachineHandlerImpl implements MachineHandler {
     private IOWheel ioWheelInventory;
     private List<Reflector> reflectorsInventory;
     private int expectedNumOfRotors;
+    private BattlefieldInfo battlefieldInfo;
     private EncryptionMachine encryptionMachine = new EnigmaMachine();
     private MachineState initialMachineState = new MachineState();
     @Getter
@@ -71,6 +70,7 @@ public class MachineHandlerImpl implements MachineHandler {
             clearInventory();
             buildMachinePartsInventory(cteEnigma);
 //            InventoryService.setAgentsInventory(cteEnigma.getCTEDecipher().getAgents());
+            buildBattlefieldInfo(cteEnigma.getCTEBattlefield());
             machineStatisticsHistory.clear();
         }
         else{
@@ -272,6 +272,14 @@ public class MachineHandlerImpl implements MachineHandler {
         return Optional.of(inventoryInfo);
     }
 
+    @Override
+    public Optional<BattlefieldInfo> getBattlefieldInfo() {
+        if(this.battlefieldInfo == null){
+            return Optional.empty();
+        }
+        return Optional.of(battlefieldInfo);
+    }
+
     private void buildMachinePartsInventory(CTEEnigma cteEnigma) {
         try {
             CTEMachine cteMachine = cteEnigma.getCTEMachine();
@@ -402,8 +410,12 @@ public class MachineHandlerImpl implements MachineHandler {
         if(xmlVerifierResponse == XmlVerifierState.VALID){
             clearInventory();
             buildMachinePartsInventory(cteEnigma);
+            //Ex2:
 //            InventoryService.setAgentsInventory(cteEnigma.getCTEDecipher().getAgents());
-            machineStatisticsHistory.clear();
+//
+//            //Ex3:
+//            buildBattlefieldInfo(cteEnigma.getCTEBattlefield());
+//            machineStatisticsHistory.clear();
         }
         else{
             String msg = "Failed to build machine inventory - CteMachine configured in file is invalid: " + xmlVerifierResponse;
@@ -411,5 +423,26 @@ public class MachineHandlerImpl implements MachineHandler {
             msg = getInventoryInfo().isPresent() ? msg + usingLastLoadedInventoryMsg : msg;
             throw new Exception(msg);
         }
+    }
+
+    @Override
+    public BattlefieldInfo buildBattlefieldInfoInventory(InputStream inputStream) throws Exception {
+        String usingLastLoadedInventoryMsg = "\n--Last successful load is used.";
+        CTEEnigma cteEnigma = XmlFileLoader.fromXmlFileToCTE(inputStream);
+        if (cteEnigma == null) {
+            throw new Exception("Failed to generate JAXB CTE Enigma objects by schema");
+        }
+//        XmlVerifierState xmlVerifierResponse = xmlSchemaVerifier.isXmlSchemaValidEX2(cteEnigma);
+//        if (xmlVerifierResponse == XmlVerifierState.VALID) {
+//
+//        }
+        buildBattlefieldInfo(cteEnigma.getCTEBattlefield());
+        return this.battlefieldInfo;
+    }
+    private void buildBattlefieldInfo(CTEBattlefield cteBattlefield) {
+        String battleName = cteBattlefield.getBattleName();
+        Integer alliesNum = cteBattlefield.getAllies();
+        String level = cteBattlefield.getLevel();
+        this.battlefieldInfo = new BattlefieldInfo(battleName,alliesNum,level);
     }
 }

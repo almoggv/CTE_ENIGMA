@@ -16,8 +16,6 @@ import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-
-
 public class XmlSchemaVerifierImpl implements XmlSchemaVerifier {
     private static final Logger log = Logger.getLogger(XmlSchemaVerifierImpl.class);
 

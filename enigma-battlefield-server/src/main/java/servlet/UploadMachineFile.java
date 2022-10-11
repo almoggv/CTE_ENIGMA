@@ -1,6 +1,7 @@
 package servlet;
 
 import com.google.gson.Gson;
+import dto.BattlefieldInfo;
 import dto.MachineInventoryPayload;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
@@ -66,6 +67,8 @@ public class UploadMachineFile extends HttpServlet {
         new Scanner(uploadedFile.getInputStream()).useDelimiter("\\Z").next();
         MachineHandler machineHandler = new MachineHandlerImpl();
         try{
+//            BattlefieldInfo battlefieldInfo = machineHandler.buildBattlefieldInfoInventory(uploadedFile.getInputStream());
+            
             machineHandler.buildMachinePartsInventory(uploadedFile.getInputStream());
             req.getSession(true).setAttribute(PropertiesService.getMachineHandlerAttributeName(), machineHandler);
             resp.setStatus(HttpServletResponse.SC_OK);

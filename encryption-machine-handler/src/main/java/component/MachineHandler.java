@@ -1,5 +1,6 @@
 package component;
 
+import dto.BattlefieldInfo;
 import dto.InventoryInfo;
 import generictype.MappingPair;
 import dto.MachineState;
@@ -47,6 +48,7 @@ public interface MachineHandler extends Serializable {
     public Optional<MachineState> getInitialMachineState();
 
     public Optional<InventoryInfo> getInventoryInfo();
+    public Optional<BattlefieldInfo> getBattlefieldInfo();
 
     public void resetToLastSetState();
 
@@ -65,4 +67,6 @@ public interface MachineHandler extends Serializable {
     public EncryptionMachine getEncryptionMachineClone();
 
     void buildMachinePartsInventory(InputStream inputStream) throws Exception;
-}
+
+    public BattlefieldInfo buildBattlefieldInfoInventory(InputStream inputStream) throws Exception;
+    }
