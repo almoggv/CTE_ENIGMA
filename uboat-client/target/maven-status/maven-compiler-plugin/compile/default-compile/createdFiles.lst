@@ -10,7 +10,6 @@ controller\AppController.class
 controller\CurrMachineConfigController.class
 service\DataService$1.class
 app\GuiApplication.class
-service\SimpleCookieManager.class
 controller\LoginController$2.class
 controller\HeaderController$1.class
 controller\HeaderController.class
@@ -21,6 +20,5 @@ controller\MachinePageController$2.class
 service\DataService$1$1.class
 controller\SetMachineConfigController$1.class
 service\DataService$2.class
-service\HttpClientService.class
 controller\MachinePageController$1.class
 fx\component\ComboBoxCell.class
