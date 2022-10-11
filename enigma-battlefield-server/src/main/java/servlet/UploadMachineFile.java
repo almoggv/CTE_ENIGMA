@@ -87,7 +87,7 @@ public class UploadMachineFile extends HttpServlet {
                     String creatorName = (String) req.getSession(false).getAttribute(PropertiesService.getUsernameAttributeName());
                     ContestRoom contestRoom = createContestRoomInfo(creatorName, battlefieldInfo);
                     roomManager.addRoom(battlefieldInfo.getBattlefieldName(), contestRoom);
-
+                    req.getSession(true).setAttribute(PropertiesService.getRoomNameAttributeName(), battlefieldInfo.getBattlefieldName() );
                     req.getSession(true).setAttribute(PropertiesService.getMachineHandlerAttributeName(), machineHandler);
                     resp.setStatus(HttpServletResponse.SC_OK);
                     inventoryPayload.setInventory(machineHandler.getInventoryInfo().get());
