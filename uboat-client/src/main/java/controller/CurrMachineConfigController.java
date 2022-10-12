@@ -24,7 +24,7 @@ import java.util.ResourceBundle;
 public class CurrMachineConfigController implements Initializable {
     @Getter @FXML MachinePageController machinePageController;
     @Getter @FXML MachineDetailsController machineDetailsController;
-
+    @Getter @FXML ContestPageController contestPageController;
     @Getter @FXML private GridPane rootGridPane;
     @FXML Label machineConfigurationLabel;
     @FXML HBox rotorsHbox;
@@ -37,6 +37,7 @@ public class CurrMachineConfigController implements Initializable {
     @FXML HBox reflectorHbox;
     @FXML Label machineNotConfiguredLabel;
 
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 //        ignore
@@ -48,6 +49,10 @@ public class CurrMachineConfigController implements Initializable {
 
     public void setParentController(MachineDetailsController parentController){
         this.machineDetailsController = parentController;
+    }
+    public void setParentController(ContestPageController parentController) {
+        this.contestPageController = parentController;
+
     }
 
     public void showCurrConfiguration(MachineState machineState) {
@@ -116,4 +121,6 @@ public class CurrMachineConfigController implements Initializable {
             }
         });
     }
+
+
 }

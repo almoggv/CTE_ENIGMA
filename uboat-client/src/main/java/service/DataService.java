@@ -38,7 +38,7 @@ public class DataService {
         }
     }
 
-    @Getter private static final ObjectProperty<InventoryInfo> inventoryInfoProperty = new SimpleObjectProperty<>();
+    @Getter private static final ObjectProperty<InventoryInfo> inventoryInfoProperty = new SimpleObjectProperty<>(null);
     @Getter private static final ObjectProperty<MachineState> originalMachineStateProperty = new SimpleObjectProperty<>();
     @Getter private static final ObjectProperty<MachineState> currentMachineStateProperty = new SimpleObjectProperty<>();
 
@@ -72,6 +72,9 @@ public class DataService {
                     }
                     else {
                         log.info("Current machine state Successfully Fetched - responseCode = 200, ServerMessage=" + machineStatePayload.getMessage());
+                        if(originalMachineStateProperty.get() == null){
+                            originalMachineStateProperty.setValue(machineStatePayload.getMachineState());
+                        }
                         currentMachineStateProperty.setValue(machineStatePayload.getMachineState());
                     }
                 }

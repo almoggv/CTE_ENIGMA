@@ -55,6 +55,8 @@ public class AppController implements Initializable {
     @FXML
     private MachinePageController machinePageController;
 
+    @FXML private ContestPageController contestPageController;
+
     @Setter
     @Getter
     private Stage primaryStage;
@@ -118,6 +120,18 @@ public class AppController implements Initializable {
         machinePageController.setParentController(this);
         machinePageController.bindComponent(currMachineConfigController);
 //      //TODO: Load Contest Page
+        URL contestPageResource = AppController.class.getResource(PropertiesService.getContestPageTemplateFxmlPath());
+        log.info("AppController - found Url of machine component:" + contestPageResource);
+        fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(contestPageResource);
+        try {
+            Parent contestPageComponent = fxmlLoader.load(contestPageResource.openStream());
+        } catch (IOException e) {
+            log.error("Failed to load machinePageResource:" + contestPageResource.toString() + "Exception throws: " + e.getMessage());
+        }
+        contestPageController = fxmlLoader.getController();
+        contestPageController.setParentController(this);
+        contestPageController.bindComponent(currMachineConfigController);
 
         headerWrapScrollPane.setContent(headerComponentController.getRootComponent());
         loginComponentController.getIsLoggedInProperty().addListener((observable, oldValue, newValue) -> {
@@ -141,6 +155,15 @@ public class AppController implements Initializable {
         }
     }
 
+    public void changeSceneToContest() {
+        if(contestPageController != null){
+        Parent rootComponent = contestPageController.getRootComponent();
+        bodyWrapScrollPane.setContent(rootComponent);}
+        else{
+            log.error("Failed to change scene to machine - contestController == null");
+        }
+    }
+
     public void changeSceneToLogin(){
         if(loginComponentController!=null){
             Parent rootComponent = loginComponentController.getRootComponent();
@@ -151,45 +174,6 @@ public class AppController implements Initializable {
         }
     }
 
-//    private void getMachineInventory() {
-//        String finalUrl = HttpUrl
-//                .parse(PropertiesService.getApiInventoryPageUrl())
-//                .newBuilder()
-//                .build()
-//                .toString();
-//
-//        System.out.println("New request is launched for: " + finalUrl);
-//        HttpClientService.runAsync(finalUrl, new Callback() {
-//            @Override
-//            public void onFailure(@NotNull Call call, @NotNull IOException e) {
-//                Platform.runLater(() ->
-//                        System.out.println("Something went wrong: " + e.getMessage())
-//                );
-//            }
-//
-//            @Override
-//            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-//                if (response.code() != 200) {
-//                    String responseBody = response.body().string();
-//                    Platform.runLater(() ->
-//                            System.out.println("Something went wrong: " + responseBody)
-//                    );
-//                } else {
-//                    Platform.runLater(() -> {
-//                        System.out.println("loaded inventory");
-//                    });
-//                }
-//            }
-//        });
-//
-//    }
-
-    public void changeSceneToContest() {
-        //TODO: check null
-//        Parent rootComponent = contestPageController.getRootComponent();
-//        bodyWrapScrollPane.setContent(rootComponent);
-        throw new UnsupportedOperationException();
-    }
 
     public void makeBodyVisible() {
         bodyWrapScrollPane.setVisible(true);
