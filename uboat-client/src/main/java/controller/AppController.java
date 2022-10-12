@@ -119,7 +119,7 @@ public class AppController implements Initializable {
         machinePageController = fxmlLoader.getController();
         machinePageController.setParentController(this);
         machinePageController.bindComponent(currMachineConfigController);
-//      //TODO: Load Contest Page
+//      //Load Contest Page
         URL contestPageResource = AppController.class.getResource(PropertiesService.getContestPageTemplateFxmlPath());
         log.info("AppController - found Url of machine component:" + contestPageResource);
         fxmlLoader = new FXMLLoader();

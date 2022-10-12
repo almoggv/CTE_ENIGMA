@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import org.controlsfx.control.textfield.CustomTextField?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EncryptionController">
   <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
@@ -18,6 +18,8 @@
   <rowConstraints>
     <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
     <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="50.0" minHeight="10.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="5.0" minHeight="5.0" prefHeight="5.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
       <HBox alignment="CENTER" prefHeight="50.0" spacing="10.0" GridPane.columnIndex="1">
@@ -40,5 +42,6 @@
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>
       </HBox>
+      <Button fx:id="resetMachineStateButton" mnemonicParsing="false" onAction="#onResetMachineStateButtonAction" text="reset to last state" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
    </children>
 </GridPane>

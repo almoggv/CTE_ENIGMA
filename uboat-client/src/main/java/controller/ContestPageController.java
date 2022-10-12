@@ -35,6 +35,8 @@ public class ContestPageController implements Initializable {
 
     @Setter @Getter @FXML private AppController parentController;
     @Getter @FXML private CurrMachineConfigController currMachineConfigComponentController;
+
+    @Getter @FXML private EncryptionController encryptionComponentController;
     @FXML
     private ScrollPane dmResultsScrollPane;
     @FXML
