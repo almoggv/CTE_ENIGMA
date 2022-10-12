@@ -33,6 +33,8 @@ public class ContestPageController implements Initializable {
         }
     }
 
+    public GridPane encryptionComponent;
+
     @Setter @Getter @FXML private AppController parentController;
     @Getter @FXML private CurrMachineConfigController currMachineConfigComponentController;
 
@@ -56,6 +58,9 @@ public class ContestPageController implements Initializable {
         if(currMachineConfigComponentController != null){
             currMachineConfigComponentController.setParentController(this);
             currMachineConfigComponentController.bindToData(DataService.getCurrentMachineStateProperty());
+        }
+        if(encryptionComponentController != null){
+            encryptionComponentController.setParentController(this);
         }
     }
 

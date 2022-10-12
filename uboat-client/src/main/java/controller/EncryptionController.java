@@ -1,18 +1,46 @@
 package controller;
 
+import com.google.gson.Gson;
+import dto.LoginPayload;
+import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import jsonadapter.LoginPayloadJsonAdapter;
+import lombok.Getter;
+import lombok.Setter;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.HttpUrl;
+import okhttp3.Response;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 import org.controlsfx.control.textfield.CustomTextField;
+import org.jetbrains.annotations.NotNull;
+import service.HttpClientService;
+import service.PropertiesService;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Properties;
 import java.util.ResourceBundle;
 
 public class EncryptionController implements Initializable {
-
+    private static final Logger log = Logger.getLogger(EncryptionController.class);
+    static {
+        try {
+            Properties p = new Properties();
+            p.load(EncryptionController.class.getResourceAsStream(PropertiesService.getLog4jPropertiesResourcePath()));
+            PropertyConfigurator.configure(p);      //Dont forget here
+            log.debug("Logger Instantiated for : " + EncryptionController.class.getSimpleName());
+        } catch (IOException e) {
+            System.out.println("Failed to configure logger of -" + EncryptionController.class.getSimpleName());
+        }
+    }
+    @Setter @Getter
+    @FXML ContestPageController parentController;
     @FXML
     public CustomTextField encryptTextField;
     @FXML public Button encryptButton;
@@ -30,19 +58,9 @@ public class EncryptionController implements Initializable {
                 encryptTextField.textProperty()));
     }
 
-    public void onEncryptButtonAction(ActionEvent actionEvent) throws IOException {
-//        try {
-//            String result = machineHandler.encrypt(encryptTextField.getText());
-//            resultTextField.setText(result);
-//            DataService.getCurrentMachineStateProperty().setValue(machineHandler.getMachineState().get());
-//            //need to set to null - because the machine state thinks it hasent changed - only internal structures changed and it dosent register
-//            DataService.getEncryptionInfoHistoryProperty().setValue(null);
-//            DataService.getEncryptionInfoHistoryProperty().setValue(machineHandler.getMachineStatisticsHistory());
-//            log.debug("EncryptPageController - machine handler's statistics and history" + System.lineSeparator() + machineHandler.getMachineStatisticsHistory());
-//        }
-//        catch (Exception e){
-//            parentController.showMessage(e.getMessage());
-//        }
+    public void onEncryptButtonAction(ActionEvent actionEvent) {
+
+
     }
 
     public void onClearButtonAction(ActionEvent actionEvent) {
@@ -51,12 +69,41 @@ public class EncryptionController implements Initializable {
     }
 
     public void onResetMachineStateButtonAction(ActionEvent actionEvent) {
-//        machineHandler.resetToLastSetState();
-//        DataService.getCurrentMachineStateProperty().setValue(machineHandler.getMachineState().get());
-//        encryptTextField.clear();
-//        resultTextField.clear();
-//        liveEncryptionInputProperty.setValue("");
-//        liveEncryptionOutputProperty.setValue("");
-//        parentController.showMessage("Reset to last set machine state.");
+        String finalUrl = HttpUrl
+                .parse(PropertiesService.getApiResetMachineStateUrl())
+                .newBuilder()
+                .build()
+                .toString();
+
+        log.info("New request is sent for: " + finalUrl);
+        HttpClientService.runAsync(finalUrl, new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                Platform.runLater(() -> {
+                    parentController.showMessage("Failed to reset machine state - cannot contact server");
+                    log.error("Request with URL=\"" + finalUrl + "\" FAILED, exception message=" + e.getMessage());
+                });
+            }
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                String responseBody = response.body().string();
+                if (response.code() >= 500){
+                    parentController.showMessage("Failed to reset machine state - server error");
+                    log.error("Failed to reset machine state in server - status=" + response.code() + " body=" + responseBody);
+                    return;
+                }
+                if (response.code() != 200) {
+                    Platform.runLater(() -> {
+                        log.warn("Failed to reset machine state in server - status=" + response.code() + " body=" + responseBody);
+                        parentController.showMessage("Failed to login - "+ responseBody);
+                    });
+                } else {
+                    Platform.runLater(() -> {
+                        log.info("Successfully reset machine state \", status=" + response.code() + ", response body=" + responseBody);
+                        parentController.showMessage("Successfully reset machine state");
+                    });
+                }
+            }
+        });
     }
 }

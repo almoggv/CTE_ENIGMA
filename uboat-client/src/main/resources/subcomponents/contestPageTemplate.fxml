@@ -22,7 +22,7 @@
   </rowConstraints>
    <children>
       <fx:include fx:id="currMachineConfigComponent" source="currMachineConfigTemplate.fxml" GridPane.columnIndex="1" />
-      <fx:include source="encryptionComponent.fxml" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <fx:include fx:id="encryptionComponent" source="encryptionComponent.fxml" GridPane.columnIndex="1" GridPane.rowIndex="1" />
       <ScrollPane fx:id="dmResultsScrollPane" fitToWidth="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <content>
             <FlowPane fx:id="dmResultsFlowPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" />
