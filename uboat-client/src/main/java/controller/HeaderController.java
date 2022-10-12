@@ -69,7 +69,6 @@ public class HeaderController implements Initializable {
         createNotificationPane();
     }
 
-
     public StringProperty selectedFileProperty(){
         return selectedFileNameProperty;
     }

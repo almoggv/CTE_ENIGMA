@@ -113,6 +113,8 @@ public class LoginController implements Initializable {
                         isLoggedInProperty.setValue(true);
                         log.info("Successfully Logged in as :\"" + username + "\", status=" + response.code() + ", response body=" + responseBody);
                         parentController.showMessage("Successfully Logged in as :" + username);
+                        parentController.headerComponent.setVisible(true);
+                        rootGridPane.setVisible(false);
                     });
                 }
             }

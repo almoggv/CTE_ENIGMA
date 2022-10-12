@@ -87,6 +87,7 @@ public class AppController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         if (headerComponentController != null) {
             headerComponentController.setParentController(this);
+            headerComponent.setVisible(false);
         }
         if(loginComponentController != null){
             loginComponentController.setParentController(this);

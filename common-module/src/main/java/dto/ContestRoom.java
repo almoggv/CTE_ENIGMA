@@ -14,7 +14,8 @@ public class ContestRoom {
     private String name;
     private String creatorName;
     private GameStatus gameStatus;
-    private DecryptionDifficultyLevel difficultyLevel;
+//    private DecryptionDifficultyLevel difficultyLevel;
+    private String difficultyLevel;
     private Integer currNumOfTeams;
     private Integer requiredNumOfTeams;
 }
