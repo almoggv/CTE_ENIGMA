@@ -80,6 +80,7 @@ public class LoginController implements Initializable {
                 .parse(PropertiesService.getApiLoginPageUrl())
                 .newBuilder()
                 .addQueryParameter(PropertiesService.getUsernameAttribute(), username)
+                .addQueryParameter(PropertiesService.getUserTypeAttributeName(), PropertiesService.getUboatAttributeName())
                 .build()
                 .toString();
 

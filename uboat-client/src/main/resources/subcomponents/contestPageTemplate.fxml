@@ -29,6 +29,6 @@
          </content>
       </ScrollPane>
       <Button fx:id="logoutButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onLogoutButtonAction" text="Logout" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-      <Label prefWidth="181.0" text="Active team details will come here" GridPane.columnIndex="2" />
+      <Label prefWidth="181.0" text="Active team details" GridPane.columnIndex="2" />
    </children>
 </GridPane>

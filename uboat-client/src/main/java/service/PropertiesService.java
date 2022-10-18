@@ -25,6 +25,8 @@ public class PropertiesService {
     @Getter private static final String messageAttributeName = "message";
     @Getter private static final String inventoryAttributeName = "inventory";
     @Getter private static final String inputAttributeName = "input";
+    @Getter private static final String uboatAttributeName = "uboat";
+    @Getter private static final String userTypeAttributeName = "user_type";
 
     //Api Url
     public final static String BASE_DOMAIN = "localhost";

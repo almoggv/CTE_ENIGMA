@@ -103,7 +103,7 @@ public class LoginController implements Initializable {
                     } else {
                         Platform.runLater(() -> {
                             isLoggedInProperty.setValue(false);
-                            log.info("Successfully Logged Out as :\"" + username + "\", status=" + response.code() + ", response body=" + responseBody);
+                            log.info("Successfully Logged in as :\"" + username + "\", status=" + response.code() + ", response body=" + responseBody);
                             parentController.showMessage("Logged Out from: " + username);
                             usernameProperty.setValue("");
                         });
@@ -126,6 +126,7 @@ public class LoginController implements Initializable {
                 .parse(PropertiesService.getApiLoginPageUrl())
                 .newBuilder()
                 .addQueryParameter(PropertiesService.getUsernameAttribute(), username)
+                .addQueryParameter(PropertiesService.getUserTypeAttributeName(), PropertiesService.getAllyAttributeName())
                 .build()
                 .toString();
 

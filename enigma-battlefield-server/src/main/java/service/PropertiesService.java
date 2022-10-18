@@ -15,6 +15,9 @@ public class PropertiesService {
     @Getter private static final String encryptionInputAttributeName = "input";
     @Getter private static final String roomManagerAttributeName = "roomManager";
     @Getter private static final String roomNameAttributeName = "roomName";
+    @Getter private static final String userTypeAttributeName = "user_type";
+    @Getter private static final String uboatAttributeName = "uboat";
+    @Getter private static final String allyAttributeName = "ally";
 
 
     @Getter private static final String jsonHttpContentType = "application/json";

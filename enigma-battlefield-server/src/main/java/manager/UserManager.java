@@ -1,6 +1,7 @@
 package manager;
 
 import dto.User;
+import enums.UserType;
 
 import java.util.*;
 
@@ -20,10 +21,11 @@ public class UserManager {
         return true;
     }
 
-    public synchronized void addUser(String username) {
+    public synchronized void addUser(String username, String userType) {
         User newUser = new User();
         newUser.setUsername(username);
         newUser.setToken(UUID.randomUUID().toString());
+        newUser.setType(UserType.getByName(userType));
         usernamesToUserMap.put(username,newUser);
         authTokenToUserMap.put(newUser.getToken(),newUser);
     }

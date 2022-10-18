@@ -24,7 +24,8 @@ public class PropertiesService {
     @Getter private static final String tokenAttributeName = "access_token";
     @Getter private static final String messageAttributeName = "message";
     @Getter private static final String inventoryAttributeName = "inventory";
-
+    @Getter private static final String userTypeAttributeName = "user_type";
+    @Getter private static final String allyAttributeName = "ally";
     //Api Url
     public final static String BASE_DOMAIN = "localhost";
     private final static String BASE_URL = "http://" + BASE_DOMAIN + ":8080";
@@ -40,6 +41,7 @@ public class PropertiesService {
     @Getter private static final String apiCurrMachineConfigPageUrl = FULL_SERVER_PATH + "/curr-machine-config";
     @Getter private static final String apiEncryptPageUrl = FULL_SERVER_PATH + "/encrypt";
     @Getter private static final String apiInventoryInfoUrl = FULL_SERVER_PATH + "/get-machine-inventory";
+    @Getter private static final String apiContestsInfoUrl = FULL_SERVER_PATH + "/get-machine-inventory";
 
 }
 

@@ -61,6 +61,7 @@ public class Login extends HttpServlet {
         }
         //user is not logged in yet, has no session yet
         String usernameFromParameter = req.getParameter(PropertiesService.getUsernameAttributeName());
+        String usertypeFromParameter = req.getParameter(PropertiesService.getUserTypeAttributeName());
         if (usernameFromParameter == null || usernameFromParameter.isEmpty()) {
             resp.setStatus(SC_BAD_REQUEST);
             repsPayload.setMessage("Missing username in params");
@@ -75,7 +76,7 @@ public class Login extends HttpServlet {
                     repsPayload.setAccessToken("");
                 }
                 else{
-                    userManager.addUser(usernameFromParameter);
+                    userManager.addUser(usernameFromParameter, usertypeFromParameter);
                     req.getSession(true).setAttribute(PropertiesService.getUsernameAttributeName(), usernameFromParameter);
                     String userAccessToken = userManager.getUserToken(usernameFromParameter);
                     resp.setStatus(SC_OK);
