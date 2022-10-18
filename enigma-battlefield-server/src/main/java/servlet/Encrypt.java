@@ -121,7 +121,8 @@ public class Encrypt extends HttpServlet {
             }
         }
         //Preparing response:
-        responsePayload.setOutput(StringUtils.join(encryptionOutputs,System.lineSeparator()));
+//        responsePayload.setOutput(StringUtils.join(encryptionOutputs,System.lineSeparator()));
+        responsePayload.setOutput(String.valueOf(encryptionOutputs));
         resp.setStatus(SC_OK);
         responsePayload.setMessage("Encrypted Successfully");
         respWriter.print(gson.toJson(responsePayload));
