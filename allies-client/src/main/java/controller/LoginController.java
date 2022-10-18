@@ -64,7 +64,7 @@ public class LoginController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         loginTextField.textProperty().bindBidirectional(usernameProperty);
         loginButton.disableProperty().bind(isLoggedInProperty);
-        isLoggedInProperty.addListener((observable, oldValue, newValue) -> {
+/*        isLoggedInProperty.addListener((observable, oldValue, newValue) -> {
             if(newValue == false){
                 return;
             }
@@ -110,7 +110,7 @@ public class LoginController implements Initializable {
                     }
                 }
             });
-        });
+        });*/
     }
 
     @FXML

@@ -15,6 +15,7 @@ public class PropertiesService {
     @Getter private static final String headerFxmlPath = "/subcomponents/header.fxml";
     @Getter private static final String loginFxmlPath = "/subcomponents/login.fxml";
     @Getter private static final String dashboardPageTemplateFxmlPath = "/subcomponents/dashboardPageTemplate.fxml";
+    @Getter private static final String contestDataFxmlPath = "/subcomponents/contestData.fxml";
     //App Initial size
     @Getter private static final int appWindowWidth = 950;
     @Getter private static final int appWindowHeight = 650;
@@ -41,7 +42,7 @@ public class PropertiesService {
     @Getter private static final String apiCurrMachineConfigPageUrl = FULL_SERVER_PATH + "/curr-machine-config";
     @Getter private static final String apiEncryptPageUrl = FULL_SERVER_PATH + "/encrypt";
     @Getter private static final String apiInventoryInfoUrl = FULL_SERVER_PATH + "/get-machine-inventory";
-    @Getter private static final String apiContestsInfoUrl = FULL_SERVER_PATH + "/get-machine-inventory";
+    @Getter private static final String apiContestsInfoUrl = FULL_SERVER_PATH + "/get-rooms-info";
 
 }
 

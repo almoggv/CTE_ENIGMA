@@ -52,7 +52,6 @@ public class CurrMachineConfigController implements Initializable {
     }
     public void setParentController(ContestPageController parentController) {
         this.contestPageController = parentController;
-
     }
 
     public void showCurrConfiguration(MachineState machineState) {
