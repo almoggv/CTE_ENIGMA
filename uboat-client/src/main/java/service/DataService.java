@@ -135,6 +135,10 @@ public class DataService {
         //TODO: implement
     }
 
+    public static void stopPullingMachineConfig(){
+        executor.shutdown();
+    }
+
     public static void fetchInventoryInfo(InventoryInfo inventory) {
         inventoryInfoProperty.setValue(inventory);
     }

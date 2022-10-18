@@ -21,6 +21,7 @@ import okhttp3.Response;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.jetbrains.annotations.NotNull;
+import service.DataService;
 import service.HttpClientService;
 import service.PropertiesService;
 
@@ -167,6 +168,9 @@ public class LoginController implements Initializable {
                         isLoggedInProperty.setValue(false);
                         log.info("Successfully Logged Out as :\"" + username + "\", status=" + response.code() + ", response body=" + responseBody);
                         parentController.showMessage("Logged Out from: " + username);
+                        parentController.headerComponent.setVisible(false);
+                        rootGridPane.setVisible(true);
+                        DataService.stopPullingMachineConfig();
                         usernameProperty.setValue("");
                     });
                 }
