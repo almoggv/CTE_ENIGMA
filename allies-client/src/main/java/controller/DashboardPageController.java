@@ -4,6 +4,8 @@ import app.GuiApplication;
 import com.google.gson.Gson;
 import dto.AllContestRoomsPayload;
 import dto.ContestRoom;
+import dto.ContestRoomPayload;
+import dto.LoginPayload;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
@@ -16,6 +18,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
+import jsonadapter.LoginPayloadJsonAdapter;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.HttpUrl;
@@ -141,7 +144,51 @@ public class DashboardPageController implements Initializable {
 
     @FXML
     void onJoinContestAction(ActionEvent event) {
+        String roomName = chosenContestTextField.getText();
+        if (roomName.isEmpty()) {
+            parentController.showMessage("Room name cannot be empty");
+            return;
+        }
+        //noinspection ConstantConditions
+        String finalUrl = HttpUrl
+                .parse(PropertiesService.getApiJoinContestUrl())
+                .newBuilder()
+                .addQueryParameter(PropertiesService.getRoomNameAttribute(), roomName)
+                .build()
+                .toString();
 
+        log.info("New request is sent for: " + finalUrl);
+        HttpClientService.runAsync(finalUrl, new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                Platform.runLater(() -> {
+                    parentController.showMessage("Failed to join - cannot contact server");
+                    log.error("Request with URL=\"" + finalUrl + "\" FAILED, exception message=" + e.getMessage());
+                });
+            }
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                String responseBody = response.body().string();
+                if (response.code() >= 500){
+                    parentController.showMessage("Failed to join - server error");
+                    log.error("Failed to to join a room - status=" + response.code() + " body=" + responseBody);
+                    return;
+                }
+                Gson gson = new Gson();
+                ContestRoomPayload payload = gson.fromJson(responseBody,ContestRoomPayload.class);
+                if (response.code() != 200) {
+                    Platform.runLater(() -> {
+                        log.warn("Failed to join a room - status=" + response.code() + " body=" + responseBody);
+                        parentController.showMessage("Failed to join a room - "+ payload.getMessage());
+                    });
+                } else {
+                    Platform.runLater(() -> {
+                        log.info("Successfully joined room:\"" + roomName + "\", status=" + response.code() + ", response body=" + responseBody);
+                        parentController.showMessage("Successfully joined room:" + roomName);
+                    });
+                }
+            }
+        });
     }
 
     public void handleContestClicked(Label battlefieldNameLabel) {
