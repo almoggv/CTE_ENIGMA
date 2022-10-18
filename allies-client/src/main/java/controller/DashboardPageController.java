@@ -5,11 +5,15 @@ import com.google.gson.Gson;
 import dto.AllContestRoomsPayload;
 import dto.ContestRoom;
 import javafx.application.Platform;
+import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import okhttp3.Call;
@@ -48,6 +52,12 @@ public class DashboardPageController implements Initializable {
     @FXML
     private GridPane rootGridPane;
 
+    @FXML
+    private Button joinContestButton;
+
+    @FXML
+    private TextField chosenContestTextField;
+
     public void setParentController(AppController appController) {
         this.parentController = appController;
     }
@@ -59,7 +69,9 @@ public class DashboardPageController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        joinContestButton.disableProperty().bind(Bindings.createBooleanBinding(() ->
+                        chosenContestTextField.getText().trim().isEmpty(),
+                chosenContestTextField.textProperty()));
     }
 
     public void onRefreshContests(ActionEvent actionEvent) {
@@ -118,6 +130,7 @@ public class DashboardPageController implements Initializable {
                 contestDataController.setDifficultyLevelLabel(contestRoom.getDifficultyLevel());
                 contestDataController.setUboatCreatorName(contestRoom.getCreatorName());
                 contestDataController.setGameStatusLabel(contestRoom.getGameStatus());
+                contestDataController.setParentController(this);
 
                 contestDataFlowPane.getChildren().add(decodedCandidate);
             }
@@ -125,4 +138,14 @@ public class DashboardPageController implements Initializable {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    void onJoinContestAction(ActionEvent event) {
+
+    }
+
+    public void handleContestClicked(Label battlefieldNameLabel) {
+        chosenContestTextField.setText(battlefieldNameLabel.getText());
+    }
+
 }
