@@ -31,4 +31,5 @@ service\InventoryService.class
 component\Reflector.class
 generated\ObjectFactory.class
 component\EncryptionMachine.class
+generated\CTEBattlefield.class
 generated\CTEDecipher.class

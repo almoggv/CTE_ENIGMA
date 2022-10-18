@@ -9,10 +9,11 @@
         <outputRelativeToContentRoot value="true" />
         <module name="enigma-battlefield-server" />
         <module name="enigma-machine" />
-        <module name="encryption-machine-handler" />
-        <module name="decryption-manager" />
         <module name="uboat-client" />
         <module name="common-module" />
+        <module name="allies-client" />
+        <module name="encryption-machine-handler" />
+        <module name="decryption-manager" />
       </profile>
     </annotationProcessing>
   </component>

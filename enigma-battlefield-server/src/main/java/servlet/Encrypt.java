@@ -106,9 +106,9 @@ public class Encrypt extends HttpServlet {
             for (int i = 0; i < input.length(); i++) {
                 String currLetter = input.substring(i,i+1);
                 if(!abc.contains(currLetter)){
-                    log.info("Encrypt request failed - \"" + input + "\" in not in the abc=" + abc);
+                    log.info("Encrypt request failed - \"" + input + "\" is not in the abc=" + abc);
                     resp.setStatus(SC_BAD_REQUEST);
-                    responsePayload.setMessage("\"" + input + "\" in not in the abc=" + abc);
+                    responsePayload.setMessage("\"" + input + "\" is not in the abc=" + abc);
                     respWriter.print(gson.toJson(responsePayload));
                     return;
                 }

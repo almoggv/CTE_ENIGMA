@@ -1,7 +1,12 @@
 dto\LoginPayload.class
+dto\AllyTeamData.class
+dto\ContestRoom.class
 dto\VersionDto.class
 service\PropertiesService.class
 jsonadapter\LoginPayloadJsonAdapter.class
-dto\EncryptionPayload.class
 dto\MachineInventoryPayload.class
+enums\GameStatus.class
+service\HttpClientService.class
+dto\EncryptionResponsePayload.class
+service\SimpleCookieManager.class
 dto\MachineStatePayload.class
