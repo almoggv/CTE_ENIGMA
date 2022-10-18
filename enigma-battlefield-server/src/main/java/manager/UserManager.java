@@ -47,4 +47,7 @@ public class UserManager {
         return usernamesToUserMap.containsKey(username);
     }
 
+    public User getUserByName(String username) {
+        return usernamesToUserMap.get(username);
+    }
 }

@@ -24,6 +24,7 @@ import utils.ServletUtils;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Properties;
 import java.util.Scanner;
@@ -114,8 +115,8 @@ public class UploadMachineFile extends HttpServlet {
 
 //        contestRoom.setDifficultyLevel(DecryptionDifficultyLevel.getByName(battlefieldInfo.getDifficultyLevel()));
         contestRoom.setDifficultyLevel(battlefieldInfo.getDifficultyLevel());
-
         contestRoom.setRequiredNumOfTeams(battlefieldInfo.getRequiredNumOfTeams());
+        contestRoom.setAlliesList(new ArrayList<>());
         return contestRoom;
     }
 }

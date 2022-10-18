@@ -27,4 +27,10 @@ public class RoomManager {
         return roomsDataMap.containsKey(roomName);
     }
 
+    public void addUserToRoom(User user, ContestRoom room) {
+        if(room.getCurrNumOfTeams() < room.getRequiredNumOfTeams()){
+            room.getAlliesList().add(user);
+            room.setCurrNumOfTeams(room.getCurrNumOfTeams() + 1);
+        }
+    }
 }

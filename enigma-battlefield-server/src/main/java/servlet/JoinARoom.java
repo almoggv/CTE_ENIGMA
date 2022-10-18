@@ -1,0 +1,97 @@
+package servlet;
+
+import com.google.gson.Gson;
+import dto.ContestRoom;
+import dto.ContestRoomPayload;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import manager.RoomManager;
+import manager.UserManager;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+import service.PropertiesService;
+import utils.ServletUtils;
+import dto.User;
+import utils.SessionUtills;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Properties;
+
+import static jakarta.servlet.http.HttpServletResponse.*;
+
+@WebServlet(name = "JoinRoomServlet" ,urlPatterns = {"/join"})
+public class JoinARoom extends HttpServlet {
+    private static final Logger log = Logger.getLogger(JoinARoom.class);
+    static {
+        try {
+            Properties p = new Properties();
+            p.load(JoinARoom.class.getResourceAsStream(PropertiesService.getLog4jPropertiesResourcePath()));
+            PropertyConfigurator.configure(p);      //Don't forget here
+            log.debug("Logger Instantiated for : " + JoinARoom.class.getSimpleName());
+        } catch (IOException e) {
+            System.out.println("Failed to configure logger of -" + JoinARoom.class.getSimpleName() ) ;
+        }
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        PrintWriter respWriter;
+        try {
+            respWriter = resp.getWriter();
+        }
+        catch (Exception e){
+            log.error("Failed to get response Writer, Exception Message=" + e.getMessage());
+            resp.setStatus(SC_INTERNAL_SERVER_ERROR);
+            return;
+        }
+
+        RoomManager roomManager = ServletUtils.getRoomManager(this.getServletContext());
+        String roomName = req.getParameter(PropertiesService.getRoomNameAttributeName());
+
+        UserManager userManager = ServletUtils.getUserManager(this.getServletContext());
+        String usernameFromSession = SessionUtills.getUsername(req);
+        if(usernameFromSession == null){
+            resp.setStatus(SC_BAD_REQUEST);
+            respWriter.print("Missing user name in params.");
+            respWriter.print("");
+            return;
+        }
+        if (roomName == null || roomName.isEmpty()) {
+            resp.setStatus(SC_BAD_REQUEST);
+            respWriter.print("Missing room name in params.");
+            respWriter.print("");
+            return;
+        }
+
+        ContestRoom roomInfo = roomManager.getRoomByName((String) roomName);
+        User user = userManager.getUserByName(usernameFromSession);
+
+        ContestRoomPayload payload = new ContestRoomPayload();
+        if(roomInfo == null){
+            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            //todo: is the best response
+            respWriter.print("Room doesnt exist.");
+            return;
+        }
+        if(roomInfo.getCurrNumOfTeams() >= roomInfo.getRequiredNumOfTeams()){
+            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            //todo: is the best response
+            respWriter.print("The room is already full, you can't join.");
+            return;
+        }
+        else{
+            roomManager.addUserToRoom(user, roomInfo);
+            resp.setStatus(SC_OK);
+            payload.setContestRoom(roomInfo);
+            payload.setMessage("Joined room "+ roomInfo.getName() + " Successfully.");
+        }
+        Gson gson = new Gson();
+        resp.setHeader(PropertiesService.getHttpHeaderContentType(),PropertiesService.getJsonHttpContentType());
+        respWriter.print(gson.toJson(payload));
+    }
+
+}
