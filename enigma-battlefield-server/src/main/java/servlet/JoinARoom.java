@@ -80,8 +80,14 @@ public class JoinARoom extends HttpServlet {
             //todo: is the best response
             payload.setMessage("The room is already full, you can't join.");
         }
+        if(user.isInARoom()){
+            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            //todo: is the best response
+            payload.setMessage("You are already in a contest.");
+        }
         else{
             roomManager.addUserToRoom(user, roomInfo);
+            user.setInARoom(true);
             resp.setStatus(SC_OK);
             payload.setContestRoom(roomInfo);
             payload.setMessage("Joined room "+ roomInfo.getName() + " Successfully.");

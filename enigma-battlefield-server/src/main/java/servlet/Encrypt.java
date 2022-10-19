@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import component.MachineHandler;
 import dto.MachineState;
+import manager.DictionaryManager;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import service.PropertiesService;
@@ -114,6 +115,17 @@ public class Encrypt extends HttpServlet {
                 }
             }
         }
+        //todo - fix jar dependencies:
+        //check words in dictionary:
+//        for (String input : encryptionInputs ){
+//            if (!DictionaryManager.getDictionary().containsKey(input)) {
+//                log.info("Encrypt request failed - \"" + input + "\" is not in the dictionary");
+//                resp.setStatus(SC_BAD_REQUEST);
+//                responsePayload.setMessage("\"" + input + "\" is not in the dictionary");
+//                respWriter.print(gson.toJson(responsePayload));
+//                return;
+//            }
+//        }
         //Actual Encryption:
         synchronized (this){
             for (String input : encryptionInputs ){

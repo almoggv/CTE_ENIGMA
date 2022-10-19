@@ -12,4 +12,5 @@ public class User {
     private String username;
     private String token;
     private UserType type;
+    private boolean isInARoom;
 }

@@ -28,6 +28,7 @@ public class UserManager {
         newUser.setType(UserType.getByName(userType));
         usernamesToUserMap.put(username,newUser);
         authTokenToUserMap.put(newUser.getToken(),newUser);
+        newUser.setInARoom(false);
     }
 
     public synchronized String getUserToken(String username){
