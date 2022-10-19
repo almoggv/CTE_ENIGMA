@@ -74,14 +74,11 @@ public class JoinARoom extends HttpServlet {
         if(roomInfo == null){
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             //todo: is the best response
-            respWriter.print("Room doesnt exist.");
-            return;
-        }
-        if(roomInfo.getCurrNumOfTeams() >= roomInfo.getRequiredNumOfTeams()){
+            payload.setMessage("Room doesnt exist.");
+        } else if (roomInfo.getCurrNumOfTeams() >= roomInfo.getRequiredNumOfTeams()){
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             //todo: is the best response
-            respWriter.print("The room is already full, you can't join.");
-            return;
+            payload.setMessage("The room is already full, you can't join.");
         }
         else{
             roomManager.addUserToRoom(user, roomInfo);
