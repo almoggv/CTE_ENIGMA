@@ -1,6 +1,8 @@
 package controller;
 
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.layout.GridPane;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import service.PropertiesService;
@@ -24,6 +26,8 @@ public class ContestPageController implements Initializable {
         }
     }
 
+    public GridPane rootGridPane;
+
 
     AppController parentController;
 
@@ -35,6 +39,8 @@ public class ContestPageController implements Initializable {
     public void setParentController(AppController appController) {
         this.parentController = appController;
     }
-
+    public GridPane getRootComponent() {
+        return  rootGridPane;
+    }
 
 }

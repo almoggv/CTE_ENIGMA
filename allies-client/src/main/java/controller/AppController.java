@@ -53,6 +53,8 @@ public class AppController implements Initializable {
     LoginController loginComponentController;
     @FXML
     private DashboardPageController dashboardPageController;
+    @FXML
+    private ContestPageController contestPageController;
 
     @Setter
     @Getter
@@ -85,17 +87,7 @@ public class AppController implements Initializable {
             loginComponentController.setParentController(this);
         }
         FXMLLoader fxmlLoader;
-//        //Load Current Machine Config
-//        URL currConfigResource = AppController.class.getResource(PropertiesService.getCurrMachineConfigFxmlPath());
-//        log.info("AppController - found Url of header component:" + currConfigResource);
-//        fxmlLoader = new FXMLLoader();
-//        fxmlLoader.setLocation(currConfigResource);
-//        try {
-//            GridPane currConfigComponent = fxmlLoader.load(currConfigResource.openStream());
-//        } catch (IOException e) {
-//            log.error("Failed to load currConfigResource:" + currConfigResource.toString() + "Exception throws: " + e.getMessage());
-//        }
-//        CurrMachineConfigController currMachineConfigController = fxmlLoader.getController();
+
         //Load Dashboard Page
         URL dashboardPageResource = AppController.class.getResource(PropertiesService.getDashboardPageTemplateFxmlPath());
         log.info("AppController - found Url of machine component:" + dashboardPageResource);
@@ -104,15 +96,26 @@ public class AppController implements Initializable {
         try {
             Parent dashboardComponent = fxmlLoader.load(dashboardPageResource.openStream());
         } catch (IOException e) {
-            log.error("Failed to load machinePageResource:" + dashboardPageResource.toString() + "Exception throws: " + e.getMessage());
+            log.error("Failed to load DashBoardPage:" + dashboardPageResource.toString() + "Exception throws: " + e.getMessage());
             throw new NullPointerException("Failed to load DashBoardPage from resource, dashboardComponent is null");
         }
         dashboardPageController = fxmlLoader.getController();
         dashboardPageController.setParentController(this);
-//        machinePageController.bindComponent(currMachineConfigController);
 
+//      //Load Contest Page
+        URL contestPageResource = AppController.class.getResource(PropertiesService.getContestPageTemplateFxmlPath());
+        log.info("AppController - found Url of machine component:" + contestPageResource);
+        fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(contestPageResource);
+        try {
+            Parent contestComponent = fxmlLoader.load(contestPageResource.openStream());
+        } catch (IOException e) {
+            log.error("Failed to load contestPageResource:" + contestPageResource.toString() + "Exception throws: " + e.getMessage());
+            throw new NullPointerException("Failed to load contestPageResource from resource, contestPageResource is null");
+        }
+        contestPageController = fxmlLoader.getController();
+        contestPageController.setParentController(this);
 
-//      //TODO: Load Contest Page
 
         headerWrapScrollPane.setContent(headerComponentController.getRootComponent());
         loginComponentController.getIsLoggedInProperty().addListener((observable, oldValue, newValue) -> {
@@ -155,9 +158,8 @@ public class AppController implements Initializable {
 
     public void changeSceneToContest() {
         //TODO: check null
-//        Parent rootComponent = contestPageController.getRootComponent();
-//        bodyWrapScrollPane.setContent(rootComponent);
-        throw new UnsupportedOperationException();
+        Parent rootComponent = contestPageController.getRootComponent();
+        bodyWrapScrollPane.setContent(rootComponent);
     }
 
     public void makeBodyVisible() {
