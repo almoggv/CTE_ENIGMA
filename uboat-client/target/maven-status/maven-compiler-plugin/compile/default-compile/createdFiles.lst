@@ -1,6 +1,7 @@
 controller\LoginController$1.class
 service\PropertiesService.class
 controller\EncryptionController$1.class
+controller\EncryptionController$3.class
 controller\MachineDetailsController.class
 controller\MachineDetailsController$1.class
 controller\MachinePageController.class

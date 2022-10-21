@@ -34,6 +34,9 @@ public class ContestPageController implements Initializable {
     public Label contestWordLabel;
     public GridPane contestDataGrid;
     public ContestDataController contestDataGridController;
+    public GridPane allyCompetitionControls;
+
+    public CompetitionControlsController allyCompetitionControlsController;
 
 
     AppController parentController;
@@ -47,7 +50,12 @@ public class ContestPageController implements Initializable {
                 contestDataGridController.setData(newValue);
             }
         });
-
+        if(contestDataGridController != null){
+            contestDataGridController.setParentController(this);
+        }
+        if(allyCompetitionControlsController != null){
+            allyCompetitionControlsController.setParentController(this);
+        }
     }
 
     public void setParentController(AppController appController) {
@@ -57,5 +65,8 @@ public class ContestPageController implements Initializable {
         return  rootGridPane;
     }
 
+    public void showMessage(String message){
+        parentController.showMessage(message);
+    }
 
 }

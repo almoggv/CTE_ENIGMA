@@ -28,6 +28,8 @@ public class PropertiesService {
     @Getter private static final String userTypeAttributeName = "user_type";
     @Getter private static final String allyAttributeName = "ally";
     @Getter private static final String roomNameAttribute = "room_name";
+    @Getter private static final String taskSizeAttributeName = "task_size";
+
     //Api Url
     public final static String BASE_DOMAIN = "localhost";
     private final static String BASE_URL = "http://" + BASE_DOMAIN + ":8080";
@@ -45,6 +47,7 @@ public class PropertiesService {
     @Getter private static final String apiInventoryInfoUrl = FULL_SERVER_PATH + "/get-machine-inventory";
     @Getter private static final String apiContestsInfoUrl = FULL_SERVER_PATH + "/get-rooms-info";
     @Getter private static final String apiJoinContestUrl = FULL_SERVER_PATH + "/join";
+    @Getter private static final String apiAllyReadyUrl = FULL_SERVER_PATH + "/ally-ready";
 
 }
 

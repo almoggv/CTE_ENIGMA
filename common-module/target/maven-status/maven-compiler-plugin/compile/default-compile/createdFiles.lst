@@ -3,6 +3,7 @@ dto\AllyTeamData.class
 dto\ContestRoom.class
 dto\VersionDto.class
 service\PropertiesService.class
+dto\ContestWordPayload.class
 dto\User.class
 jsonadapter\LoginPayloadJsonAdapter.class
 dto\MachineInventoryPayload.class

@@ -34,7 +34,7 @@
       <HBox alignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
          <children>
             <Label text="Task size:" />
-            <TextField fx:id="taskSizeTextField" onAction="#onTaskSizeTextFieldFilled" prefHeight="25.0" prefWidth="130.0" promptText=" natural number over 0">
+            <TextField fx:id="taskSizeTextField" prefHeight="25.0" prefWidth="130.0" promptText=" natural number over 0">
                <padding>
                   <Insets right="5.0" />
                </padding>

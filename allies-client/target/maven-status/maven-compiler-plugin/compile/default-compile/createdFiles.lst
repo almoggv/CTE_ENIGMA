@@ -1,7 +1,9 @@
 controller\LoginController$1.class
+controller\ContestDataController.class
 service\PropertiesService.class
 controller\DashboardPageController$2.class
 controller\DashboardPageController.class
+service\DataService$1$1.class
 service\DataService.class
 controller\ContestPageController.class
 controller\LoginController.class
@@ -10,8 +12,5 @@ service\DataService$1.class
 app\GuiApplication.class
 controller\CompetitionControlsController.class
 controller\HeaderController$1.class
-controller\HeaderController.class
-controller\ContestDataController.class
-service\DataService$1$1.class
-service\DataService$2.class
 controller\DashboardPageController$1.class
+controller\HeaderController.class
