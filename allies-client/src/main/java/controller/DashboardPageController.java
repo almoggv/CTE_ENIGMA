@@ -2,12 +2,12 @@ package controller;
 
 import app.GuiApplication;
 import com.google.gson.Gson;
-import dto.AllContestRoomsPayload;
-import dto.ContestRoom;
-import dto.ContestRoomPayload;
-import dto.LoginPayload;
+import dto.*;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,6 +26,7 @@ import okhttp3.Response;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.jetbrains.annotations.NotNull;
+import service.DataService;
 import service.HttpClientService;
 import service.PropertiesService;
 
@@ -75,6 +76,11 @@ public class DashboardPageController implements Initializable {
         joinContestButton.disableProperty().bind(Bindings.createBooleanBinding(() ->
                         chosenContestTextField.getText().trim().isEmpty(),
                 chosenContestTextField.textProperty()));
+        DataService.getContestRoomsStateProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue != null ){
+                createContestsDataComponents(newValue);
+            }
+        });
     }
 
     public void onRefreshContests(ActionEvent actionEvent) {
@@ -120,26 +126,28 @@ public class DashboardPageController implements Initializable {
     }
 
     private void createContestsDataComponents(Set<ContestRoom> contestRooms) {
-        try {
-            contestDataFlowPane.getChildren().clear();
-            for (ContestRoom contestRoom : contestRooms) {
-                URL decodedCandidateURL = GuiApplication.class.getResource(PropertiesService.getContestDataFxmlPath());
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(decodedCandidateURL);
-                Parent decodedCandidate = fxmlLoader.load(decodedCandidateURL.openStream());
-                ContestDataController contestDataController = fxmlLoader.getController();
-                contestDataController.setAllyTeamsLabel(contestRoom.getCurrNumOfTeams(), contestRoom.getRequiredNumOfTeams());
-                contestDataController.setBattlefieldNameLabel(contestRoom.getName());
-                contestDataController.setDifficultyLevelLabel(contestRoom.getDifficultyLevel());
-                contestDataController.setUboatCreatorName(contestRoom.getCreatorName());
-                contestDataController.setGameStatusLabel(contestRoom.getGameStatus());
-                contestDataController.setParentController(this);
+        Platform.runLater(() -> {
+            try {
+                contestDataFlowPane.getChildren().clear();
+                for (ContestRoom contestRoom : contestRooms) {
+                    URL decodedCandidateURL = GuiApplication.class.getResource(PropertiesService.getContestDataFxmlPath());
+                    FXMLLoader fxmlLoader = new FXMLLoader();
+                    fxmlLoader.setLocation(decodedCandidateURL);
+                    Parent decodedCandidate = fxmlLoader.load(decodedCandidateURL.openStream());
+                    ContestDataController contestDataController = fxmlLoader.getController();
+                    contestDataController.setAllyTeamsLabel(contestRoom.getCurrNumOfTeams(), contestRoom.getRequiredNumOfTeams());
+                    contestDataController.setBattlefieldNameLabel(contestRoom.getName());
+                    contestDataController.setDifficultyLevelLabel(contestRoom.getDifficultyLevel());
+                    contestDataController.setUboatCreatorName(contestRoom.getCreatorName());
+                    contestDataController.setGameStatusLabel(contestRoom.getGameStatus());
+                    contestDataController.setParentController(this);
 
-                contestDataFlowPane.getChildren().add(decodedCandidate);
+                    contestDataFlowPane.getChildren().add(decodedCandidate);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        });
     }
 
     @FXML
@@ -195,5 +203,14 @@ public class DashboardPageController implements Initializable {
     public void handleContestClicked(Label battlefieldNameLabel) {
         chosenContestTextField.setText(battlefieldNameLabel.getText());
     }
+
+/*    public void bindToData(ObjectProperty<Set<ContestRoom>> dataProperty){
+        dataProperty.addListener(new ChangeListener<Set<ContestRoom>>() {
+            @Override
+            public void changed(ObservableValue<? extends Set<ContestRoom>> observable, Set<ContestRoom> oldValue, Set<ContestRoom> newValue) {
+                createContestsDataComponents(newValue);
+            }
+        });
+    }*/
 
 }

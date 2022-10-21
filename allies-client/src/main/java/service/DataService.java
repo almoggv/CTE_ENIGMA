@@ -2,10 +2,7 @@ package service;
 
 
 import com.google.gson.Gson;
-import dto.InventoryInfo;
-import dto.MachineInventoryPayload;
-import dto.MachineState;
-import dto.MachineStatePayload;
+import dto.*;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import lombok.Getter;
@@ -19,6 +16,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.util.Properties;
+import java.util.Set;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -40,17 +38,19 @@ public class DataService {
     @Getter private static final ObjectProperty<InventoryInfo> inventoryInfoProperty = new SimpleObjectProperty<>();
     @Getter private static final ObjectProperty<MachineState> originalMachineStateProperty = new SimpleObjectProperty<>();
     @Getter private static final ObjectProperty<MachineState> currentMachineStateProperty = new SimpleObjectProperty<>();
+    @Getter private static final ObjectProperty<Set<ContestRoom>> contestRoomsStateProperty = new SimpleObjectProperty<>();
 
     private static final ScheduledExecutorService executor;
-    private static final String fetchInventoryUrl;
+//    private static final String fetchInventoryUrl;
     private static final String machineConfigUrl;
-    private static final Runnable currMachineStateFetcher = new Runnable() {
+    private static final String contestsDataUrl;
+    private static final Runnable contestsDataFetcher = new Runnable() {
         @Override
         public void run() {
-            HttpClientService.runAsync(machineConfigUrl, new Callback() {
+            HttpClientService.runAsync(contestsDataUrl, new Callback() {
                 @Override
                 public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                    log.error("currMachineStateFetcher failed, ExceptionMessage="+e.getMessage());                }
+                    log.error("contestsDataStateFetcher failed, ExceptionMessage="+e.getMessage());                }
                 @Override
                 public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                     String responseBody = response.body().string();
@@ -58,20 +58,23 @@ public class DataService {
                         log.error("Current machine state Fetching failed - statusCode=" + response.code());
                         return;
                     }
-                    MachineStatePayload machineStatePayload;
+                    AllContestRoomsPayload payload;
                     try{
-                        machineStatePayload = new Gson().fromJson(responseBody,MachineStatePayload.class);
+                        payload = new Gson().fromJson(responseBody,AllContestRoomsPayload.class);
                     }
                     catch (Exception e){
-                        log.error("Failed to parse response on currMachineStateFetcher, Message=" + e.getMessage());
+                        log.error("Failed to parse response on contestsDataFetcher, Message=" + e.getMessage());
                         return;
                     }
                     if (response.code() != 200) {
-                        log.error("Failed to fetch current machine configuration - statusCode=" + response.code() + ", ServerMessage=" + machineStatePayload.getMessage());
+                        log.error("Failed to fetch contests data - statusCode=" + response.code() + ", ServerMessage=" + payload.getMessage());
                     }
                     else {
-                        log.info("Current machine state Successfully Fetched - responseCode = 200, ServerMessage=" + machineStatePayload.getMessage());
-                        currentMachineStateProperty.setValue(machineStatePayload.getMachineState());
+                        log.info("Contest data Successfully Fetched - responseCode = 200, ServerMessage=" + payload.getContestRooms());
+                        if(payload.getContestRooms() != null && payload.getContestRooms() != contestRoomsStateProperty.get()){
+                            contestRoomsStateProperty.setValue(null);
+                            contestRoomsStateProperty.setValue(payload.getContestRooms());
+                        }
                     }
                 }
             });
@@ -81,8 +84,8 @@ public class DataService {
     static{
         int poolSize = 2;
         executor = Executors.newScheduledThreadPool(poolSize);
-        fetchInventoryUrl = HttpUrl
-                .parse(PropertiesService.getApiInventoryInfoUrl())
+        contestsDataUrl = HttpUrl
+                .parse(PropertiesService.getApiContestsInfoUrl())
                 .newBuilder()
                 .build()
                 .toString();
@@ -93,41 +96,41 @@ public class DataService {
                 .toString();
     }
 
-    public static void fetchInventoryInfo(){
-        HttpClientService.runAsync(fetchInventoryUrl, new Callback() {
-            @Override
-            public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                log.error("FetchInventoryInfo failed, ExceptionMessage="+e.getMessage());
-            }
-            @Override
-            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-                String responseBody = response.body().string();
-                if (response.code() >= 500) {
-                    log.error("Inventory Fetching failed - statusCode=" + response.code());
-                    return;
-                }
-                MachineInventoryPayload inventoryPayload;
-                try{
-                    inventoryPayload = new Gson().fromJson(responseBody,MachineInventoryPayload.class);
-                }
-                catch (Exception e){
-                    log.error("Failed to parse response on FetchInventoryInfo, Message=" + e.getMessage());
-                    return;
-                }
-                if (response.code() != 200) {
-                    log.error("Failed to FetchInventoryInfo - statusCode=" + response.code() + ", ServerMessage=" + inventoryPayload.getMessage());
-                }
-                else {
-                    log.info("Inventory Successfully Fetched - responseCode = 200, ServerMessage=" + inventoryPayload.getMessage());
-                    inventoryInfoProperty.setValue(inventoryPayload.getInventory());
-                }
-            }
-        });
-    }
+//    public static void fetchInventoryInfo(){
+//        HttpClientService.runAsync(fetchInventoryUrl, new Callback() {
+//            @Override
+//            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+//                log.error("FetchInventoryInfo failed, ExceptionMessage="+e.getMessage());
+//            }
+//            @Override
+//            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+//                String responseBody = response.body().string();
+//                if (response.code() >= 500) {
+//                    log.error("Inventory Fetching failed - statusCode=" + response.code());
+//                    return;
+//                }
+//                MachineInventoryPayload inventoryPayload;
+//                try{
+//                    inventoryPayload = new Gson().fromJson(responseBody,MachineInventoryPayload.class);
+//                }
+//                catch (Exception e){
+//                    log.error("Failed to parse response on FetchInventoryInfo, Message=" + e.getMessage());
+//                    return;
+//                }
+//                if (response.code() != 200) {
+//                    log.error("Failed to FetchInventoryInfo - statusCode=" + response.code() + ", ServerMessage=" + inventoryPayload.getMessage());
+//                }
+//                else {
+//                    log.info("Inventory Successfully Fetched - responseCode = 200, ServerMessage=" + inventoryPayload.getMessage());
+//                    inventoryInfoProperty.setValue(inventoryPayload.getInventory());
+//                }
+//            }
+//        });
+//    }
 
-    public static void startPullingMachineConfig(){
-        long timeInterval = 500;
-        executor.scheduleAtFixedRate(currMachineStateFetcher, 0, timeInterval, TimeUnit.MILLISECONDS);
+    public static void startPullingRoomData(){
+        long timeInterval = 1500;
+        executor.scheduleAtFixedRate(contestsDataFetcher, 0, timeInterval, TimeUnit.MILLISECONDS);
         //TODO: implement
     }
 
