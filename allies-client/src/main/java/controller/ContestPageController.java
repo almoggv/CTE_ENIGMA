@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import okhttp3.internal.platform.Platform;
 import org.apache.log4j.Logger;
@@ -39,6 +40,7 @@ public class ContestPageController implements Initializable {
     public CompetitionControlsController allyCompetitionControlsController;
 
 
+
     AppController parentController;
 
     @Override
@@ -50,6 +52,8 @@ public class ContestPageController implements Initializable {
                 contestDataGridController.setData(newValue);
             }
         });
+
+//        DataService.
         if(contestDataGridController != null){
             contestDataGridController.setParentController(this);
         }

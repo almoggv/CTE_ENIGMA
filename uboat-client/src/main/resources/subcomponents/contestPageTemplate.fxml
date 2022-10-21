@@ -31,6 +31,14 @@
          </content>
       </ScrollPane>
       <Button fx:id="logoutButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onLogoutButtonAction" text="Logout" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-      <Label prefWidth="181.0" text="Active team details" GridPane.columnIndex="2" />
+      <Label text="Teams: " GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+         <GridPane.margin>
+            <Insets top="6.0" />
+         </GridPane.margin></Label>
+      <ScrollPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+         <content>
+            <FlowPane fx:id="teamsFlowPane" prefHeight="157.0" prefWidth="193.0" />
+         </content>
+      </ScrollPane>
    </children>
 </GridPane>

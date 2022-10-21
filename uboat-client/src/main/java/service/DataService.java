@@ -3,13 +3,10 @@ package service;
 
 import com.google.gson.Gson;
 import controller.LoginController;
-import dto.MachineInventoryPayload;
-import dto.MachineStatePayload;
+import dto.*;
 import javafx.application.Platform;
 import javafx.beans.property.*;
 import lombok.Getter;
-import dto.InventoryInfo;
-import dto.MachineState;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.HttpUrl;
@@ -19,6 +16,7 @@ import org.apache.log4j.PropertyConfigurator;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -41,10 +39,13 @@ public class DataService {
     @Getter private static final ObjectProperty<InventoryInfo> inventoryInfoProperty = new SimpleObjectProperty<>(null);
     @Getter private static final ObjectProperty<MachineState> originalMachineStateProperty = new SimpleObjectProperty<>();
     @Getter private static final ObjectProperty<MachineState> currentMachineStateProperty = new SimpleObjectProperty<>();
+    @Getter private static final ObjectProperty<List<AllyTeamData>> currentTeamsProperty = new SimpleObjectProperty<>();
 
     private static final ScheduledExecutorService executor;
     private static final String fetchInventoryUrl;
     private static final String machineConfigUrl;
+
+    private static final String allyTeamsUrl;
     private static final Runnable currMachineStateFetcher = new Runnable() {
         @Override
         public void run() {
@@ -81,6 +82,43 @@ public class DataService {
             });
         }
     };
+    private static final Runnable currTeamsFetcher = new Runnable() {
+        @Override
+        public void run() {
+            HttpClientService.runAsync(allyTeamsUrl, new Callback() {
+                @Override
+                public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                    log.error("currTeamsFetcher failed, ExceptionMessage="+e.getMessage());                }
+                @Override
+                public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                    String responseBody = response.body().string();
+                    if (response.code() >= 500) {
+                        log.error("currTeamsFetcher Fetching failed - statusCode=" + response.code());
+                        return;
+                    }
+                    ContestAllyTeamsPayload allyTeamsPayload;
+                    try{
+                        allyTeamsPayload = new Gson().fromJson(responseBody,ContestAllyTeamsPayload.class);
+                    }
+                    catch (Exception e){
+                        log.error("Failed to parse response on currTeamsFetcher, Message=" + e.getMessage());
+                        return;
+                    }
+                    if (response.code() != 200) {
+                        log.error("Failed to fetch curr Teams - statusCode=" + response.code() + ", ServerMessage=" + allyTeamsPayload.getMessage());
+                    }
+                    else {
+                        log.info("Current teams Fetched - responseCode = 200, ServerMessage=" + allyTeamsPayload.getMessage());
+                       if(allyTeamsPayload.getAllyTeamsData() != null &&
+                               allyTeamsPayload.getAllyTeamsData() != currentTeamsProperty.get()){
+                        currentTeamsProperty.setValue(null);
+                        currentTeamsProperty.setValue(allyTeamsPayload.getAllyTeamsData());
+                       }
+                    }
+                }
+            });
+        }
+    };
 
     static{
         int poolSize = 2;
@@ -92,6 +130,11 @@ public class DataService {
                 .toString();
         machineConfigUrl = HttpUrl
                 .parse(PropertiesService.getApiCurrMachineConfigPageUrl())
+                .newBuilder()
+                .build()
+                .toString();
+        allyTeamsUrl = HttpUrl
+                .parse(PropertiesService.getApiAllyTeamsUrl())
                 .newBuilder()
                 .build()
                 .toString();
@@ -132,6 +175,11 @@ public class DataService {
     public static void startPullingMachineConfig(){
         long timeInterval = 500;
         executor.scheduleAtFixedRate(currMachineStateFetcher, 0, timeInterval, TimeUnit.MILLISECONDS);
+        //TODO: implement
+    }
+    public static void startPullingTeamsData(){
+        long timeInterval = 500;
+        executor.scheduleAtFixedRate(currTeamsFetcher, 0, timeInterval, TimeUnit.MILLISECONDS);
         //TODO: implement
     }
 

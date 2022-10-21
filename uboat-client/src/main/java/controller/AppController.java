@@ -239,6 +239,7 @@ public class AppController implements Initializable {
                         showMessage("Uploaded machine file successfully");
                         headerComponentController.getIsFileSelected().set(true);
                         DataService.fetchInventoryInfo(inventoryPayload.getInventory());
+                        DataService.startPullingTeamsData();
                     });
                 }
             }

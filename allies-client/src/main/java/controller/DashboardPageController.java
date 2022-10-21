@@ -131,10 +131,10 @@ public class DashboardPageController implements Initializable {
             try {
                 contestDataFlowPane.getChildren().clear();
                 for (ContestRoom contestRoom : contestRooms) {
-                    URL decodedCandidateURL = GuiApplication.class.getResource(PropertiesService.getContestDataFxmlPath());
+                    URL contestRoomURL = GuiApplication.class.getResource(PropertiesService.getContestDataFxmlPath());
                     FXMLLoader fxmlLoader = new FXMLLoader();
-                    fxmlLoader.setLocation(decodedCandidateURL);
-                    Parent decodedCandidate = fxmlLoader.load(decodedCandidateURL.openStream());
+                    fxmlLoader.setLocation(contestRoomURL);
+                    Parent decodedCandidate = fxmlLoader.load(contestRoomURL.openStream());
                     ContestDataController contestDataController = fxmlLoader.getController();
                     contestDataController.setData(contestRoom);
 
