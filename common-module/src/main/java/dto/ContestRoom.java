@@ -23,5 +23,5 @@ public class ContestRoom {
     private Integer requiredNumOfTeams;
 
     private List<User> alliesList;
-
+    String wordToDecrypt;
 }

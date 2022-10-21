@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.layout.GridPane;
@@ -42,5 +43,6 @@ public class ContestPageController implements Initializable {
     public GridPane getRootComponent() {
         return  rootGridPane;
     }
+
 
 }

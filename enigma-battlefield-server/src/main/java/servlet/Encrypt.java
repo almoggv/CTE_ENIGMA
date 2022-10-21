@@ -28,7 +28,7 @@ import static jakarta.servlet.http.HttpServletResponse.*;
 
 @WebServlet(name = "EncryptServlet" ,urlPatterns = {"/encrypt"})
 public class Encrypt extends HttpServlet {
-    private static final Logger log = Logger.getLogger(CurrMachineConfiguration.class);
+    private static final Logger log = Logger.getLogger(Encrypt.class);
     static {
         try {
             Properties p = new Properties();

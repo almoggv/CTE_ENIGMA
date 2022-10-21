@@ -49,8 +49,6 @@ public class EncryptionController implements Initializable {
     @FXML public Button clearButton;
     @FXML public Button resetMachineStateButton;
 
-
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         encryptButton.disableProperty().bind(Bindings.createBooleanBinding(() ->
@@ -145,5 +143,52 @@ public class EncryptionController implements Initializable {
                 }
             }
         });
+    }
+
+    public void onReadyButtonClicked(ActionEvent actionEvent) {
+        if(resultTextField.getText().isEmpty() || resultTextField.getText() == null ){
+            parentController.showMessage("Please encrypt a message first.");
+        }
+        else{
+            String input = this.resultTextField.getText().toUpperCase();
+            //noinspection ConstantConditions
+            String finalUrl = HttpUrl
+                    .parse(PropertiesService.getApiUboatReadyInfoUrl())
+                    .newBuilder()
+                    .addQueryParameter(PropertiesService.getInputAttributeName(), input)
+                    .build()
+                    .toString();
+
+            log.info("New request is sent for: " + finalUrl);
+            HttpClientService.runAsync(finalUrl, new Callback() {
+                @Override
+                public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                    Platform.runLater(() -> {
+                        parentController.showMessage("Failed - cannot contact server");
+                        log.error("Request with URL=\"" + finalUrl + "\" FAILED, exception message=" + e.getMessage());
+                    });
+                }
+                @Override
+                public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                    String responseBody = response.body().string();
+                    if (response.code() >= 500){
+                        parentController.showMessage("Failed - server error");
+                        log.error("Failed to tell server uboat is ready- status=" + response.code() + " body=" + responseBody);
+                        return;
+                    }
+                    if (response.code() != 200) {
+                        Platform.runLater(() -> {
+                            log.warn("Failed to tell server uboat is ready - status=" + response.code() + " body=" + responseBody);
+                            parentController.showMessage("Failed to set ready - "+ responseBody);
+                        });
+                    } else {
+                        Platform.runLater(() -> {
+                            log.debug("Successfully told server uboat is ready :\", status=" + response.code() + ", response body=" + responseBody);
+                            parentController.showMessage("Set ready!");
+                        });
+                    }
+                }
+            });
+        }
     }
 }

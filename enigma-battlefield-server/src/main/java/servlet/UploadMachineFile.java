@@ -117,6 +117,7 @@ public class UploadMachineFile extends HttpServlet {
         contestRoom.setDifficultyLevel(battlefieldInfo.getDifficultyLevel());
         contestRoom.setRequiredNumOfTeams(battlefieldInfo.getRequiredNumOfTeams());
         contestRoom.setAlliesList(new ArrayList<>());
+        contestRoom.setWordToDecrypt(null);
         return contestRoom;
     }
 }
