@@ -91,6 +91,7 @@ public class JoinARoom extends HttpServlet {
             resp.setStatus(SC_OK);
             payload.setContestRoom(roomInfo);
             payload.setMessage("Joined room "+ roomInfo.getName() + " Successfully.");
+            req.getSession(false).setAttribute(PropertiesService.getRoomNameAttributeName(), roomName);
         }
         Gson gson = new Gson();
         resp.setHeader(PropertiesService.getHttpHeaderContentType(),PropertiesService.getJsonHttpContentType());
