@@ -76,6 +76,7 @@ public class DashboardPageController implements Initializable {
         joinContestButton.disableProperty().bind(Bindings.createBooleanBinding(() ->
                         chosenContestTextField.getText().trim().isEmpty(),
                 chosenContestTextField.textProperty()));
+
         DataService.getContestRoomsStateProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue != null ){
                 createContestsDataComponents(newValue);
@@ -135,11 +136,8 @@ public class DashboardPageController implements Initializable {
                     fxmlLoader.setLocation(decodedCandidateURL);
                     Parent decodedCandidate = fxmlLoader.load(decodedCandidateURL.openStream());
                     ContestDataController contestDataController = fxmlLoader.getController();
-                    contestDataController.setAllyTeamsLabel(contestRoom.getCurrNumOfTeams(), contestRoom.getRequiredNumOfTeams());
-                    contestDataController.setBattlefieldNameLabel(contestRoom.getName());
-                    contestDataController.setDifficultyLevelLabel(contestRoom.getDifficultyLevel());
-                    contestDataController.setUboatCreatorName(contestRoom.getCreatorName());
-                    contestDataController.setGameStatusLabel(contestRoom.getGameStatus());
+                    contestDataController.setData(contestRoom);
+
                     contestDataController.setParentController(this);
 
                     contestDataFlowPane.getChildren().add(decodedCandidate);
@@ -195,6 +193,7 @@ public class DashboardPageController implements Initializable {
                         parentController.showMessage("Successfully joined room:" + roomName);
                         DataService.getCurrentContestRoomsStateProperty().set(payload.getContestRoom());
                         parentController.changeSceneToContest();
+
                     });
                 }
             }
@@ -204,14 +203,5 @@ public class DashboardPageController implements Initializable {
     public void handleContestClicked(Label battlefieldNameLabel) {
         chosenContestTextField.setText(battlefieldNameLabel.getText());
     }
-
-/*    public void bindToData(ObjectProperty<Set<ContestRoom>> dataProperty){
-        dataProperty.addListener(new ChangeListener<Set<ContestRoom>>() {
-            @Override
-            public void changed(ObservableValue<? extends Set<ContestRoom>> observable, Set<ContestRoom> oldValue, Set<ContestRoom> newValue) {
-                createContestsDataComponents(newValue);
-            }
-        });
-    }*/
 
 }

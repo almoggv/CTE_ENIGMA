@@ -5,6 +5,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import okhttp3.internal.platform.Platform;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import service.DataService;
@@ -31,6 +32,8 @@ public class ContestPageController implements Initializable {
 
     public GridPane rootGridPane;
     public Label contestWordLabel;
+    public GridPane contestDataGrid;
+    public ContestDataController contestDataGridController;
 
 
     AppController parentController;
@@ -40,8 +43,11 @@ public class ContestPageController implements Initializable {
         DataService.getCurrentContestRoomsStateProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue != null ){
                 contestWordLabel.setText(newValue.getWordToDecrypt());
+                contestDataGridController.setParentController(this);
+                contestDataGridController.setData(newValue);
             }
         });
+
     }
 
     public void setParentController(AppController appController) {

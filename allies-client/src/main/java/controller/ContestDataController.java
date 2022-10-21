@@ -1,5 +1,6 @@
 package controller;
 
+import dto.ContestRoom;
 import enums.GameStatus;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -15,7 +16,9 @@ public class ContestDataController {
     @FXML private Label difficultyLevelLabel;
     @FXML private Label allyTeamsLabel;
 
-    DashboardPageController parentController;
+    DashboardPageController dashboardPageController;
+
+    ContestPageController contestPageController;
 
     public void setBattlefieldNameLabel(String value) {
         this.battlefieldNameLabel.setText(String.valueOf(value));
@@ -39,10 +42,21 @@ public class ContestDataController {
     }
 
     public void onContestClicked(MouseEvent mouseEvent) {
-        parentController.handleContestClicked(this.battlefieldNameLabel);
+        dashboardPageController.handleContestClicked(this.battlefieldNameLabel);
     }
 
     public void setParentController(DashboardPageController dashboardPageController) {
-        this.parentController = dashboardPageController;
+        this.dashboardPageController = dashboardPageController;
+    }
+    public void setParentController(ContestPageController contestPageController) {
+        this.contestPageController = contestPageController;
+    }
+
+    public void setData(ContestRoom contestRoom){
+        setAllyTeamsLabel(contestRoom.getCurrNumOfTeams(), contestRoom.getRequiredNumOfTeams());
+        setBattlefieldNameLabel(contestRoom.getName());
+        setDifficultyLevelLabel(contestRoom.getDifficultyLevel());
+        setUboatCreatorName(contestRoom.getCreatorName());
+        setGameStatusLabel(contestRoom.getGameStatus());
     }
 }
