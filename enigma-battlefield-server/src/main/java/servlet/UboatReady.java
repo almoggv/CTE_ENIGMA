@@ -1,8 +1,10 @@
 package servlet;
 
 import com.google.gson.Gson;
+import component.MachineHandler;
 import dto.ContestRoom;
 import dto.ContestRoomPayload;
+import dto.MachineInventoryPayload;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -68,9 +70,15 @@ public class UboatReady extends HttpServlet {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             respWriter.print("Please upload a schema file first. (/upload-machine-file)");
         }
+        MachineHandler machineHandler = (MachineHandler) req.getSession(false).getAttribute(PropertiesService.getMachineHandlerAttributeName());
+        if(machineHandler == null){
+            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            respWriter.print("Please upload a schema file first. (/upload-machine-file)");
+        }
         else{
             resp.setStatus(SC_OK);
             roomInfo.setWordToDecrypt((String) wordToDecrypt);
+            roomInfo.setMachineHandler(machineHandler);
             respWriter.print("Ready with contest word: " + wordToDecrypt);
         }
     }

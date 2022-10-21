@@ -1,5 +1,6 @@
 package dto;
 
+import component.MachineHandler;
 import enums.DecryptionDifficultyLevel;
 import enums.GameStatus;
 import lombok.AllArgsConstructor;
@@ -24,4 +25,5 @@ public class ContestRoom {
 
     private List<User> alliesList;
     String wordToDecrypt;
+    MachineHandler machineHandler;
 }
