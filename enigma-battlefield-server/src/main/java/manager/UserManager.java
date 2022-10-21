@@ -1,5 +1,6 @@
 package manager;
 
+import dto.AllyTeamData;
 import dto.User;
 import enums.UserType;
 
@@ -8,10 +9,12 @@ import java.util.*;
 public class UserManager {
     private final Map<String, User> usernamesToUserMap;
     private final Map<String, User> authTokenToUserMap;
+    private final Map<String, AllyTeamData> usernamesToAlliesMap;
 
     public UserManager() {
         usernamesToUserMap = new HashMap<String, User>();
         authTokenToUserMap = new HashMap<String, User>();
+        usernamesToAlliesMap = new HashMap<String, AllyTeamData>();
     }
 
     public boolean isUserRegistered(String userToken){
@@ -29,6 +32,12 @@ public class UserManager {
         usernamesToUserMap.put(username,newUser);
         authTokenToUserMap.put(newUser.getToken(),newUser);
         newUser.setInARoom(false);
+        if(UserType.getByName(userType).equals(UserType.ALLY)){
+            AllyTeamData allyTeamData = new AllyTeamData();
+            allyTeamData.setTeamName(username);
+            allyTeamData.setNumOfAgents(0);
+            usernamesToAlliesMap.put(username, allyTeamData);
+        }
     }
 
     public synchronized String getUserToken(String username){
@@ -51,4 +60,8 @@ public class UserManager {
     public User getUserByName(String username) {
         return usernamesToUserMap.get(username);
     }
+    public AllyTeamData getAllieTeamDataByName(String username) {
+        return usernamesToAlliesMap.get(username);
+    }
+
 }

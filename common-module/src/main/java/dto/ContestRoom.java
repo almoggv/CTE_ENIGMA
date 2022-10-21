@@ -23,7 +23,7 @@ public class ContestRoom {
     private Integer currNumOfTeams;
     private Integer requiredNumOfTeams;
 
-    private List<User> alliesList;
+    private List<AllyTeamData> alliesList;
     String wordToDecrypt;
     MachineHandler machineHandler;
 }

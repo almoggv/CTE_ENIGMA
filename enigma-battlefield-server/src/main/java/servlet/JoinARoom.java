@@ -1,6 +1,7 @@
 package servlet;
 
 import com.google.gson.Gson;
+import dto.AllyTeamData;
 import dto.ContestRoom;
 import dto.ContestRoomPayload;
 import jakarta.servlet.ServletException;
@@ -86,7 +87,8 @@ public class JoinARoom extends HttpServlet {
             payload.setMessage("You are already in a contest.");
         }
         else{
-            roomManager.addUserToRoom(user, roomInfo);
+            AllyTeamData ally  = userManager.getAllieTeamDataByName(usernameFromSession);
+            roomManager.addUserToRoom(ally, roomInfo);
             user.setInARoom(true);
             resp.setStatus(SC_OK);
             payload.setContestRoom(roomInfo);

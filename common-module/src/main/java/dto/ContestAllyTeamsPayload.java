@@ -4,11 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AllyTeamData {
-    private String teamName;
-    private Integer numOfAgents;
-    private Integer taskSize = 0;
+
+public class ContestAllyTeamsPayload {
+    String message;
+    List<AllyTeamData> allyTeamsData;
 }
