@@ -3,9 +3,11 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
+import service.DataService;
 import service.PropertiesService;
 
 import java.io.IOException;
@@ -28,13 +30,18 @@ public class ContestPageController implements Initializable {
     }
 
     public GridPane rootGridPane;
+    public Label contestWordLabel;
 
 
     AppController parentController;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        DataService.getCurrentContestRoomsStateProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue != null ){
+                contestWordLabel.setText(newValue.getWordToDecrypt());
+            }
+        });
     }
 
     public void setParentController(AppController appController) {

@@ -39,6 +39,7 @@ public class DataService {
     @Getter private static final ObjectProperty<MachineState> originalMachineStateProperty = new SimpleObjectProperty<>();
     @Getter private static final ObjectProperty<MachineState> currentMachineStateProperty = new SimpleObjectProperty<>();
     @Getter private static final ObjectProperty<Set<ContestRoom>> contestRoomsStateProperty = new SimpleObjectProperty<>();
+    @Getter private static final ObjectProperty<ContestRoom> currentContestRoomsStateProperty = new SimpleObjectProperty<>();
 
     private static final ScheduledExecutorService executor;
 //    private static final String fetchInventoryUrl;

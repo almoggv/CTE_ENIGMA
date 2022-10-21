@@ -193,6 +193,7 @@ public class DashboardPageController implements Initializable {
                     Platform.runLater(() -> {
                         log.info("Successfully joined room:\"" + roomName + "\", status=" + response.code() + ", response body=" + responseBody);
                         parentController.showMessage("Successfully joined room:" + roomName);
+                        DataService.getCurrentContestRoomsStateProperty().set(payload.getContestRoom());
                         parentController.changeSceneToContest();
                     });
                 }
