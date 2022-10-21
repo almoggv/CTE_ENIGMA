@@ -3,10 +3,14 @@ dto\AllyTeamData.class
 dto\ContestRoom.class
 dto\VersionDto.class
 service\PropertiesService.class
+dto\User.class
 jsonadapter\LoginPayloadJsonAdapter.class
 dto\MachineInventoryPayload.class
 enums\GameStatus.class
+dto\ContestRoomPayload.class
 service\HttpClientService.class
+enums\UserType.class
 dto\EncryptionResponsePayload.class
 service\SimpleCookieManager.class
 dto\MachineStatePayload.class
+dto\AllContestRoomsPayload.class

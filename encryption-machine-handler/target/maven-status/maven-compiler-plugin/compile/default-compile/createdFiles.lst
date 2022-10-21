@@ -3,5 +3,6 @@ dto\EncryptionInfoHistory.class
 service\PropertiesService.class
 component\impl\MachineHandlerImpl.class
 component\MachineHandler.class
+dto\BattlefieldInfo.class
 component\SerializationHandler.class
 dto\InventoryInfo.class

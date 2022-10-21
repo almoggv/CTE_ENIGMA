@@ -1,10 +1,12 @@
 controller\LoginController$1.class
 service\PropertiesService.class
+controller\EncryptionController$1.class
 controller\MachineDetailsController.class
 controller\MachineDetailsController$1.class
 controller\MachinePageController.class
 controller\CurrMachineConfigController$1.class
 service\DataService.class
+controller\ContestPageController.class
 controller\LoginController.class
 controller\AppController.class
 controller\CurrMachineConfigController.class
@@ -18,7 +20,9 @@ fx\component\ComboBoxItem.class
 controller\AppController$1.class
 controller\MachinePageController$2.class
 service\DataService$1$1.class
+controller\EncryptionController$2.class
 controller\SetMachineConfigController$1.class
 service\DataService$2.class
 controller\MachinePageController$1.class
 fx\component\ComboBoxCell.class
+controller\EncryptionController.class
