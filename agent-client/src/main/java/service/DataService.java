@@ -15,6 +15,7 @@ import org.apache.log4j.PropertyConfigurator;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Properties;
 import java.util.Set;
 import java.util.concurrent.Executors;
@@ -42,12 +43,52 @@ public class DataService {
     @Getter private static final ObjectProperty<Set<ContestRoom>> contestRoomsStateProperty = new SimpleObjectProperty<>();
 */
     @Getter private static final ObjectProperty<ContestRoom> currentContestRoomsStateProperty = new SimpleObjectProperty<>();
+    @Getter private static final ObjectProperty<List<AllyTeamData>> currentTeamsProperty = new SimpleObjectProperty<>();
+
 
     private static final ScheduledExecutorService executor;
 //    private static final String fetchInventoryUrl;
     private static final String machineConfigUrl;
     private static final String contestsDataUrl;
-   /* private static final Runnable contestsDataFetcher = new Runnable() {
+    private static final String allyTeamsUrl;
+    private static final Runnable currTeamsFetcher = new Runnable() {
+        @Override
+        public void run() {
+            HttpClientService.runAsync(allyTeamsUrl, new Callback() {
+                @Override
+                public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                    log.error("currTeamsFetcher failed, ExceptionMessage="+e.getMessage());                }
+                @Override
+                public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                    String responseBody = response.body().string();
+                    if (response.code() >= 500) {
+                        log.error("currTeamsFetcher Fetching failed - statusCode=" + response.code());
+                        return;
+                    }
+                    ContestAllyTeamsPayload allyTeamsPayload;
+                    try{
+                        allyTeamsPayload = new Gson().fromJson(responseBody,ContestAllyTeamsPayload.class);
+                    }
+                    catch (Exception e){
+                        log.error("Failed to parse response on currTeamsFetcher, Message=" + e.getMessage());
+                        return;
+                    }
+                    if (response.code() != 200) {
+                        log.error("Failed to fetch curr Teams - statusCode=" + response.code() + ", ServerMessage=" + allyTeamsPayload.getMessage());
+                    }
+                    else {
+                        log.info("Current teams Fetched - responseCode = 200, ServerMessage=" + allyTeamsPayload.getMessage());
+                        if(allyTeamsPayload.getAllyTeamsData() != null &&
+                                allyTeamsPayload.getAllyTeamsData() != currentTeamsProperty.get()){
+                            currentTeamsProperty.setValue(null);
+                            currentTeamsProperty.setValue(allyTeamsPayload.getAllyTeamsData());
+                        }
+                    }
+                }
+            });
+        }
+    };
+    /* private static final Runnable contestsDataFetcher = new Runnable() {
         @Override
         public void run() {
             HttpClientService.runAsync(contestsDataUrl, new Callback() {
@@ -97,6 +138,16 @@ public class DataService {
                 .newBuilder()
                 .build()
                 .toString();
+        allyTeamsUrl = HttpUrl
+                .parse(PropertiesService.getApiAllAlliesReadyUrl())
+                .newBuilder()
+                .build()
+                .toString();
+    }
+    public static void startPullingTeamsData(){
+        long timeInterval = 500;
+        executor.scheduleAtFixedRate(currTeamsFetcher, 0, timeInterval, TimeUnit.MILLISECONDS);
+        //TODO: implement
     }
 
 //    public static void fetchInventoryInfo(){

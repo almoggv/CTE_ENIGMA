@@ -46,7 +46,8 @@ public class PropertiesService {
     @Getter private static final String apiInventoryInfoUrl = FULL_SERVER_PATH + "/get-machine-inventory";
     @Getter private static final String apiContestsInfoUrl = FULL_SERVER_PATH + "/get-rooms-info";
     @Getter private static final String apiJoinContestUrl = FULL_SERVER_PATH + "/join";
-    @Getter private static final String apiAllyReadyUrl = FULL_SERVER_PATH + "/ally-ready";
+    @Getter private static final String apiAgentReadyUrl = FULL_SERVER_PATH + "/agent-ready";
+    @Getter private static final String apiAllAlliesReadyUrl = FULL_SERVER_PATH + "/all-ally-teams";
 
 }
 

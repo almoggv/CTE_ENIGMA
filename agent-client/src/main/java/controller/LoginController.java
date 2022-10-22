@@ -1,6 +1,7 @@
 package controller;
 
 import com.google.gson.Gson;
+import dto.AllyTeamData;
 import dto.LoginPayload;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -9,6 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import jsonadapter.LoginPayloadJsonAdapter;
@@ -20,6 +22,8 @@ import okhttp3.HttpUrl;
 import okhttp3.Response;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
+import org.controlsfx.validation.ValidationSupport;
+import org.controlsfx.validation.Validator;
 import org.jetbrains.annotations.NotNull;
 import service.DataService;
 import service.HttpClientService;
@@ -27,6 +31,7 @@ import service.PropertiesService;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
@@ -42,6 +47,10 @@ public class LoginController implements Initializable {
             System.out.println("Failed to configure logger of -" + LoginController.class.getSimpleName());
         }
     }
+
+    public TextField taskSizeTextField;
+    public TextField threadNumTextField;
+    public ComboBox allieNamesComboBox;
 
     @Getter
     @Setter
@@ -59,12 +68,31 @@ public class LoginController implements Initializable {
     private Button loginButton;
     @FXML
     private GridPane rootGridPane;
+    private ValidationSupport validationSupport = new ValidationSupport();
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loginTextField.textProperty().bindBidirectional(usernameProperty);
-        loginButton.disableProperty().bind(isLoggedInProperty);
+//        loginButton.disableProperty().bind(validationSupport.invalidProperty());
+
+        DataService.startPullingTeamsData();
+        DataService.getCurrentTeamsProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue != null){
+                initializeAllieNamesComboBox(newValue);
+            }
+        });
+    }
+
+    private void initializeAllieNamesComboBox(List<AllyTeamData> allyTeamDataList) {
+        Platform.runLater(() -> {
+            allieNamesComboBox.getItems().clear();
+            for (AllyTeamData allyTeam : allyTeamDataList) {
+                allieNamesComboBox.getItems().add(allyTeam.getTeamName());
+            }
+            allieNamesComboBox.getSelectionModel().select(0);
+//        validationSupport.registerValidator(allieNamesComboBox, Validator.createEmptyValidator("Selection required"));
+        });
     }
 
     @FXML
