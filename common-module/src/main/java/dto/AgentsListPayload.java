@@ -4,12 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AgentData {
-    String name;
-    Integer numberOfThreads;
-    Integer numberOfTasksThatTakes;
-    String allyName;
+public class AgentsListPayload {
+    private String message;
+    private List<AgentData> agentsList;
 }

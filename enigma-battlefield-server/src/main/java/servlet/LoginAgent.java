@@ -21,7 +21,7 @@ import java.util.Properties;
 
 import static jakarta.servlet.http.HttpServletResponse.*;
 
-@WebServlet(name = "LoginServlet" ,urlPatterns = {"/login"})
+@WebServlet(name = "LoginAgentServlet" ,urlPatterns = {"/login-agent"})
 public class LoginAgent extends HttpServlet {
     private static final Logger log = Logger.getLogger(LoginAgent.class);
     static {
@@ -83,6 +83,10 @@ public class LoginAgent extends HttpServlet {
             repsPayload.setMessage("Missing thread number in params");
             repsPayload.setAccessToken("");
         }
+        else if (userManager.getUserByName(allynameFromParameter) == null) {
+            repsPayload.setMessage("No such ally");
+            repsPayload.setAccessToken("");
+        }
 
         else{
             usernameFromParameter = usernameFromParameter.trim();
@@ -93,7 +97,7 @@ public class LoginAgent extends HttpServlet {
                     repsPayload.setAccessToken("");
                 }
                 else{
-                    userManager.addUser(usernameFromParameter, usertypeFromParameter, threadNumFromParameter, taskSizeFromParameter);
+                    userManager.addUser(usernameFromParameter, usertypeFromParameter, threadNumFromParameter, taskSizeFromParameter, allynameFromParameter);
                     req.getSession(true).setAttribute(PropertiesService.getUsernameAttributeName(), usernameFromParameter);
                     String userAccessToken = userManager.getUserToken(usernameFromParameter);
                     resp.setStatus(SC_OK);

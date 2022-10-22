@@ -39,15 +39,16 @@ public class UserManager {
             AllyTeamData allyTeamData = new AllyTeamData();
             allyTeamData.setTeamName(username);
             allyTeamData.setNumOfAgents(0);
+            allyTeamData.setAgentsList(new ArrayList<>());
             usernamesToAlliesMap.put(username, allyTeamData);
         }
-        if(UserType.getByName(userType).equals(UserType.AGENT)){
-            AgentData agentData = new AgentData();
-            agentData.setName(username);
-            agentData.setNumberOfTasksThatTakes(0);
-            agentData.setNumberOfThreads(0);
-            usernamesToAgentsMap.put(username, agentData);
-        }
+//        if(UserType.getByName(userType).equals(UserType.AGENT)){
+//            AgentData agentData = new AgentData();
+//            agentData.setName(username);
+//            agentData.setNumberOfTasksThatTakes(0);
+//            agentData.setNumberOfThreads(0);
+//            usernamesToAgentsMap.put(username, agentData);
+//        }
     }
 
     public synchronized String getUserToken(String username){
@@ -73,7 +74,7 @@ public class UserManager {
     public AllyTeamData getAllieTeamDataByName(String username) {
         return usernamesToAlliesMap.get(username);
     }
-    public void addUser(String username, String userType, String threadNum, String taskSize) {
+    public void addUser(String username, String userType, String threadNum, String taskSize, String allyName) {
         User newUser = new User();
         newUser.setUsername(username);
         newUser.setToken(UUID.randomUUID().toString());
@@ -86,6 +87,10 @@ public class UserManager {
             agentData.setName(username);
             agentData.setNumberOfTasksThatTakes(Integer.valueOf(taskSize));
             agentData.setNumberOfThreads(Integer.valueOf(threadNum));
+            agentData.setAllyName(allyName);
+            AllyTeamData allyTeamData = getAllieTeamDataByName(allyName);
+            allyTeamData.getAgentsList().add(agentData);
+            allyTeamData.setNumOfAgents(allyTeamData.getNumOfAgents() + 1);
             usernamesToAgentsMap.put(username, agentData);
         }
     }
