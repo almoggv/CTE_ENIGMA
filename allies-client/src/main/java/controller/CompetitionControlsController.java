@@ -14,6 +14,7 @@ import okhttp3.Response;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.jetbrains.annotations.NotNull;
+import service.DataService;
 import service.HttpClientService;
 import service.PropertiesService;
 
@@ -62,6 +63,12 @@ public class CompetitionControlsController implements Initializable {
                 parentController.showMessage("Please enter natural number over 1");
             }
         }));
+
+        DataService.getAgentsListStateProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue != null ){
+                amountOfAgentsValueLabel.setText(String.valueOf(newValue.size()));
+            }
+        });
     }
 
     public void setParentController(ContestPageController contestPageController) {

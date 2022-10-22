@@ -70,8 +70,8 @@ public class AgentsDataByAllyName extends HttpServlet {
         AgentsListPayload payload = new AgentsListPayload();
         resp.setStatus(SC_OK);
         //todo - fix
-//        payload.setAgentsList(userManager.getAllieTeamDataByName(usernameFromSession).getAgentsList());
-        payload.setAgentsList(userManager.getAllieTeamDataByName(usernameFromParameter).getAgentsList());
+        payload.setAgentsList(userManager.getAllieTeamDataByName(usernameFromSession).getAgentsList());
+//        payload.setAgentsList(userManager.getAllieTeamDataByName(usernameFromParameter).getAgentsList());
 
         Gson gson = new Gson();
         resp.setHeader(PropertiesService.getHttpHeaderContentType(),PropertiesService.getJsonHttpContentType());

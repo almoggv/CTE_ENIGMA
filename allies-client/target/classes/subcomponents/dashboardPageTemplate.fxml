@@ -21,7 +21,7 @@
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Label text="contests data:" GridPane.columnIndex="1" />
+      <Label text="Contests data:" GridPane.columnIndex="1" />
       <ScrollPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0">
@@ -46,5 +46,15 @@
             <TextField fx:id="chosenContestTextField" GridPane.rowIndex="1" />
          </children>
       </GridPane>
+      <Label text="Agents data:" />
+      <ScrollPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0">
+               <children>
+                  <FlowPane fx:id="agentsDataFlowPane" prefHeight="175.0" prefWidth="287.0" />
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
    </children>
 </GridPane>

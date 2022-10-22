@@ -32,6 +32,7 @@ import service.PropertiesService;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.Properties;
 import java.util.ResourceBundle;
 import java.util.Set;
@@ -51,6 +52,7 @@ public class DashboardPageController implements Initializable {
     }
 
     public FlowPane contestDataFlowPane;
+    public FlowPane agentsDataFlowPane;
     AppController parentController;
 
     @FXML
@@ -80,6 +82,34 @@ public class DashboardPageController implements Initializable {
         DataService.getContestRoomsStateProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue != null ){
                 createContestsDataComponents(newValue);
+            }
+        });
+
+        DataService.getAgentsListStateProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue != null ){
+                createAgentsDataComponents(newValue);
+            }
+        });
+    }
+
+    private void createAgentsDataComponents(List<AgentData> agentDataList) {
+        Platform.runLater(() -> {
+            try {
+                agentsDataFlowPane.getChildren().clear();
+                for (AgentData agentData : agentDataList) {
+                    URL agentDataURL = GuiApplication.class.getResource(PropertiesService.getAgentDataFxmlPath());
+                    FXMLLoader fxmlLoader = new FXMLLoader();
+                    fxmlLoader.setLocation(agentDataURL);
+                    Parent agentComponent = fxmlLoader.load(agentDataURL.openStream());
+                    AgentDataController agentDataController = fxmlLoader.getController();
+                    agentDataController.setData(agentData);
+
+//                    agentsDataFlowPane.setParentController(this);
+
+                    agentsDataFlowPane.getChildren().add(agentComponent);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         });
     }
