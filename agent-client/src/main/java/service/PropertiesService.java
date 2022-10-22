@@ -28,6 +28,7 @@ public class PropertiesService {
     @Getter private static final String agentAttributeName = "agent";
     @Getter private static final String allyNameAttribute = "ally_name";
     @Getter private static final String taskSizeAttributeName = "task_size";
+    @Getter private static final String threadCountAttributeName = "thread_num";
 
     //Api Url
     public final static String BASE_DOMAIN = "localhost";

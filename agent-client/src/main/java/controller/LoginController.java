@@ -70,7 +70,6 @@ public class LoginController implements Initializable {
     private GridPane rootGridPane;
     private ValidationSupport validationSupport = new ValidationSupport();
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loginTextField.textProperty().bindBidirectional(usernameProperty);
@@ -82,6 +81,30 @@ public class LoginController implements Initializable {
                 initializeAllieNamesComboBox(newValue);
             }
         });
+
+        taskSizeTextField.textProperty().addListener(((observable, oldValue, newValue) -> {
+            try{
+                int value = Integer.parseInt(newValue);
+                if(value < 1){
+                    parentController.showMessage("Please enter natural number over 1");
+                }
+            }
+            catch(Exception ignore){
+                parentController.showMessage("Please enter natural number over 1");
+            }
+        }));
+
+        threadNumTextField.textProperty().addListener(((observable, oldValue, newValue) -> {
+            try{
+                int value = Integer.parseInt(newValue);
+                if(value < 1 || value > 4){
+                    parentController.showMessage("Please enter number between 1 and 4");
+                }
+            }
+            catch(Exception ignore){
+                parentController.showMessage("Please enter natural number over 1");
+            }
+        }));
     }
 
     private void initializeAllieNamesComboBox(List<AllyTeamData> allyTeamDataList) {
@@ -99,8 +122,23 @@ public class LoginController implements Initializable {
     void onLoginButtonAction(ActionEvent event) {
         isLoggedInProperty.setValue(false);
         String username = this.getUsernameProperty().get();
-        if (username.isEmpty()) {
+        String allyname = (String) this.allieNamesComboBox.getSelectionModel().getSelectedItem();
+        String taskSize = this.taskSizeTextField.getText();
+        String threadCount = this.threadNumTextField.getText();
+        if (username == null || username.isEmpty()) {
             parentController.showMessage("Username cannot be empty");
+            return;
+        }
+        if (allyname == null || allyname.isEmpty()) {
+            parentController.showMessage("Ally name cannot be empty");
+            return;
+        }
+        if (taskSize ==null || taskSize.isEmpty()) {
+            parentController.showMessage("Task size cannot be empty");
+            return;
+        }
+        if (threadCount == null || threadCount.isEmpty()) {
+            parentController.showMessage("Thread count cannot be empty");
             return;
         }
         //noinspection ConstantConditions
@@ -109,6 +147,9 @@ public class LoginController implements Initializable {
                 .newBuilder()
                 .addQueryParameter(PropertiesService.getUsernameAttribute(), username)
                 .addQueryParameter(PropertiesService.getUserTypeAttributeName(), PropertiesService.getAgentAttributeName())
+                .addQueryParameter(PropertiesService.getAllyNameAttribute(), allyname)
+                .addQueryParameter(PropertiesService.getTaskSizeAttributeName(), taskSize)
+                .addQueryParameter(PropertiesService.getThreadCountAttributeName(), threadCount)
                 .build()
                 .toString();
 
