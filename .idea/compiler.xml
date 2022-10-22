@@ -14,6 +14,7 @@
         <module name="allies-client" />
         <module name="encryption-machine-handler" />
         <module name="decryption-manager" />
+        <module name="agent-client" />
       </profile>
     </annotationProcessing>
   </component>

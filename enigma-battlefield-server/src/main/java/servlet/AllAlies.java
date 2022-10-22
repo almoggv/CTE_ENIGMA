@@ -3,16 +3,17 @@ package servlet;
 import com.google.gson.Gson;
 import dto.ContestAllyTeamsPayload;
 import dto.ContestRoom;
-import dto.ContestRoomPayload;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import manager.RoomManager;
+import manager.UserManager;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import service.PropertiesService;
+import sun.net.www.http.HttpClient;
 import utils.ServletUtils;
 
 import java.io.IOException;
@@ -21,19 +22,17 @@ import java.util.Properties;
 
 import static jakarta.servlet.http.HttpServletResponse.SC_INTERNAL_SERVER_ERROR;
 import static jakarta.servlet.http.HttpServletResponse.SC_OK;
-
-//todo - change url to reflect that only allies in room
-@WebServlet(name = "AllyTeamsDataServlet" ,urlPatterns = {"/ally-teams"})
-public class AllyTeamsData extends HttpServlet {
-    private static final Logger log = Logger.getLogger(AllyTeamsData.class);
+@WebServlet(name = "AllAliesServlet" ,urlPatterns = {"/all-ally-teams"})
+public class AllAlies extends HttpServlet {
+    private static final Logger log = Logger.getLogger(AllAlies.class);
     static {
         try {
             Properties p = new Properties();
-            p.load(AllyTeamsData.class.getResourceAsStream(PropertiesService.getLog4jPropertiesResourcePath()));
+            p.load(AllAlies.class.getResourceAsStream(PropertiesService.getLog4jPropertiesResourcePath()));
             PropertyConfigurator.configure(p);      //Dont forget here
-            log.debug("Logger Instantiated for : " + AllyTeamsData.class.getSimpleName());
+            log.debug("Logger Instantiated for : " + AllAlies.class.getSimpleName());
         } catch (IOException e) {
-            System.out.println("Failed to configure logger of -" + AllyTeamsData.class.getSimpleName() ) ;
+            System.out.println("Failed to configure logger of -" + AllAlies.class.getSimpleName() ) ;
         }
     }
 
@@ -48,28 +47,17 @@ public class AllyTeamsData extends HttpServlet {
             resp.setStatus(SC_INTERNAL_SERVER_ERROR);
             return;
         }
-
-        RoomManager roomManager = ServletUtils.getRoomManager(this.getServletContext());
-
-        Object roomName =  req.getSession(false).getAttribute(PropertiesService.getRoomNameAttributeName());
-
-        if(roomName == null){
-            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            resp.getWriter().print("You are not assigned to a room.");
-            return;
-        }
-        ContestRoom roomInfo = roomManager.getRoomByName((String) roomName);
-
-        ContestAllyTeamsPayload payload = new ContestAllyTeamsPayload();
-        if(roomInfo == null){
+        UserManager userManager = ServletUtils.getUserManager(this.getServletContext());
+        if(userManager == null){
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             //todo: is the best response
-            payload.setMessage("Please upload a schema file first. (/upload-machine-file)");
+            respWriter.print("no user manager.");
         }
-        else{
-            resp.setStatus(SC_OK);
-            payload.setAllyTeamsData(roomInfo.getAlliesList());
-        }
+
+        ContestAllyTeamsPayload payload = new ContestAllyTeamsPayload();
+        resp.setStatus(SC_OK);
+        payload.setAllyTeamsData(userManager.getAllALies());
+
         Gson gson = new Gson();
         resp.setHeader(PropertiesService.getHttpHeaderContentType(),PropertiesService.getJsonHttpContentType());
         respWriter.print(gson.toJson(payload));

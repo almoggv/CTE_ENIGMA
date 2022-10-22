@@ -15,6 +15,7 @@
         <module>uboat-client</module>
         <module>common-module</module>
         <module>allies-client</module>
+        <module>agent-client</module>
     </modules>
 
 

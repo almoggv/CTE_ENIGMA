@@ -18,8 +18,9 @@ public class PropertiesService {
     @Getter private static final String userTypeAttributeName = "user_type";
     @Getter private static final String uboatAttributeName = "uboat";
     @Getter private static final String allyAttributeName = "ally";
+    @Getter private static final String allyNameAttributeName = "ally_name";
     @Getter private static final String taskSizeAttributeName = "task_size";
-//    @Getter private static final String wordForContestAttributeName = "";
+    @Getter private static final String numOfThreadsAttributeName = "thread_num";
 
 
     @Getter private static final String jsonHttpContentType = "application/json";
