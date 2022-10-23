@@ -29,7 +29,11 @@ public class ARunnableClass implements Runnable{
     }
 
 
-    public void addToList(List<String> list){
+    public void addToList(List<String> list) throws Exception {
+        if(!aList.isEmpty()){
+            throw new Exception("List Not Empty Yet");
+        }
+
         aList.addAll(list);
     }
 
