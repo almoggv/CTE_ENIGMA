@@ -72,7 +72,7 @@ public class DataService {
                         log.error("Failed to fetch current machine configuration - statusCode=" + response.code() + ", ServerMessage=" + machineStatePayload.getMessage());
                     }
                     else {
-                        log.info("Current machine state Successfully Fetched - responseCode = 200, ServerMessage=" + machineStatePayload.getMessage());
+                        log.debug("Current machine state Successfully Fetched - responseCode = 200, ServerMessage=" + machineStatePayload.getMessage());
                         if(originalMachineStateProperty.get() == null){
                             originalMachineStateProperty.setValue(machineStatePayload.getMachineState());
                         }
@@ -108,7 +108,7 @@ public class DataService {
                         log.error("Failed to fetch curr Teams - statusCode=" + response.code() + ", ServerMessage=" + allyTeamsPayload.getMessage());
                     }
                     else {
-                        log.info("Current teams Fetched - responseCode = 200, ServerMessage=" + allyTeamsPayload.getMessage());
+                        log.debug("Current teams Fetched - responseCode = 200, ServerMessage=" + allyTeamsPayload.getMessage());
                        if(allyTeamsPayload.getAllyTeamsData() != null &&
                                allyTeamsPayload.getAllyTeamsData() != currentTeamsProperty.get()){
                         currentTeamsProperty.setValue(null);

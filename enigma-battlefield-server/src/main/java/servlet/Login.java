@@ -67,6 +67,11 @@ public class Login extends HttpServlet {
             repsPayload.setMessage("Missing username in params");
             repsPayload.setAccessToken("");
         }
+        else if (usertypeFromParameter == null){
+            resp.setStatus(SC_BAD_REQUEST);
+            repsPayload.setMessage("Missing userType in params");
+            repsPayload.setAccessToken("");
+        }
         else{
             usernameFromParameter = usernameFromParameter.trim();
             synchronized (this) {

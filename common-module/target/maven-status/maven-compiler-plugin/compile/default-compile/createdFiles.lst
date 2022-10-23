@@ -7,9 +7,12 @@ dto\ContestWordPayload.class
 dto\User.class
 jsonadapter\LoginPayloadJsonAdapter.class
 dto\MachineInventoryPayload.class
+dto\ContestAllyTeamsPayload.class
+dto\AgentsListPayload.class
 enums\GameStatus.class
 dto\ContestRoomPayload.class
 service\HttpClientService.class
+dto\AgentData.class
 enums\UserType.class
 dto\EncryptionResponsePayload.class
 service\SimpleCookieManager.class

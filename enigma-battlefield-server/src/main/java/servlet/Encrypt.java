@@ -41,18 +41,6 @@ public class Encrypt extends HttpServlet {
     }
 
     private void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //////////////////////////////////////////////////////// - working with input params, so removed
-//        if(req.getContentType() == null){
-//            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-//            resp.getWriter().print("Please enter a word to encrypt.");
-//            return;
-//        }
-//        if(!req.getHeader(PropertiesService.getHttpHeaderContentType()).contains(PropertiesService.getTextPlainHttpContentType())){
-//            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-//            resp.getWriter().print("Expecting text content type");
-//            return;
-//        }
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         Gson gson = new Gson();
         PrintWriter respWriter = null;
         MachineHandler machineHandler;
@@ -117,15 +105,15 @@ public class Encrypt extends HttpServlet {
         }
         //todo - fix jar dependencies:
         //check words in dictionary:
-//        for (String input : encryptionInputs ){
-//            if (!DictionaryManager.getDictionary().containsKey(input)) {
-//                log.info("Encrypt request failed - \"" + input + "\" is not in the dictionary");
-//                resp.setStatus(SC_BAD_REQUEST);
-//                responsePayload.setMessage("\"" + input + "\" is not in the dictionary");
-//                respWriter.print(gson.toJson(responsePayload));
-//                return;
-//            }
-//        }
+        for (String input : encryptionInputs ){
+            if (!DictionaryManager.getDictionary().containsKey(input)) {
+                log.info("Encrypt request failed - \"" + input + "\" is not in the dictionary");
+                resp.setStatus(SC_BAD_REQUEST);
+                responsePayload.setMessage("\"" + input + "\" is not in the dictionary");
+                respWriter.print(gson.toJson(responsePayload));
+                return;
+            }
+        }
         //Actual Encryption:
         synchronized (this){
             for (String input : encryptionInputs ){
