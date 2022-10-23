@@ -86,20 +86,6 @@ public class AppController implements Initializable {
         }
         FXMLLoader fxmlLoader;
 
-//        //Load Dashboard Page
-//        URL dashboardPageResource = AppController.class.getResource(PropertiesService.getDashboardPageTemplateFxmlPath());
-//        log.info("AppController - found Url of machine component:" + dashboardPageResource);
-//        fxmlLoader = new FXMLLoader();
-//        fxmlLoader.setLocation(dashboardPageResource);
-//        try {
-//            Parent dashboardComponent = fxmlLoader.load(dashboardPageResource.openStream());
-//        } catch (IOException e) {
-//            log.error("Failed to load DashBoardPage:" + dashboardPageResource.toString() + "Exception throws: " + e.getMessage());
-//            throw new NullPointerException("Failed to load DashBoardPage from resource, dashboardComponent is null");
-//        }
-//        dashboardPageController = fxmlLoader.getController();
-//        dashboardPageController.setParentController(this);
-
 //      //Load Contest Page
         URL contestPageResource = AppController.class.getResource(PropertiesService.getContestPageTemplateFxmlPath());
         log.info("AppController - found Url of machine component:" + contestPageResource);
@@ -118,7 +104,7 @@ public class AppController implements Initializable {
         headerWrapScrollPane.setContent(headerComponentController.getRootComponent());
         loginComponentController.getIsLoggedInProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue==true){
-                this.changeSceneToDashboard();
+                this.changeSceneToContest();
             }
             else{
                 this.changeSceneToLogin();
@@ -133,17 +119,6 @@ public class AppController implements Initializable {
             headerComponentController.showMessage(message);
         }
     }
-
-    public void changeSceneToDashboard() {
-//        if(dashboardPageController != null){
-//            Parent rootComponent = dashboardPageController.getRootComponent();
-//            bodyWrapScrollPane.setContent(rootComponent);
-//        }
-//        else{
-//            log.error("Failed to change scene to machine - machineController == null");
-//        }
-    }
-
     public void changeSceneToLogin(){
         if(loginComponentController!=null){
             Parent rootComponent = loginComponentController.getRootComponent();

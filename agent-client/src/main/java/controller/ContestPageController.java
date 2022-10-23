@@ -1,6 +1,7 @@
 package controller;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
@@ -33,11 +34,12 @@ public class ContestPageController implements Initializable {
 
     public GridPane rootGridPane;
     public Label contestWordLabel;
-    public GridPane contestDataGrid;
     public ContestDataController contestDataGridController;
-    public GridPane allyCompetitionControls;
+    @FXML
+    private FlowPane teamsFlowPane;
 
-
+    @FXML
+    private FlowPane contestDataFlowPane;
 
     AppController parentController;
 
@@ -63,7 +65,6 @@ public class ContestPageController implements Initializable {
     public GridPane getRootComponent() {
         return  rootGridPane;
     }
-
     public void showMessage(String message){
         parentController.showMessage(message);
     }
