@@ -50,6 +50,7 @@ public class PropertiesService {
     @Getter private static final String apiJoinContestUrl = FULL_SERVER_PATH + "/join";
     @Getter private static final String apiAllyReadyUrl = FULL_SERVER_PATH + "/ally-ready";
     @Getter private static final String apiAgentsOfAllyUrl = FULL_SERVER_PATH + "/agents-by-ally";
-
+    @Getter private static final String apiAllyTeamsUrl = FULL_SERVER_PATH + "/ally-teams";
+    @Getter private static final String allyTeamComponentFxmlPath = "/subcomponents/allyTeamData.fxml";
 }
 

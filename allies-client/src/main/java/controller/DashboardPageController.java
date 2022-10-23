@@ -223,7 +223,7 @@ public class DashboardPageController implements Initializable {
                         parentController.showMessage("Successfully joined room:" + roomName);
                         DataService.getCurrentContestRoomsStateProperty().set(payload.getContestRoom());
                         parentController.changeSceneToContest();
-
+                        DataService.startPullingTeamsData();
                     });
                 }
             }

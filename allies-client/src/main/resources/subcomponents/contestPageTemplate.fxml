@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
@@ -39,5 +41,10 @@
       <fx:include fx:id="allyCompetitionControls" source="allyCompetitionControls.fxml" GridPane.rowIndex="3" />
       <Label text="Contest teams" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
       <fx:include fx:id="contestDataGrid" source="contestData.fxml" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+      <ScrollPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.rowSpan="3">
+         <content>
+            <FlowPane fx:id="teamsFlowPane" prefHeight="247.0" prefWidth="297.0" />
+         </content>
+      </ScrollPane>
    </children>
 </GridPane>

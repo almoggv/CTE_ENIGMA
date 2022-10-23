@@ -1,12 +1,15 @@
 package controller;
 
+import app.GuiApplication;
+import dto.AllyTeamData;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
-import okhttp3.internal.platform.Platform;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import service.DataService;
@@ -14,6 +17,7 @@ import service.PropertiesService;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
@@ -37,6 +41,7 @@ public class ContestPageController implements Initializable {
     public ContestDataController contestDataGridController;
     public GridPane allyCompetitionControls;
 
+    public FlowPane teamsFlowPane;
     public CompetitionControlsController allyCompetitionControlsController;
 
 
@@ -60,6 +65,11 @@ public class ContestPageController implements Initializable {
         if(allyCompetitionControlsController != null){
             allyCompetitionControlsController.setParentController(this);
         }
+        DataService.getCurrentTeamsProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue != null){
+                createTeamDataComponents(newValue);
+            }
+        });
     }
 
     public void setParentController(AppController appController) {
@@ -72,5 +82,24 @@ public class ContestPageController implements Initializable {
     public void showMessage(String message){
         parentController.showMessage(message);
     }
+    private void createTeamDataComponents(List<AllyTeamData> allyTeamDataList) {
+        Platform.runLater(() -> {
+            try {
+                teamsFlowPane.getChildren().clear();
+                for (AllyTeamData allyTeamData : allyTeamDataList) {
+                    URL teamComponentURL = GuiApplication.class.getResource(PropertiesService.getAllyTeamComponentFxmlPath());
+                    FXMLLoader fxmlLoader = new FXMLLoader();
+                    fxmlLoader.setLocation(teamComponentURL);
+                    Parent team = fxmlLoader.load(teamComponentURL.openStream());
+                    AllyTeamController controller = fxmlLoader.getController();
+                    controller.setData(allyTeamData);
 
+//                    controller.setParentController(this);
+                    teamsFlowPane.getChildren().add(team);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+    }
 }
