@@ -395,6 +395,11 @@ public class MachineHandlerImpl implements MachineHandler {
     }
 
     @Override
+    public Optional<String> checkInputIsInAbc(String input) {
+        return verifyInputInAbcAndFix(input);
+    }
+
+    @Override
     public EncryptionMachine getEncryptionMachineClone() {
         return encryptionMachine.getDeepClone();
     }
@@ -439,10 +444,13 @@ public class MachineHandlerImpl implements MachineHandler {
         buildBattlefieldInfo(cteEnigma.getCTEBattlefield());
         return this.battlefieldInfo;
     }
+
     private void buildBattlefieldInfo(CTEBattlefield cteBattlefield) {
         String battleName = cteBattlefield.getBattleName();
         Integer alliesNum = cteBattlefield.getAllies();
         String level = cteBattlefield.getLevel();
         this.battlefieldInfo = new BattlefieldInfo(battleName,alliesNum,level);
     }
+
+
 }

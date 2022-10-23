@@ -94,7 +94,7 @@ public class Encrypt extends HttpServlet {
         for (String input : encryptionInputs) {
             for (int i = 0; i < input.length(); i++) {
                 String currLetter = input.substring(i,i+1);
-                if(!abc.contains(currLetter)){
+                if(!machineHandler.checkInputIsInAbc(currLetter).isPresent()){
                     log.info("Encrypt request failed - \"" + input + "\" is not in the abc=" + abc);
                     resp.setStatus(SC_BAD_REQUEST);
                     responsePayload.setMessage("\"" + input + "\" is not in the abc=" + abc);

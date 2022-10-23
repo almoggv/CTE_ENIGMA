@@ -1,16 +1,16 @@
 <component name="ArtifactManager">
-  <artifact type="war" name="enigma-battlefield-server">
-    <output-path>$PROJECT_DIR$/out/artifacts/enigma_battlefield_server</output-path>
-    <root id="archive" name="enigma-battlefield-server.war">
+  <artifact type="exploded-war" name="enigma-battlefield-server:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/enigma_battlefield_server_war_exploded</output-path>
+    <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="enigma-battlefield-server" />
-          <element id="module-output" name="encryption-machine-handler" />
+          <element id="module-output" name="decryption-manager" />
           <element id="module-output" name="enigma-machine" />
+          <element id="module-output" name="encryption-machine-handler" />
           <element id="module-output" name="common-module" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="project" name="Java EE 6-Java EE 6" />
           <element id="library" level="project" name="Maven: org.projectlombok:lombok:1.18.24" />
           <element id="library" level="project" name="Maven: com.google.code.gson:gson:2.7" />
           <element id="library" level="project" name="Maven: junit:junit:4.13.2" />
@@ -27,6 +27,7 @@
           <element id="library" level="project" name="Maven: org.jetbrains:annotations:13.0" />
           <element id="library" level="project" name="Maven: org.controlsfx:controlsfx:8.40.14" />
           <element id="library" level="project" name="Maven: org.projectlombok:lombok:1.18.20" />
+          <element id="library" level="project" name="Java EE 6-Java EE 6" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="enigma-battlefield-server/web/Web" />

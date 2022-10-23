@@ -31,42 +31,45 @@ public interface MachineHandler extends Serializable {
      * picks reflector, plugBoardMapping, rotors and their starting position 
      * @return
      */
-    public void assembleMachine() throws Exception;
-    public void assembleMachine(MachineState machineState) throws Exception;
+    void assembleMachine() throws Exception;
+    void assembleMachine(MachineState machineState) throws Exception;
 
-    public void assembleMachine(ReflectorsId reflectorId, List<Integer> rotorIds,
+    void assembleMachine(ReflectorsId reflectorId, List<Integer> rotorIds,
                                 String rotorsStartingPositions,
                                 List<MappingPair<String,String>> plugMapping ) throws Exception;
 
-    public void assembleMachineParts(ReflectorsId reflectorId, List<Integer> rotorIds) throws Exception;
+    void assembleMachineParts(ReflectorsId reflectorId, List<Integer> rotorIds) throws Exception;
 
-    public void setStartingMachineState(String rotorsStartingPositions,
+    void setStartingMachineState(String rotorsStartingPositions,
                                         List<MappingPair<String,String>> plugMapping);
 
-    public Optional<MachineState> getMachineState();
-    public void setMachineState(MachineState machineState);
-    public Optional<MachineState> getInitialMachineState();
+    Optional<MachineState> getMachineState();
+    void setMachineState(MachineState machineState);
+    Optional<MachineState> getInitialMachineState();
 
-    public Optional<InventoryInfo> getInventoryInfo();
-    public Optional<BattlefieldInfo> getBattlefieldInfo();
+    Optional<InventoryInfo> getInventoryInfo();
+    Optional<BattlefieldInfo> getBattlefieldInfo();
 
-    public void resetToLastSetState();
+    void resetToLastSetState();
 
     /**
      * encrypt message by machine
      * @param input
      * @return encrypted message
      */
-    public String encrypt(String input) throws IOException;
-    public String encryptWithoutHistory(String input) throws IOException;
+    String encrypt(String input) throws IOException;
+    String encryptWithoutHistory(String input) throws IOException;
 
-    public Map<MachineState, List<EncryptionInfoHistory>> getMachineStatisticsHistory();
+    Map<MachineState, List<EncryptionInfoHistory>> getMachineStatisticsHistory();
 
-    public Optional<String> verifyInputInAbcAndFix(String input);
+    Optional<String> verifyInputInAbcAndFix(String input);
+    Optional<String> checkInputIsInAbc(String input);
 
-    public EncryptionMachine getEncryptionMachineClone();
+    EncryptionMachine getEncryptionMachineClone();
 
     void buildMachinePartsInventory(InputStream inputStream) throws Exception;
 
-    public BattlefieldInfo buildBattlefieldInfoInventory(InputStream inputStream) throws Exception;
-    }
+    BattlefieldInfo buildBattlefieldInfoInventory(InputStream inputStream) throws Exception;
+
+
+}
