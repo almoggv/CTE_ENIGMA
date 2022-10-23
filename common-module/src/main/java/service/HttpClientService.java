@@ -47,7 +47,7 @@ public class HttpClientService {
         Request request = new Request.Builder()
                 .url(finalUrl)
                 .build();
-        log.info("HttpClientService - new request sent to -" + finalUrl);
+        log.debug("HttpClientService - new request sent to -" + finalUrl);
         Call call = HttpClientService.HTTP_CLIENT.newCall(request);
         call.enqueue(callback);
     }

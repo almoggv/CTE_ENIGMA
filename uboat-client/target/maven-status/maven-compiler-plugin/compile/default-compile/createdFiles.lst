@@ -1,6 +1,7 @@
 controller\LoginController$1.class
 service\PropertiesService.class
 controller\EncryptionController$1.class
+service\DataService$3.class
 controller\EncryptionController$3.class
 controller\MachineDetailsController.class
 controller\MachineDetailsController$1.class
@@ -16,6 +17,7 @@ app\GuiApplication.class
 controller\LoginController$2.class
 controller\HeaderController$1.class
 controller\HeaderController.class
+controller\AllyTeamController.class
 controller\SetMachineConfigController.class
 fx\component\ComboBoxItem.class
 controller\AppController$1.class
@@ -23,6 +25,7 @@ controller\MachinePageController$2.class
 service\DataService$1$1.class
 controller\EncryptionController$2.class
 controller\SetMachineConfigController$1.class
+service\DataService$2$1.class
 service\DataService$2.class
 controller\MachinePageController$1.class
 fx\component\ComboBoxCell.class
