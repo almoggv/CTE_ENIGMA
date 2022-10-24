@@ -1,8 +1,10 @@
 package servlet;
 
+import dto.ContestRoom;
 import dto.GameStatePayload;
 import dto.User;
 import enums.GameStatus;
+import enums.UserType;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -20,10 +22,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Properties;
 
-import static jakarta.servlet.http.HttpServletResponse.SC_INTERNAL_SERVER_ERROR;
-import static jakarta.servlet.http.HttpServletResponse.SC_UNAUTHORIZED;
+import static jakarta.servlet.http.HttpServletResponse.*;
 
-@WebServlet(name = "GameStatusServel" ,urlPatterns = {"/join"})
+@WebServlet(name = "GameStatusServlet" ,urlPatterns = {"/game-status"})
 public class GameState extends HttpServlet {
     private static final Logger log = Logger.getLogger(HttpServlet.class);
     static {
@@ -57,11 +58,22 @@ public class GameState extends HttpServlet {
             resp.setStatus(SC_UNAUTHORIZED);
             gameStatePayload.setMessage("Please login first to");
         }
+        Object roomName =  req.getSession(false).getAttribute(PropertiesService.getRoomNameAttributeName());
+
+        if(roomName == null){
+            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            resp.getWriter().print("You are not assigned to a room.");
+            return;
+        }
+
         else{
             User loggedUser = userManager.getUserByName(usernameFromSession);
             // how do i get from the user to the room he is in?
-            roomManager.get
-
+//            ContestRoom contestRoom = roomManager.getRoomByName((String) roomName);
+            ContestRoom contestRoom = loggedUser.getContestRoom();
+            resp.setStatus(SC_OK);
+            respWriter.print(contestRoom.getGameStatus());
+            return;
         }
     }
 }

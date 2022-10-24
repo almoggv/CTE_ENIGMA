@@ -74,6 +74,7 @@ public class UserManager {
     public AllyTeamData getAllieTeamDataByName(String username) {
         return usernamesToAlliesMap.get(username);
     }
+    //for agent user
     public void addUser(String username, String userType, String threadNum, String taskSize, String allyName) {
         User newUser = new User();
         newUser.setUsername(username);
@@ -88,6 +89,8 @@ public class UserManager {
             agentData.setNumberOfTasksThatTakes(Integer.valueOf(taskSize));
             agentData.setNumberOfThreads(Integer.valueOf(threadNum));
             agentData.setAllyName(allyName);
+            agentData.setContestRoom(getUserByName(allyName).getContestRoom());
+            //connect ally to agent
             AllyTeamData allyTeamData = getAllieTeamDataByName(allyName);
             allyTeamData.getAgentsList().add(agentData);
             allyTeamData.setNumOfAgents(allyTeamData.getNumOfAgents() + 1);

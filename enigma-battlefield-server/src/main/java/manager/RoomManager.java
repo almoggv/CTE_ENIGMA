@@ -1,5 +1,6 @@
 package manager;
 
+import dto.AgentData;
 import dto.AllyTeamData;
 import dto.ContestRoom;
 import dto.User;
@@ -28,10 +29,19 @@ public class RoomManager {
         return roomsDataMap.containsKey(roomName);
     }
 
-    public void addUserToRoom(AllyTeamData user, ContestRoom room) {
+    public void addUserToRoom(AllyTeamData ally ,UserManager userManager, ContestRoom room) {
         if(room.getCurrNumOfTeams() < room.getRequiredNumOfTeams()){
-            room.getAlliesList().add(user);
+            //add ally to room
+            room.getAlliesList().add(ally);
             room.setCurrNumOfTeams(room.getCurrNumOfTeams() + 1);
+
+            //set room in ally info
+            userManager.getUserByName(ally.getTeamName()).setContestRoom(room);
+
+            //set room in agents of ally if exist
+            for (AgentData agent : ally.getAgentsList()) {
+                userManager.getUserByName(agent.getName()).setContestRoom(room);
+            }
         }
     }
 }

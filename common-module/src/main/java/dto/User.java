@@ -13,4 +13,5 @@ public class User {
     private String token;
     private UserType type;
     private boolean isInARoom;
+    private ContestRoom contestRoom;
 }

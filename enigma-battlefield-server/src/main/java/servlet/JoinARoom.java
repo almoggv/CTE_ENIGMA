@@ -68,15 +68,15 @@ public class JoinARoom extends HttpServlet {
             return;
         }
 
-        ContestRoom roomInfo = roomManager.getRoomByName((String) roomName);
+        ContestRoom contestRoom = roomManager.getRoomByName((String) roomName);
         User user = userManager.getUserByName(usernameFromSession);
 
         ContestRoomPayload payload = new ContestRoomPayload();
-        if(roomInfo == null){
+        if(contestRoom == null){
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             //todo: is the best response
             payload.setMessage("Room doesnt exist.");
-        } else if (roomInfo.getCurrNumOfTeams() >= roomInfo.getRequiredNumOfTeams()){
+        } else if (contestRoom.getCurrNumOfTeams() >= contestRoom.getRequiredNumOfTeams()){
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             //todo: is the best response
             payload.setMessage("The room is already full, you can't join.");
@@ -88,11 +88,13 @@ public class JoinARoom extends HttpServlet {
         }
         else{
             AllyTeamData ally  = userManager.getAllieTeamDataByName(usernameFromSession);
-            roomManager.addUserToRoom(ally, roomInfo);
+            User allyUser = userManager.getUserByName(usernameFromSession);
+            roomManager.addUserToRoom(ally,userManager, contestRoom);
             user.setInARoom(true);
             resp.setStatus(SC_OK);
-            payload.setContestRoom(roomInfo);
-            payload.setMessage("Joined room "+ roomInfo.getName() + " Successfully.");
+            payload.setContestRoom(contestRoom);
+            payload.setMessage("Joined room "+ contestRoom.getName() + " Successfully.");
+
             req.getSession(false).setAttribute(PropertiesService.getRoomNameAttributeName(), roomName);
         }
         Gson gson = new Gson();

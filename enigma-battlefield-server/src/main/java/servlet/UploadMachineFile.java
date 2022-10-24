@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import dto.BattlefieldInfo;
 import dto.ContestRoom;
 import dto.MachineInventoryPayload;
+import dto.User;
 import enums.DecryptionDifficultyLevel;
 import enums.GameStatus;
 import jakarta.servlet.ServletException;
@@ -56,10 +57,6 @@ public class UploadMachineFile extends HttpServlet {
             resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             return;
         }
-        RoomManager roomManager = ServletUtils.getRoomManager(this.getServletContext());
-        Gson gson = new Gson();
-        MachineInventoryPayload inventoryPayload = new MachineInventoryPayload();
-        resp.setContentType("text/plain");
         PrintWriter outWriter;
         try {
             outWriter = resp.getWriter();
@@ -69,6 +66,17 @@ public class UploadMachineFile extends HttpServlet {
             resp.setStatus(SC_INTERNAL_SERVER_ERROR);
             return;
         }
+        User user = userManager.getUserByName(req.getHeader(PropertiesService.getTokenAttributeName()));
+        if(user == null){
+            resp.setStatus(SC_BAD_REQUEST);
+            outWriter.print("user does not exist");
+            return;
+        }
+        RoomManager roomManager = ServletUtils.getRoomManager(this.getServletContext());
+        Gson gson = new Gson();
+        MachineInventoryPayload inventoryPayload = new MachineInventoryPayload();
+        resp.setContentType("text/plain");
+
         Collection<Part> parts = req.getParts();
         Part uploadedFile = req.getPart("file");
         new Scanner(uploadedFile.getInputStream()).useDelimiter("\\Z").next();
@@ -88,7 +96,9 @@ public class UploadMachineFile extends HttpServlet {
                     String creatorName = (String) req.getSession(false).getAttribute(PropertiesService.getUsernameAttributeName());
                     ContestRoom contestRoom = createContestRoomInfo(creatorName, battlefieldInfo);
                     roomManager.addRoom(battlefieldInfo.getBattlefieldName(), contestRoom);
-                    req.getSession(true).setAttribute(PropertiesService.getRoomNameAttributeName(), battlefieldInfo.getBattlefieldName() );
+                    req.getSession(true).setAttribute(PropertiesService.getRoomNameAttributeName(), battlefieldInfo.getBattlefieldName());
+                    user.setInARoom(true);
+                    user.setContestRoom(contestRoom);
                     req.getSession(true).setAttribute(PropertiesService.getMachineHandlerAttributeName(), machineHandler);
                     resp.setStatus(HttpServletResponse.SC_OK);
                     inventoryPayload.setInventory(machineHandler.getInventoryInfo().get());
