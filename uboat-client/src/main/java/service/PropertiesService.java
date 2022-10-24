@@ -48,5 +48,6 @@ public class PropertiesService {
     @Getter private static final String apiResetMachineStateUrl = FULL_SERVER_PATH + "/reset-machine-state";
     @Getter private static final String apiAllyTeamsUrl = FULL_SERVER_PATH + "/ally-teams";
 
+
 }
 

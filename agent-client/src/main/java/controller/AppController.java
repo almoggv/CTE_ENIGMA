@@ -1,8 +1,12 @@
 package controller;
 
 import com.google.gson.Gson;
+import component.MachineHandler;
+import dto.AgentData;
 import dto.MachineInventoryPayload;
+import enums.GameStatus;
 import javafx.application.Platform;
+import javafx.beans.property.ObjectProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -14,6 +18,8 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import lombok.Getter;
 import lombok.Setter;
+import manager.AgentClientDM;
+import manager.impl.AgentClientDMImpl;
 import okhttp3.*;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
@@ -44,37 +50,22 @@ public class AppController implements Initializable {
         }
     }
 
-    @FXML
-    @Getter
-    HeaderController headerComponentController;
+    @FXML @Getter HeaderController headerComponentController;
 
-    @FXML
-    @Getter
-    LoginController loginComponentController;
-    @FXML
-    private ContestPageController contestPageController;
+    @FXML @Getter LoginController loginComponentController;
+    @FXML private ContestPageController contestPageController;
 
-    @Setter
-    @Getter
-    private Stage primaryStage;
-    @FXML
-    private BorderPane appBorderPane;
-    @FXML
-    private AnchorPane bodyWrapAnchorPane;
-    @FXML
-    private ScrollPane bodyWrapScrollPane;
-    @FXML
-    private GridPane imageGrid;
-    @FXML
-    private AnchorPane headerWrapAnchorPane;
-    @FXML
-    private ScrollPane headerWrapScrollPane;
+    @Setter @Getter private Stage primaryStage;
+    @FXML private BorderPane appBorderPane;
+    @FXML private AnchorPane bodyWrapAnchorPane;
+    @FXML private ScrollPane bodyWrapScrollPane;
+    @FXML private GridPane imageGrid;
+    @FXML private AnchorPane headerWrapAnchorPane;
+    @FXML private ScrollPane headerWrapScrollPane;
+    @FXML GridPane headerComponent;
+    @FXML GridPane loginComponent;
 
-    @FXML
-    GridPane headerComponent;
-
-    @FXML
-    GridPane loginComponent;
+    private AgentClientDM decryptionAgent;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -100,7 +91,6 @@ public class AppController implements Initializable {
         contestPageController = fxmlLoader.getController();
         contestPageController.setParentController(this);
 
-
         headerWrapScrollPane.setContent(headerComponentController.getRootComponent());
         loginComponentController.getIsLoggedInProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue==true){
@@ -114,11 +104,20 @@ public class AppController implements Initializable {
         log.info("AppController - app initialized");
     }
 
+    public void initDecryptionAgent(MachineHandler machineHandler, AgentData agentData){
+        if(machineHandler == null || agentData == null){
+            log.error("Failed to initialize AgentClient's DecryptionManager machineHandler or agentData are null");
+            return;
+        }
+        this.decryptionAgent = new AgentClientDMImpl(machineHandler,agentData.getNumberOfTasksThatTakes(),agentData.getNumberOfThreads(), agentData.getAllyName());
+    }
+
     public void showMessage(String message) {
         if(headerComponentController!=null){
             headerComponentController.showMessage(message);
         }
     }
+
     public void changeSceneToLogin(){
         if(loginComponentController!=null){
             Parent rootComponent = loginComponentController.getRootComponent();
@@ -130,7 +129,10 @@ public class AppController implements Initializable {
     }
 
     public void changeSceneToContest() {
-        //TODO: check null
+        if(contestPageController == null){
+            log.error("Failed to change scene to Contest - contestController is null");
+            return;
+        }
         Parent rootComponent = contestPageController.getRootComponent();
         bodyWrapScrollPane.setContent(rootComponent);
     }

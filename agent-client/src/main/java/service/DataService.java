@@ -3,6 +3,7 @@ package service;
 
 import com.google.gson.Gson;
 import dto.*;
+import enums.GameStatus;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import lombok.Getter;
@@ -44,6 +45,8 @@ public class DataService {
 */
     @Getter private static final ObjectProperty<ContestRoom> currentContestRoomsStateProperty = new SimpleObjectProperty<>();
     @Getter private static final ObjectProperty<List<AllyTeamData>> currentTeamsProperty = new SimpleObjectProperty<>();
+    @Getter private static final ObjectProperty<GameStatus> gameStatusProperty = new SimpleObjectProperty<>();
+
 
 
     private static final ScheduledExecutorService executor;
@@ -51,6 +54,7 @@ public class DataService {
     private static final String machineConfigUrl;
     private static final String contestsDataUrl;
     private static final String allyTeamsUrl;
+    private static final String gameStateUrl;
     private static final Runnable currTeamsFetcher = new Runnable() {
         @Override
         public void run() {
@@ -83,6 +87,39 @@ public class DataService {
                             currentTeamsProperty.setValue(null);
                             currentTeamsProperty.setValue(allyTeamsPayload.getAllyTeamsData());
                         }
+                    }
+                }
+            });
+        }
+    };
+    private static final Runnable gameStateFetcher = new Runnable() {
+        @Override
+        public void run() {
+            HttpClientService.runAsync(gameStateUrl, new Callback() {
+                @Override
+                public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                    log.error("GameStateFetcher failed, ExceptionMessage="+e.getMessage());                }
+                @Override
+                public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                    String responseBody = response.body().string();
+                    if (response.code() >= 500) {
+                        log.error("GameStateFetcher Fetching failed - statusCode=" + response.code());
+                        return;
+                    }
+                    GameStatePayload gameStatePayload;
+                    try{
+                        gameStatePayload = new Gson().fromJson(responseBody,GameStatePayload.class);
+                    }
+                    catch (Exception e){
+                        log.error("Failed to parse response on GameStateFetcher, Message=" + e.getMessage());
+                        return;
+                    }
+                    if (response.code() != 200) {
+                        log.error("Failed to fetch game State - statusCode=" + response.code() + ", ServerMessage=" + gameStatePayload.getMessage());
+                    }
+                    else {
+                        log.info("Game state Fetched - responseCode = 200, ServerMessage=" + gameStatePayload.getMessage());
+                        gameStatusProperty.setValue(gameStatePayload.getGameState());
                     }
                 }
             });
@@ -143,13 +180,21 @@ public class DataService {
                 .newBuilder()
                 .build()
                 .toString();
+        gameStateUrl = HttpUrl
+                .parse(PropertiesService.getApiGameStateUrl())
+                .newBuilder()
+                .build()
+                .toString();
     }
     public static void startPullingTeamsData(){
         long timeInterval = 500;
         executor.scheduleAtFixedRate(currTeamsFetcher, 0, timeInterval, TimeUnit.MILLISECONDS);
-        //TODO: implement
     }
 
+    public static void startFetchingGameState(){
+        long timeInterval = 250;
+        executor.scheduleAtFixedRate(gameStateFetcher,0,timeInterval, TimeUnit.MILLISECONDS);
+    }
 //    public static void fetchInventoryInfo(){
 //        HttpClientService.runAsync(fetchInventoryUrl, new Callback() {
 //            @Override
