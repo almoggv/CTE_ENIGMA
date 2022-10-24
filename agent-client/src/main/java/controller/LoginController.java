@@ -48,27 +48,21 @@ public class LoginController implements Initializable {
         }
     }
 
-    public TextField taskSizeTextField;
-    public TextField threadNumTextField;
-    public ComboBox allieNamesComboBox;
 
-    @Getter
-    @Setter
-    private AppController parentController;
-
+    private ValidationSupport validationSupport = new ValidationSupport();
     @Getter
     private final SimpleStringProperty usernameProperty = new SimpleStringProperty();
     @Getter
     private final SimpleBooleanProperty isLoggedInProperty = new SimpleBooleanProperty(false);
 
+    @Getter @Setter private AppController parentController;
 
-    @FXML
-    private TextField loginTextField;
-    @FXML
-    private Button loginButton;
-    @FXML
-    private GridPane rootGridPane;
-    private ValidationSupport validationSupport = new ValidationSupport();
+    @FXML public TextField taskSizeTextField;
+    @FXML public TextField threadNumTextField;
+    @FXML public ComboBox allieNamesComboBox;
+    @FXML private TextField loginTextField;
+    @FXML private Button loginButton;
+    @FXML private GridPane rootGridPane;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -81,7 +75,6 @@ public class LoginController implements Initializable {
                 initializeAllieNamesComboBox(newValue);
             }
         });
-
         taskSizeTextField.textProperty().addListener(((observable, oldValue, newValue) -> {
             try{
                 int value = Integer.parseInt(newValue);
@@ -93,7 +86,6 @@ public class LoginController implements Initializable {
                 parentController.showMessage("Please enter natural number over 1");
             }
         }));
-
         threadNumTextField.textProperty().addListener(((observable, oldValue, newValue) -> {
             try{
                 int value = Integer.parseInt(newValue);

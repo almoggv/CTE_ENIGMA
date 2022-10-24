@@ -18,8 +18,8 @@ public class ContestRoom {
     private String creatorName;
     private GameStatus gameStatus;
     //todo - fix
-//    private DecryptionDifficultyLevel difficultyLevel;
-    private String difficultyLevel;
+    private DecryptionDifficultyLevel difficultyLevel;
+//    private String difficultyLevel;
     private Integer currNumOfTeams;
     private Integer requiredNumOfTeams;
 

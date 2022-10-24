@@ -82,6 +82,7 @@ public class DataService {
             });
         }
     };
+
     private static final Runnable currTeamsFetcher = new Runnable() {
         @Override
         public void run() {
@@ -175,12 +176,10 @@ public class DataService {
     public static void startPullingMachineConfig(){
         long timeInterval = 500;
         executor.scheduleAtFixedRate(currMachineStateFetcher, 0, timeInterval, TimeUnit.MILLISECONDS);
-        //TODO: implement
     }
     public static void startPullingTeamsData(){
         long timeInterval = 500;
         executor.scheduleAtFixedRate(currTeamsFetcher, 0, timeInterval, TimeUnit.MILLISECONDS);
-        //TODO: implement
     }
 
     public static void stopPullingMachineConfig(){
