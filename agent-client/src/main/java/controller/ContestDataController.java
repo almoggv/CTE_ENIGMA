@@ -50,7 +50,7 @@ public class ContestDataController {
     public void setData(ContestRoom contestRoom){
         setAllyTeamsLabel(contestRoom.getCurrNumOfTeams(), contestRoom.getRequiredNumOfTeams());
         setBattlefieldNameLabel(contestRoom.getName());
-        setDifficultyLevelLabel(contestRoom.getDifficultyLevel());
+        setDifficultyLevelLabel(contestRoom.getDifficultyLevel().name());
         setUboatCreatorName(contestRoom.getCreatorName());
         setGameStatusLabel(contestRoom.getGameStatus());
     }

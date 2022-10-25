@@ -89,7 +89,7 @@ public class UserManager {
             agentData.setNumberOfTasksThatTakes(Integer.valueOf(taskSize));
             agentData.setNumberOfThreads(Integer.valueOf(threadNum));
             agentData.setAllyName(allyName);
-            agentData.setContestRoom(getUserByName(allyName).getContestRoom());
+            newUser.setContestRoom(getUserByName(allyName).getContestRoom());
             //connect ally to agent
             AllyTeamData allyTeamData = getAllieTeamDataByName(allyName);
             allyTeamData.getAgentsList().add(agentData);
