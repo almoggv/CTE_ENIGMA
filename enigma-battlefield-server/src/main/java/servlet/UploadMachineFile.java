@@ -95,6 +95,7 @@ public class UploadMachineFile extends HttpServlet {
                     //create and save to room
                     String creatorName = (String) req.getSession(false).getAttribute(PropertiesService.getUsernameAttributeName());
                     ContestRoom contestRoom = createContestRoomInfo(creatorName, battlefieldInfo);
+                    contestRoom.setMachineHandler(machineHandler);
                     roomManager.addRoom(battlefieldInfo.getBattlefieldName(), contestRoom);
                     req.getSession(true).setAttribute(PropertiesService.getRoomNameAttributeName(), battlefieldInfo.getBattlefieldName());
                     user.setInARoom(true);
