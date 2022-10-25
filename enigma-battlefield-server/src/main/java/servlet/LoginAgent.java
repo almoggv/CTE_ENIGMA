@@ -72,18 +72,27 @@ public class LoginAgent extends HttpServlet {
             repsPayload.setAccessToken("");
         }
         else if (allynameFromParameter == null || allynameFromParameter.isEmpty()) {
+            resp.setStatus(SC_BAD_REQUEST);
             repsPayload.setMessage("Missing ally name in params");
             repsPayload.setAccessToken("");
         }
+        else if (userManager.getUserByName(allynameFromParameter).isReady()) {
+            resp.setStatus(SC_BAD_REQUEST);
+            repsPayload.setMessage("can't join an ally that is ready");
+            repsPayload.setAccessToken("");
+        }
         else if (taskSizeFromParameter == null || taskSizeFromParameter.isEmpty()) {
+            resp.setStatus(SC_BAD_REQUEST);
             repsPayload.setMessage("Missing task size in params");
             repsPayload.setAccessToken("");
         }
         else if (threadNumFromParameter == null || threadNumFromParameter.isEmpty()) {
+            resp.setStatus(SC_BAD_REQUEST);
             repsPayload.setMessage("Missing thread number in params");
             repsPayload.setAccessToken("");
         }
         else if (userManager.getUserByName(allynameFromParameter) == null) {
+            resp.setStatus(SC_BAD_REQUEST);
             repsPayload.setMessage("No such ally");
             repsPayload.setAccessToken("");
         }

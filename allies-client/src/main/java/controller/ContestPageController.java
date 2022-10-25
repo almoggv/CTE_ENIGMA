@@ -54,7 +54,9 @@ public class ContestPageController implements Initializable {
             if(newValue != null ){
                 contestWordLabel.setText(newValue.getWordToDecrypt());
                 contestDataGridController.setParentController(this);
-                contestDataGridController.setData(newValue);
+                Platform.runLater(()->{
+                    contestDataGridController.setData(newValue);
+                });
             }
         });
 

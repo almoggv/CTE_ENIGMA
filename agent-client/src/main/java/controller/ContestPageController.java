@@ -3,6 +3,7 @@ package controller;
 import app.GuiApplication;
 import dto.AgentData;
 import dto.ContestRoom;
+import dto.EncryptionCandidate;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,10 +20,7 @@ import service.PropertiesService;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
-import java.util.Properties;
-import java.util.ResourceBundle;
-import java.util.Set;
+import java.util.*;
 
 public class ContestPageController implements Initializable {
 
@@ -60,8 +58,6 @@ public class ContestPageController implements Initializable {
                 createAgentsDataComponents(newValue);
             }
         });
-
-
     }
 
     public void setParentController(AppController appController) {
@@ -94,7 +90,6 @@ public class ContestPageController implements Initializable {
             }
         });
     }
-
     private void createAgentsDataComponents(List<AgentData> agentDataList) {
         Platform.runLater(() -> {
             try {
@@ -117,4 +112,14 @@ public class ContestPageController implements Initializable {
         });
     }
 
+    public void onSendRedButton(ActionEvent actionEvent) {
+        EncryptionCandidate encryptionCandidate = new EncryptionCandidate();
+        encryptionCandidate.setCandidate("atom");
+        encryptionCandidate.setAllyTeamName("ally team");
+
+        List<EncryptionCandidate> candidateList = new ArrayList<>();
+        candidateList.add(encryptionCandidate);
+
+
+    }
 }

@@ -71,7 +71,9 @@ public class LoginController implements Initializable {
         DataService.startPullingTeamsData();
         DataService.getCurrentTeamsProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue != null){
-                initializeAllieNamesComboBox(newValue);
+                if(newValue.size() != allieNamesComboBox.getItems().size()) {
+                    initializeAllieNamesComboBox(newValue);
+                }
             }
         });
         taskSizeTextField.textProperty().addListener(((observable, oldValue, newValue) -> {

@@ -12,7 +12,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import jsonadapter.LoginPayloadJsonAdapter;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import okhttp3.Call;
@@ -116,7 +115,7 @@ public class LoginController implements Initializable {
                         isLoggedInProperty.setValue(true);
                         log.info("Successfully Logged in as :\"" + username + "\", status=" + response.code() + ", response body=" + responseBody);
                         parentController.showMessage("Successfully Logged in as :" + username);
-                        DataService.startPullingRoomData();
+                        DataService.startPullingRoomsData();
                         DataService.startPullingAgentData();
                     });
                 }

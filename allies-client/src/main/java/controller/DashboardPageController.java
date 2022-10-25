@@ -5,9 +5,6 @@ import com.google.gson.Gson;
 import dto.*;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,7 +15,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
-import jsonadapter.LoginPayloadJsonAdapter;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.HttpUrl;
@@ -224,6 +220,7 @@ public class DashboardPageController implements Initializable {
                         DataService.getCurrentContestRoomsStateProperty().set(payload.getContestRoom());
                         parentController.changeSceneToContest();
                         DataService.startPullingTeamsData();
+                        DataService.startPullingContestRoomData();
                     });
                 }
             }

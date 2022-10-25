@@ -47,6 +47,8 @@ public class PropertiesService {
     @Getter private static final String apiEncryptPageUrl = FULL_SERVER_PATH + "/encrypt";
     @Getter private static final String apiInventoryInfoUrl = FULL_SERVER_PATH + "/get-machine-inventory";
     @Getter private static final String apiContestsInfoUrl = FULL_SERVER_PATH + "/get-rooms-info";
+    @Getter private static final String apiContestInfoUrl = FULL_SERVER_PATH + "/get-room-info";
+
     @Getter private static final String apiJoinContestUrl = FULL_SERVER_PATH + "/join";
     @Getter private static final String apiAllyReadyUrl = FULL_SERVER_PATH + "/ally-ready";
     @Getter private static final String apiAgentsOfAllyUrl = FULL_SERVER_PATH + "/agents-by-ally";

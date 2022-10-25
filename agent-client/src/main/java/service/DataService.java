@@ -3,7 +3,10 @@ package service;
 
 import com.google.gson.Gson;
 import dto.*;
+import enums.GameStatus;
+import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ObservableValue;
 import lombok.Getter;
@@ -36,16 +39,18 @@ public class DataService {
             System.out.println("Failed to configure logger of -" + DataService.class.getSimpleName());
         }
     }
-
     @Getter private static final ObjectProperty<ContestRoom> currentContestRoomsStateProperty = new SimpleObjectProperty<>();
     @Getter private static final ObjectProperty<List<AgentData>> agentsListStateProperty = new SimpleObjectProperty<>();
     @Getter private static final ObjectProperty<List<AllyTeamData>> currentTeamsProperty = new SimpleObjectProperty<>();
+
+    @Getter private static final BooleanProperty isContestStartedProperty = new SimpleBooleanProperty(false);
 
     private static final ScheduledExecutorService executor;
     private static final String agentsDataUrl;
     private static final String contestDataUrl;
     private static final String allyTeamsUrl;
 
+    private static final String contestStartedUrl;
 
     private static final Runnable contestDataFetcher = new Runnable() {
         @Override
@@ -77,6 +82,9 @@ public class DataService {
                         if(payload.getContestRoom() != null  ){
                             currentContestRoomsStateProperty.setValue(null);
                             currentContestRoomsStateProperty.setValue(payload.getContestRoom());
+                            if(payload.getContestRoom().getGameStatus()!= GameStatus.WAITING){
+                                getIsContestStartedProperty().setValue(true);
+                            }
                         }
                     }
                 }
@@ -148,6 +156,9 @@ public class DataService {
                         log.info("Current teams Fetched - responseCode = 200, ServerMessage=" + allyTeamsPayload.getMessage());
                         if(allyTeamsPayload.getAllyTeamsData() != null &&
                                 allyTeamsPayload.getAllyTeamsData() != currentTeamsProperty.get()){
+                            if(currentTeamsProperty.get() == null){
+//                                startCheckIsContestStarted();
+                            }
                             currentTeamsProperty.setValue(null);
                             currentTeamsProperty.setValue(allyTeamsPayload.getAllyTeamsData());
                         }
@@ -156,6 +167,43 @@ public class DataService {
             });
         }
     };
+//    private static final Runnable contestStartedFetcher = new Runnable() {
+//        @Override
+//        public void run() {
+//            HttpClientService.runAsync(contestStartedUrl, new Callback() {
+//                @Override
+//                public void onFailure(@NotNull Call call, @NotNull IOException e) {
+//                    log.error("contestStarted failed, ExceptionMessage="+e.getMessage());                }
+//                @Override
+//                public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+//                    String responseBody = response.body().string();
+//                    if (response.code() >= 500) {
+//                        log.error("contestStarted Fetching failed - statusCode=" + response.code());
+//                        return;
+//                    }
+//                    GameStatePayload payload;
+//                    try{
+//                        payload = new Gson().fromJson(responseBody,GameStatePayload.class);
+//                    }
+//                    catch (Exception e){
+//                        log.error("Failed to parse response on contestStartedUrl, Message=" + e.getMessage());
+//                        return;
+//                    }
+//                    if (response.code() != 200) {
+//                        log.error("Failed to fetch game status - statusCode=" + response.code() + ", ServerMessage=" + payload.getMessage());
+//                    }
+//                    else {
+//                        log.info("game status - responseCode = 200, ServerMessage=" + payload.getMessage());
+//                        if(payload.getGameState() != null
+//                        && payload.getGameState().equals(GameStatus.READY)) {
+//                            isContestStartedProperty.setValue(true);
+//                            stopCheckIsContestStarted();
+//                        }
+//                    }
+//                }
+//            });
+//        }
+//    };
 
     static{
         int poolSize = 2;
@@ -175,9 +223,14 @@ public class DataService {
                 .newBuilder()
                 .build()
                 .toString();
+        contestStartedUrl = HttpUrl
+                .parse(PropertiesService.getApiGameStateUrl())
+                .newBuilder()
+                .build()
+                .toString();
     }
     public static void startPullingTeamsData(){
-        long timeInterval = 500;
+        long timeInterval = 1500;
         executor.scheduleAtFixedRate(currTeamsFetcher, 0, timeInterval, TimeUnit.MILLISECONDS);
         //TODO: implement
     }
@@ -192,4 +245,13 @@ public class DataService {
         //TODO: implement
     }
 
+//    public static void startCheckIsContestStarted(){
+//        long timeInterval = 1500;
+//        executor.scheduleAtFixedRate(contestStartedFetcher, 0, timeInterval, TimeUnit.MILLISECONDS);
+//        //TODO: implement
+//    }
+    public static void stopCheckIsContestStarted(){
+        //todo: will this shut everything down?
+        executor.shutdown();
+    }
 }

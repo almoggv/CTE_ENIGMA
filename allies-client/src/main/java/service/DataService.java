@@ -5,7 +5,6 @@ import com.google.gson.Gson;
 import dto.*;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.value.ObservableValue;
 import lombok.Getter;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -46,10 +45,11 @@ public class DataService {
     @Getter private static final ObjectProperty<List<AllyTeamData>> currentTeamsProperty = new SimpleObjectProperty<>();
 
     private static final ScheduledExecutorService executor;
-//    private static final String fetchInventoryUrl;
     private static final String agentsDataUrl;
     private static final String contestsDataUrl;
     private static final String allyTeamsUrl;
+    private static final String contestDataUrl;
+
 
     private static final Runnable contestsDataFetcher = new Runnable() {
         @Override
@@ -160,7 +160,43 @@ public class DataService {
             });
         }
     };
+    private static final Runnable contestDataFetcher = new Runnable() {
+        @Override
+        public void run() {
+            HttpClientService.runAsync(contestDataUrl, new Callback() {
+                @Override
+                public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                    log.error("contestsDataStateFetcher failed, ExceptionMessage="+e.getMessage());                }
+                @Override
+                public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                    String responseBody = response.body().string();
+                    if (response.code() >= 500) {
+                        log.error("contestsDataState Fetching failed - statusCode=" + response.code());
+                        return;
+                    }
+                    ContestRoomPayload payload;
+                    try{
+                        payload = new Gson().fromJson(responseBody,ContestRoomPayload.class);
+                    }
+                    catch (Exception e){
+                        log.error("Failed to parse response on contestsDataFetcher, Message=" + e.getMessage());
+                        return;
+                    }
+                    if (response.code() != 200) {
+                        log.error("Failed to fetch contests data - statusCode=" + response.code() + ", ServerMessage=" + payload.getMessage());
+                    }
+                    else {
+                        log.info("Contest data Successfully Fetched - responseCode = 200, ServerMessage=" + payload.getContestRoom());
+                        if(payload.getContestRoom() != null  ){
+                            currentContestRoomsStateProperty.setValue(null);
+                            currentContestRoomsStateProperty.setValue(payload.getContestRoom());
+                        }
+                    }
+                }
+            });
+        }
 
+    };
     static{
         int poolSize = 2;
         executor = Executors.newScheduledThreadPool(poolSize);
@@ -179,11 +215,21 @@ public class DataService {
                 .newBuilder()
                 .build()
                 .toString();
+        contestDataUrl = HttpUrl
+                .parse(PropertiesService.getApiContestInfoUrl())
+                .newBuilder()
+                .build()
+                .toString();
     }
 
-    public static void startPullingRoomData(){
+    public static void startPullingRoomsData(){
         long timeInterval = 1500;
         executor.scheduleAtFixedRate(contestsDataFetcher, 0, timeInterval, TimeUnit.MILLISECONDS);
+        //TODO: implement
+    }
+    public static void startPullingContestRoomData(){
+        long timeInterval = 1500;
+        executor.scheduleAtFixedRate(contestDataFetcher, 0, timeInterval, TimeUnit.MILLISECONDS);
         //TODO: implement
     }
     public static void startPullingAgentData(){
@@ -192,12 +238,15 @@ public class DataService {
         //TODO: implement
     }
     public static void startPullingTeamsData(){
-        long timeInterval = 500;
+        long timeInterval = 1500;
         executor.scheduleAtFixedRate(currTeamsFetcher, 0, timeInterval, TimeUnit.MILLISECONDS);
         //TODO: implement
     }
     public static void fetchInventoryInfo(InventoryInfo inventory) {
         inventoryInfoProperty.setValue(inventory);
     }
+
+    //curr contest
+
 
 }
