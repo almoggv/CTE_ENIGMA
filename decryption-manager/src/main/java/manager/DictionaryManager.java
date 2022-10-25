@@ -8,7 +8,6 @@ import service.XmlFileLoader;
 import service.XmlSchemaVerifier;
 import service.impl.XmlSchemaVerifierImpl;
 import generated.CTEDecipher;
-import generated.CTEEnigma;
 
 import java.io.InputStream;
 import java.util.*;
@@ -20,6 +19,7 @@ public class DictionaryManager {
     private static List<String> excludeChars = new ArrayList<>();
     @Getter private static final String DELIMITER = " ";
     private static final String EMPTY_CHAR = "";
+
     public static void loadDictionary(String absolutePath) throws Exception {
         XmlSchemaVerifier xmlSchemaVerifier = new XmlSchemaVerifierImpl();
         try{
@@ -93,5 +93,13 @@ public class DictionaryManager {
             throw new Exception("Failed to generate JAXB CTE Enigma objects by schema");
         }
         buildDictionary(cteEnigma);
+    }
+
+    public static boolean isInDictionary(String word){
+        if(word == null){
+            return false;
+        }
+        String cleanedWord = cleanWord(word);
+        return getDictionary().containsKey(cleanedWord);
     }
 }

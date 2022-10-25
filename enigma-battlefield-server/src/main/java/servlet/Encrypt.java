@@ -1,8 +1,6 @@
 package servlet;
 
 import com.google.gson.Gson;
-import com.sun.deploy.util.StringUtils;
-import dto.EncryptionInfoHistory;
 import dto.EncryptionResponsePayload;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -15,14 +13,11 @@ import manager.DictionaryManager;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import service.PropertiesService;
+import utils.StringUtils;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.*;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static jakarta.servlet.http.HttpServletResponse.*;
 
@@ -103,27 +98,27 @@ public class Encrypt extends HttpServlet {
                 }
             }
         }
-        //todo - fix jar dependencies:
         //check words in dictionary:
-//        for (String input : encryptionInputs ){
-//            if (!DictionaryManager.getDictionary().containsKey(input)) {
-//                log.info("Encrypt request failed - \"" + input + "\" is not in the dictionary");
-//                resp.setStatus(SC_BAD_REQUEST);
-//                responsePayload.setMessage("\"" + input + "\" is not in the dictionary");
-//                respWriter.print(gson.toJson(responsePayload));
-//                return;
-//            }
-//        }
+        if(!DictionaryManager.getDictionary().isEmpty()){
+            for (String input : encryptionInputs ){
+                if (!DictionaryManager.isInDictionary(input)) {
+                    log.info("Encrypt request failed - \"" + input + "\" is not in the dictionary");
+                    resp.setStatus(SC_BAD_REQUEST);
+                    responsePayload.setMessage("\"" + input + "\" is not in the dictionary");
+                    respWriter.print(gson.toJson(responsePayload));
+                    return;
+                }
+            }
+        }
         //Actual Encryption:
         synchronized (this){
             for (String input : encryptionInputs ){
                 encryptionOutputs.add(machineHandler.encrypt(input));
             }
         }
-        //todo! find why cant find :System, fix.
         //Preparing response:
         responsePayload.setOutput(StringUtils.join(encryptionOutputs,System.lineSeparator()));
-        responsePayload.setOutput(String.valueOf(encryptionOutputs));
+//        responsePayload.setOutput(String.valueOf(encryptionOutputs));
         resp.setStatus(SC_OK);
         responsePayload.setMessage("Encrypted Successfully");
         respWriter.print(gson.toJson(responsePayload));
