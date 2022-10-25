@@ -29,6 +29,7 @@ public class MachineHandlerImpl implements MachineHandler {
     private PlugBoard plugBoardInventory;
     private List<Rotor> rotorsInventory;
     private IOWheel ioWheelInventory;
+
     private List<Reflector> reflectorsInventory;
     private int expectedNumOfRotors;
     private BattlefieldInfo battlefieldInfo;

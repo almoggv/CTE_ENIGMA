@@ -17,6 +17,7 @@ import java.util.Optional;
 
 public interface MachineHandler extends Serializable {
 
+
     /**
      * given an XML file path describing an CTEEnigma machine schema.
      * verifies file and schema information.

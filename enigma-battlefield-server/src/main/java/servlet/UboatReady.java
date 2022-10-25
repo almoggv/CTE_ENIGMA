@@ -89,7 +89,11 @@ public class UboatReady extends HttpServlet {
             resp.setStatus(SC_OK);
             roomManager.setUserReady(user,contestRoom);
             contestRoom.setWordToDecrypt((String) wordToDecrypt);
-            contestRoom.setMachineHandler(machineHandler);
+            //todo - see how to send
+            //causes problem to ally - gson from payload - because there isnt an empty machine handler constructor ?
+            //Interface can't be instantiated! Interface name: component.MachineHandler
+            //Unable to invoke no-args constructor for interface component.MachineHandler
+//            contestRoom.setMachineHandler(machineHandler);
             respWriter.print("Ready with contest word: " + wordToDecrypt);
         }
     }
