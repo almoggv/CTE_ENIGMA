@@ -25,7 +25,7 @@
       <Label text="Contest data" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
       <ScrollPane prefHeight="140.0" prefWidth="200.0" GridPane.rowIndex="1">
          <content>
-            <FlowPane fx:id="teamsFlowPane" prefHeight="140.0" prefWidth="297.0" />
+            <FlowPane fx:id="agentsDataFlowPane" prefHeight="140.0" prefWidth="297.0" />
          </content>
       </ScrollPane>
       <ScrollPane prefHeight="140.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">

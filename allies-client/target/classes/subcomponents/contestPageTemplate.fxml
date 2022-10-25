@@ -11,8 +11,8 @@
 
 <GridPane fx:id="rootGridPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ContestPageController">
   <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
   </columnConstraints>
   <rowConstraints>
       <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
@@ -43,7 +43,7 @@
       <fx:include fx:id="contestDataGrid" source="contestData.fxml" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
       <ScrollPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.rowSpan="3">
          <content>
-            <FlowPane fx:id="teamsFlowPane" prefHeight="247.0" prefWidth="297.0" />
+            <FlowPane fx:id="teamsFlowPane" prefHeight="245.0" prefWidth="285.0" />
          </content>
       </ScrollPane>
    </children>

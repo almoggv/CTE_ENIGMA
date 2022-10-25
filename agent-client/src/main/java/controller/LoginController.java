@@ -67,7 +67,6 @@ public class LoginController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loginTextField.textProperty().bindBidirectional(usernameProperty);
-//        loginButton.disableProperty().bind(validationSupport.invalidProperty());
 
         DataService.startPullingTeamsData();
         DataService.getCurrentTeamsProperty().addListener((observable, oldValue, newValue) -> {
@@ -176,7 +175,8 @@ public class LoginController implements Initializable {
                         isLoggedInProperty.setValue(true);
                         log.info("Successfully Logged in as :\"" + username + "\", status=" + response.code() + ", response body=" + responseBody);
                         parentController.showMessage("Successfully Logged in as :" + username);
-//                        DataService.startPullingRoomData();
+                        DataService.startPullingRoomData();
+                        DataService.startPullingAgentData();
                     });
                 }
             }

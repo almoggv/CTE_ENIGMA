@@ -2,7 +2,6 @@ package servlet;
 
 import com.google.gson.Gson;
 import dto.AgentsListPayload;
-import dto.ContestAllyTeamsPayload;
 import enums.UserType;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -53,6 +52,7 @@ public class AgentsDataByAllyName extends HttpServlet {
         String usernameFromSession = SessionUtills.getUsername(req);
         String usernameFromParameter = req.getParameter(PropertiesService.getUsernameAttributeName());
 
+        String allyName = usernameFromSession;
         if(userManager == null){
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             respWriter.print("no user manager.");
@@ -61,17 +61,14 @@ public class AgentsDataByAllyName extends HttpServlet {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             respWriter.print("not a registered user.");
         }
-        if(userManager.getUserByName(usernameFromSession).getType() != UserType.ALLY
-        && userManager.getUserByName(usernameFromParameter).getType() != UserType.ALLY){
-            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            respWriter.print("not an ally.");
+        if(userManager.getUserByName(usernameFromSession).getType() == UserType.AGENT){
+
+            allyName = userManager.getAgentByName(usernameFromSession).getAllyName();
         }
 
         AgentsListPayload payload = new AgentsListPayload();
         resp.setStatus(SC_OK);
-        //todo - fix
-        payload.setAgentsList(userManager.getAllieTeamDataByName(usernameFromSession).getAgentsList());
-//        payload.setAgentsList(userManager.getAllieTeamDataByName(usernameFromParameter).getAgentsList());
+        payload.setAgentsList(userManager.getAllyByName(allyName).getAgentsList());
 
         Gson gson = new Gson();
         resp.setHeader(PropertiesService.getHttpHeaderContentType(),PropertiesService.getJsonHttpContentType());

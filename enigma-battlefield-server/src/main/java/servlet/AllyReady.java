@@ -1,6 +1,5 @@
 package servlet;
 
-import component.MachineHandler;
 import dto.AllyTeamData;
 import dto.ContestRoom;
 import dto.User;
@@ -81,7 +80,7 @@ public class AllyReady extends HttpServlet {
         else{
             resp.setStatus(SC_OK);
             //todo: after connecting ally to user
-            AllyTeamData ally = userManager.getAllieTeamDataByName(user.getUsername());
+            AllyTeamData ally = userManager.getAllyByName(user.getUsername());
             ally.setTaskSize(taskSize);
             roomManager.setUserReady(user,contestRoom);
             respWriter.print("Ready with task size: " + taskSize);

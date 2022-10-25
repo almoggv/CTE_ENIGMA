@@ -13,7 +13,7 @@
   <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
       <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" />
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="246.66668701171875" minWidth="10.0" prefWidth="246.66668701171875" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
   </columnConstraints>
   <rowConstraints>
@@ -35,9 +35,9 @@
          <GridPane.margin>
             <Insets top="6.0" />
          </GridPane.margin></Label>
-      <ScrollPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+      <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="SOMETIMES">
          <content>
-            <FlowPane fx:id="teamsFlowPane" prefHeight="157.0" prefWidth="193.0" />
+            <FlowPane fx:id="teamsFlowPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="157.0" prefWidth="193.0" />
          </content>
       </ScrollPane>
    </children>

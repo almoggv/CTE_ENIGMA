@@ -64,8 +64,11 @@ public class UserManager {
     public User getUserByName(String username) {
         return usernamesToUserMap.get(username);
     }
-    public AllyTeamData getAllieTeamDataByName(String username) {
+    public AllyTeamData getAllyByName(String username) {
         return usernamesToAlliesMap.get(username);
+    }
+    public AgentData getAgentByName(String username) {
+        return usernamesToAgentsMap.get(username);
     }
     //for agent user
     public void addUser(String username, String userType, String threadNum, String taskSize, String allyName) {
@@ -84,7 +87,7 @@ public class UserManager {
             agentData.setAllyName(allyName);
             newUser.setContestRoom(getUserByName(allyName).getContestRoom());
             //connect ally to agent
-            AllyTeamData allyTeamData = getAllieTeamDataByName(allyName);
+            AllyTeamData allyTeamData = getAllyByName(allyName);
             allyTeamData.getAgentsList().add(agentData);
             allyTeamData.setNumOfAgents(allyTeamData.getNumOfAgents() + 1);
             usernamesToAgentsMap.put(username, agentData);

@@ -15,6 +15,7 @@ public class PropertiesService {
     @Getter private static final String loginFxmlPath = "/subcomponents/login.fxml";
 //    @Getter private static final String dashboardPageTemplateFxmlPath = "/subcomponents/dashboardPageTemplate.fxml";
     @Getter private static final String contestDataFxmlPath = "/subcomponents/contestData.fxml";
+    @Getter private static final String agentDataFxmlPath = "/subcomponents/agentData.fxml";
     //App Initial size
     @Getter private static final int appWindowWidth = 950;
     @Getter private static final int appWindowHeight = 650;
@@ -46,10 +47,13 @@ public class PropertiesService {
     @Getter private static final String apiEncryptPageUrl = FULL_SERVER_PATH + "/encrypt";
     @Getter private static final String apiInventoryInfoUrl = FULL_SERVER_PATH + "/get-machine-inventory";
     @Getter private static final String apiContestsInfoUrl = FULL_SERVER_PATH + "/get-rooms-info";
+    @Getter private static final String apiContestInfoUrl = FULL_SERVER_PATH + "/get-room-info";
     @Getter private static final String apiJoinContestUrl = FULL_SERVER_PATH + "/join";
     @Getter private static final String apiAgentReadyUrl = FULL_SERVER_PATH + "/agent-ready";
     @Getter private static final String apiAllAlliesReadyUrl = FULL_SERVER_PATH + "/all-ally-teams";
     @Getter private static final String apiGameStateUrl = FULL_SERVER_PATH + "/game-state";
+    @Getter private static final String apiAgentsOfAllyUrl = FULL_SERVER_PATH + "/agents-by-ally";
+
 
 }
 

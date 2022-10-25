@@ -87,7 +87,7 @@ public class JoinARoom extends HttpServlet {
             payload.setMessage("You are already in a contest.");
         }
         else{
-            AllyTeamData ally  = userManager.getAllieTeamDataByName(usernameFromSession);
+            AllyTeamData ally  = userManager.getAllyByName(usernameFromSession);
             User allyUser = userManager.getUserByName(usernameFromSession);
             roomManager.addUserToRoom(ally,userManager, contestRoom);
             user.setInARoom(true);
