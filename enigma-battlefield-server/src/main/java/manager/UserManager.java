@@ -43,6 +43,7 @@ public class UserManager {
         if(UserType.getByName(userType).equals(UserType.UBOAT)){
             Uboat uboat = new Uboat();
             uboat.setName(username);
+            usernamesToUboatsMap.put(username,uboat);
         }
         if(UserType.getByName(userType).equals(UserType.ALLY)){
             AllyTeamData allyTeamData = new AllyTeamData();

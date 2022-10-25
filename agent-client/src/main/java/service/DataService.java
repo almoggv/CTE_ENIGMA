@@ -16,6 +16,7 @@ import org.apache.log4j.PropertyConfigurator;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 import java.util.Set;
@@ -41,14 +42,12 @@ public class DataService {
     @Getter private static final ObjectProperty<List<AllyTeamData>> currentTeamsProperty = new SimpleObjectProperty<>();
 
     @Getter private static final BooleanProperty isContestStartedProperty = new SimpleBooleanProperty(false);
-
     @Getter private static final ObjectProperty<List<EncryptionCandidate>> lastCandidatesProperty = new SimpleObjectProperty<>();
-
     private static final ScheduledExecutorService executor;
     private static final String agentsDataUrl;
     private static final String contestDataUrl;
     private static final String allyTeamsUrl;
-    private static final String sendCandidatesUrl;
+//    private static final String sendCandidatesUrl;
     private static final Runnable contestDataFetcher = new Runnable() {
         @Override
         public void run() {
@@ -75,7 +74,7 @@ public class DataService {
                         log.error("Failed to fetch contests data - statusCode=" + response.code() + ", ServerMessage=" + payload.getMessage());
                     }
                     else {
-                        log.info("Contest data Successfully Fetched - responseCode = 200, ServerMessage=" + payload.getContestRoom());
+                        log.debug("Contest data Successfully Fetched - responseCode = 200, ServerMessage=" + payload.getContestRoom());
                         if(payload.getContestRoom() != null  ){
                             currentContestRoomsStateProperty.setValue(null);
                             currentContestRoomsStateProperty.setValue(payload.getContestRoom());
@@ -116,7 +115,7 @@ public class DataService {
                         log.error("Failed to fetch agents data - statusCode=" + response.code() + ", ServerMessage=" + payload.getMessage());
                     }
                     else {
-                        log.info("Agents data Successfully Fetched - responseCode = 200, ServerMessage=" + payload.getAgentsList());
+                        log.debug("Agents data Successfully Fetched - responseCode = 200, ServerMessage=" + payload.getAgentsList());
                         if(payload.getAgentsList() != null && !payload.getAgentsList().isEmpty() && !payload.getAgentsList().equals(agentsListStateProperty.get())){
                             agentsListStateProperty.setValue(null);
                             agentsListStateProperty.setValue(payload.getAgentsList());
@@ -152,7 +151,7 @@ public class DataService {
                         log.error("Failed to fetch curr Teams - statusCode=" + response.code() + ", ServerMessage=" + allyTeamsPayload.getMessage());
                     }
                     else {
-                        log.info("Current teams Fetched - responseCode = 200, ServerMessage=" + allyTeamsPayload.getMessage());
+                        log.debug("Current teams Fetched - responseCode = 200, ServerMessage=" + allyTeamsPayload.getMessage());
                         if(allyTeamsPayload.getAllyTeamsData() != null &&
                                 allyTeamsPayload.getAllyTeamsData() != currentTeamsProperty.get()){
                             if(currentTeamsProperty.get() == null){
@@ -166,22 +165,42 @@ public class DataService {
             });
         }
     };
-    private static final Runnable currCandidatesSender = new Runnable() {
-        @Override
-        public void run() {
-            if (getLastCandidatesProperty().get() == null) {
-                return;
-            }
-            DecryptionResultPayload payload = new DecryptionResultPayload();
-            payload.setEncryptionCandidateList(getLastCandidatesProperty().get());
+    public static void sendCandidates() {
+//        @Override
+//        public void run() {
+            //todo: return : like this for testing
+//            if (getLastCandidatesProperty().get() == null) {
+//                return;
+//            }
+            //for test:
+            EncryptionCandidate encryptionCandidate = new EncryptionCandidate();
+            encryptionCandidate.setCandidate("atom");
+            encryptionCandidate.setAllyTeamName("ally team");
+            List<EncryptionCandidate> candidateList = new ArrayList<>();
+            candidateList.add(encryptionCandidate);
+            candidateList.add(new EncryptionCandidate("something", "ally", new MachineState()));
+            lastCandidatesProperty.set(candidateList);
 
-            //todo: send payload
-            
-//            RequestBody body =
-//                    new MultipartBody.Builder()
-//                            .addPart("candidates", )
-                            //.addFormDataPart("key1", "value1") // you can add multiple, different parts as needed
-//                            .build();
+            String sendCandidatesUrl = HttpUrl
+                    .parse(PropertiesService.getApiSendCandidatesUrl())
+                    .newBuilder()
+                    .build()
+                    .toString();
+
+            DecryptionResultPayload sendPayload = new DecryptionResultPayload();
+            sendPayload.setEncryptionCandidateList(getLastCandidatesProperty().get());
+
+            String payloadString = new Gson().toJson(sendPayload);
+
+            RequestBody body = RequestBody.create(
+                    MediaType.parse("application/json"), payloadString);
+
+            Request request = new Request.Builder()
+                    .url(sendCandidatesUrl)
+                    .post(body)
+                    .build();
+
+            log.info("New request is sent for: " + sendCandidatesUrl);
             HttpClientService.runAsync(sendCandidatesUrl, new Callback() {
                 @Override
                 public void onFailure(@NotNull Call call, @NotNull IOException e) {
@@ -198,11 +217,12 @@ public class DataService {
                     }
                     else {
                         log.info("Candidates sent - responseCode = 200, ServerMessage=" +responseBody);
+                        System.out.println("sentttttttttttttttttttttttttttttttttttttt");
                     }
                 }
             });
         }
-    };
+//    };
 
     static{
         int poolSize = 2;
@@ -222,11 +242,11 @@ public class DataService {
                 .newBuilder()
                 .build()
                 .toString();
-        sendCandidatesUrl = HttpUrl
-                .parse(PropertiesService.getApiSendCandidatesUrl())
-                .newBuilder()
-                .build()
-                .toString();
+//        sendCandidatesUrl = HttpUrl
+//                .parse(PropertiesService.getApiSendCandidatesUrl())
+//                .newBuilder()
+//                .build()
+//                .toString();
 
     }
     public static void startPullingTeamsData(){
@@ -244,6 +264,4 @@ public class DataService {
         executor.scheduleAtFixedRate(agentsDataFetcher, 0, timeInterval, TimeUnit.MILLISECONDS);
         //TODO: implement
     }
-
-
 }

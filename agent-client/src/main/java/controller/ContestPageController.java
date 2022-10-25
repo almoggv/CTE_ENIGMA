@@ -121,13 +121,12 @@ public class ContestPageController implements Initializable {
     }
 
     public void onSendRedButton(ActionEvent actionEvent) {
-        EncryptionCandidate encryptionCandidate = new EncryptionCandidate();
-        encryptionCandidate.setCandidate("atom");
-        encryptionCandidate.setAllyTeamName("ally team");
-
-        List<EncryptionCandidate> candidateList = new ArrayList<>();
-        candidateList.add(encryptionCandidate);
-
-
+//        EncryptionCandidate encryptionCandidate = new EncryptionCandidate();
+//        encryptionCandidate.setCandidate("atom");
+//        encryptionCandidate.setAllyTeamName("ally team");
+//
+//        List<EncryptionCandidate> candidateList = new ArrayList<>();
+//        candidateList.add(encryptionCandidate);
+        DataService.sendCandidates();
     }
 }

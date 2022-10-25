@@ -91,7 +91,7 @@ public class UploadMachineFile extends HttpServlet {
                     //create inventory from file
                     machineHandler.buildMachinePartsInventory(uploadedFile.getInputStream());
                     //todo - check whats up with the dict manager
-//                    DictionaryManager.loadDictionary(uploadedFile.getInputStream());
+                    DictionaryManager.loadDictionary(uploadedFile.getInputStream());
                     //create and save to room
                     String creatorName = (String) req.getSession(false).getAttribute(PropertiesService.getUsernameAttributeName());
                     ContestRoom contestRoom = createContestRoomInfo(creatorName, battlefieldInfo);

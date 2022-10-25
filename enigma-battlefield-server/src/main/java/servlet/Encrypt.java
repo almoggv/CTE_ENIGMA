@@ -122,7 +122,7 @@ public class Encrypt extends HttpServlet {
         }
         //todo! find why cant find :System, fix.
         //Preparing response:
-//        responsePayload.setOutput(StringUtils.join(encryptionOutputs,System.lineSeparator()));
+        responsePayload.setOutput(StringUtils.join(encryptionOutputs,System.lineSeparator()));
         responsePayload.setOutput(String.valueOf(encryptionOutputs));
         resp.setStatus(SC_OK);
         responsePayload.setMessage("Encrypted Successfully");
