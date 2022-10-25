@@ -42,13 +42,6 @@ public class UserManager {
             allyTeamData.setAgentsList(new ArrayList<>());
             usernamesToAlliesMap.put(username, allyTeamData);
         }
-//        if(UserType.getByName(userType).equals(UserType.AGENT)){
-//            AgentData agentData = new AgentData();
-//            agentData.setName(username);
-//            agentData.setNumberOfTasksThatTakes(0);
-//            agentData.setNumberOfThreads(0);
-//            usernamesToAgentsMap.put(username, agentData);
-//        }
     }
 
     public synchronized String getUserToken(String username){

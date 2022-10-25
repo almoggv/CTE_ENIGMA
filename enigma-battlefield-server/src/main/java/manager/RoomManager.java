@@ -17,7 +17,6 @@ public class RoomManager {
     public synchronized void removeRoom(String roomName){
         roomsDataMap.remove(roomName);
     }
-
     public synchronized Set<ContestRoom> getRooms() {
         Set<ContestRoom> roomsSet = new HashSet(roomsDataMap.values());
         return Collections.unmodifiableSet(roomsSet);
@@ -28,7 +27,6 @@ public class RoomManager {
     public boolean isRoomExists(String roomName) {
         return roomsDataMap.containsKey(roomName);
     }
-
     public void addUserToRoom(AllyTeamData ally ,UserManager userManager, ContestRoom room) {
         if(room.getCurrNumOfTeams() < room.getRequiredNumOfTeams()){
             //add ally to room
@@ -42,6 +40,19 @@ public class RoomManager {
             for (AgentData agent : ally.getAgentsList()) {
                 userManager.getUserByName(agent.getName()).setContestRoom(room);
             }
+        }
+    }
+
+    public void setUserReady(User user, ContestRoom room){
+        if(user.isReady()){
+            return;
+        }
+        user.setReady(true);
+        room.setNumOfReady(room.getNumOfReady() + 1);
+        boolean isEveryoneReady = room.getNumOfReady() == room.getRequiredNumOfTeams() + 1;
+        room.setEveryoneReady(isEveryoneReady);
+        if (isEveryoneReady){
+            room.setGameStatus(GameStatus.READY);
         }
     }
 }

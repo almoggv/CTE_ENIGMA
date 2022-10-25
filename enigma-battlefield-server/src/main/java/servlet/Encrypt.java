@@ -105,15 +105,15 @@ public class Encrypt extends HttpServlet {
         }
         //todo - fix jar dependencies:
         //check words in dictionary:
-        for (String input : encryptionInputs ){
-            if (!DictionaryManager.getDictionary().containsKey(input)) {
-                log.info("Encrypt request failed - \"" + input + "\" is not in the dictionary");
-                resp.setStatus(SC_BAD_REQUEST);
-                responsePayload.setMessage("\"" + input + "\" is not in the dictionary");
-                respWriter.print(gson.toJson(responsePayload));
-                return;
-            }
-        }
+//        for (String input : encryptionInputs ){
+//            if (!DictionaryManager.getDictionary().containsKey(input)) {
+//                log.info("Encrypt request failed - \"" + input + "\" is not in the dictionary");
+//                resp.setStatus(SC_BAD_REQUEST);
+//                responsePayload.setMessage("\"" + input + "\" is not in the dictionary");
+//                respWriter.print(gson.toJson(responsePayload));
+//                return;
+//            }
+//        }
         //Actual Encryption:
         synchronized (this){
             for (String input : encryptionInputs ){

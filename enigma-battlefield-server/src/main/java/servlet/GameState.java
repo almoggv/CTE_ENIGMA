@@ -68,8 +68,6 @@ public class GameState extends HttpServlet {
 
         else{
             User loggedUser = userManager.getUserByName(usernameFromSession);
-            // how do i get from the user to the room he is in?
-//            ContestRoom contestRoom = roomManager.getRoomByName((String) roomName);
             ContestRoom contestRoom = loggedUser.getContestRoom();
             resp.setStatus(SC_OK);
             respWriter.print(contestRoom.getGameStatus());

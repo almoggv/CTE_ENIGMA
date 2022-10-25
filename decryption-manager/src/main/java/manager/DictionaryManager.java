@@ -10,6 +10,7 @@ import service.impl.XmlSchemaVerifierImpl;
 import generated.CTEDecipher;
 import generated.CTEEnigma;
 
+import java.io.InputStream;
 import java.util.*;
 
 public class DictionaryManager {
@@ -77,5 +78,20 @@ public class DictionaryManager {
             }
         }
         return word;
+    }
+
+    public static void loadDictionary(InputStream inputStream) throws Exception {
+        XmlSchemaVerifier xmlSchemaVerifier = new XmlSchemaVerifierImpl();
+//        try{
+//            xmlSchemaVerifier.isFileInExistenceAndXML(absolutePath);
+//        }
+//        catch (Exception e){
+//
+//        }
+        CTEEnigma cteEnigma = XmlFileLoader.fromXmlFileToCTE(inputStream);
+        if(cteEnigma == null){
+            throw new Exception("Failed to generate JAXB CTE Enigma objects by schema");
+        }
+        buildDictionary(cteEnigma);
     }
 }

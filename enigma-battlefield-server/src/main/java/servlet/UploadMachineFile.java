@@ -16,6 +16,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
 import component.MachineHandler;
 import component.impl.MachineHandlerImpl;
+import manager.DictionaryManager;
 import manager.RoomManager;
 import manager.UserManager;
 import org.apache.log4j.Logger;
@@ -92,6 +93,8 @@ public class UploadMachineFile extends HttpServlet {
                 else{
                     //create inventory from file
                     machineHandler.buildMachinePartsInventory(uploadedFile.getInputStream());
+                    //todo - check whats up with the dict manager
+//                    DictionaryManager.loadDictionary(uploadedFile.getInputStream());
                     //create and save to room
                     String creatorName = (String) req.getSession(false).getAttribute(PropertiesService.getUsernameAttributeName());
                     ContestRoom contestRoom = createContestRoomInfo(creatorName, battlefieldInfo);
@@ -128,6 +131,8 @@ public class UploadMachineFile extends HttpServlet {
         contestRoom.setRequiredNumOfTeams(battlefieldInfo.getRequiredNumOfTeams());
         contestRoom.setAlliesList(new ArrayList<>());
         contestRoom.setWordToDecrypt(null);
+        contestRoom.setEveryoneReady(false);
+        contestRoom.setNumOfReady(0);
         return contestRoom;
     }
 }

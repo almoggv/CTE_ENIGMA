@@ -2,28 +2,27 @@ package servlet;
 
 import com.google.gson.Gson;
 import component.MachineHandler;
-import dto.ContestRoom;
-import dto.ContestRoomPayload;
-import dto.InventoryInfo;
-import dto.MachineInventoryPayload;
+import dto.*;
+import enums.UserType;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import manager.RoomManager;
+import manager.UserManager;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import service.PropertiesService;
 import utils.ServletUtils;
 
+import javax.jws.soap.SOAPBinding;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Optional;
 import java.util.Properties;
 
-import static jakarta.servlet.http.HttpServletResponse.SC_INTERNAL_SERVER_ERROR;
-import static jakarta.servlet.http.HttpServletResponse.SC_OK;
+import static jakarta.servlet.http.HttpServletResponse.*;
 
 @WebServlet(name = "RoomInfoServlet" ,urlPatterns = {"/get-room-info"})
 public class RoomInfo extends HttpServlet {
@@ -52,25 +51,30 @@ public class RoomInfo extends HttpServlet {
         }
 
         RoomManager roomManager = ServletUtils.getRoomManager(this.getServletContext());
+        UserManager userManager = ServletUtils.getUserManager(this.getServletContext());
 
-        Object roomName =  req.getSession(false).getAttribute(PropertiesService.getRoomNameAttributeName());
-
-        if(roomName == null){
-            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            resp.getWriter().print("You are not assigned to a room.");
+        User user = userManager.getUserByName((String) req.getSession(false).getAttribute(PropertiesService.getUsernameAttributeName()));
+        if(user == null){
+            resp.setStatus(SC_BAD_REQUEST);
+            respWriter.print("user does not exist");
             return;
         }
-        ContestRoom roomInfo = roomManager.getRoomByName((String) roomName);
+        ContestRoom contestRoom = user.getContestRoom();
 
         ContestRoomPayload payload = new ContestRoomPayload();
-        if(roomInfo == null){
+
+        if(contestRoom == null){
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            //todo: is the best response
-            payload.setMessage("Please upload a schema file first. (/upload-machine-file)");
+            if (user.getType().equals(UserType.UBOAT)) {
+                payload.setMessage("Please upload a schema file first. (/upload-machine-file)");
+            }
+            else {
+                payload.setMessage("You are not assigned to a room.");
+            }
         }
         else{
             resp.setStatus(SC_OK);
-            payload.setContestRoom(roomInfo);
+            payload.setContestRoom(contestRoom);
         }
         Gson gson = new Gson();
         resp.setHeader(PropertiesService.getHttpHeaderContentType(),PropertiesService.getJsonHttpContentType());

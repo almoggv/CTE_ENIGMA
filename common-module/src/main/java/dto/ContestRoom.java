@@ -17,13 +17,13 @@ public class ContestRoom {
     private String name;
     private String creatorName;
     private GameStatus gameStatus;
-    //todo - fix
     private DecryptionDifficultyLevel difficultyLevel;
-//    private String difficultyLevel;
     private Integer currNumOfTeams;
     private Integer requiredNumOfTeams;
-
-    private List<AllyTeamData> alliesList;
     String wordToDecrypt;
+    private Integer numOfReady;
+    private boolean isEveryoneReady;
+    private List<AllyTeamData> alliesList;
     MachineHandler machineHandler;
+
 }

@@ -14,5 +14,4 @@ public class AllyTeamData {
     private Integer taskSize = 0;
     private List<AgentData> agentsList;
     private Integer numOfAgents;
-//    private ContestRoom contestRoom;
 }

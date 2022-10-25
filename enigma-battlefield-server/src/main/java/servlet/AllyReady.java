@@ -1,13 +1,16 @@
 package servlet;
 
 import component.MachineHandler;
+import dto.AllyTeamData;
 import dto.ContestRoom;
+import dto.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import manager.RoomManager;
+import manager.UserManager;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import service.PropertiesService;
@@ -17,8 +20,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Properties;
 
-import static jakarta.servlet.http.HttpServletResponse.SC_INTERNAL_SERVER_ERROR;
-import static jakarta.servlet.http.HttpServletResponse.SC_OK;
+import static jakarta.servlet.http.HttpServletResponse.*;
 
 @WebServlet(name = "AllyReadyServlet" ,urlPatterns = {"/ally-ready"})
 public class AllyReady extends HttpServlet {
@@ -47,8 +49,15 @@ public class AllyReady extends HttpServlet {
         }
 
         RoomManager roomManager = ServletUtils.getRoomManager(this.getServletContext());
+        UserManager userManager = ServletUtils.getUserManager(this.getServletContext());
 
-        Object roomName =  req.getSession(false).getAttribute(PropertiesService.getRoomNameAttributeName());
+        User user = userManager.getUserByName((String) req.getSession(false).getAttribute(PropertiesService.getUsernameAttributeName()));
+        if(user == null){
+            resp.setStatus(SC_BAD_REQUEST);
+            respWriter.print("user does not exist");
+            return;
+        }
+        ContestRoom contestRoom = user.getContestRoom();
         Integer taskSize;
         try{
             taskSize = Integer.valueOf(req.getParameter(PropertiesService.getTaskSizeAttributeName()));
@@ -59,13 +68,11 @@ public class AllyReady extends HttpServlet {
             return;
         }
 
-        if(roomName == null){
+        if(contestRoom == null){
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             resp.getWriter().print("You are not assigned to a room.");
             return;
         }
-
-        ContestRoom roomInfo = roomManager.getRoomByName((String) roomName);
 
         if(taskSize <= 0 ){
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
@@ -74,7 +81,9 @@ public class AllyReady extends HttpServlet {
         else{
             resp.setStatus(SC_OK);
             //todo: after connecting ally to user
-
+            AllyTeamData ally = userManager.getAllieTeamDataByName(user.getUsername());
+            ally.setTaskSize(taskSize);
+            roomManager.setUserReady(user,contestRoom);
             respWriter.print("Ready with task size: " + taskSize);
         }
     }
