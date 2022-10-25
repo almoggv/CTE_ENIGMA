@@ -103,11 +103,6 @@ public class AppController implements Initializable {
         loginComponentController.getIsLoggedInProperty().bindBidirectional(headerComponentController.getIsLoggedInProperty());;
         log.info("AppController - app initialized");
 
-        DataService.getIsContestStartedProperty().addListener((observable, oldValue, newValue) -> {
-            if(newValue == true){
-                showMessage("Contest starting!");
-            }
-        });
     }
 
     public void initDecryptionAgent(MachineHandler machineHandler, AgentData agentData){

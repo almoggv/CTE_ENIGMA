@@ -54,5 +54,7 @@ public class RoomManager {
         if (isEveryoneReady){
             room.setGameStatus(GameStatus.READY);
         }
+        //todo: remove - only for test
+        room.setGameStatus(GameStatus.READY);
     }
 }

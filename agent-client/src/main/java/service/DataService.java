@@ -83,7 +83,9 @@ public class DataService {
                             currentContestRoomsStateProperty.setValue(null);
                             currentContestRoomsStateProperty.setValue(payload.getContestRoom());
                             if(payload.getContestRoom().getGameStatus()!= GameStatus.WAITING){
-                                getIsContestStartedProperty().setValue(true);
+                                if(getIsContestStartedProperty().get() == false) {
+                                    getIsContestStartedProperty().setValue(true);
+                                }
                             }
                         }
                     }

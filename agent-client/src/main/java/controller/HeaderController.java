@@ -17,6 +17,7 @@ import lombok.Setter;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.controlsfx.control.NotificationPane;
+import service.DataService;
 import service.PropertiesService;
 
 import java.io.IOException;
@@ -52,6 +53,8 @@ public class HeaderController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         createNotificationPane();
+
+
     }
 
 

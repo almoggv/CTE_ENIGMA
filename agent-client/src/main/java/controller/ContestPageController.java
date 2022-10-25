@@ -58,6 +58,14 @@ public class ContestPageController implements Initializable {
                 createAgentsDataComponents(newValue);
             }
         });
+
+        DataService.getIsContestStartedProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue == true){
+                Platform.runLater(()->{
+                    showMessage("Contest starting!");
+                });
+            }
+        });
     }
 
     public void setParentController(AppController appController) {
