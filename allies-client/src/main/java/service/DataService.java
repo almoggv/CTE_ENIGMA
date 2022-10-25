@@ -3,7 +3,10 @@ package service;
 
 import com.google.gson.Gson;
 import dto.*;
+import enums.GameStatus;
+import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import lombok.Getter;
 import okhttp3.Call;
@@ -43,6 +46,8 @@ public class DataService {
     @Getter private static final ObjectProperty<ContestRoom> currentContestRoomsStateProperty = new SimpleObjectProperty<>();
     @Getter private static final ObjectProperty<List<AgentData>> agentsListStateProperty = new SimpleObjectProperty<>();
     @Getter private static final ObjectProperty<List<AllyTeamData>> currentTeamsProperty = new SimpleObjectProperty<>();
+
+    @Getter private static final BooleanProperty isContestStartedProperty = new SimpleBooleanProperty(false);
 
     private static final ScheduledExecutorService executor;
     private static final String agentsDataUrl;
@@ -190,6 +195,11 @@ public class DataService {
                         if(payload.getContestRoom() != null  ){
                             currentContestRoomsStateProperty.setValue(null);
                             currentContestRoomsStateProperty.setValue(payload.getContestRoom());
+                            if(payload.getContestRoom().getGameStatus()!= GameStatus.WAITING){
+                                if(getIsContestStartedProperty().get() == false) {
+                                    getIsContestStartedProperty().setValue(true);
+                                }
+                            }
                         }
                     }
                 }

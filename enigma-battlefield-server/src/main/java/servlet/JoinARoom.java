@@ -92,6 +92,9 @@ public class JoinARoom extends HttpServlet {
             roomManager.addUserToRoom(ally,userManager, contestRoom);
             user.setInARoom(true);
             resp.setStatus(SC_OK);
+
+            //todo - start the DM by the rooms machine handler or inventory;
+
             payload.setContestRoom(contestRoom);
             payload.setMessage("Joined room "+ contestRoom.getName() + " Successfully.");
 

@@ -2,8 +2,10 @@ package manager;
 
 import dto.AgentData;
 import dto.AllyTeamData;
+import dto.Uboat;
 import dto.User;
 import enums.UserType;
+import manager.impl.AllyClientDMImpl;
 
 import java.util.*;
 
@@ -13,11 +15,14 @@ public class UserManager {
     private final Map<String, AllyTeamData> usernamesToAlliesMap;
     private final Map<String, AgentData> usernamesToAgentsMap;
 
+    private final Map<String, Uboat> usernamesToUboatsMap;
+
     public UserManager() {
         usernamesToUserMap = new HashMap<String, User>();
         authTokenToUserMap = new HashMap<String, User>();
         usernamesToAlliesMap = new HashMap<String, AllyTeamData>();
         usernamesToAgentsMap = new HashMap<String, AgentData>();
+        usernamesToUboatsMap = new HashMap<String, Uboat>();
     }
 
     public boolean isUserRegistered(String userToken){
@@ -35,11 +40,16 @@ public class UserManager {
         usernamesToUserMap.put(username,newUser);
         authTokenToUserMap.put(newUser.getToken(),newUser);
         newUser.setInARoom(false);
+        if(UserType.getByName(userType).equals(UserType.UBOAT)){
+            Uboat uboat = new Uboat();
+            uboat.setName(username);
+        }
         if(UserType.getByName(userType).equals(UserType.ALLY)){
             AllyTeamData allyTeamData = new AllyTeamData();
             allyTeamData.setTeamName(username);
             allyTeamData.setNumOfAgents(0);
             allyTeamData.setAgentsList(new ArrayList<>());
+            allyTeamData.setDecryptionManager(new AllyClientDMImpl());
             usernamesToAlliesMap.put(username, allyTeamData);
         }
     }
@@ -70,7 +80,9 @@ public class UserManager {
     public AgentData getAgentByName(String username) {
         return usernamesToAgentsMap.get(username);
     }
-    //for agent user
+    public Uboat getUboatByName(String username) {
+        return usernamesToUboatsMap.get(username);
+    }
     public void addUser(String username, String userType, String threadNum, String taskSize, String allyName) {
         User newUser = new User();
         newUser.setUsername(username);

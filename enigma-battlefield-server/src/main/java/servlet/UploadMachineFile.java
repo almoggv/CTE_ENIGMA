@@ -1,10 +1,7 @@
 package servlet;
 
 import com.google.gson.Gson;
-import dto.BattlefieldInfo;
-import dto.ContestRoom;
-import dto.MachineInventoryPayload;
-import dto.User;
+import dto.*;
 import enums.DecryptionDifficultyLevel;
 import enums.GameStatus;
 import jakarta.servlet.ServletException;
@@ -102,6 +99,8 @@ public class UploadMachineFile extends HttpServlet {
                     req.getSession(true).setAttribute(PropertiesService.getRoomNameAttributeName(), battlefieldInfo.getBattlefieldName());
                     user.setInARoom(true);
                     user.setContestRoom(contestRoom);
+                    Uboat uboat = userManager.getUboatByName(creatorName);
+                    uboat.setMachineHandler(machineHandler);
                     req.getSession(true).setAttribute(PropertiesService.getMachineHandlerAttributeName(), machineHandler);
                     resp.setStatus(HttpServletResponse.SC_OK);
                     inventoryPayload.setInventory(machineHandler.getInventoryInfo().get());

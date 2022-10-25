@@ -72,6 +72,14 @@ public class ContestPageController implements Initializable {
                 createTeamDataComponents(newValue);
             }
         });
+
+        DataService.getIsContestStartedProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue == true){
+                Platform.runLater(()->{
+                    showMessage("Contest starting!");
+                });
+            }
+        });
     }
 
     public void setParentController(AppController appController) {
