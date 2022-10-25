@@ -4,6 +4,7 @@ package service;
 import com.google.gson.Gson;
 import controller.LoginController;
 import dto.*;
+import enums.GameStatus;
 import javafx.application.Platform;
 import javafx.beans.property.*;
 import lombok.Getter;
@@ -40,10 +41,12 @@ public class DataService {
     @Getter private static final ObjectProperty<MachineState> originalMachineStateProperty = new SimpleObjectProperty<>();
     @Getter private static final ObjectProperty<MachineState> currentMachineStateProperty = new SimpleObjectProperty<>();
     @Getter private static final ObjectProperty<List<AllyTeamData>> currentTeamsProperty = new SimpleObjectProperty<>();
+    @Getter private static final BooleanProperty isContestStartedProperty = new SimpleBooleanProperty(false);
 
     private static final ScheduledExecutorService executor;
     private static final String fetchInventoryUrl;
     private static final String machineConfigUrl;
+    private static final String contestStartedUrl;
 
     private static final String allyTeamsUrl;
     private static final Runnable currMachineStateFetcher = new Runnable() {
@@ -112,14 +115,56 @@ public class DataService {
                         log.debug("Current teams Fetched - responseCode = 200, ServerMessage=" + allyTeamsPayload.getMessage());
                        if(allyTeamsPayload.getAllyTeamsData() != null &&
                                allyTeamsPayload.getAllyTeamsData() != currentTeamsProperty.get()){
-                        currentTeamsProperty.setValue(null);
-                        currentTeamsProperty.setValue(allyTeamsPayload.getAllyTeamsData());
+
+                           if(currentTeamsProperty.get() == null ){
+                               startCheckIsContestStarted();
+                           }
+                           currentTeamsProperty.setValue(null);
+                           currentTeamsProperty.setValue(allyTeamsPayload.getAllyTeamsData());
                        }
                     }
                 }
             });
         }
     };
+
+    private static final Runnable contestStartedFetcher = new Runnable() {
+    @Override
+    public void run() {
+        HttpClientService.runAsync(contestStartedUrl, new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                log.error("contestStarted failed, ExceptionMessage="+e.getMessage());                }
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                String responseBody = response.body().string();
+                if (response.code() >= 500) {
+                    log.error("contestStarted Fetching failed - statusCode=" + response.code());
+                    return;
+                }
+                GameStatePayload payload;
+                try{
+                    payload = new Gson().fromJson(responseBody,GameStatePayload.class);
+                }
+                catch (Exception e){
+                    log.error("Failed to parse response on contestStartedUrl, Message=" + e.getMessage());
+                    return;
+                }
+                if (response.code() != 200) {
+                    log.error("Failed to fetch game status - statusCode=" + response.code() + ", ServerMessage=" + payload.getMessage());
+                }
+                else {
+                    log.info("game status - responseCode = 200, ServerMessage=" + payload.getMessage());
+                    if(payload.getGameState() != null
+                    && payload.getGameState().equals(GameStatus.READY)) {
+                        isContestStartedProperty.setValue(true);
+                        stopCheckIsContestStarted();
+                    }
+                }
+            }
+        });
+    }
+};
 
     static{
         int poolSize = 2;
@@ -136,6 +181,11 @@ public class DataService {
                 .toString();
         allyTeamsUrl = HttpUrl
                 .parse(PropertiesService.getApiAllyTeamsUrl())
+                .newBuilder()
+                .build()
+                .toString();
+        contestStartedUrl = HttpUrl
+                .parse(PropertiesService.getApiGameStateUrl())
                 .newBuilder()
                 .build()
                 .toString();
@@ -183,6 +233,17 @@ public class DataService {
     }
 
     public static void stopPullingMachineConfig(){
+        executor.shutdown();
+    }
+
+    public static void startCheckIsContestStarted(){
+        long timeInterval = 1500;
+        executor.scheduleAtFixedRate(contestStartedFetcher, 0, timeInterval, TimeUnit.MILLISECONDS);
+        //TODO: implement
+    }
+
+    public static void stopCheckIsContestStarted(){
+        //todo: will this shut everything down?
         executor.shutdown();
     }
 

@@ -47,6 +47,8 @@ public class PropertiesService {
     @Getter private static final String apiUboatReadyInfoUrl = FULL_SERVER_PATH + "/uboat-ready";
     @Getter private static final String apiResetMachineStateUrl = FULL_SERVER_PATH + "/reset-machine-state";
     @Getter private static final String apiAllyTeamsUrl = FULL_SERVER_PATH + "/ally-teams";
+    @Getter private static final String apiGameStateUrl = FULL_SERVER_PATH + "/game-state";
+
 
 
 }

@@ -200,7 +200,6 @@ public class AppController implements Initializable {
         String finalUrl = HttpUrl
                 .parse(PropertiesService.getApiUploadPageUrl())
                 .newBuilder()
-//                .addQueryParameter("username", userName)
                 .build()
                 .toString();
         Request request = new Request.Builder()

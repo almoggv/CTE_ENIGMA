@@ -10,10 +10,7 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ObservableValue;
 import lombok.Getter;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.HttpUrl;
-import okhttp3.Response;
+import okhttp3.*;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.jetbrains.annotations.NotNull;
@@ -45,13 +42,13 @@ public class DataService {
 
     @Getter private static final BooleanProperty isContestStartedProperty = new SimpleBooleanProperty(false);
 
+    @Getter private static final ObjectProperty<List<EncryptionCandidate>> lastCandidatesProperty = new SimpleObjectProperty<>();
+
     private static final ScheduledExecutorService executor;
     private static final String agentsDataUrl;
     private static final String contestDataUrl;
     private static final String allyTeamsUrl;
-
-    private static final String contestStartedUrl;
-
+    private static final String sendCandidatesUrl;
     private static final Runnable contestDataFetcher = new Runnable() {
         @Override
         public void run() {
@@ -169,43 +166,43 @@ public class DataService {
             });
         }
     };
-//    private static final Runnable contestStartedFetcher = new Runnable() {
-//        @Override
-//        public void run() {
-//            HttpClientService.runAsync(contestStartedUrl, new Callback() {
-//                @Override
-//                public void onFailure(@NotNull Call call, @NotNull IOException e) {
-//                    log.error("contestStarted failed, ExceptionMessage="+e.getMessage());                }
-//                @Override
-//                public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-//                    String responseBody = response.body().string();
-//                    if (response.code() >= 500) {
-//                        log.error("contestStarted Fetching failed - statusCode=" + response.code());
-//                        return;
-//                    }
-//                    GameStatePayload payload;
-//                    try{
-//                        payload = new Gson().fromJson(responseBody,GameStatePayload.class);
-//                    }
-//                    catch (Exception e){
-//                        log.error("Failed to parse response on contestStartedUrl, Message=" + e.getMessage());
-//                        return;
-//                    }
-//                    if (response.code() != 200) {
-//                        log.error("Failed to fetch game status - statusCode=" + response.code() + ", ServerMessage=" + payload.getMessage());
-//                    }
-//                    else {
-//                        log.info("game status - responseCode = 200, ServerMessage=" + payload.getMessage());
-//                        if(payload.getGameState() != null
-//                        && payload.getGameState().equals(GameStatus.READY)) {
-//                            isContestStartedProperty.setValue(true);
-//                            stopCheckIsContestStarted();
-//                        }
-//                    }
-//                }
-//            });
-//        }
-//    };
+    private static final Runnable currCandidatesSender = new Runnable() {
+        @Override
+        public void run() {
+            if (getLastCandidatesProperty().get() == null) {
+                return;
+            }
+            DecryptionResultPayload payload = new DecryptionResultPayload();
+            payload.setEncryptionCandidateList(getLastCandidatesProperty().get());
+
+            //todo: send payload
+            
+//            RequestBody body =
+//                    new MultipartBody.Builder()
+//                            .addPart("candidates", )
+                            //.addFormDataPart("key1", "value1") // you can add multiple, different parts as needed
+//                            .build();
+            HttpClientService.runAsync(sendCandidatesUrl, new Callback() {
+                @Override
+                public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                    log.error("sendCandidatesUrl failed, ExceptionMessage="+e.getMessage());                }
+                @Override
+                public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                    String responseBody = response.body().string();
+                    if (response.code() >= 500) {
+                        log.error("sendCandidatesUrl Fetching failed - statusCode=" + response.code());
+                        return;
+                    }
+                    if (response.code() != 200) {
+                        log.error("Failed to send candidates - statusCode=" + response.code() + ", ServerMessage=" + responseBody);
+                    }
+                    else {
+                        log.info("Candidates sent - responseCode = 200, ServerMessage=" +responseBody);
+                    }
+                }
+            });
+        }
+    };
 
     static{
         int poolSize = 2;
@@ -225,11 +222,12 @@ public class DataService {
                 .newBuilder()
                 .build()
                 .toString();
-        contestStartedUrl = HttpUrl
-                .parse(PropertiesService.getApiGameStateUrl())
+        sendCandidatesUrl = HttpUrl
+                .parse(PropertiesService.getApiSendCandidatesUrl())
                 .newBuilder()
                 .build()
                 .toString();
+
     }
     public static void startPullingTeamsData(){
         long timeInterval = 1500;
@@ -247,13 +245,5 @@ public class DataService {
         //TODO: implement
     }
 
-//    public static void startCheckIsContestStarted(){
-//        long timeInterval = 1500;
-//        executor.scheduleAtFixedRate(contestStartedFetcher, 0, timeInterval, TimeUnit.MILLISECONDS);
-//        //TODO: implement
-//    }
-    public static void stopCheckIsContestStarted(){
-        //todo: will this shut everything down?
-        executor.shutdown();
-    }
+
 }

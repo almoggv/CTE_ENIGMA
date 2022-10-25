@@ -77,6 +77,14 @@ public class ContestPageController implements Initializable {
                 createTeamDataComponents(newValue);
             }
         });
+
+        DataService.getIsContestStartedProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue == true){
+                Platform.runLater(()->{
+                    showMessage("Contest starting!");
+                });
+            }
+        });
     }
 
     private void createTeamDataComponents(List<AllyTeamData> allyTeamDataList) {
