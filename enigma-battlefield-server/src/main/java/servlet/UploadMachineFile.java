@@ -66,7 +66,7 @@ public class UploadMachineFile extends HttpServlet {
             resp.setStatus(SC_INTERNAL_SERVER_ERROR);
             return;
         }
-        User user = userManager.getUserByName(req.getHeader(PropertiesService.getTokenAttributeName()));
+        User user = userManager.getUserByName((String) req.getSession(false).getAttribute(PropertiesService.getUsernameAttributeName()));
         if(user == null){
             resp.setStatus(SC_BAD_REQUEST);
             outWriter.print("user does not exist");
