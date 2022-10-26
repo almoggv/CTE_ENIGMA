@@ -1,4 +1,4 @@
-package AgentClientDMTest;
+package RunnableClassTesting;
 
 import org.junit.Test;
 

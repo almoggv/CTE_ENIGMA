@@ -4,7 +4,7 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import lombok.Getter;
-import adapter.UIAdapter;
+import service.adapter.UIAdapter;
 import agent.DecryptionAgent;
 import dto.AgentDecryptionInfo;
 import generictype.MappingPair;

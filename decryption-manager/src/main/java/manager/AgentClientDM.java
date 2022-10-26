@@ -26,7 +26,7 @@ public interface AgentClientDM extends Runnable {
 
     int getMaxNumberOfTasks();
 
-    void assignWork(List<MachineState> assignedWork);
+    void assignWork(List<MachineState> assignedWork, String inputToDecrypt);
 
     void setInputToDecrypt(String input);
     String getInputToDecrypt();

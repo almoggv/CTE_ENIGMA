@@ -1,7 +1,7 @@
 package manager;
 
 import javafx.beans.property.BooleanProperty;
-import adapter.UIAdapter;
+import service.adapter.UIAdapter;
 import enums.DecryptionDifficultyLevel;
 
 public interface DecryptionManager {

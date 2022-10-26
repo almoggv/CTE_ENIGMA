@@ -90,14 +90,14 @@ public class AgentClientDMImpl implements AgentClientDM {
         isKilled = false;
         while(!isKilled){
             if(!workToDo.isEmpty()){
-                divideWork();
+                divideWorkAndRun();
             }
         }
     }
 
-    private void divideWork() {
+    private void divideWorkAndRun() {
         if(this.workToDo.isEmpty()){
-            log.debug("Did not divide work, no work to divide");
+            log.warn("Failed to divide work, no work to divide");
             return;
         }
         List<List<MachineState>> workBatches = ListUtils.partition(workToDo, internalAgentTaskSize);
@@ -128,15 +128,18 @@ public class AgentClientDMImpl implements AgentClientDM {
         workToDo.clear();
     }
 
-
-
     @Override
     public ObjectProperty<MappingPair<Integer, Integer>> getProgressProperty() {
         return finishedWorkProgressProperty;
     }
 
     @Override
-    public void assignWork(List<MachineState> assignedWork) throws IllegalArgumentException , NullPointerException , RuntimeException {
+    public void assignWork(List<MachineState> assignedWork,String inputToDecrypt) throws IllegalArgumentException , NullPointerException , RuntimeException {
+        if(inputToDecrypt == null && (this.inputToDecrypt == null || this.inputToDecrypt.isEmpty())){
+            log.error("AgentClientDMImpl - failed to assign work, missing input to decrypt");
+            throw new NullPointerException("Failed to assign work, given no new or previous input to decrypt");
+        }
+        this.inputToDecrypt = (inputToDecrypt == null) ? this.inputToDecrypt : inputToDecrypt;
         if(assignedWork == null){
             log.warn("Failed to assign work, given workload is null");
             throw new NullPointerException("Failed to assign work, given workload is null");

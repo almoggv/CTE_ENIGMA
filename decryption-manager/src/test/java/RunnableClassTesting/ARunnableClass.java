@@ -1,10 +1,8 @@
-package AgentClientDMTest;
+package RunnableClassTesting;
 
 import common.ListUtils;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 
 import java.util.ArrayList;
 import java.util.List;
