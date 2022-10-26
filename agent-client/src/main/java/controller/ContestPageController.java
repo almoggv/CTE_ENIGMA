@@ -76,7 +76,8 @@ public class ContestPageController implements Initializable {
                 Platform.runLater(()->{
                     showMessage("Contest starting!");
                 });
-            } else if (newValue == GameStatus.DONE) {
+            }
+            else if (newValue == GameStatus.DONE) {
                 Platform.runLater(()->{
                     showMessage("Contest done!");
                 });

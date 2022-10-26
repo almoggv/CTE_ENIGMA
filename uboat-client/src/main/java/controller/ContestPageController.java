@@ -2,6 +2,7 @@ package controller;
 
 import app.GuiApplication;
 import dto.AllyTeamData;
+import enums.GameStatus;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -77,10 +78,15 @@ public class ContestPageController implements Initializable {
             }
         });
 
-        DataService.getIsContestStartedProperty().addListener((observable, oldValue, newValue) -> {
-            if(newValue == true){
+        DataService.getGameStatusProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue == GameStatus.READY){
                 Platform.runLater(()->{
                     showMessage("Contest starting!");
+                });
+            }
+            else if (newValue == GameStatus.DONE) {
+                Platform.runLater(()->{
+                    showMessage("Contest done!");
                 });
             }
         });

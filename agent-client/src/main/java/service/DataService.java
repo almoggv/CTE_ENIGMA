@@ -42,7 +42,6 @@ public class DataService {
     @Getter private static final ObjectProperty<List<AllyTeamData>> currentTeamsProperty = new SimpleObjectProperty<>();
 
     @Getter private static final BooleanProperty isContestStartedProperty = new SimpleBooleanProperty(false);
-
     @Getter private static final ObjectProperty<GameStatus> gameStatusProperty = new SimpleObjectProperty<>();
     @Getter private static final ObjectProperty<List<EncryptionCandidate>> lastCandidatesProperty = new SimpleObjectProperty<>();
     private static final ScheduledExecutorService executor;

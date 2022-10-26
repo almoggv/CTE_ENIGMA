@@ -51,6 +51,13 @@ public class ContestPageController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        if(contestDataGridController != null){
+            contestDataGridController.setParentController(this);
+        }
+        if(allyCompetitionControlsController != null){
+            allyCompetitionControlsController.setParentController(this);
+        }
+
         DataService.getCurrentContestRoomsStateProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue != null ){
                 contestDataGridController.setParentController(this);
@@ -61,23 +68,21 @@ public class ContestPageController implements Initializable {
             }
         });
 
-//        DataService.
-        if(contestDataGridController != null){
-            contestDataGridController.setParentController(this);
-        }
-        if(allyCompetitionControlsController != null){
-            allyCompetitionControlsController.setParentController(this);
-        }
         DataService.getCurrentTeamsProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue != null){
                 createTeamDataComponents(newValue);
             }
         });
 
-        DataService.getIsContestStartedProperty().addListener((observable, oldValue, newValue) -> {
-            if(newValue == true){
+        DataService.getGameStatusProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue == GameStatus.READY){
                 Platform.runLater(()->{
                     showMessage("Contest starting!");
+                });
+            }
+            else if (newValue == GameStatus.DONE) {
+                Platform.runLater(()->{
+                    showMessage("Contest done!");
                 });
             }
         });
@@ -86,12 +91,6 @@ public class ContestPageController implements Initializable {
         DataService.getLastCandidatesProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue != null){
                 createCandidatesComponents(new ArrayList<>(newValue));
-            }
-        });
-
-        DataService.getGameStatusProperty().addListener((observable, oldValue, newValue) -> {
-            if(newValue == GameStatus.DONE){
-                showMessage("Contest finished!");
             }
         });
     }
