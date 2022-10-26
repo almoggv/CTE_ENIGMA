@@ -24,6 +24,7 @@ public class ContestRoom {
     private Integer numOfReady;
     private boolean isEveryoneReady;
     private List<AllyTeamData> alliesList;
+    private List<EncryptionCandidate> encryptionCandidateList;
     MachineHandler machineHandler;
 
 }

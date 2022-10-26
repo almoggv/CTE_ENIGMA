@@ -133,6 +133,7 @@ public class UploadMachineFile extends HttpServlet {
         contestRoom.setWordToDecrypt(null);
         contestRoom.setEveryoneReady(false);
         contestRoom.setNumOfReady(0);
+        contestRoom.setEncryptionCandidateList(new ArrayList<>());
         return contestRoom;
     }
 }

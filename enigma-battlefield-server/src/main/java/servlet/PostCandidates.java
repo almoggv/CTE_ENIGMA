@@ -64,14 +64,23 @@ public class PostCandidates extends HttpServlet {
 //
         //todo: return -this is in comment just to see if works:
 //        RoomManager roomManager = ServletUtils.getRoomManager(this.getServletContext());
-//        UserManager userManager = ServletUtils.getUserManager(this.getServletContext());
-//        String usernameFromSession = SessionUtills.getUsername(req);
-//        if (usernameFromSession == null) {
-//            resp.setStatus(SC_UNAUTHORIZED);
-//            respWriter.print("Please login first to");
-//            return;
-//        }
+        UserManager userManager = ServletUtils.getUserManager(this.getServletContext());
+        String usernameFromSession = SessionUtills.getUsername(req);
+        if (usernameFromSession == null) {
+            resp.setStatus(SC_UNAUTHORIZED);
+            respWriter.print("Please login first to");
+            return;
+        }
 
+        AgentData agent = userManager.getAgentByName(usernameFromSession);
+        AllyTeamData ally = userManager.getAllyByName(agent.getAllyName());
+
+        ContestRoom contestRoom = userManager.getUserByName(usernameFromSession).getContestRoom();
+        if (contestRoom == null) {
+            resp.setStatus(SC_UNAUTHORIZED);
+            respWriter.print("you are not connected to a room.");
+            return;
+        }
 
         BufferedReader bufferedReader = req.getReader();
         String rawMachineState = bufferedReader.lines().collect(Collectors.joining());
@@ -85,7 +94,11 @@ public class PostCandidates extends HttpServlet {
             return;
         }
         else{
-            System.out.println("candidates: " + candidateList);
+//            System.out.println("candidates: " + candidateList);
+            //adds candidates to agents ally team
+            ally.getEncryptionCandidateList().addAll(candidateList);
+            //adds candidates to contest room
+            contestRoom.getEncryptionCandidateList().addAll(candidateList);
             resp.getWriter().print("got candidates:" + candidateList);
             resp.setStatus(SC_OK);
         }

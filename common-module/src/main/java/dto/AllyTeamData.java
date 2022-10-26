@@ -15,6 +15,7 @@ public class AllyTeamData {
     private Integer taskSize = 0;
     private List<AgentData> agentsList;
     private Integer numOfAgents;
+    private List<EncryptionCandidate> encryptionCandidateList;
     //todo:
     //problem the same with machine handler - agent cant use
 //    private AllyClientDM decryptionManager;
