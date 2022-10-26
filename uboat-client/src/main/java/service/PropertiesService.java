@@ -28,7 +28,8 @@ public class PropertiesService {
     @Getter private static final String inputAttributeName = "input";
     @Getter private static final String uboatAttributeName = "uboat";
     @Getter private static final String userTypeAttributeName = "user_type";
-
+    @Getter private static final String originalWordAttributeName = "original_word";
+    @Getter private static final String encryptedWordAttributeName = "encrypted_word";
     //Api Url
     public final static String BASE_DOMAIN = "localhost";
     private final static String BASE_URL = "http://" + BASE_DOMAIN + ":8080";
@@ -48,8 +49,6 @@ public class PropertiesService {
     @Getter private static final String apiResetMachineStateUrl = FULL_SERVER_PATH + "/reset-machine-state";
     @Getter private static final String apiAllyTeamsUrl = FULL_SERVER_PATH + "/ally-teams";
     @Getter private static final String apiGameStateUrl = FULL_SERVER_PATH + "/game-state";
-
-
 
 }
 

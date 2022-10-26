@@ -11,4 +11,5 @@ import lombok.NoArgsConstructor;
 public class Uboat {
     String name;
     MachineHandler machineHandler;
+    String originalWord;
 }

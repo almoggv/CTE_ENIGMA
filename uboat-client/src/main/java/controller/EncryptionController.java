@@ -150,12 +150,14 @@ public class EncryptionController implements Initializable {
             parentController.showMessage("Please encrypt a message first.");
         }
         else{
-            String input = this.resultTextField.getText().toUpperCase();
+            String encrypted = this.resultTextField.getText().toUpperCase();
+            String original = this.encryptTextField.getText().toUpperCase();
             //noinspection ConstantConditions
             String finalUrl = HttpUrl
                     .parse(PropertiesService.getApiUboatReadyInfoUrl())
                     .newBuilder()
-                    .addQueryParameter(PropertiesService.getInputAttributeName(), input)
+                    .addQueryParameter(PropertiesService.getEncryptedWordAttributeName(), encrypted)
+                    .addQueryParameter(PropertiesService.getOriginalWordAttributeName(), original)
                     .build()
                     .toString();
 

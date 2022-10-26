@@ -23,6 +23,7 @@ public class ContestRoom {
     String wordToDecrypt;
     private Integer numOfReady;
     private boolean isEveryoneReady;
+    private String winnerName;
     private List<AllyTeamData> alliesList;
     private List<EncryptionCandidate> encryptionCandidateList;
     MachineHandler machineHandler;

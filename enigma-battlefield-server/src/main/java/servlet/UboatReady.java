@@ -63,7 +63,8 @@ public class UboatReady extends HttpServlet {
         }
         ContestRoom contestRoom = user.getContestRoom();
 
-        String wordToDecrypt = req.getParameter(PropertiesService.getEncryptionInputAttributeName());
+        String wordToDecrypt = req.getParameter(PropertiesService.getEncryptedWordAttributeName());
+        String originalWord = req.getParameter(PropertiesService.getOriginalWordAttributeName());
 
         if(contestRoom == null){
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
@@ -74,9 +75,15 @@ public class UboatReady extends HttpServlet {
                 respWriter.print("You are not assigned to a room.");
             }
         }
+        //todo: maybe change to save every encryption?
         if(wordToDecrypt == null){
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             resp.getWriter().print("You need to give a word for the contest.");
+            return;
+        }
+        if(originalWord == null){
+            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            resp.getWriter().print("Missing original word.");
             return;
         }
 
@@ -89,6 +96,7 @@ public class UboatReady extends HttpServlet {
             resp.setStatus(SC_OK);
             roomManager.setUserReady(user,contestRoom);
             contestRoom.setWordToDecrypt((String) wordToDecrypt);
+            userManager.getUboatByName(user.getUsername()).setOriginalWord(originalWord);
             //todo - see how to send
             //causes problem to ally - gson from payload - because there isnt an empty machine handler constructor ?
             //Interface can't be instantiated! Interface name: component.MachineHandler

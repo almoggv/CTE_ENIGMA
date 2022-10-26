@@ -1,9 +1,6 @@
 package manager;
 
-import dto.AgentData;
-import dto.AllyTeamData;
-import dto.ContestRoom;
-import dto.User;
+import dto.*;
 import enums.DecryptionDifficultyLevel;
 import enums.GameStatus;
 
@@ -56,5 +53,14 @@ public class RoomManager {
         }
         //todo: remove - only for test
         room.setGameStatus(GameStatus.READY);
+    }
+
+    public void checkWin(ContestRoom contestRoom, String originalWord) {
+        for(EncryptionCandidate candidate: contestRoom.getEncryptionCandidateList()){
+            if(candidate.getCandidate().equals(originalWord)){
+                contestRoom.setGameStatus(GameStatus.DONE);
+                contestRoom.setWinnerName(candidate.getAllyTeamName());
+            }
+        }
     }
 }

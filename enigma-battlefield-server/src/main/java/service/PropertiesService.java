@@ -13,6 +13,8 @@ public class PropertiesService {
     @Getter private static final String messageAttributeName = "message";
     @Getter private static final String inventoryAttributeName = "inventory";
     @Getter private static final String encryptionInputAttributeName = "input";
+    @Getter private static final String originalWordAttributeName = "original_word";
+    @Getter private static final String encryptedWordAttributeName = "encrypted_word";
     @Getter private static final String roomManagerAttributeName = "roomManager";
     @Getter private static final String roomNameAttributeName = "room_name";
     @Getter private static final String userTypeAttributeName = "user_type";

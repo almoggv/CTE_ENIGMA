@@ -63,7 +63,7 @@ public class PostCandidates extends HttpServlet {
         }
 //
         //todo: return -this is in comment just to see if works:
-//        RoomManager roomManager = ServletUtils.getRoomManager(this.getServletContext());
+        RoomManager roomManager = ServletUtils.getRoomManager(this.getServletContext());
         UserManager userManager = ServletUtils.getUserManager(this.getServletContext());
         String usernameFromSession = SessionUtills.getUsername(req);
         if (usernameFromSession == null) {
@@ -94,13 +94,15 @@ public class PostCandidates extends HttpServlet {
             return;
         }
         else{
-//            System.out.println("candidates: " + candidateList);
-            //adds candidates to agents ally team
-            ally.getEncryptionCandidateList().addAll(candidateList);
-            //adds candidates to contest room
-            contestRoom.getEncryptionCandidateList().addAll(candidateList);
-            resp.getWriter().print("got candidates:" + candidateList);
-            resp.setStatus(SC_OK);
+            synchronized (this.getServletContext()) {
+                //adds candidates to agents ally team
+                ally.getEncryptionCandidateList().addAll(candidateList);
+                //adds candidates to contest room
+                contestRoom.getEncryptionCandidateList().addAll(candidateList);
+                roomManager.checkWin(contestRoom, userManager.getUboatByName(contestRoom.getCreatorName()).getOriginalWord());
+                resp.getWriter().print("got candidates:" + candidateList);
+                resp.setStatus(SC_OK);
+            }
         }
     }
 }
