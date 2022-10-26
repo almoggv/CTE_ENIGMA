@@ -50,6 +50,9 @@ public class RoomManager {
         room.setEveryoneReady(isEveryoneReady);
         if (isEveryoneReady){
             room.setGameStatus(GameStatus.READY);
+//            for ( ally: ) {
+//        ally.dm.start
+//            }
         }
         //todo: remove - only for test
 //        room.setGameStatus(GameStatus.READY);

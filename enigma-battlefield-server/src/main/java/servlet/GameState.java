@@ -1,5 +1,6 @@
 package servlet;
 
+import com.google.gson.Gson;
 import dto.ContestRoom;
 import dto.GameStatePayload;
 import dto.User;
@@ -69,8 +70,13 @@ public class GameState extends HttpServlet {
         else{
             User loggedUser = userManager.getUserByName(usernameFromSession);
             ContestRoom contestRoom = loggedUser.getContestRoom();
+            GameStatePayload payload = new GameStatePayload();
+            payload.setGameState(contestRoom.getGameStatus());
             resp.setStatus(SC_OK);
-            respWriter.print(contestRoom.getGameStatus());
+           
+            Gson gson = new Gson();
+            resp.setHeader(PropertiesService.getHttpHeaderContentType(),PropertiesService.getJsonHttpContentType());
+            respWriter.print(gson.toJson(payload));
             return;
         }
     }

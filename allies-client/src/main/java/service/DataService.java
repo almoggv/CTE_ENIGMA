@@ -59,7 +59,6 @@ public class DataService {
     private static final String candidatesUrl;
     private static final String contestStatusUrl;
 
-
     private static final Runnable contestsDataFetcher = new Runnable() {
         @Override
         public void run() {
@@ -246,7 +245,6 @@ public class DataService {
                 }
             });
         }
-
     };
 
     private static final Runnable contestStartedFetcher = new Runnable() {

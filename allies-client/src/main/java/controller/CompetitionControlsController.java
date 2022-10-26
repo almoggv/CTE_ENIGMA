@@ -66,7 +66,9 @@ public class CompetitionControlsController implements Initializable {
 
         DataService.getAgentsListStateProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue != null ){
-                amountOfAgentsValueLabel.setText(String.valueOf(newValue.size()));
+                Platform.runLater(()->{
+                    amountOfAgentsValueLabel.setText(String.valueOf(newValue.size()));
+                });
             }
         });
     }

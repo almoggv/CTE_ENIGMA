@@ -41,6 +41,7 @@
           <element id="archive" name="decryption-manager-1.0-SNAPSHOT.jar">
             <element id="module-output" name="decryption-manager" />
           </element>
+          <element id="library" level="project" name="Maven: org.projectlombok:lombok:1.18.20" />
         </element>
       </element>
       <element id="directory" name="META-INF">

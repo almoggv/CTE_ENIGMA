@@ -3,6 +3,7 @@ package controller;
 import app.GuiApplication;
 import dto.AllyTeamData;
 import dto.EncryptionCandidate;
+import enums.GameStatus;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -52,9 +53,9 @@ public class ContestPageController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         DataService.getCurrentContestRoomsStateProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue != null ){
-                contestWordLabel.setText(newValue.getWordToDecrypt());
                 contestDataGridController.setParentController(this);
                 Platform.runLater(()->{
+                    contestWordLabel.setText(newValue.getWordToDecrypt());
                     contestDataGridController.setData(newValue);
                 });
             }
@@ -85,6 +86,12 @@ public class ContestPageController implements Initializable {
         DataService.getLastCandidatesProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue != null){
                 createCandidatesComponents(new ArrayList<>(newValue));
+            }
+        });
+
+        DataService.getGameStatusProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue == GameStatus.DONE){
+                showMessage("Contest finished!");
             }
         });
     }

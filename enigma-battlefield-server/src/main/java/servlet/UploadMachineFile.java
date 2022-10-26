@@ -127,7 +127,6 @@ public class UploadMachineFile extends HttpServlet {
         String levelName = battlefieldInfo.getDifficultyLevel();
 
         contestRoom.setDifficultyLevel(DecryptionDifficultyLevel.getByName(battlefieldInfo.getDifficultyLevel()));
-//        contestRoom.setDifficultyLevel(battlefieldInfo.getDifficultyLevel());
         contestRoom.setRequiredNumOfTeams(battlefieldInfo.getRequiredNumOfTeams());
         contestRoom.setAlliesList(new ArrayList<>());
         contestRoom.setWordToDecrypt(null);

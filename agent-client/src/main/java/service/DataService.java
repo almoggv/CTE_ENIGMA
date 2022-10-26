@@ -245,12 +245,10 @@ public class DataService {
                 .newBuilder()
                 .build()
                 .toString();
-//        sendCandidatesUrl = HttpUrl
-//                .parse(PropertiesService.getApiSendCandidatesUrl())
-//                .newBuilder()
-//                .build()
-//                .toString();
 
+        lastCandidatesProperty.addListener((observable, oldValue, newValue) -> {
+            sendCandidates();
+        });
     }
     public static void startPullingTeamsData(){
         long timeInterval = 1500;
