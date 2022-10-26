@@ -103,8 +103,21 @@ public class AppController implements Initializable {
         loginComponentController.getIsLoggedInProperty().bindBidirectional(headerComponentController.getIsLoggedInProperty());;
         log.info("AppController - app initialized");
 
+//        setupDataServiceConnections();
+            //todo: finish - moved here instead of ally
+
     }
 
+//    private void setupDataServiceConnections() {
+//        DataService.getIsContestStartedProperty().addListener((observable, oldValue, newValue) -> {
+//            if(newValue == true){
+//                HttpClientService.runAsync();
+//                deliberate-error
+//                //init machine and AgentDm
+//
+//            }
+//        });
+//    }
     public void initDecryptionAgent(MachineHandler machineHandler, AgentData agentData){
         if(machineHandler == null || agentData == null){
             log.error("Failed to initialize AgentClient's DecryptionManager machineHandler or agentData are null");

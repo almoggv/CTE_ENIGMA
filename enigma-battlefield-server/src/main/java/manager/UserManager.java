@@ -50,7 +50,7 @@ public class UserManager {
             allyTeamData.setTeamName(username);
             allyTeamData.setNumOfAgents(0);
             allyTeamData.setAgentsList(new ArrayList<>());
-            allyTeamData.setDecryptionManager(new AllyClientDMImpl());
+//            allyTeamData.setDecryptionManager(new AllyClientDMImpl());
             usernamesToAlliesMap.put(username, allyTeamData);
         }
     }

@@ -18,29 +18,30 @@ import utils.SessionUtills;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 import java.util.stream.Collectors;
 
-import static jakarta.servlet.http.HttpServletResponse.SC_INTERNAL_SERVER_ERROR;
-import static jakarta.servlet.http.HttpServletResponse.SC_UNAUTHORIZED;
+import static jakarta.servlet.http.HttpServletResponse.*;
 
 @WebServlet(name = "PostCandidatesServlet" ,urlPatterns = {"/post-candidates"})
 public class PostCandidates extends HttpServlet {
-    private static final Logger log = Logger.getLogger(HttpServlet.class);
+    private static final Logger log = Logger.getLogger(PostCandidates.class);
     static {
         try {
             Properties p = new Properties();
-            p.load(HttpServlet.class.getResourceAsStream(PropertiesService.getLog4jPropertiesResourcePath()));
+            p.load(PostCandidates.class.getResourceAsStream(PropertiesService.getLog4jPropertiesResourcePath()));
             PropertyConfigurator.configure(p);      //Don't forget here
-            log.debug("Logger Instantiated for : " + HttpServlet.class.getSimpleName());
+            log.debug("Logger Instantiated for : " + PostCandidates.class.getSimpleName());
         } catch (IOException e) {
-            System.out.println("Failed to configure logger of -" + HttpServlet.class.getSimpleName() ) ;
+            System.out.println("Failed to configure logger of -" + PostCandidates.class.getSimpleName() ) ;
         }
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//        resp.getWriter().print("in post candidates servlet");
         if(!req.getHeader(PropertiesService.getHttpHeaderContentType()).contains(PropertiesService.getJsonHttpContentType())){
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             resp.getWriter().print("Expecting json content type");
@@ -52,22 +53,26 @@ public class PostCandidates extends HttpServlet {
             return;
         }
         PrintWriter respWriter;
-        try {
+        try{
             respWriter = resp.getWriter();
+
         } catch (Exception e) {
             log.error("Failed to get response Writer, Exception Message=" + e.getMessage());
             resp.setStatus(SC_INTERNAL_SERVER_ERROR);
             return;
         }
+//
+        //todo: return -this is in comment just to see if works:
+//        RoomManager roomManager = ServletUtils.getRoomManager(this.getServletContext());
+//        UserManager userManager = ServletUtils.getUserManager(this.getServletContext());
+//        String usernameFromSession = SessionUtills.getUsername(req);
+//        if (usernameFromSession == null) {
+//            resp.setStatus(SC_UNAUTHORIZED);
+//            respWriter.print("Please login first to");
+//            return;
+//        }
 
-        RoomManager roomManager = ServletUtils.getRoomManager(this.getServletContext());
-        UserManager userManager = ServletUtils.getUserManager(this.getServletContext());
-        String usernameFromSession = SessionUtills.getUsername(req);
-        if (usernameFromSession == null) {
-            resp.setStatus(SC_UNAUTHORIZED);
-            respWriter.print("Please login first to");
-            return;
-        }
+
         BufferedReader bufferedReader = req.getReader();
         String rawMachineState = bufferedReader.lines().collect(Collectors.joining());
         Gson gson = new Gson();
@@ -81,6 +86,8 @@ public class PostCandidates extends HttpServlet {
         }
         else{
             System.out.println("candidates: " + candidateList);
+            resp.getWriter().print("got candidates:" + candidateList);
+            resp.setStatus(SC_OK);
         }
     }
 }

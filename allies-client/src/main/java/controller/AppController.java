@@ -128,22 +128,12 @@ public class AppController implements Initializable {
         });
         loginComponentController.getIsLoggedInProperty().bindBidirectional(headerComponentController.getIsLoggedInProperty());;
 
-        setupDataServiceConnections();
 
 
         log.info("AppController - app initialized");
     }
 
-    private void setupDataServiceConnections() {
-        DataService.getIsContestStartedProperty().addListener((observable, oldValue, newValue) -> {
-            if(newValue == true){
-                HttpClientService.runAsync();
-                deliberate-error
-                //init machine and AgentDm
 
-            }
-        });
-    }
 
     public void showMessage(String message) {
         if(headerComponentController!=null){

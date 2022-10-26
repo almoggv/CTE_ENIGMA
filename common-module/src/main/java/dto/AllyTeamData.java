@@ -17,5 +17,5 @@ public class AllyTeamData {
     private Integer numOfAgents;
     //todo:
     //problem the same with machine handler - agent cant use
-    private AllyClientDM decryptionManager;
+//    private AllyClientDM decryptionManager;
 }

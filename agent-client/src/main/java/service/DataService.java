@@ -201,7 +201,7 @@ public class DataService {
                     .build();
 
             log.info("New request is sent for: " + sendCandidatesUrl);
-            HttpClientService.runAsync(sendCandidatesUrl, new Callback() {
+            HttpClientService.runAsync(request, new Callback() {
                 @Override
                 public void onFailure(@NotNull Call call, @NotNull IOException e) {
                     log.error("sendCandidatesUrl failed, ExceptionMessage="+e.getMessage());                }
@@ -218,11 +218,11 @@ public class DataService {
                     else {
                         log.info("Candidates sent - responseCode = 200, ServerMessage=" +responseBody);
                         System.out.println("sentttttttttttttttttttttttttttttttttttttt");
+                        System.out.println(responseBody);
                     }
                 }
             });
         }
-//    };
 
     static{
         int poolSize = 2;
