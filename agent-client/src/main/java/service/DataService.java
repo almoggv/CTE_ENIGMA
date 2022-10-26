@@ -42,12 +42,13 @@ public class DataService {
     @Getter private static final ObjectProperty<List<AllyTeamData>> currentTeamsProperty = new SimpleObjectProperty<>();
 
     @Getter private static final BooleanProperty isContestStartedProperty = new SimpleBooleanProperty(false);
+
+    @Getter private static final ObjectProperty<GameStatus> gameStatusProperty = new SimpleObjectProperty<>();
     @Getter private static final ObjectProperty<List<EncryptionCandidate>> lastCandidatesProperty = new SimpleObjectProperty<>();
     private static final ScheduledExecutorService executor;
     private static final String agentsDataUrl;
     private static final String contestDataUrl;
     private static final String allyTeamsUrl;
-//    private static final String sendCandidatesUrl;
     private static final Runnable contestDataFetcher = new Runnable() {
         @Override
         public void run() {
@@ -78,7 +79,9 @@ public class DataService {
                         if(payload.getContestRoom() != null  ){
                             currentContestRoomsStateProperty.setValue(null);
                             currentContestRoomsStateProperty.setValue(payload.getContestRoom());
-                            if(payload.getContestRoom().getGameStatus()!= GameStatus.WAITING){
+                            if(payload.getContestRoom().getGameStatus()!= GameStatus.WAITING
+                                    && payload.getContestRoom().getGameStatus()!= gameStatusProperty.get() ){
+                                gameStatusProperty.setValue(payload.getContestRoom().getGameStatus());
                                 if(getIsContestStartedProperty().get() == false) {
                                     getIsContestStartedProperty().setValue(true);
                                 }

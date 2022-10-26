@@ -4,6 +4,7 @@ import app.GuiApplication;
 import dto.AgentData;
 import dto.ContestRoom;
 import dto.EncryptionCandidate;
+import enums.GameStatus;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -63,6 +64,18 @@ public class ContestPageController implements Initializable {
             if(newValue == true){
                 Platform.runLater(()->{
                     showMessage("Contest starting!");
+                });
+            }
+        });
+
+        DataService.getGameStatusProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue == GameStatus.READY){
+                Platform.runLater(()->{
+                    showMessage("Contest starting!");
+                });
+            } else if (newValue == GameStatus.DONE) {
+                Platform.runLater(()->{
+                    showMessage("Contest done!");
                 });
             }
         });

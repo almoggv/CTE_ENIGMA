@@ -26,15 +26,15 @@ import static jakarta.servlet.http.HttpServletResponse.*;
 
 @WebServlet(name = "GameStatusServlet" ,urlPatterns = {"/game-status"})
 public class GameState extends HttpServlet {
-    private static final Logger log = Logger.getLogger(HttpServlet.class);
+    private static final Logger log = Logger.getLogger(GameState.class);
     static {
         try {
             Properties p = new Properties();
-            p.load(HttpServlet.class.getResourceAsStream(PropertiesService.getLog4jPropertiesResourcePath()));
+            p.load(GameState.class.getResourceAsStream(PropertiesService.getLog4jPropertiesResourcePath()));
             PropertyConfigurator.configure(p);      //Don't forget here
-            log.debug("Logger Instantiated for : " + HttpServlet.class.getSimpleName());
+            log.debug("Logger Instantiated for : " + GameState.class.getSimpleName());
         } catch (IOException e) {
-            System.out.println("Failed to configure logger of -" + HttpServlet.class.getSimpleName() ) ;
+            System.out.println("Failed to configure logger of -" + GameState.class.getSimpleName() ) ;
         }
     }
 
