@@ -16,6 +16,7 @@ public class PropertiesService {
 //    @Getter private static final String dashboardPageTemplateFxmlPath = "/subcomponents/dashboardPageTemplate.fxml";
     @Getter private static final String contestDataFxmlPath = "/subcomponents/contestData.fxml";
     @Getter private static final String agentDataFxmlPath = "/subcomponents/agentData.fxml";
+    @Getter private static final String candidateDataFxmlPath = "/subcomponents/candidate.fxml";
     //App Initial size
     @Getter private static final int appWindowWidth = 950;
     @Getter private static final int appWindowHeight = 650;

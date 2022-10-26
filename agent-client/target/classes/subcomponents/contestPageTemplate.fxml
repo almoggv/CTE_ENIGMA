@@ -41,5 +41,10 @@
       <Label text="Candidates" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
       <Label text="Progress and status" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
       <Button mnemonicParsing="false" onAction="#onSendRedButton" text="Send results - for dev" GridPane.rowIndex="4" />
+      <ScrollPane fx:id="dmResultsScrollPane" fitToWidth="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
+         <content>
+            <FlowPane fx:id="dmResultsFlowPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="298.0" />
+         </content>
+      </ScrollPane>
    </children>
 </GridPane>

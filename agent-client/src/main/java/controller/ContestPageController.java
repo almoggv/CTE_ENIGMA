@@ -43,6 +43,7 @@ public class ContestPageController implements Initializable {
     public FlowPane agentsDataFlowPane;
     @FXML
     private FlowPane contestDataFlowPane;
+    public FlowPane dmResultsFlowPane;
 
     AppController parentController;
 
@@ -77,6 +78,12 @@ public class ContestPageController implements Initializable {
                 Platform.runLater(()->{
                     showMessage("Contest done!");
                 });
+            }
+        });
+
+        DataService.getLastCandidatesProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue != null){
+                createCandidatesComponents(newValue);
             }
         });
     }
@@ -123,8 +130,6 @@ public class ContestPageController implements Initializable {
                     AgentDataController agentDataController = fxmlLoader.getController();
                     agentDataController.setData(agentData);
 
-//                    agentsDataFlowPane.setParentController(this);
-
                     agentsDataFlowPane.getChildren().add(agentComponent);
                 }
             } catch (IOException e) {
@@ -141,5 +146,31 @@ public class ContestPageController implements Initializable {
 //        List<EncryptionCandidate> candidateList = new ArrayList<>();
 //        candidateList.add(encryptionCandidate);
         DataService.sendCandidates();
+
+
+    }
+
+    private void createCandidatesComponents(List<EncryptionCandidate> candidateList) {
+        for (EncryptionCandidate candidate : candidateList ) {
+            createCandidate(candidate);
+        }
+    }
+
+
+    private void createCandidate(EncryptionCandidate candidate) {
+        Platform.runLater(() -> {
+            try {
+                URL decodedCandidateURL = GuiApplication.class.getResource(PropertiesService.getCandidateDataFxmlPath());
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(decodedCandidateURL);
+                Parent decodedCandidate = fxmlLoader.load(decodedCandidateURL.openStream());
+                CandidateController decodedCandidateController = fxmlLoader.getController();
+                decodedCandidateController.setData(candidate);
+
+                dmResultsFlowPane.getChildren().add(decodedCandidate);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
 }
