@@ -12,6 +12,10 @@
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="enigma-battlefield-server" />
+          <element id="module-output" name="common-module" />
+          <element id="module-output" name="decryption-manager" />
+          <element id="module-output" name="encryption-machine-handler" />
+          <element id="module-output" name="enigma-machine" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: org.projectlombok:lombok:1.18.24" />

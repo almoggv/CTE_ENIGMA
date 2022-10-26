@@ -9,6 +9,7 @@ import javafx.scene.layout.GridPane;
 
 public class ContestDataController {
     public GridPane contestGrid;
+    public Label contestWordLabel;
     @FXML
     private Label battlefieldNameLabel;
     @FXML private Label uboatCreatorName;
@@ -31,6 +32,9 @@ public class ContestDataController {
         this.difficultyLevelLabel.setText(String.valueOf(value));
     }
 
+    public void setContestWordLabel(String value){
+        this.contestWordLabel.setText(value);
+    }
     public void setGameStatusLabel(GameStatus value) {
         this.gameStatusLabel.setText(String.valueOf(value));
     }
@@ -53,5 +57,6 @@ public class ContestDataController {
         setDifficultyLevelLabel(contestRoom.getDifficultyLevel().name());
         setUboatCreatorName(contestRoom.getCreatorName());
         setGameStatusLabel(contestRoom.getGameStatus());
+        setContestWordLabel(contestRoom.getWordToDecrypt());
     }
 }
