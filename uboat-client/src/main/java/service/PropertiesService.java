@@ -16,6 +16,9 @@ public class PropertiesService {
     @Getter private static final String loginFxmlPath = "/subcomponents/login.fxml";
     @Getter private static final String machinePageTemplateFxmlPath = "/subcomponents/machinePageTemplate.fxml";
     @Getter private static final String allyTeamComponentFxmlPath = "/subcomponents/allyTeamData.fxml";
+    @Getter private static final String candidateDataFxmlPath = "/subcomponents/candidate.fxml";
+
+
     //App Initial size
     @Getter private static final int appWindowWidth = 950;
     @Getter private static final int appWindowHeight = 650;
@@ -49,6 +52,8 @@ public class PropertiesService {
     @Getter private static final String apiResetMachineStateUrl = FULL_SERVER_PATH + "/reset-machine-state";
     @Getter private static final String apiAllyTeamsUrl = FULL_SERVER_PATH + "/ally-teams";
     @Getter private static final String apiGameStateUrl = FULL_SERVER_PATH + "/game-state";
+    @Getter private static final String apiUboatCandidatesUrl = FULL_SERVER_PATH + "/uboat-get-candidates";
+
 
 }
 

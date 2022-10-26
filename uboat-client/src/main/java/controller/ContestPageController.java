@@ -2,6 +2,7 @@ package controller;
 
 import app.GuiApplication;
 import dto.AllyTeamData;
+import dto.EncryptionCandidate;
 import enums.GameStatus;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -22,6 +23,7 @@ import service.PropertiesService;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 import java.util.ResourceBundle;
@@ -90,6 +92,15 @@ public class ContestPageController implements Initializable {
                 });
             }
         });
+
+        //todo - after status is ready - now for dev
+        DataService.startPullingCandidates();
+
+        DataService.getLastCandidatesProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue != null){
+                createCandidatesComponents(new ArrayList<>(newValue));
+            }
+        });
     }
 
     private void createTeamDataComponents(List<AllyTeamData> allyTeamDataList) {
@@ -124,5 +135,29 @@ public class ContestPageController implements Initializable {
 
     public GridPane getRootComponent() {
         return rootGridPane;
+    }
+
+    private void createCandidatesComponents(List<EncryptionCandidate> candidateList) {
+        for (EncryptionCandidate candidate : candidateList ) {
+            createCandidate(candidate);
+        }
+    }
+
+
+    private void createCandidate(EncryptionCandidate candidate) {
+        Platform.runLater(() -> {
+            try {
+                URL decodedCandidateURL = GuiApplication.class.getResource(PropertiesService.getCandidateDataFxmlPath());
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(decodedCandidateURL);
+                Parent decodedCandidate = fxmlLoader.load(decodedCandidateURL.openStream());
+                CandidateController decodedCandidateController = fxmlLoader.getController();
+                decodedCandidateController.setData(candidate);
+
+                dmResultsFlowPane.getChildren().add(decodedCandidate);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
 }

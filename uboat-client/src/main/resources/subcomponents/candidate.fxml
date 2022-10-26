@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane fx:id="candidatePane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CandidateController">
+   <columnConstraints>
+      <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="NEVER" minWidth="5.0" />
+      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="250.0" minWidth="250.0" />
+      <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="NEVER" minWidth="5.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints fillHeight="false" minHeight="10.0" vgrow="NEVER" />
+      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+      <RowConstraints fillHeight="false" minHeight="10.0" vgrow="NEVER" />
+      <RowConstraints minHeight="5.0" vgrow="SOMETIMES" />
+      <RowConstraints vgrow="SOMETIMES" />
+      <RowConstraints fillHeight="false" minHeight="10.0" vgrow="NEVER" />
+      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+      <RowConstraints fillHeight="false" minHeight="10.0" vgrow="NEVER" />
+   </rowConstraints>
+   <children>
+      <Label fx:id="candidateLabel" text="Candidate" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <Label fx:id="foundByConfigLabel" text="machine State" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+      <Label fx:id="allyTeamLabel" text="Ally team" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+   </children>
+</GridPane>

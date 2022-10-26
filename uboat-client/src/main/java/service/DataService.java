@@ -43,11 +43,13 @@ public class DataService {
     @Getter private static final BooleanProperty isContestStartedProperty = new SimpleBooleanProperty(false);
 
     @Getter private static final ObjectProperty<GameStatus> gameStatusProperty = new SimpleObjectProperty<>();
+    @Getter private static final ObjectProperty<List<EncryptionCandidate>> lastCandidatesProperty = new SimpleObjectProperty<>();
+
     private static final ScheduledExecutorService executor;
     private static final String fetchInventoryUrl;
     private static final String machineConfigUrl;
     private static final String contestStatusUrl;
-
+    private static final String candidatesUrl;
     private static final String allyTeamsUrl;
     private static final Runnable currMachineStateFetcher = new Runnable() {
         @Override
@@ -172,6 +174,44 @@ public class DataService {
     }
 };
 
+    private static final Runnable candidatesFetcher = new Runnable() {
+        @Override
+        public void run() {
+            HttpClientService.runAsync(candidatesUrl, new Callback() {
+                @Override
+                public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                    log.info("candidatesFetcher failed, ExceptionMessage="+e.getMessage());                }
+                @Override
+                public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                    String responseBody = response.body().string();
+                    if (response.code() >= 500) {
+                        log.info("candidatesFetcher Fetching failed - statusCode=" + response.code());
+                        return;
+                    }
+                    DecryptionResultPayload payload;
+                    try{
+                        payload = new Gson().fromJson(responseBody,DecryptionResultPayload.class);
+                    }
+                    catch (Exception e){
+                        log.info("Failed to parse response on candidatesFetcher, Message=" + e.getMessage());
+                        return;
+                    }
+                    if (response.code() != 200) {
+                        log.info("Failed to fetch candidates - statusCode=" + response.code() + ", ServerMessage=" + payload.getMessage());
+                    }
+                    else {
+                        log.info("Candidates Successfully Fetched - responseCode = 200, ServerMessage=" + payload.getEncryptionCandidateList());
+                        if(payload.getEncryptionCandidateList() != null
+                                && !payload.getEncryptionCandidateList().isEmpty()){
+                            getLastCandidatesProperty().setValue(payload.getEncryptionCandidateList());
+                        }
+                    }
+                }
+            });
+        }
+    };
+
+
     static{
         int poolSize = 2;
         executor = Executors.newScheduledThreadPool(poolSize);
@@ -192,6 +232,11 @@ public class DataService {
                 .toString();
         contestStatusUrl = HttpUrl
                 .parse(PropertiesService.getApiGameStateUrl())
+                .newBuilder()
+                .build()
+                .toString();
+        candidatesUrl = HttpUrl
+                .parse(PropertiesService.getApiUboatCandidatesUrl())
                 .newBuilder()
                 .build()
                 .toString();
@@ -251,6 +296,11 @@ public class DataService {
     public static void stopCheckIsContestStarted(){
         //todo: will this shut everything down?
         executor.shutdown();
+    }
+    public static void startPullingCandidates(){
+        long timeInterval = 1500;
+        executor.scheduleAtFixedRate(candidatesFetcher, 0, timeInterval, TimeUnit.MILLISECONDS);
+        //TODO: implement
     }
 
     public static void fetchInventoryInfo(InventoryInfo inventory) {
