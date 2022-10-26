@@ -2,6 +2,7 @@ package controller;
 
 import app.GuiApplication;
 import dto.AllyTeamData;
+import dto.EncryptionCandidate;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -43,9 +44,7 @@ public class ContestPageController implements Initializable {
 
     public FlowPane teamsFlowPane;
     public CompetitionControlsController allyCompetitionControlsController;
-
-
-
+    public FlowPane dmResultsFlowPane;
     AppController parentController;
 
     @Override
@@ -107,6 +106,30 @@ public class ContestPageController implements Initializable {
 //                    controller.setParentController(this);
                     teamsFlowPane.getChildren().add(team);
                 }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
+    private void createCandidatesComponents(List<EncryptionCandidate> candidateList) {
+        for (EncryptionCandidate candidate : candidateList ) {
+            createCandidate(candidate);
+        }
+    }
+
+
+    private void createCandidate(EncryptionCandidate candidate) {
+        Platform.runLater(() -> {
+            try {
+                URL decodedCandidateURL = GuiApplication.class.getResource(PropertiesService.getCandidateDataFxmlPath());
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(decodedCandidateURL);
+                Parent decodedCandidate = fxmlLoader.load(decodedCandidateURL.openStream());
+                CandidateController decodedCandidateController = fxmlLoader.getController();
+                decodedCandidateController.setData(candidate);
+
+                dmResultsFlowPane.getChildren().add(decodedCandidate);
             } catch (IOException e) {
                 e.printStackTrace();
             }

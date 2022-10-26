@@ -17,6 +17,9 @@ public class PropertiesService {
     @Getter private static final String dashboardPageTemplateFxmlPath = "/subcomponents/dashboardPageTemplate.fxml";
     @Getter private static final String contestDataFxmlPath = "/subcomponents/contestData.fxml";
     @Getter private static final String agentDataFxmlPath = "/subcomponents/agentData.fxml";
+    @Getter private static final String candidateDataFxmlPath = "/subcomponents/candidate.fxml";
+    @Getter private static final String allyTeamComponentFxmlPath = "/subcomponents/allyTeamData.fxml";
+
     //App Initial size
     @Getter private static final int appWindowWidth = 950;
     @Getter private static final int appWindowHeight = 650;
@@ -53,6 +56,6 @@ public class PropertiesService {
     @Getter private static final String apiAllyReadyUrl = FULL_SERVER_PATH + "/ally-ready";
     @Getter private static final String apiAgentsOfAllyUrl = FULL_SERVER_PATH + "/agents-by-ally";
     @Getter private static final String apiAllyTeamsUrl = FULL_SERVER_PATH + "/ally-teams";
-    @Getter private static final String allyTeamComponentFxmlPath = "/subcomponents/allyTeamData.fxml";
+    @Getter private static final String apiAllyCandidatesUrl = FULL_SERVER_PATH + "/ally-get-candidates";
 }
 
