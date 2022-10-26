@@ -1,7 +1,6 @@
 package servlet;
 
 import com.google.gson.Gson;
-import component.MachineHandler;
 import dto.*;
 import enums.UserType;
 import jakarta.servlet.ServletException;
@@ -11,15 +10,15 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import manager.RoomManager;
 import manager.UserManager;
+import model.ContestRoom;
+import model.User;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import service.PropertiesService;
 import utils.ServletUtils;
 
-import javax.jws.soap.SOAPBinding;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Optional;
 import java.util.Properties;
 
 import static jakarta.servlet.http.HttpServletResponse.*;
@@ -74,7 +73,7 @@ public class RoomInfo extends HttpServlet {
         }
         else{
             resp.setStatus(SC_OK);
-            payload.setContestRoom(contestRoom);
+            payload.setContestRoom(roomManager.makeRoomDataFromRoom(contestRoom));
         }
         Gson gson = new Gson();
         resp.setHeader(PropertiesService.getHttpHeaderContentType(),PropertiesService.getJsonHttpContentType());

@@ -9,6 +9,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import manager.RoomManager;
 import manager.UserManager;
+import model.Ally;
+import model.ContestRoom;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import service.PropertiesService;
@@ -73,7 +75,7 @@ public class PostCandidates extends HttpServlet {
         }
 
         AgentData agent = userManager.getAgentByName(usernameFromSession);
-        AllyTeamData ally = userManager.getAllyByName(agent.getAllyName());
+        Ally ally = userManager.getAllyByName(agent.getAllyName());
 
         ContestRoom contestRoom = userManager.getUserByName(usernameFromSession).getContestRoom();
         if (contestRoom == null) {

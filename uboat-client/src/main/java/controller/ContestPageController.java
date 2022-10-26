@@ -2,7 +2,6 @@ package controller;
 
 import app.GuiApplication;
 import dto.AllyTeamData;
-import dto.ContestRoom;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

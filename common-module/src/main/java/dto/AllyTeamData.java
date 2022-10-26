@@ -8,15 +8,12 @@ import manager.AllyClientDM;
 import java.util.List;
 
 @Data
-//@AllArgsConstructor
-//@NoArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 public class AllyTeamData {
     private String teamName;
     private Integer taskSize = 0;
-    private List<AgentData> agentsList;
+//    private List<AgentData> agentsList;
     private Integer numOfAgents;
-    private List<EncryptionCandidate> encryptionCandidateList;
-    //todo:
-    //problem the same with machine handler - agent cant use
-//    private AllyClientDM decryptionManager;
+//    private List<EncryptionCandidate> encryptionCandidateList;
 }

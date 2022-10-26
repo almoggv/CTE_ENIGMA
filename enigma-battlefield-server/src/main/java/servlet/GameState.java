@@ -1,11 +1,9 @@
 package servlet;
 
 import com.google.gson.Gson;
-import dto.ContestRoom;
 import dto.GameStatePayload;
-import dto.User;
-import enums.GameStatus;
-import enums.UserType;
+import model.ContestRoom;
+import model.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -73,7 +71,7 @@ public class GameState extends HttpServlet {
             GameStatePayload payload = new GameStatePayload();
             payload.setGameState(contestRoom.getGameStatus());
             resp.setStatus(SC_OK);
-           
+
             Gson gson = new Gson();
             resp.setHeader(PropertiesService.getHttpHeaderContentType(),PropertiesService.getJsonHttpContentType());
             respWriter.print(gson.toJson(payload));

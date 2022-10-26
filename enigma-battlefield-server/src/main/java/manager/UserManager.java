@@ -2,25 +2,26 @@ package manager;
 
 import dto.AgentData;
 import dto.AllyTeamData;
-import dto.Uboat;
-import dto.User;
-import enums.UserType;
+import dto.ContestRoomData;
 import manager.impl.AllyClientDMImpl;
+import model.Ally;
+import model.ContestRoom;
+import model.Uboat;
+import model.User;
+import enums.UserType;
 
 import java.util.*;
 
 public class UserManager {
     private final Map<String, User> usernamesToUserMap;
     private final Map<String, User> authTokenToUserMap;
-    private final Map<String, AllyTeamData> usernamesToAlliesMap;
+    private final Map<String, Ally> usernamesToAlliesMap;
     private final Map<String, AgentData> usernamesToAgentsMap;
-
     private final Map<String, Uboat> usernamesToUboatsMap;
-
     public UserManager() {
         usernamesToUserMap = new HashMap<String, User>();
         authTokenToUserMap = new HashMap<String, User>();
-        usernamesToAlliesMap = new HashMap<String, AllyTeamData>();
+        usernamesToAlliesMap = new HashMap<String, Ally>();
         usernamesToAgentsMap = new HashMap<String, AgentData>();
         usernamesToUboatsMap = new HashMap<String, Uboat>();
     }
@@ -46,13 +47,13 @@ public class UserManager {
             usernamesToUboatsMap.put(username,uboat);
         }
         if(UserType.getByName(userType).equals(UserType.ALLY)){
-            AllyTeamData allyTeamData = new AllyTeamData();
-            allyTeamData.setTeamName(username);
-            allyTeamData.setNumOfAgents(0);
-            allyTeamData.setAgentsList(new ArrayList<>());
-            allyTeamData.setEncryptionCandidateList(new ArrayList<>());
-//            allyTeamData.setDecryptionManager(new AllyClientDMImpl());
-            usernamesToAlliesMap.put(username, allyTeamData);
+            Ally ally = new Ally();
+            ally.setTeamName(username);
+            ally.setNumOfAgents(0);
+            ally.setAgentsList(new ArrayList<>());
+            ally.setEncryptionCandidateList(new ArrayList<>());
+            ally.setDecryptionManager(new AllyClientDMImpl());
+            usernamesToAlliesMap.put(username, ally);
         }
     }
 
@@ -76,8 +77,13 @@ public class UserManager {
     public User getUserByName(String username) {
         return usernamesToUserMap.get(username);
     }
-    public AllyTeamData getAllyByName(String username) {
+    public Ally getAllyByName(String username) {
         return usernamesToAlliesMap.get(username);
+    }
+    public AllyTeamData getAllyTeamDTOByName(String username) {
+        Ally ally = getAllyByName(username);
+        AllyTeamData allyTeamData = new AllyTeamData(ally.getTeamName(), ally.getTaskSize(), ally.getNumOfAgents());
+        return allyTeamData;
     }
     public AgentData getAgentByName(String username) {
         return usernamesToAgentsMap.get(username);
@@ -101,16 +107,32 @@ public class UserManager {
             agentData.setAllyName(allyName);
             newUser.setContestRoom(getUserByName(allyName).getContestRoom());
             //connect ally to agent
-            AllyTeamData allyTeamData = getAllyByName(allyName);
-            allyTeamData.getAgentsList().add(agentData);
-            allyTeamData.setNumOfAgents(allyTeamData.getNumOfAgents() + 1);
+            Ally ally = getAllyByName(allyName);
+            ally.getAgentsList().add(agentData);
+            ally.setNumOfAgents(ally.getNumOfAgents() + 1);
             usernamesToAgentsMap.put(username, agentData);
         }
     }
     public List<AllyTeamData> getAllALies() {
         List<AllyTeamData> allyTeamDataList = new ArrayList<>();
-        allyTeamDataList.addAll(usernamesToAlliesMap.values());
+        for (Ally ally : usernamesToAlliesMap.values()) {
+            allyTeamDataList.add(new AllyTeamData(ally.getTeamName(), ally.getTaskSize(), ally.getNumOfAgents()));
+        }
         return allyTeamDataList;
+    }
+
+    public AllyTeamData makeAllyDataFromAlly(Ally ally){
+        return new AllyTeamData(ally.getTeamName(), ally.getTaskSize(), ally.getNumOfAgents());
+    }
+
+    public List<AllyTeamData> allyTeamDataFromAllis(List<Ally> allysList){
+        List<AllyTeamData> allyTeamDataList = new ArrayList<>();
+
+        for (Ally ally : allysList) {
+            allyTeamDataList.add(makeAllyDataFromAlly(ally));
+        }
+        return allyTeamDataList;
+
     }
 
 }

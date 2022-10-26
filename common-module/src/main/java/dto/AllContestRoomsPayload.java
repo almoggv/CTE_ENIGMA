@@ -11,5 +11,5 @@ import java.util.Set;
 @AllArgsConstructor
 public class AllContestRoomsPayload {
     private String message;
-    private Set<ContestRoom> contestRooms;
+    private Set<ContestRoomData> contestRooms;
 }

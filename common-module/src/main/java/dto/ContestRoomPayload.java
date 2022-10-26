@@ -9,5 +9,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ContestRoomPayload {
     private String message;
-    private ContestRoom contestRoom;
+    private ContestRoomData contestRoom;
 }

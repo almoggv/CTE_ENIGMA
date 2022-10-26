@@ -2,7 +2,6 @@ package servlet;
 
 import com.google.gson.Gson;
 import dto.ContestAllyTeamsPayload;
-import dto.ContestRoom;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;

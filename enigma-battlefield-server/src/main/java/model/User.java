@@ -1,4 +1,4 @@
-package dto;
+package model;
 
 import enums.UserType;
 import lombok.AllArgsConstructor;

@@ -1,7 +1,6 @@
 package servlet;
 
 import com.google.gson.Gson;
-import dto.ContestRoom;
 import dto.ContestRoomPayload;
 import dto.ContestWordPayload;
 import jakarta.servlet.ServletException;
@@ -10,6 +9,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import manager.RoomManager;
+import model.ContestRoom;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import service.PropertiesService;

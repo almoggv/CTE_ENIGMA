@@ -37,7 +37,7 @@ public class DataService {
             System.out.println("Failed to configure logger of -" + DataService.class.getSimpleName());
         }
     }
-    @Getter private static final ObjectProperty<ContestRoom> currentContestRoomsStateProperty = new SimpleObjectProperty<>();
+    @Getter private static final ObjectProperty<ContestRoomData> currentContestRoomsStateProperty = new SimpleObjectProperty<>();
     @Getter private static final ObjectProperty<List<AgentData>> agentsListStateProperty = new SimpleObjectProperty<>();
     @Getter private static final ObjectProperty<List<AllyTeamData>> currentTeamsProperty = new SimpleObjectProperty<>();
 

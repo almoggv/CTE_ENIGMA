@@ -1,8 +1,7 @@
 package servlet;
 
-import component.MachineHandler;
 import dto.MachineClonePayload;
-import dto.User;
+import model.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;

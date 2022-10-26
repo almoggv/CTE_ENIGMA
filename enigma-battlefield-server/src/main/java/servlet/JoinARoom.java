@@ -1,8 +1,7 @@
 package servlet;
 
 import com.google.gson.Gson;
-import dto.AllyTeamData;
-import dto.ContestRoom;
+import dto.ContestRoomData;
 import dto.ContestRoomPayload;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -11,11 +10,13 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import manager.RoomManager;
 import manager.UserManager;
+import model.Ally;
+import model.ContestRoom;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import service.PropertiesService;
 import utils.ServletUtils;
-import dto.User;
+import model.User;
 import utils.SessionUtills;
 
 import java.io.IOException;
@@ -87,15 +88,15 @@ public class JoinARoom extends HttpServlet {
             payload.setMessage("You are already in a contest.");
         }
         else{
-            AllyTeamData ally  = userManager.getAllyByName(usernameFromSession);
+            Ally ally  = userManager.getAllyByName(usernameFromSession);
             User allyUser = userManager.getUserByName(usernameFromSession);
-            roomManager.addUserToRoom(ally,userManager, contestRoom);
+            ContestRoomData roomData = roomManager.addUserToRoom(ally,userManager, contestRoom);
             user.setInARoom(true);
             resp.setStatus(SC_OK);
 
             //todo - start the DM by the rooms machine handler or inventory;
 
-            payload.setContestRoom(contestRoom);
+            payload.setContestRoom(roomData);
             payload.setMessage("Joined room "+ contestRoom.getName() + " Successfully.");
 
             req.getSession(false).setAttribute(PropertiesService.getRoomNameAttributeName(), roomName);

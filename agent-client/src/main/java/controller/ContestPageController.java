@@ -2,7 +2,7 @@ package controller;
 
 import app.GuiApplication;
 import dto.AgentData;
-import dto.ContestRoom;
+import dto.ContestRoomData;
 import dto.EncryptionCandidate;
 import enums.GameStatus;
 import javafx.application.Platform;
@@ -100,7 +100,7 @@ public class ContestPageController implements Initializable {
         parentController.showMessage(message);
     }
 
-    private void createContestsDataComponents(ContestRoom contestRoom) {
+    private void createContestsDataComponents(ContestRoomData contestRoom) {
         Platform.runLater(() -> {
             try {
                 contestDataFlowPane.getChildren().clear();

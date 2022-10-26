@@ -1,8 +1,10 @@
 package manager;
 
 import dto.*;
-import enums.DecryptionDifficultyLevel;
 import enums.GameStatus;
+import model.Ally;
+import model.ContestRoom;
+import model.User;
 
 import java.util.*;
 
@@ -24,7 +26,7 @@ public class RoomManager {
     public boolean isRoomExists(String roomName) {
         return roomsDataMap.containsKey(roomName);
     }
-    public void addUserToRoom(AllyTeamData ally ,UserManager userManager, ContestRoom room) {
+    public ContestRoomData addUserToRoom(Ally ally , UserManager userManager, ContestRoom room) {
         if(room.getCurrNumOfTeams() < room.getRequiredNumOfTeams()){
             //add ally to room
             room.getAlliesList().add(ally);
@@ -38,6 +40,7 @@ public class RoomManager {
                 userManager.getUserByName(agent.getName()).setContestRoom(room);
             }
         }
+        return makeRoomDataFromRoom(room);
     }
 
     public void setUserReady(User user, ContestRoom room){
@@ -50,9 +53,10 @@ public class RoomManager {
         room.setEveryoneReady(isEveryoneReady);
         if (isEveryoneReady){
             room.setGameStatus(GameStatus.READY);
-//            for ( ally: ) {
-//        ally.dm.start
-//            }
+            for (Ally ally: room.getAlliesList() ) {
+                //todo: start DM when exsist
+                ally.getDecryptionManager();
+            }
         }
         //todo: remove - only for test
 //        room.setGameStatus(GameStatus.READY);
@@ -66,5 +70,17 @@ public class RoomManager {
                 contestRoom.setWinnerName(candidate.getAllyTeamName());
             }
         }
+    }
+
+    public Set<ContestRoomData> getRoomsData() {
+        Set<ContestRoomData> roomsSet = new HashSet();
+        for (ContestRoom room : roomsDataMap.values()) {
+            roomsSet.add(new ContestRoomData(room.getName(), room.getCreatorName(), room.getGameStatus(), room.getDifficultyLevel(), room.getCurrNumOfTeams(), room.getRequiredNumOfTeams(), room.getWordToDecrypt()));
+        }
+        return Collections.unmodifiableSet(roomsSet);
+    }
+
+    public ContestRoomData makeRoomDataFromRoom(ContestRoom room){
+        return new ContestRoomData(room.getName(), room.getCreatorName(), room.getGameStatus(), room.getDifficultyLevel(), room.getCurrNumOfTeams(), room.getRequiredNumOfTeams(),room.getWordToDecrypt());
     }
 }

@@ -2,7 +2,7 @@ package servlet;
 
 import com.google.gson.Gson;
 import dto.AllContestRoomsPayload;
-import dto.ContestRoom;
+import dto.ContestRoomData;
 import dto.ContestRoomPayload;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import manager.RoomManager;
+import model.ContestRoom;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import service.PropertiesService;
@@ -51,7 +52,7 @@ public class AllRoomsInfo extends HttpServlet {
 
         RoomManager roomManager = ServletUtils.getRoomManager(this.getServletContext());
 
-        Set<ContestRoom> roomsInfo = roomManager.getRooms();
+        Set<ContestRoomData> roomsInfo = roomManager.getRoomsData();
 
         AllContestRoomsPayload payload = new AllContestRoomsPayload();
         if(roomsInfo == null){

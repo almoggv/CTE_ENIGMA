@@ -1,8 +1,7 @@
 package servlet;
 
-import dto.AllyTeamData;
-import dto.ContestRoom;
-import dto.User;
+import model.ContestRoom;
+import model.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -10,6 +9,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import manager.RoomManager;
 import manager.UserManager;
+import model.Ally;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import service.PropertiesService;
@@ -80,7 +80,7 @@ public class AllyReady extends HttpServlet {
         else{
             resp.setStatus(SC_OK);
             //todo: after connecting ally to user
-            AllyTeamData ally = userManager.getAllyByName(user.getUsername());
+            Ally ally = userManager.getAllyByName(user.getUsername());
             ally.setTaskSize(taskSize);
             roomManager.setUserReady(user,contestRoom);
             respWriter.print("Ready with task size: " + taskSize);

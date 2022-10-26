@@ -2,7 +2,6 @@ package servlet;
 
 import com.google.gson.Gson;
 import dto.ContestAllyTeamsPayload;
-import dto.ContestRoom;
 import dto.ContestRoomPayload;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -10,6 +9,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import manager.RoomManager;
+import manager.UserManager;
+import model.ContestRoom;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import service.PropertiesService;
@@ -50,6 +51,7 @@ public class AllyTeamsData extends HttpServlet {
         }
 
         RoomManager roomManager = ServletUtils.getRoomManager(this.getServletContext());
+        UserManager userManager = ServletUtils.getUserManager(this.getServletContext());
 
         Object roomName =  req.getSession(false).getAttribute(PropertiesService.getRoomNameAttributeName());
 
@@ -68,7 +70,7 @@ public class AllyTeamsData extends HttpServlet {
         }
         else{
             resp.setStatus(SC_OK);
-            payload.setAllyTeamsData(roomInfo.getAlliesList());
+            payload.setAllyTeamsData(userManager.allyTeamDataFromAllis(roomInfo.getAlliesList()));
         }
         Gson gson = new Gson();
         resp.setHeader(PropertiesService.getHttpHeaderContentType(),PropertiesService.getJsonHttpContentType());

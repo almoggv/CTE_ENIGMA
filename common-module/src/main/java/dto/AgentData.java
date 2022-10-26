@@ -12,5 +12,4 @@ public class AgentData {
     Integer numberOfThreads;
     Integer numberOfTasksThatTakes;
     String allyName;
-//    private ContestRoom contestRoom;
 }

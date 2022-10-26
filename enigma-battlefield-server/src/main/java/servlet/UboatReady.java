@@ -1,11 +1,8 @@
 package servlet;
 
-import com.google.gson.Gson;
 import component.MachineHandler;
-import dto.ContestRoom;
-import dto.ContestRoomPayload;
-import dto.MachineInventoryPayload;
-import dto.User;
+import model.ContestRoom;
+import model.User;
 import enums.UserType;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -18,7 +15,6 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import service.PropertiesService;
 import utils.ServletUtils;
-import utils.SessionUtills;
 
 import java.io.IOException;
 import java.io.PrintWriter;

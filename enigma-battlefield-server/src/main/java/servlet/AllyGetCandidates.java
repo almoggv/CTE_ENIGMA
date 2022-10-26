@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import manager.RoomManager;
 import manager.UserManager;
+import model.Ally;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import service.PropertiesService;
@@ -57,7 +58,7 @@ public class AllyGetCandidates extends HttpServlet {
 
         DecryptionResultPayload payload = new DecryptionResultPayload();
         resp.setStatus(SC_OK);
-        AllyTeamData ally = userManager.getAllyByName(usernameFromSession);
+        Ally ally = userManager.getAllyByName(usernameFromSession);
         if(ally == null){
             resp.setStatus(SC_UNAUTHORIZED);
             respWriter.print("Not an ally.");

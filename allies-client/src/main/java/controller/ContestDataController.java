@@ -1,6 +1,6 @@
 package controller;
 
-import dto.ContestRoom;
+import dto.ContestRoomData;
 import enums.GameStatus;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -52,7 +52,7 @@ public class ContestDataController {
         this.contestPageController = contestPageController;
     }
 
-    public void setData(ContestRoom contestRoom){
+    public void setData(ContestRoomData contestRoom){
         setAllyTeamsLabel(contestRoom.getCurrNumOfTeams(), contestRoom.getRequiredNumOfTeams());
         setBattlefieldNameLabel(contestRoom.getName());
         setDifficultyLevelLabel(contestRoom.getDifficultyLevel().name());

@@ -16,6 +16,9 @@ import component.impl.MachineHandlerImpl;
 import manager.DictionaryManager;
 import manager.RoomManager;
 import manager.UserManager;
+import model.ContestRoom;
+import model.Uboat;
+import model.User;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import service.PropertiesService;
@@ -29,7 +32,6 @@ import java.util.Properties;
 import java.util.Scanner;
 
 import static jakarta.servlet.http.HttpServletResponse.*;
-import static jakarta.servlet.http.HttpServletResponse.SC_OK;
 
 @WebServlet("/upload-machine-file")
 @MultipartConfig(fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 5, maxRequestSize = 1024 * 1024 * 5 * 5)

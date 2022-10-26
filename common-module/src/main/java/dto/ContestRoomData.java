@@ -13,19 +13,12 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class ContestRoom {
+public class ContestRoomData {
     private String name;
     private String creatorName;
     private GameStatus gameStatus;
     private DecryptionDifficultyLevel difficultyLevel;
     private Integer currNumOfTeams;
     private Integer requiredNumOfTeams;
-    String wordToDecrypt;
-    private Integer numOfReady;
-    private boolean isEveryoneReady;
-    private String winnerName;
-    private List<AllyTeamData> alliesList;
-    private List<EncryptionCandidate> encryptionCandidateList;
-//    MachineHandler machineHandler;
-
+    private String wordToDecrypt;
 }

@@ -152,11 +152,11 @@ public class DashboardPageController implements Initializable {
         });
     }
 
-    private void createContestsDataComponents(Set<ContestRoom> contestRooms) {
+    private void createContestsDataComponents(Set<ContestRoomData> contestRooms) {
         Platform.runLater(() -> {
             try {
                 contestDataFlowPane.getChildren().clear();
-                for (ContestRoom contestRoom : contestRooms) {
+                for (ContestRoomData contestRoom : contestRooms) {
                     URL contestRoomURL = GuiApplication.class.getResource(PropertiesService.getContestDataFxmlPath());
                     FXMLLoader fxmlLoader = new FXMLLoader();
                     fxmlLoader.setLocation(contestRoomURL);
