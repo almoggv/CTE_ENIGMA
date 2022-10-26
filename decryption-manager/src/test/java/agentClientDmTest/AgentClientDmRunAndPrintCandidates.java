@@ -5,6 +5,7 @@ import component.impl.MachineHandlerImpl;
 import dto.MachineState;
 import enums.ReflectorsId;
 import generictype.MappingPair;
+import javafx.application.Platform;
 import manager.AgentClientDM;
 import manager.impl.AgentClientDMImpl;
 import org.junit.Test;
@@ -17,63 +18,72 @@ import java.util.List;
 
 public class AgentClientDmRunAndPrintCandidates {
 
-    private static final String ABC = "ABCDEFGHIJKLMNOPQRSTUVWXYZ !?";
-    private static final int NUMBER_OF_ROTORS_IN_USE = 3;
-    private static final int MAX_NUM_OF_TASKS = 200;
-    private static final int MAX_NUM_OF_THREADS = 3;
-    private static final String ALLY_NAME = "boaty";
-    private static final String INPUT_TO_DECRYPT = "SKY";
-
 
     @Test
     public void findDecryptionCandidatesTest() throws Exception {
-        MachineHandler machineHandler = loadAMachineHandler();
-        AgentClientDM agentDm = new AgentClientDMImpl(machineHandler,MAX_NUM_OF_TASKS,MAX_NUM_OF_THREADS,ALLY_NAME);
-        List<MachineState> workToDo = createWorkToDo(MAX_NUM_OF_TASKS);
-        agentDm.assignWork(workToDo,INPUT_TO_DECRYPT);
-        //Connect Properties:
+        MachineHandler machineHandler = AgentDmTestUtils.loadAMachineHandler();
+        AgentClientDM agentDm = new AgentClientDMImpl(machineHandler,AgentDmTestUtils.MAX_NUM_OF_TASKS,AgentDmTestUtils.MAX_NUM_OF_THREADS,AgentDmTestUtils.ALLY_NAME);
+        List<MachineState> workToDo = AgentDmTestUtils.createWorkToDo(AgentDmTestUtils.MAX_NUM_OF_TASKS, machineHandler.getMachineState().get());
+        //Connect Properties To Print:
+        addListeners(agentDm);
+        //Start Running
+        Thread agentDmThread = new Thread(agentDm);
+        agentDmThread.start();
+        agentDm.assignWork(workToDo,AgentDmTestUtils.INPUT_TO_DECRYPT);
+        agentDmThread.join();
+    }
+
+
+    /**
+     * Connects the agentDm's candidates and progress properties to System.out
+     * and each newAgent's candidates and progress properties
+     */
+    private void addListeners(AgentClientDM agentDm){
         agentDm.getDecryptionCandidatesProperty().addListener((observable, oldValue, newValue) -> {
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    System.out.println("AgentDM property: "+ System.lineSeparator() +"Decryption Candidates Property newValue=" + newValue);
+                }
+            });
+        });
+        agentDm.getProgressProperty().addListener((observable, oldValue, newValue) -> {
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    if ((newValue.getLeft() - oldValue.getLeft()) % 10 == 0){
+                        System.out.println("AgentDM property: " + System.lineSeparator() + "Progress newValue=" + newValue);
+                    }
+                }
+            });
+        });
+        agentDm.getNewestAgentProperty().addListener((observable, oldAgent, newAgent) -> {
+            if(newAgent==null){
+                return;
+            }
+            newAgent.getProgressProperty().addListener((observable1, oldProgressValue, newProgressValue) -> {
+                if(newProgressValue.getLeft().equals(newProgressValue.getRight())){
+                    Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            System.out.println("[ID="+ newAgent.getId() +"] - DecryptionAgent - Progress = 100%");
+                        }
+                    });
+                }
+            });
+            newAgent.getPotentialCandidatesListProperty().addListener((observable1, oldPotentialCandidates, newPotentialCandidates) -> {
+                if(newPotentialCandidates == null){
+                    return;
+                }
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        System.out.println("[ID="+ newAgent.getId() +"] - DecryptionAgent - DecryptionCadidatesList newValue=" + newPotentialCandidates);
+                    }
+                });
+            });
 
         });
-
-
-    }
-
-    private MachineHandler loadAMachineHandler() throws Exception {
-        MachineHandler resultHander = new MachineHandlerImpl();
-        String schemaFileName = "ex3-basic.xml";
-        URL schemaUrl = AgentClientDmRunAndPrintCandidates.class.getResource(schemaFileName);
-        resultHander.buildMachinePartsInventory(schemaUrl.getPath());
-        resultHander.assembleMachine();
-        return resultHander;
-    }
-
-    private List<MachineState> createWorkToDo(int amoutOfWork){
-        //Creates work for an EASY level
-        List<MachineState> workToDo = new ArrayList<>(amoutOfWork);
-        MachineState firstState = getInitialState();
-        MachineState currState = firstState.getDeepClone();
-        for (int i = 0; i < amoutOfWork; i++) {
-            workToDo.add(currState.getDeepClone());
-            currState.setRotorsHeadsInitialValues(advanceRotorPositions(currState.getRotorsHeadsInitialValues()));
-        }
-        return workToDo;
-    }
-
-    private List<String> advanceRotorPositions(List<String> startingPos){
-        int positionAsDecimal = MathService.fromLettersToBase10(startingPos, this.ABC.length(),this.ABC);
-        positionAsDecimal += 1;
-        List<String> newAdvancedPos = MathService.fromBase10ToBaseN(positionAsDecimal, this.ABC.length(), this.ABC, this.NUMBER_OF_ROTORS_IN_USE);
-        return newAdvancedPos;
-    }
-
-    private MachineState getInitialState(){
-        MachineState initialState = new MachineState();
-        initialState.setRotorIds(Arrays.asList(1,2,3));
-        initialState.setRotorsHeadsInitialValues(Arrays.asList("A","A","A"));
-        initialState.setReflectorId(ReflectorsId.I);
-        initialState.setPlugMapping(new ArrayList<MappingPair<String, String>>());
-        return initialState;
     }
 
 }
