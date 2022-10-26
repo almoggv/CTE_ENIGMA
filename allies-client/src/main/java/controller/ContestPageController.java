@@ -18,6 +18,7 @@ import service.PropertiesService;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 import java.util.ResourceBundle;
@@ -77,6 +78,13 @@ public class ContestPageController implements Initializable {
                 Platform.runLater(()->{
                     showMessage("Contest starting!");
                 });
+            }
+        });
+
+        DataService.startPullingCandidates();
+        DataService.getLastCandidatesProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue != null){
+                createCandidatesComponents(new ArrayList<>(newValue));
             }
         });
     }

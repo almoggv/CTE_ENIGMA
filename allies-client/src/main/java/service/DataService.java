@@ -49,6 +49,7 @@ public class DataService {
 
     @Getter private static final BooleanProperty isContestStartedProperty = new SimpleBooleanProperty(false);
     @Getter private static final ObjectProperty<List<EncryptionCandidate>> lastCandidatesProperty = new SimpleObjectProperty<>();
+    @Getter private static final ObjectProperty<GameStatus> gameStatusProperty = new SimpleObjectProperty<>();
 
     private static final ScheduledExecutorService executor;
     private static final String agentsDataUrl;
@@ -56,6 +57,7 @@ public class DataService {
     private static final String allyTeamsUrl;
     private static final String contestDataUrl;
     private static final String candidatesUrl;
+    private static final String contestStatusUrl;
 
 
     private static final Runnable contestsDataFetcher = new Runnable() {
@@ -247,6 +249,49 @@ public class DataService {
 
     };
 
+    private static final Runnable contestStartedFetcher = new Runnable() {
+        @Override
+        public void run() {
+            HttpClientService.runAsync(contestStatusUrl, new Callback() {
+                @Override
+                public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                    log.error("contestStarted failed, ExceptionMessage="+e.getMessage());                }
+                @Override
+                public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                    String responseBody = response.body().string();
+                    if (response.code() >= 500) {
+                        log.error("contestStarted Fetching failed - statusCode=" + response.code());
+                        return;
+                    }
+                    GameStatePayload payload;
+                    try{
+                        payload = new Gson().fromJson(responseBody,GameStatePayload.class);
+                    }
+                    catch (Exception e){
+                        log.error("Failed to parse response on contestStartedUrl, Message=" + e.getMessage());
+                        return;
+                    }
+                    if (response.code() != 200) {
+                        log.error("Failed to fetch game status - statusCode=" + response.code() + ", ServerMessage=" + payload.getMessage());
+                    }
+                    else {
+                        log.info("game status - responseCode = 200, ServerMessage=" + payload.getMessage());
+                        if(payload.getGameState() != null
+                                && payload.getGameState().equals(GameStatus.READY)) {
+                            isContestStartedProperty.setValue(true);
+                        }
+                        if(payload.getGameState() != null && payload.getGameState() != gameStatusProperty.get()){
+                            gameStatusProperty.setValue(payload.getGameState());
+                            //in comment for test
+//                            if(payload.getGameState().equals(GameStatus.READY)){
+                                startPullingCandidates();
+//                            }
+                        }
+                    }
+                }
+            });
+        }
+    };
     static{
         int poolSize = 2;
         executor = Executors.newScheduledThreadPool(poolSize);
@@ -275,6 +320,11 @@ public class DataService {
                 .newBuilder()
                 .build()
                 .toString();
+        contestStatusUrl = HttpUrl
+                .parse(PropertiesService.getApiGameStateUrl())
+                .newBuilder()
+                .build()
+                .toString();
     }
 
     public static void startPullingRoomsData(){
@@ -300,6 +350,11 @@ public class DataService {
     public static void startPullingCandidates(){
         long timeInterval = 1500;
         executor.scheduleAtFixedRate(candidatesFetcher, 0, timeInterval, TimeUnit.MILLISECONDS);
+        //TODO: implement
+    }
+    public static void startCheckIsContestStarted(){
+        long timeInterval = 1500;
+        executor.scheduleAtFixedRate(contestStartedFetcher, 0, timeInterval, TimeUnit.MILLISECONDS);
         //TODO: implement
     }
     public static void fetchInventoryInfo(InventoryInfo inventory) {

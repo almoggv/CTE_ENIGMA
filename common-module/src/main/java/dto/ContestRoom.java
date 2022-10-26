@@ -26,6 +26,6 @@ public class ContestRoom {
     private String winnerName;
     private List<AllyTeamData> alliesList;
     private List<EncryptionCandidate> encryptionCandidateList;
-    MachineHandler machineHandler;
+//    MachineHandler machineHandler;
 
 }

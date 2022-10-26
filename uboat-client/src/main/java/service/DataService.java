@@ -2,10 +2,8 @@ package service;
 
 
 import com.google.gson.Gson;
-import controller.LoginController;
 import dto.*;
 import enums.GameStatus;
-import javafx.application.Platform;
 import javafx.beans.property.*;
 import lombok.Getter;
 import okhttp3.Call;
@@ -41,12 +39,14 @@ public class DataService {
     @Getter private static final ObjectProperty<MachineState> originalMachineStateProperty = new SimpleObjectProperty<>();
     @Getter private static final ObjectProperty<MachineState> currentMachineStateProperty = new SimpleObjectProperty<>();
     @Getter private static final ObjectProperty<List<AllyTeamData>> currentTeamsProperty = new SimpleObjectProperty<>();
+    //todo: is needed if game status
     @Getter private static final BooleanProperty isContestStartedProperty = new SimpleBooleanProperty(false);
 
+    @Getter private static final ObjectProperty<GameStatus> gameStatusProperty = new SimpleObjectProperty<>();
     private static final ScheduledExecutorService executor;
     private static final String fetchInventoryUrl;
     private static final String machineConfigUrl;
-    private static final String contestStartedUrl;
+    private static final String contestStatusUrl;
 
     private static final String allyTeamsUrl;
     private static final Runnable currMachineStateFetcher = new Runnable() {
@@ -131,7 +131,7 @@ public class DataService {
     private static final Runnable contestStartedFetcher = new Runnable() {
     @Override
     public void run() {
-        HttpClientService.runAsync(contestStartedUrl, new Callback() {
+        HttpClientService.runAsync(contestStatusUrl, new Callback() {
             @Override
             public void onFailure(@NotNull Call call, @NotNull IOException e) {
                 log.error("contestStarted failed, ExceptionMessage="+e.getMessage());                }
@@ -160,6 +160,12 @@ public class DataService {
                         isContestStartedProperty.setValue(true);
                         stopCheckIsContestStarted();
                     }
+                    if(payload.getGameState() != null && payload.getGameState() != gameStatusProperty.get()){
+                        gameStatusProperty.setValue(payload.getGameState());
+                        if(payload.getGameState().equals(GameStatus.READY)){
+//                            startPullingCandidates();
+                        }
+                    }
                 }
             }
         });
@@ -184,7 +190,7 @@ public class DataService {
                 .newBuilder()
                 .build()
                 .toString();
-        contestStartedUrl = HttpUrl
+        contestStatusUrl = HttpUrl
                 .parse(PropertiesService.getApiGameStateUrl())
                 .newBuilder()
                 .build()

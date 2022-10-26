@@ -57,9 +57,9 @@ public class GetMachineClone extends HttpServlet {
             return;
         }
         try{
-            MachineHandler handler = user.getContestRoom().getMachineHandler();
-            payload.setEncryptionMachine(handler.getEncryptionMachineClone());
-            payload.setMachineStaste(handler.getEncryptionMachineClone().getMachineState().get());
+//            MachineHandler handler = user.getContestRoom().getMachineHandler();
+//            payload.setEncryptionMachine(handler.getEncryptionMachineClone());
+//            payload.setMachineStaste(handler.getEncryptionMachineClone().getMachineState().get());
         }
         catch (Exception e){
             log.error("GetEncryptionMachine failed to get machine handler to user=" + user + "exception=" + e.getMessage());
