@@ -40,7 +40,6 @@ public class GameState extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter respWriter;
-        GameStatePayload gameStatePayload = new GameStatePayload();
         try {
             respWriter = resp.getWriter();
         }
@@ -55,7 +54,8 @@ public class GameState extends HttpServlet {
         String usernameFromSession = SessionUtills.getUsername(req);
         if(usernameFromSession == null){
             resp.setStatus(SC_UNAUTHORIZED);
-            gameStatePayload.setMessage("Please login first to");
+            respWriter.print("Please login first to");
+            return;
         }
         Object roomName =  req.getSession(false).getAttribute(PropertiesService.getRoomNameAttributeName());
 
@@ -75,7 +75,6 @@ public class GameState extends HttpServlet {
             Gson gson = new Gson();
             resp.setHeader(PropertiesService.getHttpHeaderContentType(),PropertiesService.getJsonHttpContentType());
             respWriter.print(gson.toJson(payload));
-            return;
         }
     }
 }
