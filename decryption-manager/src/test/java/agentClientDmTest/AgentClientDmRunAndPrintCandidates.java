@@ -5,20 +5,22 @@ import component.MachineHandler;
 import dto.MachineState;
 import manager.AgentClientDM;
 import manager.impl.AgentClientDMImpl;
+import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AgentClientDmRunAndPrintCandidates {
 
     static int finishedAgentsCounter = 0;
+    static List<String> candidates = new ArrayList<>();
 
     @Test
     public void findDecryptionCandidatesTest() throws Exception {
-
         MachineHandler machineHandler = AgentDmTestUtils.loadAMachineHandlerManually(AgentDmTestUtils.getInitialState());
         AgentClientDM agentDm = new AgentClientDMImpl(machineHandler,AgentDmTestUtils.MAX_NUM_OF_TASKS,AgentDmTestUtils.MAX_NUM_OF_THREADS,AgentDmTestUtils.ALLY_NAME);
-        List<MachineState> workToDo = AgentDmTestUtils.createWorkToDo(AgentDmTestUtils.MAX_NUM_OF_TASKS, machineHandler.getMachineState().get());
+        List<MachineState> workToDo = AgentDmTestUtils.createWorkToDo(AgentDmTestUtils.MAX_NUM_OF_TASKS, AgentDmTestUtils.getBasicState());
         //Connect Properties To Print:
         addListeners(agentDm);
         //Set Decryption input
@@ -29,6 +31,7 @@ public class AgentClientDmRunAndPrintCandidates {
         agentDmThread.start();
         agentDm.assignWork(workToDo,inputToDecrypt);
         agentDmThread.join();
+        Assert.assertTrue(candidates.contains(AgentDmTestUtils.INPUT_TO_ENCRYPT));
     }
 
     /**
@@ -38,6 +41,7 @@ public class AgentClientDmRunAndPrintCandidates {
     private void addListeners(AgentClientDM agentDm){
         agentDm.getListenerAdapter().getDecryptionCandidatesProperty().addListener((observable, oldValue, newValue) -> {
             System.out.println("AgentDM - ListenerAdapter's property: "+ System.lineSeparator() +"Decryption Candidates Property newValue=" + newValue);
+            candidates.add(newValue.get(newValue.size()-1).getOutput());
         });
         agentDm.getListenerAdapter().getProgressProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue == null || oldValue == null){
@@ -51,23 +55,23 @@ public class AgentClientDmRunAndPrintCandidates {
             }
         });
 
-        agentDm.getNewestAgentProperty().addListener((observable, oldAgent, newAgent) -> {
-            if(newAgent==null){
-                return;
-            }
-            newAgent.getProgressProperty().addListener((observable1, oldProgressValue, newProgressValue) -> {
-                if(newProgressValue.getLeft().equals(newProgressValue.getRight())){
-                    System.out.println("ID=["+ newAgent.getId() +"] - DecryptionAgent number="+ finishedAgentsCounter +"- Progress = 100%");
-                    finishedAgentsCounter++;
-                }
-            });
-            newAgent.getAllFoundDecryptionCandidatesProperty().addListener((observable1, oldPotentialCandidates, newPotentialCandidates) -> {
-                if(newPotentialCandidates == null){
-                    return;
-                }
-                System.out.println("[ID="+ newAgent.getId() +"] - DecryptionAgent - DecryptionCadidatesList newValue=" + newPotentialCandidates);
-            });
-        });
+//        agentDm.getNewestAgentProperty().addListener((observable, oldAgent, newAgent) -> {
+//            if(newAgent==null){
+//                return;
+//            }
+//            newAgent.getProgressProperty().addListener((observable1, oldProgressValue, newProgressValue) -> {
+//                if(newProgressValue.getLeft().equals(newProgressValue.getRight())){
+//                    System.out.println("ID=["+ newAgent.getId() +"] - DecryptionAgent number="+ finishedAgentsCounter +"- Progress = 100%");
+//                    finishedAgentsCounter++;
+//                }
+//            });
+//            newAgent.getAllFoundDecryptionCandidatesProperty().addListener((observable1, oldPotentialCandidates, newPotentialCandidates) -> {
+//                if(newPotentialCandidates == null){
+//                    return;
+//                }
+//                System.out.println("[ID="+ newAgent.getId() +"] - DecryptionAgent - DecryptionCadidatesList newValue=" + newPotentialCandidates);
+//            });
+//        });
     }
 
 }
