@@ -198,10 +198,14 @@ public class DataService {
                         if(payload.getContestRoom() != null  ){
                             currentContestRoomsStateProperty.setValue(null);
                             currentContestRoomsStateProperty.setValue(payload.getContestRoom());
-                            if(payload.getContestRoom().getGameStatus()!= GameStatus.WAITING){
-                                if(getIsContestStartedProperty().get() == false) {
-                                    getIsContestStartedProperty().setValue(true);
-                                }
+//                            if(payload.getContestRoom().getGameStatus()!= GameStatus.WAITING){
+//                                if(getIsContestStartedProperty().get() == false) {
+//                                    getIsContestStartedProperty().setValue(true);
+//                                }
+//                            }
+                            if(payload.getContestRoom().getGameStatus()!= gameStatusProperty.get())
+                            {
+                                gameStatusProperty.setValue(payload.getContestRoom().getGameStatus());
                             }
                         }
                     }
@@ -350,11 +354,11 @@ public class DataService {
         executor.scheduleAtFixedRate(candidatesFetcher, 0, timeInterval, TimeUnit.MILLISECONDS);
         //TODO: implement
     }
-    public static void startCheckIsContestStarted(){
-        long timeInterval = 1500;
-        executor.scheduleAtFixedRate(contestStartedFetcher, 0, timeInterval, TimeUnit.MILLISECONDS);
-        //TODO: implement
-    }
+//    public static void startCheckIsContestStarted(){
+//        long timeInterval = 1500;
+//        executor.scheduleAtFixedRate(contestStartedFetcher, 0, timeInterval, TimeUnit.MILLISECONDS);
+//        //TODO: implement
+//    }
     public static void fetchInventoryInfo(InventoryInfo inventory) {
         inventoryInfoProperty.setValue(inventory);
     }

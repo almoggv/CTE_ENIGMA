@@ -78,12 +78,12 @@ public class DataService {
                         if(payload.getContestRoom() != null  ){
                             currentContestRoomsStateProperty.setValue(null);
                             currentContestRoomsStateProperty.setValue(payload.getContestRoom());
-                            if(payload.getContestRoom().getGameStatus()!= GameStatus.WAITING
-                                    && payload.getContestRoom().getGameStatus()!= gameStatusProperty.get() ){
+//                            if(payload.getContestRoom().getGameStatus()!= GameStatus.WAITING
+                                    if( payload.getContestRoom().getGameStatus()!= gameStatusProperty.get() ){
                                 gameStatusProperty.setValue(payload.getContestRoom().getGameStatus());
-                                if(getIsContestStartedProperty().get() == false) {
-                                    getIsContestStartedProperty().setValue(true);
-                                }
+//                                if(getIsContestStartedProperty().get() == false) {
+//                                    getIsContestStartedProperty().setValue(true);
+//                                }
                             }
                         }
                     }

@@ -118,7 +118,7 @@ public class CompetitionControlsController implements Initializable {
                         Platform.runLater(() -> {
                             log.debug("Successfully told server ally is ready :\", status=" + response.code() + ", response body=" + responseBody);
                             parentController.showMessage("Set ready!");
-                            DataService.startCheckIsContestStarted();
+//                            DataService.startCheckIsContestStarted();
                         });
                     }
                 }

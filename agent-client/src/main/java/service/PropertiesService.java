@@ -52,7 +52,7 @@ public class PropertiesService {
     @Getter private static final String apiJoinContestUrl = FULL_SERVER_PATH + "/join";
     @Getter private static final String apiAgentReadyUrl = FULL_SERVER_PATH + "/agent-ready";
     @Getter private static final String apiAllAlliesReadyUrl = FULL_SERVER_PATH + "/all-ally-teams";
-    @Getter private static final String apiGameStateUrl = FULL_SERVER_PATH + "/game-state";
+    @Getter private static final String apiGameStateUrl = FULL_SERVER_PATH + "/game-status";
     @Getter private static final String apiAgentsOfAllyUrl = FULL_SERVER_PATH + "/agents-by-ally";
     @Getter private static final String apiSendCandidatesUrl = FULL_SERVER_PATH + "/post-candidates";
 }
