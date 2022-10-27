@@ -1,6 +1,5 @@
-package agentClientDmTest;
+package DecryptionWorkerTest;
 
-import DecryptionWorkerTest.WorkerTestUtils;
 import component.MachineHandler;
 import component.impl.MachineHandlerImpl;
 import dto.MachineState;
@@ -14,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class AgentDmTestUtils {
+public class WorkerTestUtils {
 
     public static final String SCHEMA_FILE = "\\ex3-basic.xml";
 

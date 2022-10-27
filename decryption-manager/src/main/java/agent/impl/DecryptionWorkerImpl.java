@@ -48,6 +48,11 @@ public class DecryptionWorkerImpl implements DecryptionWorker {
 
     public DecryptionWorkerImpl(EncryptionMachine encryptionMachine) {
         this.encryptionMachine = encryptionMachine;
+        this.lastFoundCandidateProperty.addListener((observable, oldValue, newValue) -> {
+            if(newValue!=null){
+                log.debug("Triggered inside Worker - Worker with id=[" + id + "] - FOUND CANDIDATE = " + newValue);
+            }
+        });
     }
 
     @Override
@@ -59,6 +64,7 @@ public class DecryptionWorkerImpl implements DecryptionWorker {
         this.workToDo = workToDo;
         this.inputToDecrypt = inputToDecrypt;
         progressProperty.setValue(new MappingPair<>(0,workToDo.size()));
+        log.debug("Worker with id=[" + id + "] was assigned work successfully, workSize=" + workToDo.size() + ", Input=" + inputToDecrypt);
     }
 
     /**
@@ -71,6 +77,10 @@ public class DecryptionWorkerImpl implements DecryptionWorker {
             updateWorkerPropertiesToFinished();
             return;
         }
+        if(DictionaryManager.getDictionary().isEmpty()){
+            log.warn("Dictionary is empty");
+        }
+        log.info("Worker [" + id + "] - started running on input=" + inputToDecrypt);
         for (MachineState state : workToDo ) {
             encryptionMachine.setMachineState(state);
             String decryptedWord = encryptionMachine.decrypt(inputToDecrypt);

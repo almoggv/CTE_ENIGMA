@@ -2,7 +2,6 @@ package agentClientDmTest;
 
 import component.EncryptionMachine;
 import component.MachineHandler;
-import component.impl.EnigmaMachine;
 import dto.MachineState;
 import manager.AgentClientDM;
 import manager.impl.AgentClientDMImpl;
@@ -16,7 +15,8 @@ public class AgentClientDmRunAndPrintCandidates {
 
     @Test
     public void findDecryptionCandidatesTest() throws Exception {
-        MachineHandler machineHandler = AgentDmTestUtils.loadAMachineHandler();
+
+        MachineHandler machineHandler = AgentDmTestUtils.loadAMachineHandlerManually(AgentDmTestUtils.getInitialState());
         AgentClientDM agentDm = new AgentClientDMImpl(machineHandler,AgentDmTestUtils.MAX_NUM_OF_TASKS,AgentDmTestUtils.MAX_NUM_OF_THREADS,AgentDmTestUtils.ALLY_NAME);
         List<MachineState> workToDo = AgentDmTestUtils.createWorkToDo(AgentDmTestUtils.MAX_NUM_OF_TASKS, machineHandler.getMachineState().get());
         //Connect Properties To Print:
@@ -51,23 +51,23 @@ public class AgentClientDmRunAndPrintCandidates {
             }
         });
 
-//        agentDm.getNewestAgentProperty().addListener((observable, oldAgent, newAgent) -> {
-//            if(newAgent==null){
-//                return;
-//            }
-//            newAgent.getProgressProperty().addListener((observable1, oldProgressValue, newProgressValue) -> {
-//                if(newProgressValue.getLeft().equals(newProgressValue.getRight())){
-//                    System.out.println("ID=["+ newAgent.getId() +"] - DecryptionAgent number="+ finishedAgentsCounter +"- Progress = 100%");
-//                    finishedAgentsCounter++;
-//                }
-//            });
-//            newAgent.getPotentialCandidatesListProperty().addListener((observable1, oldPotentialCandidates, newPotentialCandidates) -> {
-//                if(newPotentialCandidates == null){
-//                    return;
-//                }
-//                System.out.println("[ID="+ newAgent.getId() +"] - DecryptionAgent - DecryptionCadidatesList newValue=" + newPotentialCandidates);
-//            });
-//        });
+        agentDm.getNewestAgentProperty().addListener((observable, oldAgent, newAgent) -> {
+            if(newAgent==null){
+                return;
+            }
+            newAgent.getProgressProperty().addListener((observable1, oldProgressValue, newProgressValue) -> {
+                if(newProgressValue.getLeft().equals(newProgressValue.getRight())){
+                    System.out.println("ID=["+ newAgent.getId() +"] - DecryptionAgent number="+ finishedAgentsCounter +"- Progress = 100%");
+                    finishedAgentsCounter++;
+                }
+            });
+            newAgent.getAllFoundDecryptionCandidatesProperty().addListener((observable1, oldPotentialCandidates, newPotentialCandidates) -> {
+                if(newPotentialCandidates == null){
+                    return;
+                }
+                System.out.println("[ID="+ newAgent.getId() +"] - DecryptionAgent - DecryptionCadidatesList newValue=" + newPotentialCandidates);
+            });
+        });
     }
 
 }

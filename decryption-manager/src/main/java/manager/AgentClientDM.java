@@ -2,6 +2,7 @@ package manager;
 
 import adapter.ListenerAdapter;
 import agent.DecryptionAgent;
+import agent.DecryptionWorker;
 import dto.AgentDecryptionInfo;
 import dto.MachineState;
 import generictype.MappingPair;
@@ -17,7 +18,7 @@ public interface AgentClientDM extends Runnable {
 
     ListenerAdapter getListenerAdapter();
 
-    ObjectProperty<DecryptionAgent> getNewestAgentProperty();
+    ObjectProperty<DecryptionWorker> getNewestAgentProperty();
 
     String getInputToDecrypt();
     void setInputToDecrypt(String input);

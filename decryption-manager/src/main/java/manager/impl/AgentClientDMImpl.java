@@ -17,6 +17,7 @@ import javafx.beans.property.SimpleObjectProperty;
 import lombok.Getter;
 import lombok.Setter;
 import manager.AgentClientDM;
+import manager.DictionaryManager;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.jetbrains.annotations.NotNull;
@@ -105,15 +106,15 @@ public class AgentClientDMImpl implements AgentClientDM {
         listenerAdapterThread = new Thread(listenerAdapter);
         listenerAdapterThread.start();
         this.isKilled = false;
-        int tiks =0;
-        int tiksPerPrint = 100;
+        int ticks =0;
+        int ticksPerPrint = 100000000;
 
         while(!isKilled){
             // Prevent Log Spamming - for testing
-            tiks++;
-            if(tiks % tiksPerPrint == 0){
-                log.debug("AgentClientDM is running");
-                tiks = 0;
+            ticks++;
+            if(ticks % ticksPerPrint == 0){
+                log.info("AgentClientDM is running");
+                ticks = 0;
             }
             ///////////////////////////////////
             if(!workBatches.isEmpty() && threadPoolService.getQueue().remainingCapacity() > 0){
@@ -139,6 +140,10 @@ public class AgentClientDMImpl implements AgentClientDM {
         }
         if(!this.machineHandler.getMachineState().isPresent()){
             log.error("Failed to divide work - Encryption Machine in MachineHandler was not configured (assembled)");
+            return false;
+        }
+        if(DictionaryManager.getDictionary().isEmpty()){
+            log.error("Failed to divide work - Dictionary is empty");
             return false;
         }
         return true;

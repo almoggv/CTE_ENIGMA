@@ -12,7 +12,7 @@ public class AgentClientDmInitTest {
 
     @Test
     public void initializationTest() throws Exception {
-        MachineHandler machineHandler = AgentDmTestUtils.loadAMachineHandler();
+        MachineHandler machineHandler = AgentDmTestUtils.loadAMachineHandlerRandomly();
         AgentClientDM agentDm = new AgentClientDMImpl(machineHandler,AgentDmTestUtils.MAX_NUM_OF_TASKS,AgentDmTestUtils.MAX_NUM_OF_THREADS,AgentDmTestUtils.ALLY_NAME);
         List<MachineState> workToDo = AgentDmTestUtils.createWorkToDo(AgentDmTestUtils.MAX_NUM_OF_TASKS, machineHandler.getMachineState().get());
         agentDm.assignWork(workToDo,AgentDmTestUtils.INPUT_TO_ENCRYPT);
