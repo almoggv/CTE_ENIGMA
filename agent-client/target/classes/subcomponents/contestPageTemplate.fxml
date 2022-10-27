@@ -9,10 +9,10 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane fx:id="rootGridPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ContestPageController">
+<GridPane fx:id="rootGridPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ContestPageController">
   <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" />
   </columnConstraints>
   <rowConstraints>
       <RowConstraints maxHeight="30.0" minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
@@ -26,7 +26,7 @@
       <Label text="Contest data" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
       <ScrollPane prefHeight="140.0" prefWidth="200.0" GridPane.rowIndex="1">
          <content>
-            <FlowPane fx:id="agentsDataFlowPane" prefHeight="140.0" prefWidth="297.0" />
+            <FlowPane fx:id="agentsDataFlowPane" prefHeight="140.0" prefWidth="246.0" />
          </content>
       </ScrollPane>
       <ScrollPane prefHeight="140.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
