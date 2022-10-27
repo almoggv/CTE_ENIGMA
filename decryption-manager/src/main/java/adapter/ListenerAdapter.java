@@ -1,7 +1,9 @@
 package adapter;
 
 import agent.DecryptionAgent;
+import agent.DecryptionWorker;
 import dto.AgentDecryptionInfo;
+import dto.DecryptionCandidateInfo;
 import generictype.MappingPair;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
@@ -36,8 +38,8 @@ public class ListenerAdapter implements Runnable{
      */
     @Getter private final ObjectProperty<MappingPair<Integer,Integer>> finishedWorkProgressProperty = new SimpleObjectProperty<>(new MappingPair<>());
     @Getter private final BooleanProperty isWorkCompletedProperty = new SimpleBooleanProperty(true); //considering no work as work completed
-    @Getter private final Map<UUID, DecryptionAgent> agentIdToDecryptAgentMap = new HashMap<>();
-    @Getter private final ObjectProperty<List<AgentDecryptionInfo>> decryptionCandidatesProperty = new SimpleObjectProperty<>(new ArrayList<>());
+    @Getter private final Map<UUID, DecryptionWorker> agentIdToDecryptAgentMap = new HashMap<>();
+    @Getter private final ObjectProperty<List<DecryptionCandidateInfo>> decryptionCandidatesProperty = new SimpleObjectProperty<>(new ArrayList<>());
 
     public ListenerAdapter() {
         finishedWorkProgressProperty.addListener((observable, oldValue, newValue) -> {
@@ -59,23 +61,23 @@ public class ListenerAdapter implements Runnable{
         return this.getFinishedWorkProgressProperty();
     }
 
-    public void connectToAgent(DecryptionAgent newAgent){
+    public void connectToAgent(DecryptionWorker newAgent){
         if(newAgent == null || agentIdToDecryptAgentMap.containsKey(newAgent.getId())){
             log.debug("Failed to connect to agent, Agent is null or already exists, newAgent=" + newAgent);
             return;
         }
         agentIdToDecryptAgentMap.putIfAbsent(newAgent.getId(),newAgent);
-        newAgent.getPotentialCandidatesListProperty().addListener((observable, oldValue, newValue) -> {
+        newAgent.getAllFoundDecryptionCandidatesProperty().addListener((observable, oldValue, newValue) -> {
             synchronized (this){
                 if(!newValue.isEmpty()){
-                    List<AgentDecryptionInfo> newListToTriggerChange = new ArrayList<>(decryptionCandidatesProperty.get());
+                    List<DecryptionCandidateInfo> newListToTriggerChange = new ArrayList<>(decryptionCandidatesProperty.get());
                     newListToTriggerChange.addAll(newValue);
                     this.decryptionCandidatesProperty.setValue(newListToTriggerChange);
                 }
             }
         });
         newAgent.getProgressProperty().addListener((observable, oldValue, newValue) -> {
-            if(newAgent.getIsFinishedProperty().get()){
+            if(newAgent.getIsWorkerFinishedWorkProperty().get()){
                 synchronized (this){
                     int currentProgress = newAgent.getProgressProperty().get().getRight() + this.finishedWorkProgressProperty.get().getLeft();
                     this.finishedWorkProgressProperty.setValue(new MappingPair<Integer,Integer>(currentProgress, this.finishedWorkProgressProperty.get().getRight()));

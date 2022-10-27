@@ -2,7 +2,9 @@ package manager.impl;
 
 import adapter.ListenerAdapter;
 import agent.DecryptionAgent;
+import agent.DecryptionWorker;
 import agent.impl.DecryptionAgentImpl;
+import agent.impl.DecryptionWorkerImpl;
 import common.ListUtils;
 import component.MachineHandler;
 import dto.AgentDecryptionInfo;
@@ -49,12 +51,12 @@ public class AgentClientDMImpl implements AgentClientDM {
     @Getter private final int maxNumberOfTasks;
     @Getter @Setter private int internalAgentTaskSize = PropertiesService.getDefaultTaskSize();
     private final ThreadPoolExecutor threadPoolService;
-    private MachineHandler machineHandler;
-    private List<MachineState> workToDo = new ArrayList<>();
+    private final MachineHandler machineHandler;
+    private final List<MachineState> workToDo = new ArrayList<>();
     private List<List<MachineState>> workBatches = new ArrayList<>();
     private boolean isKilled = false;
 
-    @Getter private final ObjectProperty<DecryptionAgent> newestAgentProperty = new SimpleObjectProperty<>();
+    @Getter private final ObjectProperty<DecryptionWorker> newestAgentProperty = new SimpleObjectProperty<>();
     private final BooleanProperty isWorkCompletedProperty = new SimpleBooleanProperty(true);
 
     public AgentClientDMImpl(@NotNull MachineHandler machineHandler, int maxNumberOfTasks, int threadPoolSize, String allyTeamName) {
@@ -116,7 +118,7 @@ public class AgentClientDMImpl implements AgentClientDM {
             ///////////////////////////////////
             if(!workBatches.isEmpty() && threadPoolService.getQueue().remainingCapacity() > 0){
                 List<MachineState> batch = workBatches.remove(0);
-                DecryptionAgent newAgent = new DecryptionAgentImpl(machineHandler.getEncryptionMachineClone());
+                DecryptionWorker newAgent = new DecryptionWorkerImpl(machineHandler.getEncryptionMachineClone());
                 newAgent.assignWork(batch, inputToDecrypt);
                 newestAgentProperty.setValue(newAgent);
                 threadPoolService.execute(newAgent);
