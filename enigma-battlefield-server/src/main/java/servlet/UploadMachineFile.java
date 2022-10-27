@@ -89,25 +89,31 @@ public class UploadMachineFile extends HttpServlet {
                     inventoryPayload.setMessage("Can't upload file. There is already a battlefield with the defined name.");
                     return;
                 }
-                else{
+                else {
                     //create inventory from file
-                    machineHandler.buildMachinePartsInventory(uploadedFile.getInputStream());
-                    //todo - check whats up with the dict manager
-                    DictionaryManager.loadDictionary(uploadedFile.getInputStream());
-                    //create and save to room
-                    String creatorName = (String) req.getSession(false).getAttribute(PropertiesService.getUsernameAttributeName());
-                    ContestRoom contestRoom = createContestRoomInfo(creatorName, battlefieldInfo);
+                    try {
+                        machineHandler.buildMachinePartsInventory(uploadedFile.getInputStream());
+                        //todo - check whats up with the dict manager
+                        DictionaryManager.loadDictionary(uploadedFile.getInputStream());
+                        //create and save to room
+                        String creatorName = (String) req.getSession(false).getAttribute(PropertiesService.getUsernameAttributeName());
+                        ContestRoom contestRoom = createContestRoomInfo(creatorName, battlefieldInfo);
 //                    contestRoom.setMachineHandler(machineHandler);
-                    roomManager.addRoom(battlefieldInfo.getBattlefieldName(), contestRoom);
-                    req.getSession(true).setAttribute(PropertiesService.getRoomNameAttributeName(), battlefieldInfo.getBattlefieldName());
-                    user.setInARoom(true);
-                    user.setContestRoom(contestRoom);
-                    Uboat uboat = userManager.getUboatByName(creatorName);
-                    uboat.setMachineHandler(machineHandler);
-                    req.getSession(true).setAttribute(PropertiesService.getMachineHandlerAttributeName(), machineHandler);
-                    resp.setStatus(HttpServletResponse.SC_OK);
-                    inventoryPayload.setInventory(machineHandler.getInventoryInfo().get());
-                    inventoryPayload.setMessage("Machine built successfully");
+                        roomManager.addRoom(battlefieldInfo.getBattlefieldName(), contestRoom);
+                        req.getSession(true).setAttribute(PropertiesService.getRoomNameAttributeName(), battlefieldInfo.getBattlefieldName());
+                        user.setInARoom(true);
+                        user.setContestRoom(contestRoom);
+                        Uboat uboat = userManager.getUboatByName(creatorName);
+                        uboat.setMachineHandler(machineHandler);
+                        req.getSession(true).setAttribute(PropertiesService.getMachineHandlerAttributeName(), machineHandler);
+                        resp.setStatus(HttpServletResponse.SC_OK);
+                        inventoryPayload.setInventory(machineHandler.getInventoryInfo().get());
+                        inventoryPayload.setMessage("Machine built successfully");
+                    }
+                    catch (Exception e){
+                        resp.setStatus(SC_BAD_REQUEST);
+                        inventoryPayload.setMessage("Failed to build machine, " + e.getMessage());
+                    }
                 }
             }
         }
