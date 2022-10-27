@@ -18,12 +18,12 @@ public enum DecryptionDifficultyLevel {
             case ("EASY"):
                 return EASY;
             case ("INTERMEDIATE"):
-                return INTERMEDIATE;
             case ("MEDIUM"):
                 return INTERMEDIATE;
             case ("HARD"):
                 return HARD;
             case ("IMPOSSIBLE"):
+            case ("INSANE"):
                 return IMPOSSIBLE;
             default:
                 throw new IllegalArgumentException();
