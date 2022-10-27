@@ -16,10 +16,10 @@ public class AgentDmTestUtils {
 
     public static final String ABC = "ABCDEFGHIJKLMNOPQRSTUVWXYZ !?";
     public static final int NUMBER_OF_ROTORS_IN_USE = 3;
-    public static final int MAX_NUM_OF_TASKS = 200;
+    public static final int MAX_NUM_OF_TASKS = 400000;
     public static final int MAX_NUM_OF_THREADS = 3;
     public static final String ALLY_NAME = "boaty";
-    public static final String INPUT_TO_DECRYPT = "SKY";
+    public static final String INPUT_TO_ENCRYPT = "SKY";
 
     public static MachineHandler loadAMachineHandler() throws Exception {
         MachineHandler resultHander = new MachineHandlerImpl();

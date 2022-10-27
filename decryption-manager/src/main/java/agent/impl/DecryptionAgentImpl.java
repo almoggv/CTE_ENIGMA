@@ -132,7 +132,7 @@ public class DecryptionAgentImpl implements DecryptionAgent {
 //                    decryptionInfoProperty.setValue(decryptionInfo);
 //                    potentialCandidates.add(decryptionInfo);
                     synchronized (this){
-                        log.info("Agent ["+id+"] found a candidate: " + inputToDecrypt + "-->"+ decryptionCandidate.get() + " ---- ref: " + stateBeforeEncryption.getReflectorId() + " rot: "+ stateBeforeEncryption.getRotorIds() +" ,init pos: "+ stateBeforeEncryption.getRotorsHeadsInitialValues()) ;
+                        log.info("Agent ["+id+"] found a candidate: " + inputToDecrypt + "-->"+ decryptionCandidate.get() + " ---- reflector: " + stateBeforeEncryption.getReflectorId() + " rotors: "+ stateBeforeEncryption.getRotorIds() +" ,init pos: "+ stateBeforeEncryption.getRotorsHeadsInitialValues()) ;
                     }
                 }
                 if((lastStateTestedIndex+1) % PROGRESS_UPDATE_INTERVAL == 0){

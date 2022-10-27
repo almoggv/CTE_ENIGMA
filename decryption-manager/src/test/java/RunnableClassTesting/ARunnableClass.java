@@ -51,7 +51,7 @@ public class ARunnableClass implements Runnable{
     }
 
     private void divideWork() {
-        List<List<String>> batches = ListUtils.partition(aList,2);
+        List<List<String>> batches = ListUtils.partition(aList,2, true);
         for (List<String> batch : batches) {
             SubRunnableClass newRunnable = new SubRunnableClass(batch);
             newRunnable.stringProperty.addListener((observable, oldValue, newValue) -> {

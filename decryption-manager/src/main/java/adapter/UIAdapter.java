@@ -1,4 +1,4 @@
-package service.adapter;
+package adapter;
 
 import generictype.MappingPair;
 import javafx.application.Platform;

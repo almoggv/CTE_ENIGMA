@@ -1,5 +1,6 @@
 package manager.impl;
 
+import adapter.ListenerAdapter;
 import agent.DecryptionAgent;
 import agent.impl.DecryptionAgentImpl;
 import common.ListUtils;
@@ -40,24 +41,21 @@ public class AgentClientDMImpl implements AgentClientDM {
         }
     }
 
+    @Getter ListenerAdapter listenerAdapter = new ListenerAdapter();
+    private Thread listenerAdapterThread;
+
     private String allyTeamName;
     @Getter @Setter private String inputToDecrypt = "";
     @Getter private final int maxNumberOfTasks;
-    private int internalAgentTaskSize = PropertiesService.getDefaultTaskSize();
+    @Getter @Setter private int internalAgentTaskSize = PropertiesService.getDefaultTaskSize();
     private final ThreadPoolExecutor threadPoolService;
     private MachineHandler machineHandler;
     private List<MachineState> workToDo = new ArrayList<>();
+    private List<List<MachineState>> workBatches = new ArrayList<>();
     private boolean isKilled = false;
 
-    @Getter private final BooleanProperty isWorkCompletedProperty = new SimpleBooleanProperty(true); //considering no work as work completed
-    /**
-     assignedWorkProgressProperty references the assigned work to the agents - and not the amount actually completed by the agents;
-     */
-    @Getter private final ObjectProperty<MappingPair<Integer,Integer>> finishedWorkProgressProperty = new SimpleObjectProperty<>(new MappingPair<>());
-    @Getter private final ObjectProperty<List<AgentDecryptionInfo>> decryptionCandidatesProperty = new SimpleObjectProperty<>(new ArrayList<>());
-
-    @Getter private final Map<UUID, DecryptionAgent> agentIdToDecryptAgentMap = new HashMap<>();
     @Getter private final ObjectProperty<DecryptionAgent> newestAgentProperty = new SimpleObjectProperty<>();
+    private final BooleanProperty isWorkCompletedProperty = new SimpleBooleanProperty(true);
 
     public AgentClientDMImpl(@NotNull MachineHandler machineHandler, int maxNumberOfTasks, int threadPoolSize, String allyTeamName) {
         if(machineHandler == null){
@@ -66,71 +64,82 @@ public class AgentClientDMImpl implements AgentClientDM {
         if(!machineHandler.getInventoryInfo().isPresent()){
             throw new IllegalArgumentException("machineHandler's machine schema was not loaded yet");
         }
-        this.maxNumberOfTasks = maxNumberOfTasks;
         if (threadPoolSize > PropertiesService.getMaxThreadPoolSize() || threadPoolSize < PropertiesService.getMinThreadPoolSize()) {
             throw new IllegalArgumentException("AgentClient Constructor - ThreadPool of size=" + threadPoolSize + " is not allowed, range=["  + PropertiesService.getMinThreadPoolSize() + "," + PropertiesService.getMaxThreadPoolSize() + "]");
         }
         if(allyTeamName == null ){
             throw new NullPointerException("AllyTeamName is null");
         }
+        this.machineHandler = machineHandler;
+        this.maxNumberOfTasks = maxNumberOfTasks;
         long keepAliveForWhenIdle = Long.MAX_VALUE;
-        this.threadPoolService = new ThreadPoolExecutor(threadPoolSize, threadPoolSize, keepAliveForWhenIdle , TimeUnit.SECONDS, new ArrayBlockingQueue(maxNumberOfTasks));
+        this.allyTeamName = allyTeamName;
+//        int threadPoolQueueSize = (int) Math.ceil((float)(maxNumberOfTasks / internalAgentTaskSize) ); //when too big, overflows
+        this.threadPoolService = new ThreadPoolExecutor(threadPoolSize, threadPoolSize,
+                keepAliveForWhenIdle , TimeUnit.SECONDS, new ArrayBlockingQueue(THREAD_POOL_QEUEU_DEFAULT_MAX_CAPACITY));
+        this.addPropertyListeners();
     }
 
     private void addPropertyListeners(){
-        finishedWorkProgressProperty.addListener((observable, oldValue, newValue) -> {
+        listenerAdapter.getFinishedWorkProgressProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue != null && newValue.getLeft() >= newValue.getRight()){
                 workToDo.clear();
             }
         });
+        this.getNewestAgentProperty().addListener((observable, oldNewstAgent, newNewestAgent) -> {
+            if(newNewestAgent == null || newNewestAgent.equals(oldNewstAgent)){
+                return;
+            }
+            listenerAdapter.connectToAgent(newNewestAgent);
+        });
+        listenerAdapter.getIsWorkCompletedProperty().bindBidirectional(this.isWorkCompletedProperty);
     }
 
     @Override
     public void run() {
-        isKilled = false;
+        if(!areComponentsReadyForWork()){
+            throw new RuntimeException("Run Failed, some components are not initialized");
+        }
+        listenerAdapterThread = new Thread(listenerAdapter);
+        listenerAdapterThread.start();
+        this.isKilled = false;
+        int tiks =0;
+        int tiksPerPrint = 100;
+
         while(!isKilled){
-            if(!workToDo.isEmpty()){
-                divideWorkAndRun();
+            // Prevent Log Spamming - for testing
+            tiks++;
+            if(tiks % tiksPerPrint == 0){
+                log.debug("AgentClientDM is running");
+                tiks = 0;
+            }
+            ///////////////////////////////////
+            if(!workBatches.isEmpty() && threadPoolService.getQueue().remainingCapacity() > 0){
+                List<MachineState> batch = workBatches.remove(0);
+                DecryptionAgent newAgent = new DecryptionAgentImpl(machineHandler.getEncryptionMachineClone());
+                newAgent.assignWork(batch, inputToDecrypt);
+                newestAgentProperty.setValue(newAgent);
+                threadPoolService.execute(newAgent);
             }
         }
+
+        listenerAdapterThread.interrupt();
     }
 
-    private void divideWorkAndRun() {
-        if(this.workToDo.isEmpty()){
-            log.warn("Failed to divide work, no work to divide");
-            return;
+    private boolean areComponentsReadyForWork(){
+        if(this.machineHandler == null){
+            log.error("Failed to divide work - machineHandler is null");
+            return false;
         }
-        List<List<MachineState>> workBatches = ListUtils.partition(workToDo, internalAgentTaskSize);
-        for (List<MachineState> batch: workBatches ) {
-            DecryptionAgent newAgent = new DecryptionAgentImpl(machineHandler.getEncryptionMachineClone());
-            newAgent.assignWork(batch, inputToDecrypt);
-            newestAgentProperty.setValue(newAgent);
-            agentIdToDecryptAgentMap.putIfAbsent(newAgent.getId(),newAgent);
-            newAgent.getPotentialCandidatesListProperty().addListener((observable, oldValue, newValue) -> {
-                synchronized (this){
-                    if(!newValue.isEmpty()){
-                        List<AgentDecryptionInfo> newListToTriggerChange = new ArrayList<>(decryptionCandidatesProperty.get());
-                        newListToTriggerChange.addAll(newValue);
-                        this.decryptionCandidatesProperty.setValue(newListToTriggerChange);
-                    }
-                }
-            });
-            newAgent.getProgressProperty().addListener((observable, oldValue, newValue) -> {
-                if(newAgent.getIsFinishedProperty().get()){
-                    synchronized (this){
-                        int currentProgress = newAgent.getProgressProperty().get().getRight() + this.finishedWorkProgressProperty.get().getLeft();
-                        this.finishedWorkProgressProperty.setValue(new MappingPair<Integer,Integer>(currentProgress, this.finishedWorkProgressProperty.get().getRight()));
-                    }
-                }
-            });
-            threadPoolService.execute(newAgent);
+        if(!this.machineHandler.getInventoryInfo().isPresent()){
+            log.error("Failed to divide work - machineHandler is missing inventory");
+            return false;
         }
-        workToDo.clear();
-    }
-
-    @Override
-    public ObjectProperty<MappingPair<Integer, Integer>> getProgressProperty() {
-        return finishedWorkProgressProperty;
+        if(!this.machineHandler.getMachineState().isPresent()){
+            log.error("Failed to divide work - Encryption Machine in MachineHandler was not configured (assembled)");
+            return false;
+        }
+        return true;
     }
 
     @Override
@@ -139,7 +148,7 @@ public class AgentClientDMImpl implements AgentClientDM {
             log.error("AgentClientDMImpl - failed to assign work, missing input to decrypt");
             throw new NullPointerException("Failed to assign work, given no new or previous input to decrypt");
         }
-        this.inputToDecrypt = (inputToDecrypt == null) ? this.inputToDecrypt : inputToDecrypt;
+        this.inputToDecrypt = (inputToDecrypt == null) ? this.inputToDecrypt : inputToDecrypt;  //if new input is null, use last given input
         if(assignedWork == null){
             log.warn("Failed to assign work, given workload is null");
             throw new NullPointerException("Failed to assign work, given workload is null");
@@ -152,8 +161,10 @@ public class AgentClientDMImpl implements AgentClientDM {
             log.warn("Failed to assign work - previous work back hasn't finished yet");
             throw new RuntimeException("Failed to assign work - previous work back hasn't finished yet");
         }
-        this.finishedWorkProgressProperty.setValue(new MappingPair<>(0,assignedWork.size()));
+        this.listenerAdapter.getFinishedWorkProgressProperty().setValue(new MappingPair<>(0,assignedWork.size()));
         this.workToDo.addAll(assignedWork);
+        workBatches = ListUtils.partition(workToDo, internalAgentTaskSize, true);
+        log.info("AgentClientDm - received work, workAmount=" + workToDo.size() + ", on Input="+ this.inputToDecrypt);
     }
 
     @Override

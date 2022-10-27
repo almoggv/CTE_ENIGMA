@@ -1,5 +1,6 @@
 package manager;
 
+import adapter.ListenerAdapter;
 import agent.DecryptionAgent;
 import dto.AgentDecryptionInfo;
 import dto.MachineState;
@@ -14,22 +15,19 @@ import java.util.UUID;
 
 public interface AgentClientDM extends Runnable {
 
-    BooleanProperty getIsWorkCompletedProperty();
-    /**
-     * is displayed in the form of : (amountOfWorkCompleted, TotalWorkToDo)
-     */
-    ObjectProperty<MappingPair<Integer,Integer>> getProgressProperty();
-    ObjectProperty<List<AgentDecryptionInfo>> getDecryptionCandidatesProperty();
+    ListenerAdapter getListenerAdapter();
 
-    Map<UUID, DecryptionAgent> getAgentIdToDecryptAgentMap();
     ObjectProperty<DecryptionAgent> getNewestAgentProperty();
+
+    String getInputToDecrypt();
+    void setInputToDecrypt(String input);
+
+    int getInternalAgentTaskSize();
+    void setInternalAgentTaskSize(int taskSizePerAgent);
 
     int getMaxNumberOfTasks();
 
     void assignWork(List<MachineState> assignedWork, String inputToDecrypt);
-
-    void setInputToDecrypt(String input);
-    String getInputToDecrypt();
 
     void kill();
 }

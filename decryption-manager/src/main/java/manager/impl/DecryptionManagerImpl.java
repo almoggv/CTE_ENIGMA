@@ -4,7 +4,7 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import lombok.Getter;
 import lombok.Setter;
-import service.adapter.UIAdapter;
+import adapter.UIAdapter;
 import component.MachineHandler;
 import enums.DecryptionDifficultyLevel;
 import manager.AgentWorkManager;
