@@ -19,6 +19,8 @@ public enum DecryptionDifficultyLevel {
                 return EASY;
             case ("INTERMEDIATE"):
                 return INTERMEDIATE;
+            case ("MEDIUM"):
+                return INTERMEDIATE;
             case ("HARD"):
                 return HARD;
             case ("IMPOSSIBLE"):

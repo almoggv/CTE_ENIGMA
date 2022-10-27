@@ -40,9 +40,10 @@ public class DataService {
     @Getter private static final ObjectProperty<MachineState> currentMachineStateProperty = new SimpleObjectProperty<>();
     @Getter private static final ObjectProperty<List<AllyTeamData>> currentTeamsProperty = new SimpleObjectProperty<>();
     //todo: is needed if game status
-    @Getter private static final BooleanProperty isContestStartedProperty = new SimpleBooleanProperty(false);
+//    @Getter private static final BooleanProperty isContestStartedProperty = new SimpleBooleanProperty(false);
+    @Getter private static final ObjectProperty<GameStatePayload> gameStatusProperty = new SimpleObjectProperty<>(new GameStatePayload());
+//    @Getter private static final StringProperty winnerNameProperty = new SimpleStringProperty();
 
-    @Getter private static final ObjectProperty<GameStatus> gameStatusProperty = new SimpleObjectProperty<>();
     @Getter private static final ObjectProperty<List<EncryptionCandidate>> lastCandidatesProperty = new SimpleObjectProperty<>();
 
     private static final ScheduledExecutorService executor;
@@ -157,14 +158,10 @@ public class DataService {
                 }
                 else {
                     log.info("game status - responseCode = 200, ServerMessage=" + payload.getMessage());
-                    if(payload.getGameState() != null
-                    && payload.getGameState().equals(GameStatus.READY)) {
-                        isContestStartedProperty.setValue(true);
-                        stopCheckIsContestStarted();
-                    }
-                    if(payload.getGameState() != null && payload.getGameState() != gameStatusProperty.get()){
-                        gameStatusProperty.setValue(payload.getGameState());
-                        if(payload.getGameState().equals(GameStatus.READY)){
+                    if(payload.getGameState() != null && payload.getGameState() != gameStatusProperty.get().getGameState()){
+                        gameStatusProperty.setValue(payload);
+                        if(payload.getGameState().equals(GameStatus.READY)) {
+                            //todo: remove comment - here for dev
 //                            startPullingCandidates();
                         }
                     }
@@ -293,10 +290,10 @@ public class DataService {
         //TODO: implement
     }
 
-    public static void stopCheckIsContestStarted(){
-        //todo: will this shut everything down?
-        executor.shutdown();
-    }
+//    public static void stopCheckIsContestStarted(){
+//        //todo: will this shut everything down?
+//        executor.shutdown();
+//    }
     public static void startPullingCandidates(){
         long timeInterval = 1500;
         executor.scheduleAtFixedRate(candidatesFetcher, 0, timeInterval, TimeUnit.MILLISECONDS);

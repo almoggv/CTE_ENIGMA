@@ -70,6 +70,7 @@ public class GameState extends HttpServlet {
             ContestRoom contestRoom = loggedUser.getContestRoom();
             GameStatePayload payload = new GameStatePayload();
             payload.setGameState(contestRoom.getGameStatus());
+            payload.setWinner(contestRoom.getWinnerName());
             resp.setStatus(SC_OK);
 
             Gson gson = new Gson();

@@ -11,4 +11,5 @@ import lombok.NoArgsConstructor;
 public class GameStatePayload {
     String message;
     GameStatus gameState;
+    String winner;
 }
