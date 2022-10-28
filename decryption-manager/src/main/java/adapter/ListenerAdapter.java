@@ -25,7 +25,7 @@ public class ListenerAdapter implements Runnable{
     static {
         try {
             Properties p = new Properties();
-            p.load(XmlFileLoader.class.getResourceAsStream(PropertiesService.getLog4jPropertiesResourcePath()));
+            p.load(ListenerAdapter.class.getResourceAsStream(PropertiesService.getLog4jPropertiesResourcePath()));
             PropertyConfigurator.configure(p);      //Dont forget here
             log.debug("Logger Instantiated for : " + ListenerAdapter.class.getSimpleName());
         } catch (IOException e) {

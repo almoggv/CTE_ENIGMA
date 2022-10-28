@@ -1,5 +1,6 @@
 package dto;
 
+import enums.DecryptionDifficultyLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,4 +15,5 @@ public class DecryptionWorkPayload {
     MachineState lastState;
     int amountOfStates;
     String inputToDecrypt;
+    DecryptionDifficultyLevel difficultyLevel;
 }

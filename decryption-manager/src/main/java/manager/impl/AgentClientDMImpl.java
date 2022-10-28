@@ -106,8 +106,8 @@ public class AgentClientDMImpl implements AgentClientDM {
         listenerAdapterThread = new Thread(listenerAdapter);
         listenerAdapterThread.start();
         this.isKilled = false;
-        int ticks =0;
-        int ticksPerPrint = 100000000;
+        int ticks =0;   //for testing
+        int ticksPerPrint = 100000000;  //for testing
 
         while(!isKilled){
             // Prevent Log Spamming - for testing
