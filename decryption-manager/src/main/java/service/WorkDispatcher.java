@@ -89,7 +89,7 @@ public class WorkDispatcher {
                 ReflectorsId advancedReflector = advanceReflector(startingState.getReflectorId(), inventoryInfo.getNumOfAvailableReflectors());
                 startingState.setReflectorId(advancedReflector);
             }
-            if(reachedInitialState(startingState.getReflectorId())){
+            if(reachedInitialState(startingState.getReflectorId()) && reachedInitialState(startingState.getRotorsHeadsInitialValues(), inventoryInfo.getABC())){
                 List<Integer> advancedRotorIds = advanceRotorsIds(startingState.getRotorIds());
                 startingState.setRotorIds(advancedRotorIds);
             }
@@ -107,7 +107,7 @@ public class WorkDispatcher {
                 ReflectorsId advancedReflector = advanceReflector(startingState.getReflectorId(), inventoryInfo.getNumOfAvailableReflectors());
                 startingState.setReflectorId(advancedReflector);
             }
-            if(reachedInitialState(startingState.getReflectorId())){
+            if(reachedInitialState(startingState.getReflectorId()) && reachedInitialState(startingState.getRotorsHeadsInitialValues(), inventoryInfo.getABC())){
                 List<Integer> advancedRotorIds = advanceRotorsIds(startingState.getRotorIds(),inventoryInfo.getNumOfAvailableRotors());
                 startingState.setRotorIds(advancedRotorIds);
             }
@@ -140,7 +140,7 @@ public class WorkDispatcher {
         int rotorIdAsNum = previousRefId.getId();
         //Advance:
         rotorIdAsNum = ((rotorIdAsNum + 1) % (numberOfAvailableReflectors+1));
-        rotorIdAsNum = (rotorIdAsNum == 0) ? rotorIdAsNum++ : rotorIdAsNum; //skip id=0
+        rotorIdAsNum = (rotorIdAsNum == 0) ? rotorIdAsNum+1 : rotorIdAsNum; //skip id=0
         return ReflectorsId.getByNum(rotorIdAsNum);
     }
 
@@ -232,6 +232,6 @@ public class WorkDispatcher {
     }
 
     private static boolean reachedInitialState(ReflectorsId reflectorId) {
-        return reflectorId.getId().equals(ReflectorsId.I);
+        return reflectorId.getId().equals(ReflectorsId.I.getId());
     }
 }

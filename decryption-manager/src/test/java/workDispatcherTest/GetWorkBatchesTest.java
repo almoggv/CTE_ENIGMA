@@ -9,6 +9,7 @@ import org.junit.Test;
 import service.WorkDispatcher;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class GetWorkBatchesTest {
@@ -16,10 +17,10 @@ public class GetWorkBatchesTest {
     @Test
     public void getEasyWorkBatchTest() throws Exception {
         MachineHandler machineHandler = WorkDispatcherTestUtils.loadAMachineHandlerRandomly();
-        MachineState basicState = WorkDispatcherTestUtils.getStartingState();
+        MachineState firstWorkState = WorkDispatcherTestUtils.getStartingState();
         DecryptionDifficultyLevel difficultyLevel = DecryptionDifficultyLevel.EASY;
         List<MachineState> createdWorkBatch = new ArrayList<>();
-        createdWorkBatch = WorkDispatcher.getWorkBatch(basicState,difficultyLevel
+        createdWorkBatch = WorkDispatcher.getWorkBatch(firstWorkState,difficultyLevel
                 ,WorkDispatcherTestUtils.REQUESTED_EASY_BATCH_SIZE,machineHandler.getInventoryInfo().get());
         Assert.assertTrue(!createdWorkBatch.isEmpty());
     }
@@ -27,10 +28,10 @@ public class GetWorkBatchesTest {
     @Test
     public void TestRotorPositionLoopOnEasy() throws Exception {
         MachineHandler machineHandler = WorkDispatcherTestUtils.loadAMachineHandlerRandomly();
-        MachineState basicState = WorkDispatcherTestUtils.getProgressedState();
+        MachineState firstWorkState = WorkDispatcherTestUtils.getProgressedState();
         DecryptionDifficultyLevel difficultyLevel = DecryptionDifficultyLevel.EASY;
         List<MachineState> createdWorkBatch = new ArrayList<>();
-        createdWorkBatch = WorkDispatcher.getWorkBatch(basicState,difficultyLevel
+        createdWorkBatch = WorkDispatcher.getWorkBatch(firstWorkState,difficultyLevel
                 ,WorkDispatcherTestUtils.REQUESTED_EASY_BATCH_SIZE,machineHandler.getInventoryInfo().get());
         Assert.assertTrue(createdWorkBatch.contains(WorkDispatcherTestUtils.getStartingState()));
     }
@@ -38,10 +39,10 @@ public class GetWorkBatchesTest {
     @Test
     public void getMediumWorkBatchTest() throws Exception {
         MachineHandler machineHandler = WorkDispatcherTestUtils.loadAMachineHandlerRandomly();
-        MachineState basicState = WorkDispatcherTestUtils.getProgressedState();
+        MachineState firstWorkState = WorkDispatcherTestUtils.getProgressedState();
         DecryptionDifficultyLevel difficultyLevel = DecryptionDifficultyLevel.INTERMEDIATE;
         List<MachineState> createdWorkBatch = new ArrayList<>();
-        createdWorkBatch = WorkDispatcher.getWorkBatch(basicState,difficultyLevel
+        createdWorkBatch = WorkDispatcher.getWorkBatch(firstWorkState,difficultyLevel
                 ,WorkDispatcherTestUtils.REQUESTED_MEDIUM_BATCH_SIZE,machineHandler.getInventoryInfo().get());
         Assert.assertTrue(!createdWorkBatch.isEmpty());
         MachineState expectedState = WorkDispatcherTestUtils.getStartingState();
@@ -53,7 +54,7 @@ public class GetWorkBatchesTest {
     public void testReflectorIdLoopOnMedium() throws Exception {
         MachineHandler machineHandler = WorkDispatcherTestUtils.loadAMachineHandlerRandomly();
         MachineState firstWorkState = WorkDispatcherTestUtils.getProgressedState();
-        firstWorkState.setReflectorId(ReflectorsId.V);
+        firstWorkState.setReflectorId(ReflectorsId.III);
         DecryptionDifficultyLevel difficultyLevel = DecryptionDifficultyLevel.INTERMEDIATE;
         List<MachineState> createdWorkBatch = new ArrayList<>();
         createdWorkBatch = WorkDispatcher.getWorkBatch(firstWorkState,difficultyLevel
@@ -62,4 +63,41 @@ public class GetWorkBatchesTest {
         MachineState expectedState = WorkDispatcherTestUtils.getStartingState();
         Assert.assertTrue(createdWorkBatch.contains(expectedState));
     }
+
+    @Test
+    public void getHardWorkBatchTest() throws Exception {
+        MachineHandler machineHandler = WorkDispatcherTestUtils.loadAMachineHandlerRandomly();
+        MachineState firstWorkState = WorkDispatcherTestUtils.getProgressedState();
+        firstWorkState.setReflectorId(ReflectorsId.III);
+        firstWorkState.setRotorIds(Arrays.asList(2,1,3));
+        DecryptionDifficultyLevel difficultyLevel = DecryptionDifficultyLevel.HARD;
+        List<MachineState> createdWorkBatch = new ArrayList<>();
+        createdWorkBatch = WorkDispatcher.getWorkBatch(firstWorkState,difficultyLevel
+                ,WorkDispatcherTestUtils.REQUESTED_HARD_BATCH_SIZE,machineHandler.getInventoryInfo().get());
+        Assert.assertTrue(!createdWorkBatch.isEmpty());
+        MachineState expectedState = WorkDispatcherTestUtils.getStartingState();
+        expectedState.setReflectorId(ReflectorsId.I);
+        expectedState.setRotorIds(Arrays.asList(2,3,1));
+        Assert.assertTrue(createdWorkBatch.contains(expectedState));
+    }
+
+    @Test
+    public void getImpossibleWorkBatchTest() throws Exception {
+        MachineHandler machineHandler = WorkDispatcherTestUtils.loadAMachineHandlerRandomly();
+        MachineState firstWorkState = WorkDispatcherTestUtils.getProgressedState();
+        firstWorkState.setReflectorId(ReflectorsId.III);
+        firstWorkState.setRotorIds(Arrays.asList(2,1,3));
+        DecryptionDifficultyLevel difficultyLevel = DecryptionDifficultyLevel.IMPOSSIBLE;
+        List<MachineState> createdWorkBatch = new ArrayList<>();
+        createdWorkBatch = WorkDispatcher.getWorkBatch(firstWorkState,difficultyLevel
+                ,WorkDispatcherTestUtils.REQUESTED_IMPOSSIBLE_BATCH_SIZE,machineHandler.getInventoryInfo().get());
+        Assert.assertTrue(!createdWorkBatch.isEmpty());
+        MachineState expectedState = WorkDispatcherTestUtils.getStartingState();
+        expectedState.setReflectorId(ReflectorsId.I);
+        expectedState.setRotorIds(Arrays.asList(2,1,4));
+        Assert.assertTrue(createdWorkBatch.contains(expectedState));
+    }
+
+
+
 }
