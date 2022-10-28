@@ -97,7 +97,4 @@ public class GetWorkBatchesTest {
         expectedState.setRotorIds(Arrays.asList(2,1,4));
         Assert.assertTrue(createdWorkBatch.contains(expectedState));
     }
-
-
-
 }
