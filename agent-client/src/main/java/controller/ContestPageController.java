@@ -58,6 +58,7 @@ public class ContestPageController implements Initializable {
             else{
                 Platform.runLater(()->{
                     contestDataFlowPane.getChildren().clear();
+                    dmResultsFlowPane.getChildren().clear();
                 });
             }
         });
