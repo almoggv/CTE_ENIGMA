@@ -139,7 +139,8 @@ public class WorkDispatcher {
         }
         int rotorIdAsNum = previousRefId.getId();
         //Advance:
-        rotorIdAsNum = ((rotorIdAsNum + 1) % numberOfAvailableReflectors) + 1;
+        rotorIdAsNum = ((rotorIdAsNum + 1) % (numberOfAvailableReflectors+1));
+        rotorIdAsNum = (rotorIdAsNum == 0) ? rotorIdAsNum++ : rotorIdAsNum; //skip id=0
         return ReflectorsId.getByNum(rotorIdAsNum);
     }
 
