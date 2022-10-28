@@ -106,6 +106,9 @@ public class UserManager {
             agentData.setNumberOfThreads(Integer.valueOf(threadNum));
             agentData.setAllyName(allyName);
             newUser.setContestRoom(getUserByName(allyName).getContestRoom());
+            if(newUser.getContestRoom() != null){
+                newUser.setInARoom(true);
+            }
             //connect ally to agent
             Ally ally = getAllyByName(allyName);
             ally.getAgentsList().add(agentData);

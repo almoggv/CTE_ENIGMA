@@ -6,7 +6,6 @@ import model.Ally;
 import model.ContestRoom;
 import model.User;
 
-import javax.swing.event.ListDataEvent;
 import java.util.*;
 
 public class RoomManager {
@@ -35,6 +34,7 @@ public class RoomManager {
 
             //set room in ally info
             userManager.getUserByName(ally.getTeamName()).setContestRoom(room);
+            userManager.getUserByName(ally.getTeamName()).setInARoom(true);
 
             //set room in agents of ally if exist
             for (AgentData agent : ally.getAgentsList()) {
@@ -63,12 +63,13 @@ public class RoomManager {
 //        room.setGameStatus(GameStatus.READY);
     }
 
-    public void checkWin(ContestRoom contestRoom, String originalWord) {
+    public void checkWin(ContestRoom contestRoom, String originalWord, UserManager userManager) {
         List<EncryptionCandidate> encryptionCandidateList = contestRoom.getEncryptionCandidateList();
         for(EncryptionCandidate candidate: encryptionCandidateList){
             if(candidate.getCandidate().toUpperCase().equals(originalWord)){
                 contestRoom.setGameStatus(GameStatus.DONE);
                 contestRoom.setWinnerName(candidate.getAllyTeamName());
+//                resetContestRoom(contestRoom, userManager);
             }
         }
     }
