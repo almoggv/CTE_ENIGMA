@@ -58,6 +58,7 @@ public class DataService {
     private static final String contestDataUrl;
     private static final String candidatesUrl;
     private static final String contestStatusUrl;
+    private static final String gotWinUrl;
 
     private static final Runnable contestsDataFetcher = new Runnable() {
         @Override
@@ -83,6 +84,7 @@ public class DataService {
                     }
                     if (response.code() != 200) {
                         log.error("Failed to fetch contests data - statusCode=" + response.code() + ", ServerMessage=" + payload.getMessage());
+                        contestRoomsStateProperty.setValue(null);
                     }
                     else {
                         log.info("Contest data Successfully Fetched - responseCode = 200, ServerMessage=" + payload.getContestRooms());
@@ -195,9 +197,9 @@ public class DataService {
                     }
                     else {
                         log.info("Contest data Successfully Fetched - responseCode = 200, ServerMessage=" + payload.getContestRoom());
+                        currentContestRoomsStateProperty.setValue(null);
+                        currentContestRoomsStateProperty.setValue(payload.getContestRoom());
                         if(payload.getContestRoom() != null  ){
-                            currentContestRoomsStateProperty.setValue(null);
-                            currentContestRoomsStateProperty.setValue(payload.getContestRoom());
 //                            if(payload.getContestRoom().getGameStatus()!= GameStatus.WAITING){
 //                                if(getIsContestStartedProperty().get() == false) {
 //                                    getIsContestStartedProperty().setValue(true);
@@ -207,6 +209,9 @@ public class DataService {
                             {
                                 gameStatusProperty.setValue(payload.getContestRoom().getGameStatus());
                             }
+                        }
+                        if(gameStatusProperty.get() == GameStatus.DONE){
+                            sendGotWin();
                         }
                     }
                 }
@@ -327,8 +332,35 @@ public class DataService {
                 .newBuilder()
                 .build()
                 .toString();
+        gotWinUrl = HttpUrl
+                .parse(PropertiesService.getApiGotWinUrl())
+                .newBuilder()
+                .build()
+                .toString();
     }
 
+    public static void sendGotWin() {
+        HttpClientService.runAsync(gotWinUrl, new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                log.error("gotWin failed, ExceptionMessage="+e.getMessage());
+            }
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                String responseBody = response.body().string();
+                if (response.code() >= 500) {
+                    log.error("gotWin failed - statusCode=" + response.code());
+                    return;
+                }
+                if (response.code() != 200) {
+                    log.error("gotWin failed - statusCode=" + response.code() + ", ServerMessage=" + responseBody);
+                }
+                else {
+                    log.info("sent got win Successfully  - responseCode = 200");
+                }
+            }
+        });
+    }
     public static void startPullingRoomsData(){
         long timeInterval = 1500;
         executor.scheduleAtFixedRate(contestsDataFetcher, 0, timeInterval, TimeUnit.MILLISECONDS);

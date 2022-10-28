@@ -69,7 +69,6 @@ public class RoomManager {
             if(candidate.getCandidate().toUpperCase().equals(originalWord)){
                 contestRoom.setGameStatus(GameStatus.DONE);
                 contestRoom.setWinnerName(candidate.getAllyTeamName());
-//                resetContestRoom(contestRoom, userManager);
             }
         }
     }
@@ -86,8 +85,8 @@ public class RoomManager {
         return new ContestRoomData(room.getName(), room.getCreatorName(), room.getGameStatus(), room.getDifficultyLevel(), room.getCurrNumOfTeams(), room.getRequiredNumOfTeams(),room.getWordToDecrypt());
     }
 
-    private void resetContestRoom(ContestRoom room, UserManager userManager){
-      
+    //todo - change to private - this is for check
+    public void resetContestRoom(ContestRoom room, UserManager userManager){
         List<Ally> allies = room.getAlliesList();
         //reset room itself
         room.setGameStatus(GameStatus.WAITING);
@@ -101,12 +100,24 @@ public class RoomManager {
         //reset ally teams
         for (Ally ally : allies) {
             //reset room in ally info
-            userManager.getUserByName(ally.getTeamName()).setContestRoom(null);
+            User allyuser = userManager.getUserByName(ally.getTeamName());
+            allyuser.setContestRoom(null);
+            allyuser.setInARoom(false);
+            allyuser.setSentGotWin(false);
 
             //reset room in agents of ally if exist
             for (AgentData agent : ally.getAgentsList()) {
                 userManager.getUserByName(agent.getName()).setContestRoom(null);
+                userManager.getUserByName(agent.getName()).setSentGotWin(false);
+                userManager.getUserByName(agent.getName()).setInARoom(false);
             }
+        }
+    }
+
+    public void updateGotWon(ContestRoom contestRoom, UserManager userManager) {
+        contestRoom.setNumOfGotWinCount(contestRoom.getNumOfGotWinCount() + 1);
+        if(contestRoom.getNumOfGotWinCount() >= 3){
+            resetContestRoom(contestRoom, userManager);
         }
     }
 }

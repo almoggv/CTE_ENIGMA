@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jsonadapter.LoginPayloadJsonAdapter;
+import manager.RoomManager;
 import manager.UserManager;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
@@ -39,6 +40,7 @@ public class Logout extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         UserManager userManager = ServletUtils.getUserManager(this.getServletContext());
+        RoomManager roomManager = ServletUtils.getRoomManager(this.getServletContext());
         String usernameFromSession = SessionUtills.getUsername(req);
         String usernameFromParameter = req.getParameter(PropertiesService.getUsernameAttributeName());
         LoginPayload repsPayload = new LoginPayload();
@@ -55,7 +57,7 @@ public class Logout extends HttpServlet {
         if(usernameFromSession != null){ //user is already logged in
             synchronized (this) {
                 if (userManager.isUserExists(usernameFromSession)) {
-                    userManager.removeUser(usernameFromSession);
+                    userManager.removeUser(usernameFromSession,roomManager);
                     resp.setStatus(SC_OK);
                     repsPayload.setMessage("User logged out successfully");
                     repsPayload.setAccessToken("");
@@ -71,7 +73,7 @@ public class Logout extends HttpServlet {
             usernameFromParameter = usernameFromParameter.trim();
             synchronized (this) {
                 if (userManager.isUserExists(usernameFromParameter)) {
-                    userManager.removeUser(usernameFromParameter);
+                    userManager.removeUser(usernameFromParameter, roomManager);
                     resp.setStatus(SC_OK);
                     repsPayload.setMessage("User logged out successfully");
                     repsPayload.setAccessToken("");

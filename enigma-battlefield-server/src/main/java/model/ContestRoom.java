@@ -24,4 +24,5 @@ public class ContestRoom {
     @Getter @Setter private List<Ally> alliesList;
     @Getter @Setter private List<EncryptionCandidate> encryptionCandidateList;
     @Getter @Setter MachineHandler machineHandler;
+    @Getter @Setter private Integer numOfGotWinCount;
 }

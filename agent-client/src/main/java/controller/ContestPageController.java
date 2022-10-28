@@ -55,6 +55,11 @@ public class ContestPageController implements Initializable {
             if(newValue != null ){
                 createContestsDataComponents(newValue);
             }
+            else{
+                Platform.runLater(()->{
+                    contestDataFlowPane.getChildren().clear();
+                });
+            }
         });
 
         DataService.getAgentsListStateProperty().addListener((observable, oldValue, newValue) -> {

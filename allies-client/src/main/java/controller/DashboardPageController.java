@@ -79,6 +79,9 @@ public class DashboardPageController implements Initializable {
             if(newValue != null ){
                 createContestsDataComponents(newValue);
             }
+            else{
+                contestDataFlowPane.getChildren().clear();
+            }
         });
 
         DataService.getAgentsListStateProperty().addListener((observable, oldValue, newValue) -> {

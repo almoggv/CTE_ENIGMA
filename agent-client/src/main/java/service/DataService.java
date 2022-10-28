@@ -72,6 +72,7 @@ public class DataService {
                     }
                     if (response.code() != 200) {
                         log.error("Failed to fetch contests data - statusCode=" + response.code() + ", ServerMessage=" + payload.getMessage());
+                        currentContestRoomsStateProperty.setValue(null);
                     }
                     else {
                         log.debug("Contest data Successfully Fetched - responseCode = 200, ServerMessage=" + payload.getContestRoom());
@@ -151,6 +152,7 @@ public class DataService {
                     }
                     if (response.code() != 200) {
                         log.error("Failed to fetch curr Teams - statusCode=" + response.code() + ", ServerMessage=" + allyTeamsPayload.getMessage());
+                        currentTeamsProperty.setValue(null);
                     }
                     else {
                         log.debug("Current teams Fetched - responseCode = 200, ServerMessage=" + allyTeamsPayload.getMessage());

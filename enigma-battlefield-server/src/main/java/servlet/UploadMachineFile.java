@@ -141,6 +141,7 @@ public class UploadMachineFile extends HttpServlet {
         contestRoom.setEveryoneReady(false);
         contestRoom.setNumOfReady(0);
         contestRoom.setEncryptionCandidateList(new ArrayList<>());
+        contestRoom.setNumOfGotWinCount(0);
         return contestRoom;
     }
 }
