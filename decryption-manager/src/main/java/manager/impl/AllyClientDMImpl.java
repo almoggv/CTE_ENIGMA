@@ -83,7 +83,7 @@ public class AllyClientDMImpl implements AllyClientDM {
         MachineState lastUsedState = (this.lastCreatedworkBatchLastState == null) ? initialMachineConfig : this.lastCreatedworkBatchLastState;
         int amountOfBatchesToCreate = PropertiesService.getMaxWorkBatchesQueueSize() - workBatchesQueue.size();
         for (int i = 0; i < amountOfBatchesToCreate; i++) {
-            List<MachineState> newBatch = WorkDispatcher.getWorkBatch(lastUsedState,difficultyLevel,taskSize);
+            List<MachineState> newBatch = WorkDispatcher.getWorkBatch(lastUsedState,difficultyLevel,taskSize,inventoryInfo);
             workBatchesQueue.add(newBatch);
             lastUsedState = newBatch.get(newBatch.size() - 1);
         }

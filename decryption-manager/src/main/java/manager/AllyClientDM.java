@@ -10,6 +10,10 @@ import java.util.Queue;
 public interface AllyClientDM extends Runnable{
 
 //    Queue<List<MachineState>> getWorkBatchesQueue();
+
+    /**
+     * @return a list of MachineStates or null of no new batch was found
+     */
     List<MachineState> getNextBatch();
 
     InventoryInfo getInventoryInfo();

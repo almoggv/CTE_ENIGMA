@@ -23,7 +23,6 @@ public class WorkDispatcher {
         }
     }
 
-
     public static List<MachineState> getWorkBatch(MachineState startingState, DecryptionDifficultyLevel difficultyLevel, int batchSize, InventoryInfo inventoryInfo){
         if(startingState == null){
             log.error("Failed to create a workBatch - startingState = null");
@@ -73,7 +72,7 @@ public class WorkDispatcher {
             List<String> advancedPositions = advanceRotorPositions(startingState.getRotorsHeadsInitialValues(), inventoryInfo.getABC());
             startingState.setRotorsHeadsInitialValues(advancedPositions);
             if(reachedInitialState(startingState.getRotorsHeadsInitialValues(), inventoryInfo.getABC())){
-                ReflectorsId advancedReflector = advanceReflector(startingState.getReflectorId());
+                ReflectorsId advancedReflector = advanceReflector(startingState.getReflectorId(), inventoryInfo.getNumOfAvailableReflectors());
                 startingState.setReflectorId(advancedReflector);
             }
         }
@@ -87,7 +86,7 @@ public class WorkDispatcher {
             List<String> advancedPositions = advanceRotorPositions(startingState.getRotorsHeadsInitialValues(), inventoryInfo.getABC());
             startingState.setRotorsHeadsInitialValues(advancedPositions);
             if(reachedInitialState(startingState.getRotorsHeadsInitialValues(), inventoryInfo.getABC())){
-                ReflectorsId advancedReflector = advanceReflector(startingState.getReflectorId());
+                ReflectorsId advancedReflector = advanceReflector(startingState.getReflectorId(), inventoryInfo.getNumOfAvailableReflectors());
                 startingState.setReflectorId(advancedReflector);
             }
             if(reachedInitialState(startingState.getReflectorId())){
@@ -98,8 +97,6 @@ public class WorkDispatcher {
         return newWorkBatch;
     }
 
-
-
     private static List<MachineState> getImpossibleWorkBatch(MachineState startingState, int batchSize, InventoryInfo inventoryInfo) {
         List<MachineState> newWorkBatch = new ArrayList<>();
         for (int i = 0; i < batchSize; i++) {
@@ -107,7 +104,7 @@ public class WorkDispatcher {
             List<String> advancedPositions = advanceRotorPositions(startingState.getRotorsHeadsInitialValues(), inventoryInfo.getABC());
             startingState.setRotorsHeadsInitialValues(advancedPositions);
             if(reachedInitialState(startingState.getRotorsHeadsInitialValues(), inventoryInfo.getABC())){
-                ReflectorsId advancedReflector = advanceReflector(startingState.getReflectorId());
+                ReflectorsId advancedReflector = advanceReflector(startingState.getReflectorId(), inventoryInfo.getNumOfAvailableReflectors());
                 startingState.setReflectorId(advancedReflector);
             }
             if(reachedInitialState(startingState.getReflectorId())){
@@ -135,14 +132,14 @@ public class WorkDispatcher {
         return newAdvancedPos;
     }
 
-    private static ReflectorsId advanceReflector(ReflectorsId previousRefId) {
+    private static ReflectorsId advanceReflector(ReflectorsId previousRefId, int numberOfAvailableReflectors) {
         if(previousRefId == null ){
             log.error("Failed to Advance Reflector's Id - rotor Id is null");
             return null;
         }
         int rotorIdAsNum = previousRefId.getId();
         //Advance:
-        rotorIdAsNum = (rotorIdAsNum + 1) % ReflectorsId.values().length;
+        rotorIdAsNum = ((rotorIdAsNum + 1) % numberOfAvailableReflectors) + 1;
         return ReflectorsId.getByNum(rotorIdAsNum);
     }
 
