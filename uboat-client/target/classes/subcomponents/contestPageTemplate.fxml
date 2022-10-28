@@ -24,7 +24,7 @@
    <children>
       <fx:include fx:id="currMachineConfigComponent" source="currMachineConfigTemplate.fxml" GridPane.columnIndex="1" />
       <fx:include fx:id="encryptionComponent" source="encryptionComponent.fxml" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      <ScrollPane fx:id="dmResultsScrollPane" fitToWidth="true" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3">
+      <ScrollPane fx:id="dmResultsScrollPane" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3">
          <content>
             <FlowPane fx:id="dmResultsFlowPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="0.0" prefWidth="695.0" />
          </content>
