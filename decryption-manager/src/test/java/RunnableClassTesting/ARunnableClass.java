@@ -1,10 +1,8 @@
-package AgentClientDMTest;
+package RunnableClassTesting;
 
 import common.ListUtils;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,7 +51,7 @@ public class ARunnableClass implements Runnable{
     }
 
     private void divideWork() {
-        List<List<String>> batches = ListUtils.partition(aList,2);
+        List<List<String>> batches = ListUtils.partition(aList,2, true);
         for (List<String> batch : batches) {
             SubRunnableClass newRunnable = new SubRunnableClass(batch);
             newRunnable.stringProperty.addListener((observable, oldValue, newValue) -> {

@@ -1,6 +1,7 @@
 package service;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class MathService {
@@ -125,4 +126,41 @@ public class MathService {
         }
         return permutations;
     }
+
+    /**
+     * i.e. abc=ABCDEF -> number=AAD , base=6 -> result=003
+     * @param numberInBaseN - decomposed number
+     * @param base - 10 (decimal) , 16 (hex)..
+     * @param baseAbc - the abc of the base, i.e. 0-9 (decimal), 0-9a-f (hex)
+     * @return
+     */
+    public static int fromLettersToBase10(List<String> numberInBaseN, int base, String baseAbc){
+        int result = 0;
+        for (int i = numberInBaseN.size() - 1, pow = 0 ; i >= 0 ; i--, pow++) {
+            int charAsBase10 = baseAbc.indexOf(numberInBaseN.get(i));
+            result += charAsBase10 * (Math.pow(base,pow));
+        }
+        return (int) result;
+    }
+
+    //
+
+    /**
+     * From base 10 to baseN i.e. BaseN = 26 (A-Z) -> 29 -> ABD
+     * @param decimalNumber - actual value
+     * @param baseN
+     * @param abc the abc of the BaseN
+     * @param numberOfLettersInUse the number of characters in the result (numberOfRotors In Use)
+     * @return
+     */
+    public static List<String> fromBase10ToBaseN(int decimalNumber, int baseN, String abc, int numberOfLettersInUse){
+        LinkedList<String> result = new LinkedList<>();
+        for (int i = 0; i < numberOfLettersInUse; i++) {
+            int currDigit = decimalNumber % baseN;
+            decimalNumber = decimalNumber / baseN;
+            result.push(abc.substring(currDigit,currDigit+1));
+        }
+        return result;
+    }
+
 }

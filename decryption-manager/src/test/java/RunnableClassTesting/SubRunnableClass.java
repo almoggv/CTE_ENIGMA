@@ -1,4 +1,4 @@
-package AgentClientDMTest;
+package RunnableClassTesting;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
