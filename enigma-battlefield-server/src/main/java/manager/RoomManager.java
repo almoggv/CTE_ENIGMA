@@ -6,6 +6,7 @@ import model.Ally;
 import model.ContestRoom;
 import model.User;
 
+import javax.swing.event.ListDataEvent;
 import java.util.*;
 
 public class RoomManager {
@@ -82,5 +83,29 @@ public class RoomManager {
 
     public ContestRoomData makeRoomDataFromRoom(ContestRoom room){
         return new ContestRoomData(room.getName(), room.getCreatorName(), room.getGameStatus(), room.getDifficultyLevel(), room.getCurrNumOfTeams(), room.getRequiredNumOfTeams(),room.getWordToDecrypt());
+    }
+
+    private void resetContestRoom(ContestRoom room, UserManager userManager){
+      
+        List<Ally> allies = room.getAlliesList();
+        //reset room itself
+        room.setGameStatus(GameStatus.WAITING);
+        room.setCurrNumOfTeams(0);
+        room.setWordToDecrypt(null);
+        room.setNumOfReady(0);
+        room.setEveryoneReady(false);
+        room.setWinnerName(null);
+        room.setEncryptionCandidateList(new ArrayList<>());
+
+        //reset ally teams
+        for (Ally ally : allies) {
+            //reset room in ally info
+            userManager.getUserByName(ally.getTeamName()).setContestRoom(null);
+
+            //reset room in agents of ally if exist
+            for (AgentData agent : ally.getAgentsList()) {
+                userManager.getUserByName(agent.getName()).setContestRoom(null);
+            }
+        }
     }
 }
