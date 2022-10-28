@@ -153,10 +153,10 @@ public class MathService {
      * @param numberOfLettersInUse the number of characters in the result (numberOfRotors In Use)
      * @return
      */
-    public static List<String> fromBase10ToBaseN(int decimalNumber, int baseN, String abc, int numberOfLettersInUse){
+    public static List<String> fromBase10ToBaseN(long decimalNumber, int baseN, String abc, int numberOfLettersInUse){
         LinkedList<String> result = new LinkedList<>();
         for (int i = 0; i < numberOfLettersInUse; i++) {
-            int currDigit = decimalNumber % baseN;
+            int currDigit =(int) decimalNumber % baseN;
             decimalNumber = decimalNumber / baseN;
             result.push(abc.substring(currDigit,currDigit+1));
         }

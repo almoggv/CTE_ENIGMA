@@ -4,7 +4,6 @@ import dto.InventoryInfo;
 import dto.MachineState;
 import enums.DecryptionDifficultyLevel;
 import enums.ReflectorsId;
-import manager.impl.AllyClientDMImpl;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
@@ -25,39 +24,98 @@ public class WorkDispatcher {
     }
 
 
-    public static List<MachineState> getworkBatch(MachineState startingState, DecryptionDifficultyLevel difficultyLevel, int batchSize){
+    public static List<MachineState> getWorkBatch(MachineState startingState, DecryptionDifficultyLevel difficultyLevel, int batchSize, InventoryInfo inventoryInfo){
+        if(startingState == null){
+            log.error("Failed to create a workBatch - startingState = null");
+            return null;
+        }
+        if(difficultyLevel == null){
+            log.error("Failed to create a workBatch - difficultyLevel = null");
+            return null;
+        }
+        if(batchSize < 0){
+            log.error("Failed to create a workBatch - batchSize cannot be negative, value=" + batchSize);
+            return null;
+        }
+        if(inventoryInfo == null){
+            log.error("Failed to create a workBatch - inventoryInfo = null");
+            return null;
+        }
         List<MachineState> newBatch = null;
         if(difficultyLevel.equals(DecryptionDifficultyLevel.EASY)){
-            newBatch = WorkDispatcher.getEasyWorkBatch(startingState,batchSize);
+            newBatch = WorkDispatcher.getEasyWorkBatch(startingState,batchSize,inventoryInfo);
         }
         else if(difficultyLevel.equals(DecryptionDifficultyLevel.INTERMEDIATE)){
-            newBatch = WorkDispatcher.getIntermediateWorkBatch(startingState,batchSize);
+            newBatch = WorkDispatcher.getIntermediateWorkBatch(startingState,batchSize,inventoryInfo);
         }
         else if(difficultyLevel.equals(DecryptionDifficultyLevel.HARD)){
-            newBatch = WorkDispatcher.getHardWorkBatch(startingState,batchSize);
+            newBatch = WorkDispatcher.getHardWorkBatch(startingState,batchSize,inventoryInfo);
         }
         else if(difficultyLevel.equals(DecryptionDifficultyLevel.IMPOSSIBLE)){
-            newBatch = WorkDispatcher.getImpossibleWorkBatch(startingState,batchSize);
+            newBatch = WorkDispatcher.getImpossibleWorkBatch(startingState,batchSize,inventoryInfo);
         }
         return newBatch;
     }
 
-    private static List<MachineState> getEasyWorkBatch(MachineState startingState, int batchSize) {
+    private static List<MachineState> getEasyWorkBatch(MachineState startingState, int batchSize, InventoryInfo inventoryInfo) {
         List<MachineState> newWorkBatch = new ArrayList<>();
-        throw new UnsupportedOperationException();
-
+        for (int i = 0; i < batchSize; i++) {
+            newWorkBatch.add(startingState.getDeepClone());
+            startingState.setRotorsHeadsInitialValues(advanceRotorPositions(startingState.getRotorsHeadsInitialValues(), inventoryInfo.getABC()));
+        }
+        return newWorkBatch;
     }
 
-    private static List<MachineState> getIntermediateWorkBatch(MachineState startingState, int batchSize) {
-        throw new UnsupportedOperationException();
+    private static List<MachineState> getIntermediateWorkBatch(MachineState startingState, int batchSize, InventoryInfo inventoryInfo) {
+        List<MachineState> newWorkBatch = new ArrayList<>();
+        for (int i = 0; i < batchSize; i++) {
+            newWorkBatch.add(startingState.getDeepClone());
+            List<String> advancedPositions = advanceRotorPositions(startingState.getRotorsHeadsInitialValues(), inventoryInfo.getABC());
+            startingState.setRotorsHeadsInitialValues(advancedPositions);
+            if(reachedInitialState(startingState.getRotorsHeadsInitialValues(), inventoryInfo.getABC())){
+                ReflectorsId advancedReflector = advanceReflector(startingState.getReflectorId());
+                startingState.setReflectorId(advancedReflector);
+            }
+        }
+        return newWorkBatch;
     }
 
-    private static List<MachineState> getHardWorkBatch(MachineState startingState, int batchSize) {
-        throw new UnsupportedOperationException();
+    private static List<MachineState> getHardWorkBatch(MachineState startingState, int batchSize, InventoryInfo inventoryInfo) {
+        List<MachineState> newWorkBatch = new ArrayList<>();
+        for (int i = 0; i < batchSize; i++) {
+            newWorkBatch.add(startingState.getDeepClone());
+            List<String> advancedPositions = advanceRotorPositions(startingState.getRotorsHeadsInitialValues(), inventoryInfo.getABC());
+            startingState.setRotorsHeadsInitialValues(advancedPositions);
+            if(reachedInitialState(startingState.getRotorsHeadsInitialValues(), inventoryInfo.getABC())){
+                ReflectorsId advancedReflector = advanceReflector(startingState.getReflectorId());
+                startingState.setReflectorId(advancedReflector);
+            }
+            if(reachedInitialState(startingState.getReflectorId())){
+                List<Integer> advancedRotorIds = advanceRotorsIds(startingState.getRotorIds());
+                startingState.setRotorIds(advancedRotorIds);
+            }
+        }
+        return newWorkBatch;
     }
 
-    private static List<MachineState> getImpossibleWorkBatch(MachineState startingState, int batchSize) {
-        throw new UnsupportedOperationException();
+
+
+    private static List<MachineState> getImpossibleWorkBatch(MachineState startingState, int batchSize, InventoryInfo inventoryInfo) {
+        List<MachineState> newWorkBatch = new ArrayList<>();
+        for (int i = 0; i < batchSize; i++) {
+            newWorkBatch.add(startingState.getDeepClone());
+            List<String> advancedPositions = advanceRotorPositions(startingState.getRotorsHeadsInitialValues(), inventoryInfo.getABC());
+            startingState.setRotorsHeadsInitialValues(advancedPositions);
+            if(reachedInitialState(startingState.getRotorsHeadsInitialValues(), inventoryInfo.getABC())){
+                ReflectorsId advancedReflector = advanceReflector(startingState.getReflectorId());
+                startingState.setReflectorId(advancedReflector);
+            }
+            if(reachedInitialState(startingState.getReflectorId())){
+                List<Integer> advancedRotorIds = advanceRotorsIds(startingState.getRotorIds(),inventoryInfo.getNumOfAvailableRotors());
+                startingState.setRotorIds(advancedRotorIds);
+            }
+        }
+        return newWorkBatch;
     }
 
     private static List<String> advanceRotorPositions(List<String> prevRotorsPositions, String abc){
@@ -69,9 +127,10 @@ public class WorkDispatcher {
             log.error("Failed to advcane rotors - ABC given is null or empty, Value=" + abc);
             return null;
         }
+        long maxValue = (long) Math.pow(prevRotorsPositions.size(),abc.length());
         int numberOfRotorsInUse = prevRotorsPositions.size();
-        int positionAsDecimal = MathService.fromLettersToBase10(prevRotorsPositions, abc.length(), abc);
-        positionAsDecimal += 1;
+        long positionAsDecimal = MathService.fromLettersToBase10(prevRotorsPositions, abc.length(), abc);
+        positionAsDecimal =  (positionAsDecimal + 1) % maxValue;
         List<String> newAdvancedPos = MathService.fromBase10ToBaseN(positionAsDecimal, abc.length(), abc, numberOfRotorsInUse);
         return newAdvancedPos;
     }
@@ -88,7 +147,7 @@ public class WorkDispatcher {
     }
 
     /**
-     * IMPOSSIBLE - all rotors ids, all positions
+     * FOR IMPOSSIBLE - all rotors ids, all positions
      */
     private static List<Integer> advanceRotorsIds(List<Integer> previousRotorIds, int numberOfAvailableRotors){
         // advancing the rotorIds is the same as advancing rotors positions except we need the values to be different from one another
@@ -128,7 +187,7 @@ public class WorkDispatcher {
     }
 
     /**
-     *HARD - only switches the location of the given rotors
+     * FOR HARD - only switches the location of the given rotors
      */
     private static List<Integer> advanceRotorsIds(List<Integer> previousRotorIds){
         List<Integer> nextIds;
@@ -163,5 +222,18 @@ public class WorkDispatcher {
             nextIds.add(Integer.valueOf(idString));
         }
         return nextIds;
+    }
+
+    private static boolean reachedInitialState(List<String> rotorsPositions, String abc) {
+        boolean didReachInitialValue = true;
+        String firstChar = abc.substring(0,1);
+        for ( String position : rotorsPositions ) {
+            didReachInitialValue = didReachInitialValue && position.equals(firstChar);
+        }
+        return didReachInitialValue;
+    }
+
+    private static boolean reachedInitialState(ReflectorsId reflectorId) {
+        return reflectorId.getId().equals(ReflectorsId.I);
     }
 }
