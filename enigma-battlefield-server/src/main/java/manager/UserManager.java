@@ -69,7 +69,6 @@ public class UserManager {
                 if(userToLogout.isInARoom()) {
                     roomManager.resetContestRoom(userToLogout.getContestRoom(), this);
                     roomManager.removeRoom(userToLogout.getContestRoom().getName());
-
                 }
                 usernamesToUboatsMap.remove(username);
                 break;

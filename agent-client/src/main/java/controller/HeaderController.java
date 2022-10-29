@@ -2,6 +2,7 @@ package controller;
 
 import com.google.gson.Gson;
 import dto.AllyTeamData;
+import dto.GameStatePayload;
 import dto.LoginPayload;
 import enums.GameStatus;
 import javafx.application.Platform;
@@ -189,7 +190,7 @@ public class HeaderController implements Initializable {
                         DataService.getGameStatusProperty().setValue(null);
                         DataService.getLastCandidatesProperty().setValue(null);
                         DataService.getAgentsListStateProperty().setValue(null);
-                        DataService.getGameStatusProperty().setValue(null);
+                        DataService.getGameStatusProperty().setValue(new GameStatePayload());
                         DataService.getCurrentContestRoomStateProperty().setValue(null);
                     });
                 }

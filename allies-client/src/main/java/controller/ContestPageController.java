@@ -66,9 +66,9 @@ public class ContestPageController implements Initializable {
                     contestDataGridController.setData(newValue);
                 });
             }
-            else{
-                DataService.getLastCandidatesProperty().setValue(null);
+            else if(parentController.headerComponentController.getIsLoggedInProperty().get()){
                 parentController.changeSceneToDashboard();
+                DataService.getLastCandidatesProperty().setValue(null);
                 Platform.runLater(()->{
                     parentController.changeSceneToDashboard();
                     contestWordLabel.setText(null);

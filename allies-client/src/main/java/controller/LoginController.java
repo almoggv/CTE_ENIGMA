@@ -52,14 +52,12 @@ public class LoginController implements Initializable {
     @Getter
     private final SimpleBooleanProperty isLoggedInProperty = new SimpleBooleanProperty(false);
 
-
     @FXML
     private TextField loginTextField;
     @FXML
     private Button loginButton;
     @FXML
-    private GridPane rootGridPane;
-
+    private GridPane allyrootGridPane;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -71,7 +69,7 @@ public class LoginController implements Initializable {
     void onLoginButtonAction(ActionEvent event) {
         isLoggedInProperty.setValue(false);
         String username = this.getUsernameProperty().get();
-        if (username.isEmpty()) {
+        if (username != null && username.isEmpty()) {
             parentController.showMessage("Username cannot be empty");
             return;
         }
@@ -125,7 +123,7 @@ public class LoginController implements Initializable {
     }
 
     public GridPane getRootComponent() {
-        return rootGridPane;
+        return allyrootGridPane;
     }
 
 }

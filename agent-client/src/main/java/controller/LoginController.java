@@ -64,7 +64,7 @@ public class LoginController implements Initializable {
     @FXML public ComboBox allieNamesComboBox;
     @FXML private TextField loginTextField;
     @FXML private Button loginButton;
-    @FXML private GridPane rootGridPane;
+    @FXML private GridPane agentrootGridPane;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -189,7 +189,7 @@ public class LoginController implements Initializable {
     }
 
     public GridPane getRootComponent() {
-        return rootGridPane;
+        return agentrootGridPane;
     }
 
 }

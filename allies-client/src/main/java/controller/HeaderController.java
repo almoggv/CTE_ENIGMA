@@ -164,6 +164,7 @@ public class HeaderController implements Initializable {
                     });
                 } else {
                     Platform.runLater(() -> {
+                        parentController.changeSceneToLogin();
                         isLoggedInProperty.setValue(false);
                         log.info("Successfully Logged Out as :\"" + username + "\", status=" + response.code() + ", response body=" + responseBody);
                         parentController.showMessage("Logged Out from: " + username);

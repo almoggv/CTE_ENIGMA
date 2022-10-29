@@ -108,9 +108,11 @@ public class SetMachineConfigController implements Initializable {
 
     private void setRotorsIdsHbox(InventoryInfo inventoryInfo) {
         int numOfNeededRotors = inventoryInfo.getNumOfRotorsInUse();
-        Label idLabel = (Label) rotorsHbox.getChildren().get(0);
-        rotorsHbox.getChildren().clear();
-        rotorsHbox.getChildren().add(idLabel);
+        Platform.runLater(()-> {
+            Label idLabel = (Label) rotorsHbox.getChildren().get(0);
+            rotorsHbox.getChildren().clear();
+            rotorsHbox.getChildren().add(idLabel);
+        });
         ObservableList<ComboBoxItem<String>> observableRotorIdList = createRotorsIdsObservableList(inventoryInfo);
         for (int i = 1; i <= numOfNeededRotors; i++) {
             ComboBox<ComboBoxItem<String>> rotorsIdsComboBox = new ComboBox<>(observableRotorIdList);
@@ -119,17 +121,19 @@ public class SetMachineConfigController implements Initializable {
             validationSupport.registerValidator(rotorsIdsComboBox, Validator.createEmptyValidator("Selection required"));
             rotorsHbox.getChildren().add(rotorsIdsComboBox);
             rotorsIdsComboBox.setOnAction(e ->
-                    rotorsIdsComboBox.getSelectionModel().getSelectedItem().setChosen(true));
+            rotorsIdsComboBox.getSelectionModel().getSelectedItem().setChosen(true));
         }
     }
 
     private ObservableList<ComboBoxItem<String>> createRotorsIdsObservableList(InventoryInfo inventoryInfo) {
         int numOfAvailableRotors = inventoryInfo.getNumOfAvailableRotors();
         List<ComboBoxItem<String>> availableIdsList = new ArrayList<>(numOfAvailableRotors);
-        for (int i = 1; i <= numOfAvailableRotors; i++) {
-            ComboBoxItem<String> item = new ComboBoxItem<String>(String.valueOf(i));
-            availableIdsList.add(item);
-        }
+        Platform.runLater(()-> {
+            for (int i = 1; i <= numOfAvailableRotors; i++) {
+                ComboBoxItem<String> item = new ComboBoxItem<String>(String.valueOf(i));
+                availableIdsList.add(item);
+            }
+        });
         ObservableList<ComboBoxItem<String>> observableRotorIdList = FXCollections.observableList(
                 availableIdsList,
                 comboBoxItem -> new Observable[]{comboBoxItem.isChosenProperty()}
@@ -139,10 +143,11 @@ public class SetMachineConfigController implements Initializable {
 
     private void setReflectorChoiceBoxHbox(InventoryInfo inventoryInfo) {
         int reflectorNum = inventoryInfo.getNumOfAvailableReflectors();
-        reflectorChoiceBox.getItems().clear();
-        for (int i = 1; i <= reflectorNum; i++) {
-            reflectorChoiceBox.getItems().add(ReflectorsId.getByNum(i).getName());
-        }
+        Platform.runLater(()->{
+            reflectorChoiceBox.getItems().clear();
+            for (int i = 1; i <= reflectorNum; i++) {
+                reflectorChoiceBox.getItems().add(ReflectorsId.getByNum(i).getName());
+            }});
         validationSupport.registerValidator(reflectorChoiceBox, Validator.createEmptyValidator( "Selection required"));
     }
 
@@ -150,20 +155,23 @@ public class SetMachineConfigController implements Initializable {
         int numOfNeededRotors = inventoryInfo.getNumOfRotorsInUse();
         String Abc = inventoryInfo.getABC();
         Label posLabel = (Label) rotorsInitialPosHBox.getChildren().get(0);
-        rotorsInitialPosHBox.getChildren().clear();
-        rotorsInitialPosHBox.getChildren().add(posLabel);
-        for(int i = 1; i <= numOfNeededRotors; i++) {
-            ChoiceBox<String> newPosChoiceBox = createRotorPositionChoiceBox(Abc);
-            rotorsInitialPosHBox.getChildren().add(newPosChoiceBox);
-            validationSupport.registerValidator(newPosChoiceBox, Validator.createEmptyValidator( "Selection required"));
-        }
+        Platform.runLater(()-> {
+            rotorsInitialPosHBox.getChildren().clear();
+            rotorsInitialPosHBox.getChildren().add(posLabel);
+            for (int i = 1; i <= numOfNeededRotors; i++) {
+                ChoiceBox<String> newPosChoiceBox = createRotorPositionChoiceBox(Abc);
+                rotorsInitialPosHBox.getChildren().add(newPosChoiceBox);
+                validationSupport.registerValidator(newPosChoiceBox, Validator.createEmptyValidator("Selection required"));
+            }
+        });
     }
 
     private ChoiceBox<String> createRotorPositionChoiceBox(java.lang.String ABC){
         ChoiceBox<java.lang.String> newChoiceBox = new ChoiceBox<>();
-        for (int i = 0; i < ABC.length(); i++) {
+        Platform.runLater(()->{
+            for (int i = 0; i < ABC.length(); i++) {
             newChoiceBox.getItems().add(ABC.substring(i,i+1));
-        }
+        }});
         return newChoiceBox;
     }
 
