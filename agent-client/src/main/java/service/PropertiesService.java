@@ -55,5 +55,7 @@ public class PropertiesService {
     @Getter private static final String apiGameStateUrl = FULL_SERVER_PATH + "/game-status";
     @Getter private static final String apiAgentsOfAllyUrl = FULL_SERVER_PATH + "/agents-by-ally";
     @Getter private static final String apiSendCandidatesUrl = FULL_SERVER_PATH + "/post-candidates";
+    @Getter private static final String apiGotWinUrl = FULL_SERVER_PATH + "/got-win";
+
 }
 

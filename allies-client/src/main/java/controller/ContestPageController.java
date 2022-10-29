@@ -68,6 +68,7 @@ public class ContestPageController implements Initializable {
             }
             else{
                 DataService.getLastCandidatesProperty().setValue(null);
+                parentController.changeSceneToDashboard();
                 Platform.runLater(()->{
                     parentController.changeSceneToDashboard();
                     contestWordLabel.setText(null);
@@ -85,21 +86,22 @@ public class ContestPageController implements Initializable {
         });
 
         DataService.getGameStatusProperty().addListener((observable, oldValue, newValue) -> {
-            if(newValue == GameStatus.READY){
+            if(newValue.getGameState() == GameStatus.READY){
                 Platform.runLater(()->{
                     showMessage("Contest starting!");
                 });
             }
-            else if (newValue == GameStatus.DONE) {
+            else if (newValue.getGameState() == GameStatus.DONE) {
                 parentController.changeSceneToDashboard();
                 Platform.runLater(()->{
-                    showMessage("Contest done!");
+                    showMessage("Contest done! Winner is: " + newValue.getWinner());
                     DataService.getCurrentContestRoomStateProperty().setValue(null);
                     contestWordLabel.setText(null);
                     DataService.getLastCandidatesProperty().setValue(null);
                     contestDataGrid.setVisible(false);
                     dmResultsFlowPane.getChildren().clear();
                     teamsFlowPane.getChildren().clear();
+                    parentController.changeSceneToDashboard();
                 });
             }
         });

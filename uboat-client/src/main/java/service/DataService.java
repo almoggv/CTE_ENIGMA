@@ -49,6 +49,8 @@ public class DataService {
     private static final String contestStatusUrl;
     private static final String candidatesUrl;
     private static final String allyTeamsUrl;
+    private static final String gotWinUrl;
+
     private static final Runnable currMachineStateFetcher = new Runnable() {
         @Override
         public void run() {
@@ -120,7 +122,7 @@ public class DataService {
                            if(currentTeamsProperty.get() == null ){
                                startCheckIsContestStarted();
                            }
-                           currentTeamsProperty.setValue(null);
+//                           currentTeamsProperty.setValue(null);
                            currentTeamsProperty.setValue(allyTeamsPayload.getAllyTeamsData());
                        }
                     }
@@ -161,6 +163,10 @@ public class DataService {
                         if(payload.getGameState().equals(GameStatus.READY)) {
                             //todo: remove comment - here for dev
 //                            startPullingCandidates();
+                        }
+                        else if(payload.getGameState().equals(GameStatus.DONE)){
+                            sendGotWin();
+                            gameStatusProperty.setValue(new GameStatePayload());
                         }
                     }
                 }
@@ -235,6 +241,33 @@ public class DataService {
                 .newBuilder()
                 .build()
                 .toString();
+        gotWinUrl = HttpUrl
+                .parse(PropertiesService.getApiGotWinUrl())
+                .newBuilder()
+                .build()
+                .toString();
+    }
+    public static void sendGotWin() {
+        HttpClientService.runAsync(gotWinUrl, new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                log.error("gotWin failed, ExceptionMessage="+e.getMessage());
+            }
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                String responseBody = response.body().string();
+                if (response.code() >= 500) {
+                    log.error("gotWin failed - statusCode=" + response.code());
+                    return;
+                }
+                if (response.code() != 200) {
+                    log.error("gotWin failed - statusCode=" + response.code() + ", ServerMessage=" + responseBody);
+                }
+                else {
+                    log.info("sent got win Successfully  - responseCode = 200");
+                }
+            }
+        });
     }
 
     public static void fetchInventoryInfo(){

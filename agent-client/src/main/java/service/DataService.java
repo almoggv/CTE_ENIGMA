@@ -45,6 +45,8 @@ public class DataService {
     private static final String agentsDataUrl;
     private static final String contestDataUrl;
     private static final String allyTeamsUrl;
+    private static final String gotWinUrl;
+
     private static final Runnable contestDataFetcher = new Runnable() {
         @Override
         public void run() {
@@ -70,14 +72,19 @@ public class DataService {
                     if (response.code() != 200) {
                         log.error("Failed to fetch contests data - statusCode=" + response.code() + ", ServerMessage=" + payload.getMessage());
                         currentContestRoomStateProperty.setValue(null);
+                        gameStatusProperty.setValue(new GameStatePayload());
                     }
                     else {
                         log.debug("Contest data Successfully Fetched - responseCode = 200, ServerMessage=" + payload.getContestRoom());
                         if(payload.getContestRoom() != null  ){
-                            currentContestRoomStateProperty.setValue(null);
+//                            currentContestRoomStateProperty.setValue(null);
                             currentContestRoomStateProperty.setValue(payload.getContestRoom());
-                                    if( payload.getContestRoom().getGameStatus()!= gameStatusProperty.get().getGameState() ){
+                            if( payload.getContestRoom().getGameStatus()!= gameStatusProperty.get().getGameState() ){
                                 gameStatusProperty.setValue(new GameStatePayload(null, payload.getContestRoom().getGameStatus(), payload.getContestRoom().getWinnerName()));
+                            }
+                            if(gameStatusProperty.get().getGameState() == GameStatus.DONE){
+                                sendGotWin();
+                                gameStatusProperty.setValue(new GameStatePayload());
                             }
                         }
                     }
@@ -154,7 +161,7 @@ public class DataService {
                             if(currentTeamsProperty.get() == null){
 //                                startCheckIsContestStarted();
                             }
-                            currentTeamsProperty.setValue(null);
+//                            currentTeamsProperty.setValue(null);
                             currentTeamsProperty.setValue(allyTeamsPayload.getAllyTeamsData());
                         }
                     }
@@ -228,6 +235,30 @@ public class DataService {
             });
         }
 
+    public static void sendGotWin() {
+        HttpClientService.runAsync(gotWinUrl, new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                log.error("gotWin failed, ExceptionMessage="+e.getMessage());
+            }
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                String responseBody = response.body().string();
+                if (response.code() >= 500) {
+                    log.error("gotWin failed - statusCode=" + response.code());
+                    return;
+                }
+                if (response.code() != 200) {
+                    log.error("gotWin failed - statusCode=" + response.code() + ", ServerMessage=" + responseBody);
+                }
+                else {
+                    log.info("sent got win Successfully  - responseCode = 200");
+                }
+            }
+        });
+    }
+
+
     static{
         int poolSize = 2;
         executor = Executors.newScheduledThreadPool(poolSize);
@@ -243,6 +274,11 @@ public class DataService {
                 .toString();
         agentsDataUrl = HttpUrl
                 .parse(PropertiesService.getApiAgentsOfAllyUrl())
+                .newBuilder()
+                .build()
+                .toString();
+        gotWinUrl = HttpUrl
+                .parse(PropertiesService.getApiGotWinUrl())
                 .newBuilder()
                 .build()
                 .toString();
