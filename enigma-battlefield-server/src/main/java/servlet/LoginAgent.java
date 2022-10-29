@@ -81,11 +81,11 @@ public class LoginAgent extends HttpServlet {
             repsPayload.setMessage("No Ally=" + allynameFromParameter + ", does not exist");
             repsPayload.setAccessToken("");
         }
-        else if (userManager.getUserByName(allynameFromParameter).isReady()) {
-            resp.setStatus(SC_BAD_REQUEST);
-            repsPayload.setMessage("can't join an ally that is ready");
-            repsPayload.setAccessToken("");
-        }
+//        else if (userManager.getUserByName(allynameFromParameter).isReady()) {
+//            resp.setStatus(SC_BAD_REQUEST);
+//            repsPayload.setMessage("can't join an ally that is ready");
+//            repsPayload.setAccessToken("");
+//        }
         else if (taskSizeFromParameter == null || taskSizeFromParameter.isEmpty()) {
             resp.setStatus(SC_BAD_REQUEST);
             repsPayload.setMessage("Missing task size in params");

@@ -71,21 +71,15 @@ public class ContestPageController implements Initializable {
             }
         });
 
-        DataService.getAgentsListStateProperty().addListener((observable, oldValue, newValue) -> {
-            if(newValue != null ){
-                createAgentsDataComponents(newValue);
-            }
-        });
-
         DataService.getGameStatusProperty().addListener((observable, oldValue, newValue) -> {
-            if(newValue == GameStatus.READY){
+            if(newValue != null && newValue.getGameState() == GameStatus.READY){
                 Platform.runLater(()->{
                     showMessage("Contest starting!");
                 });
             }
-            else if (newValue == GameStatus.DONE) {
+            else if (newValue != null && newValue.getGameState() == GameStatus.DONE) {
                 Platform.runLater(()->{
-                    showMessage("Contest done!");
+                    showMessage("Contest done! Winner is: " + newValue.getWinner());
                 });
             }
         });

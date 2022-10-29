@@ -42,24 +42,19 @@ public class LoginController implements Initializable {
             System.out.println("Failed to configure logger of -" + LoginController.class.getSimpleName());
         }
     }
-
     @Getter
     @Setter
     private AppController parentController;
-
     @Getter
     private final SimpleStringProperty usernameProperty = new SimpleStringProperty();
     @Getter
     private final SimpleBooleanProperty isLoggedInProperty = new SimpleBooleanProperty(false);
-
-
     @FXML
     private TextField loginTextField;
     @FXML
     private Button loginButton;
     @FXML
-    private GridPane rootGridPane;
-
+    private GridPane uboatrootGridPane;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -116,7 +111,7 @@ public class LoginController implements Initializable {
                         log.info("Successfully Logged in as :\"" + username + "\", status=" + response.code() + ", response body=" + responseBody);
                         parentController.showMessage("Successfully Logged in as :" + username);
                         parentController.headerComponent.setVisible(true);
-                        rootGridPane.setVisible(false);
+                        uboatrootGridPane.setVisible(false);
                     });
                 }
             }
@@ -124,7 +119,7 @@ public class LoginController implements Initializable {
     }
 
     public GridPane getRootComponent() {
-        return rootGridPane;
+        return uboatrootGridPane;
     }
 
     public void handleLogout() {
@@ -170,7 +165,7 @@ public class LoginController implements Initializable {
                         log.info("Successfully Logged Out as :\"" + username + "\", status=" + response.code() + ", response body=" + responseBody);
                         parentController.showMessage("Logged Out from: " + username);
                         parentController.headerComponent.setVisible(false);
-                        rootGridPane.setVisible(true);
+                        uboatrootGridPane.setVisible(true);
                         DataService.stopPullingMachineConfig();
                         usernameProperty.setValue("");
 

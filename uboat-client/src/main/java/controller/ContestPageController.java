@@ -96,6 +96,11 @@ public class ContestPageController implements Initializable {
             else if (newValue.getGameState() == GameStatus.DONE) {
                 Platform.runLater(()->{
                     showMessage("Contest done! Winner is: " + newValue.getWinner());
+                    DataService.getLastCandidatesProperty().setValue(null);
+                    Platform.runLater(()->{
+                        teamsFlowPane.getChildren().clear();
+                        dmResultsFlowPane.getChildren().clear();
+                    });
                 });
             }}
         });
@@ -107,6 +112,11 @@ public class ContestPageController implements Initializable {
             if(newValue != null){
                 createCandidatesComponents(new ArrayList<>(newValue));
             }
+//            else{
+//                Platform.runLater(()->{
+//                    dmResultsFlowPane.getChildren().clear();1
+//                });
+//            }
         });
     }
 

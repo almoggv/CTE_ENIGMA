@@ -12,7 +12,6 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
 public class ContestRoomData {
     private String name;
     private String creatorName;
@@ -21,4 +20,5 @@ public class ContestRoomData {
     private Integer currNumOfTeams;
     private Integer requiredNumOfTeams;
     private String wordToDecrypt;
+    private String winnerName;
 }

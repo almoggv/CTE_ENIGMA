@@ -67,7 +67,7 @@ public class GotWinHandshake extends HttpServlet {
         User user = userManager.getUserByName(usernameFromSession);
         if(!user.isSentGotWin()) {
             roomManager.updateGotWon(contestRoom, userManager);
-//            user.setSentGotWin(true);
+            user.setSentGotWin(true);
             respWriter.print("thanks for telling the server you  got a win.");
             resp.setStatus(SC_OK);
         }

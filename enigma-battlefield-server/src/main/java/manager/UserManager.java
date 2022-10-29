@@ -69,21 +69,30 @@ public class UserManager {
                 if(userToLogout.isInARoom()) {
                     roomManager.resetContestRoom(userToLogout.getContestRoom(), this);
                     roomManager.removeRoom(userToLogout.getContestRoom().getName());
-//                    ContestRoom contestRoom
                 }
                 usernamesToUboatsMap.remove(username);
                 break;
             case ALLY:
                 Ally ally = usernamesToAlliesMap.get(username);
+                //remove from contest
                 if(userToLogout.isInARoom()){
                     userToLogout.getContestRoom().getAlliesList().remove(ally);
+                    userToLogout.getContestRoom().setCurrNumOfTeams(userToLogout.getContestRoom().getCurrNumOfTeams() -1);
                 }
                 usernamesToAlliesMap.remove(username);
-                //need to tell the agents and close them
+                //remove from agents,
+                for (AgentData agent : ally.getAgentsList()) {
+                    agent.setAllyName(null);
+                    usernamesToUserMap.get(agent.getName()).setInARoom(false);
+                    usernamesToUserMap.get(agent.getName()).setContestRoom(null);
+                }
                 break;
             case AGENT:
                 AgentData agent = usernamesToAgentsMap.get(username);
-                usernamesToAlliesMap.get(agent.getAllyName()).getAgentsList().remove(agent);
+                if(agent.getAllyName()!= null) {
+                    usernamesToAlliesMap.get(agent.getAllyName()).getAgentsList().remove(agent);
+                    usernamesToAlliesMap.get(agent.getAllyName()).setNumOfAgents(usernamesToAlliesMap.get(agent.getAllyName()).getNumOfAgents() - 1);
+                }
                 usernamesToAgentsMap.remove(username);
                 break;
         }

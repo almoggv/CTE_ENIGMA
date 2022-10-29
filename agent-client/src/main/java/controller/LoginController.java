@@ -6,6 +6,7 @@ import dto.LoginPayload;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -23,6 +24,7 @@ import okhttp3.Response;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.controlsfx.validation.ValidationSupport;
+import org.controlsfx.validation.Validator;
 import org.jetbrains.annotations.NotNull;
 import service.DataService;
 import service.HttpClientService;
@@ -53,6 +55,7 @@ public class LoginController implements Initializable {
     private final SimpleStringProperty usernameProperty = new SimpleStringProperty();
     @Getter
     private final SimpleBooleanProperty isLoggedInProperty = new SimpleBooleanProperty(false);
+    @Getter private final StringProperty allyNameProperty = new SimpleStringProperty();
 
     @Getter @Setter private AppController parentController;
 
@@ -61,7 +64,7 @@ public class LoginController implements Initializable {
     @FXML public ComboBox allieNamesComboBox;
     @FXML private TextField loginTextField;
     @FXML private Button loginButton;
-    @FXML private GridPane rootGridPane;
+    @FXML private GridPane agentrootGridPane;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -173,8 +176,10 @@ public class LoginController implements Initializable {
                 } else {
                     Platform.runLater(() -> {
                         isLoggedInProperty.setValue(true);
+                        allyNameProperty.setValue(allyname);
                         log.info("Successfully Logged in as :\"" + username + "\", status=" + response.code() + ", response body=" + responseBody);
                         parentController.showMessage("Successfully Logged in as :" + username);
+                        parentController.headerComponent.setVisible(true);
                         DataService.startPullingRoomData();
                         DataService.startPullingAgentData();
                     });
@@ -184,7 +189,7 @@ public class LoginController implements Initializable {
     }
 
     public GridPane getRootComponent() {
-        return rootGridPane;
+        return agentrootGridPane;
     }
 
     public void handleLogout() {
