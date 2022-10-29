@@ -77,6 +77,7 @@ public class UserManager {
                 //remove from contest
                 if(userToLogout.isInARoom()){
                     userToLogout.getContestRoom().getAlliesList().remove(ally);
+                    userToLogout.getContestRoom().setCurrNumOfTeams(userToLogout.getContestRoom().getCurrNumOfTeams() -1);
                 }
                 usernamesToAlliesMap.remove(username);
                 //remove from agents,
