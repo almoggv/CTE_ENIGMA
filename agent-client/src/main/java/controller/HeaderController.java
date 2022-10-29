@@ -48,15 +48,22 @@ public class HeaderController implements Initializable {
     @FXML GridPane headerComponentRootPane;
     @FXML Label titleLabel;
     @FXML HBox componentNavButtonsHBox;
+    public Button logoutButton;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         createNotificationPane();
 
-
+        DataService.getCurrentContestRoomStateProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) { //contest running
+                logoutButton.setDisable(true);
+            }
+            else{
+                logoutButton.setDisable(false);
+            }
+        });
     }
-
 
     public NotificationPane getRootComponent(){
         return notificationPane;

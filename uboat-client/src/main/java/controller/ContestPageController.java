@@ -78,9 +78,16 @@ public class ContestPageController implements Initializable {
             if(newValue != null){
                 createTeamDataComponents(newValue);
             }
+            else{
+                Platform.runLater(()->{
+                    teamsFlowPane.getChildren().clear();
+                    dmResultsFlowPane.getChildren().clear();
+                });
+            }
         });
 
         DataService.getGameStatusProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue!= null){
             if(newValue.getGameState() == GameStatus.READY){
                 Platform.runLater(()->{
                     showMessage("Contest starting!");
@@ -90,7 +97,7 @@ public class ContestPageController implements Initializable {
                 Platform.runLater(()->{
                     showMessage("Contest done! Winner is: " + newValue.getWinner());
                 });
-            }
+            }}
         });
 
         //todo - after status is ready - now for dev

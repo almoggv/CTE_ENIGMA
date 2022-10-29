@@ -42,6 +42,7 @@ public class HeaderController implements Initializable {
         }
     }
 
+
     @Getter @Setter private AppController parentController;
 
     @Getter private final SimpleStringProperty selectedFileNameProperty = new SimpleStringProperty();

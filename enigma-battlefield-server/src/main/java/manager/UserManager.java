@@ -2,7 +2,6 @@ package manager;
 
 import dto.AgentData;
 import dto.AllyTeamData;
-import dto.ContestRoomData;
 import manager.impl.AllyClientDMImpl;
 import model.Ally;
 import model.ContestRoom;
@@ -61,8 +60,36 @@ public class UserManager {
         return usernamesToUserMap.getOrDefault(username,new User()).getToken();
     }
 
-    public synchronized void removeUser(String username) {
+    public synchronized void removeUser(String username, RoomManager roomManager) {
+        User userToLogout = usernamesToUserMap.get(username);
+        UserType type = userToLogout.getType();
+
+        switch (type){
+            case UBOAT:
+                if(userToLogout.isInARoom()) {
+                    roomManager.resetContestRoom(userToLogout.getContestRoom(), this);
+                    roomManager.removeRoom(userToLogout.getContestRoom().getName());
+//                    ContestRoom contestRoom
+                }
+                usernamesToUboatsMap.remove(username);
+                break;
+            case ALLY:
+                Ally ally = usernamesToAlliesMap.get(username);
+                if(userToLogout.isInARoom()){
+                    userToLogout.getContestRoom().getAlliesList().remove(ally);
+                }
+                usernamesToAlliesMap.remove(username);
+                //need to tell the agents and close them
+                break;
+            case AGENT:
+                AgentData agent = usernamesToAgentsMap.get(username);
+                usernamesToAlliesMap.get(agent.getAllyName()).getAgentsList().remove(agent);
+                usernamesToAgentsMap.remove(username);
+                break;
+        }
+
         usernamesToUserMap.remove(username);
+        username = "userrrrrrr";
     }
 
     public synchronized Set<User> getUsers() {
@@ -105,9 +132,14 @@ public class UserManager {
             agentData.setNumberOfTasksThatTakes(Integer.valueOf(taskSize));
             agentData.setNumberOfThreads(Integer.valueOf(threadNum));
             agentData.setAllyName(allyName);
-            newUser.setContestRoom(getUserByName(allyName).getContestRoom());
-            //connect ally to agent
             Ally ally = getAllyByName(allyName);
+            if(!getUserByName(allyName).isReady()) {
+                newUser.setContestRoom(getUserByName(allyName).getContestRoom());
+            }
+            if(newUser.getContestRoom() != null){
+                newUser.setInARoom(true);
+            }
+            //connect ally to agent
             ally.getAgentsList().add(agentData);
             ally.setNumOfAgents(ally.getNumOfAgents() + 1);
             usernamesToAgentsMap.put(username, agentData);

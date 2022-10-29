@@ -31,9 +31,11 @@ public class RoomManager {
             //add ally to room
             room.getAlliesList().add(ally);
             room.setCurrNumOfTeams(room.getCurrNumOfTeams() + 1);
+            ally.setEncryptionCandidateList(new ArrayList<>());
 
             //set room in ally info
             userManager.getUserByName(ally.getTeamName()).setContestRoom(room);
+            userManager.getUserByName(ally.getTeamName()).setInARoom(true);
 
             //set room in agents of ally if exist
             for (AgentData agent : ally.getAgentsList()) {
@@ -62,7 +64,7 @@ public class RoomManager {
 //        room.setGameStatus(GameStatus.READY);
     }
 
-    public void checkWin(ContestRoom contestRoom, String originalWord) {
+    public void checkWin(ContestRoom contestRoom, String originalWord, UserManager userManager) {
         List<EncryptionCandidate> encryptionCandidateList = contestRoom.getEncryptionCandidateList();
         for(EncryptionCandidate candidate: encryptionCandidateList){
             if(candidate.getCandidate().toUpperCase().equals(originalWord)){
@@ -82,5 +84,44 @@ public class RoomManager {
 
     public ContestRoomData makeRoomDataFromRoom(ContestRoom room){
         return new ContestRoomData(room.getName(), room.getCreatorName(), room.getGameStatus(), room.getDifficultyLevel(), room.getCurrNumOfTeams(), room.getRequiredNumOfTeams(),room.getWordToDecrypt());
+    }
+
+    //todo - change to private - this is for check
+    public void resetContestRoom(ContestRoom room, UserManager userManager){
+        List<Ally> allies = room.getAlliesList();
+        //reset room itself
+        room.setGameStatus(GameStatus.WAITING);
+        room.setCurrNumOfTeams(0);
+        room.setWordToDecrypt(null);
+        room.setNumOfReady(0);
+        room.setEveryoneReady(false);
+        room.setWinnerName(null);
+        room.setEncryptionCandidateList(new ArrayList<>());
+
+        //reset ally teams
+        for (Ally ally : allies) {
+            //reset room in ally info
+            User allyuser = userManager.getUserByName(ally.getTeamName());
+            allyuser.setContestRoom(null);
+            allyuser.setInARoom(false);
+            allyuser.setSentGotWin(false);
+            ally.setEncryptionCandidateList(null);
+
+            //reset room in agents of ally if exist
+            for (AgentData agent : ally.getAgentsList()) {
+                userManager.getUserByName(agent.getName()).setContestRoom(null);
+                userManager.getUserByName(agent.getName()).setSentGotWin(false);
+                userManager.getUserByName(agent.getName()).setInARoom(false);
+            }
+        }
+        room.getAlliesList().clear();
+        room.setNumOfGotWinCount(0);
+    }
+
+    public void updateGotWon(ContestRoom contestRoom, UserManager userManager) {
+        contestRoom.setNumOfGotWinCount(contestRoom.getNumOfGotWinCount() + 1);
+        if(contestRoom.getNumOfGotWinCount() >= 3){
+            resetContestRoom(contestRoom, userManager);
+        }
     }
 }

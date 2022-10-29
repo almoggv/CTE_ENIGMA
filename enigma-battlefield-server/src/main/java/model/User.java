@@ -15,4 +15,6 @@ public class User {
     private boolean isInARoom;
     private ContestRoom contestRoom;
     private boolean isReady;
+    private boolean sentGotWin;
+
 }

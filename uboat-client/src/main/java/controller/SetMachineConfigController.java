@@ -77,17 +77,33 @@ public class SetMachineConfigController implements Initializable {
         DataService.getInventoryInfoProperty().addListener(new ChangeListener<InventoryInfo>() {
             @Override
             public void changed(ObservableValue<? extends InventoryInfo> observable, InventoryInfo oldValue, InventoryInfo newValue) {
-                setMachineDetails(newValue);
+                if(newValue == null){
+                    clearPageInfo();
+                }else {
+                    setMachineDetails(newValue);
+                }
             }
         });
         setUserChoiceButton.disableProperty().bind(validationSupport.invalidProperty());
     }
 
+    private void clearPageInfo() {
+        Platform.runLater(() -> {
+            rotorsHbox.getChildren().clear();
+            reflectorChoiceBox.getItems().clear();
+            rotorsInitialPosHBox.getChildren().clear();
+            plugBoardAddNewEP1Choice.getItems().clear();
+            plugBoardAddNewEP2Choice.getItems().clear();
+        });
+    }
+
     public void setMachineDetails(InventoryInfo inventoryInfo) {
-        setReflectorChoiceBoxHbox(inventoryInfo);
-        setRotorsIdsHbox(inventoryInfo);
-        setRotorsPositionsHBox(inventoryInfo);
-        addPlugboardTab(inventoryInfo);
+        Platform.runLater(()->{
+            setReflectorChoiceBoxHbox(inventoryInfo);
+            setRotorsIdsHbox(inventoryInfo);
+            setRotorsPositionsHBox(inventoryInfo);
+            addPlugboardTab(inventoryInfo);
+        });
     }
 
     private void setRotorsIdsHbox(InventoryInfo inventoryInfo) {

@@ -39,10 +39,7 @@ public class DataService {
     @Getter private static final ObjectProperty<MachineState> originalMachineStateProperty = new SimpleObjectProperty<>();
     @Getter private static final ObjectProperty<MachineState> currentMachineStateProperty = new SimpleObjectProperty<>();
     @Getter private static final ObjectProperty<List<AllyTeamData>> currentTeamsProperty = new SimpleObjectProperty<>();
-    //todo: is needed if game status
-//    @Getter private static final BooleanProperty isContestStartedProperty = new SimpleBooleanProperty(false);
     @Getter private static final ObjectProperty<GameStatePayload> gameStatusProperty = new SimpleObjectProperty<>(new GameStatePayload());
-//    @Getter private static final StringProperty winnerNameProperty = new SimpleStringProperty();
 
     @Getter private static final ObjectProperty<List<EncryptionCandidate>> lastCandidatesProperty = new SimpleObjectProperty<>();
 
@@ -112,7 +109,8 @@ public class DataService {
                         return;
                     }
                     if (response.code() != 200) {
-                        log.error("Failed to fetch curr Teams - statusCode=" + response.code() + ", ServerMessage=" + allyTeamsPayload.getMessage());
+                        log.info("Failed to fetch curr Teams - statusCode=" + response.code() + ", ServerMessage=" + allyTeamsPayload.getMessage());
+                        currentTeamsProperty.setValue(null);
                     }
                     else {
                         log.debug("Current teams Fetched - responseCode = 200, ServerMessage=" + allyTeamsPayload.getMessage());
@@ -299,7 +297,6 @@ public class DataService {
         executor.scheduleAtFixedRate(candidatesFetcher, 0, timeInterval, TimeUnit.MILLISECONDS);
         //TODO: implement
     }
-
     public static void fetchInventoryInfo(InventoryInfo inventory) {
         inventoryInfoProperty.setValue(inventory);
     }

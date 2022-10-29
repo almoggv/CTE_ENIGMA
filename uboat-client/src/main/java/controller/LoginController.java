@@ -173,6 +173,11 @@ public class LoginController implements Initializable {
                         rootGridPane.setVisible(true);
                         DataService.stopPullingMachineConfig();
                         usernameProperty.setValue("");
+
+                        DataService.getGameStatusProperty().setValue(null);
+                        DataService.getInventoryInfoProperty().setValue(null);
+                        DataService.getCurrentMachineStateProperty().setValue(null);
+                        DataService.getOriginalMachineStateProperty().setValue(null);
                     });
                 }
             }

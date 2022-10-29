@@ -101,7 +101,7 @@ public class PostCandidates extends HttpServlet {
                 ally.getEncryptionCandidateList().addAll(candidateList);
                 //adds candidates to contest room
                 contestRoom.getEncryptionCandidateList().addAll(candidateList);
-                roomManager.checkWin(contestRoom, userManager.getUboatByName(contestRoom.getCreatorName()).getOriginalWord());
+                roomManager.checkWin(contestRoom, userManager.getUboatByName(contestRoom.getCreatorName()).getOriginalWord(), userManager);
                 resp.getWriter().print("got candidates:" + candidateList);
                 resp.setStatus(SC_OK);
             }
