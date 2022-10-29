@@ -1,5 +1,6 @@
 package controller;
 
+import adapter.ListenerAdapter;
 import app.GuiApplication;
 import dto.AgentData;
 import dto.ContestRoomData;
@@ -12,9 +13,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
+import manager.AgentClientDM;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import service.DataService;
@@ -38,14 +41,16 @@ public class ContestPageController implements Initializable {
         }
     }
 
-    public GridPane rootGridPane;
-    public Label contestWordLabel;
-    public ContestDataController contestDataGridController;
-    public FlowPane agentsDataFlowPane;
-    public ScrollPane dmResultsScrollPane;
-    @FXML
-    private FlowPane contestDataFlowPane;
-    public FlowPane dmResultsFlowPane;
+    @FXML private GridPane rootGridPane;
+    @FXML private Label contestWordLabel;
+    @FXML private ContestDataController contestDataGridController;
+    @FXML private FlowPane agentsDataFlowPane;
+    @FXML private ScrollPane dmResultsScrollPane;
+    @FXML private FlowPane contestDataFlowPane;
+    @FXML private FlowPane dmResultsFlowPane;
+    @FXML private Label statusValueLabel;
+    @FXML private Label progressPrecentageValueLabel;
+    @FXML private ProgressBar progressBar;
 
     AppController parentController;
 
@@ -54,6 +59,9 @@ public class ContestPageController implements Initializable {
         DataService.getCurrentContestRoomStateProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue != null ){
                 createContestsDataComponents(newValue);
+                if(newValue.getName()!=null){
+                    statusValueLabel.setText(newValue.getName());
+                }
             }
             else{
                 Platform.runLater(()->{
@@ -157,7 +165,6 @@ public class ContestPageController implements Initializable {
         }
     }
 
-
     private void createCandidate(EncryptionCandidate candidate) {
         Platform.runLater(() -> {
             try {
@@ -173,5 +180,25 @@ public class ContestPageController implements Initializable {
                 e.printStackTrace();
             }
         });
+    }
+
+    public void connectToDm(AgentClientDM agentClientDM){
+        if(agentClientDM == null){
+            return;
+        }
+        ListenerAdapter listenerAdapter = agentClientDM.getListenerAdapter();
+        listenerAdapter.getProgressProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue == null  || newValue.getLeft() == null || newValue.getRight() == null || newValue.getRight() <= 0){
+                return;
+            }
+
+            double progressValue = ((double)newValue.getLeft() / (double)newValue.getRight());
+            int progressPercentage = (int) (progressValue * 100);
+            progressBar.setProgress(progressValue);
+            progressPrecentageValueLabel.setText(String.valueOf(progressPercentage));
+
+        });
+
+
     }
 }
