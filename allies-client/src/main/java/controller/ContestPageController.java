@@ -83,15 +83,20 @@ public class ContestPageController implements Initializable {
             if(newValue != null){
                 createTeamDataComponents(newValue);
             }
+            else{
+                Platform.runLater(()->{
+                    teamsFlowPane.getChildren().clear();
+                });
+            }
         });
 
         DataService.getGameStatusProperty().addListener((observable, oldValue, newValue) -> {
-            if(newValue.getGameState() == GameStatus.READY){
+            if(newValue != null && newValue.getGameState() == GameStatus.READY){
                 Platform.runLater(()->{
                     showMessage("Contest starting!");
                 });
             }
-            else if (newValue.getGameState() == GameStatus.DONE) {
+            else if (newValue != null && newValue.getGameState() == GameStatus.DONE) {
                 parentController.changeSceneToDashboard();
                 Platform.runLater(()->{
                     showMessage("Contest done! Winner is: " + newValue.getWinner());

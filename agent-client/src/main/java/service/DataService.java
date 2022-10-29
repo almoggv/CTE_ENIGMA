@@ -155,7 +155,7 @@ public class DataService {
                     }
                     else {
                         log.debug("Current teams Fetched - responseCode = 200, ServerMessage=" + allyTeamsPayload.getMessage());
-                        if(allyTeamsPayload.getAllyTeamsData() != null &&
+                        if(/*allyTeamsPayload.getAllyTeamsData() != null &&*/
                                 allyTeamsPayload.getAllyTeamsData() != currentTeamsProperty.get()){
                             if(currentTeamsProperty.get() == null){
 //                                startCheckIsContestStarted();

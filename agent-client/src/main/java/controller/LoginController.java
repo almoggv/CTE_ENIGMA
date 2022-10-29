@@ -6,6 +6,7 @@ import dto.LoginPayload;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -54,6 +55,7 @@ public class LoginController implements Initializable {
     private final SimpleStringProperty usernameProperty = new SimpleStringProperty();
     @Getter
     private final SimpleBooleanProperty isLoggedInProperty = new SimpleBooleanProperty(false);
+    @Getter private final StringProperty allyNameProperty = new SimpleStringProperty();
 
     @Getter @Setter private AppController parentController;
 
@@ -174,8 +176,10 @@ public class LoginController implements Initializable {
                 } else {
                     Platform.runLater(() -> {
                         isLoggedInProperty.setValue(true);
+                        allyNameProperty.setValue(allyname);
                         log.info("Successfully Logged in as :\"" + username + "\", status=" + response.code() + ", response body=" + responseBody);
                         parentController.showMessage("Successfully Logged in as :" + username);
+                        parentController.headerComponent.setVisible(true);
                         DataService.startPullingRoomData();
                         DataService.startPullingAgentData();
                     });

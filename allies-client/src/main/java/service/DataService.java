@@ -101,6 +101,7 @@ public class DataService {
                     String responseBody = response.body().string();
                     if (response.code() >= 500) {
                         log.error("agents Data Fetching failed - statusCode=" + response.code());
+                        agentsListStateProperty.setValue(null);
                         return;
                     }
                     AgentsListPayload payload;
@@ -109,15 +110,18 @@ public class DataService {
                     }
                     catch (Exception e){
                         log.error("Failed to parse response on agentsDataFetcher, Message=" + e.getMessage());
+                        agentsListStateProperty.setValue(null);
                         return;
                     }
                     if (response.code() != 200) {
                         log.error("Failed to fetch agents data - statusCode=" + response.code() + ", ServerMessage=" + payload.getMessage());
+                        agentsListStateProperty.setValue(null);
+
                     }
                     else {
                         log.info("Agents data Successfully Fetched - responseCode = 200, ServerMessage=" + payload.getAgentsList());
-                        if(payload.getAgentsList() != null && !payload.getAgentsList().isEmpty() && !payload.getAgentsList().equals(agentsListStateProperty.get())){
-                            agentsListStateProperty.setValue(null);
+                        if(/*payload.getAgentsList() != null &&*//* !payload.getAgentsList().isEmpty() &&*/ !payload.getAgentsList().equals(agentsListStateProperty.get())){
+//                            agentsListStateProperty.setValue(null);
                             agentsListStateProperty.setValue(payload.getAgentsList());
                         }
                     }

@@ -1,6 +1,7 @@
 package controller;
 
 import com.google.gson.Gson;
+import dto.AllyTeamData;
 import dto.LoginPayload;
 import enums.GameStatus;
 import javafx.application.Platform;
@@ -33,6 +34,7 @@ import service.PropertiesService;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
@@ -74,6 +76,25 @@ public class HeaderController implements Initializable {
                 logoutButton.setDisable(false);
             }
         });
+
+        DataService.getCurrentTeamsProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue == null || newValue.isEmpty()){
+                logOutAction();
+            } else if (newValue != null
+                    && isLoggedInProperty.get() == true
+                    && !allyExist(newValue, parentController.loginComponentController.getAllyNameProperty().getValue())){
+                logOutAction();
+            }
+        });
+    }
+
+    private boolean allyExist(List<AllyTeamData> teamDataList, String allyNameProperty) {
+        for (AllyTeamData ally : teamDataList) {
+            if(ally.getTeamName().equals(allyNameProperty)){
+                return true;
+            }
+        }
+        return false;
     }
 
     public NotificationPane getRootComponent(){
@@ -115,11 +136,13 @@ public class HeaderController implements Initializable {
     }
     @FXML
     void onLogoutButtonClick(ActionEvent event) {
+        logOutAction();
+    }
+    private void logOutAction(){
         if(isLoggedInProperty.get() == false){
             return;
         }
 
-//        this.isLoggedInProperty.setValue(false);
         String username = parentController.loginComponentController.getUsernameProperty().get();
         String finalUrl = HttpUrl
                 .parse(PropertiesService.getApiLogoutPageUrl())
@@ -160,6 +183,8 @@ public class HeaderController implements Initializable {
                         parentController.showMessage("Logged Out from: " + username);
                         parentController.headerComponent.setVisible(false);
                         parentController.loginComponentController.getUsernameProperty().setValue("");
+                        parentController.loginComponentController.getAllyNameProperty().setValue("");
+                        parentController.headerComponentController.isLoggedInProperty.setValue(false);
 
                         DataService.getGameStatusProperty().setValue(null);
                         DataService.getLastCandidatesProperty().setValue(null);

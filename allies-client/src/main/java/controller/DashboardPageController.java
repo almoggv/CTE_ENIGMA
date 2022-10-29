@@ -93,6 +93,11 @@ public class DashboardPageController implements Initializable {
             if(newValue != null ){
                 createAgentsDataComponents(newValue);
             }
+            else{
+                Platform.runLater(()->{
+                    agentsDataFlowPane.getChildren().clear();
+                });
+            }
         });
     }
 
