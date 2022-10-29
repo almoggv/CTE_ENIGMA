@@ -77,13 +77,23 @@ public class RoomManager {
     public Set<ContestRoomData> getRoomsData() {
         Set<ContestRoomData> roomsSet = new HashSet();
         for (ContestRoom room : roomsDataMap.values()) {
-            roomsSet.add(new ContestRoomData(room.getName(), room.getCreatorName(), room.getGameStatus(), room.getDifficultyLevel(), room.getCurrNumOfTeams(), room.getRequiredNumOfTeams(), room.getWordToDecrypt()));
+//            roomsSet.add(new ContestRoomData(room.getName(), room.getCreatorName(), room.getGameStatus(), room.getDifficultyLevel(), room.getCurrNumOfTeams(), room.getRequiredNumOfTeams(), room.getWordToDecrypt(), room.getWinnerName()));
+            roomsSet.add(makeRoomDataFromRoom(room));
         }
         return Collections.unmodifiableSet(roomsSet);
     }
 
     public ContestRoomData makeRoomDataFromRoom(ContestRoom room){
-        return new ContestRoomData(room.getName(), room.getCreatorName(), room.getGameStatus(), room.getDifficultyLevel(), room.getCurrNumOfTeams(), room.getRequiredNumOfTeams(),room.getWordToDecrypt());
+        ContestRoomData data = new ContestRoomData();
+        data.setName(room.getName());
+        data.setCreatorName(room.getCreatorName());
+        data.setGameStatus(room.getGameStatus());
+        data.setDifficultyLevel(room.getDifficultyLevel());
+        data.setCurrNumOfTeams(room.getCurrNumOfTeams());
+        data.setRequiredNumOfTeams(room.getRequiredNumOfTeams());
+        data.setWordToDecrypt(room.getWordToDecrypt());
+        data.setWinnerName(room.getWinnerName());
+        return data;
     }
 
     //todo - change to private - this is for check

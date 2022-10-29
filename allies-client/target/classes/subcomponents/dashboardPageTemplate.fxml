@@ -43,8 +43,9 @@
         </rowConstraints>
          <children>
             <Button mnemonicParsing="false" onAction="#onRefreshContests" text="refresh Conntests" GridPane.columnIndex="2" />
-            <Button fx:id="joinContestButton" mnemonicParsing="false" onAction="#onJoinContestAction" text="Join contest" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Button fx:id="joinContestButton" mnemonicParsing="false" onAction="#onJoinContestAction" text="Join contest" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
             <ComboBox fx:id="contestNameComboBox" prefHeight="25.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label text="Available contests:" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
          </children>
       </GridPane>
       <Label alignment="CENTER" text="Agents data:" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />

@@ -70,14 +70,14 @@ public class ContestPageController implements Initializable {
         });
 
         DataService.getGameStatusProperty().addListener((observable, oldValue, newValue) -> {
-            if(newValue == GameStatus.READY){
+            if(newValue.getGameState() == GameStatus.READY){
                 Platform.runLater(()->{
                     showMessage("Contest starting!");
                 });
             }
-            else if (newValue == GameStatus.DONE) {
+            else if (newValue.getGameState() == GameStatus.DONE) {
                 Platform.runLater(()->{
-                    showMessage("Contest done!");
+                    showMessage("Contest done! Winner is: " + newValue.getWinner());
                 });
             }
         });

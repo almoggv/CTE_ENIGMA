@@ -82,7 +82,7 @@ public class JoinARoom extends HttpServlet {
             //todo: is the best response
             payload.setMessage("The room is already full, you can't join.");
         }
-        if(user.isInARoom()){
+        else if(user.isInARoom()){
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             //todo: is the best response
             payload.setMessage("You are already in a contest.");
