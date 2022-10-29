@@ -15,4 +15,5 @@ public class Ally {
     @Getter @Setter private Integer numOfAgents;
     @Getter @Setter private List<EncryptionCandidate> encryptionCandidateList;
     @Getter @Setter private AllyClientDM decryptionManager;
+    @Getter @Setter private Thread decryptionManagerThread;
 }

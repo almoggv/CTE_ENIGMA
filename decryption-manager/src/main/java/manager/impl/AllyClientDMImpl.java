@@ -105,8 +105,22 @@ public class AllyClientDMImpl implements AllyClientDM {
         isKilled = true;
     }
 
+    @Override
+    public void clear() {
+        workBatchesQueue.clear();
+        progressProperty.setValue(null);
+        difficultyLevel = null;
+        initialMachineConfig = null;
+        lastCreatedworkBatchLastState= null;
+        inventoryInfo = null;
+        log.debug("Was cleared");
+    }
+
     private void fillQueueWithWork(){
         if(workBatchesQueue.size() >= PropertiesService.getMaxWorkBatchesQueueSize()){
+            return;
+        }
+        if(progressProperty.get().getLeft() >= progressProperty.get().getRight()){
             return;
         }
         MachineState lastUsedState = (this.lastCreatedworkBatchLastState == null) ? initialMachineConfig : this.lastCreatedworkBatchLastState;

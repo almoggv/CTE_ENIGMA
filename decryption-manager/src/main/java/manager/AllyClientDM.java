@@ -42,5 +42,7 @@ public interface AllyClientDM extends Runnable{
 
     void kill();
 
+    void clear();
+
 
 }

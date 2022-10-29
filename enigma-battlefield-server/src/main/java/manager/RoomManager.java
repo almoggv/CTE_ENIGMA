@@ -2,6 +2,8 @@ package manager;
 
 import dto.*;
 import enums.GameStatus;
+import manager.impl.AgentClientDMImpl;
+import manager.impl.AllyClientDMImpl;
 import model.Ally;
 import model.ContestRoom;
 import model.User;
@@ -10,22 +12,28 @@ import java.util.*;
 
 public class RoomManager {
     private final Map<String, ContestRoom> roomsDataMap = new HashMap<String, ContestRoom>();
+
     public synchronized void addRoom(String roomName, ContestRoom roomData){
         roomsDataMap.put(roomName, roomData);
     }
+
     public synchronized void removeRoom(String roomName){
         roomsDataMap.remove(roomName);
     }
+
     public synchronized Set<ContestRoom> getRooms() {
         Set<ContestRoom> roomsSet = new HashSet(roomsDataMap.values());
         return Collections.unmodifiableSet(roomsSet);
     }
+
     public synchronized ContestRoom getRoomByName(String roomName){
         return roomsDataMap.get(roomName);
     }
+
     public boolean isRoomExists(String roomName) {
         return roomsDataMap.containsKey(roomName);
     }
+
     public ContestRoomData addUserToRoom(Ally ally , UserManager userManager, ContestRoom room) {
         if(room.getCurrNumOfTeams() < room.getRequiredNumOfTeams()){
             //add ally to room
@@ -56,12 +64,17 @@ public class RoomManager {
         if (isEveryoneReady){
             room.setGameStatus(GameStatus.READY);
             for (Ally ally: room.getAlliesList() ) {
-                //todo: start DM when exsist
-                ally.getDecryptionManager();
+                AllyClientDM allyClientDM = new AllyClientDMImpl();
+                Thread allyClientDmThread = new Thread(allyClientDM);
+                ally.setDecryptionManager(allyClientDM);
+                ally.setDecryptionManagerThread(allyClientDmThread);
+                allyClientDmThread.start();
+                //Configure DM
+                allyClientDM.setTaskSize(ally.getTaskSize());
+                allyClientDM.setDifficultyLevel(user.getContestRoom().getDifficultyLevel());
+                allyClientDM.setInventoryInfo(user.getContestRoom().getMachineHandler().getInventoryInfo().get());
             }
         }
-        //todo: remove - only for test
-//        room.setGameStatus(GameStatus.READY);
     }
 
     public void checkWin(ContestRoom contestRoom, String originalWord, UserManager userManager) {

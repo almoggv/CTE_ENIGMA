@@ -87,6 +87,8 @@ public class FetchWork extends HttpServlet {
             allyClientDM.setDifficultyLevel(user.getContestRoom().getDifficultyLevel());
             allyClientDM.setTaskSize(currentLoggedInAlly.getTaskSize());
             allyClientDM.setInventoryInfo(user.getContestRoom().getMachineHandler().getInventoryInfo().get());
+            currentLoggedInAlly.setDecryptionManagerThread(new Thread(allyClientDM));
+            currentLoggedInAlly.getDecryptionManagerThread().start();
         }
         List<MachineState> newWorkBatch = allyClientDM.getNextBatch();
         payload.setFirstState(newWorkBatch.get(0));
