@@ -43,11 +43,11 @@ public class DataService {
     @Getter private static final ObjectProperty<MachineState> originalMachineStateProperty = new SimpleObjectProperty<>();
     @Getter private static final ObjectProperty<MachineState> currentMachineStateProperty = new SimpleObjectProperty<>();
     @Getter private static final ObjectProperty<Set<ContestRoomData>> contestRoomsStateProperty = new SimpleObjectProperty<>();
-    @Getter private static final ObjectProperty<ContestRoomData> currentContestRoomsStateProperty = new SimpleObjectProperty<>();
+    @Getter private static final ObjectProperty<ContestRoomData> currentContestRoomStateProperty = new SimpleObjectProperty<>();
     @Getter private static final ObjectProperty<List<AgentData>> agentsListStateProperty = new SimpleObjectProperty<>();
     @Getter private static final ObjectProperty<List<AllyTeamData>> currentTeamsProperty = new SimpleObjectProperty<>();
 
-    @Getter private static final BooleanProperty isContestStartedProperty = new SimpleBooleanProperty(false);
+//    @Getter private static final BooleanProperty isContestStartedProperty = new SimpleBooleanProperty(false);
     @Getter private static final ObjectProperty<List<EncryptionCandidate>> lastCandidatesProperty = new SimpleObjectProperty<>();
     @Getter private static final ObjectProperty<GameStatus> gameStatusProperty = new SimpleObjectProperty<>();
 
@@ -194,11 +194,12 @@ public class DataService {
                     }
                     if (response.code() != 200) {
                         log.error("Failed to fetch contests data - statusCode=" + response.code() + ", ServerMessage=" + payload.getMessage());
+                        currentContestRoomStateProperty.setValue(null);
                     }
                     else {
                         log.info("Contest data Successfully Fetched - responseCode = 200, ServerMessage=" + payload.getContestRoom());
-                        currentContestRoomsStateProperty.setValue(null);
-                        currentContestRoomsStateProperty.setValue(payload.getContestRoom());
+                        currentContestRoomStateProperty.setValue(null);
+                        currentContestRoomStateProperty.setValue(payload.getContestRoom());
                         if(payload.getContestRoom() != null  ){
 //                            if(payload.getContestRoom().getGameStatus()!= GameStatus.WAITING){
 //                                if(getIsContestStartedProperty().get() == false) {
@@ -283,10 +284,10 @@ public class DataService {
                     }
                     else {
                         log.info("game status - responseCode = 200, ServerMessage=" + payload.getMessage());
-                        if(payload.getGameState() != null
-                                && payload.getGameState().equals(GameStatus.READY)) {
-                            isContestStartedProperty.setValue(true);
-                        }
+//                        if(payload.getGameState() != null
+//                                && payload.getGameState().equals(GameStatus.READY)) {
+////                            isContestStartedProperty.setValue(true);
+//                        }
                         if(payload.getGameState() != null && payload.getGameState() != gameStatusProperty.get()){
                             gameStatusProperty.setValue(payload.getGameState());
                             //in comment for test

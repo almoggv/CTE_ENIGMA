@@ -5,7 +5,6 @@ import dto.AllyTeamData;
 import dto.EncryptionCandidate;
 import enums.GameStatus;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -58,7 +57,7 @@ public class ContestPageController implements Initializable {
             allyCompetitionControlsController.setParentController(this);
         }
 
-        DataService.getCurrentContestRoomsStateProperty().addListener((observable, oldValue, newValue) -> {
+        DataService.getCurrentContestRoomStateProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue != null ){
                 contestDataGridController.setParentController(this);
                 Platform.runLater(()->{
@@ -83,6 +82,13 @@ public class ContestPageController implements Initializable {
             else if (newValue == GameStatus.DONE) {
                 Platform.runLater(()->{
                     showMessage("Contest done!");
+                    DataService.getCurrentContestRoomStateProperty().setValue(null);
+                    contestWordLabel.setText(null);
+                    DataService.getLastCandidatesProperty().setValue(null);
+                    contestDataGridController.clear();
+                    dmResultsFlowPane.getChildren().clear();
+                    teamsFlowPane.getChildren().clear();
+                    parentController.changeSceneToDashboard();
                 });
             }
         });
