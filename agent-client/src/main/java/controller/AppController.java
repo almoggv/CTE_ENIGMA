@@ -103,7 +103,7 @@ public class AppController implements Initializable {
 //        setupDataServiceConnections();
             //todo: finish - moved here instead of ally
         DataService.getGameStatusProperty().addListener((observable, oldValue, newValue) -> {
-            if(newValue == GameStatus.IN_PROGRESS || newValue == GameStatus.READY){
+            if(newValue.getGameState() == GameStatus.IN_PROGRESS || newValue.getGameState() == GameStatus.READY){
                 MachineHandler machineHandler = DataService.fetchMachineHandler();
                 agentClientDM = new AgentClientDMImpl(machineHandler, loginComponentController.getTaskSize(), loginComponentController.getNumberOfThreads());
                 agentClientDM.getListenerAdapter().getDecryptionCandidatesProperty().addListener((observable1, oldCandidatesList, newCandidatesList) -> {

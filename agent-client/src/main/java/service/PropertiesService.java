@@ -59,5 +59,7 @@ public class PropertiesService {
     @Getter private static final String apiSendCandidatesUrl = FULL_SERVER_PATH + "/post-candidates";
     @Getter private static final String apiGetMachineHandler = FULL_SERVER_PATH + "/machine-handler";
     @Getter private static final String apiFetchWorkBatch = FULL_SERVER_PATH + "/fetch-work";
+    @Getter private static final String apiGotWinUrl = FULL_SERVER_PATH + "/got-win";
+
 }
 

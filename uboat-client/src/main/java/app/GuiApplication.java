@@ -53,7 +53,7 @@ public class GuiApplication extends Application {
 //        AppController appController = fxmlLoader.getController();
 //        appController.setPrimaryStage(primaryStage);
         Scene primaryScene = new Scene((Parent) primaryScenePane,PropertiesService.getAppWindowWidth(), PropertiesService.getAppWindowHeight());
-        primaryStage.setTitle("CTE Machine");
+        primaryStage.setTitle("U-Boat");
         primaryStage.setScene(primaryScene);
         primaryStage.show();
     }
