@@ -69,13 +69,13 @@ public class ContestPageController implements Initializable {
             }
         });
 
-        DataService.getIsContestStartedProperty().addListener((observable, oldValue, newValue) -> {
-            if(newValue == true){
-                Platform.runLater(()->{
-                    showMessage("Contest starting!");
-                });
-            }
-        });
+//        DataService.getIsContestStartedProperty().addListener((observable, oldValue, newValue) -> {
+//            if(newValue == true){
+//                Platform.runLater(()->{
+//                    showMessage("Contest starting!");
+//                });
+//            }
+//        });
 
         DataService.getGameStatusProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue == GameStatus.READY){

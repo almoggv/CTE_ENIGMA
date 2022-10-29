@@ -31,6 +31,7 @@ public class RoomManager {
             //add ally to room
             room.getAlliesList().add(ally);
             room.setCurrNumOfTeams(room.getCurrNumOfTeams() + 1);
+            ally.setEncryptionCandidateList(new ArrayList<>());
 
             //set room in ally info
             userManager.getUserByName(ally.getTeamName()).setContestRoom(room);
@@ -104,6 +105,7 @@ public class RoomManager {
             allyuser.setContestRoom(null);
             allyuser.setInARoom(false);
             allyuser.setSentGotWin(false);
+            ally.setEncryptionCandidateList(null);
 
             //reset room in agents of ally if exist
             for (AgentData agent : ally.getAgentsList()) {
@@ -112,6 +114,8 @@ public class RoomManager {
                 userManager.getUserByName(agent.getName()).setInARoom(false);
             }
         }
+        room.getAlliesList().clear();
+        room.setNumOfGotWinCount(0);
     }
 
     public void updateGotWon(ContestRoom contestRoom, UserManager userManager) {

@@ -112,7 +112,8 @@ public class DataService {
                         return;
                     }
                     if (response.code() != 200) {
-                        log.error("Failed to fetch curr Teams - statusCode=" + response.code() + ", ServerMessage=" + allyTeamsPayload.getMessage());
+                        log.info("Failed to fetch curr Teams - statusCode=" + response.code() + ", ServerMessage=" + allyTeamsPayload.getMessage());
+                        currentTeamsProperty.setValue(null);
                     }
                     else {
                         log.debug("Current teams Fetched - responseCode = 200, ServerMessage=" + allyTeamsPayload.getMessage());

@@ -1,6 +1,5 @@
 package servlet;
 
-import dto.AgentData;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -8,7 +7,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import manager.RoomManager;
 import manager.UserManager;
-import model.Ally;
 import model.ContestRoom;
 import model.User;
 import org.apache.log4j.Logger;
@@ -24,17 +22,17 @@ import java.util.Properties;
 import static jakarta.servlet.http.HttpServletResponse.*;
 
 @WebServlet(name = "PostGotWinHandshakeServlet" ,urlPatterns = {"/got-win"})
-public class PostGotWinHandshake extends HttpServlet {
-    private static final Logger log = Logger.getLogger(PostGotWinHandshake.class);
+public class GotWinHandshake extends HttpServlet {
+    private static final Logger log = Logger.getLogger(GotWinHandshake.class);
 
     static {
         try {
             Properties p = new Properties();
-            p.load(PostGotWinHandshake.class.getResourceAsStream(PropertiesService.getLog4jPropertiesResourcePath()));
+            p.load(GotWinHandshake.class.getResourceAsStream(PropertiesService.getLog4jPropertiesResourcePath()));
             PropertyConfigurator.configure(p);      //Don't forget here
-            log.debug("Logger Instantiated for : " + PostGotWinHandshake.class.getSimpleName());
+            log.debug("Logger Instantiated for : " + GotWinHandshake.class.getSimpleName());
         } catch (IOException e) {
-            System.out.println("Failed to configure logger of -" + PostGotWinHandshake.class.getSimpleName());
+            System.out.println("Failed to configure logger of -" + GotWinHandshake.class.getSimpleName());
         }
     }
 
@@ -69,9 +67,14 @@ public class PostGotWinHandshake extends HttpServlet {
         User user = userManager.getUserByName(usernameFromSession);
         if(!user.isSentGotWin()) {
             roomManager.updateGotWon(contestRoom, userManager);
-            user.setSentGotWin(true);
+//            user.setSentGotWin(true);
+            respWriter.print("thanks for telling the server you  got a win.");
+            resp.setStatus(SC_OK);
         }
-        resp.setStatus(SC_OK);
+        else{
+            respWriter.print("you have already sent about receiving a win.");
+            resp.setStatus(SC_BAD_REQUEST);
+        }
     }
 }
 

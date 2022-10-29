@@ -78,6 +78,12 @@ public class ContestPageController implements Initializable {
             if(newValue != null){
                 createTeamDataComponents(newValue);
             }
+            else{
+                Platform.runLater(()->{
+                    teamsFlowPane.getChildren().clear();
+                    dmResultsFlowPane.getChildren().clear();
+                });
+            }
         });
 
         DataService.getGameStatusProperty().addListener((observable, oldValue, newValue) -> {
