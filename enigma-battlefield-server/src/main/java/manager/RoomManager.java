@@ -120,8 +120,8 @@ public class RoomManager {
 
     public void updateGotWon(ContestRoom contestRoom, UserManager userManager) {
         contestRoom.setNumOfGotWinCount(contestRoom.getNumOfGotWinCount() + 1);
-        if(contestRoom.getNumOfGotWinCount() >= 3){
+//        if(contestRoom.getNumOfGotWinCount() >= 3){
             resetContestRoom(contestRoom, userManager);
-        }
+//        }
     }
 }

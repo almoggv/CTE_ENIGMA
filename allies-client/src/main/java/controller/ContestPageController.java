@@ -61,8 +61,19 @@ public class ContestPageController implements Initializable {
             if(newValue != null ){
                 contestDataGridController.setParentController(this);
                 Platform.runLater(()->{
+                    contestDataGrid.setVisible(true);
                     contestWordLabel.setText(newValue.getWordToDecrypt());
                     contestDataGridController.setData(newValue);
+                });
+            }
+            else{
+                DataService.getLastCandidatesProperty().setValue(null);
+                Platform.runLater(()->{
+                    parentController.changeSceneToDashboard();
+                    contestWordLabel.setText(null);
+                    contestDataGrid.setVisible(false);
+                    dmResultsFlowPane.getChildren().clear();
+                    teamsFlowPane.getChildren().clear();
                 });
             }
         });
@@ -80,15 +91,15 @@ public class ContestPageController implements Initializable {
                 });
             }
             else if (newValue == GameStatus.DONE) {
+                parentController.changeSceneToDashboard();
                 Platform.runLater(()->{
                     showMessage("Contest done!");
                     DataService.getCurrentContestRoomStateProperty().setValue(null);
                     contestWordLabel.setText(null);
                     DataService.getLastCandidatesProperty().setValue(null);
-                    contestDataGridController.clear();
+                    contestDataGrid.setVisible(false);
                     dmResultsFlowPane.getChildren().clear();
                     teamsFlowPane.getChildren().clear();
-                    parentController.changeSceneToDashboard();
                 });
             }
         });
@@ -97,6 +108,11 @@ public class ContestPageController implements Initializable {
         DataService.getLastCandidatesProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue != null){
                 createCandidatesComponents(new ArrayList<>(newValue));
+            }
+            else{
+                Platform.runLater(()->{
+                    dmResultsFlowPane.getChildren().clear();
+                });
             }
         });
     }
@@ -133,6 +149,9 @@ public class ContestPageController implements Initializable {
     }
 
     private void createCandidatesComponents(List<EncryptionCandidate> candidateList) {
+        Platform.runLater(()->{
+            dmResultsFlowPane.getChildren().clear();
+        });
         for (EncryptionCandidate candidate : candidateList ) {
             createCandidate(candidate);
         }

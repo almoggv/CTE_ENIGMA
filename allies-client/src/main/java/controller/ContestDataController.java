@@ -59,8 +59,4 @@ public class ContestDataController {
         setUboatCreatorName(contestRoom.getCreatorName());
         setGameStatusLabel(contestRoom.getGameStatus());
     }
-
-    public void clear() {
-        //todo
-    }
 }
