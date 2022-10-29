@@ -51,7 +51,7 @@ public class ContestPageController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        DataService.getCurrentContestRoomsStateProperty().addListener((observable, oldValue, newValue) -> {
+        DataService.getCurrentContestRoomStateProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue != null ){
                 createContestsDataComponents(newValue);
             }
@@ -68,14 +68,6 @@ public class ContestPageController implements Initializable {
                 createAgentsDataComponents(newValue);
             }
         });
-
-//        DataService.getIsContestStartedProperty().addListener((observable, oldValue, newValue) -> {
-//            if(newValue == true){
-//                Platform.runLater(()->{
-//                    showMessage("Contest starting!");
-//                });
-//            }
-//        });
 
         DataService.getGameStatusProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue == GameStatus.READY){

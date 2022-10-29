@@ -8,7 +8,6 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.value.ObservableValue;
 import lombok.Getter;
 import okhttp3.*;
 import org.apache.log4j.Logger;
@@ -19,7 +18,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
-import java.util.Set;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -37,11 +35,9 @@ public class DataService {
             System.out.println("Failed to configure logger of -" + DataService.class.getSimpleName());
         }
     }
-    @Getter private static final ObjectProperty<ContestRoomData> currentContestRoomsStateProperty = new SimpleObjectProperty<>();
+    @Getter private static final ObjectProperty<ContestRoomData> currentContestRoomStateProperty = new SimpleObjectProperty<>();
     @Getter private static final ObjectProperty<List<AgentData>> agentsListStateProperty = new SimpleObjectProperty<>();
     @Getter private static final ObjectProperty<List<AllyTeamData>> currentTeamsProperty = new SimpleObjectProperty<>();
-
-    @Getter private static final BooleanProperty isContestStartedProperty = new SimpleBooleanProperty(false);
     @Getter private static final ObjectProperty<GameStatus> gameStatusProperty = new SimpleObjectProperty<>();
     @Getter private static final ObjectProperty<List<EncryptionCandidate>> lastCandidatesProperty = new SimpleObjectProperty<>();
     private static final ScheduledExecutorService executor;
@@ -72,19 +68,16 @@ public class DataService {
                     }
                     if (response.code() != 200) {
                         log.error("Failed to fetch contests data - statusCode=" + response.code() + ", ServerMessage=" + payload.getMessage());
-                        currentContestRoomsStateProperty.setValue(null);
+                        currentContestRoomStateProperty.setValue(null);
                     }
                     else {
                         log.debug("Contest data Successfully Fetched - responseCode = 200, ServerMessage=" + payload.getContestRoom());
                         if(payload.getContestRoom() != null  ){
-                            currentContestRoomsStateProperty.setValue(null);
-                            currentContestRoomsStateProperty.setValue(payload.getContestRoom());
-//                            if(payload.getContestRoom().getGameStatus()!= GameStatus.WAITING
+                            currentContestRoomStateProperty.setValue(null);
+                            currentContestRoomStateProperty.setValue(payload.getContestRoom());
                                     if( payload.getContestRoom().getGameStatus()!= gameStatusProperty.get() ){
                                 gameStatusProperty.setValue(payload.getContestRoom().getGameStatus());
-//                                if(getIsContestStartedProperty().get() == false) {
-//                                    getIsContestStartedProperty().setValue(true);
-//                                }
+
                             }
                         }
                     }

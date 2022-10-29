@@ -38,16 +38,11 @@ public class DataService {
             System.out.println("Failed to configure logger of -" + DataService.class.getSimpleName());
         }
     }
-
-    @Getter private static final ObjectProperty<InventoryInfo> inventoryInfoProperty = new SimpleObjectProperty<>();
-    @Getter private static final ObjectProperty<MachineState> originalMachineStateProperty = new SimpleObjectProperty<>();
-    @Getter private static final ObjectProperty<MachineState> currentMachineStateProperty = new SimpleObjectProperty<>();
     @Getter private static final ObjectProperty<Set<ContestRoomData>> contestRoomsStateProperty = new SimpleObjectProperty<>();
     @Getter private static final ObjectProperty<ContestRoomData> currentContestRoomStateProperty = new SimpleObjectProperty<>();
     @Getter private static final ObjectProperty<List<AgentData>> agentsListStateProperty = new SimpleObjectProperty<>();
     @Getter private static final ObjectProperty<List<AllyTeamData>> currentTeamsProperty = new SimpleObjectProperty<>();
 
-//    @Getter private static final BooleanProperty isContestStartedProperty = new SimpleBooleanProperty(false);
     @Getter private static final ObjectProperty<List<EncryptionCandidate>> lastCandidatesProperty = new SimpleObjectProperty<>();
     @Getter private static final ObjectProperty<GameStatus> gameStatusProperty = new SimpleObjectProperty<>();
 
@@ -201,11 +196,6 @@ public class DataService {
                         currentContestRoomStateProperty.setValue(null);
                         currentContestRoomStateProperty.setValue(payload.getContestRoom());
                         if(payload.getContestRoom() != null  ){
-//                            if(payload.getContestRoom().getGameStatus()!= GameStatus.WAITING){
-//                                if(getIsContestStartedProperty().get() == false) {
-//                                    getIsContestStartedProperty().setValue(true);
-//                                }
-//                            }
                             if(payload.getContestRoom().getGameStatus()!= gameStatusProperty.get())
                             {
                                 gameStatusProperty.setValue(payload.getContestRoom().getGameStatus());
@@ -284,10 +274,7 @@ public class DataService {
                     }
                     else {
                         log.info("game status - responseCode = 200, ServerMessage=" + payload.getMessage());
-//                        if(payload.getGameState() != null
-//                                && payload.getGameState().equals(GameStatus.READY)) {
-////                            isContestStartedProperty.setValue(true);
-//                        }
+
                         if(payload.getGameState() != null && payload.getGameState() != gameStatusProperty.get()){
                             gameStatusProperty.setValue(payload.getGameState());
                             //in comment for test
@@ -339,7 +326,6 @@ public class DataService {
                 .build()
                 .toString();
     }
-
     public static void sendGotWin() {
         HttpClientService.runAsync(gotWinUrl, new Callback() {
             @Override
@@ -387,16 +373,4 @@ public class DataService {
         executor.scheduleAtFixedRate(candidatesFetcher, 0, timeInterval, TimeUnit.MILLISECONDS);
         //TODO: implement
     }
-//    public static void startCheckIsContestStarted(){
-//        long timeInterval = 1500;
-//        executor.scheduleAtFixedRate(contestStartedFetcher, 0, timeInterval, TimeUnit.MILLISECONDS);
-//        //TODO: implement
-//    }
-    public static void fetchInventoryInfo(InventoryInfo inventory) {
-        inventoryInfoProperty.setValue(inventory);
-    }
-
-    //curr contest
-
-
 }

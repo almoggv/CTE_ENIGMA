@@ -55,7 +55,7 @@ public class HeaderController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         createNotificationPane();
 
-        DataService.getCurrentContestRoomsStateProperty().addListener((observable, oldValue, newValue) -> {
+        DataService.getCurrentContestRoomStateProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) { //contest running
                 logoutButton.setDisable(true);
             }
