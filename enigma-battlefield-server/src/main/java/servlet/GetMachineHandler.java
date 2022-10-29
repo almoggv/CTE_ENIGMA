@@ -1,9 +1,10 @@
 package servlet;
 
+
 import component.EncryptionMachine;
 import component.MachineHandler;
 import dto.MachineClonePayload;
-import model.User;
+import dto.MachineHandlerPayload;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -11,6 +12,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import manager.RoomManager;
 import manager.UserManager;
+import model.User;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import service.PropertiesService;
@@ -22,19 +24,20 @@ import java.util.Properties;
 
 import static jakarta.servlet.http.HttpServletResponse.*;
 
-@WebServlet(name = "GetMachineCloneServlet" ,urlPatterns = {"/clone-machine"})
-public class GetMachineClone extends HttpServlet {
-    private static final Logger log = Logger.getLogger(GetMachineClone.class);
+@WebServlet(name = "GetMachineHandlerServlet" ,urlPatterns = {"/machine-handler"})
+public class GetMachineHandler extends HttpServlet {
+    private static final Logger log = Logger.getLogger(GetMachineHandler.class);
     static {
         try {
             Properties p = new Properties();
-            p.load(GetMachineClone.class.getResourceAsStream(PropertiesService.getLog4jPropertiesResourcePath()));
+            p.load(GetMachineHandler.class.getResourceAsStream(PropertiesService.getLog4jPropertiesResourcePath()));
             PropertyConfigurator.configure(p);      //Dont forget here
-            log.debug("Logger Instantiated for : " + GetMachineClone.class.getSimpleName());
+            log.debug("Logger Instantiated for : " + GetMachineHandler.class.getSimpleName());
         } catch (IOException e) {
-            System.out.println("Failed to configure logger of -" + GetMachineClone.class.getSimpleName() ) ;
+            System.out.println("Failed to configure logger of -" + GetMachineHandler.class.getSimpleName() ) ;
         }
     }
+
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -47,8 +50,7 @@ public class GetMachineClone extends HttpServlet {
             resp.setStatus(SC_INTERNAL_SERVER_ERROR);
             return;
         }
-        MachineClonePayload payload = new MachineClonePayload();
-        RoomManager roomManager = ServletUtils.getRoomManager(this.getServletContext());
+        MachineHandlerPayload payload = new MachineHandlerPayload();
         UserManager userManager = ServletUtils.getUserManager(this.getServletContext());
         User user = userManager.getUserByName((String) req.getSession(false).getAttribute(PropertiesService.getUsernameAttributeName()));   //Username by session
         if(user == null){
@@ -59,10 +61,7 @@ public class GetMachineClone extends HttpServlet {
         }
         try{
             MachineHandler handler = user.getContestRoom().getMachineHandler();
-            EncryptionMachine machineClone = handler.getEncryptionMachineClone();
-            payload.setEncryptionMachine(machineClone);
-            payload.setMachineStaste(machineClone.getMachineState().get());
-//            payload.setMachineHandler(handler);
+            payload.setMachineHandler(handler);
         }
         catch (Exception e){
             log.error("GetEncryptionMachine failed to get machine handler to user=" + user + "exception=" + e.getMessage());
@@ -71,7 +70,7 @@ public class GetMachineClone extends HttpServlet {
             respWriter.print(payload);
             return;
         }
-        payload.setMessage("Machine Cloned Successfully");
+        payload.setMessage("Handler retrieved successfully");
         resp.setStatus(SC_OK);
         respWriter.print(payload);
         return;

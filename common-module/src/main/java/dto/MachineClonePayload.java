@@ -1,6 +1,7 @@
 package dto;
 
 import component.EncryptionMachine;
+import component.MachineHandler;
 import component.impl.EnigmaMachine;
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -2,6 +2,7 @@ package service;
 
 
 import com.google.gson.Gson;
+import component.MachineHandler;
 import dto.*;
 import enums.GameStatus;
 import javafx.beans.property.BooleanProperty;
@@ -167,6 +168,13 @@ public class DataService {
             });
         }
     };
+
+    public static MachineHandler fetchMachineHandler(){
+        MachineHandler machineHandler = null;
+
+        return machineHandler;
+    }
+
     public static void sendCandidates() {
 //        @Override
 //        public void run() {

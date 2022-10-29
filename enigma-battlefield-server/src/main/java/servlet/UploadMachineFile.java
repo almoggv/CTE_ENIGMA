@@ -97,7 +97,7 @@ public class UploadMachineFile extends HttpServlet {
                         DictionaryManager.loadDictionary(uploadedFile.getInputStream());
                         //create and save to room
                         String creatorName = (String) req.getSession(false).getAttribute(PropertiesService.getUsernameAttributeName());
-                        ContestRoom contestRoom = createContestRoomInfo(creatorName, battlefieldInfo);
+                        ContestRoom contestRoom = createContestRoomInfo(creatorName, battlefieldInfo,machineHandler);
 //                    contestRoom.setMachineHandler(machineHandler);
                         roomManager.addRoom(battlefieldInfo.getBattlefieldName(), contestRoom);
                         req.getSession(true).setAttribute(PropertiesService.getRoomNameAttributeName(), battlefieldInfo.getBattlefieldName());
@@ -126,7 +126,7 @@ public class UploadMachineFile extends HttpServlet {
         }
     }
 
-    private ContestRoom createContestRoomInfo(String creatorName, BattlefieldInfo battlefieldInfo) {
+    private ContestRoom createContestRoomInfo(String creatorName, BattlefieldInfo battlefieldInfo, MachineHandler machineHandler) {
         ContestRoom contestRoom = new ContestRoom();
         contestRoom.setCreatorName(creatorName);
         contestRoom.setCurrNumOfTeams(0);
@@ -141,6 +141,7 @@ public class UploadMachineFile extends HttpServlet {
         contestRoom.setEveryoneReady(false);
         contestRoom.setNumOfReady(0);
         contestRoom.setEncryptionCandidateList(new ArrayList<>());
+        contestRoom.setMachineHandler(machineHandler);
         return contestRoom;
     }
 }

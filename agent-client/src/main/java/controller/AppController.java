@@ -1,12 +1,7 @@
 package controller;
 
-import com.google.gson.Gson;
 import component.MachineHandler;
 import dto.AgentData;
-import dto.MachineInventoryPayload;
-import enums.GameStatus;
-import javafx.application.Platform;
-import javafx.beans.property.ObjectProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -20,19 +15,13 @@ import lombok.Getter;
 import lombok.Setter;
 import manager.AgentClientDM;
 import manager.impl.AgentClientDMImpl;
-import okhttp3.*;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
-import org.jetbrains.annotations.NotNull;
 import service.DataService;
-import service.HttpClientService;
 import service.PropertiesService;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
@@ -65,7 +54,7 @@ public class AppController implements Initializable {
     @FXML GridPane headerComponent;
     @FXML GridPane loginComponent;
 
-    private AgentClientDM decryptionAgent;
+    @Getter private AgentClientDM agentClientDM;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -105,7 +94,12 @@ public class AppController implements Initializable {
 
 //        setupDataServiceConnections();
             //todo: finish - moved here instead of ally
-
+        DataService.getIsContestStartedProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue == true){
+//                MachineHandler machineHandler =
+//                agentClientDM = new AgentClientDMImpl();
+            }
+        });
     }
 
 //    private void setupDataServiceConnections() {
@@ -123,7 +117,7 @@ public class AppController implements Initializable {
             log.error("Failed to initialize AgentClient's DecryptionManager machineHandler or agentData are null");
             return;
         }
-        this.decryptionAgent = new AgentClientDMImpl(machineHandler,agentData.getNumberOfTasksThatTakes(),agentData.getNumberOfThreads(), agentData.getAllyName());
+        this.agentClientDM = new AgentClientDMImpl(machineHandler,agentData.getNumberOfTasksThatTakes(),agentData.getNumberOfThreads(), agentData.getAllyName());
     }
 
     public void showMessage(String message) {
@@ -163,6 +157,7 @@ public class AppController implements Initializable {
 //            log.error("Failed to logout - loginComponentController is null");
 //        }
 //    }
+
 
     public boolean isUserLoggedIn(){
         return loginComponentController.getIsLoggedInProperty().get();

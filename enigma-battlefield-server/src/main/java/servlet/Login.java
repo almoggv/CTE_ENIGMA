@@ -100,12 +100,4 @@ public class Login extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         processLoginRequest(req,resp);
     }
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //TODO: do we want to support Post req to login?
-
-        // get body
-        //        req.getReader()
-    }
 }

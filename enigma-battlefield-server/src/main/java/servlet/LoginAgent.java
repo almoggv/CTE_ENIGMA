@@ -76,6 +76,11 @@ public class LoginAgent extends HttpServlet {
             repsPayload.setMessage("Missing ally name in params");
             repsPayload.setAccessToken("");
         }
+        else if( userManager.getAllyByName(allynameFromParameter) == null){
+            resp.setStatus(SC_UNAUTHORIZED);
+            repsPayload.setMessage("No Ally=" + allynameFromParameter + ", does not exist");
+            repsPayload.setAccessToken("");
+        }
         else if (userManager.getUserByName(allynameFromParameter).isReady()) {
             resp.setStatus(SC_BAD_REQUEST);
             repsPayload.setMessage("can't join an ally that is ready");
