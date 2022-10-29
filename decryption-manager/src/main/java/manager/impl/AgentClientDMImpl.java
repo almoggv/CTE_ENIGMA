@@ -47,12 +47,12 @@ public class AgentClientDMImpl implements AgentClientDM {
     @Getter ListenerAdapter listenerAdapter = new ListenerAdapter();
     private Thread listenerAdapterThread;
 
-    private String allyTeamName;
+
     @Getter @Setter private String inputToDecrypt = "";
     @Getter private final int maxNumberOfTasks;
     @Getter @Setter private int internalAgentTaskSize = PropertiesService.getDefaultTaskSize();
     private final ThreadPoolExecutor threadPoolService;
-    private final MachineHandler machineHandler;
+    @Getter private final MachineHandler machineHandler;
     private final List<MachineState> workToDo = new ArrayList<>();
     private List<List<MachineState>> workBatches = new ArrayList<>();
     private boolean isKilled = false;
@@ -60,7 +60,7 @@ public class AgentClientDMImpl implements AgentClientDM {
     @Getter private final ObjectProperty<DecryptionWorker> newestAgentProperty = new SimpleObjectProperty<>();
     private final BooleanProperty isWorkCompletedProperty = new SimpleBooleanProperty(true);
 
-    public AgentClientDMImpl(@NotNull MachineHandler machineHandler, int maxNumberOfTasks, int threadPoolSize, String allyTeamName) {
+    public AgentClientDMImpl(@NotNull MachineHandler machineHandler, int maxNumberOfTasks, int threadPoolSize) {
         if(machineHandler == null){
             throw new NullPointerException("machineHandler is null");
         }
@@ -70,14 +70,9 @@ public class AgentClientDMImpl implements AgentClientDM {
         if (threadPoolSize > PropertiesService.getMaxThreadPoolSize() || threadPoolSize < PropertiesService.getMinThreadPoolSize()) {
             throw new IllegalArgumentException("AgentClient Constructor - ThreadPool of size=" + threadPoolSize + " is not allowed, range=["  + PropertiesService.getMinThreadPoolSize() + "," + PropertiesService.getMaxThreadPoolSize() + "]");
         }
-        if(allyTeamName == null ){
-            throw new NullPointerException("AllyTeamName is null");
-        }
         this.machineHandler = machineHandler;
         this.maxNumberOfTasks = maxNumberOfTasks;
         long keepAliveForWhenIdle = Long.MAX_VALUE;
-        this.allyTeamName = allyTeamName;
-//        int threadPoolQueueSize = (int) Math.ceil((float)(maxNumberOfTasks / internalAgentTaskSize) ); //when too big, overflows
         this.threadPoolService = new ThreadPoolExecutor(threadPoolSize, threadPoolSize,
                 keepAliveForWhenIdle , TimeUnit.SECONDS, new ArrayBlockingQueue(THREAD_POOL_QEUEU_DEFAULT_MAX_CAPACITY));
         this.addPropertyListeners();

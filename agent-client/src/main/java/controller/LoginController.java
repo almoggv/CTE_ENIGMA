@@ -23,7 +23,6 @@ import okhttp3.Response;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.controlsfx.validation.ValidationSupport;
-import org.controlsfx.validation.Validator;
 import org.jetbrains.annotations.NotNull;
 import service.DataService;
 import service.HttpClientService;
@@ -191,5 +190,18 @@ public class LoginController implements Initializable {
 
     public void handleLogout() {
 
+    }
+
+    public int getTaskSize(){
+        return Integer.valueOf(taskSizeTextField.getText());
+
+    }
+
+    public int getNumberOfThreads(){
+        return Integer.valueOf(threadNumTextField.getText());
+    }
+
+    public String getAllyTeamName(){
+        return (String) allieNamesComboBox.getSelectionModel().getSelectedItem();
     }
 }

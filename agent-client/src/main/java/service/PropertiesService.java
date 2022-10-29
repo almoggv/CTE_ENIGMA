@@ -31,6 +31,8 @@ public class PropertiesService {
     @Getter private static final String allyNameAttribute = "ally_name";
     @Getter private static final String taskSizeAttributeName = "task_size";
     @Getter private static final String threadCountAttributeName = "thread_num";
+    @Getter private static final String batchSizeAttributeName = "size";
+
 
     //Api Url
     public final static String BASE_DOMAIN = "localhost";
@@ -55,5 +57,7 @@ public class PropertiesService {
     @Getter private static final String apiGameStateUrl = FULL_SERVER_PATH + "/game-status";
     @Getter private static final String apiAgentsOfAllyUrl = FULL_SERVER_PATH + "/agents-by-ally";
     @Getter private static final String apiSendCandidatesUrl = FULL_SERVER_PATH + "/post-candidates";
+    @Getter private static final String apiGetMachineHandler = FULL_SERVER_PATH + "/machine-handler";
+    @Getter private static final String apiFetchWorkBatch = FULL_SERVER_PATH + "/fetch-work";
 }
 

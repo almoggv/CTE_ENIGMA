@@ -23,6 +23,7 @@ public class PropertiesService {
     @Getter private static final String allyNameAttributeName = "ally_name";
     @Getter private static final String taskSizeAttributeName = "task_size";
     @Getter private static final String numOfThreadsAttributeName = "thread_num";
+    @Getter private static final String batchSizeAttributeName = "size";
 
 
     @Getter private static final String jsonHttpContentType = "application/json";

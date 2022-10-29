@@ -19,7 +19,7 @@ public class AgentClientDmRunAndPrintCandidates {
     @Test
     public void findDecryptionCandidatesTest() throws Exception {
         MachineHandler machineHandler = AgentDmTestUtils.loadAMachineHandlerManually(AgentDmTestUtils.getInitialState());
-        AgentClientDM agentDm = new AgentClientDMImpl(machineHandler,AgentDmTestUtils.MAX_NUM_OF_TASKS,AgentDmTestUtils.MAX_NUM_OF_THREADS,AgentDmTestUtils.ALLY_NAME);
+        AgentClientDM agentDm = new AgentClientDMImpl(machineHandler,AgentDmTestUtils.MAX_NUM_OF_TASKS,AgentDmTestUtils.MAX_NUM_OF_THREADS);
         List<MachineState> workToDo = AgentDmTestUtils.createWorkToDo(AgentDmTestUtils.MAX_NUM_OF_TASKS, AgentDmTestUtils.getBasicState());
         //Connect Properties To Print:
         addListeners(agentDm);

@@ -3,11 +3,16 @@ package manager.impl;
 import dto.InventoryInfo;
 import dto.MachineState;
 import enums.DecryptionDifficultyLevel;
+import enums.ReflectorsId;
+import generictype.MappingPair;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import lombok.Getter;
 import lombok.Setter;
 import manager.AllyClientDM;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
+import service.MathService;
 import service.PropertiesService;
 import service.WorkDispatcher;
 
@@ -28,11 +33,12 @@ public class AllyClientDMImpl implements AllyClientDM {
     }
 
     private Queue<List<MachineState>> workBatchesQueue = new LinkedList<List<MachineState>>();
-    @Getter @Setter private InventoryInfo inventoryInfo;
+    @Getter private InventoryInfo inventoryInfo;
     @Getter @Setter private DecryptionDifficultyLevel difficultyLevel = null;
     @Getter private int taskSize = -1;
     @Getter @Setter private MachineState initialMachineConfig = null;
     private MachineState lastCreatedworkBatchLastState = null;
+    @Getter ObjectProperty<MappingPair<Long,Long>> progressProperty = new SimpleObjectProperty<>();
 
     private boolean isKilled = false;
 
@@ -51,13 +57,24 @@ public class AllyClientDMImpl implements AllyClientDM {
             if(!isDmConfiguredYet()){
                 continue;
             }
+            if(progressProperty.get() == null || progressProperty.get().getRight() <= 0){
+                progressProperty.setValue(new MappingPair<>(0L,calculateAmountOfWork()));
+            }
             fillQueueWithWork();
         }
     }
 
     @Override
     public synchronized List<MachineState> getNextBatch() {
-        return workBatchesQueue.poll();
+        if(workBatchesQueue.isEmpty()){
+            return null;
+        }
+        List<MachineState> nextBatch = workBatchesQueue.poll();
+        //update progress
+        MappingPair<Long,Long> newProgress = new MappingPair<>(progressProperty.get().getLeft(),progressProperty.get().getRight());
+        newProgress.setLeft(newProgress.getLeft() + nextBatch.size());
+        progressProperty.setValue(newProgress);
+        return nextBatch;
     }
 
     @Override
@@ -67,6 +84,12 @@ public class AllyClientDMImpl implements AllyClientDM {
             resultBatches.add(getNextBatch());
         }
         return resultBatches;
+    }
+
+    @Override
+    public void setInventoryInfo(InventoryInfo inventoryInfo) {
+        this.inventoryInfo = inventoryInfo;
+        initialMachineConfig = createInitialMachineConfig(inventoryInfo);
     }
 
     @Override
@@ -95,6 +118,23 @@ public class AllyClientDMImpl implements AllyClientDM {
         }
     }
 
+    private MachineState createInitialMachineConfig(InventoryInfo inventoryInfo) {
+        MachineState firstState = new MachineState();
+        String firstRotorPos = inventoryInfo.getABC().substring(0,1);
+        List<Integer> initialRotorsIds = new ArrayList<>();
+        List<String> initialRotorsPositions = new ArrayList<>();
+        for (int i = 1; i <= inventoryInfo.getNumOfRotorsInUse(); i++) {
+            initialRotorsIds.add(i);
+            initialRotorsPositions.add(firstRotorPos);
+        }
+        firstState.setRotorIds(initialRotorsIds);
+        firstState.setReflectorId(ReflectorsId.I);
+        firstState.setRotorsHeadsInitialValues(initialRotorsPositions);
+        firstState.setPlugMapping(new ArrayList<>());
+        firstState.setNotchDistancesFromHead(new ArrayList<>());
+        return firstState;
+    }
+
     private boolean isDmConfiguredYet() {
         if(this.difficultyLevel == null){
             return false;
@@ -109,5 +149,31 @@ public class AllyClientDMImpl implements AllyClientDM {
             return false;
         }
         return true;
+    }
+
+    private long calculateAmountOfWork(){
+        if(!isDmConfiguredYet()){
+            return -1;
+        }
+        long result = 0;
+        int abcSize = inventoryInfo.getABC().length();
+        int numberOfRotorsInUse = inventoryInfo.getNumOfRotorsInUse();
+        int numberOfReflectorsAvailable = inventoryInfo.getNumOfAvailableReflectors();
+        int numberOfRotorsAvailable = inventoryInfo.getNumOfAvailableRotors();
+        switch(difficultyLevel) {
+            case INTERMEDIATE:
+                result = ((int) Math.pow(abcSize, numberOfRotorsInUse)) * numberOfReflectorsAvailable;
+                break;
+            case HARD:
+                result = ((int) Math.pow(abcSize, numberOfRotorsInUse)) * numberOfReflectorsAvailable * MathService.factorial(numberOfRotorsInUse);
+                break;
+            case IMPOSSIBLE:
+                result = ((int) Math.pow(abcSize, numberOfRotorsInUse)) * numberOfReflectorsAvailable * MathService.factorial(numberOfRotorsInUse) * MathService.nChooseKSize(numberOfRotorsInUse, numberOfRotorsAvailable);
+                break;
+            case EASY:
+            default:
+                result = (int) Math.pow(abcSize, numberOfRotorsInUse);
+        }
+        return result;
     }
 }

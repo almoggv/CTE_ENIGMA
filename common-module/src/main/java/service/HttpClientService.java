@@ -1,11 +1,8 @@
 package service;
 
 import lombok.Getter;
+import okhttp3.*;
 import okhttp3.OkHttpClient;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
@@ -51,9 +48,11 @@ public class HttpClientService {
         Call call = HttpClientService.HTTP_CLIENT.newCall(request);
         call.enqueue(callback);
     }
-   public static void runAsync(Request request, Callback callback) {
-       log.info("HttpClientService - new request sent to -" + request.url().toString());
+
+    public static void runAsync(Request request, Callback callback) {
+        log.info("HttpClientService - new request sent to -" + request.url().toString());
         Call call = HttpClientService.HTTP_CLIENT.newCall(request);
+
         call.enqueue(callback);
     }
 
@@ -63,4 +62,17 @@ public class HttpClientService {
         HTTP_CLIENT.connectionPool().evictAll();
     }
 
+    public static Response runSync(String finalUrl){
+        Request request = new Request.Builder()
+                .url(finalUrl)
+                .build();
+        Call call = HttpClientService.HTTP_CLIENT.newCall(request);
+        try {
+            Response response = call.execute();
+            return response;
+        } catch (IOException e) {
+            log.error("Failed to execute request to Url=" + finalUrl + ", exception=" + e.getMessage());
+            return null;
+        }
+    }
 }

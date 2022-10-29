@@ -1,7 +1,11 @@
 package controller;
 
 import component.MachineHandler;
-import dto.AgentData;
+import dto.DecryptionCandidateInfo;
+import dto.DecryptionWorkPayload;
+import dto.EncryptionCandidate;
+import dto.MachineState;
+import enums.GameStatus;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -18,10 +22,13 @@ import manager.impl.AgentClientDMImpl;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import service.DataService;
+import service.DecryptionWorkPayloadParserService;
 import service.PropertiesService;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
@@ -39,8 +46,10 @@ public class AppController implements Initializable {
         }
     }
 
-    @FXML @Getter HeaderController headerComponentController;
+    private Thread agentClientDmThread;
+    @Getter private AgentClientDM agentClientDM;
 
+    @FXML @Getter HeaderController headerComponentController;
     @FXML @Getter LoginController loginComponentController;
     @FXML private ContestPageController contestPageController;
 
@@ -54,7 +63,6 @@ public class AppController implements Initializable {
     @FXML GridPane headerComponent;
     @FXML GridPane loginComponent;
 
-    @Getter private AgentClientDM agentClientDM;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -94,31 +102,42 @@ public class AppController implements Initializable {
 
 //        setupDataServiceConnections();
             //todo: finish - moved here instead of ally
-        DataService.getIsContestStartedProperty().addListener((observable, oldValue, newValue) -> {
-            if(newValue == true){
-//                MachineHandler machineHandler =
-//                agentClientDM = new AgentClientDMImpl();
+        DataService.getGameStatusProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue == GameStatus.IN_PROGRESS || newValue == GameStatus.READY){
+                MachineHandler machineHandler = DataService.fetchMachineHandler();
+                agentClientDM = new AgentClientDMImpl(machineHandler, loginComponentController.getTaskSize(), loginComponentController.getNumberOfThreads());
+                agentClientDM.getListenerAdapter().getDecryptionCandidatesProperty().addListener((observable1, oldCandidatesList, newCandidatesList) -> {
+                    if(newCandidatesList == null || newCandidatesList.isEmpty() ){
+                        return;
+                    }
+                    EncryptionCandidate encryptionCandidate = new EncryptionCandidate();
+                    DecryptionCandidateInfo newestCandidateInfo = newCandidatesList.get(newCandidatesList.size()-1);
+                    encryptionCandidate.setCandidate(newestCandidateInfo.getOutput());
+                    encryptionCandidate.setAllyTeamName(loginComponentController.getAllyTeamName());
+                    encryptionCandidate.setFoundByState(newestCandidateInfo.getInitialState());
+                    List<EncryptionCandidate> previousFoundCandidatesList = new ArrayList<>(DataService.getLastCandidatesProperty().get());
+                    previousFoundCandidatesList.add(encryptionCandidate);
+                    DataService.getLastCandidatesProperty().setValue(previousFoundCandidatesList);
+                });
+                agentClientDM.getListenerAdapter().getIsWorkCompletedProperty().addListener((observable1, oldWorkCompetedStatus, newWorkCompletedStatus) -> {
+                    if(newWorkCompletedStatus == true){
+                        DecryptionWorkPayload zippedWork = DataService.fetchWorkBatch(agentClientDM.getMaxNumberOfTasks());
+                        List<MachineState> unzippedWork = DecryptionWorkPayloadParserService.unzip(zippedWork,machineHandler.getInventoryInfo().get());
+                        agentClientDM.assignWork(unzippedWork,zippedWork.getInputToDecrypt());
+                    }
+                });
+                //Start running
+                agentClientDmThread = new Thread(agentClientDM);
+                agentClientDmThread.start();
+                //Fetch work:
+                DecryptionWorkPayload zippedWork = DataService.fetchWorkBatch(agentClientDM.getMaxNumberOfTasks());
+                List<MachineState> unzippedWork = DecryptionWorkPayloadParserService.unzip(zippedWork,machineHandler.getInventoryInfo().get());
+                agentClientDM.assignWork(unzippedWork,zippedWork.getInputToDecrypt());
             }
         });
     }
 
-//    private void setupDataServiceConnections() {
-//        DataService.getIsContestStartedProperty().addListener((observable, oldValue, newValue) -> {
-//            if(newValue == true){
-//                HttpClientService.runAsync();
-//                deliberate-error
-//                //init machine and AgentDm
-//
-//            }
-//        });
-//    }
-    public void initDecryptionAgent(MachineHandler machineHandler, AgentData agentData){
-        if(machineHandler == null || agentData == null){
-            log.error("Failed to initialize AgentClient's DecryptionManager machineHandler or agentData are null");
-            return;
-        }
-        this.agentClientDM = new AgentClientDMImpl(machineHandler,agentData.getNumberOfTasksThatTakes(),agentData.getNumberOfThreads(), agentData.getAllyName());
-    }
+
 
     public void showMessage(String message) {
         if(headerComponentController!=null){

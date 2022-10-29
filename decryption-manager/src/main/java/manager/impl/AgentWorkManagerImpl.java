@@ -153,7 +153,6 @@ public class AgentWorkManagerImpl implements AgentWorkManager {
                 result = ((int) Math.pow(abcSize,numberOfRotorsInUse)) * numberOfReflectorsAvailable * MathService.factorial(numberOfRotorsInUse);
                 break;
             case IMPOSSIBLE:
-                //todo- check
                 result = ((int) Math.pow(abcSize,numberOfRotorsInUse)) * numberOfReflectorsAvailable *  MathService.factorial(numberOfRotorsInUse) * MathService.nChooseKSize(numberOfRotorsInUse,numberOfRotorsAvailable);
                 break;
             case EASY:

@@ -3,6 +3,8 @@ package manager;
 import dto.InventoryInfo;
 import dto.MachineState;
 import enums.DecryptionDifficultyLevel;
+import generictype.MappingPair;
+import javafx.beans.property.ObjectProperty;
 
 import java.util.List;
 import java.util.Queue;
@@ -25,6 +27,8 @@ public interface AllyClientDM extends Runnable{
 
     int getTaskSize();
     void setTaskSize(int taskSize);
+
+    ObjectProperty<MappingPair<Long,Long>> getProgressProperty();
 
     /**
      * used to infer, based on the DifficultyLevel, the state of the other machine components for the work distribution

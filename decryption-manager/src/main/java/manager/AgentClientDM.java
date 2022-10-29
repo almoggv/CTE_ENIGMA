@@ -3,6 +3,7 @@ package manager;
 import adapter.ListenerAdapter;
 import agent.DecryptionAgent;
 import agent.DecryptionWorker;
+import component.MachineHandler;
 import dto.AgentDecryptionInfo;
 import dto.MachineState;
 import generictype.MappingPair;
@@ -27,6 +28,8 @@ public interface AgentClientDM extends Runnable {
     void setInternalAgentTaskSize(int taskSizePerAgent);
 
     int getMaxNumberOfTasks();
+
+    MachineHandler getMachineHandler();
 
     void assignWork(List<MachineState> assignedWork, String inputToDecrypt);
 

@@ -9,8 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class DecryptionWorkPayload {
-
-    String serverMessage;
+    String message;
     MachineState firstState;
     MachineState lastState;
     int amountOfStates;

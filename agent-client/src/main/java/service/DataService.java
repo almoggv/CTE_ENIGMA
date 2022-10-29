@@ -2,6 +2,7 @@ package service;
 
 
 import com.google.gson.Gson;
+import com.sun.deploy.net.HttpUtils;
 import component.MachineHandler;
 import dto.*;
 import enums.GameStatus;
@@ -42,6 +43,7 @@ public class DataService {
     @Getter private static final ObjectProperty<GameStatus> gameStatusProperty = new SimpleObjectProperty<>();
     @Getter private static final ObjectProperty<List<EncryptionCandidate>> lastCandidatesProperty = new SimpleObjectProperty<>();
     private static final ScheduledExecutorService executor;
+    private static String workBatchFetchUrl;
     private static final String agentsDataUrl;
     private static final String contestDataUrl;
     private static final String allyTeamsUrl;
@@ -166,8 +168,33 @@ public class DataService {
 
     public static MachineHandler fetchMachineHandler(){
         MachineHandler machineHandler = null;
-
+        Response response = HttpClientService.runSync(PropertiesService.getApiGetMachineHandler());
+        if(response.code() != 200){
+            log.error("Failed to fetch MachineHandler from server status code="+ response.code() +" to url=" + PropertiesService.getApiGetMachineHandler());
+            return machineHandler;
+        }
+        String responseBody = response.body().toString();
+        MachineHandlerPayload responsePayload;
+        responsePayload = new Gson().fromJson(responseBody,MachineHandlerPayload.class);
+        machineHandler = responsePayload.getMachineHandler();
         return machineHandler;
+    }
+
+    public static DecryptionWorkPayload fetchWorkBatch(int batchSize){
+        workBatchFetchUrl = HttpUrl
+                .parse(PropertiesService.getApiFetchWorkBatch())
+                .newBuilder()
+                .addQueryParameter(PropertiesService.getBatchSizeAttributeName(),String.valueOf(batchSize))
+                .build()
+                .toString();
+        Response response = HttpClientService.runSync(workBatchFetchUrl);
+        if(response.code() != 200){
+            log.error("Failed to fetch MachineHandler from server status code="+ response.code() +" to url=" + PropertiesService.getApiFetchWorkBatch());
+            return null;
+        }
+        String responseBody = response.body().toString();
+        DecryptionWorkPayload workPayload  = new Gson().fromJson(responseBody,DecryptionWorkPayload.class);
+        return workPayload;
     }
 
     public static void sendCandidates() {
@@ -247,7 +274,12 @@ public class DataService {
                 .newBuilder()
                 .build()
                 .toString();
-
+        workBatchFetchUrl = HttpUrl
+                .parse(PropertiesService.getApiFetchWorkBatch())
+                .newBuilder()
+                .addQueryParameter(PropertiesService.getBatchSizeAttributeName(),"0")
+                .build()
+                .toString();
         lastCandidatesProperty.addListener((observable, oldValue, newValue) -> {
             sendCandidates();
         });
