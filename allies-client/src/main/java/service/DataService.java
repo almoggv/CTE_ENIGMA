@@ -199,7 +199,6 @@ public class DataService {
                                 }
                             if(gameStatusProperty.get().getGameState() == GameStatus.DONE){
                                 sendGotWin();
-                                gameStatusProperty.setValue(new GameStatePayload());
                             }
                         }
                     }

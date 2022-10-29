@@ -113,6 +113,7 @@ public class DataService {
                     if (response.code() != 200) {
                         log.info("Failed to fetch curr Teams - statusCode=" + response.code() + ", ServerMessage=" + allyTeamsPayload.getMessage());
                         currentTeamsProperty.setValue(null);
+                        gameStatusProperty.setValue(new GameStatePayload());
                     }
                     else {
                         log.debug("Current teams Fetched - responseCode = 200, ServerMessage=" + allyTeamsPayload.getMessage());
@@ -166,7 +167,6 @@ public class DataService {
                         }
                         else if(payload.getGameState().equals(GameStatus.DONE)){
                             sendGotWin();
-                            gameStatusProperty.setValue(new GameStatePayload());
                         }
                     }
                 }
