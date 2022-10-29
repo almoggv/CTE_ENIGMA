@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
@@ -49,6 +50,7 @@ public class DashboardPageController implements Initializable {
 
     public FlowPane contestDataFlowPane;
     public FlowPane agentsDataFlowPane;
+    public ComboBox contestNameComboBox;
     AppController parentController;
 
     @FXML
@@ -57,8 +59,8 @@ public class DashboardPageController implements Initializable {
     @FXML
     private Button joinContestButton;
 
-    @FXML
-    private TextField chosenContestTextField;
+//    @FXML
+//    private TextField chosenContestTextField;
 
     public void setParentController(AppController appController) {
         this.parentController = appController;
@@ -71,13 +73,16 @@ public class DashboardPageController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        joinContestButton.disableProperty().bind(Bindings.createBooleanBinding(() ->
-                        chosenContestTextField.getText().trim().isEmpty(),
-                chosenContestTextField.textProperty()));
+//        joinContestButton.disableProperty().bind(Bindings.createBooleanBinding(() ->
+//                        chosenContestTextField.getText().trim().isEmpty(),
+//                chosenContestTextField.textProperty()));
 
         DataService.getContestRoomsStateProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue != null ){
                 createContestsDataComponents(newValue);
+                if(newValue.size() != contestNameComboBox.getItems().size()) {
+                    initializeAllieNamesComboBox(newValue);
+                }
             }
             else{
                 contestDataFlowPane.getChildren().clear();
@@ -91,6 +96,15 @@ public class DashboardPageController implements Initializable {
         });
     }
 
+    private void initializeAllieNamesComboBox(Set<ContestRoomData> roomDataList) {
+        Platform.runLater(() -> {
+            contestNameComboBox.getItems().clear();
+            for (ContestRoomData contest : roomDataList) {
+                contestNameComboBox.getItems().add(contest.getName());
+            }
+            contestNameComboBox.getSelectionModel().select(0);
+        });
+    }
     private void createAgentsDataComponents(List<AgentData> agentDataList) {
         Platform.runLater(() -> {
             try {
@@ -179,7 +193,7 @@ public class DashboardPageController implements Initializable {
 
     @FXML
     void onJoinContestAction(ActionEvent event) {
-        String roomName = chosenContestTextField.getText();
+        String roomName = (String) this.contestNameComboBox.getSelectionModel().getSelectedItem();
         if (roomName.isEmpty()) {
             parentController.showMessage("Room name cannot be empty");
             return;
@@ -230,8 +244,8 @@ public class DashboardPageController implements Initializable {
         });
     }
 
-    public void handleContestClicked(Label battlefieldNameLabel) {
-        chosenContestTextField.setText(battlefieldNameLabel.getText());
-    }
+//    public void handleContestClicked(Label battlefieldNameLabel) {
+//        chosenContestTextField.setText(battlefieldNameLabel.getText());
+//    }
 
 }

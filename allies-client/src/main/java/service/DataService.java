@@ -82,7 +82,7 @@ public class DataService {
                     else {
                         log.info("all Contests data Successfully Fetched - responseCode = 200, ServerMessage=" + payload.getContestRooms());
                         if(payload.getContestRooms() != null && !payload.getContestRooms().isEmpty() && !payload.getContestRooms().equals(contestRoomsStateProperty.get())){
-                            contestRoomsStateProperty.setValue(null);
+//                            contestRoomsStateProperty.setValue(null);
                             contestRoomsStateProperty.setValue(payload.getContestRooms());
                         }
                     }

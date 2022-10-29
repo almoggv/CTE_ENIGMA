@@ -94,12 +94,12 @@ public class AppController implements Initializable {
 
 //        setupDataServiceConnections();
             //todo: finish - moved here instead of ally
-        DataService.getIsContestStartedProperty().addListener((observable, oldValue, newValue) -> {
-            if(newValue == true){
-//                MachineHandler machineHandler =
-//                agentClientDM = new AgentClientDMImpl();
-            }
-        });
+//        DataService.getIsContestStartedProperty().addListener((observable, oldValue, newValue) -> {
+//            if(newValue == true){
+////                MachineHandler machineHandler =
+////                agentClientDM = new AgentClientDMImpl();
+//            }
+//        });
     }
 
 //    private void setupDataServiceConnections() {

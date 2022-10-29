@@ -107,7 +107,6 @@ public class LoginController implements Initializable {
                 allieNamesComboBox.getItems().add(allyTeam.getTeamName());
             }
             allieNamesComboBox.getSelectionModel().select(0);
-//        validationSupport.registerValidator(allieNamesComboBox, Validator.createEmptyValidator("Selection required"));
         });
     }
 

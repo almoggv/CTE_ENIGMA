@@ -43,9 +43,9 @@ public class ContestDataController {
         this.uboatCreatorName.setText(String.valueOf(value));
     }
 
-    public void onContestClicked(MouseEvent mouseEvent) {
-//        dashboardPageController.handleContestClicked(this.battlefieldNameLabel);
-    }
+//    public void onContestClicked(MouseEvent mouseEvent) {
+////        dashboardPageController.handleContestClicked(this.battlefieldNameLabel);
+//    }
 
     public void setParentController(ContestPageController contestPageController) {
         this.contestPageController = contestPageController;
