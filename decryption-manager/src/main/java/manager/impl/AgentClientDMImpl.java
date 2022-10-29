@@ -54,6 +54,7 @@ public class AgentClientDMImpl implements AgentClientDM {
     private final ThreadPoolExecutor threadPoolService;
     @Getter private final MachineHandler machineHandler;
     private final List<MachineState> workToDo = new ArrayList<>();
+    private final List<MachineState> workToDoCache = new ArrayList<>();
     private List<List<MachineState>> workBatches = new ArrayList<>();
     private boolean isKilled = false;
 
@@ -103,7 +104,6 @@ public class AgentClientDMImpl implements AgentClientDM {
         this.isKilled = false;
         int ticks =0;   //for testing
         int ticksPerPrint = 100000000;  //for testing
-
         while(!isKilled){
             // Prevent Log Spamming - for testing
             ticks++;
@@ -146,6 +146,9 @@ public class AgentClientDMImpl implements AgentClientDM {
 
     @Override
     public void assignWork(List<MachineState> assignedWork,String inputToDecrypt) throws IllegalArgumentException , NullPointerException , RuntimeException {
+        //TODO: when size is too big or work already in progress - save in cache and add later
+        //is done because - to ignore the difference in task size in ally and in agent to save ourselves some headache and i dont think they will notice.
+
         if(inputToDecrypt == null && (this.inputToDecrypt == null || this.inputToDecrypt.isEmpty())){
             log.error("AgentClientDMImpl - failed to assign work, missing input to decrypt");
             throw new NullPointerException("Failed to assign work, given no new or previous input to decrypt");
