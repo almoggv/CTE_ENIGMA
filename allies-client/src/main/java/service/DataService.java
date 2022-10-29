@@ -4,9 +4,7 @@ package service;
 import com.google.gson.Gson;
 import dto.*;
 import enums.GameStatus;
-import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import lombok.Getter;
 import okhttp3.Call;
@@ -82,9 +80,9 @@ public class DataService {
                         contestRoomsStateProperty.setValue(null);
                     }
                     else {
-                        log.info("Contest data Successfully Fetched - responseCode = 200, ServerMessage=" + payload.getContestRooms());
+                        log.info("all Contests data Successfully Fetched - responseCode = 200, ServerMessage=" + payload.getContestRooms());
                         if(payload.getContestRooms() != null && !payload.getContestRooms().isEmpty() && !payload.getContestRooms().equals(contestRoomsStateProperty.get())){
-                            contestRoomsStateProperty.setValue(null);
+//                            contestRoomsStateProperty.setValue(null);
                             contestRoomsStateProperty.setValue(payload.getContestRooms());
                         }
                     }
@@ -165,18 +163,18 @@ public class DataService {
             });
         }
     };
-    private static final Runnable contestDataFetcher = new Runnable() {
+    private static final Runnable currContestDataFetcher = new Runnable() {
         @Override
         public void run() {
             HttpClientService.runAsync(contestDataUrl, new Callback() {
                 @Override
                 public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                    log.error("contestsDataStateFetcher failed, ExceptionMessage="+e.getMessage());                }
+                    log.error("curr contestDataStateFetcher failed, ExceptionMessage="+e.getMessage());                }
                 @Override
                 public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                     String responseBody = response.body().string();
                     if (response.code() >= 500) {
-                        log.error("contestsDataState Fetching failed - statusCode=" + response.code());
+                        log.error("curr contestsDataState Fetching failed - statusCode=" + response.code());
                         return;
                     }
                     ContestRoomPayload payload;
@@ -184,16 +182,16 @@ public class DataService {
                         payload = new Gson().fromJson(responseBody,ContestRoomPayload.class);
                     }
                     catch (Exception e){
-                        log.error("Failed to parse response on contestsDataFetcher, Message=" + e.getMessage());
+                        log.error("Failed to parse response on curr contestsDataFetcher, Message=" + e.getMessage());
                         return;
                     }
                     if (response.code() != 200) {
-                        log.error("Failed to fetch contests data - statusCode=" + response.code() + ", ServerMessage=" + payload.getMessage());
+                        log.error("Failed to fetch curr contest data - statusCode=" + response.code() + ", ServerMessage=" + payload.getMessage());
                         currentContestRoomStateProperty.setValue(null);
                     }
                     else {
                         log.info("Contest data Successfully Fetched - responseCode = 200, ServerMessage=" + payload.getContestRoom());
-                        currentContestRoomStateProperty.setValue(null);
+//                        currentContestRoomStateProperty.setValue(null);
                         currentContestRoomStateProperty.setValue(payload.getContestRoom());
                         if(payload.getContestRoom() != null  ){
                             if(payload.getContestRoom().getGameStatus()!= gameStatusProperty.get())
@@ -237,10 +235,10 @@ public class DataService {
                     }
                     else {
                         log.info("Candidates Successfully Fetched - responseCode = 200, ServerMessage=" + payload.getEncryptionCandidateList());
-                        if(payload.getEncryptionCandidateList() != null
-                        && !payload.getEncryptionCandidateList().isEmpty()){
+//                        if(payload.getEncryptionCandidateList() != null
+//                        && !payload.getEncryptionCandidateList().isEmpty()){
                             getLastCandidatesProperty().setValue(payload.getEncryptionCandidateList());
-                        }
+//                        }
                     }
                 }
             });
@@ -355,7 +353,7 @@ public class DataService {
     }
     public static void startPullingContestRoomData(){
         long timeInterval = 1500;
-        executor.scheduleAtFixedRate(contestDataFetcher, 0, timeInterval, TimeUnit.MILLISECONDS);
+        executor.scheduleAtFixedRate(currContestDataFetcher, 0, timeInterval, TimeUnit.MILLISECONDS);
         //TODO: implement
     }
     public static void startPullingAgentData(){

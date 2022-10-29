@@ -41,9 +41,9 @@ public class ContestDataController {
         this.uboatCreatorName.setText(String.valueOf(value));
     }
 
-    public void onContestClicked(MouseEvent mouseEvent) {
-        dashboardPageController.handleContestClicked(this.battlefieldNameLabel);
-    }
+//    public void onContestClicked(MouseEvent mouseEvent) {
+//        dashboardPageController.handleContestClicked(this.battlefieldNameLabel);
+//    }
 
     public void setParentController(DashboardPageController dashboardPageController) {
         this.dashboardPageController = dashboardPageController;
@@ -58,9 +58,5 @@ public class ContestDataController {
         setDifficultyLevelLabel(contestRoom.getDifficultyLevel().name());
         setUboatCreatorName(contestRoom.getCreatorName());
         setGameStatusLabel(contestRoom.getGameStatus());
-    }
-
-    public void clear() {
-        //todo
     }
 }
