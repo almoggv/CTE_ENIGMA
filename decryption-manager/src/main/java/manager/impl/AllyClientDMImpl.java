@@ -12,10 +12,7 @@ import service.PropertiesService;
 import service.WorkDispatcher;
 
 import java.io.IOException;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Properties;
-import java.util.Queue;
+import java.util.*;
 
 public class AllyClientDMImpl implements AllyClientDM {
     private static final Logger log = Logger.getLogger(AllyClientDMImpl.class);
@@ -61,6 +58,15 @@ public class AllyClientDMImpl implements AllyClientDM {
     @Override
     public synchronized List<MachineState> getNextBatch() {
         return workBatchesQueue.poll();
+    }
+
+    @Override
+    public synchronized List<List<MachineState>> getNextBatch(int numberOfBatches) {
+        List<List<MachineState>> resultBatches = new ArrayList<>(numberOfBatches);
+        for (int i = 0; i < numberOfBatches; i++) {
+            resultBatches.add(getNextBatch());
+        }
+        return resultBatches;
     }
 
     @Override

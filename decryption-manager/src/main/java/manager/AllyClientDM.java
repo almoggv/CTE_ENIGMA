@@ -15,6 +15,7 @@ public interface AllyClientDM extends Runnable{
      * @return a list of MachineStates or null of no new batch was found
      */
     List<MachineState> getNextBatch();
+    List<List<MachineState>> getNextBatch(int numberOfBatches);
 
     InventoryInfo getInventoryInfo();
     void setInventoryInfo(InventoryInfo inventoryInfo);
