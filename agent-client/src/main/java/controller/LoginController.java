@@ -188,7 +188,4 @@ public class LoginController implements Initializable {
         return rootGridPane;
     }
 
-    public void handleLogout() {
-
-    }
 }

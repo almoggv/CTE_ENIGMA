@@ -69,7 +69,7 @@ public class UserManager {
                 if(userToLogout.isInARoom()) {
                     roomManager.resetContestRoom(userToLogout.getContestRoom(), this);
                     roomManager.removeRoom(userToLogout.getContestRoom().getName());
-//                    ContestRoom contestRoom
+
                 }
                 usernamesToUboatsMap.remove(username);
                 break;
@@ -84,6 +84,7 @@ public class UserManager {
             case AGENT:
                 AgentData agent = usernamesToAgentsMap.get(username);
                 usernamesToAlliesMap.get(agent.getAllyName()).getAgentsList().remove(agent);
+                usernamesToAlliesMap.get(agent.getAllyName()).setNumOfAgents(usernamesToAlliesMap.get(agent.getAllyName()).getNumOfAgents() -1 );
                 usernamesToAgentsMap.remove(username);
                 break;
         }
