@@ -106,6 +106,7 @@ public class AppController implements Initializable {
             if(newValue.getGameState() == GameStatus.IN_PROGRESS || newValue.getGameState() == GameStatus.READY){
                 MachineHandler machineHandler = DataService.fetchMachineHandler();
                 agentClientDM = new AgentClientDMImpl(machineHandler, loginComponentController.getTaskSize(), loginComponentController.getNumberOfThreads());
+                contestPageController.connectToDm(agentClientDM);
                 agentClientDM.getListenerAdapter().getDecryptionCandidatesProperty().addListener((observable1, oldCandidatesList, newCandidatesList) -> {
                     if(newCandidatesList == null || newCandidatesList.isEmpty() ){
                         return;
@@ -137,8 +138,6 @@ public class AppController implements Initializable {
         });
     }
 
-
-
     public void showMessage(String message) {
         if(headerComponentController!=null){
             headerComponentController.showMessage(message);
@@ -167,16 +166,6 @@ public class AppController implements Initializable {
     public void makeBodyVisible() {
         bodyWrapScrollPane.setVisible(true);
     }
-
-//    public void handleLogout() {
-//        if(loginComponentController!=null){
-//            loginComponentController.handleLogout();
-//        }
-//        else{
-//            log.error("Failed to logout - loginComponentController is null");
-//        }
-//    }
-
 
     public boolean isUserLoggedIn(){
         return loginComponentController.getIsLoggedInProperty().get();

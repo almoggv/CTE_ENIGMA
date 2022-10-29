@@ -1,5 +1,6 @@
 package servlet;
 
+import com.google.gson.Gson;
 import component.EncryptionMachine;
 import component.MachineHandler;
 import dto.MachineClonePayload;
@@ -38,6 +39,7 @@ public class GetMachineClone extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Gson gson = new Gson();
         PrintWriter respWriter;
         try {
             respWriter = resp.getWriter();
@@ -54,7 +56,7 @@ public class GetMachineClone extends HttpServlet {
         if(user == null){
             resp.setStatus(SC_UNAUTHORIZED);
             payload.setMessage("Please login first");
-            respWriter.print(payload);
+            respWriter.print(gson.toJson(payload));
             return;
         }
         try{
@@ -62,18 +64,17 @@ public class GetMachineClone extends HttpServlet {
             EncryptionMachine machineClone = handler.getEncryptionMachineClone();
             payload.setEncryptionMachine(machineClone);
             payload.setMachineStaste(machineClone.getMachineState().get());
-//            payload.setMachineHandler(handler);
         }
         catch (Exception e){
             log.error("GetEncryptionMachine failed to get machine handler to user=" + user + "exception=" + e.getMessage());
             payload.setMessage("Failed to get machine, machine might not be configured yet");
             resp.setStatus(SC_INTERNAL_SERVER_ERROR);
-            respWriter.print(payload);
+            respWriter.print(gson.toJson(payload));
             return;
         }
         payload.setMessage("Machine Cloned Successfully");
         resp.setStatus(SC_OK);
-        respWriter.print(payload);
+        respWriter.print(gson.toJson(payload));
         return;
     }
 }

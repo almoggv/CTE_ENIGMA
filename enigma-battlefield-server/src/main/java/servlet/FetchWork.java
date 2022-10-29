@@ -1,5 +1,6 @@
 package servlet;
 
+import com.google.gson.Gson;
 import dto.DecryptionWorkPayload;
 import dto.MachineState;
 import jakarta.servlet.ServletException;
@@ -40,6 +41,7 @@ public class FetchWork extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Gson gson = new Gson();
         DecryptionWorkPayload payload = new DecryptionWorkPayload();
         PrintWriter respWriter;
         try {
@@ -54,14 +56,14 @@ public class FetchWork extends HttpServlet {
         if(sizeParam == null){
             resp.setStatus(SC_BAD_REQUEST);
             payload.setMessage("please specify batch size - paramName=" + PropertiesService.getBatchSizeAttributeName());
-            respWriter.print(payload);
+            respWriter.print(gson.toJson(payload));
             return;
         }
         int batchSize = Integer.valueOf(sizeParam);
         if(batchSize<0){
             resp.setStatus(SC_BAD_REQUEST);
             payload.setMessage("batch size cannot be negative");
-            respWriter.print(payload);
+            respWriter.print(gson.toJson(payload));
             return;
         }
         UserManager userManager = ServletUtils.getUserManager(this.getServletContext());
@@ -69,7 +71,7 @@ public class FetchWork extends HttpServlet {
         if(user == null){
             resp.setStatus(SC_UNAUTHORIZED);
             payload.setMessage("Please login first");
-            respWriter.print(payload);
+            respWriter.print(gson.toJson(payload));
             return;
         }
         Ally currentLoggedInAlly = userManager.getAllyByName(user.getUsername());
@@ -77,7 +79,7 @@ public class FetchWork extends HttpServlet {
             log.error("Failed to Fetch work - could not find ally with User=" + user);
             resp.setStatus(SC_INTERNAL_SERVER_ERROR);
             payload.setMessage("Could not find ally");
-            respWriter.print(payload);
+            respWriter.print(gson.toJson(payload));
             return;
         }
         AllyClientDM allyClientDM = currentLoggedInAlly.getDecryptionManager();
@@ -98,7 +100,7 @@ public class FetchWork extends HttpServlet {
         payload.setInputToDecrypt(user.getContestRoom().getWordToDecrypt());
         payload.setMessage("workBatch created successfully");
         resp.setStatus(SC_OK);
-        respWriter.print(payload);
+        respWriter.print(gson.toJson(payload));
         return;
     }
 }

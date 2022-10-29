@@ -4,6 +4,7 @@ import adapter.ListenerAdapter;
 import app.GuiApplication;
 import dto.AgentData;
 import dto.ContestRoomData;
+import dto.DecryptionCandidateInfo;
 import dto.EncryptionCandidate;
 import enums.GameStatus;
 import javafx.application.Platform;
@@ -155,11 +156,11 @@ public class ContestPageController implements Initializable {
 
     private void createCandidatesComponents(List<EncryptionCandidate> candidateList) {
         for (EncryptionCandidate candidate : candidateList ) {
-            createCandidate(candidate);
+            createCandidateTile(candidate);
         }
     }
 
-    private void createCandidate(EncryptionCandidate candidate) {
+    private void createCandidateTile(EncryptionCandidate candidate) {
         Platform.runLater(() -> {
             try {
                 URL decodedCandidateURL = GuiApplication.class.getResource(PropertiesService.getCandidateDataFxmlPath());
@@ -190,7 +191,14 @@ public class ContestPageController implements Initializable {
             int progressPercentage = (int) (progressValue * 100);
             progressBar.setProgress(progressValue);
             progressPrecentageValueLabel.setText(String.valueOf(progressPercentage));
-
+        });
+        listenerAdapter.getDecryptionCandidatesProperty().addListener((observable, oldListValue, newListValue) -> {
+            if(newListValue == null || newListValue.isEmpty()){
+                return;
+            }
+            DecryptionCandidateInfo newestCandidate = newListValue.get(newListValue.size()-1);
+            EncryptionCandidate newCandidate = new EncryptionCandidate(newestCandidate.getOutput(),parentController.getLoginComponentController().getAllyTeamName(),newestCandidate.getInitialState());
+            createCandidateTile(newCandidate);
         });
 
 
