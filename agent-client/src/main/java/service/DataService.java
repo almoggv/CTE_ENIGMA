@@ -176,28 +176,48 @@ public class DataService {
         Response response = HttpClientService.runSync(PropertiesService.getApiGetMachineHandler());
         if(response.code() != 200){
             log.error("Failed to fetch MachineHandler from server status code="+ response.code() +" to url=" + PropertiesService.getApiGetMachineHandler());
-            return machineHandler;
+            return null;
         }
-        String responseBody = response.body().toString();
+        ResponseBody responseBody = response.body();
+        String responseBodyContent = "";
+        try {
+            responseBodyContent = responseBody.string();
+        } catch (IOException e) {
+            log.error("Failed to fetch MachineHandler - failed to read response content - exception="+ e.getMessage());
+            return null;
+        }
         MachineHandlerPayload responsePayload;
-        responsePayload = new Gson().fromJson(responseBody,MachineHandlerPayload.class);
+        Gson gson = new Gson();
+        try{
+            responsePayload = gson.fromJson(responseBodyContent, MachineHandlerPayload.class);
+        }
+        catch (Exception e){
+            log.error("Failed to serialize json object from body- exception=" + e.getMessage());
+            return null;
+        }
         machineHandler = responsePayload.getMachineHandler();
         return machineHandler;
     }
 
-    public static DecryptionWorkPayload fetchWorkBatch(int batchSize){
+    public static DecryptionWorkPayload fetchWorkBatch(int numberOfBatches){
         workBatchFetchUrl = HttpUrl
                 .parse(PropertiesService.getApiFetchWorkBatch())
                 .newBuilder()
-                .addQueryParameter(PropertiesService.getBatchSizeAttributeName(),String.valueOf(batchSize))
+                .addQueryParameter(PropertiesService.getBatchSizeAttributeName(),String.valueOf(numberOfBatches))
                 .build()
                 .toString();
         Response response = HttpClientService.runSync(workBatchFetchUrl);
         if(response.code() != 200){
-            log.error("Failed to fetch MachineHandler from server status code="+ response.code() +" to url=" + PropertiesService.getApiFetchWorkBatch());
+            log.error("Failed to fetch workBatch from server, status code="+ response.code() +" to url=" + PropertiesService.getApiFetchWorkBatch());
             return null;
         }
-        String responseBody = response.body().toString();
+        String responseBody = null;
+        try {
+            responseBody = response.body().string();
+        } catch (IOException e) {
+            log.error("Failed to fetch workBatch - exception=" + e.getMessage());
+            return null;
+        }
         DecryptionWorkPayload workPayload  = new Gson().fromJson(responseBody,DecryptionWorkPayload.class);
         return workPayload;
     }

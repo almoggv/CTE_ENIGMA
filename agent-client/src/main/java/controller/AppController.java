@@ -31,6 +31,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 import java.util.ResourceBundle;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 
 public class AppController implements Initializable {
 
@@ -100,11 +102,12 @@ public class AppController implements Initializable {
         loginComponentController.getIsLoggedInProperty().bindBidirectional(headerComponentController.getIsLoggedInProperty());;
         log.info("AppController - app initialized");
 
-//        setupDataServiceConnections();
-            //todo: finish - moved here instead of ally
         DataService.getGameStatusProperty().addListener((observable, oldValue, newValue) -> {
-            if(newValue.getGameState() == GameStatus.IN_PROGRESS || newValue.getGameState() == GameStatus.READY){
-                MachineHandler machineHandler = DataService.fetchMachineHandler();
+            if(newValue != null && (newValue.getGameState() == GameStatus.IN_PROGRESS || newValue.getGameState() == GameStatus.READY)){
+                MachineHandler machineHandler = null;
+                while(machineHandler == null && (newValue.getGameState() != GameStatus.DONE || newValue.getGameState() != GameStatus.WAITING)){
+                    machineHandler = DataService.fetchMachineHandler();
+                }
                 agentClientDM = new AgentClientDMImpl(machineHandler, loginComponentController.getTaskSize(), loginComponentController.getNumberOfThreads());
                 contestPageController.connectToDm(agentClientDM);
                 agentClientDM.getListenerAdapter().getDecryptionCandidatesProperty().addListener((observable1, oldCandidatesList, newCandidatesList) -> {
@@ -122,8 +125,12 @@ public class AppController implements Initializable {
                 });
                 agentClientDM.getListenerAdapter().getIsWorkCompletedProperty().addListener((observable1, oldWorkCompetedStatus, newWorkCompletedStatus) -> {
                     if(newWorkCompletedStatus == true){
-                        DecryptionWorkPayload zippedWork = DataService.fetchWorkBatch(agentClientDM.getMaxNumberOfTasks());
-                        List<MachineState> unzippedWork = DecryptionWorkPayloadParserService.unzip(zippedWork,machineHandler.getInventoryInfo().get());
+                        MachineHandler machineHandler1 = agentClientDM.getMachineHandler();
+                        DecryptionWorkPayload zippedWork = null;
+                        while(zippedWork == null){
+                            zippedWork = DataService.fetchWorkBatch(agentClientDM.getMaxNumberOfTasks());
+                        }
+                        List<MachineState> unzippedWork = DecryptionWorkPayloadParserService.unzip(zippedWork,machineHandler1.getInventoryInfo().get());
                         agentClientDM.assignWork(unzippedWork,zippedWork.getInputToDecrypt());
                     }
                 });
