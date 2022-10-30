@@ -21,7 +21,7 @@ public class RotorJsonAdapter implements JsonSerializer<Rotor>, JsonDeserializer
         return gson.toJsonTree(src,RotorImpl.class);
     }
 
-    public static Gson buildGsonLoginPayloadAdapter(){
+    public static Gson buildGsonAdapter(){
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(Rotor.class, new RotorJsonAdapter())
                 .create();

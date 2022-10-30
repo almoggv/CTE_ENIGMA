@@ -22,7 +22,7 @@ public interface MachineHandler extends Serializable {
      * @param path
      */
     void buildMachinePartsInventory (String path) throws Exception;
-    void buildMachinePartsInventory (InventoryComponents inventoryComponents) throws Exception;
+    void buildMachinePartsInventory (InventoryComponents inventoryComponents);
 
     /**
      * call buildMachinePartsInventory before assembling!!!!
@@ -45,9 +45,12 @@ public interface MachineHandler extends Serializable {
     Optional<MachineState> getMachineState();
     void setMachineState(MachineState machineState);
     Optional<MachineState> getInitialMachineState();
+    void setInitialMachineState(MachineState machineState);
 
+    Optional<InventoryComponents> getInventoryComponents();
     Optional<InventoryInfo> getInventoryInfo();
     Optional<BattlefieldInfo> getBattlefieldInfo();
+    void setBattlefieldInfo(BattlefieldInfo battlefieldInfo);
 
     void resetToLastSetState();
 
@@ -60,10 +63,12 @@ public interface MachineHandler extends Serializable {
     String encryptWithoutHistory(String input) throws IOException;
 
     Map<MachineState, List<EncryptionInfoHistory>> getMachineStatisticsHistory();
+    void setMachineStatisticsHistory(Map<MachineState, List<EncryptionInfoHistory>> statisticsHistory);
 
     Optional<String> verifyInputInAbcAndFix(String input);
     Optional<String> checkInputIsInAbc(String input);
 
+    void setEncryptionMachine(EncryptionMachine encryptionMachine);
     EncryptionMachine getEncryptionMachineClone();
 
     void buildMachinePartsInventory(InputStream inputStream) throws Exception;

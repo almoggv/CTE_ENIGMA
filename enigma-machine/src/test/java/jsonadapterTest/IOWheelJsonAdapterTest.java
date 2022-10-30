@@ -13,7 +13,7 @@ public class IOWheelJsonAdapterTest {
     @Test
     public void testSerialization(){
         IOWheel wheel = new IOWheelImpl("ABC");
-        Gson gson = IOWheelJsonAdapter.buildGsonLoginPayloadAdapter();
+        Gson gson = IOWheelJsonAdapter.buildGsonAdapter();
         String serialized = gson.toJson(wheel);
         IOWheel newWheel = gson.fromJson(serialized,IOWheel.class);
 

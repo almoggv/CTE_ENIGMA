@@ -21,7 +21,7 @@ public class IOWheelJsonAdapter implements JsonSerializer<IOWheel>, JsonDeserial
         return gson.toJsonTree(src,IOWheelImpl.class);
     }
 
-    public static Gson buildGsonLoginPayloadAdapter(){
+    public static Gson buildGsonAdapter(){
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(IOWheel.class, new IOWheelJsonAdapter())
                 .create();

@@ -10,10 +10,8 @@ import org.junit.Test;
 import service.XmlFileLoader;
 
 import java.io.File;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 
 public class EncryptionMachineAdapterTest {
@@ -23,7 +21,7 @@ public class EncryptionMachineAdapterTest {
     @Test
     public void serializationTest(){
         EncryptionMachine encryptionMachine = createMachine();
-        Gson gson = EncryptionMachineJsonAdapter.buildGsonLoginPayloadAdapter();
+        Gson gson = EncryptionMachineJsonAdapter.buildGsonAdapter();
         String serializedMachine = gson.toJson(encryptionMachine);
         EncryptionMachine newMachine = gson.fromJson(serializedMachine,EncryptionMachine.class);
         Assert.assertTrue(newMachine!=null || newMachine.getABC()!=null || !newMachine.getABC().equals(""));

@@ -21,7 +21,7 @@ public class ReflectorJsonAdapter implements JsonSerializer<Reflector>, JsonDese
         return gson.toJsonTree(src,ReflectorImpl.class);
     }
 
-    public static Gson buildGsonLoginPayloadAdapter(){
+    public static Gson buildGsonAdapter(){
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(Reflector.class, new ReflectorJsonAdapter())
                 .create();

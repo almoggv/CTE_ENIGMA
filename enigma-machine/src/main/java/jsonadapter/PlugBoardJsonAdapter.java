@@ -2,7 +2,6 @@ package jsonadapter;
 
 import com.google.gson.*;
 import component.PlugBoard;
-import component.impl.IOWheelImpl;
 import component.impl.PlugBoardImpl;
 
 import java.lang.reflect.Type;
@@ -22,7 +21,7 @@ public class PlugBoardJsonAdapter implements JsonSerializer<PlugBoard>, JsonDese
         return gson.toJsonTree(src,PlugBoardImpl.class);
     }
 
-    public static Gson buildGsonLoginPayloadAdapter(){
+    public static Gson buildGsonAdapter(){
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(PlugBoard.class, new PlugBoardJsonAdapter())
                 .create();

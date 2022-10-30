@@ -1,14 +1,11 @@
 package jsonadapter;
 
 import com.google.gson.*;
-import com.google.gson.internal.LinkedTreeMap;
 import com.google.gson.reflect.TypeToken;
 import component.*;
 import component.impl.EnigmaMachine;
-import service.PropertiesService;
 
 import java.lang.reflect.Type;
-import java.sql.Ref;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,11 +20,11 @@ public class EncryptionMachineJsonAdapter implements JsonSerializer<EncryptionMa
     public EncryptionMachine deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
         EnigmaMachine deserializedMachine = new EnigmaMachine();
         JsonObject jsonObject = json.getAsJsonObject();
-        PlugBoard plugBoard = PlugBoardJsonAdapter.buildGsonLoginPayloadAdapter().fromJson(jsonObject.get(plugBoardName),PlugBoard.class);
-        Reflector reflector = ReflectorJsonAdapter.buildGsonLoginPayloadAdapter().fromJson(jsonObject.get(reflectorName), Reflector.class);
+        PlugBoard plugBoard = PlugBoardJsonAdapter.buildGsonAdapter().fromJson(jsonObject.get(plugBoardName),PlugBoard.class);
+        Reflector reflector = ReflectorJsonAdapter.buildGsonAdapter().fromJson(jsonObject.get(reflectorName), Reflector.class);
         Type rotorListType = new TypeToken<ArrayList<Rotor>>(){}.getType();
-        List<Rotor> rotorsList = RotorJsonAdapter.buildGsonLoginPayloadAdapter().fromJson(jsonObject.get(rotorsName),rotorListType);
-        IOWheel wheel = IOWheelJsonAdapter.buildGsonLoginPayloadAdapter().fromJson(jsonObject.get(ioWheelName),IOWheel.class);
+        List<Rotor> rotorsList = RotorJsonAdapter.buildGsonAdapter().fromJson(jsonObject.get(rotorsName),rotorListType);
+        IOWheel wheel = IOWheelJsonAdapter.buildGsonAdapter().fromJson(jsonObject.get(ioWheelName),IOWheel.class);
         deserializedMachine.buildMachine(plugBoard, reflector, rotorsList, wheel);
         return deserializedMachine;
     }
@@ -35,16 +32,16 @@ public class EncryptionMachineJsonAdapter implements JsonSerializer<EncryptionMa
     @Override
     public JsonElement serialize(EncryptionMachine src, Type typeOfSrc, JsonSerializationContext context) {
         JsonObject object = new JsonObject();
-        String serializedPlugBoard = PlugBoardJsonAdapter.buildGsonLoginPayloadAdapter().toJson(src.getPlugBoard());
-        String serializedReflector = ReflectorJsonAdapter.buildGsonLoginPayloadAdapter().toJson(src.getReflector());
+        String serializedPlugBoard = PlugBoardJsonAdapter.buildGsonAdapter().toJson(src.getPlugBoard());
+        String serializedReflector = ReflectorJsonAdapter.buildGsonAdapter().toJson(src.getReflector());
         List<Rotor> rotors = src.getRotors();
         List<String> serializedRotorsList = new ArrayList<>();
         for (Rotor rotor : rotors ) {
-            String serializedRotor = ReflectorJsonAdapter.buildGsonLoginPayloadAdapter().toJson(rotor);
+            String serializedRotor = ReflectorJsonAdapter.buildGsonAdapter().toJson(rotor);
             serializedRotorsList.add(serializedRotor);
         }
         String serializedRotors = new Gson().toJson(serializedRotorsList);
-        String serializedIoWheel = IOWheelJsonAdapter.buildGsonLoginPayloadAdapter().toJson(src.getIoWheel());
+        String serializedIoWheel = IOWheelJsonAdapter.buildGsonAdapter().toJson(src.getIoWheel());
 
         object.addProperty(plugBoardName,serializedPlugBoard);
         object.addProperty(reflectorName,serializedReflector);
@@ -53,7 +50,7 @@ public class EncryptionMachineJsonAdapter implements JsonSerializer<EncryptionMa
         return object;
     }
 
-    public static Gson buildGsonLoginPayloadAdapter(){
+    public static Gson buildGsonAdapter(){
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(EncryptionMachine.class, new EncryptionMachineJsonAdapter())
                 .create();

@@ -1,15 +1,13 @@
 package component.impl;
 
 
-import dto.BattlefieldInfo;
-import dto.InventoryInfo;
-import dto.MachineState;
-import dto.EncryptionInfoHistory;
+import dto.*;
 import enums.XmlVerifierState;
 import generated.*;
 import generictype.MappingPair;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import service.InventoryService;
 import service.XmlFileLoader;
 import component.*;
@@ -31,11 +29,11 @@ public class MachineHandlerImpl implements MachineHandler {
     private PlugBoard plugBoardInventory;
     private List<Rotor> rotorsInventory;
     private IOWheel ioWheelInventory;
-
     private List<Reflector> reflectorsInventory;
     private int expectedNumOfRotors;
-    private BattlefieldInfo battlefieldInfo;
+    @Setter private BattlefieldInfo battlefieldInfo;
     private EncryptionMachine encryptionMachine = new EnigmaMachine();
+    @Setter
     private MachineState initialMachineState = new MachineState();
     @Getter
     private final Map<MachineState, List<EncryptionInfoHistory>> machineStatisticsHistory = new HashMap<>();
@@ -82,6 +80,24 @@ public class MachineHandlerImpl implements MachineHandler {
             msg = getInventoryInfo().isPresent() ? msg + usingLastLoadedInventoryMsg : msg;
             throw new Exception(msg);
         }
+    }
+
+    @Override
+    public void buildMachinePartsInventory(InventoryComponents inventoryComponents) {
+        if(inventoryComponents == null || inventoryComponents.getIoWheelInventory() == null
+                || inventoryComponents.getRotorsInventory() == null || inventoryComponents.getRotorsInventory().isEmpty()
+                || inventoryComponents.getPlugBoardInventory() == null
+                || inventoryComponents.getReflectorsInventory() == null || inventoryComponents.getReflectorsInventory().isEmpty()
+                || inventoryComponents.getExpectedNumOfRotors() <= 0){
+            log.error("Failed to build machine inventory - inventoryComponents dto is corrupt, Value=" + inventoryComponents);
+            return;
+        }
+        plugBoardInventory = inventoryComponents.getPlugBoardInventory();
+        rotorsInventory = inventoryComponents.getRotorsInventory();
+        ioWheelInventory = inventoryComponents.getIoWheelInventory();
+        reflectorsInventory = inventoryComponents.getReflectorsInventory();
+        expectedNumOfRotors = inventoryComponents.getExpectedNumOfRotors();
+        log.debug("Built machine inventory from InventoryComponents DTO successfully");
     }
 
     private void clearInventory() {
@@ -258,6 +274,15 @@ public class MachineHandlerImpl implements MachineHandler {
     }
 
     @Override
+    public Optional<InventoryComponents> getInventoryComponents() {
+        if(plugBoardInventory == null || ioWheelInventory == null || rotorsInventory == null || rotorsInventory.isEmpty() || reflectorsInventory == null || reflectorsInventory.isEmpty()){
+            return Optional.empty();
+        }
+        InventoryComponents inventoryComponents = new InventoryComponents(plugBoardInventory,rotorsInventory,ioWheelInventory,reflectorsInventory,expectedNumOfRotors);
+        return Optional.of(inventoryComponents);
+    }
+
+    @Override
     public Optional<InventoryInfo> getInventoryInfo() {
         if(this.ioWheelInventory == null || this.plugBoardInventory == null || this.rotorsInventory == null || this.reflectorsInventory == null){
             return Optional.empty();
@@ -362,6 +387,14 @@ public class MachineHandlerImpl implements MachineHandler {
         return encryptedOutput;
     }
 
+    @Override
+    public void setMachineStatisticsHistory(Map<MachineState, List<EncryptionInfoHistory>> statisticsHistory) {
+        if(statisticsHistory == null){
+            return;
+        }
+        machineStatisticsHistory.putAll(statisticsHistory);
+    }
+
     private void addToHistory(MachineState machineStateBeforeEncrypt, String input, String output, long duration){
         EncryptionInfoHistory infoHistory = new EncryptionInfoHistory(input,output,duration);
         if(!machineStatisticsHistory.containsKey(machineStateBeforeEncrypt)){
@@ -400,6 +433,15 @@ public class MachineHandlerImpl implements MachineHandler {
     @Override
     public Optional<String> checkInputIsInAbc(String input) {
         return verifyInputInAbcAndFix(input);
+    }
+
+    @Override
+    public void setEncryptionMachine(EncryptionMachine encryptionMachine) {
+        if(encryptionMachine == null || encryptionMachine.getABC() == null || !encryptionMachine.getMachineState().isPresent()){
+            log.error("Failed to set encryptionMachine from setter, given machine is not configured yet, value=" + encryptionMachine);
+            return;
+        }
+        this.encryptionMachine = encryptionMachine;
     }
 
     @Override
