@@ -29,9 +29,6 @@ public class MachineHandlerJsonAdapter implements JsonSerializer<MachineHandler>
     public MachineHandler deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
         JsonObject jsonObject = json.getAsJsonObject();
         MachineHandler machineHandler = new MachineHandlerImpl();
-        JsonElement test1 = jsonObject.get(plugBoardInventoryName);
-        JsonObject test2 = jsonObject.get(plugBoardInventoryName).getAsJsonObject();
-        String test3 = jsonObject.get(plugBoardInventoryName).getAsString();
 
         PlugBoard plugboardInventory = PlugBoardJsonAdapter.buildGsonAdapter().fromJson(jsonObject.get(plugBoardInventoryName),PlugBoard.class);
         Type rotorListType = new TypeToken<ArrayList<Rotor>>(){}.getType();
@@ -56,27 +53,20 @@ public class MachineHandlerJsonAdapter implements JsonSerializer<MachineHandler>
         Gson gson = new Gson();
         //Inventory parts
         InventoryComponents inventoryComponents = src.getInventoryComponents().get();
-        String deserializedPlugboardInventory = PlugBoardJsonAdapter.buildGsonAdapter().toJson(inventoryComponents.getPlugBoardInventory());
         Type rotorListType = new TypeToken<ArrayList<Rotor>>(){}.getType();
-        String deserializedRotorsListInventory = RotorJsonAdapter.buildGsonAdapter().toJson(inventoryComponents.getRotorsInventory());
-        String deserializedWheelInvnetory = IOWheelJsonAdapter.buildGsonAdapter().toJson(inventoryComponents.getIoWheelInventory());
         Type reflectorListType = new TypeToken<ArrayList<Reflector>>(){}.getType();
-        String deserializedReflectorsInventory = ReflectorJsonAdapter.buildGsonAdapter().toJson(inventoryComponents.getReflectorsInventory());
         String deserializedNumOfRotors = String.valueOf(inventoryComponents.getExpectedNumOfRotors());
         // BattleField & Machine:
         BattlefieldInfo battlefieldInfo = (src.getBattlefieldInfo() == null) ? new BattlefieldInfo() : src.getBattlefieldInfo().get();
-        String deserializedBattleField = gson.toJson(battlefieldInfo);
-        String deserializedEncryptionMachine = EncryptionMachineJsonAdapter.buildGsonAdapter().toJson(src.getEncryptionMachineClone());
-        String deserialzedInitialMachineState = gson.toJson(src.getInitialMachineState().get());
         //Assembling Json Object
-        object.addProperty(plugBoardInventoryName,deserializedPlugboardInventory);
-        object.addProperty(rotorsInventoryName,deserializedRotorsListInventory);
-        object.addProperty(ioWheelInventoryName,deserializedWheelInvnetory);
-        object.addProperty(reflectorsInventoryName,deserializedReflectorsInventory);
+        object.add(plugBoardInventoryName,PlugBoardJsonAdapter.buildGsonAdapter().toJsonTree(inventoryComponents.getPlugBoardInventory(),PlugBoard.class));
+        object.add(rotorsInventoryName,RotorJsonAdapter.buildGsonAdapter().toJsonTree(inventoryComponents.getRotorsInventory(),rotorListType));
+        object.add(ioWheelInventoryName,IOWheelJsonAdapter.buildGsonAdapter().toJsonTree(inventoryComponents.getIoWheelInventory(),IOWheel.class));
+        object.add(reflectorsInventoryName,ReflectorJsonAdapter.buildGsonAdapter().toJsonTree(inventoryComponents.getReflectorsInventory(),reflectorListType));
         object.addProperty(expectedNumOfRotorsName,deserializedNumOfRotors);
-        object.addProperty(battlefieldInfoName,deserializedBattleField);
-        object.addProperty(encryptionMachineName,deserializedEncryptionMachine);
-        object.addProperty(initialMachineStateName,deserialzedInitialMachineState);
+        object.add(battlefieldInfoName,gson.toJsonTree(battlefieldInfo,BattlefieldInfo.class));
+        object.add(encryptionMachineName,EncryptionMachineJsonAdapter.buildGsonAdapter().toJsonTree(src.getEncryptionMachineClone(),EncryptionMachine.class));
+        object.add(initialMachineStateName,gson.toJsonTree(src.getInitialMachineState().get(),MachineState.class));
 
         return object;
     }

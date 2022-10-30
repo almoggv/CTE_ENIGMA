@@ -22,7 +22,7 @@ public class EncryptionMachineAdapterTest {
     public void serializationTest(){
         EncryptionMachine encryptionMachine = createMachine();
         Gson gson = EncryptionMachineJsonAdapter.buildGsonAdapter();
-        String serializedMachine = gson.toJson(encryptionMachine);
+        String serializedMachine = gson.toJson(encryptionMachine,EncryptionMachine.class);
         EncryptionMachine newMachine = gson.fromJson(serializedMachine,EncryptionMachine.class);
         Assert.assertTrue(newMachine!=null || newMachine.getABC()!=null || !newMachine.getABC().equals(""));
     }

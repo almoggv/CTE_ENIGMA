@@ -32,21 +32,13 @@ public class EncryptionMachineJsonAdapter implements JsonSerializer<EncryptionMa
     @Override
     public JsonElement serialize(EncryptionMachine src, Type typeOfSrc, JsonSerializationContext context) {
         JsonObject object = new JsonObject();
-        String serializedPlugBoard = PlugBoardJsonAdapter.buildGsonAdapter().toJson(src.getPlugBoard());
-        String serializedReflector = ReflectorJsonAdapter.buildGsonAdapter().toJson(src.getReflector());
-        List<Rotor> rotors = src.getRotors();
-        List<String> serializedRotorsList = new ArrayList<>();
-        for (Rotor rotor : rotors ) {
-            String serializedRotor = ReflectorJsonAdapter.buildGsonAdapter().toJson(rotor);
-            serializedRotorsList.add(serializedRotor);
-        }
-        String serializedRotors = new Gson().toJson(serializedRotorsList);
-        String serializedIoWheel = IOWheelJsonAdapter.buildGsonAdapter().toJson(src.getIoWheel());
+        Type rotorListType = new TypeToken<ArrayList<Rotor>>(){}.getType();
 
-        object.addProperty(plugBoardName,serializedPlugBoard);
-        object.addProperty(reflectorName,serializedReflector);
-        object.addProperty(rotorsName,serializedRotors);
-        object.addProperty(ioWheelName,serializedIoWheel);
+        object.add(plugBoardName,PlugBoardJsonAdapter.buildGsonAdapter().toJsonTree(src.getPlugBoard(),PlugBoard.class));
+        object.add(reflectorName,ReflectorJsonAdapter.buildGsonAdapter().toJsonTree(src.getReflector(),Reflector.class));
+        object.add(rotorsName,RotorJsonAdapter.buildGsonAdapter().toJsonTree(src.getRotors(),rotorListType));
+        object.add(ioWheelName,IOWheelJsonAdapter.buildGsonAdapter().toJsonTree(src.getIoWheel(),IOWheel.class));
+
         return object;
     }
 
