@@ -5,10 +5,17 @@ import generictype.MappingPair;
 import dto.MachineState;
 
 import java.io.Serializable;
+import java.sql.Ref;
 import java.util.List;
 import java.util.Optional;
 
 public interface EncryptionMachine extends DeepCloneable, Serializable {
+
+    IOWheel getIoWheel();
+    PlugBoard getPlugBoard();
+    Reflector getReflector();
+    List<Rotor> getRotors();
+
 
     public String encrypt(String input);
 

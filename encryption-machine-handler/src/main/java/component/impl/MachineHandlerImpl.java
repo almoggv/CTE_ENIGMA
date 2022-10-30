@@ -9,6 +9,7 @@ import enums.XmlVerifierState;
 import generated.*;
 import generictype.MappingPair;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import service.InventoryService;
 import service.XmlFileLoader;
 import component.*;
@@ -24,6 +25,7 @@ import java.io.*;
 import java.util.*;
 import java.util.function.Predicate;
 
+@NoArgsConstructor
 public class MachineHandlerImpl implements MachineHandler {
     private static final Logger log = Logger.getLogger(MachineHandlerImpl.class);
     private PlugBoard plugBoardInventory;

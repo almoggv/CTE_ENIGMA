@@ -44,6 +44,12 @@ public class RotorImpl implements Rotor {
         }
     }
 
+    public RotorImpl(LinkedList<MappingPair<Integer,Integer>> rotorMapping,int id, int notchLocation) {
+        this.rotorMapping.addAll(rotorMapping);
+        this.id = id;
+        this.notchLocation = notchLocation;
+    }
+
     public RotorImpl(CTERotor cteRotor, String ABC) {
         List<CTEPositioning> positioning = cteRotor.getCTEPositioning();
         List<String> left = new ArrayList<>();

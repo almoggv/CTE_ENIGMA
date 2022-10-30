@@ -3,6 +3,7 @@ package component.impl;
 import component.*;
 import dto.MachineState;
 import generictype.MappingPair;
+import lombok.Getter;
 import service.InventoryService;
 import service.XmlFileLoader;
 import service.PropertiesService;
@@ -15,10 +16,10 @@ import java.util.function.Predicate;
 
 public class EnigmaMachine implements EncryptionMachine {
     private static final Logger log = Logger.getLogger(EnigmaMachine.class);
-    private PlugBoard plugBoard;
-    private List<Rotor> rotors;
-    private IOWheel ioWheel;
-    private Reflector reflector;
+    @Getter private PlugBoard plugBoard;
+    @Getter private List<Rotor> rotors;
+    @Getter private IOWheel ioWheel;
+    @Getter private Reflector reflector;
 
     static {
         try {
