@@ -11,6 +11,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jsonadapter.MachineHandlerPayloadJsonAdapter;
 import manager.RoomManager;
 import manager.UserManager;
 import model.User;
@@ -42,7 +43,7 @@ public class GetMachineHandler extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Gson gson = new Gson();
+        Gson gson = MachineHandlerPayloadJsonAdapter.buildGsonAdapter();
         PrintWriter respWriter;
         try {
             respWriter = resp.getWriter();
@@ -58,7 +59,7 @@ public class GetMachineHandler extends HttpServlet {
         if(user == null){
             resp.setStatus(SC_UNAUTHORIZED);
             payload.setMessage("Please login first");
-            respWriter.print(gson.toJson(payload));
+            respWriter.print(gson.toJson(payload,MachineHandlerPayload.class));
             return;
         }
         try{
@@ -69,12 +70,12 @@ public class GetMachineHandler extends HttpServlet {
             log.error("GetEncryptionMachine failed to get machine handler to user=" + user + "exception=" + e.getMessage());
             payload.setMessage("Failed to get machine, machine might not be configured yet");
             resp.setStatus(SC_INTERNAL_SERVER_ERROR);
-            respWriter.print(gson.toJson(payload));
+            respWriter.print(gson.toJson(payload,MachineHandlerPayload.class));
             return;
         }
         payload.setMessage("Handler retrieved successfully");
         resp.setStatus(SC_OK);
-        respWriter.print(gson.toJson(payload));
+        respWriter.print(gson.toJson(payload,MachineHandlerPayload.class));
         return;
     }
 }

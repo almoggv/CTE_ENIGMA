@@ -10,6 +10,7 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import jsonadapter.MachineHandlerPayloadJsonAdapter;
 import lombok.Getter;
 import okhttp3.*;
 import org.apache.log4j.Logger;
@@ -187,7 +188,7 @@ public class DataService {
             return null;
         }
         MachineHandlerPayload responsePayload;
-        Gson gson = new Gson();
+        Gson gson = MachineHandlerPayloadJsonAdapter.buildGsonAdapter();
         try{
             responsePayload = gson.fromJson(responseBodyContent, MachineHandlerPayload.class);
         }

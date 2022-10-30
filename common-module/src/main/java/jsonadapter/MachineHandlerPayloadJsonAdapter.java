@@ -2,6 +2,7 @@ package jsonadapter;
 
 import com.google.gson.*;
 import component.MachineHandler;
+import component.impl.MachineHandlerImpl;
 import dto.LoginPayload;
 import dto.MachineHandlerPayload;
 import service.PropertiesService;
@@ -23,7 +24,7 @@ public class MachineHandlerPayloadJsonAdapter implements JsonSerializer<MachineH
 
     public static Gson buildGsonAdapter(){
         Gson gson = new GsonBuilder()
-                .registerTypeAdapter(LoginPayload.class, new MachineHandlerPayloadJsonAdapter())
+                .registerTypeAdapter(MachineHandlerPayloadJsonAdapter.class, new MachineHandlerPayloadJsonAdapter())
                 .create();
         return gson;
     }
@@ -33,7 +34,7 @@ public class MachineHandlerPayloadJsonAdapter implements JsonSerializer<MachineH
         JsonObject jsonObject = json.getAsJsonObject();
         MachineHandlerPayload payload = new MachineHandlerPayload();
         payload.setMessage(jsonObject.get(messageName).getAsString());
-        payload.setMachineHandler(MachineHandlerJsonAdapter.buildGsonAdapter().fromJson(jsonObject.get(machineHandlerName),MachineHandler.class));
+        payload.setMachineHandler(MachineHandlerJsonAdapter.buildGsonAdapter().fromJson(jsonObject.get(machineHandlerName), MachineHandler.class));
         return payload;
     }
 }
