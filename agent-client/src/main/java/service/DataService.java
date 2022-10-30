@@ -10,6 +10,7 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import jsonadapter.MachineHandlerJsonAdapter;
 import jsonadapter.MachineHandlerPayloadJsonAdapter;
 import lombok.Getter;
 import okhttp3.*;
@@ -188,15 +189,15 @@ public class DataService {
             return null;
         }
         MachineHandlerPayload responsePayload;
-        Gson gson = MachineHandlerPayloadJsonAdapter.buildGsonAdapter();
+//        Gson gson = MachineHandlerPayloadJsonAdapter.buildGsonAdapter();
+        Gson gson = MachineHandlerJsonAdapter.buildGsonAdapter();
         try{
-            responsePayload = gson.fromJson(responseBodyContent, MachineHandlerPayload.class);
+            machineHandler = gson.fromJson(responseBodyContent, MachineHandler.class);
         }
         catch (Exception e){
             log.error("Failed to serialize json object from body- exception=" + e.getMessage());
             return null;
         }
-        machineHandler = responsePayload.getMachineHandler();
         return machineHandler;
     }
 

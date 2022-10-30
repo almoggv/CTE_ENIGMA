@@ -11,6 +11,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jsonadapter.MachineHandlerJsonAdapter;
 import jsonadapter.MachineHandlerPayloadJsonAdapter;
 import manager.RoomManager;
 import manager.UserManager;
@@ -59,23 +60,35 @@ public class GetMachineHandler extends HttpServlet {
         if(user == null){
             resp.setStatus(SC_UNAUTHORIZED);
             payload.setMessage("Please login first");
-            respWriter.print(gson.toJson(payload,MachineHandlerPayload.class));
+            respWriter.print("Please login first");
             return;
         }
+        MachineHandler handler;
         try{
-            MachineHandler handler = user.getContestRoom().getMachineHandler();
+            handler = user.getContestRoom().getMachineHandler();
             payload.setMachineHandler(handler);
         }
         catch (Exception e){
             log.error("GetEncryptionMachine failed to get machine handler to user=" + user + "exception=" + e.getMessage());
             payload.setMessage("Failed to get machine, machine might not be configured yet");
             resp.setStatus(SC_INTERNAL_SERVER_ERROR);
-            respWriter.print(gson.toJson(payload,MachineHandlerPayload.class));
+            respWriter.print("Failed to get machine, machine might not be configured yet");
             return;
         }
         payload.setMessage("Handler retrieved successfully");
         resp.setStatus(SC_OK);
-        respWriter.print(gson.toJson(payload,MachineHandlerPayload.class));
+        String deserializedHandler = null;
+        try{
+            deserializedHandler = MachineHandlerJsonAdapter.buildGsonAdapter().toJson(handler,MachineHandler.class);
+        }
+        catch (Exception e){
+            log.error("Failed to get machine hadnler - failed to serialize machineHandler, Exception=" + e.getMessage());
+            resp.setStatus(SC_INTERNAL_SERVER_ERROR);
+            String message = "Exception=" +e.getMessage();
+            respWriter.write(message);
+            return;
+        }
+        respWriter.print(deserializedHandler);
         return;
     }
 }
