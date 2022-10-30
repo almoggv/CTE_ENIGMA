@@ -62,7 +62,7 @@ public class ContestPageController implements Initializable {
                 createContestsDataComponents(newValue);
                 if(newValue.getName()!=null){
                     //TODO: check why exception is thrown here
-                    statusValueLabel.setText(newValue.getName());
+                    statusValueLabel.setText(newValue.getGameStatus().name());
                 }
             }
             else{
