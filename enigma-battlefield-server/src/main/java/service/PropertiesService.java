@@ -4,7 +4,10 @@ import lombok.Getter;
 
 public class PropertiesService {
     @Getter private static final String log4jPropertiesResourcePath = "/log4j.properties";
-
+    @Getter private static final int defaultTaskSize = 20;
+    @Getter private static final int maxThreadPoolSize = 4;
+    @Getter private static final int minThreadPoolSize = 1;
+    @Getter private static final int maxWorkBatchesQueueSize = 500;
     //server properties
     @Getter private static final String userManagerAttributeName = "userManager";
     @Getter private static final String usernameAttributeName = "username";

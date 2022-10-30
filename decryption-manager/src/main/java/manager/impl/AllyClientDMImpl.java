@@ -117,7 +117,11 @@ public class AllyClientDMImpl implements AllyClientDM {
     }
 
     private void fillQueueWithWork(){
+        if(workBatchesQueue.isEmpty()){
+            log.info("Beginning to fill Queue - progress="+ progressProperty.get());
+        }
         if(workBatchesQueue.size() >= PropertiesService.getMaxWorkBatchesQueueSize()){
+            log.info("Queue is full of work, size=" + workBatchesQueue.size() + "/" + PropertiesService.getMaxWorkBatchesQueueSize());
             return;
         }
         if(progressProperty.get().getLeft() >= progressProperty.get().getRight()){
@@ -130,6 +134,7 @@ public class AllyClientDMImpl implements AllyClientDM {
             workBatchesQueue.add(newBatch);
             lastUsedState = newBatch.get(newBatch.size() - 1);
         }
+        this.lastCreatedworkBatchLastState = lastUsedState;
     }
 
     private MachineState createInitialMachineConfig(InventoryInfo inventoryInfo) {
@@ -151,15 +156,19 @@ public class AllyClientDMImpl implements AllyClientDM {
 
     private boolean isDmConfiguredYet() {
         if(this.difficultyLevel == null){
+            log.info("DM is not configured yet - missing difficultyLevel");
             return false;
         }
         if(this.taskSize <= 0){
+            log.info("DM is not configured yet - illegal taskSize");
             return false;
         }
         if(initialMachineConfig == null){
+            log.info("DM is not configured yet - missing machine config");
             return false;
         }
         if(inventoryInfo == null){
+            log.info("DM is not configured yet - missing inventoryInfo");
             return false;
         }
         return true;

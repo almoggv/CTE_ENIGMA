@@ -20,6 +20,7 @@ import utils.ServletUtils;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
@@ -92,10 +93,17 @@ public class FetchWork extends HttpServlet {
             currentLoggedInAlly.setDecryptionManagerThread(new Thread(allyClientDM));
             currentLoggedInAlly.getDecryptionManagerThread().start();
         }
-        List<MachineState> newWorkBatch = allyClientDM.getNextBatch();
-        payload.setFirstState(newWorkBatch.get(0));
-        payload.setLastState(newWorkBatch.get(newWorkBatch.size()-1));
-        payload.setAmountOfStates(newWorkBatch.size());
+        List<List<MachineState>> workBatchesRecieved = new ArrayList<>();
+        int  amountOfStates = 0;
+        for (int i = 0; i < batchSize ; i++) {
+            List<MachineState> newWorkBatch = allyClientDM.getNextBatch();
+            amountOfStates += newWorkBatch.size();
+            workBatchesRecieved.add(newWorkBatch);
+        }
+        payload.setFirstState(workBatchesRecieved.get(0).get(0));
+        List<MachineState> lastBatch = workBatchesRecieved.get(workBatchesRecieved.size()-1);
+        payload.setLastState(lastBatch.get(lastBatch.size()-1));
+        payload.setAmountOfStates(amountOfStates);
         payload.setDifficultyLevel(user.getContestRoom().getDifficultyLevel());
         payload.setInputToDecrypt(user.getContestRoom().getWordToDecrypt());
         payload.setMessage("workBatch created successfully");

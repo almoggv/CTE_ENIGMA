@@ -61,6 +61,7 @@ public class ContestPageController implements Initializable {
             if(newValue != null ){
                 createContestsDataComponents(newValue);
                 if(newValue.getName()!=null){
+                    //TODO: check why exception is thrown here
                     statusValueLabel.setText(newValue.getName());
                 }
             }
