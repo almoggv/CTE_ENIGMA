@@ -1,10 +1,7 @@
 package component;
 
-import dto.BattlefieldInfo;
-import dto.InventoryInfo;
+import dto.*;
 import generictype.MappingPair;
-import dto.MachineState;
-import dto.EncryptionInfoHistory;
 import enums.ReflectorsId;
 
 import java.io.FileNotFoundException;
@@ -25,6 +22,7 @@ public interface MachineHandler extends Serializable {
      * @param path
      */
     void buildMachinePartsInventory (String path) throws Exception;
+    void buildMachinePartsInventory (InventoryComponents inventoryComponents) throws Exception;
 
     /**
      * call buildMachinePartsInventory before assembling!!!!

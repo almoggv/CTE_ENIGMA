@@ -440,10 +440,6 @@ public class MachineHandlerImpl implements MachineHandler {
         if (cteEnigma == null) {
             throw new Exception("Failed to generate JAXB CTE Enigma objects by schema");
         }
-//        XmlVerifierState xmlVerifierResponse = xmlSchemaVerifier.isXmlSchemaValidEX2(cteEnigma);
-//        if (xmlVerifierResponse == XmlVerifierState.VALID) {
-//
-//        }
         buildBattlefieldInfo(cteEnigma.getCTEBattlefield());
         return this.battlefieldInfo;
     }
