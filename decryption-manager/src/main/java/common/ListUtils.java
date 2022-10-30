@@ -7,7 +7,7 @@ import java.util.List;
 public class ListUtils {
 
     /**
-     * @param listTypeFlag True = get result as LinkedList, Flase = get result as ArrayList
+     * @param listTypeFlag True = get result as LinkedList, Flase = get result as ArrayList (of inner lists)
      * @return
      */
     public static <T> List<List<T>> partition(List<T> sourceList, int partitionSize, boolean listTypeFlag){

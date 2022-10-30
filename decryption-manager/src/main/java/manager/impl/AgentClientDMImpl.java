@@ -1,13 +1,10 @@
 package manager.impl;
 
 import adapter.ListenerAdapter;
-import agent.DecryptionAgent;
 import agent.DecryptionWorker;
-import agent.impl.DecryptionAgentImpl;
 import agent.impl.DecryptionWorkerImpl;
 import common.ListUtils;
 import component.MachineHandler;
-import dto.AgentDecryptionInfo;
 import dto.MachineState;
 import generictype.MappingPair;
 import javafx.beans.property.BooleanProperty;
@@ -53,15 +50,13 @@ public class AgentClientDMImpl implements AgentClientDM {
     @Getter @Setter private int internalAgentTaskSize = PropertiesService.getDefaultTaskSize();
     private final ThreadPoolExecutor threadPoolService;
     @Getter private final MachineHandler machineHandler;
-    private final List<MachineState> workToDo = new ArrayList<>();
-    private final List<MachineState> workToDoCache = new ArrayList<>();
     private List<List<MachineState>> workBatches = new ArrayList<>();
     private boolean isKilled = false;
 
     @Getter private final ObjectProperty<DecryptionWorker> newestAgentProperty = new SimpleObjectProperty<>();
     private final BooleanProperty isWorkCompletedProperty = new SimpleBooleanProperty(true);
 
-    public AgentClientDMImpl(@NotNull MachineHandler machineHandler, int maxNumberOfTasks, int threadPoolSize) {
+    public AgentClientDMImpl(@NotNull MachineHandler machineHandler, int maxNumberOfTasks, int threadPoolSize) throws IllegalArgumentException{
         if(machineHandler == null){
             throw new NullPointerException("machineHandler is null");
         }
@@ -80,18 +75,19 @@ public class AgentClientDMImpl implements AgentClientDM {
     }
 
     private void addPropertyListeners(){
-        listenerAdapter.getFinishedWorkProgressProperty().addListener((observable, oldValue, newValue) -> {
-            if(newValue != null && newValue.getLeft() >= newValue.getRight()){
-                workToDo.clear();
-            }
-        });
         this.getNewestAgentProperty().addListener((observable, oldNewstAgent, newNewestAgent) -> {
             if(newNewestAgent == null || newNewestAgent.equals(oldNewstAgent)){
                 return;
             }
             listenerAdapter.connectToAgent(newNewestAgent);
         });
-        listenerAdapter.getIsWorkCompletedProperty().bindBidirectional(this.isWorkCompletedProperty);
+        listenerAdapter.getProgressProperty().setValue(null);
+//        listenerAdapter.getFinishedWorkProgressProperty().addListener((observable, oldValue, newValue) -> {
+//            if(newValue != null && newValue.getLeft() >= newValue.getRight()){
+//                workToDo.clear();
+//            }
+//        });
+//        listenerAdapter.getIsWorkCompletedProperty().bindBidirectional(this.isWorkCompletedProperty);
     }
 
     @Override
@@ -120,7 +116,7 @@ public class AgentClientDMImpl implements AgentClientDM {
                 threadPoolService.execute(newAgent);
             }
         }
-
+        //when killed:
         listenerAdapterThread.interrupt();
     }
 
@@ -146,30 +142,29 @@ public class AgentClientDMImpl implements AgentClientDM {
 
     @Override
     public void assignWork(List<MachineState> assignedWork,String inputToDecrypt) throws IllegalArgumentException , NullPointerException , RuntimeException {
-        //TODO: when size is too big or work already in progress - save in cache and add later
-        //is done because - to ignore the difference in task size in ally and in agent to save ourselves some headache and i dont think they will notice.
-
         if(inputToDecrypt == null && (this.inputToDecrypt == null || this.inputToDecrypt.isEmpty())){
             log.error("AgentClientDMImpl - failed to assign work, missing input to decrypt");
-            throw new NullPointerException("Failed to assign work, given no new or previous input to decrypt");
+            return;
         }
         this.inputToDecrypt = (inputToDecrypt == null) ? this.inputToDecrypt : inputToDecrypt;  //if new input is null, use last given input
-        if(assignedWork == null){
-            log.warn("Failed to assign work, given workload is null");
-            throw new NullPointerException("Failed to assign work, given workload is null");
+        if(assignedWork == null || assignedWork.isEmpty()){
+            log.warn("Failed to assign work, given workload is null or empty");
+            return;
         }
-        if(assignedWork.size() > this.maxNumberOfTasks){
-            log.error("Failed to assign work, workload size=("+ assignedWork.size() +") exceeds allowed size of=" + maxNumberOfTasks);
-            throw new IllegalArgumentException("workload size=("+ assignedWork.size() +") exceeds allowed size of=" + maxNumberOfTasks);
+        List<List<MachineState>> newWorkBatches = ListUtils.partition(assignedWork, internalAgentTaskSize, true);
+        workBatches.addAll(newWorkBatches);
+        updateListenerMaxProgress(assignedWork.size());
+        log.info("AgentClientDm - received work, workAmount=" + assignedWork.size() + ", on Input="+ this.inputToDecrypt);
+    }
+
+    private void updateListenerMaxProgress(int amount) {
+        if(listenerAdapter.getProgressProperty().get() == null){
+            MappingPair<Integer,Integer> newProgress =new MappingPair<>(0,0);
+            listenerAdapter.getProgressProperty().setValue(newProgress);
+            return;
         }
-        if(!isWorkCompletedProperty.get()){
-            log.warn("Failed to assign work - previous work back hasn't finished yet");
-            throw new RuntimeException("Failed to assign work - previous work back hasn't finished yet");
-        }
-        this.listenerAdapter.getFinishedWorkProgressProperty().setValue(new MappingPair<>(0,assignedWork.size()));
-        this.workToDo.addAll(assignedWork);
-        workBatches = ListUtils.partition(workToDo, internalAgentTaskSize, true);
-        log.info("AgentClientDm - received work, workAmount=" + workToDo.size() + ", on Input="+ this.inputToDecrypt);
+        MappingPair<Integer,Integer> newProgress =new MappingPair<>(listenerAdapter.getProgressProperty().get().getLeft(),listenerAdapter.getProgressProperty().get().getRight() + amount);
+        listenerAdapter.getProgressProperty().setValue(newProgress);
     }
 
     @Override
