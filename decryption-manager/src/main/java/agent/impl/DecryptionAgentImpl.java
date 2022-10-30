@@ -2,16 +2,14 @@ package agent.impl;
 
 //import com.sun.org.apache.xpath.internal.operations.Bool;
 import javafx.beans.property.*;
-import javafx.util.Pair;
 import lombok.Getter;
 import agent.DecryptionAgent;
 import component.EncryptionMachine;
 import dto.AgentDecryptionInfo;
 import dto.MachineState;
 import generictype.MappingPair;
-import manager.DictionaryManager;
+import manager.DictionaryManagerStatic;
 import service.PropertiesService;
-import service.XmlFileLoader;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
@@ -164,9 +162,9 @@ public class DecryptionAgentImpl implements DecryptionAgent {
 
     private boolean checkIfInDictionary(String decryptionResult) {
 
-        String[] decryptedWords = decryptionResult.split(DictionaryManager.getDELIMITER());
+        String[] decryptedWords = decryptionResult.split(DictionaryManagerStatic.getDELIMITER());
         for (String word :decryptedWords ) {
-            if(!DictionaryManager.getDictionary().containsKey(word)){
+            if(!DictionaryManagerStatic.getDictionary().containsKey(word)){
                 return false;
             }
         }

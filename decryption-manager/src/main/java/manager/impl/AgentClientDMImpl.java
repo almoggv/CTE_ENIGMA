@@ -14,7 +14,7 @@ import javafx.beans.property.SimpleObjectProperty;
 import lombok.Getter;
 import lombok.Setter;
 import manager.AgentClientDM;
-import manager.DictionaryManager;
+import manager.DictionaryManagerStatic;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.jetbrains.annotations.NotNull;
@@ -44,7 +44,6 @@ public class AgentClientDMImpl implements AgentClientDM {
     @Getter ListenerAdapter listenerAdapter = new ListenerAdapter();
     private Thread listenerAdapterThread;
 
-
     @Getter @Setter private String inputToDecrypt = "";
     @Getter private final int maxNumberOfTasks;
     @Getter @Setter private int internalAgentTaskSize = PropertiesService.getDefaultTaskSize();
@@ -55,6 +54,10 @@ public class AgentClientDMImpl implements AgentClientDM {
 
     @Getter private final ObjectProperty<DecryptionWorker> newestAgentProperty = new SimpleObjectProperty<>();
     private final BooleanProperty isWorkCompletedProperty = new SimpleBooleanProperty(true);
+
+    //To Prevent Spamming:
+    private boolean didLogComponentsReadyMsg = false;
+
 
     public AgentClientDMImpl(@NotNull MachineHandler machineHandler, int maxNumberOfTasks, int threadPoolSize) throws IllegalArgumentException{
         if(machineHandler == null){
@@ -92,9 +95,6 @@ public class AgentClientDMImpl implements AgentClientDM {
 
     @Override
     public void run() {
-        if(!areComponentsReadyForWork()){
-            throw new RuntimeException("Run Failed, some components are not initialized");
-        }
         listenerAdapterThread = new Thread(listenerAdapter);
         listenerAdapterThread.start();
         this.isKilled = false;
@@ -106,6 +106,10 @@ public class AgentClientDMImpl implements AgentClientDM {
             if(ticks % ticksPerPrint == 0){
                 log.info("AgentClientDM is running");
                 ticks = 0;
+            }
+            if(!areComponentsReadyForWork()){
+                log.warn("Components are not ready for work yet");
+                continue;
             }
             ///////////////////////////////////
             if(!workBatches.isEmpty() && threadPoolService.getQueue().remainingCapacity() > 0){
@@ -121,23 +125,32 @@ public class AgentClientDMImpl implements AgentClientDM {
     }
 
     private boolean areComponentsReadyForWork(){
+        boolean areComponentsReady = true;
         if(this.machineHandler == null){
-            log.error("Failed to divide work - machineHandler is null");
-            return false;
+            if(!didLogComponentsReadyMsg){
+                log.error("Failed to divide work - machineHandler is null");
+            }
+            areComponentsReady = false;
         }
         if(!this.machineHandler.getInventoryInfo().isPresent()){
-            log.error("Failed to divide work - machineHandler is missing inventory");
-            return false;
+            if(!didLogComponentsReadyMsg){
+                log.error("Failed to divide work - machineHandler is missing inventory");
+            }
+            areComponentsReady = false;
         }
         if(!this.machineHandler.getMachineState().isPresent()){
-            log.error("Failed to divide work - Encryption Machine in MachineHandler was not configured (assembled)");
-            return false;
+            if(!didLogComponentsReadyMsg){
+                log.error("Failed to divide work - Encryption Machine in MachineHandler was not configured (assembled)");
+            }
+            areComponentsReady = false;
         }
-        if(DictionaryManager.getDictionary().isEmpty()){
+        if(DictionaryManagerStatic.getDictionary().isEmpty()){
             log.error("Failed to divide work - Dictionary is empty");
-            return false;
+            areComponentsReady = false;
         }
-        return true;
+        didLogComponentsReadyMsg = !areComponentsReady;
+
+        return areComponentsReady;
     }
 
     @Override

@@ -1,0 +1,3 @@
+component\TestSerializationHandlerImpl.class
+component\TestSanityMachineHandlerImpl.class
+jsonadapterTest\MachineHandlerSerializationTest.class

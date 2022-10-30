@@ -1,0 +1,5 @@
+component\EncryptionMachineTesting.class
+jsonadapterTest\EncryptionMachineAdapterTest.class
+component\TestEnigmaMachineImpl.class
+jsonadapterTest\IOWheelJsonAdapterTest.class
+component\PlugBoardTesting.class

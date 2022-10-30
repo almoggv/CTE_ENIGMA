@@ -10,9 +10,13 @@ import jakarta.servlet.http.HttpServletResponse;
 import component.MachineHandler;
 import dto.MachineState;
 import manager.DictionaryManager;
+import manager.DictionaryManagerStatic;
+import manager.UserManager;
+import model.User;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import service.PropertiesService;
+import utils.ServletUtils;
 import utils.StringUtils;
 
 import java.io.IOException;
@@ -62,6 +66,13 @@ public class Encrypt extends HttpServlet {
             respWriter.print(gson.toJson(responsePayload));
             return;
         }
+        UserManager userManager = ServletUtils.getUserManager(this.getServletContext());
+        User user = userManager.getUserByName((String) req.getSession(false).getAttribute(PropertiesService.getUsernameAttributeName()));   //Username by session
+        if(user == null){
+            resp.setStatus(SC_UNAUTHORIZED);
+            respWriter.print("Please login first");
+            return;
+        }
         machineHandler = (MachineHandler) req.getSession(false).getAttribute(PropertiesService.getMachineHandlerAttributeName());
         if(machineHandler == null){
             log.info("Encrypt request failed - missing machine schema for session");
@@ -98,10 +109,14 @@ public class Encrypt extends HttpServlet {
                 }
             }
         }
+        DictionaryManager dictionaryManager = user.getContestRoom().getDictionaryManager();
+        if(dictionaryManager.getDictionary() ==  null || dictionaryManager.getDictionary().isEmpty()){
+            log.error("DictonaryManager from user=" + user.getUsername() + " is null or empty");
+        }
         //check words in dictionary:
-        if(!DictionaryManager.getDictionary().isEmpty()){
+        if(!dictionaryManager.getDictionary().isEmpty()){
             for (String input : encryptionInputs ){
-                if (!DictionaryManager.isInDictionary(input)) {
+                if (!DictionaryManagerStatic.isInDictionary(input)) {
                     log.info("Encrypt request failed - \"" + input + "\" is not in the dictionary");
                     resp.setStatus(SC_BAD_REQUEST);
                     responsePayload.setMessage("\"" + input + "\" is not in the dictionary");

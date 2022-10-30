@@ -1,9 +1,7 @@
 package agent.impl;
 
-import agent.DecryptionAgent;
 import agent.DecryptionWorker;
 import component.EncryptionMachine;
-import dto.AgentDecryptionInfo;
 import dto.DecryptionCandidateInfo;
 import dto.MachineState;
 import generictype.MappingPair;
@@ -12,7 +10,7 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import lombok.Getter;
-import manager.DictionaryManager;
+import manager.DictionaryManagerStatic;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import service.PropertiesService;
@@ -77,14 +75,14 @@ public class DecryptionWorkerImpl implements DecryptionWorker {
             updateWorkerPropertiesToFinished();
             return;
         }
-        if(DictionaryManager.getDictionary().isEmpty()){
+        if(DictionaryManagerStatic.getDictionary().isEmpty()){
             log.warn("Dictionary is empty");
         }
         log.info("Worker [" + id + "] - started running on input=" + inputToDecrypt);
         for (MachineState state : workToDo ) {
             encryptionMachine.setMachineState(state);
             String decryptedWord = encryptionMachine.decrypt(inputToDecrypt);
-            if(DictionaryManager.isInDictionary(decryptedWord)){
+            if(DictionaryManagerStatic.isInDictionary(decryptedWord)){
                 DecryptionCandidateInfo newCandidate = new DecryptionCandidateInfo();
                 newCandidate.setInput(inputToDecrypt);
                 newCandidate.setOutput(decryptedWord);

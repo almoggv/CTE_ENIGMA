@@ -16,10 +16,12 @@ C:\Dev\GitProjects\CTE_ENIGMA_MAVEN\decryption-manager\src\main\java\agent\impl\
 C:\Dev\GitProjects\CTE_ENIGMA_MAVEN\decryption-manager\src\main\java\manager\DictionaryManager.java
 C:\Dev\GitProjects\CTE_ENIGMA_MAVEN\decryption-manager\src\main\java\common\ListUtils.java
 C:\Dev\GitProjects\CTE_ENIGMA_MAVEN\decryption-manager\src\main\java\service\MathService.java
+C:\Dev\GitProjects\CTE_ENIGMA_MAVEN\decryption-manager\src\main\java\dto\DictionaryLoadInfo.java
 C:\Dev\GitProjects\CTE_ENIGMA_MAVEN\decryption-manager\src\main\java\manager\impl\AllyClientDMImpl.java
 C:\Dev\GitProjects\CTE_ENIGMA_MAVEN\decryption-manager\src\main\java\manager\AgentClientDM.java
 C:\Dev\GitProjects\CTE_ENIGMA_MAVEN\decryption-manager\src\main\java\manager\impl\CandidatesListenerImpl.java
 C:\Dev\GitProjects\CTE_ENIGMA_MAVEN\decryption-manager\src\main\java\enums\DecryptionDifficultyLevel.java
+C:\Dev\GitProjects\CTE_ENIGMA_MAVEN\decryption-manager\src\main\java\manager\DictionaryManagerStatic.java
 C:\Dev\GitProjects\CTE_ENIGMA_MAVEN\decryption-manager\src\main\java\agent\DecryptionWorker.java
 C:\Dev\GitProjects\CTE_ENIGMA_MAVEN\decryption-manager\src\main\java\common\Pausable.java
 C:\Dev\GitProjects\CTE_ENIGMA_MAVEN\decryption-manager\src\main\java\agent\impl\DecryptionAgentImpl.java

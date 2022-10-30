@@ -1,0 +1,15 @@
+service\PropertiesService.class
+component\MachineHandler.class
+component\SerializationHandler.class
+jsonadapter\JsonStringCleaner.class
+jsonadapter\MachineHandlerJsonAdapter$2.class
+component\impl\SerializationHandlerImpl.class
+dto\EncryptionInfoHistory.class
+jsonadapter\MachineHandlerJsonAdapter$1.class
+jsonadapter\MachineHandlerJsonAdapter$4.class
+component\impl\MachineHandlerImpl.class
+dto\BattlefieldInfo.class
+jsonadapter\MachineHandlerJsonAdapter.class
+dto\InventoryInfo.class
+jsonadapter\MachineHandlerJsonAdapter$3.class
+dto\InventoryComponents.class

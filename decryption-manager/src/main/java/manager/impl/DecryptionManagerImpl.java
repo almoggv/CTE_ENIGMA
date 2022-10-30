@@ -9,7 +9,7 @@ import component.MachineHandler;
 import enums.DecryptionDifficultyLevel;
 import manager.AgentWorkManager;
 import manager.CandidatesListener;
-import manager.DictionaryManager;
+import manager.DictionaryManagerStatic;
 import manager.DecryptionManager;
 import service.PropertiesService;
 import org.apache.log4j.Logger;
@@ -24,7 +24,7 @@ public class DecryptionManagerImpl implements DecryptionManager {
 
     private final int THREAD_POOL_QEUEU_MAX_CAPACITY = 10;
     @Getter private MachineHandler machineHandler;
-    private DictionaryManager dictionaryManager;
+    private DictionaryManagerStatic dictionaryManager;
     @Getter @Setter private int numberOfAgents;
     @Getter @Setter private int taskSize;
     @Getter @Setter private DecryptionDifficultyLevel difficultyLevel;

@@ -7,6 +7,7 @@ import enums.DecryptionDifficultyLevel;
 import enums.GameStatus;
 import lombok.Setter;
 import lombok.Getter;
+import manager.DictionaryManager;
 
 import java.util.List;
 
@@ -24,5 +25,6 @@ public class ContestRoom {
     @Getter @Setter private List<Ally> alliesList;
     @Getter @Setter private List<EncryptionCandidate> encryptionCandidateList;
     @Getter @Setter MachineHandler machineHandler;
+    @Getter @Setter private DictionaryManager dictionaryManager;
     @Getter @Setter private Integer numOfGotWinCount;
 }

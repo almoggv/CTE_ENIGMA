@@ -2,17 +2,14 @@ package service;
 
 
 import com.google.gson.Gson;
-import com.sun.deploy.net.HttpUtils;
 import component.MachineHandler;
 import dto.*;
 import enums.GameStatus;
-import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import jsonadapter.MachineHandlerJsonAdapter;
-import jsonadapter.MachineHandlerPayloadJsonAdapter;
 import lombok.Getter;
+import manager.DictionaryManagerStatic;
 import okhttp3.*;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
@@ -354,5 +351,29 @@ public class DataService {
         long timeInterval = 1500;
         executor.scheduleAtFixedRate(agentsDataFetcher, 0, timeInterval, TimeUnit.MILLISECONDS);
         //TODO: implement
+    }
+
+    public static void loadDictionaryManager() {
+        String loadDictonaryUrl = HttpUrl
+                .parse(PropertiesService.getApiLoadDictionaryUrl())
+                .newBuilder()
+                .build()
+                .toString();
+        Response response = HttpClientService.runSync(loadDictonaryUrl);
+        String bodyString = null;
+        try {
+            bodyString = response.body().string();
+        } catch (IOException e) {
+            log.error("LoadDictionaryManager - Failed to get body string , exception=" + e.getMessage());
+            return;
+        }
+        if(response.code()!=200){
+            log.error("Failed to load dictionary from server - status code=" + response.code() + ", body=" + bodyString);
+            return;
+        }
+        Gson gson = new Gson();
+        DictionaryLoadInfo loadInfo = gson.fromJson(bodyString,DictionaryLoadInfo.class);
+        DictionaryManagerStatic.loadDictionary(loadInfo);
+        return;
     }
 }

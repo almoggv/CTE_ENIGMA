@@ -121,7 +121,7 @@ public class AllyClientDMImpl implements AllyClientDM {
             log.info("Beginning to fill Queue - progress="+ progressProperty.get());
         }
         if(workBatchesQueue.size() >= PropertiesService.getMaxWorkBatchesQueueSize()){
-            log.info("Queue is full of work, size=" + workBatchesQueue.size() + "/" + PropertiesService.getMaxWorkBatchesQueueSize());
+//            log.info("Queue is full of work, size=" + workBatchesQueue.size() + "/" + PropertiesService.getMaxWorkBatchesQueueSize());
             return;
         }
         if(progressProperty.get().getLeft() >= progressProperty.get().getRight()){

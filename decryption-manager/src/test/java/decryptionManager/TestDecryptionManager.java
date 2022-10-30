@@ -7,7 +7,7 @@ import enums.DecryptionDifficultyLevel;
 import enums.ReflectorsId;
 import generictype.MappingPair;
 import manager.DecryptionManager;
-import manager.DictionaryManager;
+import manager.DictionaryManagerStatic;
 import manager.impl.DecryptionManagerImpl;
 import org.junit.Test;
 import testservice.PropertiesService;
@@ -39,7 +39,7 @@ public class TestDecryptionManager {
         int numberOfAgents = 10 ;
         int taskSize = 2;
 
-        DictionaryManager.loadDictionary(path);
+        DictionaryManagerStatic.loadDictionary(path);
 
 
         String encrypted = machineHandler.encrypt("ABBA");
@@ -74,7 +74,7 @@ public class TestDecryptionManager {
         int numberOfAgents = 20 ;
         int taskSize = 5;
 
-        DictionaryManager.loadDictionary(path);
+        DictionaryManagerStatic.loadDictionary(path);
 
 //        String encrypted = machineHandler.encrypt("water under their battle ");
         String encrypted = machineHandler.encrypt("if fire inferno blue than midnight ");
@@ -134,7 +134,7 @@ public class TestDecryptionManager {
 
         int numberOfAgents = 10 ;
         int taskSize = 2;
-        DictionaryManager.loadDictionary(path);
+        DictionaryManagerStatic.loadDictionary(path);
         DecryptionManager manager = new DecryptionManagerImpl(machineHandler,  numberOfAgents, DecryptionDifficultyLevel.INTERMEDIATE, taskSize) ;
         manager.bruteForceDecryption("DACF");
 
@@ -174,7 +174,7 @@ public class TestDecryptionManager {
 
         int numberOfAgents = 10 ;
         int taskSize = 2;
-        DictionaryManager.loadDictionary(path);
+        DictionaryManagerStatic.loadDictionary(path);
         DecryptionManager manager = new DecryptionManagerImpl(machineHandler,  numberOfAgents, DecryptionDifficultyLevel.INTERMEDIATE, taskSize) ;
         manager.bruteForceDecryption("CEDD");
     }
@@ -209,7 +209,7 @@ public class TestDecryptionManager {
         int numberOfAgents = 10 ;
         int taskSize = 5;
 
-        DictionaryManager.loadDictionary(path);
+        DictionaryManagerStatic.loadDictionary(path);
         DecryptionManager manager = new DecryptionManagerImpl(machineHandler,  numberOfAgents, DecryptionDifficultyLevel.INTERMEDIATE, taskSize) ;
         manager.bruteForceDecryption(encrypted);
     }
@@ -282,7 +282,7 @@ found a candidate: EP!RF-->WATER ---- ref: III ,init pos: [ , ?, A]
         int numberOfAgents = 10 ;
         int taskSize = 2;
 
-        DictionaryManager.loadDictionary(path);
+        DictionaryManagerStatic.loadDictionary(path);
 
 
         String encrypted = machineHandler.encrypt("ABBA");
@@ -315,7 +315,7 @@ found a candidate: EP!RF-->WATER ---- ref: III ,init pos: [ , ?, A]
         int numberOfAgents = 10 ;
         int taskSize = 5;
 
-        DictionaryManager.loadDictionary(path);
+        DictionaryManagerStatic.loadDictionary(path);
         DecryptionManager manager = new DecryptionManagerImpl(machineHandler,  numberOfAgents, DecryptionDifficultyLevel.HARD, taskSize) ;
         manager.bruteForceDecryption(encrypted);
     }
@@ -341,7 +341,7 @@ found a candidate: EP!RF-->WATER ---- ref: III ,init pos: [ , ?, A]
         int numberOfAgents = 5 ;
         int taskSize = 2;
 
-        DictionaryManager.loadDictionary(path);
+        DictionaryManagerStatic.loadDictionary(path);
 
         String encrypted = machineHandler.encrypt("ABBA");
         DecryptionManager manager = new DecryptionManagerImpl(machineHandler,  numberOfAgents, DecryptionDifficultyLevel.IMPOSSIBLE, taskSize);

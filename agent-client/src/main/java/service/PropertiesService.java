@@ -21,6 +21,12 @@ public class PropertiesService {
     @Getter private static final int appWindowWidth = 950;
     @Getter private static final int appWindowHeight = 650;
 
+    //DM
+    @Getter private static final int defaultTaskSize = 20;
+    @Getter private static final int maxThreadPoolSize = 4;
+    @Getter private static final int minThreadPoolSize = 1;
+    @Getter private static final int maxWorkBatchesQueueSize = 500;
+
     //Attributes
     @Getter private static final String usernameAttribute = "username";
     @Getter private static final String tokenAttributeName = "access_token";
@@ -60,6 +66,8 @@ public class PropertiesService {
     @Getter private static final String apiGetMachineHandler = FULL_SERVER_PATH + "/machine-handler";
     @Getter private static final String apiFetchWorkBatch = FULL_SERVER_PATH + "/fetch-work";
     @Getter private static final String apiGotWinUrl = FULL_SERVER_PATH + "/got-win";
+    @Getter private static final String apiLoadDictionaryUrl = FULL_SERVER_PATH + "/load-dictionary";
+
 
 }
 

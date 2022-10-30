@@ -14,6 +14,7 @@ import jakarta.servlet.http.Part;
 import component.MachineHandler;
 import component.impl.MachineHandlerImpl;
 import manager.DictionaryManager;
+import manager.DictionaryManagerStatic;
 import manager.RoomManager;
 import manager.UserManager;
 import model.ContestRoom;
@@ -25,6 +26,7 @@ import service.PropertiesService;
 import utils.ServletUtils;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -93,12 +95,12 @@ public class UploadMachineFile extends HttpServlet {
                     //create inventory from file
                     try {
                         machineHandler.buildMachinePartsInventory(uploadedFile.getInputStream());
-                        //todo - check whats up with the dict manager
-                        DictionaryManager.loadDictionary(uploadedFile.getInputStream());
+                        DictionaryManager dictionaryManager = new DictionaryManager();
+                        dictionaryManager.loadDictionary(uploadedFile.getInputStream());
                         //create and save to room
                         String creatorName = (String) req.getSession(false).getAttribute(PropertiesService.getUsernameAttributeName());
                         ContestRoom contestRoom = createContestRoomInfo(creatorName, battlefieldInfo,machineHandler);
-//                    contestRoom.setMachineHandler(machineHandler);
+                        contestRoom.setDictionaryManager(dictionaryManager);
                         roomManager.addRoom(battlefieldInfo.getBattlefieldName(), contestRoom);
                         req.getSession(true).setAttribute(PropertiesService.getRoomNameAttributeName(), battlefieldInfo.getBattlefieldName());
                         user.setInARoom(true);

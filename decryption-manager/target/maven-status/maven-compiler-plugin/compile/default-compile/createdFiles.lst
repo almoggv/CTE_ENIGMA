@@ -24,4 +24,6 @@ manager\impl\CandidatesListenerImpl.class
 adapter\UIAdapter.class
 manager\impl\AgentClientDMImpl.class
 manager\impl\AgentWorkManagerImpl$1.class
+dto\DictionaryLoadInfo.class
 manager\DictionaryManager.class
+manager\DictionaryManagerStatic.class

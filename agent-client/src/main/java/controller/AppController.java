@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 import lombok.Getter;
 import lombok.Setter;
 import manager.AgentClientDM;
+import manager.DictionaryManagerStatic;
 import manager.impl.AgentClientDMImpl;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
@@ -31,8 +32,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 import java.util.ResourceBundle;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
 
 public class AppController implements Initializable {
 
@@ -137,8 +136,15 @@ public class AppController implements Initializable {
                 //Start running
                 agentClientDmThread = new Thread(agentClientDM);
                 agentClientDmThread.start();
+                //Fetch Dictionary
+                while(DictionaryManagerStatic.getDictionary().isEmpty()){
+                    DataService.loadDictionaryManager();
+                }
                 //Fetch work:
                 DecryptionWorkPayload zippedWork = DataService.fetchWorkBatch(agentClientDM.getMaxNumberOfTasks());
+                while(zippedWork == null){
+                    zippedWork = DataService.fetchWorkBatch(agentClientDM.getMaxNumberOfTasks());
+                }
                 List<MachineState> unzippedWork = DecryptionWorkPayloadParserService.unzip(zippedWork,machineHandler.getInventoryInfo().get());
                 agentClientDM.assignWork(unzippedWork,zippedWork.getInputToDecrypt());
             }

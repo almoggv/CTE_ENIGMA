@@ -5,7 +5,7 @@ import component.impl.MachineHandlerImpl;
 import dto.MachineState;
 import enums.ReflectorsId;
 import generictype.MappingPair;
-import manager.DictionaryManager;
+import manager.DictionaryManagerStatic;
 import service.MathService;
 
 import java.io.File;
@@ -58,7 +58,7 @@ public class WorkerTestUtils {
     public static void LoadDictionary() throws Exception {
         MachineHandler resultHander = new MachineHandlerImpl();
         File resourcesDirectory = new File("src/test/resources");
-        DictionaryManager.loadDictionary(resourcesDirectory.getAbsolutePath() + SCHEMA_FILE);
+        DictionaryManagerStatic.loadDictionary(resourcesDirectory.getAbsolutePath() + SCHEMA_FILE);
     }
 
     public static List<String> advanceRotorPositions(List<String> startingPos){
