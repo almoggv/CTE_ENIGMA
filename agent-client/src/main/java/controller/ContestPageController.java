@@ -191,8 +191,10 @@ public class ContestPageController implements Initializable {
 
             double progressValue = ((double)newValue.getLeft() / (double)newValue.getRight());
             int progressPercentage = (int) (progressValue * 100);
-            progressBar.setProgress(progressValue);
-            progressPrecentageValueLabel.setText(String.valueOf(progressPercentage));
+            Platform.runLater(()->{
+                progressBar.setProgress(progressValue);
+                progressPrecentageValueLabel.setText(String.valueOf(progressPercentage));
+            });
         });
         listenerAdapter.getDecryptionCandidatesProperty().addListener((observable, oldListValue, newListValue) -> {
             if(newListValue == null || newListValue.isEmpty()){
