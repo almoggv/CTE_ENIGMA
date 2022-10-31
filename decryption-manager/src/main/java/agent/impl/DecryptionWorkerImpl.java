@@ -87,7 +87,7 @@ public class DecryptionWorkerImpl implements DecryptionWorker {
             log.warn("Dictionary is empty");
         }
 
-        log.info("Worker [" + id + "] - started running on input=" + inputToDecrypt);
+        log.debug("Worker [" + id + "] - started running on input=" + inputToDecrypt);
         for (MachineState state : workToDo ) {
             encryptionMachine.setMachineState(state);
             state = encryptionMachine.getMachineState().get();

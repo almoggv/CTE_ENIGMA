@@ -42,9 +42,13 @@
       </ScrollPane>
       <Label text="Candidates" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
       <Label text="Progress and status" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-      <ScrollPane fx:id="dmResultsScrollPane" fitToHeight="true" fitToWidth="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
+      <ScrollPane fx:id="dmResultsScrollPane" fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="4">
          <content>
-            <FlowPane fx:id="dmResultsFlowPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="100.0" minWidth="200.0" />
+            <ScrollPane fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+               <content>
+                  <FlowPane fx:id="dmResultsFlowPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="100.0" minWidth="200.0" />
+               </content>
+            </ScrollPane>
          </content>
       </ScrollPane>
       <ScrollPane fitToHeight="true" fitToWidth="true" GridPane.rowIndex="4">

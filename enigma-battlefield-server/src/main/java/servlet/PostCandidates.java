@@ -99,6 +99,7 @@ public class PostCandidates extends HttpServlet {
             synchronized (this.getServletContext()) {
                 //adds candidates to agents ally team
                 ally.getEncryptionCandidateList().addAll(candidateList);
+                agent.setNumberOfFoundCandidates(agent.getNumberOfFoundCandidates() + candidateList.size());
                 //adds candidates to contest room
                 contestRoom.getEncryptionCandidateList().addAll(candidateList);
                 roomManager.checkWin(contestRoom, userManager.getUboatByName(contestRoom.getCreatorName()).getOriginalWord(), userManager);

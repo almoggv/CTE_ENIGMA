@@ -141,6 +141,7 @@ public class UserManager {
             agentData.setNumberOfTasksThatTakes(Integer.valueOf(taskSize));
             agentData.setNumberOfThreads(Integer.valueOf(threadNum));
             agentData.setAllyName(allyName);
+            agentData.setNumberOfFoundCandidates(0);
             Ally ally = getAllyByName(allyName);
             if(!getUserByName(allyName).isReady()) {
                 newUser.setContestRoom(getUserByName(allyName).getContestRoom());

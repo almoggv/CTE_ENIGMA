@@ -100,8 +100,12 @@ public class AppController implements Initializable {
             }
         });
         loginComponentController.getIsLoggedInProperty().bindBidirectional(headerComponentController.getIsLoggedInProperty());;
-        log.info("AppController - app initialized");
+        DataService.getLastCandidatesProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue == null || newValue.isEmpty()){
+                return;
+            }
 
+        });
         DataService.getGameStatusProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue != null && (newValue.getGameState() == GameStatus.IN_PROGRESS || newValue.getGameState() == GameStatus.READY)){
                 MachineHandler machineHandler = null;
@@ -160,6 +164,7 @@ public class AppController implements Initializable {
                 log.info("App - first work batch assigned to AgentClientDM");
             }
         });
+        log.info("AppController - app initialized");
     }
 
     public void showMessage(String message) {

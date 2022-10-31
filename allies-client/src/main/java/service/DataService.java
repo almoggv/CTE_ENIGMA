@@ -78,7 +78,7 @@ public class DataService {
                         contestRoomsStateProperty.setValue(null);
                     }
                     else {
-                        log.info("all Contests data Successfully Fetched - responseCode = 200, ServerMessage=" + payload.getContestRooms());
+                        log.debug("all Contests data Successfully Fetched - responseCode = 200, ServerMessage=" + payload.getContestRooms());
                         if(payload.getContestRooms() != null && !payload.getContestRooms().isEmpty() && !payload.getContestRooms().equals(contestRoomsStateProperty.get())){
 //                            contestRoomsStateProperty.setValue(null);
                             contestRoomsStateProperty.setValue(payload.getContestRooms());
@@ -119,7 +119,7 @@ public class DataService {
 
                     }
                     else {
-                        log.info("Agents data Successfully Fetched - responseCode = 200, ServerMessage=" + payload.getAgentsList());
+                        log.debug("Agents data Successfully Fetched - responseCode = 200, ServerMessage=" + payload.getAgentsList());
                         if(/*payload.getAgentsList() != null &&*//* !payload.getAgentsList().isEmpty() &&*/ !payload.getAgentsList().equals(agentsListStateProperty.get())){
 //                            agentsListStateProperty.setValue(null);
                             agentsListStateProperty.setValue(payload.getAgentsList());
@@ -155,7 +155,7 @@ public class DataService {
                         log.error("Failed to fetch curr Teams - statusCode=" + response.code() + ", ServerMessage=" + allyTeamsPayload.getMessage());
                     }
                     else {
-                        log.info("Current teams Fetched - responseCode = 200, ServerMessage=" + allyTeamsPayload.getMessage());
+                        log.debug("Current teams Fetched - responseCode = 200, ServerMessage=" + allyTeamsPayload.getMessage());
                         if(allyTeamsPayload.getAllyTeamsData() != null &&
                                 allyTeamsPayload.getAllyTeamsData() != currentTeamsProperty.get()){
                             currentTeamsProperty.setValue(null);
@@ -194,7 +194,7 @@ public class DataService {
                         gameStatusProperty.setValue(new GameStatePayload());
                     }
                     else {
-                        log.info("Contest data Successfully Fetched - responseCode = 200, ServerMessage=" + payload.getContestRoom());
+                        log.debug("Contest data Successfully Fetched - responseCode = 200, ServerMessage=" + payload.getContestRoom());
 //                        currentContestRoomStateProperty.setValue(null);
                         currentContestRoomStateProperty.setValue(payload.getContestRoom());
                             if(payload.getContestRoom() != null  ){
@@ -217,12 +217,12 @@ public class DataService {
             HttpClientService.runAsync(candidatesUrl, new Callback() {
                 @Override
                 public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                    log.info("candidatesFetcher failed, ExceptionMessage="+e.getMessage());                }
+                    log.error("candidatesFetcher failed, ExceptionMessage="+e.getMessage());                }
                 @Override
                 public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                     String responseBody = response.body().string();
                     if (response.code() >= 500) {
-                        log.info("candidatesFetcher Fetching failed - statusCode=" + response.code());
+                        log.warn("candidatesFetcher Fetching failed - statusCode=" + response.code());
                         return;
                     }
                     DecryptionResultPayload payload;
@@ -230,14 +230,14 @@ public class DataService {
                         payload = new Gson().fromJson(responseBody,DecryptionResultPayload.class);
                     }
                     catch (Exception e){
-                        log.info("Failed to parse response on candidatesFetcher, Message=" + e.getMessage());
+                        log.error("Failed to parse response on candidatesFetcher, Message=" + e.getMessage());
                         return;
                     }
                     if (response.code() != 200) {
-                        log.info("Failed to fetch candidates - statusCode=" + response.code() + ", ServerMessage=" + payload.getMessage());
+                        log.error("Failed to fetch candidates - statusCode=" + response.code() + ", ServerMessage=" + payload.getMessage());
                     }
                     else {
-                        log.info("Candidates Successfully Fetched - responseCode = 200, ServerMessage=" + payload.getEncryptionCandidateList());
+                        log.debug("Candidates Successfully Fetched - responseCode = 200, ServerMessage=" + payload.getEncryptionCandidateList());
 //                        if(payload.getEncryptionCandidateList() != null
 //                        && !payload.getEncryptionCandidateList().isEmpty()){
                             getLastCandidatesProperty().setValue(payload.getEncryptionCandidateList());

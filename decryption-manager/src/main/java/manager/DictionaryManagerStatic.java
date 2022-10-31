@@ -1,19 +1,37 @@
 package manager;
 
+import agent.impl.DecryptionWorkerImpl;
 import dto.DictionaryLoadInfo;
 import generated.CTEEnigma;
 import javafx.beans.property.SimpleObjectProperty;
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+import service.PropertiesService;
 import service.XmlFileLoader;
 import service.XmlSchemaVerifier;
 import service.impl.XmlSchemaVerifierImpl;
 import generated.CTEDecipher;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
 
 public class DictionaryManagerStatic {
+    private static final Logger log = Logger.getLogger(DictionaryManagerStatic.class);
+    static {
+        try {
+            Properties p = new Properties();
+            p.load(DictionaryManagerStatic.class.getResourceAsStream(PropertiesService.getLog4jPropertiesResourcePath()));
+            PropertyConfigurator.configure(p);      //Dont forget here
+            log.debug("Logger Instantiated for : " + DictionaryManagerStatic.class.getSimpleName());
+        } catch (IOException e) {
+            System.out.println("Failed to configure logger of -" + DictionaryManagerStatic.class.getSimpleName() ) ;
+        }
+    }
+
+
     @Getter @Setter private static String Abc;
     @Getter private static Map<String,String> dictionary = new HashMap<>();
     @Getter private static SimpleObjectProperty<List<String>> dictionaryProperty = new SimpleObjectProperty<>();
@@ -108,7 +126,14 @@ public class DictionaryManagerStatic {
             return false;
         }
         String cleanedWord = cleanWord(word);
-        String capitalCaseWord = cleanedWord.substring(0,1).toUpperCase() + cleanedWord.substring(1,cleanedWord.length()).toLowerCase();
+        String capitalCaseWord = "_"; //random string assumed not to be in any dictionary
+        try{
+            capitalCaseWord = cleanedWord.substring(0,1).toUpperCase() + cleanedWord.substring(1,cleanedWord.length()).toLowerCase();
+        }
+        catch (Exception e){
+            log.error("Failed to create capitalCaseWord for the word=" + word);
+
+        }
         return getDictionary().containsKey(cleanedWord.toLowerCase()) || getDictionary().containsKey(cleanedWord.toUpperCase()) || getDictionary().containsKey(capitalCaseWord);
     }
 

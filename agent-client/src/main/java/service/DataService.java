@@ -17,6 +17,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.Executors;
@@ -222,21 +223,6 @@ public class DataService {
     }
 
     public static void sendCandidates() {
-//        @Override
-//        public void run() {
-            //todo: return : like this for testing
-//            if (getLastCandidatesProperty().get() == null) {
-//                return;
-//            }
-            //for test:
-            EncryptionCandidate encryptionCandidate = new EncryptionCandidate();
-            encryptionCandidate.setCandidate("atom");
-            encryptionCandidate.setAllyTeamName("ally team");
-            List<EncryptionCandidate> candidateList = new ArrayList<>();
-            candidateList.add(encryptionCandidate);
-            candidateList.add(new EncryptionCandidate("something", "ally", new MachineState()));
-            lastCandidatesProperty.set(candidateList);
-
             String sendCandidatesUrl = HttpUrl
                     .parse(PropertiesService.getApiSendCandidatesUrl())
                     .newBuilder()
@@ -244,18 +230,16 @@ public class DataService {
                     .toString();
 
             DecryptionResultPayload sendPayload = new DecryptionResultPayload();
-            sendPayload.setEncryptionCandidateList(getLastCandidatesProperty().get());
-
+            EncryptionCandidate newestCandidate = getLastCandidatesProperty().get().get(getLastCandidatesProperty().get().size() - 1);
+            List<EncryptionCandidate> newestCandidateAsList = new ArrayList<>(Arrays.asList(newestCandidate));
+            sendPayload.setEncryptionCandidateList(newestCandidateAsList);
             String payloadString = new Gson().toJson(sendPayload);
-
             RequestBody body = RequestBody.create(
-                    MediaType.parse("application/json"), payloadString);
-
+                    payloadString,MediaType.parse("application/json") );
             Request request = new Request.Builder()
                     .url(sendCandidatesUrl)
                     .post(body)
                     .build();
-
             log.info("New request is sent for: " + sendCandidatesUrl);
             HttpClientService.runAsync(request, new Callback() {
                 @Override
@@ -272,7 +256,7 @@ public class DataService {
                         log.error("Failed to send candidates - statusCode=" + response.code() + ", ServerMessage=" + responseBody);
                     }
                     else {
-                        log.info("Candidates sent - responseCode = 200, ServerMessage=" +responseBody);
+                        log.debug("Candidates sent - responseCode = 200, ServerMessage=" +responseBody);
                         System.out.println("sentttttttttttttttttttttttttttttttttttttt");
                         System.out.println(responseBody);
                     }
@@ -297,7 +281,7 @@ public class DataService {
                     log.error("gotWin failed - statusCode=" + response.code() + ", ServerMessage=" + responseBody);
                 }
                 else {
-                    log.info("sent got win Successfully  - responseCode = 200");
+                    log.debug("sent got win Successfully  - responseCode = 200");
                 }
             }
         });
@@ -334,6 +318,9 @@ public class DataService {
                 .build()
                 .toString();
         lastCandidatesProperty.addListener((observable, oldValue, newValue) -> {
+            if(newValue == null || newValue.isEmpty()){
+                return;
+            }
             sendCandidates();
         });
     }
