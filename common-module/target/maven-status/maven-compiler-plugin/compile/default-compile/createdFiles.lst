@@ -20,6 +20,7 @@ utils\StringUtils.class
 dto\AgentsListPayload.class
 enums\GameStatus.class
 service\HttpClientService.class
+dto\AllyWorkProgressPayload.class
 dto\DecryptionResultPayload.class
 dto\EncryptionResponsePayload.class
 dto\MachineHandlerPayload.class

@@ -101,7 +101,6 @@ public class AppController implements Initializable {
         }
         dashboardPageController = fxmlLoader.getController();
         dashboardPageController.setParentController(this);
-
 //      //Load Contest Page
         URL contestPageResource = AppController.class.getResource(PropertiesService.getContestPageTemplateFxmlPath());
         log.info("AppController - found Url of machine component:" + contestPageResource);

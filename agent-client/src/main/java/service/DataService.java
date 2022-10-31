@@ -325,17 +325,14 @@ public class DataService {
     public static void startPullingTeamsData(){
         long timeInterval = 1500;
         executor.scheduleAtFixedRate(currTeamsFetcher, 0, timeInterval, TimeUnit.MILLISECONDS);
-        //TODO: implement
     }
     public static void startPullingRoomData(){
         long timeInterval = 1500;
         executor.scheduleAtFixedRate(contestDataFetcher, 0, timeInterval, TimeUnit.MILLISECONDS);
-        //TODO: implement
     }
     public static void startPullingAgentData(){
         long timeInterval = 1500;
         executor.scheduleAtFixedRate(agentsDataFetcher, 0, timeInterval, TimeUnit.MILLISECONDS);
-        //TODO: implement
     }
 
     public static void loadDictionaryManager() {
@@ -360,5 +357,12 @@ public class DataService {
         DictionaryLoadInfo loadInfo = gson.fromJson(bodyString,DictionaryLoadInfo.class);
         DictionaryManagerStatic.loadDictionary(loadInfo);
         return;
+    }
+
+    public static void restartFetching() {
+        executor.shutdownNow();
+        startPullingTeamsData();
+        startPullingAgentData();
+        startPullingRoomData();
     }
 }

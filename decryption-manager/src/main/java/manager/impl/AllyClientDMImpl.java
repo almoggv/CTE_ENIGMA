@@ -103,6 +103,11 @@ public class AllyClientDMImpl implements AllyClientDM {
 
     public synchronized void kill(){
         isKilled = true;
+        progressProperty.setValue(new MappingPair<>(1L,1L));
+        workBatchesQueue.clear();
+        inventoryInfo = null;
+        initialMachineConfig = null;
+        lastCreatedworkBatchLastState = null;
     }
 
     @Override

@@ -93,4 +93,11 @@ public class ListenerAdapter implements Runnable{
     public void run() {
         //do nothing, only listen
     }
+
+    public synchronized void kill() {
+        finishedWorkProgressProperty.setValue(new MappingPair<>(1,1));
+        isWorkCompletedProperty.setValue(true);
+        agentIdToDecryptAgentMap.clear();
+        decryptionCandidatesProperty.get().clear();
+    }
 }

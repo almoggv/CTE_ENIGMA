@@ -4,6 +4,7 @@ C:\Dev\GitProjects\CTE_ENIGMA_MAVEN\common-module\src\main\java\dto\MachineHandl
 C:\Dev\GitProjects\CTE_ENIGMA_MAVEN\common-module\src\main\java\dto\AgentData.java
 C:\Dev\GitProjects\CTE_ENIGMA_MAVEN\common-module\src\main\java\dto\MachineClonePayload.java
 C:\Dev\GitProjects\CTE_ENIGMA_MAVEN\common-module\src\main\java\enums\UserType.java
+C:\Dev\GitProjects\CTE_ENIGMA_MAVEN\common-module\src\main\java\dto\AllyWorkProgressPayload.java
 C:\Dev\GitProjects\CTE_ENIGMA_MAVEN\common-module\src\main\java\dto\ContestRoomPayload.java
 C:\Dev\GitProjects\CTE_ENIGMA_MAVEN\common-module\src\main\java\dto\DecryptionWorkPayload.java
 C:\Dev\GitProjects\CTE_ENIGMA_MAVEN\common-module\src\main\java\service\PropertiesService.java

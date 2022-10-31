@@ -75,6 +75,9 @@ public class ContestPageController implements Initializable {
         });
 
         DataService.getGameStatusProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue == null){
+                return;
+            }
             if(newValue != null && newValue.getGameState() == GameStatus.READY){
                 Platform.runLater(()->{
                     showMessage("Contest starting!");
@@ -88,8 +91,9 @@ public class ContestPageController implements Initializable {
         });
 
         DataService.getLastCandidatesProperty().addListener((observable, oldValue, newValue) -> {
-            if(newValue != null){
-                createCandidatesComponents(newValue);
+            if(newValue != null && !newValue.isEmpty()){
+//                createCandidatesComponents(newValue);
+                createCandidateTile(newValue.get(newValue.size()-1));
             }
         });
     }

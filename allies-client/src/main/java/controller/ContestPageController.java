@@ -96,10 +96,11 @@ public class ContestPageController implements Initializable {
         });
 
         DataService.getGameStatusProperty().addListener((observable, oldValue, newValue) -> {
-            if(newValue != null && newValue.getGameState() == GameStatus.READY){
+            if(newValue != null && (newValue.getGameState() == GameStatus.READY || newValue.getGameState() == GameStatus.IN_PROGRESS)){
                 Platform.runLater(()->{
                     showMessage("Contest starting!");
                     DataService.startPullingProgress();
+                    DataService.startPullingCandidates();
                 });
             }
             if(newValue!=null){
@@ -121,10 +122,10 @@ public class ContestPageController implements Initializable {
                 });
             }
         });
-        DataService.startPullingCandidates();
+
         DataService.getLastCandidatesProperty().addListener((observable, oldValue, newValue) -> {
-            if(newValue != null){
-                createCandidatesComponents(new ArrayList<>(newValue));
+            if(newValue != null && !newValue.isEmpty()){
+                createCandidate(newValue.get(newValue.size()-1));
             }
             else{
                 Platform.runLater(()->{

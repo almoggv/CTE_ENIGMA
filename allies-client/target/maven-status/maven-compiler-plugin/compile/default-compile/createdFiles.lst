@@ -8,6 +8,7 @@ controller\CompetitionControlsController$1.class
 service\DataService.class
 controller\ContestPageController.class
 controller\LoginController.class
+service\DataService$7.class
 controller\AppController.class
 service\DataService$1.class
 app\GuiApplication.class
@@ -25,6 +26,7 @@ service\DataService$1$1.class
 service\DataService$6.class
 service\DataService$2$1.class
 service\DataService$2.class
+service\DataService$6$1.class
 service\DataService$5$1.class
 service\DataService$5.class
 controller\DashboardPageController$1.class

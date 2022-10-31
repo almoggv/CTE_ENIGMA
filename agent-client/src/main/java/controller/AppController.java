@@ -129,15 +129,17 @@ public class AppController implements Initializable {
                         DataService.getLastCandidatesProperty().setValue(new ArrayList<>());
                     }
                     List<EncryptionCandidate> updatedList = new ArrayList<>(DataService.getLastCandidatesProperty().get());
-                    updatedList.add(encryptionCandidate);
-                    DataService.getLastCandidatesProperty().setValue(updatedList);
+                    if(!candidateAlreadyExists(encryptionCandidate,updatedList)){
+                        updatedList.add(encryptionCandidate);
+                        DataService.getLastCandidatesProperty().setValue(updatedList);
+                    }
                 });
                 agentClientDM.getIsReadyForMoreWorkProperty().addListener((observable1, oldReadyForMoreValue, newReadyForMoreValue) -> {
                     if(newReadyForMoreValue == true){
                         synchronized (agentClientDM){
                             MachineHandler machineHandler1 = agentClientDM.getMachineHandler();
                             DecryptionWorkPayload zippedWork = null;
-                            while(zippedWork == null){
+                            while(zippedWork == null && DataService.getGameStatusProperty().get().getGameState() != GameStatus.DONE){
                                 zippedWork = DataService.fetchWorkBatch(agentClientDM.getMaxNumberOfTasks());
                             }
                             List<MachineState> unzippedWork = DecryptionWorkPayloadParserService.unzip(zippedWork,machineHandler1.getInventoryInfo().get());
@@ -149,7 +151,7 @@ public class AppController implements Initializable {
                 agentClientDmThread = new Thread(agentClientDM);
                 agentClientDmThread.start();
                 //Fetch Dictionary
-                while(DictionaryManagerStatic.getDictionary().isEmpty()){
+                while(DictionaryManagerStatic.getDictionary().isEmpty() && DataService.getGameStatusProperty().get().getGameState() != GameStatus.DONE){
                     DataService.loadDictionaryManager();
                 }
                 log.info("App - loaded Dictionary");
@@ -157,7 +159,7 @@ public class AppController implements Initializable {
                 log.info("App - loaded Inventory service");
                 //Fetch work:
                 DecryptionWorkPayload zippedWork = DataService.fetchWorkBatch(agentClientDM.getMaxNumberOfTasks());
-                while(zippedWork == null){
+                while(zippedWork == null && DataService.getGameStatusProperty().get().getGameState() != GameStatus.DONE){
                     zippedWork = DataService.fetchWorkBatch(agentClientDM.getMaxNumberOfTasks());
                 }
                 log.info("App - first work batch fetched, Value=" + zippedWork);
@@ -166,8 +168,21 @@ public class AppController implements Initializable {
                 agentClientDM.assignWork(unzippedWork,zippedWork.getInputToDecrypt());
                 log.info("App - first work batch assigned to AgentClientDM");
             }
+            if(newValue != null && newValue.getGameState() == GameStatus.DONE){
+                agentClientDM.kill();
+                DataService.restartFetching();
+            }
         });
         log.info("AppController - app initialized");
+    }
+
+    private boolean candidateAlreadyExists(EncryptionCandidate newCandidate, List<EncryptionCandidate> candidateList) {
+        for (EncryptionCandidate candidate: candidateList ) {
+            if(candidate.getCandidate().equals(newCandidate.getCandidate())){
+                return true;
+            }
+        }
+        return false;
     }
 
     public void showMessage(String message) {

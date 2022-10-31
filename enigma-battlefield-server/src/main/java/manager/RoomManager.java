@@ -80,10 +80,21 @@ public class RoomManager {
     public void checkWin(ContestRoom contestRoom, String originalWord, UserManager userManager) {
         List<EncryptionCandidate> encryptionCandidateList = contestRoom.getEncryptionCandidateList();
         for(EncryptionCandidate candidate: encryptionCandidateList){
-            if(candidate.getCandidate().toUpperCase().equals(originalWord)){
+            if(candidate.getCandidate().toUpperCase().equals(originalWord.toUpperCase())){
                 contestRoom.setGameStatus(GameStatus.DONE);
                 contestRoom.setWinnerName(candidate.getAllyTeamName());
+                break;
             }
+        }
+    }
+
+    public void clearAllDms(ContestRoom contestRoom){
+        if(contestRoom == null){
+            return;
+        }
+        List<Ally> allAllies = contestRoom.getAlliesList();
+        for (Ally ally : allAllies) {
+            ally.getDecryptionManager().kill();
         }
     }
 

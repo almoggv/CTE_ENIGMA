@@ -48,8 +48,8 @@ public class AgentClientDMImpl implements AgentClientDM {
     @Getter private final int maxNumberOfTasks;
     @Getter @Setter private int internalAgentTaskSize = PropertiesService.getDefaultTaskSize();
     private final ThreadPoolExecutor threadPoolService;
-    @Getter private final MachineHandler machineHandler;
-    private List<List<MachineState>> workBatches = new ArrayList<>();
+    @Getter private MachineHandler machineHandler;
+    private final List<List<MachineState>> workBatches = new ArrayList<>();
     private boolean isKilled = false;
 
     @Getter private final ObjectProperty<DecryptionWorker> newestAgentProperty = new SimpleObjectProperty<>();
@@ -196,8 +196,13 @@ public class AgentClientDMImpl implements AgentClientDM {
 //    }
 
     @Override
-    public void kill() {
+    public synchronized void kill() {
         isKilled = true;
+        listenerAdapter.kill();
+        inputToDecrypt = "";
+        machineHandler = null;
+        workBatches.clear();
+        threadPoolService.shutdown();
         log.info("AgentClientDM - was killed");
     }
 

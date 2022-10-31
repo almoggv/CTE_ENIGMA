@@ -18,6 +18,7 @@ import org.apache.log4j.PropertyConfigurator;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 import java.util.Set;
@@ -53,6 +54,7 @@ public class DataService {
     private static final String contestDataUrl;
     private static final String candidatesUrl;
     private static final String gotWinUrl;
+    private static final String dmProgressUrl;
 
     private static final Runnable contestsDataFetcher = new Runnable() {
         @Override
@@ -241,11 +243,11 @@ public class DataService {
                         log.error("Failed to fetch candidates - statusCode=" + response.code() + ", ServerMessage=" + payload.getMessage());
                     }
                     else {
-                        log.debug("Candidates Successfully Fetched - responseCode = 200, ServerMessage=" + payload.getEncryptionCandidateList());
-//                        if(payload.getEncryptionCandidateList() != null
-//                        && !payload.getEncryptionCandidateList().isEmpty()){
-                            getLastCandidatesProperty().setValue(payload.getEncryptionCandidateList());
-//                        }
+                        log.debug("Candidates Successfully Fetched - responseCode = 200, payload=" + payload);
+                        List<EncryptionCandidate> newList = new ArrayList<>(getLastCandidatesProperty().get());
+                        newList.add(payload.getEncryptionCandidateList().get(payload.getEncryptionCandidateList().size()-1));
+                        getLastCandidatesProperty().setValue(newList);
+
                     }
                 }
             });
@@ -254,7 +256,7 @@ public class DataService {
     private static final Runnable dmProgressFetcher = new Runnable() {
         @Override
         public void run() {
-            HttpClientService.runAsync(candidatesUrl, new Callback(){
+            HttpClientService.runAsync(dmProgressUrl, new Callback(){
                 @Override
                 public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                     String responseBody = response.body().string();
@@ -313,6 +315,11 @@ public class DataService {
                 .toString();
         gotWinUrl = HttpUrl
                 .parse(PropertiesService.getApiGotWinUrl())
+                .newBuilder()
+                .build()
+                .toString();
+        dmProgressUrl = HttpUrl
+                .parse(PropertiesService.getApiDmWorkProgressUrl())
                 .newBuilder()
                 .build()
                 .toString();
