@@ -18,7 +18,9 @@ import utils.SessionUtills;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Properties;
 
 import static jakarta.servlet.http.HttpServletResponse.*;
@@ -58,15 +60,21 @@ public class AllyGetCandidates extends HttpServlet {
         }
 
         DecryptionResultPayload payload = new DecryptionResultPayload();
-        resp.setStatus(SC_OK);
         Ally ally = userManager.getAllyByName(usernameFromSession);
         if(ally == null){
             resp.setStatus(SC_UNAUTHORIZED);
             respWriter.print("Not an ally.");
             return;
         }
-        payload.setEncryptionCandidateList(Arrays.asList(ally.getEncryptionCandidateList().get(ally.getEncryptionCandidateList().size()-1)));
+        List<EncryptionCandidate> currCandidateList =  ally.getEncryptionCandidateList();
+        if(currCandidateList == null || currCandidateList.isEmpty()){
+            payload.setEncryptionCandidateList(new ArrayList<>());
+        }
+        else{
+            payload.setEncryptionCandidateList(Arrays.asList(ally.getEncryptionCandidateList().get(ally.getEncryptionCandidateList().size()-1)));
+        }
 
+        resp.setStatus(SC_OK);
         Gson gson = new Gson();
         resp.setHeader(PropertiesService.getHttpHeaderContentType(),PropertiesService.getJsonHttpContentType());
         respWriter.print(gson.toJson(payload));

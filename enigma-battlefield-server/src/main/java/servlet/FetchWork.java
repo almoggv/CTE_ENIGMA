@@ -114,7 +114,7 @@ public class FetchWork extends HttpServlet {
             workBatchesRecieved.add(newWorkBatch);
         }
         if(workBatchesRecieved == null || workBatchesRecieved.isEmpty() || workBatchesRecieved.get(0).isEmpty() ){
-            log.error("Failed to Fetch work - workBatchesRecieved is empty" + payload);
+            log.error("Failed to Fetch work - work Batches Recieved is null or empty, value= " + workBatchesRecieved + "AllyDM=" + allyClientDM );
             resp.setStatus(SC_INTERNAL_SERVER_ERROR);
             payload.setMessage("Didnt receive a work batch");
             payload.setAmountOfStates(0);

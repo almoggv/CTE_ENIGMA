@@ -250,9 +250,13 @@ public class DataService {
                         else{
                             newList = new ArrayList<>(getLastCandidatesProperty().get());
                         }
-                        newList.add(payload.getEncryptionCandidateList().get(payload.getEncryptionCandidateList().size()-1));
-                        getLastCandidatesProperty().setValue(newList);
-
+                        if(payload == null){
+                            return;
+                        }
+                        if(payload.getEncryptionCandidateList() != null && !payload.getEncryptionCandidateList().isEmpty()){
+                            newList.add(payload.getEncryptionCandidateList().get(payload.getEncryptionCandidateList().size()-1));
+                            getLastCandidatesProperty().setValue(newList);
+                        }
                     }
                 }
             });

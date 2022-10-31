@@ -22,6 +22,7 @@ import utils.SessionUtills;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
@@ -75,10 +76,14 @@ public class UboatGetCandidates extends HttpServlet {
             respWriter.print("Not a uboat.");
             return;
         }
-
-        List<EncryptionCandidate> candidateList = uboat.getContestRoom().getEncryptionCandidateList();
+        List<EncryptionCandidate> candidateList;
+        if(uboat.getContestRoom() == null || uboat.getContestRoom().getEncryptionCandidateList() == null){
+            candidateList = new ArrayList<>();
+        }
+        else{
+            candidateList = uboat.getContestRoom().getEncryptionCandidateList();
+        }
         payload.setEncryptionCandidateList(candidateList);
-
         Gson gson = new Gson();
         resp.setHeader(PropertiesService.getHttpHeaderContentType(),PropertiesService.getJsonHttpContentType());
         respWriter.print(gson.toJson(payload));

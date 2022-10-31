@@ -162,6 +162,9 @@ public class HeaderController implements Initializable {
             log.error("Failed to logout - ParentController is null");
         }
     }
+
+    public void onChangeSceneToDashboardButtonClick(ActionEvent actionEvent) {
+    }
 }
 
 

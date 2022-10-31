@@ -42,6 +42,10 @@ public class AllyClientDMImpl implements AllyClientDM {
 
     private boolean isKilled = false;
 
+    private boolean didDisplayLogErrMessage = false;
+    private int tiks = 0;
+    private int tikInterval = 1000000;
+
     public AllyClientDMImpl(DecryptionDifficultyLevel difficultyLevel, int taskSize, InventoryInfo inventoryInfo) {
         this.difficultyLevel = difficultyLevel;
         this.taskSize = taskSize;
@@ -61,7 +65,16 @@ public class AllyClientDMImpl implements AllyClientDM {
                 progressProperty.setValue(new MappingPair<>(0L,calculateAmountOfWork()));
             }
             fillQueueWithWork();
+            updateLogErrDisplayFlag();
         }
+    }
+
+    private void updateLogErrDisplayFlag(){
+        if(tiks >= tikInterval){
+            didDisplayLogErrMessage = false;
+            tiks=0;
+        }
+        tiks++;
     }
 
     @Override
@@ -69,7 +82,9 @@ public class AllyClientDMImpl implements AllyClientDM {
         if(workBatchesQueue.isEmpty()){
             return null;
         }
+        log.info("GetNextBatch - Queue size before poll=" + workBatchesQueue.size());
         List<MachineState> nextBatch = workBatchesQueue.poll();
+        log.info("GetNextBatch - Queue size AFTER poll=" + workBatchesQueue.size());
         //update progress
         MappingPair<Long,Long> newProgress = new MappingPair<>(progressProperty.get().getLeft(),progressProperty.get().getRight());
         newProgress.setLeft(newProgress.getLeft() + nextBatch.size());
@@ -123,13 +138,22 @@ public class AllyClientDMImpl implements AllyClientDM {
 
     private void fillQueueWithWork(){
         if(workBatchesQueue.isEmpty()){
-            log.info("Beginning to fill Queue - progress="+ progressProperty.get());
+            if(!didDisplayLogErrMessage) {
+                log.info("Beginning to fill Queue - progress=" + progressProperty.get());
+            }
         }
         if(workBatchesQueue.size() >= PropertiesService.getMaxWorkBatchesQueueSize()){
-//            log.info("Queue is full of work, size=" + workBatchesQueue.size() + "/" + PropertiesService.getMaxWorkBatchesQueueSize());
+            if(!didDisplayLogErrMessage){
+                log.warn("fillQueueWithWork - Queue is full of work, size=" + workBatchesQueue.size() + "/" + PropertiesService.getMaxWorkBatchesQueueSize());
+            }
+            didDisplayLogErrMessage = true;
             return;
         }
         if(progressProperty.get().getLeft() >= progressProperty.get().getRight()){
+            if(!didDisplayLogErrMessage){
+            log.warn("fillQueueWithWork - will not fill queue, progress exceeded max. Value=" + progressProperty.get());
+            }
+            didDisplayLogErrMessage = true;
             return;
         }
         MachineState lastUsedState = (this.lastCreatedworkBatchLastState == null) ? initialMachineConfig : this.lastCreatedworkBatchLastState;
