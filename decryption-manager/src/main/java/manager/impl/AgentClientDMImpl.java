@@ -53,7 +53,7 @@ public class AgentClientDMImpl implements AgentClientDM {
     private boolean isKilled = false;
 
     @Getter private final ObjectProperty<DecryptionWorker> newestAgentProperty = new SimpleObjectProperty<>();
-    private final BooleanProperty isWorkCompletedProperty = new SimpleBooleanProperty(true);
+    @Getter private final BooleanProperty isReadyForMoreWorkProperty = new SimpleBooleanProperty(true);
 
     //To Prevent Spamming:
     private boolean didLogComponentsReadyMsg = false;
@@ -75,6 +75,8 @@ public class AgentClientDMImpl implements AgentClientDM {
         this.threadPoolService = new ThreadPoolExecutor(threadPoolSize, threadPoolSize,
                 keepAliveForWhenIdle , TimeUnit.SECONDS, new ArrayBlockingQueue(THREAD_POOL_QEUEU_DEFAULT_MAX_CAPACITY));
         this.addPropertyListeners();
+        isReadyForMoreWorkProperty.setValue(true);
+        listenerAdapter.getProgressProperty().setValue(new MappingPair<>(0,0));
     }
 
     private void addPropertyListeners(){
@@ -85,12 +87,7 @@ public class AgentClientDMImpl implements AgentClientDM {
             listenerAdapter.connectToAgent(newNewestAgent);
         });
         listenerAdapter.getProgressProperty().setValue(null);
-//        listenerAdapter.getFinishedWorkProgressProperty().addListener((observable, oldValue, newValue) -> {
-//            if(newValue != null && newValue.getLeft() >= newValue.getRight()){
-//                workToDo.clear();
-//            }
-//        });
-//        listenerAdapter.getIsWorkCompletedProperty().bindBidirectional(this.isWorkCompletedProperty);
+
     }
 
     @Override
@@ -99,16 +96,21 @@ public class AgentClientDMImpl implements AgentClientDM {
         listenerAdapterThread.start();
         this.isKilled = false;
         int ticks =0;   //for testing
-        int ticksPerPrint = 100000000;  //for testing
+        int ticksPerPrint = 1000000;  //for testing
         while(!isKilled){
             // Prevent Log Spamming - for testing
             ticks++;
             if(ticks % ticksPerPrint == 0){
                 log.info("AgentClientDM is running");
                 ticks = 0;
+                if(workBatches.isEmpty()){
+                    log.info("AgentClient - assigned all current workBatches to Workers, WorkBatches Size=" + workBatches.size());
+                }
+                if(!areComponentsReadyForWork()) {
+                    log.warn("Components are not ready for work yet");
+                }
             }
             if(!areComponentsReadyForWork()){
-                log.warn("Components are not ready for work yet");
                 continue;
             }
             ///////////////////////////////////
@@ -118,6 +120,9 @@ public class AgentClientDMImpl implements AgentClientDM {
                 newAgent.assignWork(batch, inputToDecrypt);
                 newestAgentProperty.setValue(newAgent);
                 threadPoolService.execute(newAgent);
+            }
+            if(workBatches.isEmpty() && listenerAdapter.getIsWorkCompletedProperty().get()){
+                isReadyForMoreWorkProperty.setValue(true);
             }
         }
         //when killed:
@@ -154,7 +159,7 @@ public class AgentClientDMImpl implements AgentClientDM {
     }
 
     @Override
-    public void assignWork(List<MachineState> assignedWork,String inputToDecrypt) throws IllegalArgumentException , NullPointerException , RuntimeException {
+    synchronized public void assignWork(List<MachineState> assignedWork,String inputToDecrypt) throws IllegalArgumentException , NullPointerException , RuntimeException {
         if(inputToDecrypt == null && (this.inputToDecrypt == null || this.inputToDecrypt.isEmpty())){
             log.error("AgentClientDMImpl - failed to assign work, missing input to decrypt");
             return;
@@ -164,21 +169,31 @@ public class AgentClientDMImpl implements AgentClientDM {
             log.warn("Failed to assign work, given workload is null or empty");
             return;
         }
+        isReadyForMoreWorkProperty.setValue(false);
+        //Update Listeners progress:
+        synchronized (listenerAdapter.getProgressProperty()){
+            MappingPair<Integer,Integer> currentProgress = listenerAdapter.getProgressProperty().get();
+            int newMaxProgress = currentProgress.getRight() + assignedWork.size();
+            int currActualProgress = currentProgress.getLeft();
+            MappingPair<Integer,Integer> newProgress = new MappingPair<>(currActualProgress,newMaxProgress);
+            listenerAdapter.getProgressProperty().setValue(newProgress);
+        }
+        //////////////////////////
         List<List<MachineState>> newWorkBatches = ListUtils.partition(assignedWork, internalAgentTaskSize, true);
         workBatches.addAll(newWorkBatches);
-        updateListenerMaxProgress(assignedWork.size());
+//        updateListenerMaxProgress(assignedWork.size()); //is doing so him self through connect to worker
         log.info("AgentClientDm - received work, workAmount=" + assignedWork.size() + ", on Input="+ this.inputToDecrypt);
     }
 
-    private void updateListenerMaxProgress(int amount) {
-        if(listenerAdapter.getProgressProperty().get() == null){
-            MappingPair<Integer,Integer> newProgress =new MappingPair<>(0,0);
-            listenerAdapter.getProgressProperty().setValue(newProgress);
-            return;
-        }
-        MappingPair<Integer,Integer> newProgress =new MappingPair<>(listenerAdapter.getProgressProperty().get().getLeft(),listenerAdapter.getProgressProperty().get().getRight() + amount);
-        listenerAdapter.getProgressProperty().setValue(newProgress);
-    }
+//    private void updateListenerMaxProgress(int amount) {
+//        if(listenerAdapter.getProgressProperty().get() == null){
+//            MappingPair<Integer,Integer> newProgress =new MappingPair<>(0,0);
+//            listenerAdapter.getProgressProperty().setValue(newProgress);
+//            return;
+//        }
+//        MappingPair<Integer,Integer> newProgress =new MappingPair<>(listenerAdapter.getProgressProperty().get().getLeft(),listenerAdapter.getProgressProperty().get().getRight() + amount);
+//        listenerAdapter.getProgressProperty().setValue(newProgress);
+//    }
 
     @Override
     public void kill() {

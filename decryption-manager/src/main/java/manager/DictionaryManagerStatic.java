@@ -85,7 +85,7 @@ public class DictionaryManagerStatic {
         return true;
     }
 
-    private static String cleanWord(String word) {
+    public static String cleanWord(String word) {
         for (int i = 0; i < word.length(); i++) {
             for (String excludedChar : excludeChars) {
                 word = word.trim().replace(excludedChar, EMPTY_CHAR).toUpperCase();

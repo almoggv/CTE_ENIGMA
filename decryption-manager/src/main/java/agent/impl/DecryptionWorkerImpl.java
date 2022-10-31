@@ -51,6 +51,14 @@ public class DecryptionWorkerImpl implements DecryptionWorker {
                 log.debug("Triggered inside Worker - Worker with id=[" + id + "] - FOUND CANDIDATE = " + newValue);
             }
         });
+        this.progressProperty.addListener((observable, oldValue, newValue) -> {
+            if(newValue == null){
+                return;
+            }
+            if(newValue.getLeft() >= newValue.getRight()){
+                isWorkerFinishedWorkProperty.setValue(true);
+            }
+        });
     }
 
     @Override
@@ -78,14 +86,16 @@ public class DecryptionWorkerImpl implements DecryptionWorker {
         if(DictionaryManagerStatic.getDictionary().isEmpty()){
             log.warn("Dictionary is empty");
         }
+
         log.info("Worker [" + id + "] - started running on input=" + inputToDecrypt);
         for (MachineState state : workToDo ) {
             encryptionMachine.setMachineState(state);
+            state = encryptionMachine.getMachineState().get();
             String decryptedWord = encryptionMachine.decrypt(inputToDecrypt);
             if(DictionaryManagerStatic.isInDictionary(decryptedWord)){
                 DecryptionCandidateInfo newCandidate = new DecryptionCandidateInfo();
                 newCandidate.setInput(inputToDecrypt);
-                newCandidate.setOutput(decryptedWord);
+                newCandidate.setOutput(DictionaryManagerStatic.cleanWord(decryptedWord));
                 newCandidate.setInitialState(state);
                 newCandidate.setResponsibleAgentId(this.id);
                 //Updating Properties
@@ -95,10 +105,20 @@ public class DecryptionWorkerImpl implements DecryptionWorker {
                 allFoundDecryptionCandidatesProperty.setValue(updatedList);
             }
             //Updating progress
-            MappingPair<Integer,Integer> updatedProgress = new MappingPair<>(progressProperty.get().getLeft(),progressProperty.get().getRight());
-            progressProperty.setValue(updatedProgress);
+            updateProgress();
         }
         isWorkerFinishedWorkProperty.setValue(true);
+    }
+
+    private void updateProgress() {
+        if(progressProperty.get() == null){
+            int maxProgress = (workToDo == null) ? 0 : workToDo.size();
+            progressProperty.setValue(new MappingPair<>(0,maxProgress));
+            return;
+        }
+        MappingPair<Integer,Integer> updatedProgress = new MappingPair<>(progressProperty.get().getLeft() + 1,progressProperty.get().getRight());
+        progressProperty.setValue(updatedProgress);
+
     }
 
     private void updateWorkerPropertiesToFinished(){

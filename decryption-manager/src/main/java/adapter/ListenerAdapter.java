@@ -54,6 +54,9 @@ public class ListenerAdapter implements Runnable{
                 agentIdToDecryptAgentMap.clear();
                 isWorkCompletedProperty.setValue(true);
             }
+            else{
+                isWorkCompletedProperty.setValue(false);
+            }
         });
     }
 
@@ -69,19 +72,19 @@ public class ListenerAdapter implements Runnable{
         agentIdToDecryptAgentMap.putIfAbsent(newAgent.getId(),newAgent);
         newAgent.getAllFoundDecryptionCandidatesProperty().addListener((observable, oldValue, newValue) -> {
             synchronized (this){
-                if(!newValue.isEmpty()){
+                if(newValue != null && !newValue.isEmpty()){
                     List<DecryptionCandidateInfo> newListToTriggerChange = new ArrayList<>(decryptionCandidatesProperty.get());
                     newListToTriggerChange.addAll(newValue);
                     this.decryptionCandidatesProperty.setValue(newListToTriggerChange);
                 }
             }
         });
-        newAgent.getProgressProperty().addListener((observable, oldValue, newValue) -> {
-            if(newAgent.getIsWorkerFinishedWorkProperty().get()){
-                synchronized (this){
-                    int currentProgress = newAgent.getProgressProperty().get().getRight() + this.finishedWorkProgressProperty.get().getLeft();
-                    this.finishedWorkProgressProperty.setValue(new MappingPair<Integer,Integer>(currentProgress, this.finishedWorkProgressProperty.get().getRight()));
-                }
+        newAgent.getIsWorkerFinishedWorkProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue == true){
+                int amountOfWorkFinished = (newAgent.getProgressProperty().get() == null) ? 0 : newAgent.getProgressProperty().get().getRight();
+                int newProgress = finishedWorkProgressProperty.get().getLeft() + amountOfWorkFinished;
+                MappingPair<Integer,Integer> updatedProgress = new MappingPair<>(newProgress, finishedWorkProgressProperty.get().getRight());
+                finishedWorkProgressProperty.setValue(updatedProgress);
             }
         });
     }

@@ -24,6 +24,7 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import service.DataService;
 import service.DecryptionWorkPayloadParserService;
+import service.InventoryService;
 import service.PropertiesService;
 
 import java.io.IOException;
@@ -118,19 +119,23 @@ public class AppController implements Initializable {
                     encryptionCandidate.setCandidate(newestCandidateInfo.getOutput());
                     encryptionCandidate.setAllyTeamName(loginComponentController.getAllyTeamName());
                     encryptionCandidate.setFoundByState(newestCandidateInfo.getInitialState());
-                    List<EncryptionCandidate> previousFoundCandidatesList = new ArrayList<>(DataService.getLastCandidatesProperty().get());
-                    previousFoundCandidatesList.add(encryptionCandidate);
-                    DataService.getLastCandidatesProperty().setValue(previousFoundCandidatesList);
+                    if(DataService.getLastCandidatesProperty().get() != null && !DataService.getLastCandidatesProperty().get().isEmpty()){
+                        List<EncryptionCandidate> previousFoundCandidatesList = new ArrayList<>();
+                        previousFoundCandidatesList.add(encryptionCandidate);
+                        DataService.getLastCandidatesProperty().setValue(previousFoundCandidatesList);
+                    }
                 });
-                agentClientDM.getListenerAdapter().getIsWorkCompletedProperty().addListener((observable1, oldWorkCompetedStatus, newWorkCompletedStatus) -> {
-                    if(newWorkCompletedStatus == true){
-                        MachineHandler machineHandler1 = agentClientDM.getMachineHandler();
-                        DecryptionWorkPayload zippedWork = null;
-                        while(zippedWork == null){
-                            zippedWork = DataService.fetchWorkBatch(agentClientDM.getMaxNumberOfTasks());
+                agentClientDM.getIsReadyForMoreWorkProperty().addListener((observable1, oldReadyForMoreValue, newReadyForMoreValue) -> {
+                    if(newReadyForMoreValue == true){
+                        synchronized (agentClientDM){
+                            MachineHandler machineHandler1 = agentClientDM.getMachineHandler();
+                            DecryptionWorkPayload zippedWork = null;
+                            while(zippedWork == null){
+                                zippedWork = DataService.fetchWorkBatch(agentClientDM.getMaxNumberOfTasks());
+                            }
+                            List<MachineState> unzippedWork = DecryptionWorkPayloadParserService.unzip(zippedWork,machineHandler1.getInventoryInfo().get());
+                            agentClientDM.assignWork(unzippedWork,zippedWork.getInputToDecrypt());
                         }
-                        List<MachineState> unzippedWork = DecryptionWorkPayloadParserService.unzip(zippedWork,machineHandler1.getInventoryInfo().get());
-                        agentClientDM.assignWork(unzippedWork,zippedWork.getInputToDecrypt());
                     }
                 });
                 //Start running
@@ -140,13 +145,19 @@ public class AppController implements Initializable {
                 while(DictionaryManagerStatic.getDictionary().isEmpty()){
                     DataService.loadDictionaryManager();
                 }
+                log.info("App - loaded Dictionary");
+                InventoryService.setReflectorsInventory(machineHandler.getInventoryComponents().get().getReflectorsInventory());
+                log.info("App - loaded Inventory service");
                 //Fetch work:
                 DecryptionWorkPayload zippedWork = DataService.fetchWorkBatch(agentClientDM.getMaxNumberOfTasks());
                 while(zippedWork == null){
                     zippedWork = DataService.fetchWorkBatch(agentClientDM.getMaxNumberOfTasks());
                 }
+                log.info("App - first work batch fetched, Value=" + zippedWork);
                 List<MachineState> unzippedWork = DecryptionWorkPayloadParserService.unzip(zippedWork,machineHandler.getInventoryInfo().get());
+                log.info("App - first work batch unzipped - amount=" + unzippedWork.size());
                 agentClientDM.assignWork(unzippedWork,zippedWork.getInputToDecrypt());
+                log.info("App - first work batch assigned to AgentClientDM");
             }
         });
     }
