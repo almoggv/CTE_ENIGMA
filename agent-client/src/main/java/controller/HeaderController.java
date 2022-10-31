@@ -193,6 +193,7 @@ public class HeaderController implements Initializable {
                         DataService.getLastCandidatesProperty().setValue(null);
                         DataService.getAgentsListStateProperty().setValue(null);
                         DataService.getGameStatusProperty().setValue(new GameStatePayload());
+                        parentController.getAgentClientDM().kill();
                     });
                 }
             }

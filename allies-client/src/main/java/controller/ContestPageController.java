@@ -136,7 +136,7 @@ public class ContestPageController implements Initializable {
             });
         });
 
-        clearScreenButton.setDisable(true);
+//        clearScreenButton.setDisable(true);
     }
 
     @FXML
@@ -160,7 +160,7 @@ public class ContestPageController implements Initializable {
             progressBar.setProgress(0);
             statusValueLabel.setText("");
             progressPrecentageValueLabel.setText("0");
-            clearScreenButton.setDisable(true);
+//            clearScreenButton.setDisable(true);
         });
     }
 

@@ -40,7 +40,7 @@
          </content>
       </ScrollPane>
       <Label text="Candidates" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-      <Button fx:id="clearScreenButton" disable="true" mnemonicParsing="false" onAction="#onClearScreenButtonClick" text="Clear Screen" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <Button fx:id="clearScreenButton" mnemonicParsing="false" onAction="#onClearScreenButtonClick" text="Clear Screen" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>
