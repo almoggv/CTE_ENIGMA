@@ -83,7 +83,17 @@ public class AllyClientDMImpl implements AllyClientDM {
             return null;
         }
         log.info("GetNextBatch - Queue size before poll=" + workBatchesQueue.size());
-        List<MachineState> nextBatch = workBatchesQueue.poll();
+        List<MachineState> nextBatch = workBatchesQueue.peek();
+        if(nextBatch != null){
+            try{
+                workBatchesQueue.remove();
+            }
+            catch (Exception e){
+                //ignore
+            }
+        }
+
+
         log.info("GetNextBatch - Queue size AFTER poll=" + workBatchesQueue.size());
         //update progress
         MappingPair<Long,Long> newProgress = new MappingPair<>(progressProperty.get().getLeft(),progressProperty.get().getRight());
