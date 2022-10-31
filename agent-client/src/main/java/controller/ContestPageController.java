@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ScrollPane;
@@ -52,6 +53,8 @@ public class ContestPageController implements Initializable {
     @FXML private Label statusValueLabel;
     @FXML private Label progressPrecentageValueLabel;
     @FXML private ProgressBar progressBar;
+    @FXML private Button clearScreenButton;
+
 
     AppController parentController;
 
@@ -73,7 +76,6 @@ public class ContestPageController implements Initializable {
                 });
             }
         });
-
         DataService.getGameStatusProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue == null){
                 return;
@@ -81,15 +83,16 @@ public class ContestPageController implements Initializable {
             if(newValue != null && newValue.getGameState() == GameStatus.READY){
                 Platform.runLater(()->{
                     showMessage("Contest starting!");
+                    clearScreenButton.setDisable(false);
                 });
             }
             else if (newValue != null && newValue.getGameState() == GameStatus.DONE) {
                 Platform.runLater(()->{
                     showMessage("Contest done! Winner is: " + newValue.getWinner());
+                    clearScreenButton.setDisable(false);
                 });
             }
         });
-
         DataService.getLastCandidatesProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue != null && !newValue.isEmpty()){
 //                createCandidatesComponents(newValue);
@@ -98,12 +101,31 @@ public class ContestPageController implements Initializable {
         });
     }
 
+    @FXML
+    void onClearScreenButtonClick(ActionEvent event) {
+        DataService.getCurrentTeamsProperty().setValue(null);
+        DataService.getCurrentContestRoomStateProperty().setValue(null);
+        DataService.getGameStatusProperty().setValue(null);
+        DataService.getLastCandidatesProperty().setValue(null);
+        DataService.sendGotWin();
+        Platform.runLater(()->{
+            agentsDataFlowPane.getChildren().clear();
+            contestDataFlowPane.getChildren().clear();
+            dmResultsFlowPane.getChildren().clear();
+            progressBar.setProgress(0);
+            progressPrecentageValueLabel.setText("0");
+            clearScreenButton.setDisable(true);
+        });
+    }
+
     public void setParentController(AppController appController) {
         this.parentController = appController;
     }
+
     public GridPane getRootComponent() {
         return  rootGridPane;
     }
+
     public void showMessage(String message){
         parentController.showMessage(message);
     }
@@ -128,6 +150,7 @@ public class ContestPageController implements Initializable {
             }
         });
     }
+
     private void createAgentsDataComponents(List<AgentData> agentDataList) {
         Platform.runLater(() -> {
             try {

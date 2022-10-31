@@ -142,6 +142,10 @@ public class AppController implements Initializable {
                             while(zippedWork == null && (DataService.getGameStatusProperty().get() != null && DataService.getGameStatusProperty().get().getGameState() != GameStatus.DONE)){
                                 zippedWork = DataService.fetchWorkBatch(agentClientDM.getMaxNumberOfTasks());
                             }
+                            if(DataService.getGameStatusProperty().get() != null && DataService.getGameStatusProperty().get().getGameState() != GameStatus.DONE){
+                                log.info("Not Fetching Work (inside event listener), game status=" + DataService.getGameStatusProperty().get().getGameState());
+                                return;
+                            }
                             List<MachineState> unzippedWork = DecryptionWorkPayloadParserService.unzip(zippedWork,machineHandler1.getInventoryInfo().get());
                             agentClientDM.assignWork(unzippedWork,zippedWork.getInputToDecrypt());
                         }
