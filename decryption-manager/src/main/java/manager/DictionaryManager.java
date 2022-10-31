@@ -113,7 +113,8 @@ public class DictionaryManager {
             return false;
         }
         String cleanedWord = cleanWord(word);
-        return getDictionary().containsKey(cleanedWord);
+        String capitalCaseWord = cleanedWord.substring(0,1).toUpperCase() + cleanedWord.substring(1,cleanedWord.length()).toLowerCase();
+        return getDictionary().containsKey(cleanedWord.toLowerCase()) || getDictionary().containsKey(cleanedWord.toUpperCase()) || getDictionary().containsKey(capitalCaseWord);
     }
 
 }

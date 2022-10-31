@@ -88,6 +88,7 @@ public class AssembleMachineManually extends HttpServlet {
                 machineHandler.assembleMachine(machineState);
                 resp.setStatus(HttpServletResponse.SC_OK);
                 sendPayload.setMessage("Machine assembled successfully");
+                sendPayload.setMachineState(machineHandler.getInitialMachineState().get());
             }
             catch (Exception exception){
                 resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
@@ -97,6 +98,9 @@ public class AssembleMachineManually extends HttpServlet {
         catch (JsonSyntaxException exception){
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             resp.getWriter().print("Problem parsing json file. please try again.");
+        }
+        finally {
+            respWriter.print(gson.toJson(sendPayload));
         }
     }
 

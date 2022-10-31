@@ -112,11 +112,15 @@ public class Encrypt extends HttpServlet {
         DictionaryManager dictionaryManager = user.getContestRoom().getDictionaryManager();
         if(dictionaryManager.getDictionary() ==  null || dictionaryManager.getDictionary().isEmpty()){
             log.error("DictonaryManager from user=" + user.getUsername() + " is null or empty");
+            resp.setStatus(SC_SERVICE_UNAVAILABLE);
+            responsePayload.setMessage("Dictionary is not configured, dictionary is null or empty");
+            respWriter.print(gson.toJson(responsePayload));
+            return;
         }
         //check words in dictionary:
         if(!dictionaryManager.getDictionary().isEmpty()){
             for (String input : encryptionInputs ){
-                if (!DictionaryManagerStatic.isInDictionary(input)) {
+                if (!dictionaryManager.isInDictionary(input)) {
                     log.info("Encrypt request failed - \"" + input + "\" is not in the dictionary");
                     resp.setStatus(SC_BAD_REQUEST);
                     responsePayload.setMessage("\"" + input + "\" is not in the dictionary");

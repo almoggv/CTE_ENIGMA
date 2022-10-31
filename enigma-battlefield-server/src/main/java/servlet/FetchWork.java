@@ -1,8 +1,10 @@
 package servlet;
 
 import com.google.gson.Gson;
+import dto.AgentData;
 import dto.DecryptionWorkPayload;
 import dto.MachineState;
+import enums.GameStatus;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -12,6 +14,7 @@ import manager.AllyClientDM;
 import manager.UserManager;
 import manager.impl.AllyClientDMImpl;
 import model.Ally;
+import model.Uboat;
 import model.User;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
@@ -75,7 +78,13 @@ public class FetchWork extends HttpServlet {
             respWriter.print(gson.toJson(payload));
             return;
         }
-        Ally currentLoggedInAlly = userManager.getAllyByName(user.getUsername());
+        if(user.getContestRoom().getGameStatus() != GameStatus.READY && user.getContestRoom().getGameStatus() != GameStatus.IN_PROGRESS){
+            resp.setStatus(SC_UNAUTHORIZED);
+            payload.setMessage("Contest Have not started yet");
+            respWriter.print(gson.toJson(payload));
+            return;
+        }
+        Ally currentLoggedInAlly = findAlly(userManager,user);
         if(currentLoggedInAlly == null){
             log.error("Failed to Fetch work - could not find ally with User=" + user);
             resp.setStatus(SC_INTERNAL_SERVER_ERROR);
@@ -97,6 +106,9 @@ public class FetchWork extends HttpServlet {
         int  amountOfStates = 0;
         for (int i = 0; i < batchSize ; i++) {
             List<MachineState> newWorkBatch = allyClientDM.getNextBatch();
+            if(newWorkBatch == null){
+                break;
+            }
             amountOfStates += newWorkBatch.size();
             workBatchesRecieved.add(newWorkBatch);
         }
@@ -110,5 +122,21 @@ public class FetchWork extends HttpServlet {
         resp.setStatus(SC_OK);
         respWriter.print(gson.toJson(payload));
         return;
+    }
+
+    private Ally findAlly(UserManager userManager, User user){
+        Ally foundAlly = userManager.getAllyByName(user.getUsername());
+        if(foundAlly!=null){
+            return foundAlly;
+        }
+        AgentData agent = userManager.getAgentByName(user.getUsername());
+        if(agent != null){
+            return userManager.getAllyByName(agent.getAllyName());
+        }
+        Uboat uboat = userManager.getUboatByName(user.getUsername());
+        if(uboat != null){
+            return null;
+        }
+        return null;
     }
 }
