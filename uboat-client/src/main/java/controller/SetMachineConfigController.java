@@ -112,28 +112,26 @@ public class SetMachineConfigController implements Initializable {
             Label idLabel = (Label) rotorsHbox.getChildren().get(0);
             rotorsHbox.getChildren().clear();
             rotorsHbox.getChildren().add(idLabel);
+            ObservableList<ComboBoxItem<String>> observableRotorIdList = createRotorsIdsObservableList(inventoryInfo);
+            for (int i = 1; i <= numOfNeededRotors; i++) {
+                ComboBox<ComboBoxItem<String>> rotorsIdsComboBox = new ComboBox<>(observableRotorIdList);
+                rotorsIdsComboBox.setCellFactory(param -> new ComboBoxCell<String>());
+                rotorsIdsComboBox.setButtonCell(new ComboBoxCell<String>());
+                validationSupport.registerValidator(rotorsIdsComboBox, Validator.createEmptyValidator("Selection required"));
+                rotorsHbox.getChildren().add(rotorsIdsComboBox);
+                rotorsIdsComboBox.setOnAction(e ->
+                rotorsIdsComboBox.getSelectionModel().getSelectedItem().setChosen(true));
+            }
         });
-        ObservableList<ComboBoxItem<String>> observableRotorIdList = createRotorsIdsObservableList(inventoryInfo);
-        for (int i = 1; i <= numOfNeededRotors; i++) {
-            ComboBox<ComboBoxItem<String>> rotorsIdsComboBox = new ComboBox<>(observableRotorIdList);
-            rotorsIdsComboBox.setCellFactory(param -> new ComboBoxCell<String>());
-            rotorsIdsComboBox.setButtonCell(new ComboBoxCell<String>());
-            validationSupport.registerValidator(rotorsIdsComboBox, Validator.createEmptyValidator("Selection required"));
-            rotorsHbox.getChildren().add(rotorsIdsComboBox);
-            rotorsIdsComboBox.setOnAction(e ->
-            rotorsIdsComboBox.getSelectionModel().getSelectedItem().setChosen(true));
-        }
     }
 
     private ObservableList<ComboBoxItem<String>> createRotorsIdsObservableList(InventoryInfo inventoryInfo) {
         int numOfAvailableRotors = inventoryInfo.getNumOfAvailableRotors();
         List<ComboBoxItem<String>> availableIdsList = new ArrayList<>(numOfAvailableRotors);
-        Platform.runLater(()-> {
             for (int i = 1; i <= numOfAvailableRotors; i++) {
                 ComboBoxItem<String> item = new ComboBoxItem<String>(String.valueOf(i));
                 availableIdsList.add(item);
             }
-        });
         ObservableList<ComboBoxItem<String>> observableRotorIdList = FXCollections.observableList(
                 availableIdsList,
                 comboBoxItem -> new Observable[]{comboBoxItem.isChosenProperty()}
