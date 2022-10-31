@@ -79,14 +79,14 @@ public class DataService {
                     else {
                         log.debug("Contest data Successfully Fetched - responseCode = 200, ServerMessage=" + payload.getContestRoom());
                         if(payload.getContestRoom() != null  ){
-//                            currentContestRoomStateProperty.setValue(null);
                             currentContestRoomStateProperty.setValue(payload.getContestRoom());
-                            if( payload.getContestRoom().getGameStatus()!= gameStatusProperty.get().getGameState() ){
+                            //todo: check if fixed or causes other issues
+                            if(gameStatusProperty.get() != null && payload.getContestRoom().getGameStatus()!= gameStatusProperty.get().getGameState() ){
                                 gameStatusProperty.setValue(new GameStatePayload(null, payload.getContestRoom().getGameStatus(), payload.getContestRoom().getWinnerName()));
                             }
-                            if(gameStatusProperty.get().getGameState() == GameStatus.DONE){
-//                                sendGotWin(); //Prevent Cleanup
-                            }
+//                            if(gameStatusProperty.get().getGameState() == GameStatus.DONE){
+////                                sendGotWin(); //Prevent Cleanup
+//                            }
                         }
                     }
                 }

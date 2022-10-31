@@ -53,7 +53,7 @@ public class AppController implements Initializable {
 
     @FXML @Getter HeaderController headerComponentController;
     @FXML @Getter LoginController loginComponentController;
-    @FXML private ContestPageController contestPageController;
+    @FXML @Getter private ContestPageController contestPageController;
 
     @Setter @Getter private Stage primaryStage;
     @FXML private BorderPane appBorderPane;
@@ -141,7 +141,7 @@ public class AppController implements Initializable {
                             while(zippedWork == null && (DataService.getGameStatusProperty().get() != null && DataService.getGameStatusProperty().get().getGameState() != GameStatus.DONE)){
                                 zippedWork = DataService.fetchWorkBatch(agentClientDM.getMaxNumberOfTasks());
                             }
-                            if(DataService.getGameStatusProperty().get() != null && DataService.getGameStatusProperty().get().getGameState() != GameStatus.DONE){
+                            if(DataService.getGameStatusProperty().get() != null && DataService.getGameStatusProperty().get().getGameState() == GameStatus.DONE){
                                 log.info("Not Fetching Work (inside event listener), game status=" + DataService.getGameStatusProperty().get().getGameState());
                                 return;
                             }

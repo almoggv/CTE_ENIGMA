@@ -85,7 +85,9 @@ public class DashboardPageController implements Initializable {
                 }
             }
             else{
-                contestDataFlowPane.getChildren().clear();
+                Platform.runLater(()->{
+                    contestDataFlowPane.getChildren().clear();
+                });
             }
         });
 

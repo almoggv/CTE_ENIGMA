@@ -166,7 +166,7 @@ public class DataService {
 //                            startPullingCandidates();
                         }
                         else if(payload.getGameState().equals(GameStatus.DONE)){
-                            sendGotWin();
+//                            sendGotWin();
                         }
                     }
                 }

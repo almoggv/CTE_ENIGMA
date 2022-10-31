@@ -188,11 +188,11 @@ public class HeaderController implements Initializable {
                         parentController.loginComponentController.getAllyNameProperty().setValue("");
                         parentController.headerComponentController.isLoggedInProperty.setValue(false);
 
+                        DataService.getCurrentContestRoomStateProperty().setValue(null);
                         DataService.getGameStatusProperty().setValue(null);
                         DataService.getLastCandidatesProperty().setValue(null);
                         DataService.getAgentsListStateProperty().setValue(null);
                         DataService.getGameStatusProperty().setValue(new GameStatePayload());
-                        DataService.getCurrentContestRoomStateProperty().setValue(null);
                     });
                 }
             }

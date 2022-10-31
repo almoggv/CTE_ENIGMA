@@ -76,7 +76,7 @@ public class ContestPageController implements Initializable {
                 });
                 return;
             }
-            boolean isLoggedIn =parentController.headerComponentController.getIsLoggedInProperty().get();
+            boolean isLoggedIn = parentController.headerComponentController.getIsLoggedInProperty().get();
             if(isLoggedIn && newValue == null ){
                 Platform.runLater(()->{
                     clearContestPageContent();

@@ -214,7 +214,6 @@ public class DataService {
                 }
             });
         }
-
     };
     private static final Runnable candidatesFetcher = new Runnable() {
         @Override

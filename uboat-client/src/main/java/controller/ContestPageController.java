@@ -60,6 +60,8 @@ public class ContestPageController implements Initializable {
 
     public FlowPane teamsFlowPane;
 
+    @FXML private Button clearScreenButton;
+
     @FXML
     void onLogoutButtonAction(ActionEvent event) {
 
@@ -98,8 +100,8 @@ public class ContestPageController implements Initializable {
                     showMessage("Contest done! Winner is: " + newValue.getWinner());
                     DataService.getLastCandidatesProperty().setValue(null);
                     Platform.runLater(()->{
-                        teamsFlowPane.getChildren().clear();
-                        dmResultsFlowPane.getChildren().clear();
+
+                        clearScreenButton.setDisable(false);
                     });
                 });
             }}
@@ -175,6 +177,22 @@ public class ContestPageController implements Initializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        });
+    }
+
+    @FXML
+    void onClearScreenButtonClick(ActionEvent event) {
+        clearContestPageContent();
+    }
+
+    public void clearContestPageContent(){
+        DataService.getCurrentTeamsProperty().setValue(null);
+        DataService.getGameStatusProperty().setValue(null);
+        DataService.getLastCandidatesProperty().setValue(null);
+        DataService.sendGotWin();
+        Platform.runLater(()->{
+            teamsFlowPane.getChildren().clear();
+            dmResultsFlowPane.getChildren().clear();
         });
     }
 }

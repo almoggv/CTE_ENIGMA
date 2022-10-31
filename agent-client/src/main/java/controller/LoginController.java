@@ -182,6 +182,7 @@ public class LoginController implements Initializable {
                         parentController.headerComponent.setVisible(true);
                         DataService.startPullingRoomData();
                         DataService.startPullingAgentData();
+                        parentController.getContestPageController().clearContestPageContent();
                     });
                 }
             }

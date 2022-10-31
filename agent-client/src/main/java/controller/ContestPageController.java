@@ -102,8 +102,7 @@ public class ContestPageController implements Initializable {
         clearScreenButton.setDisable(true);
     }
 
-    @FXML
-    void onClearScreenButtonClick(ActionEvent event) {
+    public void clearContestPageContent() {
         DataService.getCurrentTeamsProperty().setValue(null);
         DataService.getCurrentContestRoomStateProperty().setValue(null);
         DataService.getGameStatusProperty().setValue(null);
@@ -118,6 +117,10 @@ public class ContestPageController implements Initializable {
             progressPrecentageValueLabel.setText("0");
             clearScreenButton.setDisable(true);
         });
+    }
+        @FXML
+    public void onClearScreenButtonClick(ActionEvent event) {
+        clearContestPageContent();
     }
 
     public void setParentController(AppController appController) {
