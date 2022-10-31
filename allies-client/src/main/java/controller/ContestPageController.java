@@ -4,6 +4,7 @@ import app.GuiApplication;
 import dto.AllyTeamData;
 import dto.EncryptionCandidate;
 import enums.GameStatus;
+import generictype.MappingPair;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,7 +21,6 @@ import service.PropertiesService;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 import java.util.ResourceBundle;
@@ -109,29 +109,30 @@ public class ContestPageController implements Initializable {
                 });
             }
             else if (newValue != null && newValue.getGameState() == GameStatus.DONE) {
-                parentController.changeSceneToDashboard();
+//                parentController.changeSceneToDashboard();
                 Platform.runLater(()->{
                     showMessage("Contest done! Winner is: " + newValue.getWinner());
+                    DataService.getDmProgressProperty().setValue(new MappingPair<Long,Long>(1L,1L));
                     DataService.getCurrentContestRoomStateProperty().setValue(null);
-                    contestWordLabel.setText(null);
                     DataService.getLastCandidatesProperty().setValue(null);
-                    contestDataGrid.setVisible(false);
-                    dmResultsFlowPane.getChildren().clear();
-                    teamsFlowPane.getChildren().clear();
-                    parentController.changeSceneToDashboard();
+//                    contestWordLabel.setText(null);
+//                    contestDataGrid.setVisible(false);
+//                    dmResultsFlowPane.getChildren().clear();
+//                    teamsFlowPane.getChildren().clear();
+//                    parentController.changeSceneToDashboard();
                 });
             }
         });
 
         DataService.getLastCandidatesProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue != null && !newValue.isEmpty()){
-                createCandidate(newValue.get(newValue.size()-1));
+                createCandidateTile(newValue.get(newValue.size()-1));
             }
-            else{
-                Platform.runLater(()->{
-                    dmResultsFlowPane.getChildren().clear();
-                });
-            }
+//            else{
+//                Platform.runLater(()->{
+//                    dmResultsFlowPane.getChildren().clear();
+//                });
+//            }
         });
         DataService.getDmProgressProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue == null || newValue.getRight() == 0){
@@ -182,12 +183,12 @@ public class ContestPageController implements Initializable {
             dmResultsFlowPane.getChildren().clear();
         });
         for (EncryptionCandidate candidate : candidateList ) {
-            createCandidate(candidate);
+            createCandidateTile(candidate);
         }
     }
 
 
-    private void createCandidate(EncryptionCandidate candidate) {
+    private void createCandidateTile(EncryptionCandidate candidate) {
         Platform.runLater(() -> {
             try {
                 URL decodedCandidateURL = GuiApplication.class.getResource(PropertiesService.getCandidateDataFxmlPath());

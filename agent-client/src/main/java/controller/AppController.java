@@ -139,7 +139,7 @@ public class AppController implements Initializable {
                         synchronized (agentClientDM){
                             MachineHandler machineHandler1 = agentClientDM.getMachineHandler();
                             DecryptionWorkPayload zippedWork = null;
-                            while(zippedWork == null && DataService.getGameStatusProperty().get().getGameState() != GameStatus.DONE){
+                            while(zippedWork == null && (DataService.getGameStatusProperty().get() != null && DataService.getGameStatusProperty().get().getGameState() != GameStatus.DONE)){
                                 zippedWork = DataService.fetchWorkBatch(agentClientDM.getMaxNumberOfTasks());
                             }
                             List<MachineState> unzippedWork = DecryptionWorkPayloadParserService.unzip(zippedWork,machineHandler1.getInventoryInfo().get());
@@ -151,7 +151,7 @@ public class AppController implements Initializable {
                 agentClientDmThread = new Thread(agentClientDM);
                 agentClientDmThread.start();
                 //Fetch Dictionary
-                while(DictionaryManagerStatic.getDictionary().isEmpty() && DataService.getGameStatusProperty().get().getGameState() != GameStatus.DONE){
+                while(DictionaryManagerStatic.getDictionary().isEmpty() && (DataService.getGameStatusProperty().get() != null && DataService.getGameStatusProperty().get().getGameState() != GameStatus.DONE)){
                     DataService.loadDictionaryManager();
                 }
                 log.info("App - loaded Dictionary");
@@ -159,7 +159,7 @@ public class AppController implements Initializable {
                 log.info("App - loaded Inventory service");
                 //Fetch work:
                 DecryptionWorkPayload zippedWork = DataService.fetchWorkBatch(agentClientDM.getMaxNumberOfTasks());
-                while(zippedWork == null && DataService.getGameStatusProperty().get().getGameState() != GameStatus.DONE){
+                while(zippedWork == null && (DataService.getGameStatusProperty().get() != null && DataService.getGameStatusProperty().get().getGameState() != GameStatus.DONE)){
                     zippedWork = DataService.fetchWorkBatch(agentClientDM.getMaxNumberOfTasks());
                 }
                 log.info("App - first work batch fetched, Value=" + zippedWork);
@@ -170,7 +170,6 @@ public class AppController implements Initializable {
             }
             if(newValue != null && newValue.getGameState() == GameStatus.DONE){
                 agentClientDM.kill();
-                DataService.restartFetching();
             }
         });
         log.info("AppController - app initialized");

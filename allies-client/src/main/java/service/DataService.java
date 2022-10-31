@@ -244,7 +244,13 @@ public class DataService {
                     }
                     else {
                         log.debug("Candidates Successfully Fetched - responseCode = 200, payload=" + payload);
-                        List<EncryptionCandidate> newList = new ArrayList<>(getLastCandidatesProperty().get());
+                        List<EncryptionCandidate> newList;
+                        if(getLastCandidatesProperty().get() == null){
+                            newList = new ArrayList<>();
+                        }
+                        else{
+                            newList = new ArrayList<>(getLastCandidatesProperty().get());
+                        }
                         newList.add(payload.getEncryptionCandidateList().get(payload.getEncryptionCandidateList().size()-1));
                         getLastCandidatesProperty().setValue(newList);
 

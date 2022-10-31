@@ -85,7 +85,7 @@ public class DataService {
                                 gameStatusProperty.setValue(new GameStatePayload(null, payload.getContestRoom().getGameStatus(), payload.getContestRoom().getWinnerName()));
                             }
                             if(gameStatusProperty.get().getGameState() == GameStatus.DONE){
-                                sendGotWin();
+//                                sendGotWin(); //Prevent Cleanup
                             }
                         }
                     }
@@ -357,12 +357,5 @@ public class DataService {
         DictionaryLoadInfo loadInfo = gson.fromJson(bodyString,DictionaryLoadInfo.class);
         DictionaryManagerStatic.loadDictionary(loadInfo);
         return;
-    }
-
-    public static void restartFetching() {
-        executor.shutdownNow();
-        startPullingTeamsData();
-        startPullingAgentData();
-        startPullingRoomData();
     }
 }
