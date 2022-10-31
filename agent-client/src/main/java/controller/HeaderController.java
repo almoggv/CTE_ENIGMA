@@ -79,9 +79,10 @@ public class HeaderController implements Initializable {
         });
 
         DataService.getCurrentTeamsProperty().addListener((observable, oldValue, newValue) -> {
-            if(newValue == null || newValue.isEmpty()){
-                logOutAction();
-            } else if (newValue != null
+//            if(newValue == null || newValue.isEmpty()){
+//                logOutAction();
+//            } else
+            if (newValue != null
                     && isLoggedInProperty.get() == true
                     && !allyExist(newValue, parentController.loginComponentController.getAllyNameProperty().getValue())){
                 logOutAction();

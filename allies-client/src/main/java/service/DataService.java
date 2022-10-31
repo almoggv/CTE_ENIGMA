@@ -207,7 +207,7 @@ public class DataService {
                                     gameStatusProperty.setValue(new GameStatePayload(null, payload.getContestRoom().getGameStatus(), payload.getContestRoom().getWinnerName()));
                                 }
                             if(gameStatusProperty.get().getGameState() == GameStatus.DONE){
-                                sendGotWin();
+//                                sendGotWin();
                             }
                         }
                     }

@@ -2,6 +2,8 @@ package controller;
 
 import com.google.gson.Gson;
 import dto.MachineInventoryPayload;
+import enums.GameStatus;
+import generictype.MappingPair;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -54,7 +56,7 @@ public class AppController implements Initializable {
     @FXML
     private DashboardPageController dashboardPageController;
     @FXML
-    private ContestPageController contestPageController;
+    @Getter private ContestPageController contestPageController;
 
     @Setter
     @Getter
@@ -127,7 +129,18 @@ public class AppController implements Initializable {
         });
         loginComponentController.getIsLoggedInProperty().bindBidirectional(headerComponentController.getIsLoggedInProperty());;
         log.info("AppController - app initialized");
-    }
+
+        DataService.getGameStatusProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null && newValue.getGameState() == GameStatus.DONE) {
+                Platform.runLater(()->{
+                    showMessage("Contest done! Winner is: " + newValue.getWinner());
+                    DataService.getDmProgressProperty().setValue(new MappingPair<Long,Long>(1L,1L));
+                    DataService.getCurrentContestRoomStateProperty().setValue(null);
+                    DataService.getLastCandidatesProperty().setValue(null);
+                });
+            }
+        });
+        }
 
 
 

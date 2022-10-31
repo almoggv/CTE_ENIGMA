@@ -242,7 +242,9 @@ public class DashboardPageController implements Initializable {
                         DataService.getCurrentContestRoomStateProperty().set(payload.getContestRoom());
                         parentController.changeSceneToContest();
                         DataService.startPullingTeamsData();
+                        DataService.getDmProgressProperty().setValue(null);
                         DataService.startPullingContestRoomData();
+                        parentController.getContestPageController().getProgressBar().setProgress(0);
                     });
                 }
             }
