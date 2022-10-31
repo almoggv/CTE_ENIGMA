@@ -94,6 +94,7 @@ public class FetchWork extends HttpServlet {
         }
         AllyClientDM allyClientDM = currentLoggedInAlly.getDecryptionManager();
         if(allyClientDM == null){
+            log.warn("Fetch work: ally client DM is null, creating a new ally DM");
             currentLoggedInAlly.setDecryptionManager(new AllyClientDMImpl());
             allyClientDM = currentLoggedInAlly.getDecryptionManager();
             allyClientDM.setDifficultyLevel(user.getContestRoom().getDifficultyLevel());
@@ -111,6 +112,14 @@ public class FetchWork extends HttpServlet {
             }
             amountOfStates += newWorkBatch.size();
             workBatchesRecieved.add(newWorkBatch);
+        }
+        if(workBatchesRecieved == null || workBatchesRecieved.isEmpty() || workBatchesRecieved.get(0).isEmpty() ){
+            log.error("Failed to Fetch work - workBatchesRecieved is empty" + payload);
+            resp.setStatus(SC_INTERNAL_SERVER_ERROR);
+            payload.setMessage("Didnt receive a work batch");
+            payload.setAmountOfStates(0);
+            respWriter.print(gson.toJson(payload));
+            return;
         }
         payload.setFirstState(workBatchesRecieved.get(0).get(0));
         List<MachineState> lastBatch = workBatchesRecieved.get(workBatchesRecieved.size()-1);

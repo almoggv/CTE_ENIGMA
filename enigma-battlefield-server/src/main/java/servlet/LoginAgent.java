@@ -81,11 +81,6 @@ public class LoginAgent extends HttpServlet {
             repsPayload.setMessage("No Ally=" + allynameFromParameter + ", does not exist");
             repsPayload.setAccessToken("");
         }
-//        else if (userManager.getUserByName(allynameFromParameter).isReady()) {
-//            resp.setStatus(SC_BAD_REQUEST);
-//            repsPayload.setMessage("can't join an ally that is ready");
-//            repsPayload.setAccessToken("");
-//        }
         else if (taskSizeFromParameter == null || taskSizeFromParameter.isEmpty()) {
             resp.setStatus(SC_BAD_REQUEST);
             repsPayload.setMessage("Missing task size in params");
@@ -101,8 +96,54 @@ public class LoginAgent extends HttpServlet {
             repsPayload.setMessage("No such ally");
             repsPayload.setAccessToken("");
         }
+        else {
+            try{
+                int taskSize = Integer.parseInt(taskSizeFromParameter);
+                if(taskSize < 1){
+                    resp.setStatus(SC_BAD_REQUEST);
+                    repsPayload.setMessage("Task size needs to be a positive number.");
+                    repsPayload.setAccessToken("");
+                    resp.setHeader(PropertiesService.getHttpHeaderContentType(),PropertiesService.getJsonHttpContentType());
+                    Gson gson = LoginPayloadJsonAdapter.buildGsonLoginPayloadAdapter();
+                    String serializedPayload = gson.toJson(repsPayload);
+                    respWriter.print(serializedPayload);
+                    return;
+                }
+            }
+            catch( Exception e) {
+                resp.setStatus(SC_BAD_REQUEST);
+                repsPayload.setMessage("Task size needs to be a positive number.");
+                repsPayload.setAccessToken("");
+                resp.setHeader(PropertiesService.getHttpHeaderContentType(),PropertiesService.getJsonHttpContentType());
+                Gson gson = LoginPayloadJsonAdapter.buildGsonLoginPayloadAdapter();
+                String serializedPayload = gson.toJson(repsPayload);
+                respWriter.print(serializedPayload);
+                return;
+            }
+            try{
+                int threadNum = Integer.parseInt(threadNumFromParameter);
+                if(threadNum < 1 || threadNum >4){
+                    resp.setStatus(SC_BAD_REQUEST);
+                    repsPayload.setMessage("Thread number needs to be between 1 and 4.");
+                    repsPayload.setAccessToken("");
+                    resp.setHeader(PropertiesService.getHttpHeaderContentType(),PropertiesService.getJsonHttpContentType());
+                    Gson gson = LoginPayloadJsonAdapter.buildGsonLoginPayloadAdapter();
+                    String serializedPayload = gson.toJson(repsPayload);
+                    respWriter.print(serializedPayload);
+                    return;
+                }
+            }
+            catch(Exception e) {
+                resp.setStatus(SC_BAD_REQUEST);
+                repsPayload.setMessage("Thread number needs to be between 1 and 4.");
+                repsPayload.setAccessToken("");
+                resp.setHeader(PropertiesService.getHttpHeaderContentType(),PropertiesService.getJsonHttpContentType());
+                Gson gson = LoginPayloadJsonAdapter.buildGsonLoginPayloadAdapter();
+                String serializedPayload = gson.toJson(repsPayload);
+                respWriter.print(serializedPayload);
+                return;
+            }
 
-        else{
             usernameFromParameter = usernameFromParameter.trim();
             synchronized (this) {
                 if (userManager.isUserExists(usernameFromParameter)){

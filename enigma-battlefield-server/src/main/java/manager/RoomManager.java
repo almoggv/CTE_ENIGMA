@@ -86,6 +86,10 @@ public class RoomManager {
                 break;
             }
         }
+        if(contestRoom.getCurrNumOfTeams() == 1){
+            contestRoom.setGameStatus(GameStatus.DONE);
+            contestRoom.setWinnerName(contestRoom.getAlliesList().get(0).getTeamName());
+        }
     }
 
     public void clearAllDms(ContestRoom contestRoom){
@@ -139,6 +143,7 @@ public class RoomManager {
             allyuser.setContestRoom(null);
             allyuser.setInARoom(false);
             allyuser.setSentGotWin(false);
+            allyuser.setReady(false);
             ally.setEncryptionCandidateList(null);
 
             //reset room in agents of ally if exist
@@ -154,7 +159,7 @@ public class RoomManager {
 
     public void updateGotWon(ContestRoom contestRoom, UserManager userManager) {
         contestRoom.setNumOfGotWinCount(contestRoom.getNumOfGotWinCount() + 1);
-        if(contestRoom.getNumOfGotWinCount() >= 2){
+        if(contestRoom.getNumOfGotWinCount() >= contestRoom.getCurrNumOfTeams() + 1){
             resetContestRoom(contestRoom, userManager);
         }
     }

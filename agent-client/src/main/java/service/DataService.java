@@ -81,6 +81,9 @@ public class DataService {
                         if(payload.getContestRoom() != null  ){
                             currentContestRoomStateProperty.setValue(payload.getContestRoom());
                             //todo: check if fixed or causes other issues
+                            if(gameStatusProperty.get() == null){
+                                gameStatusProperty.setValue(new GameStatePayload());
+                            }
                             if(gameStatusProperty.get() != null && payload.getContestRoom().getGameStatus()!= gameStatusProperty.get().getGameState() ){
                                 gameStatusProperty.setValue(new GameStatePayload(null, payload.getContestRoom().getGameStatus(), payload.getContestRoom().getWinnerName()));
                             }
