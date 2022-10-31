@@ -249,16 +249,14 @@ public class DataService {
                 public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                     String responseBody = response.body().string();
                     if (response.code() >= 500) {
-                        log.error("sendCandidatesUrl Fetching failed - statusCode=" + response.code());
+                        log.error("sendCandidatesUrl Fetching failed, candidate was not received in server - statusCode=" + response.code() + ", ServerMessage=" + responseBody);
                         return;
                     }
                     if (response.code() != 200) {
-                        log.error("Failed to send candidates - statusCode=" + response.code() + ", ServerMessage=" + responseBody);
+                        log.error("sendCandidates - Failed to send candidates, candidate was not received in server - statusCode=" + response.code() + ", ServerMessage=" + responseBody);
                     }
                     else {
-                        log.debug("Candidates sent - responseCode = 200, ServerMessage=" +responseBody);
-                        System.out.println("sentttttttttttttttttttttttttttttttttttttt");
-                        System.out.println(responseBody);
+                        log.info("sendCandidates - responseCode = 200, candidate recieved in server ,ServerMessage=" +responseBody);
                     }
                 }
             });

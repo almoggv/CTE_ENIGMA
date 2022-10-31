@@ -123,11 +123,14 @@ public class AppController implements Initializable {
                     encryptionCandidate.setCandidate(newestCandidateInfo.getOutput());
                     encryptionCandidate.setAllyTeamName(loginComponentController.getAllyTeamName());
                     encryptionCandidate.setFoundByState(newestCandidateInfo.getInitialState());
-                    if(DataService.getLastCandidatesProperty().get() != null && !DataService.getLastCandidatesProperty().get().isEmpty()){
-                        List<EncryptionCandidate> previousFoundCandidatesList = new ArrayList<>();
-                        previousFoundCandidatesList.add(encryptionCandidate);
-                        DataService.getLastCandidatesProperty().setValue(previousFoundCandidatesList);
+                    log.info("App - A New candidate was found Value=" + encryptionCandidate);
+                    //Update DataService's property
+                    if(DataService.getLastCandidatesProperty().get() == null){
+                        DataService.getLastCandidatesProperty().setValue(new ArrayList<>());
                     }
+                    List<EncryptionCandidate> updatedList = new ArrayList<>(DataService.getLastCandidatesProperty().get());
+                    updatedList.add(encryptionCandidate);
+                    DataService.getLastCandidatesProperty().setValue(updatedList);
                 });
                 agentClientDM.getIsReadyForMoreWorkProperty().addListener((observable1, oldReadyForMoreValue, newReadyForMoreValue) -> {
                     if(newReadyForMoreValue == true){

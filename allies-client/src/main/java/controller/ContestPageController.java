@@ -5,10 +5,12 @@ import dto.AllyTeamData;
 import dto.EncryptionCandidate;
 import enums.GameStatus;
 import javafx.application.Platform;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import org.apache.log4j.Logger;
@@ -37,16 +39,19 @@ public class ContestPageController implements Initializable {
         }
     }
 
-    public GridPane rootGridPane;
-    public Label contestWordLabel;
-    public GridPane contestDataGrid;
-    public ContestDataController contestDataGridController;
-    public GridPane allyCompetitionControls;
-
-    public FlowPane teamsFlowPane;
-    public CompetitionControlsController allyCompetitionControlsController;
-    public FlowPane dmResultsFlowPane;
     AppController parentController;
+    public CompetitionControlsController allyCompetitionControlsController;
+    public ContestDataController contestDataGridController;
+
+    @FXML private GridPane rootGridPane;
+    @FXML private Label contestWordLabel;
+    @FXML private GridPane contestDataGrid;
+    @FXML private GridPane allyCompetitionControls;
+    @FXML private FlowPane teamsFlowPane;
+    @FXML private FlowPane dmResultsFlowPane;
+    @FXML private Label statusValueLabel;
+    @FXML private Label progressPrecentageValueLabel;
+    @FXML private ProgressBar progressBar;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -94,6 +99,12 @@ public class ContestPageController implements Initializable {
             if(newValue != null && newValue.getGameState() == GameStatus.READY){
                 Platform.runLater(()->{
                     showMessage("Contest starting!");
+                    DataService.startPullingProgress();
+                });
+            }
+            if(newValue!=null){
+                Platform.runLater(()->{
+                    statusValueLabel.setText(newValue.getGameState().name());
                 });
             }
             else if (newValue != null && newValue.getGameState() == GameStatus.DONE) {
@@ -110,7 +121,6 @@ public class ContestPageController implements Initializable {
                 });
             }
         });
-
         DataService.startPullingCandidates();
         DataService.getLastCandidatesProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue != null){
@@ -121,6 +131,17 @@ public class ContestPageController implements Initializable {
                     dmResultsFlowPane.getChildren().clear();
                 });
             }
+        });
+        DataService.getDmProgressProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue == null || newValue.getRight() == 0){
+                return;
+            }
+            double progressBarValue = (double)newValue.getLeft() / (double)newValue.getRight();
+            int progressPercentage = (int)Math.ceil(progressBarValue * 100);
+            Platform.runLater(()->{
+                progressBar.setProgress(progressBarValue);
+                progressPrecentageValueLabel.setText(String.valueOf(progressPercentage));
+            });
         });
     }
 

@@ -43,7 +43,6 @@ public class PostCandidates extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        resp.getWriter().print("in post candidates servlet");
         if(!req.getHeader(PropertiesService.getHttpHeaderContentType()).contains(PropertiesService.getJsonHttpContentType())){
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             resp.getWriter().print("Expecting json content type");
@@ -63,8 +62,6 @@ public class PostCandidates extends HttpServlet {
             resp.setStatus(SC_INTERNAL_SERVER_ERROR);
             return;
         }
-//
-        //todo: return -this is in comment just to see if works:
         RoomManager roomManager = ServletUtils.getRoomManager(this.getServletContext());
         UserManager userManager = ServletUtils.getUserManager(this.getServletContext());
         String usernameFromSession = SessionUtills.getUsername(req);

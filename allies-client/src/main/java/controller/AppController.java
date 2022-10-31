@@ -127,9 +127,6 @@ public class AppController implements Initializable {
             }
         });
         loginComponentController.getIsLoggedInProperty().bindBidirectional(headerComponentController.getIsLoggedInProperty());;
-
-
-
         log.info("AppController - app initialized");
     }
 

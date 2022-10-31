@@ -2,8 +2,10 @@ package service;
 
 
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 import dto.*;
 import enums.GameStatus;
+import generictype.MappingPair;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import lombok.Getter;
@@ -40,6 +42,7 @@ public class DataService {
     @Getter private static final ObjectProperty<ContestRoomData> currentContestRoomStateProperty = new SimpleObjectProperty<>();
     @Getter private static final ObjectProperty<List<AgentData>> agentsListStateProperty = new SimpleObjectProperty<>();
     @Getter private static final ObjectProperty<List<AllyTeamData>> currentTeamsProperty = new SimpleObjectProperty<>();
+    @Getter private static final ObjectProperty<MappingPair<Long,Long>> dmProgressProperty = new SimpleObjectProperty<>(new MappingPair<>(0L,1L));
 
     @Getter private static final ObjectProperty<List<EncryptionCandidate>> lastCandidatesProperty = new SimpleObjectProperty<>();
     @Getter private static final ObjectProperty<GameStatePayload> gameStatusProperty = new SimpleObjectProperty<>(new GameStatePayload());
@@ -217,7 +220,8 @@ public class DataService {
             HttpClientService.runAsync(candidatesUrl, new Callback() {
                 @Override
                 public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                    log.error("candidatesFetcher failed, ExceptionMessage="+e.getMessage());                }
+                    log.error("candidatesFetcher failed, ExceptionMessage="+e.getMessage());
+                }
                 @Override
                 public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                     String responseBody = response.body().string();
@@ -247,49 +251,40 @@ public class DataService {
             });
         }
     };
+    private static final Runnable dmProgressFetcher = new Runnable() {
+        @Override
+        public void run() {
+            HttpClientService.runAsync(candidatesUrl, new Callback(){
+                @Override
+                public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                    String responseBody = response.body().string();
+                    Gson gson = new Gson();
+                    AllyWorkProgressPayload payload = new AllyWorkProgressPayload();
+                    try{
+                        payload = gson.fromJson(responseBody, AllyWorkProgressPayload.class);
+                    } catch (JsonSyntaxException e) {
+                        log.error("DmProgress Fetching failed - failed to parse response body, status=" + response.code() + ", Exception=" + e.getMessage() + ", Body=" + responseBody);
+                    }
+                    if (response.code() != 200) {
+                        log.warn("dmProgress Fetching Failed - statusCode=" + response.code() + ", Payload=" + payload);
+                        return;
+                    }
+                    MappingPair<Long,Long> newProgress = payload.getProgress();
+                    if(newProgress != null){
+                        dmProgressProperty.setValue(payload.getProgress());
+                    }
+                }
 
-//    private static final Runnable contestStartedFetcher = new Runnable() {
-//        @Override
-//        public void run() {
-//            HttpClientService.runAsync(contestStatusUrl, new Callback() {
-//                @Override
-//                public void onFailure(@NotNull Call call, @NotNull IOException e) {
-//                    log.error("contestStarted failed, ExceptionMessage="+e.getMessage());                }
-//                @Override
-//                public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-//                    String responseBody = response.body().string();
-//                    if (response.code() >= 500) {
-//                        log.error("contestStarted Fetching failed - statusCode=" + response.code());
-//                        return;
-//                    }
-//                    GameStatePayload payload;
-//                    try{
-//                        payload = new Gson().fromJson(responseBody,GameStatePayload.class);
-//                    }
-//                    catch (Exception e){
-//                        log.error("Failed to parse response on contestStartedUrl, Message=" + e.getMessage());
-//                        return;
-//                    }
-//                    if (response.code() != 200) {
-//                        log.error("Failed to fetch game status - statusCode=" + response.code() + ", ServerMessage=" + payload.getMessage());
-//                    }
-//                    else {
-//                        log.info("game status - responseCode = 200, ServerMessage=" + payload.getMessage());
-//
-//                        if(payload.getGameState() != null && payload.getGameState() != gameStatusProperty.get()){
-//                            gameStatusProperty.setValue(payload.getGameState());
-//                            //in comment for test
-////                            if(payload.getGameState().equals(GameStatus.READY)){
-//                                startPullingCandidates();
-////                            }
-//                        }
-//                    }
-//                }
-//            });
-//        }
-//    };
+                @Override
+                public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                    log.error("dmProgress - onFailure - entire request Failed, ExceptionMessage="+e.getMessage());
+                }
+            });
+        }
+    };
+
     static{
-        int poolSize = 2;
+        int poolSize = 3;
         executor = Executors.newScheduledThreadPool(poolSize);
         contestsDataUrl = HttpUrl
                 .parse(PropertiesService.getApiContestsInfoUrl())
@@ -347,26 +342,26 @@ public class DataService {
     public static void startPullingRoomsData(){
         long timeInterval = 1500;
         executor.scheduleAtFixedRate(contestsDataFetcher, 0, timeInterval, TimeUnit.MILLISECONDS);
-        //TODO: implement
     }
     public static void startPullingContestRoomData(){
         long timeInterval = 1500;
         executor.scheduleAtFixedRate(currContestDataFetcher, 0, timeInterval, TimeUnit.MILLISECONDS);
-        //TODO: implement
     }
     public static void startPullingAgentData(){
         long timeInterval = 1500;
         executor.scheduleAtFixedRate(agentsDataFetcher, 0, timeInterval, TimeUnit.MILLISECONDS);
-        //TODO: implement
     }
     public static void startPullingTeamsData(){
         long timeInterval = 1500;
         executor.scheduleAtFixedRate(currTeamsFetcher, 0, timeInterval, TimeUnit.MILLISECONDS);
-        //TODO: implement
     }
     public static void startPullingCandidates(){
         long timeInterval = 1500;
         executor.scheduleAtFixedRate(candidatesFetcher, 0, timeInterval, TimeUnit.MILLISECONDS);
-        //TODO: implement
     }
+    public static void startPullingProgress(){
+        long timeInterval = 1500;
+        executor.scheduleAtFixedRate(dmProgressFetcher, 0, timeInterval, TimeUnit.MILLISECONDS);
+    }
+
 }
