@@ -83,7 +83,6 @@ public class ContestPageController implements Initializable {
             if(newValue != null && newValue.getGameState() == GameStatus.READY){
                 Platform.runLater(()->{
                     showMessage("Contest starting!");
-                    clearScreenButton.setDisable(false);
                 });
             }
             else if (newValue != null && newValue.getGameState() == GameStatus.DONE) {
@@ -99,6 +98,8 @@ public class ContestPageController implements Initializable {
                 createCandidateTile(newValue.get(newValue.size()-1));
             }
         });
+
+        clearScreenButton.setDisable(true);
     }
 
     @FXML
@@ -113,6 +114,7 @@ public class ContestPageController implements Initializable {
             contestDataFlowPane.getChildren().clear();
             dmResultsFlowPane.getChildren().clear();
             progressBar.setProgress(0);
+            statusValueLabel.setText("");
             progressPrecentageValueLabel.setText("0");
             clearScreenButton.setDisable(true);
         });

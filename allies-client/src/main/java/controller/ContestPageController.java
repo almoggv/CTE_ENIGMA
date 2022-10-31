@@ -16,6 +16,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
+import lombok.Getter;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import service.DataService;
@@ -53,7 +54,7 @@ public class ContestPageController implements Initializable {
     @FXML private FlowPane dmResultsFlowPane;
     @FXML private Label statusValueLabel;
     @FXML private Label progressPrecentageValueLabel;
-    @FXML private ProgressBar progressBar;
+    @FXML @Getter private ProgressBar progressBar;
     @FXML private Button clearScreenButton;
 
     @Override
@@ -112,6 +113,8 @@ public class ContestPageController implements Initializable {
                     DataService.getDmProgressProperty().setValue(new MappingPair<Long,Long>(1L,1L));
                     DataService.getCurrentContestRoomStateProperty().setValue(null);
                     DataService.getLastCandidatesProperty().setValue(null);
+                    clearScreenButton.setDisable(false);
+
                 });
             }
         });
@@ -132,6 +135,8 @@ public class ContestPageController implements Initializable {
                 progressPrecentageValueLabel.setText(String.valueOf(progressPercentage));
             });
         });
+
+        clearScreenButton.setDisable(true);
     }
 
     @FXML
@@ -153,6 +158,7 @@ public class ContestPageController implements Initializable {
             teamsFlowPane.getChildren().clear();
             parentController.changeSceneToDashboard();
             progressBar.setProgress(0);
+            statusValueLabel.setText("");
             progressPrecentageValueLabel.setText("0");
             clearScreenButton.setDisable(true);
         });

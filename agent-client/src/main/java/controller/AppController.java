@@ -100,12 +100,11 @@ public class AppController implements Initializable {
             }
         });
         loginComponentController.getIsLoggedInProperty().bindBidirectional(headerComponentController.getIsLoggedInProperty());;
-        DataService.getLastCandidatesProperty().addListener((observable, oldValue, newValue) -> {
+/*        DataService.getLastCandidatesProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue == null || newValue.isEmpty()){
                 return;
             }
-
-        });
+        });*/
         DataService.getGameStatusProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue != null && (newValue.getGameState() == GameStatus.IN_PROGRESS || newValue.getGameState() == GameStatus.READY)){
                 MachineHandler machineHandler = null;

@@ -41,7 +41,6 @@ public class ContestDataController {
         this.uboatCreatorName.setText(String.valueOf(value));
     }
 
-//
 
     public void setParentController(DashboardPageController dashboardPageController) {
         this.dashboardPageController = dashboardPageController;
